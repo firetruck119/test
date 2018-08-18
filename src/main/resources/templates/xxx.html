@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>返现--酒店范围列表</title>
+    <link rel="stylesheet" type="text/css" href="../../css/grid/grid.css">
+    <link rel="stylesheet" type="text/css"
+          href="../../css/grid/GridManager.css">
+    <link rel="stylesheet" type="text/css" href="../../css/grid/layer.css">
+
+    <script type="text/javascript" src="../../js/common/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="../../js/common/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="../../js/common/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../js/grid/GridManager.js"></script>
+    <script type="text/javascript" src="../../js/grid/layer.js"></script>
+
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/page.css" />
+
+    <link rel="stylesheet" href="../../css/kolibre.css" />
+    <link rel="stylesheet" href="../../css/kolibre2.css" />
+    <link rel="stylesheet" href="../../css/public_offline.css" />
+
+    <style type="text/css">
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            margin-top: 5px;
+        }
+
+        ul li textarea {
+            width: 500px;
+            height: 107px;
+        }
+
+        .dialogHeader1 {
+            width: 85px;
+            margin-left: 3px;
+        }
+
+        .dialogHeader {
+            width: 45px;
+            margin-left: 3px;
+        }
+
+        #message {
+            display: none;
+            color: red;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .plugin-action {
+            display: inline-block;
+            color: steelblue;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .plugin-action:hover {
+            text-decoration: underline;
+        }
+
+        .search-area {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+
+        .search-area .sa-ele {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 12px;
+        }
+
+        .search-area .sa-ele .se-title {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .search-area .sa-ele .se-con {
+            display: inline-block;
+            width: 180px;
+            height: 24px;
+            border: 1px solid #ccc;
+            padding: 0px 4px;
+            line-height: 24px;
+        }
+
+        .search-area .sa-ele .search-action, .search-area .sa-ele .reset-action
+        {
+            display: inline-block;
+            width: 80px;
+            height: 36px;
+            font-size : 14px;
+            border: 1px solid #ccc;
+            background: #ff9a14;
+            color : #fff;
+            padding: 0px 4px;
+            line-height: 26px;
+            text-align: center;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .search-area .sa-ele .search-action:hover, .search-area .sa-ele .reset-action:hover
+        {
+            opacity: 0.7;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="main"
+     th:include="prepaydiscount/main"></nav>
+
+<div class="content-wrap">
+    <div class="box-1200">
+        <div ng-controller="gm">
+            <angular-grid-manager option="option"></angular-grid-manager>
+        </div>
+
+        <div class="search-area">
+            <div class="sa-ele">
+                <button class="search-action" id="btnUploadHotel" style="width: 150px" data-target="#myModal" data-toggle="modal">上传返现酒店</button>
+            </div>
+        </div>
+        <br/>
+        <table></table>
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form name="uploadBackCashHotelFile" action="/prepaydiscount/uploadBackCashHotelFile" method="post" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="closeButton" class="close"
+                            data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">上传返现酒店数据</h4>
+                    <label id="message"></label>
+                </div>
+                <div class="modal-body">
+                    <!--添加、新增内容-->
+                    <ul>
+                        <li>
+                            <label class="dialogHeader1">名称:</label>
+                            <input type="text" id="hotelRuleName" name="hotelRuleName"/>
+                        </li>
+                        <li><label class="dialogHeader1">文件:</label> <input
+                                type="file" name="hotelFile"></li>
+                    </ul>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <a href="../../file/prepaydiscount/bachcashhotel.csv"  class="btn btn-primary">模板</a>
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">提交</button>
+                </div>
+            </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="updateRuleModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form name="updateRuleByBackCashHotelGroup" action="/prepaydiscount/updateRuleByBackCashHotelGroup" method="post" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="closeButton" class="close"
+                            data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="updateRuleModelLabel">编辑返现酒店促销规则</h4>
+                    <label id="message"></label>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="hotelRuleId" value="" id="hotelRuleId"/>
+                    <!--添加、新增内容-->
+                    <ul>
+                        <li>
+                            <label class="dialogHeader1">规则ID:</label>
+                            <input type="text" id="txtRuleId" name="txtRuleId"/>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default" id="btnSubmit" onclick="submitData();">提交</button>
+                </div>
+            </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+
+<script type="text/javascript">
+    var table = document.querySelector('table');
+    var TGM = table
+        .GM(
+            {
+                supportRemind : false,
+                gridManagerName : 'BackCashHotelRule',
+                isCombSorting : false,
+                height : '600px',
+                supportAjaxPage : true,
+                supportSorting : false,
+                ajax_url : '/prepaydiscount/getPromotionBackCashHotelRule',
+                ajax_type : 'POST',
+                query : {
+                    pluginId : 1
+                },
+                pageSize : 20
+                // 可以通过该方法修改全部的请求参数
+                ,
+                requestHandler : function(request) {
+                    //request.newParams = '这个参数是通过 requestHandler 函数新增的';
+                }
+                // 可以通过该方法修改返回的数据
+                ,
+                responseHandler : function(response) {
+                    response.list = response.data;
+                },
+                supportCheckbox : false,
+                supportAutoOrder : false,
+                columnData : [
+                    {
+                        key : 'prepayDiscountRuleConfigureId',
+                        align : 'center',
+                        remind : '规则ID',
+                        text : '规则ID'
+                    },
+                    {
+                        key : 'tagID',
+                        align : 'center',
+                        remind : '酒店群ID',
+                        text : '酒店群ID'
+                    },
+                    {
+                        key : 'ruleType',
+                        align : 'center',
+                        remind : '投放级别',
+                        text : '投放级别',
+                        template: function () {
+                            return "系统返现";
+                        }
+                    },
+                    {
+                        key : 'ruleName',
+                        align : 'center',
+                        remind : '返现规则名称',
+                        text : '返现规则名称'
+                    },
+                    {
+                        key : 'ruleDetail',
+                        align : 'center',
+                        remind : '规则明细',
+                        text : '规则明细',
+                        template: function () {
+                            return "自定义";
+                        }
+                    },
+                    {
+                        key : 'toufangDate',
+                        align : 'center',
+                        remind : '投放日期',
+                        text : '投放日期',
+                        width: '160px',
+                        template : function(toufangDate, rowObject) {
+                            if(rowObject.startDate==null){
+                                return "";
+                            }
+                            return new Date(rowObject.startDate).format('YYYY-MM-DD') +
+                                "~"+ new Date(rowObject.endDate).format('YYYY-MM-DD');
+                        }
+                    },
+                    {
+                        key : 'strategy',
+                        align : 'center',
+                        remind : '投放策略',
+                        text : '投放策略',
+                        // width: '200px',
+                        template : function(strategy, rowObject) {
+                            if(rowObject.week==null){
+                                return "";
+                            }
+                            var weekDescription = GetWeekDescription(rowObject.week);
+                            var timeDescription = GetTimeDescription(rowObject.startHour,rowObject.startMinute,rowObject.endHour,rowObject.endMinute);
+                            if(weekDescription==""&&timeDescription==""){
+                                return "全天投放";
+                            }else{
+                                return "限定投放:"+weekDescription+timeDescription;
+                            }
+                        }
+                    },
+                    {
+                        key : 'action',
+                        align : 'center',
+                        remind : '操作',
+                        text : '操作',
+                        width: '250px',
+                        template : function(action, rowObject) {
+                            return '<a data-target="#updateRuleModel" data-toggle="modal" onclick="editRule('
+                                + rowObject.tagID + ')">编辑</a>  &nbsp&nbsp'
+                                /* + '<a onclick="updateRuleStatus('
+                                + rowObject.prepayDiscountRuleConfigureId
+                                + ')">'
+                                + (rowObject.isDel == 1 ? '上线' : '下线')
+                                + '</a> &nbsp&nbsp' */
+                                +'<a href="exportBackCashHotel?ruleId='
+                                + rowObject.prepayDiscountRuleConfigureId
+                                + '">全部导出</a> &nbsp&nbsp'
+                                +'<a href="exportEffectiveBackCashHotel?ruleId='
+                                + rowObject.prepayDiscountRuleConfigureId
+                                + '">有效导出</a> &nbsp&nbsp';
+                            /*
+                            + '<a href="BackCashHotelRuleLog?ruleId='
+                            + rowObject.prepayDiscountRuleConfigureId
+                            + '">日志</a>';  */
+
+                        }
+                    } ]
+                // 分页前事件
+                ,
+                pagingBefore : function(query) {
+                    console.log('pagingBefore', query);
+                }
+                // 分页后事件
+                ,
+                pagingAfter : function(data) {
+                    console.log('pagingAfter', data);
+                }
+                // 排序前事件
+                ,
+                sortingBefore : function(data) {
+                    console.log('sortBefore', data);
+                }
+                // 排序后事件
+                ,
+                sortingAfter : function(data) {
+                    console.log('sortAfter', data);
+                }
+                // 宽度调整前事件
+                ,
+                adjustBefore : function(event) {
+                    console.log('adjustBefore', event);
+                }
+                // 宽度调整后事件
+                ,
+                adjustAfter : function(event) {
+                    console.log('adjustAfter', event);
+                }
+                // 拖拽前事件
+                ,
+                dragBefore : function(event) {
+                    console.log('dragBefore', event);
+                }
+                // 拖拽后事件
+                ,
+                dragAfter : function(event) {
+                    console.log('dragAfter', event);
+                }
+            }, function(query) {
+                // 渲染完成后的回调函数
+                //console.log(query);
+            });
+
+    // 日期格式化,不是插件的代码,只用于处理时间格式化
+    Date.prototype.format = function(fmt) {
+        var o = {
+            "M+" : this.getMonth() + 1, //月份
+            "D+" : this.getDate(), //日
+            "d+" : this.getDate(), //日
+            "H+" : this.getHours(), //小时
+            "h+" : this.getHours(), //小时
+            "m+" : this.getMinutes(), //分
+            "s+" : this.getSeconds(), //秒
+            "q+" : Math.floor((this.getMonth() + 3) / 3), //季度
+            "S" : this.getMilliseconds()
+            //毫秒
+        };
+        if (/([Y,y]+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "")
+                .substr(4 - RegExp.$1.length));
+        }
+        for ( var k in o) {
+            if (new RegExp("(" + k + ")").test(fmt)) {
+                fmt = fmt.replace(RegExp.$1,
+                    (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k])
+                        .substr(("" + o[k]).length)));
+            }
+        }
+        return fmt;
+    };
+
+    function GetWeekDescription(week){
+        if(week==null){
+            return "";
+        }
+        if(week.length<7){
+            return "";
+        }
+        if(week=="1111111"){
+            return "";
+        }
+        if(week=="0000000"){
+            return "每周都不生效";
+        }
+        result = "每周";
+        flag = 0;
+        var weekArr = new Array("一","二","三","四","五","六","日");
+        for(i = 0;i<7;i++){
+            if(week[i]=="1"){
+                if(flag > 0 ) {
+                    result += ",";
+                }
+                result+=weekArr[i];
+                flag++;
+            }
+        }
+        return result+"<br />";
+    }
+
+    function GetTimeDescription(startHour, startMinute, endHour, endMinute){
+        if(startHour==0 && startMinute==0 && endHour==23 && endMinute==59){
+            return "";
+        }else{
+            if(startHour<10) startHour="0"+startHour;
+            if(startMinute<10) startMinute="0"+startMinute;
+            if(endHour<10) endHour="0"+endHour;
+            if(endMinute<10) endMinute="0"+endMinute;
+            return startHour+":"+startMinute+"-"+endHour+":"+endMinute;
+        }
+    }
+
+    function editRule(id,obj){
+        $("#hotelRuleId").val(id);
+        console.log("editRule-> id:" + id + "\n hotelRuleId: " + $("#hotelRuleId").val());
+
+    }
+
+    function submitData() {
+        $.post("/prepaydiscount/updateRuleByBackCashHotelGroup",
+            {
+                hotelRuleId : $("#hotelRuleId").val(),
+                txtRuleId : $("#txtRuleId").val(),
+                LoginID: $("#loginID").text()
+            },
+            function(data,status){
+                console.log("Data: " + data + "\nStatus: " + status);
+                if("success" != data.status) {
+                    alert(data.status);
+                }
+                window.location.href = "BackCashHotelRule";
+            });
+    }
+
+    function updateRuleStatus(ruleID) {
+
+        $.post("/prepaydiscount/updateRuleStatus", {
+            ruleID : ruleID,
+            loginID : $("#loginID").text()
+        }, function(data, status) {
+            console.log("Data: " + data + "\nStatus: " + status);
+            window.location.href = "BackCashHotelRule";
+        });
+    }
+
+</script>
+</body>
+</html>

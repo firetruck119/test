@@ -1,0 +1,96 @@
+﻿body{background-color:#eef2f5;}
+/*S= guide*/
+.o-auto{width:auto;}
+.o-form{margin-bottom:0}
+.o-form-group{clear:both;min-height: 30px;}
+.o-form-group > .o-form-label{margin-left:16px;width:auto;}
+.o-form-cont .o-btn+.o-label{margin-left:10px;}
+.o-form-cont .txt{display:inline-block;margin-top:3px;}
+.o-label:hover{border-bottom-color:transparent;}
+.o-filter .o-form{height:30px;}
+.o-filter{border:none;padding:10px;margin-bottom:10px;}
+.o-filter input[type="text"],.o-filter select{width:90px;}
+.o-filter .btn-link{float:right;margin-top:4px;}
+.o-select{line-height:28px;padding:3px 0;}
+.o-table .txt-left{text-align: left;}
+.o-table th{border-bottom:1px solid #3d8fd4;}
+.o-table .o-label{white-space: nowrap;}
+.table-operation a{display:inline-block;margin:0 5px;}
+.o-table-add .o-table-simple td{line-height:33px;padding:0 10px;}
+.o-modal .o-table-add .o-input{width:68px;height:25px;margin-top:-3px;}
+.o-btn{min-width:60px;}
+.o-pagination-right{margin-top:10px;text-align:right;}
+.o-table-wordreport th, .o-table-wordreport td{padding:7px 5px;}
+input[placeholder], [placeholder], *[placeholder] {
+    color:#666;
+}
+.table-filter .o-form{margin-top:0;padding-right:10px;}
+.table-filter .o-form-label{width:auto;margin-left:30px;margin-top:5px;}
+.table-filter .o-select{width:70px;}
+.o-modal{z-index:999;}
+.o-msg-message .o-ico{margin-left:-26px;}
+.o-msg-message span{color:#0088c8;cursor: pointer;}
+.sec-terms h3{font-size:12px;font-weight: normal;line-height: 22px;}
+.send-message-box .o-form-cont{line-height: 24px;}
+.send-message-box .o-form-info-bottom span{float:left;}
+.o-bread p{margin-top:10px;}
+/*E= guide*/
+
+/*S= Layout*/
+.box-1200{width:1280px;margin-left:auto; margin-right:auto; padding-left:10px; padding-right:10px;}
+.content-wrap{min-width:1180px; padding-bottom:50px;background-color:#eef2f5;}
+/*E= Layout*/
+
+
+/*=S table scroll*/
+.mode-table-scroll{position:relative;}
+.mode-table-scroll .o-table tr:hover td{background-color:#fff;}
+.mode-scroll-left,.mode-scroll-right{position:absolute;top:0;}
+.mode-scroll-left{left:0;}
+.mode-scroll-right{right:0;}
+.scroll-center-cont{overflow:auto;overflow-y:hidden;}
+.mode-scrollbar{position:absolute;top:-30px;font-size:0; overflow-x:auto; overflow-y:hidden;}
+.mode-scrollbar .scrollbar-cont{height:10px;}
+/*=E table scroll*/
+
+.other-search-item{min-width:240px;display:inline-block;margin-bottom:8px;}
+
+/*=S markup*/
+.o-filter-markup .markup-item{display:inline-block;margin:0 20px 5px 0;*display:inline;*zoom:1;}
+.o-filter-markup .markup-item .item-title{display:inline-block;min-width:45px;padding-right:10px;text-align:right;*display:inline;*zoom:1;}
+.o-filter-markup .o-auto{width:auto;}
+.o-handle-action{margin-bottom:10px;text-align:right;overflow: hidden;}
+.o-handle-action .item{margin-left:20px;}
+.o-handle-action .o-btn{float:left;}
+.table-markup-scroll .o-table th,.table-markup-scroll .o-table td{padding:0 10px;}
+.table-markup-scroll .o-table th{height:51px;}
+.table-markup-scroll .markup-merge th{height:25px;}
+.table-markup-scroll .o-table td{height:42px;}
+.table-markup-scroll .scroll-center-cont th{min-width:50px;}
+.table-markup-scroll .mode-scroll-left{width:400px;}
+.table-markup-scroll .mode-scroll-right{width:284px;}
+.table-markup-scroll .mode-scroll-center{padding-left:399px;padding-right:283px;}
+
+.table-markup-scroll .mode-scrollbar{left:400px;right:284px;}
+
+.modal-markup{width:300px;max-height:240px;overflow:auto;overflow-x:hidden;*max-height:246px;}
+.modal-markup .markup-item{margin-bottom:5px;}
+.modal-markup .markup-item .o-input{width:100px;}
+.modal-markup .markup-item .item-title{display:inline-block;min-width:60px;*display:inline;*zoom:1;}
+/*=E markup*/
+
+/*=S switch*/
+.switch-box{padding:10px;background-color: #fff;}
+.switch-box > .o-form:first-child{padding-bottom:15px;border-bottom:1px solid #ccc;}
+.switch-box .o-form-label{width:220px;}
+.switch-box .o-form-group .o-form{float:left;}
+.switch-box .o-form-label{color:#333;}
+
+.switch-btn{display:inline-block; min-width:155px; height:26px; text-align: center; line-height:26px; color:#666; border:1px solid #ccc; background-color:#fff; border-radius:2px;}
+.switch-btn .switch-txt{padding:0 10px;}
+.switch-btn a{padding:0 8px;}
+/*=E switch*/
+
+.tips-bar{width:1174px;margin:-14px auto 15px;padding:3px;border:1px solid #FFCC00;background-color: #fff6d2;}
+.pop-tips{position:absolute;min-width:150px;padding:15px;border:1px solid #3d8fd4;text-align:center;background-color:#fff;}
+.table-nohover tr:hover td{background-color: #fff;}

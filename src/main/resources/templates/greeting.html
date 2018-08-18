@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>擦窗机对建筑物表面清洗周期计算书自动生成工具</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <style type="text/css">
+        input {
+            width: 150px;
+            height: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function checkinput(form) {
+            if (form.projectName.value == "" || form.calculator.value == "" || form.check.value == "" || form.date.value == "" || form.no.value == "") {
+                alert("基础信息必须填写");
+                return false;
+            }
+            /*<![CDATA[*/
+            if (!(isNumber(form.v1.value) && isNumber(form.h.value) && isNumber(form.l.value) && isNumber(form.l1.value) && isNumber(form.w.value)
+                && isNumber(form.v2.value) && isNumber(form.t1.value) && isNumber(form.a.value) && isNumber(form.ti.value) && isNumber(form.b.value) && isNumber(form.n.value))) {
+                alert("计算参数必须填写,且填写数字");
+                return false;
+            }
+            /*]]>*/
+            return true;
+        }
+
+        function setActionType(type) {
+            $("#hidActionType").val(type);
+        }
+
+        $(document).ready(function () {
+            InitNav(1)
+            $('#BeforeHandHotelList').addClass('o-sub-cur');
+        });
+
+
+        function InitNav(type) {
+            $('#RuleConfig').css("display", "none");
+            $('#DataBoard').css("display", "none");
+            $('#RuleManage').css("display", "none");
+            $('#href_RuleConfig').removeClass('nav-hover');
+            $('#href_DataBoard').removeClass('nav-hover');
+            $('#href_RuleManage').removeClass('nav-hover');
+            if (type == 1) {
+                $('#RuleConfig').css("display", "block");
+                $('#href_RuleConfig').addClass('nav-hover');
+            }
+            if (type == 2) {
+                $('#DataBoard').css("display", "block");
+                $('#href_DataBoard').addClass('nav-hover');
+            }
+            if (type == 3) {
+                $('#RuleManage').css("display", "block");
+                $('#href_RuleManage').addClass('nav-hover');
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="o-main-header-container">
+    <div class="o-main-header-nav">
+        <div class="o-header-container">
+            <div class="o-nav-list">
+                <div class="o-nav-item  o-hassubnav ">
+                    <a id="href_RuleConfig" class="o-nav-fa" href="javascript:void(0)" onclick="InitNav(1)">输出计算书
+                        <span class="o-subnav-nbsp"></span>
+                    </a>
+                    <!-- 二级导航  -->
+                    <div id="RuleConfig" class="o-subnav" >
+                        <div class="o-subnav-container">
+                            <div class="o-subnav-list">
+                                <div class="o-subnav-item"><a href="CleaningCycleCalculation" id="BeforeHandHotelList">清洗周期</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="DynamicRefundAccountList">xxx</a>
+                                </div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="DynamicRefundHotelList">xxxx</a>
+                                </div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="RechargeList">xxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="RechargeAuditList">xxx</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="o-nav-item  o-hassubnav ">
+                    <a id="href_DataBoard" class="o-nav-fa" href="javascript:void(0)" onclick="InitNav(2)">部件参数录入
+                        <span class="o-subnav-nbsp"></span>
+                    </a>
+                    <!-- 二级导航  -->
+                    <div id="DataBoard" class="o-subnav" style="display:none">
+                        <div class="o-subnav-container">
+                            <div class="o-subnav-list">
+                                <div class="o-subnav-item"><a href="ComponentArmList" id="DynamicRefundRuleBoard"
+                                                             >大臂</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0)" id="DynamicRefundHotelBoard"
+                                                              style="color:Silver">xxxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0)"
+                                                              id="DynamicRefundDashBoard">xxxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0)"
+                                                              id="DynamicRefundDistributionBoard">xxxx</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="o-nav-item  o-hassubnav ">
+                    <a id="href_RuleManage" class="o-nav-fa" href="javascript:void(0)" onclick="InitNav(3)">xxxx
+                        <span class="o-subnav-nbsp"></span>
+                    </a>
+                    <!-- 二级导航  -->
+                    <div id="RuleManage" class="o-subnav" style="display:none">
+                        <div class="o-subnav-container">
+                            <div class="o-subnav-list">
+                                <div class="o-subnav-item"><a href="javascript:void(0)"
+                                                              id="DynamicRefundRuleList">xxxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0)" id="DynamicRefundRuleAuditing">xxxx</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
+
+<form th:id="form1" opType="#" th:opType="@{/CleaningCycleCalculation}" th:object="${CleaningCycleCalculation}"
+      method="post" onsubmit="return checkinput(this)">
+    基础信息填入
+    <div class="fill-box" >
+        <div class="fill-list-lb">1.项目名称：</div>
+        <div class="fill-list-cont">
+            <input name="projectName" type="text" th:field="*{projectName}" />
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">2.计算人：</div>
+        <div class="fill-list-cont">
+            <input name="calculator" type="text" th:field="*{calculator}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">3.审核人：</div>
+        <div class="fill-list-cont">
+            <input name="check" type="text" th:field="*{check}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">4.计算时间：</div>
+        <div class="fill-list-cont"><input name="date" type="text" th:field="*{date}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">5.计算书编号：</div>
+        <div class="fill-list-cont"><input name="no" type="text" th:field="*{no}"/>
+        </div>
+    </div>
+
+    设计参数填入
+    <div class="fill-box" >
+        <div class="fill-list-lb">6.提升速度：</div>
+        <div class="fill-list-cont"><input name="v1" type="text" th:field="*{v1}"/>m/min
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">7.工作高度：</div>
+        <div class="fill-list-cont"><input name="h" type="text" th:field="*{h}"/>m
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">8.清洗面外圈周长：</div>
+        <div class="fill-list-cont"><input name="l" type="text" th:field="*{l}"/>m
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">9.平台长度：</div>
+        <div class="fill-list-cont"><input name="l1" type="text" th:field="*{l1}"/>m
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">10.有效工作面宽度：</div>
+        <div class="fill-list-cont"><input name="w" type="text" th:field="*{w}"/>m
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">11.清洗速度 ：</div>
+        <div class="fill-list-cont"><input name="v2" type="text" th:field="*{v2}"/>m2/min
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">12.相邻工位转换时间：</div>
+        <div class="fill-list-cont"><input name="t1" type="text" th:field="*{t1}"/>min
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">13.单个工位销座数量：</div>
+        <div class="fill-list-cont"><input name="a" type="text" th:field="*{a}"/>个
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">14.每日工作时间：</div>
+        <div class="fill-list-cont"><input name="ti" type="text" th:field="*{ti}"/>h/day
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">15.作业效率：</div>
+        <div class="fill-list-cont"><input name="b" type="text" th:field="*{b}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">16.设备数量：</div>
+        <div class="fill-list-cont"><input name="n" type="text" th:field="*{n}"/>台
+        </div>
+    </div>
+    <input type="submit" value="输出PDF计算书" onclick="setActionType(1)"/> <input type="reset" value="重置"/>
+    <input type="submit" value="计算结果" onclick="setActionType(2)"/>
+    <input id="hidActionType" name="opType" type="text" th:field="*{opType}" style="display:none"/>
+</form>
+</body>
+</html>

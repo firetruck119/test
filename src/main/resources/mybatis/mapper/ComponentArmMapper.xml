@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.point.mapper.ComponentArmMapper" >
+    <resultMap id="BaseResultMap" type="com.point.entity.ComponentArmEntity" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="armType" property="armType" jdbcType="VARCHAR" />
+        <result column="armLength" property="armLength" jdbcType="DECIMAL" />
+        <result column="weightPerMeter" property="weightPerMeter" jdbcType="DECIMAL" />
+        <result column="baryCenter" property="baryCenter" jdbcType="DECIMAL" />
+        <result column="structureHours" property="structureHours" jdbcType="DECIMAL" />
+        <result column="fitterHours" property="fitterHours" jdbcType="DECIMAL" />
+        <result column="multipleHours" property="multipleHours" jdbcType="DECIMAL" />
+        <result column="effortCost" property="effortCost" jdbcType="DECIMAL" />
+        <result column="steelsCost" property="steelsCost" jdbcType="DECIMAL" />
+        <result column="cooperationPartCost" property="cooperationPartCost" jdbcType="DECIMAL" />
+        <result column="otherCost" property="otherCost" jdbcType="DECIMAL" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="tipsForSelect" property="tipsForSelect" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, armType,armLength, weightPerMeter, baryCenter, structureHours, fitterHours, multipleHours,effortCost,steelsCost,cooperationPartCost,otherCost,remark,tipsForSelect
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ComponentArm
+    </select>
+
+    <insert id="insert" parameterType="com.point.entity.ComponentArmEntity" >
+       INSERT INTO
+       		ComponentArm
+       		(armType,armLength, weightPerMeter, baryCenter, structureHours,fitterHours,multipleHours,effortCost,steelsCost,cooperationPartCost,otherCost,remark,tipsForSelect)
+       	VALUES
+       		(#{armType},#{armLength}, #{weightPerMeter}, #{baryCenter}, #{structureHours}, #{fitterHours}, #{multipleHours}, #{effortCost}, #{steelsCost}, #{cooperationPartCost}, #{otherCost}, #{remark}, #{tipsForSelect})
+    </insert>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+       DELETE FROM
+       		 ComponentArm
+       WHERE
+       		 id =#{id}
+    </delete>
+
+</mapper>
