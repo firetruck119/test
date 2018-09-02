@@ -35,17 +35,6 @@ public class CleaningCycleCalculationController {
         return "greeting";
     }
 
-    @GetMapping("/ComponentArmAdd")
-    public String componentArmAdd(Model model,@ModelAttribute ComponentArmEntity componentArmEntity) {
-        model.addAttribute("ComponentArmEntity", new ComponentArmEntity());
-        return "ComponentArmAdd";
-    }
-
-    @GetMapping("/ComponentArmList")
-    public String componentArmList() {
-        return "ComponentArmList";
-    }
-
     private String myformatString(BigDecimal decimal){
         String number = decimal.stripTrailingZeros().toPlainString();
         if(decimal.compareTo(new BigDecimal(1000))>0 && number.contains(".")){

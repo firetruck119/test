@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.point.mapper.ComponentpostMapper" >
+  <resultMap id="BaseResultMap" type="com.point.entity.Componentpost" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Type" property="type" jdbcType="DECIMAL" />
+    <result column="WeightPerMeter" property="weightpermeter" jdbcType="DECIMAL" />
+    <result column="StructureHours" property="structurehours" jdbcType="DECIMAL" />
+    <result column="MultipleHours" property="multiplehours" jdbcType="DECIMAL" />
+    <result column="FitterHours" property="fitterhours" jdbcType="DECIMAL" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="TipsForSelect" property="tipsforselect" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, Type, WeightPerMeter, StructureHours, MultipleHours, FitterHours, Remark, TipsForSelect
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.ComponentpostExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from componentpost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from componentpost
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from componentpost
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.point.entity.ComponentpostExample" >
+    delete from componentpost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.point.entity.Componentpost" >
+    insert into componentpost (ID, Type, WeightPerMeter, 
+      StructureHours, MultipleHours, FitterHours, 
+      Remark, TipsForSelect)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=DECIMAL}, #{weightpermeter,jdbcType=DECIMAL}, 
+      #{structurehours,jdbcType=DECIMAL}, #{multiplehours,jdbcType=DECIMAL}, #{fitterhours,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{tipsforselect,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.point.entity.Componentpost" >
+    insert into componentpost
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="type != null" >
+        Type,
+      </if>
+      <if test="weightpermeter != null" >
+        WeightPerMeter,
+      </if>
+      <if test="structurehours != null" >
+        StructureHours,
+      </if>
+      <if test="multiplehours != null" >
+        MultipleHours,
+      </if>
+      <if test="fitterhours != null" >
+        FitterHours,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="tipsforselect != null" >
+        TipsForSelect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="weightpermeter != null" >
+        #{weightpermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="structurehours != null" >
+        #{structurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="multiplehours != null" >
+        #{multiplehours,jdbcType=DECIMAL},
+      </if>
+      <if test="fitterhours != null" >
+        #{fitterhours,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="tipsforselect != null" >
+        #{tipsforselect,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.point.entity.ComponentpostExample" resultType="java.lang.Integer" >
+    select count(*) from componentpost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update componentpost
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        Type = #{record.type,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weightpermeter != null" >
+        WeightPerMeter = #{record.weightpermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="record.structurehours != null" >
+        StructureHours = #{record.structurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.multiplehours != null" >
+        MultipleHours = #{record.multiplehours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fitterhours != null" >
+        FitterHours = #{record.fitterhours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null" >
+        Remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipsforselect != null" >
+        TipsForSelect = #{record.tipsforselect,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update componentpost
+    set ID = #{record.id,jdbcType=INTEGER},
+      Type = #{record.type,jdbcType=DECIMAL},
+      WeightPerMeter = #{record.weightpermeter,jdbcType=DECIMAL},
+      StructureHours = #{record.structurehours,jdbcType=DECIMAL},
+      MultipleHours = #{record.multiplehours,jdbcType=DECIMAL},
+      FitterHours = #{record.fitterhours,jdbcType=DECIMAL},
+      Remark = #{record.remark,jdbcType=VARCHAR},
+      TipsForSelect = #{record.tipsforselect,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.Componentpost" >
+    update componentpost
+    <set >
+      <if test="type != null" >
+        Type = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="weightpermeter != null" >
+        WeightPerMeter = #{weightpermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="structurehours != null" >
+        StructureHours = #{structurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="multiplehours != null" >
+        MultipleHours = #{multiplehours,jdbcType=DECIMAL},
+      </if>
+      <if test="fitterhours != null" >
+        FitterHours = #{fitterhours,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="tipsforselect != null" >
+        TipsForSelect = #{tipsforselect,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.point.entity.Componentpost" >
+    update componentpost
+    set Type = #{type,jdbcType=DECIMAL},
+      WeightPerMeter = #{weightpermeter,jdbcType=DECIMAL},
+      StructureHours = #{structurehours,jdbcType=DECIMAL},
+      MultipleHours = #{multiplehours,jdbcType=DECIMAL},
+      FitterHours = #{fitterhours,jdbcType=DECIMAL},
+      Remark = #{remark,jdbcType=VARCHAR},
+      TipsForSelect = #{tipsforselect,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

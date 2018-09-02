@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>新增立柱类型</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <style type="text/css">
+        input {
+            width: 150px;
+            height: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function checkinput(form) {
+            if (form.type.value == "") {
+                alert("基础信息必须填写");
+                return false;
+            }
+            /*<![CDATA[*/
+            if (!(isNumber(form.weightPerMeter.value)
+                && isNumber(form.structureHours.value)
+                && isNumber(form.multipleHours.value)
+                && isNumber(form.fitterHours.value))) {
+                alert("设计参数必须填写,且填写数字");
+                return false;
+            }
+            /*]]>*/
+            return true;
+        }
+
+        $(document).ready(function () {
+            InitNav(2)
+            $('#ComponentpostAdd').addClass('o-sub-cur');
+        });
+
+
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<br/><br/>
+
+<form th:id="form1" opType="#" th:opType="@{/Componentpost}" th:object="${componentpost}"
+      method="post" onsubmit="return checkinput(this)">
+    名称填入
+    <div class="fill-box" >
+        <div class="fill-list-lb">1.型号类别：</div>
+        <div class="fill-list-cont">
+            <input name="type" type="text" th:field="*{type}" />
+        </div>
+    </div>
+    设计参数填入
+    <div class="fill-box" >
+        <div class="fill-list-lb">2.每米重量：</div>
+        <div class="fill-list-cont">
+            <input name="weightPerMeter" type="text" th:field="*{weightpermeter}"/>kg/m
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">3.结构大件焊接工时：</div>
+        <div class="fill-list-cont"><input name="structureHours" type="text" th:field="*{structurehours}"/>h
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">4.钳工大件装配工时：</div>
+        <div class="fill-list-cont"><input name="fitterHours" type="text" th:field="*{fitterhours}"/>h
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">5.综合班工时：</div>
+        <div class="fill-list-cont"><input name="multipleHours" type="text" th:field="*{multiplehours}"/>h
+        </div>
+    </div>
+    文字说明
+    <div class="fill-box" >
+        <div class="fill-list-lb">6.备注 ：</div>
+        <div class="fill-list-cont"><input name="remark" type="text" th:field="*{remark}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">7.选型提示说明：</div>
+        <div class="fill-list-cont"><input name="tipsForSelect" type="text" th:field="*{tipsforselect}"/>
+        </div>
+    </div>
+    <input type="submit" value="提交" />
+</form>
+</body>
+</html>

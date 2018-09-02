@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>大臂类型列表</title>
+    <title>立柱类型列表</title>
     <link rel="stylesheet" type="text/css" href="../../css/grid/grid.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/GridManager.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/layer.css"/>
@@ -22,33 +22,11 @@
     <link rel="stylesheet" href="../../css/kolibre2.min.css" />
     <link rel="stylesheet" href="../../css/public_offline.css" />
     <script type="text/javascript">
-        function isNumber(value) {         //验证是否为数字
-            var patrn = /^(-)?\d+(\.\d+)?$/;
-            if (patrn.exec(value) == null || value == "") {
-                return false
-            } else {
-                return true
-            }
-        }
 
-        function checkinput(form) {
-            if (form.armType.value == "") {
-                alert("基础信息必须填写");
-                return false;
-            }
-            /*<![CDATA[*/
-            if (!(isNumber(form.armLength.value) && isNumber(form.baryCenter.value) && isNumber(form.structureHours.value) && isNumber(form.multipleHours.value) && isNumber(form.effortCost.value)
-                && isNumber(form.steelsCost.value) && isNumber(form.cooperationPartCost.value) && isNumber(form.otherCost.value) )) {
-                alert("设计参数必须填写,且填写数字");
-                return false;
-            }
-            /*]]>*/
-            return true;
-        }
 
         $(document).ready(function () {
             InitNav(2)
-            $('#ComponentArmList').addClass('o-sub-cur');
+            $('#ComponentpostList').addClass('o-sub-cur');
         });
 
 
@@ -297,7 +275,7 @@
     function deleteArm(id){
         var IsValid= $("input[name='IsValid"+id+"']:checked").val();
         var eid = $("#loginID").text();
-        var url="../deletearm/"+id;
+        var url="../delete/"+id;
         var data="{}"
 
         $.ajax({
@@ -421,7 +399,7 @@
             align: 'center',
             width: '80px',
             template: function(auditStatus, rowObject) {
-                    return '<a onclick="showAuditReason(\'' + rowObject.remark + '\')">备注</a>'
+                return '<a onclick="showAuditReason(\'' + rowObject.remark + '\')">备注</a>'
 
             }
         }, {
@@ -435,18 +413,18 @@
 
             }
         } , {
-                key : 'action',
-                align : 'center',
-                remind : '操作',
-                text : '操作',
-                width: '80px',
-                template : function(action, rowObject) {
-                    return  '<a href="javascript:void(0);" onclick="deleteArm('
-                        + rowObject.id
-                        + ')">删除</a>'
+            key : 'action',
+            align : 'center',
+            remind : '操作',
+            text : '操作',
+            width: '80px',
+            template : function(action, rowObject) {
+                return  '<a href="javascript:void(0);" onclick="deleteArm('
+                    + rowObject.id
+                    + ')">删除</a>'
 
-                }
-            }]
+            }
+        }]
         // 分页前事件
         ,
         pagingBefore : function(query) {

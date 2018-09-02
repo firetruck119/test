@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function InitNav(type) {
+        $('#hrefsub_1').css("display", "none");
+        $('#hrefsub_2').css("display", "none");
+        $('#hrefsub_3').css("display", "none");
+        $('#href_1').removeClass('nav-hover');
+        $('#href_2').removeClass('nav-hover');
+        $('#href_3').removeClass('nav-hover');
+        if (type == 1) {
+        $('#hrefsub_1').css("display", "block");
+        $('#href_1').addClass('nav-hover');
+        }
+        if (type == 2) {
+        $('#hrefsub_2').css("display", "block");
+        $('#href_2').addClass('nav-hover');
+        }
+        if (type == 3) {
+        $('#hrefsub_3').css("display", "block");
+        $('#href_3').addClass('nav-hover');
+        }
+        }
+    </script>
+</head>
+<body>
+<div class="o-main-header-container">
+    <div class="o-main-header-nav">
+        <div class="o-header-container">
+            <div class="o-nav-list">
+                <div class="o-nav-item  o-hassubnav ">
+                    <a id="href_1" class="o-nav-fa" href="javascript:void(0)" onclick="InitNav(1)">输出计算书
+                        <span class="o-subnav-nbsp"></span>
+                    </a>
+                    <!-- 二级导航  -->
+                    <div id="hrefsub_1" class="o-subnav" >
+                        <div class="o-subnav-container">
+                            <div class="o-subnav-list">
+                                <div class="o-subnav-item"><a href="CleaningCycleCalculation" id="CleaningCycleCalculation">清洗周期</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="DynamicRefundAccountList">xxx</a>
+                                </div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="DynamicRefundHotelList">xxxx</a>
+                                </div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="RechargeList">xxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0);" id="RechargeAuditList">xxx</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="o-nav-item  o-hassubnav ">
+                    <a id="href_2" class="o-nav-fa" href="javascript:void(0)" onclick="InitNav(2)">部件参数录入
+                        <span class="o-subnav-nbsp"></span>
+                    </a>
+                    <!-- 二级导航  -->
+                    <div id="hrefsub_2" class="o-subnav" style="display:none">
+                        <div class="o-subnav-container">
+                            <div class="o-subnav-list">
+                                <div class="o-subnav-item"><a href="ComponentArmList" id="DynamicRefundRuleBoard"
+                                >大臂</a></div>
+                                <div class="o-subnav-item"><a href="ComponentpostList" id="ComponentpostList"
+                                                              style="color:Silver">xxxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0)"
+                                                              id="DynamicRefundDashBoard">xxxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0)"
+                                                              id="DynamicRefundDistributionBoard">xxxx</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="o-nav-item  o-hassubnav ">
+                    <a id="href_3" class="o-nav-fa" href="javascript:void(0)" onclick="InitNav(3)">xxxx
+                        <span class="o-subnav-nbsp"></span>
+                    </a>
+                    <!-- 二级导航  -->
+                    <div id="hrefsub_3" class="o-subnav" style="display:none">
+                        <div class="o-subnav-container">
+                            <div class="o-subnav-list">
+                                <div class="o-subnav-item"><a href="javascript:void(0)"
+                                                              id="DynamicRefundRuleList">xxxx</a></div>
+                                <div class="o-subnav-item"><a href="javascript:void(0)" id="DynamicRefundRuleAuditing">xxxx</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

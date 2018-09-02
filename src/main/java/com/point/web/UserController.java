@@ -23,9 +23,6 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
-    @Autowired
-    private ComponentArmMapper componentArmMapper;
-
     @RequestMapping("/getUsers")
     public List<UserEntity> getUsers() {
         List<UserEntity> users=userMapper.getAll();
@@ -48,32 +45,6 @@ public class UserController {
         userMapper.update(user);
     }
 
-    @RequestMapping(value="/deletearm/{id}")
-    public ProcessResultsJsonModel delete(@PathVariable("id") Long id) {
-        ProcessResultsJsonModel result = new ProcessResultsJsonModel<>();
-        componentArmMapper.delete(id);
-        result.setStatus("1");
-        return result;
-    }
 
-    @RequestMapping("/getComponentArm")
-    public GridDataJsonModel getComponentArm() {
-        GridDataJsonModel model = new GridDataJsonModel();
-        List<ComponentArmEntity> users=componentArmMapper.getAll();
-        model.setStatus("success");
-        model.setData(users);
-        model.setTotals(users.size());
-        return model;
-    }
-
-    @PostMapping("/ComponentArmAdd")
-    public String greetingSubmit(@ModelAttribute ComponentArmEntity componentArmEntity,HttpServletResponse response) {
-        try {
-            componentArmMapper.insert(componentArmEntity);
-            response.sendRedirect("/ComponentArmList");
-        } catch (IOException e1) {
-        }
-        return null;
-    }
 
 }
