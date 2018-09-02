@@ -245,7 +245,7 @@
 <div class="content-wrap">
     <div class="search-area">
         <div class="sa-ele" style="padding-left: 200px">
-            <a class="search-action" id="btnUploadHotel" style="width: 150px" href="ComponentArmAdd">新增大臂类别</a>
+            <a class="search-action" id="btnUploadHotel" style="width: 150px" href="ComponentpostAdd">新增立柱类别</a>
         </div>
     </div>
     <div class="box-1200">
@@ -272,10 +272,10 @@
 
 
 <script type="text/javascript">
-    function deleteArm(id){
+    function deletepost(id){
         var IsValid= $("input[name='IsValid"+id+"']:checked").val();
         var eid = $("#loginID").text();
-        var url="../delete/"+id;
+        var url="../deletepost/"+id;
         var data="{}"
 
         $.ajax({
@@ -302,12 +302,12 @@
     var TGM = table.GM({
         disableCache : true,
         supportRemind : false,
-        gridManagerName : 'ComponentArmListManage',
+        gridManagerName : 'ComponentpostListManage',
         isCombSorting : false,
         height : '600px',
         supportAjaxPage : false,
         supportSorting : false,
-        ajax_url : '/getComponentArm',
+        ajax_url : '/getComponentpost',
         ajax_type : 'GET',
         query : {
             pluginId : 1
@@ -333,31 +333,25 @@
             align: 'center',
             width: '80px'
         }, {
-            key : 'armType',
-            remind : '适用臂长(m)',
-            text : '适用臂长<br />(m)',
+            key : 'type',
+            remind : '型号类别',
+            text : '型号类别',
             align: 'center',
             width: '200px'
         }, {
-            key : 'armLength',
+            key : 'weightPerMeter',
             remind : '每米重量 (kg/m)',
             text : '每米重量<br />(kg/m)',
             align: 'center',
             width: '100px'
         }, {
-            key : 'weightPerMeter',
-            remind : '重心位置(m)',
-            text : '重心位置<br />(m)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'baryCenter',
+            key : 'structureHours',
             remind : '结构大件焊接工时（h）',
             text : '结构大件焊接<br />工时（h）',
             align: 'center',
             width: '100px'
         }, {
-            key : 'structureHours',
+            key : 'fitterHours',
             remind : '钳工大件装配工时（h）',
             text : '钳工大件装配<br />工时（h）',
             align: 'center',
@@ -366,30 +360,6 @@
             key : 'multipleHours',
             remind : '"综合班工时（h）',
             text : '综合班<br />工时（h）',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'effortCost',
-            remind : '人工成本(元)',
-            text : '人工成本<br />(元)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'steelsCost',
-            remind : '钢材成本(元)',
-            text : '钢材成本<br />(元)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'cooperationPartCost',
-            remind : '外协件成本(元)',
-            text : '外协件<br />成本(元)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'otherCost',
-            remind : '其他成本(元)',
-            text : '其他成本<br />(元)',
             align: 'center',
             width: '100px'
         }, {
@@ -419,7 +389,7 @@
             text : '操作',
             width: '80px',
             template : function(action, rowObject) {
-                return  '<a href="javascript:void(0);" onclick="deleteArm('
+                return  '<a href="javascript:void(0);" onclick="deletepost('
                     + rowObject.id
                     + ')">删除</a>'
 

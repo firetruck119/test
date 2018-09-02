@@ -41,10 +41,10 @@ public class ComponentArmController {
     @RequestMapping("/getComponentArm")
     public GridDataJsonModel getComponentArm() {
         GridDataJsonModel model = new GridDataJsonModel();
-        List<ComponentArmEntity> users=componentArmMapper.getAll();
+        List<ComponentArmEntity> list=componentArmMapper.getAll();
         model.setStatus("success");
-        model.setData(users);
-        model.setTotals(users.size());
+        model.setData(list);
+        model.setTotals(list.size());
         return model;
     }
 
