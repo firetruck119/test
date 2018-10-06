@@ -68,21 +68,21 @@ public class Component {
 
     private String mechanism;
 
-    private BigDecimal costcoeffcient;
+    private BigDecimal costcoeffcient = new BigDecimal(1);
 
-    private BigDecimal electricmecprice;
+    private BigDecimal electricmecprice = new BigDecimal(0);
 
-    private BigDecimal rotationsustainprice;
+    private BigDecimal rotationsustainprice = new BigDecimal(0);
 
-    private BigDecimal pricepermeter;
+    private BigDecimal pricepermeter = new BigDecimal(0);
 
-    private BigDecimal othercost;
+    private BigDecimal othercost = new BigDecimal(0);
 
-    private BigDecimal hoisterprice;
+    private BigDecimal hoisterprice = new BigDecimal(0);
 
-    private BigDecimal cooperationpartcost;
+    private BigDecimal cooperationpartcost = new BigDecimal(0);
 
-    private BigDecimal fieldinstallcost;
+    private BigDecimal fieldinstallcost = new BigDecimal(0);
 
     private BigDecimal multiplehours = new BigDecimal(0);
 
@@ -97,6 +97,135 @@ public class Component {
     private BigDecimal smallstructurehours= new BigDecimal(0);
 
     private BigDecimal electricalhours= new BigDecimal(0);
+
+    public BigDecimal getPlatetons() {
+        return platetons;
+    }
+
+    public void setPlatetons(BigDecimal platetons) {
+        this.platetons = platetons;
+    }
+
+    public BigDecimal getIbeamtons() {
+        return ibeamtons;
+    }
+
+    public void setIbeamtons(BigDecimal ibeamtons) {
+        this.ibeamtons = ibeamtons;
+    }
+
+    public BigDecimal getHsteeltons() {
+        return hsteeltons;
+    }
+
+    public void setHsteeltons(BigDecimal hsteeltons) {
+        this.hsteeltons = hsteeltons;
+    }
+
+    public BigDecimal getAluminiumtons() {
+        return aluminiumtons;
+    }
+
+    public void setAluminiumtons(BigDecimal aluminiumtons) {
+        this.aluminiumtons = aluminiumtons;
+    }
+
+    public BigDecimal getEightsidetubetons() {
+        return eightsidetubetons;
+    }
+
+    public void setEightsidetubetons(BigDecimal eightsidetubetons) {
+        this.eightsidetubetons = eightsidetubetons;
+    }
+
+    public BigDecimal getHotdipgalvanizingtons() {
+        return hotdipgalvanizingtons;
+    }
+
+    public void setHotdipgalvanizingtons(BigDecimal hotdipgalvanizingtons) {
+        this.hotdipgalvanizingtons = hotdipgalvanizingtons;
+    }
+
+    private BigDecimal platetons= new BigDecimal(0);
+
+    private BigDecimal ibeamtons= new BigDecimal(0);
+
+    private BigDecimal hsteeltons= new BigDecimal(0);
+
+    private BigDecimal aluminiumtons= new BigDecimal(0);
+
+    private BigDecimal eightsidetubetons= new BigDecimal(0);
+
+    private BigDecimal hotdipgalvanizingtons= new BigDecimal(0);
+
+    public BigDecimal getPlatecost() {
+        return platetons.multiply(materialcostList.get(0));
+    }
+
+    public BigDecimal getIbeamcost() {
+        return ibeamtons.multiply(materialcostList.get(1));
+    }
+
+    public BigDecimal getHsteelcost() {
+        return hsteeltons.multiply(materialcostList.get(2));
+    }
+
+    public BigDecimal getAluminiumcost() {
+        return aluminiumtons.multiply(materialcostList.get(3));
+    }
+
+    public BigDecimal getEightsidetubecost() {
+        return eightsidetubetons.multiply(materialcostList.get(4));
+    }
+
+    public BigDecimal getHotdipgalvanizingcost() {
+        return hotdipgalvanizingtons.multiply(materialcostList.get(5));
+    }
+
+    private BigDecimal steelcost;
+
+    public BigDecimal getSteelcost(){
+        return getPlatecost().add(getIbeamcost()).add(getHsteelcost())
+                .add(getAluminiumcost()).add(getEightsidetubecost()).add(getHotdipgalvanizingcost());
+    }
+
+    private BigDecimal materialcost;
+
+    public BigDecimal getMaterialcost(){
+        return getSteelcost().add(electricmecprice).add(rotationsustainprice).add(pricepermeter).add(othercost)
+                .add(hoisterprice).add(cooperationpartcost).add(fieldinstallcost);
+    }
+
+    private BigDecimal laborcost;
+
+    public BigDecimal getLaborcost(){
+        return getMultiplecost().add(getFittercost()).add(getWeldingcost()).add(getStandardpartscost())
+                .add(getElectricalcost()).add(getBigstructurecost()).add(getSmallstructurecost());
+    }
+
+    private BigDecimal totalcost;
+
+    public BigDecimal getTotalcost(){
+        return getMaterialcost().add(getLaborcost());
+    }
+
+    private BigDecimal finalcost;
+
+    public BigDecimal getFinalcost(){
+        return getTotalcost().multiply(getCostcoeffcient());
+    }
+
+    private BigDecimal platecost;
+
+    private BigDecimal ibeamcost;
+
+    private BigDecimal hsteelcost;
+
+    private BigDecimal aluminiumcost;
+
+    private BigDecimal eightsidetubecost;
+
+    private BigDecimal hotdipgalvanizingcost;
 
     private List<BigDecimal> materialcostList = Arrays.asList(
             new BigDecimal(0)
