@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>立柱类型列表</title>
+    <title>各项单价列表</title>
     <link rel="stylesheet" type="text/css" href="../../css/grid/grid.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/GridManager.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/layer.css"/>
@@ -26,9 +26,8 @@
 
         $(document).ready(function () {
             InitNav(2)
-            $('#ComponentpostList').addClass('o-sub-cur');
+            $('#MaterialcostList').addClass('o-sub-cur');
         });
-
 
 
         function showAuditReason(remark) {
@@ -244,9 +243,6 @@
 <br/><br/>
 <div class="content-wrap">
     <div class="search-area">
-        <div class="sa-ele" style="padding-left: 200px">
-            <a class="search-action" id="btnUploadHotel" style="width: 150px" href="ComponentpostAdd">新增立柱类别</a>
-        </div>
     </div>
     <div class="box-1200">
         <div ng-controller="gm">
@@ -272,42 +268,17 @@
 
 
 <script type="text/javascript">
-    function deletepost(id){
-        var IsValid= $("input[name='IsValid"+id+"']:checked").val();
-        var eid = $("#loginID").text();
-        var url="../deletepost/"+id;
-        var data="{}"
-
-        $.ajax({
-            url: url,
-            type: "POST",
-            contentType: "application/json",
-            dataType: "json",
-            data: data,//JSON.stringify(data),
-            async: true,
-            success: function(data) {
-                ///var ss = JSON.stringify(data);
-                // console.log("Data: " + data + "\nStatus: " + status);
-                if(data.status=="0"){
-                    alert("删除失败:"+data.message);
-                }else{
-                    alert("删除成功 ");
-                    location.reload();
-                }
-            }
-        });
-    }
 
     var table = document.querySelector('table');
     var TGM = table.GM({
         disableCache : true,
         supportRemind : false,
-        gridManagerName : 'ComponentpostListManage',
+        gridManagerName : 'MaterialcostListManage',
         isCombSorting : false,
         height : '600px',
         supportAjaxPage : false,
         supportSorting : false,
-        ajax_url : '/getComponentpost',
+        ajax_url : '/getMaterialcost',
         ajax_type : 'GET',
         query : {
             pluginId : 1
@@ -328,70 +299,59 @@
         textAlign : 'center',
         columnData : [ {
             key : 'id',
-            remind : '序号',
             text : '序号',
             align: 'center',
-            width: '80px'
+            width: '30px'
         }, {
-            key : 'type',
-            remind : '型号类别',
-            text : '型号类别',
+            key : 'materiatype',
+            text : '成本类别',
             align: 'center',
-            width: '200px'
+            width: '60px'
         }, {
-            key : 'weightpermeter',
-            remind : '每米重量 (kg/m)',
-            text : '每米重量<br />(kg/m)',
+            key : 'materianame',
+            text : '成本名称',
             align: 'center',
-            width: '100px'
+            width: '60px'
         }, {
-            key : 'structurehours',
-            remind : '结构大件焊接工时（h）',
-            text : '结构大件焊接<br />工时（h）',
+            key : 'unitprice',
+            text : '单价',
             align: 'center',
-            width: '100px'
+            width: '60px',
+            template: function(unitprice, rowObject) {
+                return '<input type="text"  name="unitprice'+rowObject.id+'" value="'+rowObject.unitprice+'" width="50px"/>';
+            }
         }, {
-            key : 'fitterhours',
-            remind : '钳工大件装配工时（h）',
-            text : '钳工大件装配<br />工时（h）',
+            key : 'unitname',
+            text : '单位名称',
             align: 'center',
-            width: '100px'
+            width: '30px'
         }, {
-            key : 'multiplehours',
-            remind : '"综合班工时（h）',
-            text : '综合班<br />工时（h）',
+            key : 'remark1',
+            text : '备注编辑',
             align: 'center',
-            width: '100px'
-        }, {
-            key : 'remark',
-            remind : '备注',
-            text : '备注',
-            align: 'center',
-            width: '80px',
+            width: '120px',
             template: function(remark, rowObject) {
-                return '<a onclick="showAuditReason(\'' + rowObject.remark + '\')">备注</a>'
-
+                return '<input type="text"  name="remark'+rowObject.id+'" value="'+rowObject.remark+'" width="200px"/>';
             }
         }, {
-            key : 'tipsForSelect',
-            remind : '选型提示说明',
-            text : '选型提示<br />说明',
-            align: 'center',
-            width: '80px',
-            template: function(tipsForSelect, rowObject) {
-                return '<a onclick="showAuditReason(\'' + rowObject.tipsforselect + '\')">说明</a>'
+                key : 'remark2',
+                text : '备注',
+                align: 'center',
+                width: '40px',
+                template: function(remark, rowObject) {
+                    return '<a onclick="showAuditReason(\'' + rowObject.remark + '\')">备注</a>'
 
-            }
-        } , {
+                }
+        }, {
             key : 'action',
             align : 'center',
             remind : '操作',
             text : '操作',
-            width: '80px',
+            width: '40px',
             template : function(action, rowObject) {
-                return  '<a href="javascript:void(0);" onclick="deletepost('
+                return  '<a href="javascript:void(0);" onclick="save('
                     + rowObject.id
-                    + ')">删除</a>'
+                    + ')">保存</a>'
 
             }
         }]
@@ -467,6 +427,34 @@
         }
         return fmt;
     };
+
+
+    //<![CDATA[
+    function save(id){
+        var unitprice= $("input[name='unitprice"+id+"']").val();
+        var remark= $("input[name='remark"+id+"']").val();
+        var url='/saveMaterialcost?id='+id+'&unitprice='+unitprice+'&remark='+remark;
+        var data="{}"
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            data: data,//JSON.stringify(data),
+            async: false,
+            success: function(data) {
+                ///var ss = JSON.stringify(data);
+                // console.log("Data: " + data + "\nStatus: " + status);
+                if(data.status=="0"){
+                    alert("保存失败:"+data.message);
+                }else{
+                    alert("保存成功 ");
+                }
+            }
+        });
+    }
+    //]]>
 </script>
 </body>
 </html>

@@ -8,26 +8,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@Controller
+@RestController
 public class ComponentpostController {
 
    @Autowired
     private ComponentpostMapper componentpostMapper;
 
     @GetMapping("/ComponentpostAdd")
-    public String componentpostAdd(Model model, @ModelAttribute Componentpost componentpost) {
+    public ModelAndView componentpostAdd(Model model, @ModelAttribute Componentpost componentpost) {
         model.addAttribute("componentpost", new Componentpost());
-        return "ComponentpostAdd";
+        return new ModelAndView("ComponentpostAdd");
     }
 
     @GetMapping("/ComponentpostList")
-    public String componentpostList() {
-        return "ComponentpostList";
+    public ModelAndView componentpostList() {
+        return new ModelAndView( "ComponentpostList");
     }
 
     @RequestMapping(value="/deletepost/{id}")

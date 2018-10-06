@@ -8,26 +8,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@Controller
+@RestController
 public class ComponentArmController {
 
     @Autowired
     private ComponentArmMapper componentArmMapper;
 
     @GetMapping("/ComponentArmAdd")
-    public String componentArmAdd(Model model, @ModelAttribute ComponentArmEntity componentArmEntity) {
+    public ModelAndView componentArmAdd(Model model, @ModelAttribute ComponentArmEntity componentArmEntity) {
         model.addAttribute("ComponentArmEntity", new ComponentArmEntity());
-        return "ComponentArmAdd";
+        return new ModelAndView( "ComponentArmAdd");
     }
 
     @GetMapping("/ComponentArmList")
-    public String componentArmList() {
-        return "ComponentArmList";
+    public ModelAndView componentArmList() {
+        return new ModelAndView("ComponentArmList");
     }
 
     @RequestMapping(value="/deletearm/{id}")

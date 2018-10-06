@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.point.mapper.ComponentMapper" >
+  <resultMap id="BaseResultMap" type="com.point.entity.Component" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ComponentType" property="componenttype" jdbcType="INTEGER" />
+    <result column="XXInertiaMoment" property="xxinertiamoment" jdbcType="DECIMAL" />
+    <result column="XXCrossSection" property="xxcrosssection" jdbcType="DECIMAL" />
+    <result column="YYInertiaMoment" property="yyinertiamoment" jdbcType="DECIMAL" />
+    <result column="YYCrossSection" property="yycrosssection" jdbcType="DECIMAL" />
+    <result column="RopeDiameter" property="ropediameter" jdbcType="DECIMAL" />
+    <result column="Hight" property="hight" jdbcType="DECIMAL" />
+    <result column="TrackGap" property="trackgap" jdbcType="DECIMAL" />
+    <result column="AngularVelocity" property="angularvelocity" jdbcType="DECIMAL" />
+    <result column="Width" property="width" jdbcType="DECIMAL" />
+    <result column="WheelGap" property="wheelgap" jdbcType="DECIMAL" />
+    <result column="WeightPerMeter" property="weightpermeter" jdbcType="DECIMAL" />
+    <result column="ArmLength" property="armlength" jdbcType="DECIMAL" />
+    <result column="OutlineSize" property="outlinesize" jdbcType="DECIMAL" />
+    <result column="FrontalArea" property="frontalarea" jdbcType="DECIMAL" />
+    <result column="HydroCylinderPower" property="hydrocylinderpower" jdbcType="DECIMAL" />
+    <result column="Weight" property="weight" jdbcType="DECIMAL" />
+    <result column="BaryCenter" property="barycenter" jdbcType="DECIMAL" />
+    <result column="MaxDistance" property="maxdistance" jdbcType="DECIMAL" />
+    <result column="MaxLoading" property="maxloading" jdbcType="DECIMAL" />
+    <result column="MinBreakageForce" property="minbreakageforce" jdbcType="DECIMAL" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="Material" property="material" jdbcType="VARCHAR" />
+    <result column="ElectricMecType" property="electricmectype" jdbcType="VARCHAR" />
+    <result column="RotationSustainModel" property="rotationsustainmodel" jdbcType="VARCHAR" />
+    <result column="ApaptType" property="apapttype" jdbcType="VARCHAR" />
+    <result column="HoisterType" property="hoistertype" jdbcType="VARCHAR" />
+    <result column="ModelType" property="modeltype" jdbcType="VARCHAR" />
+    <result column="Tips" property="tips" jdbcType="VARCHAR" />
+    <result column="Mechanism" property="mechanism" jdbcType="VARCHAR" />
+    <result column="CostCoeffcient" property="costcoeffcient" jdbcType="DECIMAL" />
+    <result column="ElectricMecPrice" property="electricmecprice" jdbcType="DECIMAL" />
+    <result column="RotationSustainPrice" property="rotationsustainprice" jdbcType="DECIMAL" />
+    <result column="PricePerMeter" property="pricepermeter" jdbcType="DECIMAL" />
+    <result column="OtherCost" property="othercost" jdbcType="DECIMAL" />
+    <result column="HoisterPrice" property="hoisterprice" jdbcType="DECIMAL" />
+    <result column="CooperationPartCost" property="cooperationpartcost" jdbcType="DECIMAL" />
+    <result column="FieldInstallCost" property="fieldinstallcost" jdbcType="DECIMAL" />
+    <result column="MultipleHours" property="multiplehours" jdbcType="DECIMAL" />
+    <result column="FitterHours" property="fitterhours" jdbcType="DECIMAL" />
+    <result column="WeldingHours" property="weldinghours" jdbcType="DECIMAL" />
+    <result column="StandardPartsHours" property="standardpartshours" jdbcType="DECIMAL" />
+    <result column="BigStructureHours" property="bigstructurehours" jdbcType="DECIMAL" />
+    <result column="SmallStructureHours" property="smallstructurehours" jdbcType="DECIMAL" />
+    <result column="ElectricalHours" property="electricalhours" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ComponentType, XXInertiaMoment, XXCrossSection, YYInertiaMoment, YYCrossSection, 
+    RopeDiameter, Hight, TrackGap, AngularVelocity, Width, WheelGap, WeightPerMeter, 
+    ArmLength, OutlineSize, FrontalArea, HydroCylinderPower, Weight, BaryCenter, MaxDistance, 
+    MaxLoading, MinBreakageForce, Remark, Material, ElectricMecType, RotationSustainModel, 
+    ApaptType, HoisterType, ModelType, Tips, Mechanism, CostCoeffcient, ElectricMecPrice, 
+    RotationSustainPrice, PricePerMeter, OtherCost, HoisterPrice, CooperationPartCost, 
+    FieldInstallCost, MultipleHours, FitterHours, WeldingHours, StandardPartsHours, BigStructureHours, 
+    SmallStructureHours, ElectricalHours
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.ComponentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from component
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from component
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from component
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.point.entity.ComponentExample" >
+    delete from component
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.point.entity.Component" >
+    insert into component (ID, ComponentType, XXInertiaMoment, 
+      XXCrossSection, YYInertiaMoment, YYCrossSection, 
+      RopeDiameter, Hight, TrackGap, 
+      AngularVelocity, Width, WheelGap, 
+      WeightPerMeter, ArmLength, OutlineSize, 
+      FrontalArea, HydroCylinderPower, Weight, 
+      BaryCenter, MaxDistance, MaxLoading, 
+      MinBreakageForce, Remark, Material, 
+      ElectricMecType, RotationSustainModel, 
+      ApaptType, HoisterType, ModelType, 
+      Tips, Mechanism, CostCoeffcient, 
+      ElectricMecPrice, RotationSustainPrice, 
+      PricePerMeter, OtherCost, HoisterPrice, 
+      CooperationPartCost, FieldInstallCost, 
+      MultipleHours, FitterHours, WeldingHours, 
+      StandardPartsHours, BigStructureHours, 
+      SmallStructureHours, ElectricalHours)
+    values (#{id,jdbcType=INTEGER}, #{componenttype,jdbcType=INTEGER}, #{xxinertiamoment,jdbcType=DECIMAL}, 
+      #{xxcrosssection,jdbcType=DECIMAL}, #{yyinertiamoment,jdbcType=DECIMAL}, #{yycrosssection,jdbcType=DECIMAL}, 
+      #{ropediameter,jdbcType=DECIMAL}, #{hight,jdbcType=DECIMAL}, #{trackgap,jdbcType=DECIMAL}, 
+      #{angularvelocity,jdbcType=DECIMAL}, #{width,jdbcType=DECIMAL}, #{wheelgap,jdbcType=DECIMAL}, 
+      #{weightpermeter,jdbcType=DECIMAL}, #{armlength,jdbcType=DECIMAL}, #{outlinesize,jdbcType=DECIMAL}, 
+      #{frontalarea,jdbcType=DECIMAL}, #{hydrocylinderpower,jdbcType=DECIMAL}, #{weight,jdbcType=DECIMAL}, 
+      #{barycenter,jdbcType=DECIMAL}, #{maxdistance,jdbcType=DECIMAL}, #{maxloading,jdbcType=DECIMAL}, 
+      #{minbreakageforce,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{material,jdbcType=VARCHAR}, 
+      #{electricmectype,jdbcType=VARCHAR}, #{rotationsustainmodel,jdbcType=VARCHAR}, 
+      #{apapttype,jdbcType=VARCHAR}, #{hoistertype,jdbcType=VARCHAR}, #{modeltype,jdbcType=VARCHAR}, 
+      #{tips,jdbcType=VARCHAR}, #{mechanism,jdbcType=VARCHAR}, #{costcoeffcient,jdbcType=DECIMAL}, 
+      #{electricmecprice,jdbcType=DECIMAL}, #{rotationsustainprice,jdbcType=DECIMAL}, 
+      #{pricepermeter,jdbcType=DECIMAL}, #{othercost,jdbcType=DECIMAL}, #{hoisterprice,jdbcType=DECIMAL}, 
+      #{cooperationpartcost,jdbcType=DECIMAL}, #{fieldinstallcost,jdbcType=DECIMAL}, 
+      #{multiplehours,jdbcType=DECIMAL}, #{fitterhours,jdbcType=DECIMAL}, #{weldinghours,jdbcType=DECIMAL}, 
+      #{standardpartshours,jdbcType=DECIMAL}, #{bigstructurehours,jdbcType=DECIMAL}, 
+      #{smallstructurehours,jdbcType=DECIMAL}, #{electricalhours,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.point.entity.Component" >
+    insert into component
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="componenttype != null" >
+        ComponentType,
+      </if>
+      <if test="xxinertiamoment != null" >
+        XXInertiaMoment,
+      </if>
+      <if test="xxcrosssection != null" >
+        XXCrossSection,
+      </if>
+      <if test="yyinertiamoment != null" >
+        YYInertiaMoment,
+      </if>
+      <if test="yycrosssection != null" >
+        YYCrossSection,
+      </if>
+      <if test="ropediameter != null" >
+        RopeDiameter,
+      </if>
+      <if test="hight != null" >
+        Hight,
+      </if>
+      <if test="trackgap != null" >
+        TrackGap,
+      </if>
+      <if test="angularvelocity != null" >
+        AngularVelocity,
+      </if>
+      <if test="width != null" >
+        Width,
+      </if>
+      <if test="wheelgap != null" >
+        WheelGap,
+      </if>
+      <if test="weightpermeter != null" >
+        WeightPerMeter,
+      </if>
+      <if test="armlength != null" >
+        ArmLength,
+      </if>
+      <if test="outlinesize != null" >
+        OutlineSize,
+      </if>
+      <if test="frontalarea != null" >
+        FrontalArea,
+      </if>
+      <if test="hydrocylinderpower != null" >
+        HydroCylinderPower,
+      </if>
+      <if test="weight != null" >
+        Weight,
+      </if>
+      <if test="barycenter != null" >
+        BaryCenter,
+      </if>
+      <if test="maxdistance != null" >
+        MaxDistance,
+      </if>
+      <if test="maxloading != null" >
+        MaxLoading,
+      </if>
+      <if test="minbreakageforce != null" >
+        MinBreakageForce,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="material != null" >
+        Material,
+      </if>
+      <if test="electricmectype != null" >
+        ElectricMecType,
+      </if>
+      <if test="rotationsustainmodel != null" >
+        RotationSustainModel,
+      </if>
+      <if test="apapttype != null" >
+        ApaptType,
+      </if>
+      <if test="hoistertype != null" >
+        HoisterType,
+      </if>
+      <if test="modeltype != null" >
+        ModelType,
+      </if>
+      <if test="tips != null" >
+        Tips,
+      </if>
+      <if test="mechanism != null" >
+        Mechanism,
+      </if>
+      <if test="costcoeffcient != null" >
+        CostCoeffcient,
+      </if>
+      <if test="electricmecprice != null" >
+        ElectricMecPrice,
+      </if>
+      <if test="rotationsustainprice != null" >
+        RotationSustainPrice,
+      </if>
+      <if test="pricepermeter != null" >
+        PricePerMeter,
+      </if>
+      <if test="othercost != null" >
+        OtherCost,
+      </if>
+      <if test="hoisterprice != null" >
+        HoisterPrice,
+      </if>
+      <if test="cooperationpartcost != null" >
+        CooperationPartCost,
+      </if>
+      <if test="fieldinstallcost != null" >
+        FieldInstallCost,
+      </if>
+      <if test="multiplehours != null" >
+        MultipleHours,
+      </if>
+      <if test="fitterhours != null" >
+        FitterHours,
+      </if>
+      <if test="weldinghours != null" >
+        WeldingHours,
+      </if>
+      <if test="standardpartshours != null" >
+        StandardPartsHours,
+      </if>
+      <if test="bigstructurehours != null" >
+        BigStructureHours,
+      </if>
+      <if test="smallstructurehours != null" >
+        SmallStructureHours,
+      </if>
+      <if test="electricalhours != null" >
+        ElectricalHours,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="componenttype != null" >
+        #{componenttype,jdbcType=INTEGER},
+      </if>
+      <if test="xxinertiamoment != null" >
+        #{xxinertiamoment,jdbcType=DECIMAL},
+      </if>
+      <if test="xxcrosssection != null" >
+        #{xxcrosssection,jdbcType=DECIMAL},
+      </if>
+      <if test="yyinertiamoment != null" >
+        #{yyinertiamoment,jdbcType=DECIMAL},
+      </if>
+      <if test="yycrosssection != null" >
+        #{yycrosssection,jdbcType=DECIMAL},
+      </if>
+      <if test="ropediameter != null" >
+        #{ropediameter,jdbcType=DECIMAL},
+      </if>
+      <if test="hight != null" >
+        #{hight,jdbcType=DECIMAL},
+      </if>
+      <if test="trackgap != null" >
+        #{trackgap,jdbcType=DECIMAL},
+      </if>
+      <if test="angularvelocity != null" >
+        #{angularvelocity,jdbcType=DECIMAL},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="wheelgap != null" >
+        #{wheelgap,jdbcType=DECIMAL},
+      </if>
+      <if test="weightpermeter != null" >
+        #{weightpermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="armlength != null" >
+        #{armlength,jdbcType=DECIMAL},
+      </if>
+      <if test="outlinesize != null" >
+        #{outlinesize,jdbcType=DECIMAL},
+      </if>
+      <if test="frontalarea != null" >
+        #{frontalarea,jdbcType=DECIMAL},
+      </if>
+      <if test="hydrocylinderpower != null" >
+        #{hydrocylinderpower,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="barycenter != null" >
+        #{barycenter,jdbcType=DECIMAL},
+      </if>
+      <if test="maxdistance != null" >
+        #{maxdistance,jdbcType=DECIMAL},
+      </if>
+      <if test="maxloading != null" >
+        #{maxloading,jdbcType=DECIMAL},
+      </if>
+      <if test="minbreakageforce != null" >
+        #{minbreakageforce,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="material != null" >
+        #{material,jdbcType=VARCHAR},
+      </if>
+      <if test="electricmectype != null" >
+        #{electricmectype,jdbcType=VARCHAR},
+      </if>
+      <if test="rotationsustainmodel != null" >
+        #{rotationsustainmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="apapttype != null" >
+        #{apapttype,jdbcType=VARCHAR},
+      </if>
+      <if test="hoistertype != null" >
+        #{hoistertype,jdbcType=VARCHAR},
+      </if>
+      <if test="modeltype != null" >
+        #{modeltype,jdbcType=VARCHAR},
+      </if>
+      <if test="tips != null" >
+        #{tips,jdbcType=VARCHAR},
+      </if>
+      <if test="mechanism != null" >
+        #{mechanism,jdbcType=VARCHAR},
+      </if>
+      <if test="costcoeffcient != null" >
+        #{costcoeffcient,jdbcType=DECIMAL},
+      </if>
+      <if test="electricmecprice != null" >
+        #{electricmecprice,jdbcType=DECIMAL},
+      </if>
+      <if test="rotationsustainprice != null" >
+        #{rotationsustainprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pricepermeter != null" >
+        #{pricepermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="othercost != null" >
+        #{othercost,jdbcType=DECIMAL},
+      </if>
+      <if test="hoisterprice != null" >
+        #{hoisterprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cooperationpartcost != null" >
+        #{cooperationpartcost,jdbcType=DECIMAL},
+      </if>
+      <if test="fieldinstallcost != null" >
+        #{fieldinstallcost,jdbcType=DECIMAL},
+      </if>
+      <if test="multiplehours != null" >
+        #{multiplehours,jdbcType=DECIMAL},
+      </if>
+      <if test="fitterhours != null" >
+        #{fitterhours,jdbcType=DECIMAL},
+      </if>
+      <if test="weldinghours != null" >
+        #{weldinghours,jdbcType=DECIMAL},
+      </if>
+      <if test="standardpartshours != null" >
+        #{standardpartshours,jdbcType=DECIMAL},
+      </if>
+      <if test="bigstructurehours != null" >
+        #{bigstructurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="smallstructurehours != null" >
+        #{smallstructurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="electricalhours != null" >
+        #{electricalhours,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.point.entity.ComponentExample" resultType="java.lang.Integer" >
+    select count(*) from component
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update component
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.componenttype != null" >
+        ComponentType = #{record.componenttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.xxinertiamoment != null" >
+        XXInertiaMoment = #{record.xxinertiamoment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.xxcrosssection != null" >
+        XXCrossSection = #{record.xxcrosssection,jdbcType=DECIMAL},
+      </if>
+      <if test="record.yyinertiamoment != null" >
+        YYInertiaMoment = #{record.yyinertiamoment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.yycrosssection != null" >
+        YYCrossSection = #{record.yycrosssection,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ropediameter != null" >
+        RopeDiameter = #{record.ropediameter,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hight != null" >
+        Hight = #{record.hight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.trackgap != null" >
+        TrackGap = #{record.trackgap,jdbcType=DECIMAL},
+      </if>
+      <if test="record.angularvelocity != null" >
+        AngularVelocity = #{record.angularvelocity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.width != null" >
+        Width = #{record.width,jdbcType=DECIMAL},
+      </if>
+      <if test="record.wheelgap != null" >
+        WheelGap = #{record.wheelgap,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weightpermeter != null" >
+        WeightPerMeter = #{record.weightpermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="record.armlength != null" >
+        ArmLength = #{record.armlength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outlinesize != null" >
+        OutlineSize = #{record.outlinesize,jdbcType=DECIMAL},
+      </if>
+      <if test="record.frontalarea != null" >
+        FrontalArea = #{record.frontalarea,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hydrocylinderpower != null" >
+        HydroCylinderPower = #{record.hydrocylinderpower,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weight != null" >
+        Weight = #{record.weight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.barycenter != null" >
+        BaryCenter = #{record.barycenter,jdbcType=DECIMAL},
+      </if>
+      <if test="record.maxdistance != null" >
+        MaxDistance = #{record.maxdistance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.maxloading != null" >
+        MaxLoading = #{record.maxloading,jdbcType=DECIMAL},
+      </if>
+      <if test="record.minbreakageforce != null" >
+        MinBreakageForce = #{record.minbreakageforce,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null" >
+        Remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.material != null" >
+        Material = #{record.material,jdbcType=VARCHAR},
+      </if>
+      <if test="record.electricmectype != null" >
+        ElectricMecType = #{record.electricmectype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rotationsustainmodel != null" >
+        RotationSustainModel = #{record.rotationsustainmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apapttype != null" >
+        ApaptType = #{record.apapttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hoistertype != null" >
+        HoisterType = #{record.hoistertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modeltype != null" >
+        ModelType = #{record.modeltype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tips != null" >
+        Tips = #{record.tips,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mechanism != null" >
+        Mechanism = #{record.mechanism,jdbcType=VARCHAR},
+      </if>
+      <if test="record.costcoeffcient != null" >
+        CostCoeffcient = #{record.costcoeffcient,jdbcType=DECIMAL},
+      </if>
+      <if test="record.electricmecprice != null" >
+        ElectricMecPrice = #{record.electricmecprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rotationsustainprice != null" >
+        RotationSustainPrice = #{record.rotationsustainprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pricepermeter != null" >
+        PricePerMeter = #{record.pricepermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="record.othercost != null" >
+        OtherCost = #{record.othercost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hoisterprice != null" >
+        HoisterPrice = #{record.hoisterprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cooperationpartcost != null" >
+        CooperationPartCost = #{record.cooperationpartcost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fieldinstallcost != null" >
+        FieldInstallCost = #{record.fieldinstallcost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.multiplehours != null" >
+        MultipleHours = #{record.multiplehours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fitterhours != null" >
+        FitterHours = #{record.fitterhours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weldinghours != null" >
+        WeldingHours = #{record.weldinghours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.standardpartshours != null" >
+        StandardPartsHours = #{record.standardpartshours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bigstructurehours != null" >
+        BigStructureHours = #{record.bigstructurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.smallstructurehours != null" >
+        SmallStructureHours = #{record.smallstructurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="record.electricalhours != null" >
+        ElectricalHours = #{record.electricalhours,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update component
+    set ID = #{record.id,jdbcType=INTEGER},
+      ComponentType = #{record.componenttype,jdbcType=INTEGER},
+      XXInertiaMoment = #{record.xxinertiamoment,jdbcType=DECIMAL},
+      XXCrossSection = #{record.xxcrosssection,jdbcType=DECIMAL},
+      YYInertiaMoment = #{record.yyinertiamoment,jdbcType=DECIMAL},
+      YYCrossSection = #{record.yycrosssection,jdbcType=DECIMAL},
+      RopeDiameter = #{record.ropediameter,jdbcType=DECIMAL},
+      Hight = #{record.hight,jdbcType=DECIMAL},
+      TrackGap = #{record.trackgap,jdbcType=DECIMAL},
+      AngularVelocity = #{record.angularvelocity,jdbcType=DECIMAL},
+      Width = #{record.width,jdbcType=DECIMAL},
+      WheelGap = #{record.wheelgap,jdbcType=DECIMAL},
+      WeightPerMeter = #{record.weightpermeter,jdbcType=DECIMAL},
+      ArmLength = #{record.armlength,jdbcType=DECIMAL},
+      OutlineSize = #{record.outlinesize,jdbcType=DECIMAL},
+      FrontalArea = #{record.frontalarea,jdbcType=DECIMAL},
+      HydroCylinderPower = #{record.hydrocylinderpower,jdbcType=DECIMAL},
+      Weight = #{record.weight,jdbcType=DECIMAL},
+      BaryCenter = #{record.barycenter,jdbcType=DECIMAL},
+      MaxDistance = #{record.maxdistance,jdbcType=DECIMAL},
+      MaxLoading = #{record.maxloading,jdbcType=DECIMAL},
+      MinBreakageForce = #{record.minbreakageforce,jdbcType=DECIMAL},
+      Remark = #{record.remark,jdbcType=VARCHAR},
+      Material = #{record.material,jdbcType=VARCHAR},
+      ElectricMecType = #{record.electricmectype,jdbcType=VARCHAR},
+      RotationSustainModel = #{record.rotationsustainmodel,jdbcType=VARCHAR},
+      ApaptType = #{record.apapttype,jdbcType=VARCHAR},
+      HoisterType = #{record.hoistertype,jdbcType=VARCHAR},
+      ModelType = #{record.modeltype,jdbcType=VARCHAR},
+      Tips = #{record.tips,jdbcType=VARCHAR},
+      Mechanism = #{record.mechanism,jdbcType=VARCHAR},
+      CostCoeffcient = #{record.costcoeffcient,jdbcType=DECIMAL},
+      ElectricMecPrice = #{record.electricmecprice,jdbcType=DECIMAL},
+      RotationSustainPrice = #{record.rotationsustainprice,jdbcType=DECIMAL},
+      PricePerMeter = #{record.pricepermeter,jdbcType=DECIMAL},
+      OtherCost = #{record.othercost,jdbcType=DECIMAL},
+      HoisterPrice = #{record.hoisterprice,jdbcType=DECIMAL},
+      CooperationPartCost = #{record.cooperationpartcost,jdbcType=DECIMAL},
+      FieldInstallCost = #{record.fieldinstallcost,jdbcType=DECIMAL},
+      MultipleHours = #{record.multiplehours,jdbcType=DECIMAL},
+      FitterHours = #{record.fitterhours,jdbcType=DECIMAL},
+      WeldingHours = #{record.weldinghours,jdbcType=DECIMAL},
+      StandardPartsHours = #{record.standardpartshours,jdbcType=DECIMAL},
+      BigStructureHours = #{record.bigstructurehours,jdbcType=DECIMAL},
+      SmallStructureHours = #{record.smallstructurehours,jdbcType=DECIMAL},
+      ElectricalHours = #{record.electricalhours,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.Component" >
+    update component
+    <set >
+      <if test="componenttype != null" >
+        ComponentType = #{componenttype,jdbcType=INTEGER},
+      </if>
+      <if test="xxinertiamoment != null" >
+        XXInertiaMoment = #{xxinertiamoment,jdbcType=DECIMAL},
+      </if>
+      <if test="xxcrosssection != null" >
+        XXCrossSection = #{xxcrosssection,jdbcType=DECIMAL},
+      </if>
+      <if test="yyinertiamoment != null" >
+        YYInertiaMoment = #{yyinertiamoment,jdbcType=DECIMAL},
+      </if>
+      <if test="yycrosssection != null" >
+        YYCrossSection = #{yycrosssection,jdbcType=DECIMAL},
+      </if>
+      <if test="ropediameter != null" >
+        RopeDiameter = #{ropediameter,jdbcType=DECIMAL},
+      </if>
+      <if test="hight != null" >
+        Hight = #{hight,jdbcType=DECIMAL},
+      </if>
+      <if test="trackgap != null" >
+        TrackGap = #{trackgap,jdbcType=DECIMAL},
+      </if>
+      <if test="angularvelocity != null" >
+        AngularVelocity = #{angularvelocity,jdbcType=DECIMAL},
+      </if>
+      <if test="width != null" >
+        Width = #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="wheelgap != null" >
+        WheelGap = #{wheelgap,jdbcType=DECIMAL},
+      </if>
+      <if test="weightpermeter != null" >
+        WeightPerMeter = #{weightpermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="armlength != null" >
+        ArmLength = #{armlength,jdbcType=DECIMAL},
+      </if>
+      <if test="outlinesize != null" >
+        OutlineSize = #{outlinesize,jdbcType=DECIMAL},
+      </if>
+      <if test="frontalarea != null" >
+        FrontalArea = #{frontalarea,jdbcType=DECIMAL},
+      </if>
+      <if test="hydrocylinderpower != null" >
+        HydroCylinderPower = #{hydrocylinderpower,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        Weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="barycenter != null" >
+        BaryCenter = #{barycenter,jdbcType=DECIMAL},
+      </if>
+      <if test="maxdistance != null" >
+        MaxDistance = #{maxdistance,jdbcType=DECIMAL},
+      </if>
+      <if test="maxloading != null" >
+        MaxLoading = #{maxloading,jdbcType=DECIMAL},
+      </if>
+      <if test="minbreakageforce != null" >
+        MinBreakageForce = #{minbreakageforce,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="material != null" >
+        Material = #{material,jdbcType=VARCHAR},
+      </if>
+      <if test="electricmectype != null" >
+        ElectricMecType = #{electricmectype,jdbcType=VARCHAR},
+      </if>
+      <if test="rotationsustainmodel != null" >
+        RotationSustainModel = #{rotationsustainmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="apapttype != null" >
+        ApaptType = #{apapttype,jdbcType=VARCHAR},
+      </if>
+      <if test="hoistertype != null" >
+        HoisterType = #{hoistertype,jdbcType=VARCHAR},
+      </if>
+      <if test="modeltype != null" >
+        ModelType = #{modeltype,jdbcType=VARCHAR},
+      </if>
+      <if test="tips != null" >
+        Tips = #{tips,jdbcType=VARCHAR},
+      </if>
+      <if test="mechanism != null" >
+        Mechanism = #{mechanism,jdbcType=VARCHAR},
+      </if>
+      <if test="costcoeffcient != null" >
+        CostCoeffcient = #{costcoeffcient,jdbcType=DECIMAL},
+      </if>
+      <if test="electricmecprice != null" >
+        ElectricMecPrice = #{electricmecprice,jdbcType=DECIMAL},
+      </if>
+      <if test="rotationsustainprice != null" >
+        RotationSustainPrice = #{rotationsustainprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pricepermeter != null" >
+        PricePerMeter = #{pricepermeter,jdbcType=DECIMAL},
+      </if>
+      <if test="othercost != null" >
+        OtherCost = #{othercost,jdbcType=DECIMAL},
+      </if>
+      <if test="hoisterprice != null" >
+        HoisterPrice = #{hoisterprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cooperationpartcost != null" >
+        CooperationPartCost = #{cooperationpartcost,jdbcType=DECIMAL},
+      </if>
+      <if test="fieldinstallcost != null" >
+        FieldInstallCost = #{fieldinstallcost,jdbcType=DECIMAL},
+      </if>
+      <if test="multiplehours != null" >
+        MultipleHours = #{multiplehours,jdbcType=DECIMAL},
+      </if>
+      <if test="fitterhours != null" >
+        FitterHours = #{fitterhours,jdbcType=DECIMAL},
+      </if>
+      <if test="weldinghours != null" >
+        WeldingHours = #{weldinghours,jdbcType=DECIMAL},
+      </if>
+      <if test="standardpartshours != null" >
+        StandardPartsHours = #{standardpartshours,jdbcType=DECIMAL},
+      </if>
+      <if test="bigstructurehours != null" >
+        BigStructureHours = #{bigstructurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="smallstructurehours != null" >
+        SmallStructureHours = #{smallstructurehours,jdbcType=DECIMAL},
+      </if>
+      <if test="electricalhours != null" >
+        ElectricalHours = #{electricalhours,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.point.entity.Component" >
+    update component
+    set ComponentType = #{componenttype,jdbcType=INTEGER},
+      XXInertiaMoment = #{xxinertiamoment,jdbcType=DECIMAL},
+      XXCrossSection = #{xxcrosssection,jdbcType=DECIMAL},
+      YYInertiaMoment = #{yyinertiamoment,jdbcType=DECIMAL},
+      YYCrossSection = #{yycrosssection,jdbcType=DECIMAL},
+      RopeDiameter = #{ropediameter,jdbcType=DECIMAL},
+      Hight = #{hight,jdbcType=DECIMAL},
+      TrackGap = #{trackgap,jdbcType=DECIMAL},
+      AngularVelocity = #{angularvelocity,jdbcType=DECIMAL},
+      Width = #{width,jdbcType=DECIMAL},
+      WheelGap = #{wheelgap,jdbcType=DECIMAL},
+      WeightPerMeter = #{weightpermeter,jdbcType=DECIMAL},
+      ArmLength = #{armlength,jdbcType=DECIMAL},
+      OutlineSize = #{outlinesize,jdbcType=DECIMAL},
+      FrontalArea = #{frontalarea,jdbcType=DECIMAL},
+      HydroCylinderPower = #{hydrocylinderpower,jdbcType=DECIMAL},
+      Weight = #{weight,jdbcType=DECIMAL},
+      BaryCenter = #{barycenter,jdbcType=DECIMAL},
+      MaxDistance = #{maxdistance,jdbcType=DECIMAL},
+      MaxLoading = #{maxloading,jdbcType=DECIMAL},
+      MinBreakageForce = #{minbreakageforce,jdbcType=DECIMAL},
+      Remark = #{remark,jdbcType=VARCHAR},
+      Material = #{material,jdbcType=VARCHAR},
+      ElectricMecType = #{electricmectype,jdbcType=VARCHAR},
+      RotationSustainModel = #{rotationsustainmodel,jdbcType=VARCHAR},
+      ApaptType = #{apapttype,jdbcType=VARCHAR},
+      HoisterType = #{hoistertype,jdbcType=VARCHAR},
+      ModelType = #{modeltype,jdbcType=VARCHAR},
+      Tips = #{tips,jdbcType=VARCHAR},
+      Mechanism = #{mechanism,jdbcType=VARCHAR},
+      CostCoeffcient = #{costcoeffcient,jdbcType=DECIMAL},
+      ElectricMecPrice = #{electricmecprice,jdbcType=DECIMAL},
+      RotationSustainPrice = #{rotationsustainprice,jdbcType=DECIMAL},
+      PricePerMeter = #{pricepermeter,jdbcType=DECIMAL},
+      OtherCost = #{othercost,jdbcType=DECIMAL},
+      HoisterPrice = #{hoisterprice,jdbcType=DECIMAL},
+      CooperationPartCost = #{cooperationpartcost,jdbcType=DECIMAL},
+      FieldInstallCost = #{fieldinstallcost,jdbcType=DECIMAL},
+      MultipleHours = #{multiplehours,jdbcType=DECIMAL},
+      FitterHours = #{fitterhours,jdbcType=DECIMAL},
+      WeldingHours = #{weldinghours,jdbcType=DECIMAL},
+      StandardPartsHours = #{standardpartshours,jdbcType=DECIMAL},
+      BigStructureHours = #{bigstructurehours,jdbcType=DECIMAL},
+      SmallStructureHours = #{smallstructurehours,jdbcType=DECIMAL},
+      ElectricalHours = #{electricalhours,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

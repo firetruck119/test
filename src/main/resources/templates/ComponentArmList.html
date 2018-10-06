@@ -46,10 +46,19 @@
             return true;
         }
 
+        //<![CDATA[
         $(document).ready(function () {
-            InitNav(2)
+            InitNav(2);
             $('#ComponentArmList').addClass('o-sub-cur');
+            var thList = document.querySelectorAll('table th');
+            var index=0;
+            while (index<thList.length) {
+                document.querySelector('table').GM('hideTh',thList[index]);
+                index++;
+            }
+            document.querySelector('table').GM('showTh', [thList[0], thList[1], thList[2]]);
         });
+        //]]>
 
 
 
@@ -67,16 +76,16 @@
             var c = document.getElementById("content");
             //c.innerHTML=remark;
 
-            c.innerHTML=remark.replace(new RegExp(/(;)/g),';<br/>')
+            c.innerHTML = remark.replace(new RegExp(/(;)/g), ';<br/>')
 
 
             var span = document.getElementsByClassName("close")[0];
 
-            span.onclick = function() {
+            span.onclick = function () {
                 modal.style.display = "none";
             }
 
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
@@ -84,7 +93,8 @@
 
             modal.style.display = "block";
         }
-    </script>
+    </script>;
+    }
 
     <style type="text/css">
         ul {
