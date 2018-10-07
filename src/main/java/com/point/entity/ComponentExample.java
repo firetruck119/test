@@ -2954,6 +2954,366 @@ public class ComponentExample {
             addCriterion("ElectricalHours not between", value1, value2, "electricalhours");
             return (Criteria) this;
         }
+
+        public Criteria andPlatetonsIsNull() {
+            addCriterion("PlateTons is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsIsNotNull() {
+            addCriterion("PlateTons is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsEqualTo(BigDecimal value) {
+            addCriterion("PlateTons =", value, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsNotEqualTo(BigDecimal value) {
+            addCriterion("PlateTons <>", value, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsGreaterThan(BigDecimal value) {
+            addCriterion("PlateTons >", value, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("PlateTons >=", value, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsLessThan(BigDecimal value) {
+            addCriterion("PlateTons <", value, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("PlateTons <=", value, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsIn(List<BigDecimal> values) {
+            addCriterion("PlateTons in", values, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsNotIn(List<BigDecimal> values) {
+            addCriterion("PlateTons not in", values, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("PlateTons between", value1, value2, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatetonsNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("PlateTons not between", value1, value2, "platetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsIsNull() {
+            addCriterion("IBeamTons is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsIsNotNull() {
+            addCriterion("IBeamTons is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsEqualTo(BigDecimal value) {
+            addCriterion("IBeamTons =", value, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsNotEqualTo(BigDecimal value) {
+            addCriterion("IBeamTons <>", value, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsGreaterThan(BigDecimal value) {
+            addCriterion("IBeamTons >", value, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("IBeamTons >=", value, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsLessThan(BigDecimal value) {
+            addCriterion("IBeamTons <", value, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("IBeamTons <=", value, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsIn(List<BigDecimal> values) {
+            addCriterion("IBeamTons in", values, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsNotIn(List<BigDecimal> values) {
+            addCriterion("IBeamTons not in", values, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("IBeamTons between", value1, value2, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andIbeamtonsNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("IBeamTons not between", value1, value2, "ibeamtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsIsNull() {
+            addCriterion("HSteelTons is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsIsNotNull() {
+            addCriterion("HSteelTons is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsEqualTo(BigDecimal value) {
+            addCriterion("HSteelTons =", value, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsNotEqualTo(BigDecimal value) {
+            addCriterion("HSteelTons <>", value, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsGreaterThan(BigDecimal value) {
+            addCriterion("HSteelTons >", value, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("HSteelTons >=", value, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsLessThan(BigDecimal value) {
+            addCriterion("HSteelTons <", value, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("HSteelTons <=", value, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsIn(List<BigDecimal> values) {
+            addCriterion("HSteelTons in", values, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsNotIn(List<BigDecimal> values) {
+            addCriterion("HSteelTons not in", values, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("HSteelTons between", value1, value2, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHsteeltonsNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("HSteelTons not between", value1, value2, "hsteeltons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsIsNull() {
+            addCriterion("AluminiumTons is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsIsNotNull() {
+            addCriterion("AluminiumTons is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsEqualTo(BigDecimal value) {
+            addCriterion("AluminiumTons =", value, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsNotEqualTo(BigDecimal value) {
+            addCriterion("AluminiumTons <>", value, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsGreaterThan(BigDecimal value) {
+            addCriterion("AluminiumTons >", value, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("AluminiumTons >=", value, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsLessThan(BigDecimal value) {
+            addCriterion("AluminiumTons <", value, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("AluminiumTons <=", value, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsIn(List<BigDecimal> values) {
+            addCriterion("AluminiumTons in", values, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsNotIn(List<BigDecimal> values) {
+            addCriterion("AluminiumTons not in", values, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("AluminiumTons between", value1, value2, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andAluminiumtonsNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("AluminiumTons not between", value1, value2, "aluminiumtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsIsNull() {
+            addCriterion("EightsideTubeTons is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsIsNotNull() {
+            addCriterion("EightsideTubeTons is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsEqualTo(BigDecimal value) {
+            addCriterion("EightsideTubeTons =", value, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsNotEqualTo(BigDecimal value) {
+            addCriterion("EightsideTubeTons <>", value, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsGreaterThan(BigDecimal value) {
+            addCriterion("EightsideTubeTons >", value, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("EightsideTubeTons >=", value, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsLessThan(BigDecimal value) {
+            addCriterion("EightsideTubeTons <", value, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("EightsideTubeTons <=", value, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsIn(List<BigDecimal> values) {
+            addCriterion("EightsideTubeTons in", values, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsNotIn(List<BigDecimal> values) {
+            addCriterion("EightsideTubeTons not in", values, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("EightsideTubeTons between", value1, value2, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andEightsidetubetonsNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("EightsideTubeTons not between", value1, value2, "eightsidetubetons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsIsNull() {
+            addCriterion("HotDipGalvanizingTons is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsIsNotNull() {
+            addCriterion("HotDipGalvanizingTons is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsEqualTo(BigDecimal value) {
+            addCriterion("HotDipGalvanizingTons =", value, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsNotEqualTo(BigDecimal value) {
+            addCriterion("HotDipGalvanizingTons <>", value, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsGreaterThan(BigDecimal value) {
+            addCriterion("HotDipGalvanizingTons >", value, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("HotDipGalvanizingTons >=", value, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsLessThan(BigDecimal value) {
+            addCriterion("HotDipGalvanizingTons <", value, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("HotDipGalvanizingTons <=", value, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsIn(List<BigDecimal> values) {
+            addCriterion("HotDipGalvanizingTons in", values, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsNotIn(List<BigDecimal> values) {
+            addCriterion("HotDipGalvanizingTons not in", values, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("HotDipGalvanizingTons between", value1, value2, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotdipgalvanizingtonsNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("HotDipGalvanizingTons not between", value1, value2, "hotdipgalvanizingtons");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>大臂类型列表</title>
+    <title>组件列表</title>
     <link rel="stylesheet" type="text/css" href="../../css/grid/grid.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/GridManager.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/layer.css"/>
@@ -22,31 +22,54 @@
     <link rel="stylesheet" href="../../css/kolibre2.min.css" />
     <link rel="stylesheet" href="../../css/public_offline.css" />
     <script type="text/javascript">
-        function isNumber(value) {         //验证是否为数字
-            var patrn = /^(-)?\d+(\.\d+)?$/;
-            if (patrn.exec(value) == null || value == "") {
-                return false
-            } else {
-                return true
+
+        //<![CDATA[
+        $(document).ready(function () {
+            InitNav(2);
+            $('#ComponentAdd').attr("href","ComponentAdd?type="+getQueryString("type"));
+            $('#ComponentList'+getQueryString("type")).addClass('o-sub-cur');
+            var thList = document.querySelectorAll('table th');
+            var index=0;
+            while (index<thList.length) {
+                document.querySelector('table').GM('hideTh',thList[index]);
+                index++;
             }
+            var url="../getColumnList/"+getQueryString("type");
+            var data="{}"
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                data: data,//JSON.stringify(data),
+                async: false,
+                success: function(data) {
+                    if(data!=null){
+                        var i=0;
+                        while (i<data.data.length) {
+                            document.querySelector('table').GM('showTh',thList[data.data[i]-1]);
+                            i++;
+                        }
+                        document.querySelector('table').GM('showTh',thList[67]);
+                        document.querySelector('table').GM('showTh',thList[68]);
+                        document.querySelector('table').GM('showTh',thList[69]);
+                    }
+                }
+            });
+
+        });
+        //]]>
+
+        //<![CDATA[
+        function getQueryString(name){
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+            if(r!=null)
+                return  unescape(r[2]);
+            return null;
         }
-
-        function checkinput(form) {
-            if (form.armType.value == "") {
-                alert("基础信息必须填写");
-                return false;
-            }
-            /*<![CDATA[*/
-            if (!(isNumber(form.armLength.value) && isNumber(form.baryCenter.value) && isNumber(form.structureHours.value) && isNumber(form.multipleHours.value) && isNumber(form.effortCost.value)
-                && isNumber(form.steelsCost.value) && isNumber(form.cooperationPartCost.value) && isNumber(form.otherCost.value) )) {
-                alert("设计参数必须填写,且填写数字");
-                return false;
-            }
-            /*]]>*/
-            return true;
-        }
-
-
+        //]]>
 
         function showAuditReason(remark) {
 
@@ -62,16 +85,16 @@
             var c = document.getElementById("content");
             //c.innerHTML=remark;
 
-            c.innerHTML = remark.replace(new RegExp(/(;)/g), ';<br/>')
+            c.innerHTML=remark.replace(new RegExp(/(;)/g),';<br/>')
 
 
             var span = document.getElementsByClassName("close")[0];
 
-            span.onclick = function () {
+            span.onclick = function() {
                 modal.style.display = "none";
             }
 
-            window.onclick = function (event) {
+            window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
@@ -79,8 +102,7 @@
 
             modal.style.display = "block";
         }
-    </script>;
-    }
+    </script>
 
     <style type="text/css">
         ul {
@@ -263,7 +285,9 @@
 <div class="content-wrap">
     <div class="search-area">
         <div class="sa-ele" style="padding-left: 200px">
-            <a class="search-action" id="btnUploadHotel" style="width: 150px" href="ComponentArmAdd">新增大臂类别</a>
+            <a class="search-action" id="ComponentAdd" style="width: 150px" href="ComponentAdd">
+                新增
+            </a>
         </div>
     </div>
     <div class="box-1200">
@@ -290,10 +314,10 @@
 
 
 <script type="text/javascript">
-    function deleteArm(id){
+    function deletepost(id){
         var IsValid= $("input[name='IsValid"+id+"']:checked").val();
         var eid = $("#loginID").text();
-        var url="../deletearm/"+id;
+        var url="../deletecomponent/"+id;
         var data="{}"
 
         $.ajax({
@@ -320,15 +344,15 @@
     var TGM = table.GM({
         disableCache : true,
         supportRemind : false,
-        gridManagerName : 'ComponentArmListManage',
+        gridManagerName : 'ComponentListManage',
         isCombSorting : false,
         height : '600px',
         supportAjaxPage : false,
         supportSorting : false,
-        ajax_url : '/getComponentArm',
+        ajax_url : '/getComponent/'+getQueryString("type"),
         ajax_type : 'GET',
         query : {
-            pluginId : 1
+            componentType : 2
         },
         pageSize : 20
         // 可以通过该方法修改全部的请求参数
@@ -344,111 +368,103 @@
         supportCheckbox : false,
         supportAutoOrder : false,
         textAlign : 'center',
-        columnData : [ {
-            key : 'id',
-            remind : '序号',
-            text : '序号',
-            align: 'center',
-            width: '80px'
-        }, {
-            key : 'armType',
-            remind : '型号类别',
-            text : '型号类别',
-            align: 'center',
-            width: '200px'
-        }, {
-            key : 'armLength',
-            remind : '适用臂长(m)',
-            text : '适用臂长<br />(m)',
-            align: 'center',
-            width: '200px'
-        }, {
-            key : 'weightPerMeter',
-            remind : '每米重量 (kg/m)',
-            text : '每米重量<br />(kg/m)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'baryCenter',
-            remind : '重心位置(m)',
-            text : '重心位置<br />(m)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'structureHours',
-            remind : '结构大件焊接工时（h）',
-            text : '结构大件焊接<br />工时（h）',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'fitterHours',
-            remind : '钳工大件装配工时（h）',
-            text : '钳工大件装配<br />工时（h）',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'multipleHours',
-            remind : '"综合班工时（h）',
-            text : '综合班<br />工时（h）',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'effortCost',
-            remind : '人工成本(元)',
-            text : '人工成本<br />(元)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'steelsCost',
-            remind : '钢材成本(元)',
-            text : '钢材成本<br />(元)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'cooperationPartCost',
-            remind : '外协件成本(元)',
-            text : '外协件<br />成本(元)',
-            align: 'center',
-            width: '100px'
-        }, {
-            key : 'otherCost',
-            remind : '其他成本(元)',
-            text : '其他成本<br />(元)',
-            align: 'center',
-            width: '100px'
-        }, {
+        columnData : [ {key : 'id',text : '序号',align: 'center'},
+            {key : 'modeltype',text : '型号<br />类别',align: 'center'},
+            {key : 'xxinertiamoment',text : 'X-X惯性矩<br />Ix(cm^4)',align: 'center'},
+            {key : 'xxcrosssection',text : 'X-X抗弯截面<br />系数Wx(cm^3)',align: 'center'},
+            {key : 'yyinertiamoment',text : 'Y-Y惯性矩<br />Iy(cm^4)',align: 'center'},
+            {key : 'yycrosssection',text : 'Y-Y抗弯截面<br />系数Wy(cm^3)',align: 'center'},
+            {key : 'ropediameter',text : '钢丝绳<br />直径(mm)',align: 'center'},
+            {key : 'hight',text : '高度<br />（mm）',align: 'center'},
+            {key : 'trackgap',text : '轨距<br />（m）',align: 'center'},
+            {key : 'angularvelocity',text : '回转角速度<br />(r/min)',align: 'center'},
+            {key : 'width',text : '宽度<br />（mm）',align: 'center'},
+            {key : 'wheelgap',text : '轮距<br />（m）',align: 'center'},
+            {key : 'weightpermeter',text : '每米重量<br /> (kg/m)',align: 'center'},
+            {key : 'armlength',text : '适用臂长<br />(m)',align: 'center'},
+            {key : 'outlinesize',text : '外形尺寸<br />长×宽×高 (mm)',align: 'center'},
+            {key : 'frontalarea',text : '迎风面积<br />（mm^2）',align: 'center'},
+            {key : 'hydrocylinderpower',text : '油缸推力<br />(KN)',align: 'center'},
+            {key : 'weight',text : '重量<br />(kg)',align: 'center'},
+            {key : 'barycenter',text : '重心位置<br />(m)',align: 'center'},
+            {key : 'maxdistance',text : '最大行程<br />（m）',align: 'center'},
+            {key : 'maxloading',text : '最大载荷<br />(kg)',align: 'center'},
+            {key : 'minbreakageforce',text : '最小破断<br />拉力（KN）',align: 'center'},
+            {key : 'material',text : '材质',align: 'center'},
+            {key : 'electricmectype',text : '电机<br />型号',align: 'center'},
+            {key : 'rotationsustainmodel',text : '回转支撑<br />型号',align: 'center'},
+            {key : 'apapttype',text : '配置<br />类别',align: 'center'},
+            {key : 'hoistertype',text : '提升机<br />型号',align: 'center'},
+            {key : 'mechanism',text : '与之匹配的<br />运行机构',align: 'center'},
+            {key : 'costcoeffcient',text : '成本变动<br />系数',align: 'center'},
+            {key : 'electricmecprice',text : '电机价格<br />（元）',align: 'center'},
+            {key : 'rotationsustainprice',text : '回转支撑<br />价格（元）',align: 'center'},
+            {key : 'pricepermeter',text : '每米价格<br />（元）',align: 'center'},
+            {key : 'othercost',text : '其他成本<br />(元)',align: 'center'},
+            {key : 'hoisterprice',text : '提升机价格<br />（元）',align: 'center'},
+            {key : 'cooperationpartcost',text : '外协件成本<br />（元）',align: 'center'},
+            {key : 'fieldinstallcost',text : '现场安装<br />成本（元/m）',align: 'center'},
+            {key : 'platetons',text : '钢板<br />(吨)',align: 'center'},
+            {key : 'ibeamtons',text : '工字钢<br />(吨)',align: 'center'},
+            {key : 'hsteeltons',text : 'H型钢<br />(吨)',align: 'center'},
+            {key : 'aluminiumtons',text : '铝材<br />(吨)',align: 'center'},
+            {key : 'eightsidetubetons',text : '八边管<br />(吨)',align: 'center'},
+            {key : 'hotdipgalvanizingtons',text : '热浸锌<br />(吨)',align: 'center'},
+            {key : 'smallstructurehours',text : '结构小件焊<br />接工时（h）',align: 'center'},
+            {key : 'bigstructurehours',text : '结构大件焊<br />接工时（h）',align: 'center'},
+            {key : 'fitterhours',text : '钳工大件装<br />配工时（h）',align: 'center'},
+            {key : 'standardpartshours',text : '标准件装配<br />工时（h）',align: 'center'},
+            {key : 'multiplehours',text : '综合班<br />工时（h）',align: 'center'},
+            {key : 'electricalhours',text : '电器班<br />工时（h）',align: 'center'},
+            {key : 'weldinghours',text : '氩弧焊班<br />工时（h）',align: 'center'},
+            {key : 'platecost',text : '钢板成本<br />(元)',align: 'center'},
+            {key : 'ibeamcost',text : '工字钢成本<br />(元)',align: 'center'},
+            {key : 'hsteelcost',text : 'H型钢成本<br />(元)',align: 'center'},
+            {key : 'aluminiumcost',text : '铝材成本<br />(元)',align: 'center'},
+            {key : 'eightsidetubecost',text : '八边管成本<br />(元)',align: 'center'},
+            {key : 'hotdipgalvanizingcost',text : '热浸锌成本<br />(元)',align: 'center'},
+            {key : 'smallstructurecost',text : '结构小件焊接<br />人工成本(元)',align: 'center'},
+            {key : 'bigstructurecost',text : '结构大件焊接<br />人工成本(元)',align: 'center'},
+            {key : 'fittercost',text : '钳工大件装配<br />人工成本(元)',align: 'center'},
+            {key : 'standardpartscost',text : '标准件装配<br />人工成本(元)',align: 'center'},
+            {key : 'multiplecost',text : '综合班人工<br />成本(元)',align: 'center'},
+            {key : 'electricalcost',text : '电器班人工<br />成本(元)',align: 'center'},
+            {key : 'weldingcost',text : '氩弧焊班人工<br />成本(元)',align: 'center'},
+            {key : 'steelcost',text : '钢铝锌合计<br />成本(元)',align: 'center'},
+            {key : 'materialcost',text : '材料成本<br />(元)',align: 'center'},
+            {key : 'laborcost',text : '人工成本<br />(元)',align: 'center'},
+            {key : 'totalcost',text : '总成本<br />(元)',align: 'center'},
+            {key : 'finalcost',text : '最终成本<br />(元)',align: 'center'},
+            {
             key : 'remark',
-            remind : '备注',
             text : '备注',
             align: 'center',
             width: '80px',
-            template: function(auditStatus, rowObject) {
-                    return '<a onclick="showAuditReason(\'' + rowObject.remark + '\')">备注</a>'
+            template: function(remark, rowObject) {
+                return '<a onclick="showAuditReason(\'' + rowObject.remark + '\')">备注</a>'
 
             }
         }, {
-            key : 'tipsForSelect',
-            remind : '选型提示说明',
+            key : 'tips',
             text : '选型提示<br />说明',
             align: 'center',
             width: '80px',
-            template: function(auditStatus, rowObject) {
-                return '<a onclick="showAuditReason(\'' + rowObject.tipsForSelect + '\')">说明</a>'
+            template: function(tips, rowObject) {
+                return '<a onclick="showAuditReason(\'' + rowObject.tips + '\')">说明</a>'
 
             }
         } , {
-                key : 'action',
-                align : 'center',
-                remind : '操作',
-                text : '操作',
-                width: '80px',
-                template : function(action, rowObject) {
-                    return  '<a href="javascript:void(0);" onclick="deleteArm('
-                        + rowObject.id
-                        + ')">删除</a>'
+            key : 'action',
+            align : 'center',
+            text : '操作',
+            width: '80px',
+            template : function(action, rowObject) {
+                return  '<a href="javascript:void(0);" onclick="deletepost('
+                    + rowObject.id
+                    + ')">删除</a>'
 
-                }
-            }]
+            }
+        }]
         // 分页前事件
         ,
         pagingBefore : function(query) {

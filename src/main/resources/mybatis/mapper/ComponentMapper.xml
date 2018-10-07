@@ -48,6 +48,12 @@
     <result column="BigStructureHours" property="bigstructurehours" jdbcType="DECIMAL" />
     <result column="SmallStructureHours" property="smallstructurehours" jdbcType="DECIMAL" />
     <result column="ElectricalHours" property="electricalhours" jdbcType="DECIMAL" />
+    <result column="PlateTons" property="platetons" jdbcType="DECIMAL" />
+    <result column="IBeamTons" property="ibeamtons" jdbcType="DECIMAL" />
+    <result column="HSteelTons" property="hsteeltons" jdbcType="DECIMAL" />
+    <result column="AluminiumTons" property="aluminiumtons" jdbcType="DECIMAL" />
+    <result column="EightsideTubeTons" property="eightsidetubetons" jdbcType="DECIMAL" />
+    <result column="HotDipGalvanizingTons" property="hotdipgalvanizingtons" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -115,7 +121,8 @@
     ApaptType, HoisterType, ModelType, Tips, Mechanism, CostCoeffcient, ElectricMecPrice, 
     RotationSustainPrice, PricePerMeter, OtherCost, HoisterPrice, CooperationPartCost, 
     FieldInstallCost, MultipleHours, FitterHours, WeldingHours, StandardPartsHours, BigStructureHours, 
-    SmallStructureHours, ElectricalHours
+    SmallStructureHours, ElectricalHours, PlateTons, IBeamTons, HSteelTons, AluminiumTons, 
+    EightsideTubeTons, HotDipGalvanizingTons
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.ComponentExample" >
     select
@@ -164,7 +171,10 @@
       CooperationPartCost, FieldInstallCost, 
       MultipleHours, FitterHours, WeldingHours, 
       StandardPartsHours, BigStructureHours, 
-      SmallStructureHours, ElectricalHours)
+      SmallStructureHours, ElectricalHours, PlateTons, 
+      IBeamTons, HSteelTons, AluminiumTons, 
+      EightsideTubeTons, HotDipGalvanizingTons
+      )
     values (#{id,jdbcType=INTEGER}, #{componenttype,jdbcType=INTEGER}, #{xxinertiamoment,jdbcType=DECIMAL}, 
       #{xxcrosssection,jdbcType=DECIMAL}, #{yyinertiamoment,jdbcType=DECIMAL}, #{yycrosssection,jdbcType=DECIMAL}, 
       #{ropediameter,jdbcType=DECIMAL}, #{hight,jdbcType=DECIMAL}, #{trackgap,jdbcType=DECIMAL}, 
@@ -181,7 +191,10 @@
       #{cooperationpartcost,jdbcType=DECIMAL}, #{fieldinstallcost,jdbcType=DECIMAL}, 
       #{multiplehours,jdbcType=DECIMAL}, #{fitterhours,jdbcType=DECIMAL}, #{weldinghours,jdbcType=DECIMAL}, 
       #{standardpartshours,jdbcType=DECIMAL}, #{bigstructurehours,jdbcType=DECIMAL}, 
-      #{smallstructurehours,jdbcType=DECIMAL}, #{electricalhours,jdbcType=DECIMAL})
+      #{smallstructurehours,jdbcType=DECIMAL}, #{electricalhours,jdbcType=DECIMAL}, #{platetons,jdbcType=DECIMAL}, 
+      #{ibeamtons,jdbcType=DECIMAL}, #{hsteeltons,jdbcType=DECIMAL}, #{aluminiumtons,jdbcType=DECIMAL}, 
+      #{eightsidetubetons,jdbcType=DECIMAL}, #{hotdipgalvanizingtons,jdbcType=DECIMAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.point.entity.Component" >
     insert into component
@@ -324,6 +337,24 @@
       <if test="electricalhours != null" >
         ElectricalHours,
       </if>
+      <if test="platetons != null" >
+        PlateTons,
+      </if>
+      <if test="ibeamtons != null" >
+        IBeamTons,
+      </if>
+      <if test="hsteeltons != null" >
+        HSteelTons,
+      </if>
+      <if test="aluminiumtons != null" >
+        AluminiumTons,
+      </if>
+      <if test="eightsidetubetons != null" >
+        EightsideTubeTons,
+      </if>
+      <if test="hotdipgalvanizingtons != null" >
+        HotDipGalvanizingTons,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -463,6 +494,24 @@
       </if>
       <if test="electricalhours != null" >
         #{electricalhours,jdbcType=DECIMAL},
+      </if>
+      <if test="platetons != null" >
+        #{platetons,jdbcType=DECIMAL},
+      </if>
+      <if test="ibeamtons != null" >
+        #{ibeamtons,jdbcType=DECIMAL},
+      </if>
+      <if test="hsteeltons != null" >
+        #{hsteeltons,jdbcType=DECIMAL},
+      </if>
+      <if test="aluminiumtons != null" >
+        #{aluminiumtons,jdbcType=DECIMAL},
+      </if>
+      <if test="eightsidetubetons != null" >
+        #{eightsidetubetons,jdbcType=DECIMAL},
+      </if>
+      <if test="hotdipgalvanizingtons != null" >
+        #{hotdipgalvanizingtons,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -613,6 +662,24 @@
       <if test="record.electricalhours != null" >
         ElectricalHours = #{record.electricalhours,jdbcType=DECIMAL},
       </if>
+      <if test="record.platetons != null" >
+        PlateTons = #{record.platetons,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ibeamtons != null" >
+        IBeamTons = #{record.ibeamtons,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hsteeltons != null" >
+        HSteelTons = #{record.hsteeltons,jdbcType=DECIMAL},
+      </if>
+      <if test="record.aluminiumtons != null" >
+        AluminiumTons = #{record.aluminiumtons,jdbcType=DECIMAL},
+      </if>
+      <if test="record.eightsidetubetons != null" >
+        EightsideTubeTons = #{record.eightsidetubetons,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hotdipgalvanizingtons != null" >
+        HotDipGalvanizingTons = #{record.hotdipgalvanizingtons,jdbcType=DECIMAL},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -665,7 +732,13 @@
       StandardPartsHours = #{record.standardpartshours,jdbcType=DECIMAL},
       BigStructureHours = #{record.bigstructurehours,jdbcType=DECIMAL},
       SmallStructureHours = #{record.smallstructurehours,jdbcType=DECIMAL},
-      ElectricalHours = #{record.electricalhours,jdbcType=DECIMAL}
+      ElectricalHours = #{record.electricalhours,jdbcType=DECIMAL},
+      PlateTons = #{record.platetons,jdbcType=DECIMAL},
+      IBeamTons = #{record.ibeamtons,jdbcType=DECIMAL},
+      HSteelTons = #{record.hsteeltons,jdbcType=DECIMAL},
+      AluminiumTons = #{record.aluminiumtons,jdbcType=DECIMAL},
+      EightsideTubeTons = #{record.eightsidetubetons,jdbcType=DECIMAL},
+      HotDipGalvanizingTons = #{record.hotdipgalvanizingtons,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -808,6 +881,24 @@
       <if test="electricalhours != null" >
         ElectricalHours = #{electricalhours,jdbcType=DECIMAL},
       </if>
+      <if test="platetons != null" >
+        PlateTons = #{platetons,jdbcType=DECIMAL},
+      </if>
+      <if test="ibeamtons != null" >
+        IBeamTons = #{ibeamtons,jdbcType=DECIMAL},
+      </if>
+      <if test="hsteeltons != null" >
+        HSteelTons = #{hsteeltons,jdbcType=DECIMAL},
+      </if>
+      <if test="aluminiumtons != null" >
+        AluminiumTons = #{aluminiumtons,jdbcType=DECIMAL},
+      </if>
+      <if test="eightsidetubetons != null" >
+        EightsideTubeTons = #{eightsidetubetons,jdbcType=DECIMAL},
+      </if>
+      <if test="hotdipgalvanizingtons != null" >
+        HotDipGalvanizingTons = #{hotdipgalvanizingtons,jdbcType=DECIMAL},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
@@ -857,7 +948,13 @@
       StandardPartsHours = #{standardpartshours,jdbcType=DECIMAL},
       BigStructureHours = #{bigstructurehours,jdbcType=DECIMAL},
       SmallStructureHours = #{smallstructurehours,jdbcType=DECIMAL},
-      ElectricalHours = #{electricalhours,jdbcType=DECIMAL}
+      ElectricalHours = #{electricalhours,jdbcType=DECIMAL},
+      PlateTons = #{platetons,jdbcType=DECIMAL},
+      IBeamTons = #{ibeamtons,jdbcType=DECIMAL},
+      HSteelTons = #{hsteeltons,jdbcType=DECIMAL},
+      AluminiumTons = #{aluminiumtons,jdbcType=DECIMAL},
+      EightsideTubeTons = #{eightsidetubetons,jdbcType=DECIMAL},
+      HotDipGalvanizingTons = #{hotdipgalvanizingtons,jdbcType=DECIMAL}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

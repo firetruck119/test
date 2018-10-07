@@ -10,6 +10,16 @@ public class Component {
 
     private Integer componenttype;
 
+    public String getComponentname() {
+        return componentname;
+    }
+
+    public void setComponentname(String componentname) {
+        this.componentname = componentname;
+    }
+
+    private String componentname;
+
     private BigDecimal xxinertiamoment;
 
     private BigDecimal xxcrosssection;
@@ -157,136 +167,6 @@ public class Component {
     private BigDecimal eightsidetubetons= new BigDecimal(0);
 
     private BigDecimal hotdipgalvanizingtons= new BigDecimal(0);
-
-    public BigDecimal getPlatecost() {
-        return platetons.multiply(materialcostList.get(0));
-    }
-
-    public BigDecimal getIbeamcost() {
-        return ibeamtons.multiply(materialcostList.get(1));
-    }
-
-    public BigDecimal getHsteelcost() {
-        return hsteeltons.multiply(materialcostList.get(2));
-    }
-
-    public BigDecimal getAluminiumcost() {
-        return aluminiumtons.multiply(materialcostList.get(3));
-    }
-
-    public BigDecimal getEightsidetubecost() {
-        return eightsidetubetons.multiply(materialcostList.get(4));
-    }
-
-    public BigDecimal getHotdipgalvanizingcost() {
-        return hotdipgalvanizingtons.multiply(materialcostList.get(5));
-    }
-
-    private BigDecimal steelcost;
-
-    public BigDecimal getSteelcost(){
-        return getPlatecost().add(getIbeamcost()).add(getHsteelcost())
-                .add(getAluminiumcost()).add(getEightsidetubecost()).add(getHotdipgalvanizingcost());
-    }
-
-    private BigDecimal materialcost;
-
-    public BigDecimal getMaterialcost(){
-        return getSteelcost().add(electricmecprice).add(rotationsustainprice).add(pricepermeter).add(othercost)
-                .add(hoisterprice).add(cooperationpartcost).add(fieldinstallcost);
-    }
-
-    private BigDecimal laborcost;
-
-    public BigDecimal getLaborcost(){
-        return getMultiplecost().add(getFittercost()).add(getWeldingcost()).add(getStandardpartscost())
-                .add(getElectricalcost()).add(getBigstructurecost()).add(getSmallstructurecost());
-    }
-
-    private BigDecimal totalcost;
-
-    public BigDecimal getTotalcost(){
-        return getMaterialcost().add(getLaborcost());
-    }
-
-    private BigDecimal finalcost;
-
-    public BigDecimal getFinalcost(){
-        return getTotalcost().multiply(getCostcoeffcient());
-    }
-
-    private BigDecimal platecost;
-
-    private BigDecimal ibeamcost;
-
-    private BigDecimal hsteelcost;
-
-    private BigDecimal aluminiumcost;
-
-    private BigDecimal eightsidetubecost;
-
-    private BigDecimal hotdipgalvanizingcost;
-
-    private List<BigDecimal> materialcostList = Arrays.asList(
-            new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0)
-            ,new BigDecimal(0));
-
-    private BigDecimal multiplecost;
-
-    private BigDecimal fittercost;
-
-    private BigDecimal weldingcost;
-
-    private BigDecimal standardpartscost;
-
-    private BigDecimal bigstructurecost;
-
-    public void setMaterialcostList(List<BigDecimal> list) {
-        this.materialcostList=list;
-    }
-
-    public BigDecimal getMultiplecost() {
-        return multiplehours.multiply(materialcostList.get(10));
-    }
-
-    public BigDecimal getFittercost() {
-        return fitterhours.multiply(materialcostList.get(8));
-    }
-
-    public BigDecimal getWeldingcost() {
-        return weldinghours.multiply(materialcostList.get(12));
-    }
-
-    public BigDecimal getStandardpartscost() {
-        return standardpartshours.multiply(materialcostList.get(9));
-    }
-
-    public BigDecimal getBigstructurecost() {
-        return bigstructurehours.multiply(materialcostList.get(7));
-    }
-
-    public BigDecimal getSmallstructurecost() {
-        return smallstructurehours.multiply(materialcostList.get(6));
-    }
-
-    public BigDecimal getElectricalcost() {
-        return electricalhours.multiply(materialcostList.get(11));
-    }
-
-    private BigDecimal smallstructurecost;
-
-    private BigDecimal electricalcost;
 
     public Integer getId() {
         return id;
@@ -655,4 +535,137 @@ public class Component {
     public void setElectricalhours(BigDecimal electricalhours) {
         this.electricalhours = electricalhours;
     }
+
+    /********************************以下为手工添加*********************************/
+
+    private BigDecimal steelcost;
+
+    public BigDecimal getSteelcost(){
+        return getPlatecost().add(getIbeamcost()).add(getHsteelcost())
+                .add(getAluminiumcost()).add(getEightsidetubecost()).add(getHotdipgalvanizingcost());
+    }
+
+    private BigDecimal materialcost;
+
+    public BigDecimal getMaterialcost(){
+        return getSteelcost().add(electricmecprice).add(rotationsustainprice).add(pricepermeter).add(othercost)
+                .add(hoisterprice).add(cooperationpartcost).add(fieldinstallcost);
+    }
+
+    private BigDecimal laborcost;
+
+    public BigDecimal getLaborcost(){
+        return getMultiplecost().add(getFittercost()).add(getWeldingcost()).add(getStandardpartscost())
+                .add(getElectricalcost()).add(getBigstructurecost()).add(getSmallstructurecost());
+    }
+
+    private BigDecimal totalcost;
+
+    public BigDecimal getTotalcost(){
+        return getMaterialcost().add(getLaborcost());
+    }
+
+    private BigDecimal finalcost;
+
+    public BigDecimal getFinalcost(){
+        return getTotalcost().multiply(getCostcoeffcient());
+    }
+
+    private BigDecimal platecost;
+
+    private BigDecimal ibeamcost;
+
+    private BigDecimal hsteelcost;
+
+    private BigDecimal aluminiumcost;
+
+    private BigDecimal eightsidetubecost;
+
+    private BigDecimal hotdipgalvanizingcost;
+
+    private List<BigDecimal> materialcostList = Arrays.asList(
+            new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0)
+            ,new BigDecimal(0));
+
+    private BigDecimal multiplecost;
+
+    private BigDecimal fittercost;
+
+    private BigDecimal weldingcost;
+
+    private BigDecimal standardpartscost;
+
+    private BigDecimal bigstructurecost;
+
+    public void setMaterialcostList(List<BigDecimal> list) {
+        this.materialcostList=list;
+    }
+
+    public BigDecimal getMultiplecost() {
+        return multiplehours.multiply(materialcostList.get(10));
+    }
+
+    public BigDecimal getFittercost() {
+        return fitterhours.multiply(materialcostList.get(8));
+    }
+
+    public BigDecimal getWeldingcost() {
+        return weldinghours.multiply(materialcostList.get(12));
+    }
+
+    public BigDecimal getStandardpartscost() {
+        return standardpartshours.multiply(materialcostList.get(9));
+    }
+
+    public BigDecimal getBigstructurecost() {
+        return bigstructurehours.multiply(materialcostList.get(7));
+    }
+
+    public BigDecimal getSmallstructurecost() {
+        return smallstructurehours.multiply(materialcostList.get(6));
+    }
+
+    public BigDecimal getElectricalcost() {
+        return electricalhours.multiply(materialcostList.get(11));
+    }
+
+    private BigDecimal smallstructurecost;
+
+    private BigDecimal electricalcost;
+
+    public BigDecimal getPlatecost() {
+        return platetons.multiply(materialcostList.get(0));
+    }
+
+    public BigDecimal getIbeamcost() {
+        return ibeamtons.multiply(materialcostList.get(1));
+    }
+
+    public BigDecimal getHsteelcost() {
+        return hsteeltons.multiply(materialcostList.get(2));
+    }
+
+    public BigDecimal getAluminiumcost() {
+        return aluminiumtons.multiply(materialcostList.get(3));
+    }
+
+    public BigDecimal getEightsidetubecost() {
+        return eightsidetubetons.multiply(materialcostList.get(4));
+    }
+
+    public BigDecimal getHotdipgalvanizingcost() {
+        return hotdipgalvanizingtons.multiply(materialcostList.get(5));
+    }
+
 }
