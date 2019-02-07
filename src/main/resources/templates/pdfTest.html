@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>钢丝绳计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <style type="text/css">
+        input {
+            width: 150px;
+            height: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function checkinput(form) {
+
+            return true;
+        }
+
+        function setActionType(type) {
+            $("#hidActionType").val(type);
+        }
+
+        $(document).ready(function () {
+            InitNav(1)
+            $('#pdfTest').addClass('o-sub-cur');
+        });
+
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<br/><br/>
+
+<form th:id="form1" opType="#" th:opType="@{/Gangsi}" th:object="${Gangsi}"
+      method="post" onsubmit="return checkinput(this)">
+
+    设计参数填入
+    <div class="fill-box" >
+        <div class="fill-list-lb">1.工程名称：</div>
+        <div class="fill-list-cont"><input name="project_name" type="text" th:field="*{project_name}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">2.计算内容：</div>
+        <div class="fill-list-cont"><input name="calculated_contents" type="text" th:field="*{calculated_contents}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">3.计算编号：</div>
+        <div class="fill-list-cont"><input name="cn" type="text" th:field="*{cn}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">4.单根钢丝绳最大受力：</div>
+        <div class="fill-list-cont"><input name="f0" type="text" th:field="*{f0}"/>Fn
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">5.钢丝绳破断拉力：</div>
+        <div class="fill-list-cont"><input name="s" type="text" th:field="*{s}"/>Fn
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">6.计算人：</div>
+        <div class="fill-list-cont"><input name="jisuanren" type="text" th:field="*{jisuanren}"/>
+        </div>
+    </div>
+    <div class="fill-box" >
+        <div class="fill-list-lb">7.计算时间：</div>
+        <div class="fill-list-cont"><input name="jisuanshijian" type="text" th:field="*{jisuanshijian}"/>
+        </div>
+    </div>
+
+
+    <input type="submit" value="输出PDF计算书" onclick="setActionType(1)"/> <input type="reset" value="重置"/>
+    <input id="hidActionType" name="opType" type="text" th:field="*{opType}" style="display:none"/>
+</form>
+
+</body>
+</html>

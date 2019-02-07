@@ -21,14 +21,14 @@ public class PdfUtil {
      * 根据pdf模板填充相应的值： 1，如果是根据excel填充的话，在用Acrobat生成PDF模板前，
      * Excel单元格格式最好设置成文本，否则pdf填充值时可能中文无法显示
      */
-    public byte[] fromPDFTempletToPdfWithValue(Map<String,String> map) {
+    public byte[] fromPDFTempletToPdfWithValue(Map<String,String> map,String fileName) {
         ByteArrayOutputStream bos=null;
         PdfStamper ps=null;
         Document document=null;
         byte[] result=null;
         try {
             //PdfReader reader = new PdfReader("D:\\LX005.pdf");
-            PdfReader reader = new PdfReader("/root/pdf/LX005.pdf");
+            PdfReader reader = new PdfReader("/root/pdf/"+fileName);
             bos = new ByteArrayOutputStream();
             ps = new PdfStamper(reader, bos);
             /**
