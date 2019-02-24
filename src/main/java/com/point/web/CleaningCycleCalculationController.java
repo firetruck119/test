@@ -88,7 +88,7 @@ public class CleaningCycleCalculationController {
             }//为了解决中文名称乱码问题
             headers.setContentDispositionFormData("attachment", fileName);
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-                ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(map,"钢丝绳计算书.pdf"), headers, HttpStatus.OK);
+                ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(map,null,"钢丝绳计算书.pdf"), headers, HttpStatus.OK);
             return responseEntity;
         }else{
             return "result";
@@ -97,25 +97,26 @@ public class CleaningCycleCalculationController {
 
     @PostMapping("/CleaningCycleCalculation")
     public Object greetingSubmit(@ModelAttribute CleaningCycleCalculation cleaningCycleCalculation) {
-        Map<String,String> map=new HashMap<String, String>();
-
+        Map<String,String> textMap=new HashMap<String, String>();
+        Map<String,String> imageMap=new HashMap<String, String>();
+        imageMap.put("projectName","bobo");
         //输入
-        map.put("projectName",cleaningCycleCalculation.getProjectName() + "项目");
-        map.put("calculator",cleaningCycleCalculation.getCalculator());
-        map.put("check",cleaningCycleCalculation.getCheck());
-        map.put("date",cleaningCycleCalculation.getDate());
-        map.put("no",cleaningCycleCalculation.getNo());
-        map.put("a",cleaningCycleCalculation.getA());
-        map.put("b",cleaningCycleCalculation.getB());
-        map.put("h",cleaningCycleCalculation.getH());
-        map.put("l",cleaningCycleCalculation.getL());
-        map.put("l1",cleaningCycleCalculation.getL1());
-        map.put("n",cleaningCycleCalculation.getN());
-        map.put("t1",cleaningCycleCalculation.getT1());
-        map.put("ti",cleaningCycleCalculation.getTi());
-        map.put("v1",cleaningCycleCalculation.getV1());
-        map.put("v2",cleaningCycleCalculation.getV2());
-        map.put("w",cleaningCycleCalculation.getW());
+        //textMap.put("projectName",cleaningCycleCalculation.getProjectName() + "项目");
+        textMap.put("calculator",cleaningCycleCalculation.getCalculator());
+        textMap.put("check",cleaningCycleCalculation.getCheck());
+        textMap.put("date",cleaningCycleCalculation.getDate());
+        textMap.put("no",cleaningCycleCalculation.getNo());
+        textMap.put("a",cleaningCycleCalculation.getA());
+        textMap.put("b",cleaningCycleCalculation.getB());
+        textMap.put("h",cleaningCycleCalculation.getH());
+        textMap.put("l",cleaningCycleCalculation.getL());
+        textMap.put("l1",cleaningCycleCalculation.getL1());
+        textMap.put("n",cleaningCycleCalculation.getN());
+        textMap.put("t1",cleaningCycleCalculation.getT1());
+        textMap.put("ti",cleaningCycleCalculation.getTi());
+        textMap.put("v1",cleaningCycleCalculation.getV1());
+        textMap.put("v2",cleaningCycleCalculation.getV2());
+        textMap.put("w",cleaningCycleCalculation.getW());
 
         //计算
         BigDecimal a = new BigDecimal(cleaningCycleCalculation.getA());
@@ -141,15 +142,15 @@ public class CleaningCycleCalculationController {
         BigDecimal t_2 = t_1.divide(ti.multiply(new BigDecimal(60)),2,BigDecimal.ROUND_HALF_EVEN);
         BigDecimal t_3 = t_2.divide(b,2,BigDecimal.ROUND_HALF_EVEN);
 
-        map.put("n1",myformatString(n1));
-        map.put("s_",myformatString(s_));
-        map.put("t2",myformatString(t2));
-        map.put("t3",myformatString(t3));
-        map.put("t4",myformatString(t4));
-        map.put("t",myformatString(t));
-        map.put("t_1",myformatString(t_1));
-        map.put("t_2",myformatString(t_2));
-        map.put("t_3",myformatString(t_3));
+        textMap.put("n1",myformatString(n1));
+        textMap.put("s_",myformatString(s_));
+        textMap.put("t2",myformatString(t2));
+        textMap.put("t3",myformatString(t3));
+        textMap.put("t4",myformatString(t4));
+        textMap.put("t",myformatString(t));
+        textMap.put("t_1",myformatString(t_1));
+        textMap.put("t_2",myformatString(t_2));
+        textMap.put("t_3",myformatString(t_3));
         cleaningCycleCalculation.setT_3(myformatString(t_3));
 
 
@@ -163,7 +164,7 @@ public class CleaningCycleCalculationController {
             }//为了解决中文名称乱码问题
             headers.setContentDispositionFormData("attachment", fileName);
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(map,"LX005.pdf"), headers, HttpStatus.OK);
+            ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(textMap,imageMap,"LX005.pdf"), headers, HttpStatus.OK);
             return responseEntity;
         }else{
             return "result";
