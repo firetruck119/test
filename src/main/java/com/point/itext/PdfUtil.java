@@ -6,6 +6,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.*;
+import com.point.common.MyEnv;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
@@ -21,7 +22,12 @@ public class PdfUtil {
     private void setImage(PdfStamper ps,String key,String fileName) throws Exception{
         AcroFields s = ps.getAcroFields(); //读取文本域
         List<AcroFields.FieldPosition> list = s.getFieldPositions(key);
-        Image image = Image.getInstance("/root/image/"+fileName+".jpg");
+        Image image;
+        if(MyEnv.isLocal()){
+            image = Image.getInstance("C://resource/image/"+fileName+".jpg");
+        }else{
+            image = Image.getInstance("/root/image/"+fileName+".jpg");
+        }
         if(list!=null){
             for (AcroFields.FieldPosition item:list){
                 Rectangle signRect = item.position;
@@ -47,8 +53,12 @@ public class PdfUtil {
         Document document=null;
         byte[] result=null;
         try {
-            //PdfReader reader = new PdfReader("D:\\LX005.pdf");
-            PdfReader reader = new PdfReader("/root/pdf/"+fileName);
+            PdfReader reader;
+            if(MyEnv.isLocal()){
+                reader = new PdfReader("C://resource/pdf/"+fileName+".pdf");
+            }else{
+                reader = new PdfReader("/root/pdf/"+fileName+".pdf");
+            }
             bos = new ByteArrayOutputStream();
             ps = new PdfStamper(reader, bos);
             /**

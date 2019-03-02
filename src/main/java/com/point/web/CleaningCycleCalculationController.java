@@ -88,7 +88,7 @@ public class CleaningCycleCalculationController {
             }//为了解决中文名称乱码问题
             headers.setContentDispositionFormData("attachment", fileName);
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-                ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(map,null,"钢丝绳计算书.pdf"), headers, HttpStatus.OK);
+                ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(map,null,"钢丝绳计算书"), headers, HttpStatus.OK);
             return responseEntity;
         }else{
             return "result";
@@ -164,7 +164,7 @@ public class CleaningCycleCalculationController {
             }//为了解决中文名称乱码问题
             headers.setContentDispositionFormData("attachment", fileName);
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(textMap,imageMap,"LX005.pdf"), headers, HttpStatus.OK);
+            ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(textMap,imageMap,"LX005"), headers, HttpStatus.OK);
             return responseEntity;
         }else{
             return "result";

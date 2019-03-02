@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>轮压计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <style type="text/css">
+        input {
+            width: 150px;
+            height: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function checkinput(form) {
+
+            return true;
+        }
+
+        $(document).ready(function () {
+            InitNav(1)
+            $('#WheelLoad').addClass('o-sub-cur');
+        });
+
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<br/><br/>
+
+<form th:id="form1" opType="#" th:opType="@{/WheelLoad}" th:object="${WheelLoadEntity}"
+      method="post" onsubmit="return checkinput(this)">
+    <div>封面内容</div>
+    <div style="text-align: center; width: 300px">
+        <table border="1">
+            <tr>
+                <td width="150px">
+                    编号
+                </td>
+                <td width="150px">
+                    <input name="bh" type="text" th:field="*{bh}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    版本
+                </td>
+                <td>
+                    <input name="bb" type="text" th:field="*{bb}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    项目名称
+                </td>
+                <td>
+                    <input name="xmmc" type="text" th:field="*{xmmc}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    计算人
+                </td>
+                <td>
+                    <input name="jsr" type="text" th:field="*{jsr}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    审核人
+                </td>
+                <td>
+                    <input name="shr" type="text" th:field="*{shr}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    计算日期
+                </td>
+                <td>
+                    <input name="jsrq" type="text" th:field="*{jsrq}"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/><br/>
+    <div>主要参数</div>
+    <div style="text-align: center; width: 300px">
+        <table border="1">
+            <tr>
+                <td width="120">起升高度</td>
+                <td width="150"><input name="h" type="text" th:field="*{h}" width="150"/></td>
+                <td width="30">m</td>
+            </tr>
+            <tr>
+                <td>额定载重量</td>
+                <td><input name="rl" type="text" th:field="*{rl}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>玻璃起吊载荷</td>
+                <td><input name="hwll" type="text" th:field="*{hwll}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>工作臂长</td>
+                <td><input name="l" type="text" th:field="*{l}"/></td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>配重臂长</td>
+                <td><input name="lcw" type="text" th:field="*{lcw}"/></td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>轨距</td>
+                <td><input name="la" type="text" th:field="*{la}"/></td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>轮距</td>
+                <td><input name="lb" type="text" th:field="*{lb}"/></td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>工作状态风压</td>
+                <td><input name="p1" type="text" th:field="*{p1}"/></td>
+                <td>Pa</td>
+            </tr>
+            <tr>
+                <td>停机状态风压</td>
+                <td><input name="p2" type="text" th:field="*{p2}"/></td>
+                <td>Pa</td>
+            </tr>
+        </table>
+    </div>
+    <br/><br/>
+
+    <div>部件重量</div>
+    <div style="text-align: center; width: 500px">
+        <table border="1">
+            <tr>
+                <td width="200">部件名称</td>
+                <td width="150">重量(kg)</td>
+                <td width="150">重心到回转中心距离(m)</td>
+            </tr>
+            <tr>
+                <td>吊船</td>
+                <td><input name="swp" type="text" th:field="*{swp}"/></td>
+                <td><input name="l_swp_12" type="text" th:field="*{l_swp_12}"/></td>
+            </tr>
+            <tr>
+                <td>钢丝绳</td>
+                <td><input name="mwr" type="text" th:field="*{mwr}"/></td>
+                <td><input name="l_mwr_12" type="text" th:field="*{l_mwr_12}"/></td>
+            </tr>
+            <tr>
+                <td>玻璃起吊钢丝绳</td>
+                <td><input name="hsw" type="text" th:field="*{hsw}"/></td>
+                <td><input name="l_hsw_12" type="text" th:field="*{l_hsw_12}"/></td>
+            </tr>
+            <tr>
+                <td>玻璃起吊臂头导向装置</td>
+                <td><input name="g0" type="text" th:field="*{g0}"/></td>
+                <td><input name="l_g0_12" type="text" th:field="*{l_g0_12}"/></td>
+            </tr>
+            <tr>
+                <td>臂头</td>
+                <td><input name="g1" type="text" th:field="*{g1}"/></td>
+                <td><input name="l_g1_12" type="text" th:field="*{l_g1_12}"/></td>
+            </tr>
+            <tr>
+                <td>吊臂</td>
+                <td><input name="g2" type="text" th:field="*{g2}"/></td>
+                <td><input name="l_g2_12" type="text" th:field="*{l_g2_12}"/></td>
+            </tr>
+            <tr>
+                <td>立柱</td>
+                <td><input name="g3" type="text" th:field="*{g3}"/></td>
+                <td><input name="l_g3_12" type="text" th:field="*{l_g3_12}"/></td>
+            </tr>
+            <tr>
+                <td>起升机构</td>
+                <td><input name="g4" type="text" th:field="*{g4}"/></td>
+                <td><input name="l_g4_12" type="text" th:field="*{l_g4_12}"/></td>
+            </tr>
+            <tr>
+                <td>回转机构</td>
+                <td><input name="g5" type="text" th:field="*{g5}"/></td>
+                <td><input name="l_g5_12" type="text" th:field="*{l_g5_12}"/></td>
+            </tr>
+            <tr>
+                <td>底架</td>
+                <td><input name="g6" type="text" th:field="*{g6}"/></td>
+                <td><input name="l_g6_12" type="text" th:field="*{l_g6_12}"/></td>
+            </tr>
+            <tr>
+                <td>主动运行</td>
+                <td><input name="g7" type="text" th:field="*{g7}"/></td>
+                <td><input name="l_g7_12" type="text" th:field="*{l_g7_12}"/></td>
+            </tr>
+            <tr>
+                <td>被动运行</td>
+                <td><input name="g8" type="text" th:field="*{g8}"/></td>
+                <td><input name="l_g8_12" type="text" th:field="*{l_g8_12}"/></td>
+            </tr>
+            <tr>
+                <td>配重</td>
+                <td><input name="g9" type="text" th:field="*{g9}"/></td>
+                <td><input name="l_g9_12" type="text" th:field="*{l_g9_12}"/></td>
+            </tr>
+            <tr>
+                <td>玻璃起吊装置</td>
+                <td><input name="g10" type="text" th:field="*{g10}"/></td>
+                <td><input name="l_g10_12" type="text" th:field="*{l_g10_12}"/></td>
+            </tr>
+        </table>
+    </div>
+
+    <br/><br/>
+
+    <div>迎风面积</div>
+    <div style="text-align: center; width: 400px">
+        <table border="1">
+            <tr>
+                <td width="100">部件名称</td>
+                <td width="150">迎风面积(m^2)</td>
+                <td width="150">作用高度(m)</td>
+            </tr>
+            <tr>
+                <td>吊船</td>
+                <td><input name="a_swp" type="text" th:field="*{a_swp}"/></td>
+                <td><input name="l_swp_w" type="text" th:field="*{l_swp_w}"/></td>
+            </tr>
+            <tr>
+                <td>臂头</td>
+                <td><input name="a_g1" type="text" th:field="*{a_g1}"/></td>
+                <td><input name="l_g1_w" type="text" th:field="*{l_g1_w}"/></td>
+            </tr>
+            <tr>
+                <td>吊臂</td>
+                <td><input name="a_g2" type="text" th:field="*{a_g2}"/></td>
+                <td><input name="l_g2_w" type="text" th:field="*{l_g2_w}"/></td>
+            </tr>
+            <tr>
+                <td>立柱</td>
+                <td><input name="a_g3" type="text" th:field="*{a_g3}"/></td>
+                <td><input name="l_g3_w" type="text" th:field="*{l_g3_w}"/></td>
+            </tr>
+            <tr>
+                <td>起升机构</td>
+                <td><input name="a_g4" type="text" th:field="*{a_g4}"/></td>
+                <td><input name="l_g4_w" type="text" th:field="*{l_g4_w}"/></td>
+            </tr>
+            <tr>
+                <td>底架</td>
+                <td><input name="a_g6" type="text" th:field="*{a_g6}"/></td>
+                <td><input name="l_g6_w" type="text" th:field="*{l_g6_w}"/></td>
+            </tr>
+        </table>
+    </div>
+
+    <input type="submit" value="输出PDF计算书"/> <input type="reset" value="重置"/>
+</form>
+
+</body>
+</html>
