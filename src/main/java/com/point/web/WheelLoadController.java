@@ -34,7 +34,7 @@ public class WheelLoadController {
         HttpHeaders headers = new HttpHeaders();
         String fileName = null;
         try {
-            fileName = new String(("轮压计算书").getBytes("gb2312"), "iso-8859-1");//解决中文乱码
+            fileName = new String(("轮压计算书.pdf").getBytes("gb2312"), "iso-8859-1");//解决中文乱码
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }//为了解决中文名称乱码问题

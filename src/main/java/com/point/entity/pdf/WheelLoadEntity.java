@@ -61,12 +61,12 @@ public class WheelLoadEntity {
     private Double l_g8_12 ;
     private Double l_g9_12 ;
     private Double l_g10_12 ;
-    private Double l_swp_w ;
-    private Double l_g1_w ;
-    private Double l_g2_w ;
-    private Double l_g3_w ;
-    private Double l_g4_w ;
-    private Double l_g6_w ;
+    private Double l_swp_11_w ;
+    private Double l_g1_11_w ;
+    private Double l_g2_11_w ;
+    private Double l_g3_11_w ;
+    private Double l_g4_11_w ;
+    private Double l_g6_11_w ;
 
     //自动生成
     public String getBh() {
@@ -461,52 +461,52 @@ public class WheelLoadEntity {
         this.l_g10_12 = l_g10_12;
     }
 
-    public Double getL_swp_w() {
-        return l_swp_w;
+    public Double getL_swp_11_w() {
+        return l_swp_11_w;
     }
 
-    public void setL_swp_w(Double l_swp_w) {
-        this.l_swp_w = l_swp_w;
+    public void setL_swp_11_w(Double l_swp_11_w) {
+        this.l_swp_11_w = l_swp_11_w;
     }
 
-    public Double getL_g1_w() {
-        return l_g1_w;
+    public Double getL_g1_11_w() {
+        return l_g1_11_w;
     }
 
-    public void setL_g1_w(Double l_g1_w) {
-        this.l_g1_w = l_g1_w;
+    public void setL_g1_11_w(Double l_g1_11_w) {
+        this.l_g1_11_w = l_g1_11_w;
     }
 
-    public Double getL_g2_w() {
-        return l_g2_w;
+    public Double getL_g2_11_w() {
+        return l_g2_11_w;
     }
 
-    public void setL_g2_w(Double l_g2_w) {
-        this.l_g2_w = l_g2_w;
+    public void setL_g2_11_w(Double l_g2_11_w) {
+        this.l_g2_11_w = l_g2_11_w;
     }
 
-    public Double getL_g3_w() {
-        return l_g3_w;
+    public Double getL_g3_11_w() {
+        return l_g3_11_w;
     }
 
-    public void setL_g3_w(Double l_g3_w) {
-        this.l_g3_w = l_g3_w;
+    public void setL_g3_11_w(Double l_g3_11_w) {
+        this.l_g3_11_w = l_g3_11_w;
     }
 
-    public Double getL_g4_w() {
-        return l_g4_w;
+    public Double getL_g4_11_w() {
+        return l_g4_11_w;
     }
 
-    public void setL_g4_w(Double l_g4_w) {
-        this.l_g4_w = l_g4_w;
+    public void setL_g4_11_w(Double l_g4_11_w) {
+        this.l_g4_11_w = l_g4_11_w;
     }
 
-    public Double getL_g6_w() {
-        return l_g6_w;
+    public Double getL_g6_11_w() {
+        return l_g6_11_w;
     }
 
-    public void setL_g6_w(Double l_g6_w) {
-        this.l_g6_w = l_g6_w;
+    public void setL_g6_11_w(Double l_g6_11_w) {
+        this.l_g6_11_w = l_g6_11_w;
     }
 
     //输出参数
@@ -818,7 +818,7 @@ public class WheelLoadEntity {
     public Double getVad_11 (){ return	(m_mi_11-m_mq_11)/(lb*2)/1000	;}
     public Double getVbc_11 (){ return	(mz*1.25/2)/1000-vad_11	;}
     public Double getF_wcx_11 (){ return	250*(a_swp+a_g1+a_g2+a_g3+a_g4+a_g6)/1000	;}
-    public Double getM_wq_11 (){ return	10*250*(a_swp*l_swp_w+a_g1*l_g1_w+a_g2*l_g2_w+a_g3*l_g3_w+a_g4*l_g4_w+a_g6*l_g6_w)	;}
+    public Double getM_wq_11 (){ return	10*250*(a_swp*l_swp_11_w+a_g1*l_g1_11_w+a_g2*l_g2_11_w+a_g3*l_g3_11_w+a_g4*l_g4_11_w+a_g6*l_g6_11_w)	;}
     public Double getM_wh_11 (){ return	10*250*(a_swp*l_swp_12+a_g1*l_g1_12+a_g2*l_g2_12+a_g3*l_g3_12+a_g4*l_g4_12+a_g6*l_g6_12)	;}
     public Double getV_11 (){ return	m_wq_11/(la*2)	;}
     public Double getH_11 (){ return	m_wh_11/lb	;}
@@ -1002,7 +1002,7 @@ public class WheelLoadEntity {
     public Double getVad_4 (){ return	(m_mi_4-m_mq_4)/(lb*2)/1000	;}
     public Double getVbc_4 (){ return	mtz*1/2/1000-vad_4	;}
     public Double getF_wcx_4 (){ return	250*(a_g1+a_g2+a_g3+a_g4+a_g6)/1000	;}
-    public Double getM_wq_4 (){ return	250*(a_g1*l_g1_w+a_g2*l_g2_w+a_g3*l_g3_w+a_g4*l_g4_w+a_g6*l_g6_w)	;}
+    public Double getM_wq_4 (){ return	250*(a_g1*l_g1_11_w+a_g2*l_g2_11_w+a_g3*l_g3_11_w+a_g4*l_g4_11_w+a_g6*l_g6_11_w)	;}
     public Double getM_wh_4 (){ return	250*(a_g1*l_g1_12+a_g2*l_g2_12+a_g3*l_g3_12+a_g4*l_g4_12+a_g6*l_g6_12)	;}
     public Double getV_4 (){ return	m_wq_4/(la*2)/1000	;}
     public Double getH_4 (){ return	m_wh_4/lb/1000	;}
@@ -1019,254 +1019,256 @@ public class WheelLoadEntity {
         Map<String,String> result = new HashMap<>();
         Double l_rl_12=l_swp_12;
         Double l_hwll_12=l_hsw_12;
-        Double fw_swp_1  = a_swp*p1 ;
-        Double fw_g1_1  = a_g1*p1 ;
-        Double fw_g2_1  = a_g2*p1 ;
-        Double fw_g3_1  = a_g3*p1 ;
-        Double fw_g4_1  = a_g4*p1 ;
-        Double fw_g6_1  = a_g6*p1 ;
-        Double fw_swp_2  = a_swp*p1 ;
-        Double fw_g1_2  = a_g1*p1 ;
-        Double fw_g2_2  = a_g2*p1 ;
-        Double fw_g3_2  = a_g3*p1 ;
-        Double fw_g4_2  = a_g4*p1 ;
-        Double fw_g6_2  = a_g6*p1 ;
-        Double fw_swp_3  = a_swp*p1 ;
-        Double fw_g1_3  = a_g1*p1 ;
-        Double fw_g2_3  = a_g2*p1 ;
-        Double fw_g3_3  = a_g3*p1 ;
-        Double fw_g4_3  = a_g4*p1 ;
-        Double fw_g6_3  = a_g6*p1 ;
-        Double fw_swp_4  = a_swp*p1 ;
-        Double fw_g1_4  = a_g1*p1 ;
-        Double fw_g2_4  = a_g2*p1 ;
-        Double fw_g3_4  = a_g3*p1 ;
-        Double fw_g4_4  = a_g4*p1 ;
-        Double fw_g6_4  = a_g6*p1 ;
-        Double l_rl_11  = l_rl_12-la/2 ;
-        Double l_swp_11  = l_swp_12-la/2 ;
-        Double l_mwr_11  = l_mwr_12-la/2 ;
-        Double l_hwll_11  = l_hwll_12-la/2 ;
-        Double l_hsw_11  = l_hsw_12-la/2 ;
-        Double l_g0_11 = l_swp_11-0.9;
-        Double l_g1_11  = l_g1_12-la/2 ;
-        Double l_g2_11  = l_g1_12-la/2 ;
-        Double l_g3_11  = l_g1_12-la/2 ;
-        Double l_g4_11  = l_g1_12-la/2 ;
-        Double l_g5_11  = l_g1_12-la/2 ;
-        Double l_g6_11  = l_g1_12-la/2 ;
-        Double l_g7_11  = l_g1_12-la/2 ;
-        Double l_g8_11  = l_g1_12-la/2 ;
-        Double l_g9_11  = l_g1_12+la/2 ;
-        Double l_g10_11  = l_g1_12-la/2 ;
-        Double mz  = rl+swp+mwr+hwll+hsw+g0+g1+g2+g3+g4+g5+g6+g7+g8+g9+g10 ;
-        Double tsl_11  = rl+swp+mwr ;
-        Double m_sl_11  = 1.25*10*tsl_11*l_swp_11 ;
-        Double tshl_11  = hwll+hsw ;
-        Double m_shl_11  = 1.25*10*tshl_11*l_hwll_11  ;
-        Double m_mo_11  = 1.25*10*(g0*l_g0_11+g1*l_g0_11+g2*l_g0_11) ;
-        Double m_mi_11  = 1.25*10*(g3*l_g3_11+g4*l_g4_11+g5*l_g5_11+g6*l_g6_11+g8*l_g8_11+g9*l_g9_11) ;
-        Double m_mq_11  = m_sl_11+m_shl_11+m_mo_11 ;
-        Double vad_11  = (m_mi_11-m_mq_11)/(lb*2)/1000 ;
-        Double vbc_11  = (mz*1.25/2)/1000-vad_11 ;
-        Double f_wcx_11  = 250*(a_swp+a_g1+a_g2+a_g3+a_g4+a_g6)/1000 ;
-        Double m_wq_11  = 10*250*(a_swp*l_swp_w+a_g1*l_g1_w+a_g2*l_g2_w+a_g3*l_g3_w+a_g4*l_g4_w+a_g6*l_g6_w) ;
-        Double m_wh_11  = 10*250*(a_swp*l_swp_12+a_g1*l_g1_12+a_g2*l_g2_12+a_g3*l_g3_12+a_g4*l_g4_12+a_g6*l_g6_12) ;
-        Double v_11  = m_wq_11/(la*2) ;
-        Double h_11  = m_wh_11/lb ;
-        Double av_11  = vad_11+v_11 ;
-        Double bv_11  = vbc_11+v_11 ;
-        Double cv_11  = vbc_11-v_11 ;
-        Double dv_11  = vad_11-v_11 ;
-        Double at_11  = av_11*0.05 ;
-        Double ah_11  = -h_11+f_wcx_11/2 ;
-        Double bt_11  = bv_11*0.05 ;
-        Double bh_11  = h_11+f_wcx_11/2 ;
-        Double m_sl_12  = 1.25*10*tsl_11*l_swp_12 ;
-        Double m_shl_12  = 1.25*10*tshl_11*l_hwll_12 ;
-        Double m_mo_12  = 10*1.25*(g0*l_g0_12+g1*l_g1_12+g2*l_g2_12) ;
-        Double m_mi_12  = 10*1.25*(g3*l_g3_12+g4*l_g4_12+g5*l_g5_12+g6*l_g6_12+g8*l_g8_12+g9*l_g9_12) ;
-        Double m_mq_12  = m_sl_12+m_shl_12+m_mo_12 ;
-        Double m_mc_12  = m_mi_12-m_mq_12 ;
-        Double m_mx_12  = Math.sin(45)*m_mc_12 ;
-        Double m_my_12  = Math.cos(45)*m_mc_12 ;
-        Double vx_12  = m_mx_12/la/1000 ;
-        Double vy_12  = m_my_12/lb/1000 ;
-        Double va_12  = mz*1.25/4/1000 ;
-        Double v_12  = Math.sin(45)*m_wq_11/la/1000 ;
-        Double h_12  = m_wh_11/la/1000 ;
-        Double av_12  = va_12+(vx_12-vy_12)/2+v_12 ;
-        Double bv_12  = va_12+vx_12+vy_12 ;
-        Double cv_12  = va_12+(vx_12-vy_12)/2-v_12 ;
-        Double dv_12  = va_12-vx_12-vy_12 ;
-        Double ah_12  = -h_12+Math.sin(45)*f_wcx_11 ;
-        Double at_12  = 0.05*av_12 ;
-        Double bh_12  = h_12+Math.cos(45)*f_wcx_11 ;
-        Double bt_12  = 0.05*bv_12 ;
-        Double l_rl_13  = l_rl_12-lb/2 ;
-        Double l_swp_13  = l_swp_12-lb/2 ;
-        Double l_mwr_13  = l_mwr_12-lb/2 ;
-        Double l_hwll_13  = l_hwll_12-lb/2 ;
-        Double l_hsw_13  = l_hsw_12-lb/2 ;
-        Double l_g0_13  = l_swp_13-0.9;
-        Double l_g1_13  = l_g1_12-lb/2 ;
-        Double l_g2_13  = l_g1_12-lb/2 ;
-        Double l_g3_13  = l_g1_12-lb/2 ;
-        Double l_g4_13  = l_g1_12-lb/2 ;
-        Double l_g5_13  = l_g1_12-lb/2 ;
-        Double l_g6_13  = l_g1_12-lb/2 ;
-        Double l_g7_13  = l_g1_12-lb/2 ;
-        Double l_g8_13  = l_g1_12-lb/2 ;
-        Double l_g9_13  = l_g1_12+lb/2 ;
-        Double l_g10_13  = l_g1_12-lb/2 ;
-        Double m_sl_13  = 1.25*10*tsl_11*l_swp_13 ;
-        Double m_shl_13  = 1.25*10*tshl_11*l_hwll_13 ;
-        Double m_mo_13  = 10*1.25*(g0*l_g0_13+g1*l_g1_13+g2*l_g2_13) ;
-        Double m_mi_13  = 10*1.25*(g3*l_g3_13+g4*l_g4_13+g5*l_g5_13+g6*l_g6_13+g8*l_g8_13+g9*l_g9_13) ;
-        Double m_mq_13  = m_sl_13+m_shl_13+m_mo_13 ;
-        Double vcd_13  = (m_mi_13-m_mq_13)/(lb*2)/1000 ;
-        Double vab_13  = (mz*1.25)/1000-vcd_13 ;
-        Double v_13  = m_wq_11/(lb*2)/1000 ;
-        Double h_13  = m_wh_11/lb/1000 ;
-        Double av_13  = vab_13+v_13 ;
-        Double bv_13  = vab_13-v_13 ;
-        Double cv_13  = vcd_13-v_13 ;
-        Double dv_13  = vcd_13+v_13 ;
-        Double ah_13  = -h_13 ;
-        Double at_13  = 0.05*av_13 ;
-        Double bh_13  = h_13 ;
-        Double bt_13  = 0.05*bv_13 ;
-        Double m_sl_21  = 10*(1.5*rl+1*swp)*l_swp_11 ;
-        Double m_shl_21  = 10*(1.25*hwll+1*hsw*l_hwll_11) ;
-        Double m_mo_21  = 10*1*(g0*l_g0_11+g1*l_g1_11+g2*l_g2_11) ;
-        Double m_mi_21  = 10*1*(g3*l_g3_11+g4*l_g4_11+g5*l_g5_11+g6*l_g6_11+g8*l_g8_11+g9*l_g9_11) ;
-        Double m_mq_21  = m_sl_21+m_shl_21+m_mo_21 ;
-        Double vad_21  = (m_mi_21-m_mq_21)/(lb*2)/1000 ;
-        Double vbc_21  = mz*1.25/2/1000-vad_21 ;
-        Double av_21  = vad_21 ;
-        Double bv_21  = vbc_21 ;
-        Double cv_21  = vbc_21 ;
-        Double dv_21  = vad_21 ;
-        Double at_21  = vad_21*0.05 ;
-        Double ah_21  = 0.0 ;
-        Double bt_21  = vbc_21*0.05 ;
-        Double bh_21  = 0.0 ;
-        Double m_sl_22  = 10*(1.5*rl+1*swp)*l_swp_12 ;
-        Double m_shl_22  = 10*(1.25*hwll+1*hsw)*l_hwll_12 ;
-        Double m_mo_22  = 10*1*(g0*l_g0_12+g1*l_g1_12+g2*l_g2_12) ;
-        Double m_mi_22  = 10*1*(g3*l_g3_12+g4*l_g4_12+g5*l_g5_12+g6*l_g6_12+g8*l_g8_12+g9*l_g9_12) ;
-        Double m_mq_22  = m_sl_22+m_shl_22+m_mo_22 ;
-        Double m_mc_22  = m_mi_22-m_mq_22 ;
-        Double m_mx_22  = Math.sin(45)*m_mc_22 ;
-        Double m_my_22  = Math.cos(45)*m_mc_22 ;
-        Double vx_22  = m_mx_22/la/1000 ;
-        Double vy_22  = m_my_22/lb/1000 ;
-        Double va_22  = mz*1.25/4/1000 ;
-        Double av_22  = va_22+(vx_22-vy_22)/2 ;
-        Double bv_22  = va_22+vx_22+vy_22 ;
-        Double cv_22  = va_22+(vx_22-vy_22)/2 ;
-        Double dv_22  = va_22-vx_22-vy_22 ;
-        Double ah_22  = 0.0 ;
-        Double at_22  = 0.05*av_22 ;
-        Double bh_22  = 0.0 ;
-        Double bt_22  = 0.05*bv_22 ;
-        Double m_sl_23  = 10*(1.5*rl+1*swp)*l_swp_13 ;
-        Double m_shl_23  = 10*(1.25*hwll+1*hsw)*l_hwll_13 ;
-        Double m_mo_23  = 10*1*(g0*l_g0_13+g1*l_g1_13+g2*l_g2_13) ;
-        Double m_mi_23  = 10*1*(g3*l_g3_13+g4*l_g4_13+g5*l_g5_13+g6*l_g6_13+g8*l_g8_13+g9*l_g9_13) ;
-        Double m_mq_23  = m_sl_23+m_shl_23+m_mo_23 ;
-        Double vcd_23  = (m_mi_23-m_mq_23)/(lb*2)/1000 ;
-        Double vab_23  = mz*1.25/1000-vcd_13 ;
-        Double av_23  = vab_23 ;
-        Double bv_23  = vab_23 ;
-        Double cv_23  = vcd_23 ;
-        Double dv_23  = vcd_23 ;
-        Double ah_23  = 0.0 ;
-        Double at_23  = 0.05*av_23 ;
-        Double bh_23  = 0.0 ;
-        Double bt_23  = 0.05*bv_23 ;
-        Double m_sl_31  = 2*10*tsl_11*l_swp_11 ;
-        Double m_shl_31  = 1.1*10*tshl_11*l_hwll_11 ;
-        Double m_mo_31  = m_mo_21 ;
-        Double m_mi_31  =  m_mi_21 ;
-        Double m_mq_31  = m_sl_31+m_shl_31+m_mo_21 ;
-        Double vad_31  = (m_mi_31-m_mq_31)/(lb*2)/1000 ;
-        Double vbc_31  = mz*1.25/2/1000-vad_31 ;
-        Double av_31  = vad_31 ;
-        Double bv_31  = vbc_31 ;
-        Double cv_31  = vbc_31 ;
-        Double dv_31  = vad_31 ;
-        Double at_31  = vad_31*0.05 ;
-        Double ah_31  = 0.0 ;
-        Double bt_31  = vbc_31*0.05 ;
-        Double bh_31  = 0.0 ;
-        Double m_sl_32  = 2*10*tsl_11*l_swp_12 ;
-        Double m_shl_32  = 1.1*10*tshl_11*l_hwll_12 ;
-        Double m_mo_32  =  m_mo_22 ;
-        Double m_mi_32  =  m_mi_22 ;
-        Double m_mq_32  = m_sl_32+m_shl_32+m_mo_32 ;
-        Double m_mc_32  = m_mi_32-m_mq_32 ;
-        Double m_mx_32  = Math.sin(45)*m_mc_32 ;
-        Double m_my_32  = Math.cos(45)*m_mc_32 ;
-        Double vx_32  = m_mx_32/la/1000 ;
-        Double vy_32  = m_my_32/lb/1000 ;
-        Double va_32  = mz*1.25/4/1000 ;
-        Double av_32  = va_32+(vx_32-vy_32)/2 ;
-        Double bv_32  = va_32+vx_32+vy_32 ;
-        Double cv_32  = va_32+(vx_32-vy_32)/2 ;
-        Double dv_32  = va_32-vx_32-vy_32 ;
-        Double ah_32  = 0.0 ;
-        Double at_32  = 0.05*av_32 ;
-        Double bh_32  = 0.0 ;
-        Double bt_32  = 0.05*bv_32 ;
-        Double m_sl_33  = 2*10*tsl_11*l_swp_13 ;
-        Double m_shl_33  = 1.1*10*tshl_11*l_hwll_13 ;
-        Double m_mo_33  =  m_mo_23 ;
-        Double m_mi_33  =  m_mi_23 ;
-        Double m_mq_33  = m_sl_33+m_shl_33+m_mo_33 ;
-        Double vcd_33  = (m_mi_23-m_mq_23)/(lb*2)/1000 ;
-        Double vab_33  = mz*1.25/1000-vcd_33 ;
-        Double av_33  = vab_23 ;
-        Double bv_33  = vab_23 ;
-        Double cv_33  = vcd_23 ;
-        Double dv_33  = vcd_23 ;
-        Double ah_33  = 0.0 ;
-        Double at_33  = 0.05*av_33 ;
-        Double bh_33  = 0.0 ;
-        Double bt_33  = 0.05*bv_33 ;
-        Double l_rl_4  = l_rl_12+la/2 ;
-        Double l_swp_4  = l_swp_12+la/2 ;
-        Double l_mwr_4  = l_mwr_12+la/2 ;
-        Double l_hwll_4  = l_hwll_12+la/2 ;
-        Double l_hsw_4  = l_hsw_12+la/2 ;
-        Double l_g1_4  = l_g1_12+la/2 ;
-        Double l_g2_4  = l_g1_12+la/2 ;
-        Double l_g3_4  = l_g1_12+la/2 ;
-        Double l_g4_4  = l_g1_12+la/2 ;
-        Double l_g5_4  = l_g1_12+la/2 ;
-        Double l_g6_4  = l_g1_12+la/2 ;
-        Double l_g7_4  = l_g1_12+la/2 ;
-        Double l_g8_4  = l_g1_12+la/2 ;
-        Double l_g9_4  = l_g1_12-la/2 ;
-        Double l_g10_4  = l_g1_12+la/2 ;
-        Double mtz  = g0+g1+g2+g3+g4+g5+g6+g7+g8+g9+g10 ;
-        Double m_mo_4  = 1*10*(g9*l_g9_4) ;
-        Double m_mi_4  = 1*10*(g0*l_g0_11+g1*l_g1_11+g2*l_g2_11+g3*l_g3_11+g4*l_g4_11+g5*l_g5_11+g6*l_g6_11+g7*l_g7_11) ;
-        Double vad_4  = (m_mi_4-m_mo_4)/(lb*2)/1000 ;
-        Double vbc_4  = mtz*1/2/1000-vad_4 ;
-        Double f_wcx_4  = 250*(a_g1+a_g2+a_g3+a_g4+a_g6)/1000 ;
-        Double m_wq_4  = 250*(a_g1*l_g1_w+a_g2*l_g2_w+a_g3*l_g3_w+a_g4*l_g4_w+a_g6*l_g6_w) ;
-        Double m_wh_4  = 250*(a_g1*l_g1_12+a_g2*l_g2_12+a_g3*l_g3_12+a_g4*l_g4_12+a_g6*l_g6_12) ;
-        Double v_4  = m_wq_4/(la*2)/1000 ;
-        Double h_4  = m_wh_4/lb/1000 ;
-        Double av_4  = vad_4+v_4 ;
-        Double bv_4  = vbc_4+v_4 ;
-        Double cv_4  = vbc_4-v_4 ;
-        Double dv_4  = vad_4-v_4 ;
-        Double at_4  = av_4*0.05 ;
-        Double ah_4  = -h_4+f_wcx_4/2 ;
-        Double bt_4  = bv_4*0.05 ;
-        Double bh_4  = h_4+f_wcx_4/2 ;
+        Double fw_swp_1=a_swp*p1 ;
+        Double fw_g1_1=a_g1*p1 ;
+        Double fw_g2_1=a_g2*p1 ;
+        Double fw_g3_1=a_g3*p1 ;
+        Double fw_g4_1=a_g4*p1 ;
+        Double fw_g6_1=a_g6*p1 ;
+        Double fw_swp_2=a_swp*p1 ;
+        Double fw_g1_2=a_g1*p1 ;
+        Double fw_g2_2=a_g2*p1 ;
+        Double fw_g3_2=a_g3*p1 ;
+        Double fw_g4_2=a_g4*p1 ;
+        Double fw_g6_2=a_g6*p1 ;
+        Double fw_swp_3=a_swp*p1 ;
+        Double fw_g1_3=a_g1*p1 ;
+        Double fw_g2_3=a_g2*p1 ;
+        Double fw_g3_3=a_g3*p1 ;
+        Double fw_g4_3=a_g4*p1 ;
+        Double fw_g6_3=a_g6*p1 ;
+        Double fw_swp_4=0.0 ;
+        Double fw_g1_4=a_g1*p2 ;
+        Double fw_g2_4=a_g2*p2 ;
+        Double fw_g3_4=a_g3*p2 ;
+        Double fw_g4_4=a_g4*p2 ;
+        Double fw_g6_4=a_g6*p2 ;
+        Double l_rl_11=l_rl_12-la/2 ;
+        Double l_swp_11=l_swp_12-la/2 ;
+        Double l_mwr_11=l_mwr_12-la/2 ;
+        Double l_hwll_11=l_hwll_12-la/2 ;
+        Double l_hsw_11=l_hsw_12-la/2 ;
+        Double l_g0_11=l_g0_12-la/2 ;
+        Double l_g1_11=l_g1_12-la/2 ;
+        Double l_g2_11=l_g2_12-la/2 ;
+        Double l_g3_11=l_g3_12-la/2 ;
+        Double l_g4_11=l_g4_12-la/2 ;
+        Double l_g5_11=l_g5_12-la/2 ;
+        Double l_g6_11=l_g6_12-la/2 ;
+        Double l_g7_11=l_g7_12-la/2 ;
+        Double l_g8_11=l_g8_12-la/2 ;
+        Double l_g9_11=l_g9_12+la/2 ;
+        Double l_g10_11=l_g10_12-la/2 ;
+        Double mz=rl+swp+mwr+hwll+hsw+g0+g1+g2+g3+g4+g5+g6+g7+g8+g9+g10 ;
+        Double tsl_11=rl+swp+mwr ;
+        Double m_sl_11=1.25*10*tsl_11*l_swp_11 ;
+        Double tshl_11=hwll+hsw ;
+        Double m_shl_11=1.25*10*tshl_11*l_hwll_11 ;
+        Double m_mo_11=1.25*10*(g0*l_g0_11+g1*l_g1_11+g2*l_g2_11) ;
+        Double m_mi_11=1.25*10*(g3*l_g3_11+g4*l_g4_11+g5*l_g5_11+g6*l_g6_11+g8*l_g8_11+g9*l_g9_11) ;
+        Double m_mq_11=m_sl_11+m_shl_11+m_mo_11 ;
+        Double vad_11=(m_mi_11-m_mq_11)/(lb*2*1000) ;
+        Double vbc_11=(mz*10*1.25)/(2*1000)-vad_11 ;
+        Double f_wcx_11=250*(a_swp+a_g1+a_g2+a_g3+a_g4+a_g6) ;
+        Double m_wq_11=10*250*(a_swp*l_swp_11_w+a_g1*l_g1_11_w+a_g2*l_g2_11_w+a_g3*l_g3_11_w+a_g4*l_g4_11_w+a_g6*l_g6_11_w) ;
+        Double m_wh_11=10*250*(a_swp*l_swp_12+a_g1*l_g1_12+a_g2*l_g2_12+a_g3*l_g3_12+a_g4*l_g4_12+a_g6*l_g6_12) ;
+        Double v_11=m_wq_11/(la*2*1000) ;
+        Double h_11=m_wh_11/(lb*1000) ;
+        Double av_11=vad_11+v_11 ;
+        Double bv_11=vbc_11+v_11 ;
+        Double cv_11=vbc_11-v_11 ;
+        Double dv_11=vad_11-v_11 ;
+        Double at_11=av_11*0.05 ;
+        Double ah_11=-h_11+f_wcx_11/(2*1000) ;
+        Double bt_11=bv_11*0.05 ;
+        Double bh_11=h_11+f_wcx_11/(2*1000) ;
+        Double m_sl_12=1.25*10*tsl_11*l_swp_12 ;
+        Double m_shl_12=1.25*10*tshl_11*l_hwll_12 ;
+        Double m_mo_12=10*1.25*(g0*l_g0_12+g1*l_g1_12+g2*l_g2_12) ;
+        Double m_mi_12=10*1.25*(g3*l_g3_12+g4*l_g4_12+g5*l_g5_12+g6*l_g6_12+g8*l_g8_12+g9*l_g9_12) ;
+        Double m_mq_12=m_sl_12+m_shl_12+m_mo_12 ;
+        Double m_mc_12=m_mi_12-m_mq_12 ;
+        Double m_mx_12=Math.sin(45)*m_mc_12 ;
+        Double m_my_12=Math.cos(45)*m_mc_12 ;
+        Double vx_12=m_mx_12/(la*2*1000) ;
+        Double vy_12=m_my_12/(lb*2*1000) ;
+        Double va_12=mz*10*1.25/(4*1000) ;
+        Double v_12=Math.sin(45)*m_wq_11/(la*1000) ;
+        Double h_12=m_wh_11/(la*1000) ;
+        Double av_12=va_12+(vx_12-vy_12)/2+v_12 ;
+        Double bv_12=va_12+vx_12+vy_12 ;
+        Double cv_12=va_12+(vx_12-vy_12)/2-v_12 ;
+        Double dv_12=va_12-vx_12-vy_12 ;
+        Double ah_12=-h_12+Math.sin(45)*f_wcx_11/1000 ;
+        Double at_12=0.05*av_12 ;
+        Double bh_12=h_12+Math.cos(45)*f_wcx_11/1000 ;
+        Double bt_12=0.05*bv_12 ;
+        Double l_rl_13=l_rl_12-lb/2 ;
+        Double l_swp_13=l_swp_12-lb/2 ;
+        Double l_mwr_13=l_mwr_12-lb/2 ;
+        Double l_hwll_13=l_hwll_12-lb/2 ;
+        Double l_hsw_13=l_hsw_12-lb/2 ;
+        Double l_g0_13=l_g0_12-lb/2 ;
+        Double l_g1_13=l_g1_12-lb/2 ;
+        Double l_g2_13=l_g2_12-lb/2 ;
+        Double l_g3_13=l_g3_12-lb/2 ;
+        Double l_g4_13=l_g4_12-lb/2 ;
+        Double l_g5_13=l_g5_12-lb/2 ;
+        Double l_g6_13=l_g6_12-lb/2 ;
+        Double l_g7_13=l_g7_12-lb/2 ;
+        Double l_g8_13=l_g8_12-lb/2 ;
+        Double l_g9_13=l_g9_12+lb/2 ;
+        Double l_g10_13=l_g10_12-lb/2 ;
+        Double m_sl_13=1.25*10*tsl_11*l_swp_13 ;
+        Double m_shl_13=1.25*10*tshl_11*l_hwll_13 ;
+        Double m_mo_13=10*1.25*(g0*l_g0_13+g1*l_g1_13+g2*l_g2_13) ;
+        Double m_mi_13=10*1.25*(g3*l_g3_13+g4*l_g4_13+g5*l_g5_13+g6*l_g6_13+g8*l_g8_13+g9*l_g9_13) ;
+        Double m_mq_13=m_sl_13+m_shl_13+m_mo_13 ;
+        Double vcd_13=(m_mi_13-m_mq_13)/(lb*2*1000) ;
+        Double vab_13=(mz*1.25*10)/1000-vcd_13 ;
+        Double v_13=m_wq_11/(lb*2*1000) ;
+        Double h_13=m_wh_11/(lb*1000) ;
+        Double av_13=vab_13+v_13 ;
+        Double bv_13=vab_13-v_13 ;
+        Double cv_13=vcd_13-v_13 ;
+        Double dv_13=vcd_13+v_13 ;
+        Double ah_13=-h_13 ;
+        Double at_13=0.05*av_13 ;
+        Double bh_13=h_13 ;
+        Double bt_13=0.05*bv_13 ;
+        Double m_sl_21=10*(1.5*rl+1*swp)*l_swp_11 ;
+        Double m_shl_21=10*(1.25*hwll+1*hsw)*l_hwll_11 ;
+        Double m_mo_21=10*1*(g0*l_g0_11+g1*l_g1_11+g2*l_g2_11) ;
+        Double m_mi_21=10*1*(g3*l_g3_11+g4*l_g4_11+g5*l_g5_11+g6*l_g6_11+g8*l_g8_11+g9*l_g9_11) ;
+        Double m_mq_21=m_sl_21+m_shl_21+m_mo_21 ;
+        Double vad_21=(m_mi_21-m_mq_21)/(lb*2*1000) ;
+        Double vbc_21=(mz*1.25*10)/(2*1000)-vad_21 ;
+        Double av_21=vad_21 ;
+        Double bv_21=vbc_21 ;
+        Double cv_21=vbc_21 ;
+        Double dv_21=vad_21 ;
+        Double at_21=vad_21*0.05 ;
+        Double ah_21=0.0 ;
+        Double bt_21=vbc_21*0.05 ;
+        Double bh_21=0.0 ;
+        Double m_sl_22=10*(1.5*rl+1*swp)*l_swp_12 ;
+        Double m_shl_22=10*(1.25*hwll+1*hsw)*l_hwll_12 ;
+        Double m_mo_22=10*1*(g0*l_g0_12+g1*l_g1_12+g2*l_g2_12) ;
+        Double m_mi_22=10*1*(g3*l_g3_12+g4*l_g4_12+g5*l_g5_12+g6*l_g6_12+g8*l_g8_12+g9*l_g9_12) ;
+        Double m_mq_22=m_sl_22+m_shl_22+m_mo_22 ;
+        Double m_mc_22=m_mi_22-m_mq_22 ;
+        Double m_mx_22=Math.sin(45)*m_mc_22 ;
+        Double m_my_22=Math.cos(45)*m_mc_22 ;
+        Double vx_22=m_mx_22/(la*2*1000) ;
+        Double vy_22=m_my_22/(lb*2*1000) ;
+        Double va_22=(mz*10*1.25)/(4*1000) ;
+        Double av_22=va_22+(vx_22-vy_22)/2 ;
+        Double bv_22=va_22+vx_22+vy_22 ;
+        Double cv_22=va_22+(vx_22-vy_22)/2 ;
+        Double dv_22=va_22-vx_22-vy_22 ;
+        Double ah_22=0.0 ;
+        Double at_22=0.05*av_22 ;
+        Double bh_22=0.0 ;
+        Double bt_22=0.05*bv_22 ;
+        Double m_sl_23=10*(1.5*rl+1*swp)*l_swp_13 ;
+        Double m_shl_23=10*(1.25*hwll+1*hsw)*l_hwll_13 ;
+        Double m_mo_23=10*1*(g0*l_g0_13+g1*l_g1_13+g2*l_g2_13) ;
+        Double m_mi_23=10*1*(g3*l_g3_13+g4*l_g4_13+g5*l_g5_13+g6*l_g6_13+g8*l_g8_13+g9*l_g9_13) ;
+        Double m_mq_23=m_sl_23+m_shl_23+m_mo_23 ;
+        Double vcd_23=(m_mi_23-m_mq_23)/(lb*2*1000) ;
+        Double vab_23=(mz*1.25*10)/(2*1000)-vcd_13 ;
+        Double av_23=vab_23 ;
+        Double bv_23=vab_23 ;
+        Double cv_23=vcd_23 ;
+        Double dv_23=vcd_23 ;
+        Double ah_23=0.0 ;
+        Double at_23=0.05*av_23 ;
+        Double bh_23=0.0 ;
+        Double bt_23=0.05*bv_23 ;
+        Double m_sl_31=2*10*tsl_11*l_swp_11 ;
+        Double m_shl_31=1.1*10*tshl_11*l_hwll_11 ;
+        Double m_mo_31=10*1.1*(g0*l_g0_11+g1*l_g1_11+g2*l_g2_11) ;
+        Double m_mi_31=10*1*(g3*l_g3_11+g4*l_g4_11+g5*l_g5_11+g6*l_g6_11+g8*l_g8_11+g9*l_g9_11) ;
+        Double m_mq_31=m_sl_31+m_shl_31+m_mo_31 ;
+        Double vad_31=(m_mi_31-m_mq_31)/(lb*2*1000) ;
+        Double vbc_31=(mz*10*1.25)/(2*1000)-vad_31 ;
+        Double av_31=vad_31 ;
+        Double bv_31=vbc_31 ;
+        Double cv_31=vbc_31 ;
+        Double dv_31=vad_31 ;
+        Double at_31=vad_31*0.05 ;
+        Double ah_31=0.0 ;
+        Double bt_31=vbc_31*0.05 ;
+        Double bh_31=0.0 ;
+        Double m_sl_32=2*10*tsl_11*l_swp_12 ;
+        Double m_shl_32=1.1*10*tshl_11*l_hwll_12 ;
+        Double m_mo_32=10*1.1*(g0*l_g0_12+g1*l_g1_12+g2*l_g2_12) ;
+        Double m_mi_32=10*1*(g3*l_g3_12+g4*l_g4_12+g5*l_g5_12+g6*l_g6_12+g8*l_g8_12+g9*l_g9_12) ;
+        Double m_mq_32=m_sl_32+m_shl_32+m_mo_32 ;
+        Double m_mc_32=m_mi_32-m_mq_32 ;
+        Double m_mx_32=Math.sin(45)*m_mc_32 ;
+        Double m_my_32=Math.cos(45)*m_mc_32 ;
+        Double vx_32=m_mx_32/(la*2*1000) ;
+        Double vy_32=m_my_32/(lb*2*1000) ;
+        Double va_32=(mz*10*1.25)/(4*1000) ;
+        Double av_32=va_32+(vx_32-vy_32)/2 ;
+        Double bv_32=va_32+vx_32+vy_32 ;
+        Double cv_32=va_32+(vx_32-vy_32)/2 ;
+        Double dv_32=va_32-vx_32-vy_32 ;
+        Double ah_32=0.0 ;
+        Double at_32=0.05*av_32 ;
+        Double bh_32=0.0 ;
+        Double bt_32=0.05*bv_32 ;
+        Double m_sl_33=2*10*tsl_11*l_swp_13 ;
+        Double m_shl_33=1.1*10*tshl_11*l_hwll_13 ;
+        Double m_mo_33=10*1.1*(g0*l_g0_13+g1*l_g1_13+g2*l_g2_13) ;
+        Double m_mi_33=10*1*(g3*l_g3_13+g4*l_g4_13+g5*l_g5_13+g6*l_g6_13+g8*l_g8_13+g9*l_g9_13) ;
+        Double m_mq_33=m_sl_33+m_shl_33+m_mo_33 ;
+        Double vcd_33=(m_mi_23-m_mq_23)/(lb*2*1000) ;
+        Double vab_33=(mz*1.25*10)/1000-vcd_33 ;
+        Double av_33=vab_23 ;
+        Double bv_33=vab_23 ;
+        Double cv_33=vcd_23 ;
+        Double dv_33=vcd_23 ;
+        Double ah_33=0.0 ;
+        Double at_33=0.05*av_33 ;
+        Double bh_33=0.0 ;
+        Double bt_33=0.05*bv_33 ;
+        Double l_rl_4=l_rl_12+lb/2 ;
+        Double l_swp_4=l_swp_12+lb/2 ;
+        Double l_mwr_4=l_mwr_12+lb/2 ;
+        Double l_hwll_4=l_hwll_12+lb/2 ;
+        Double l_hsw_4=l_hsw_12+lb/2 ;
+        Double l_g0_4=l_g1_12+lb/2 ; //unsure
+        Double l_g1_4=l_g1_12+lb/2 ;
+        Double l_g2_4=l_g1_12+lb/2 ;
+        Double l_g3_4=l_g1_12+lb/2 ;
+        Double l_g4_4=l_g1_12+lb/2 ;
+        Double l_g5_4=l_g1_12+lb/2 ;
+        Double l_g6_4=l_g1_12+lb/2 ;
+        Double l_g7_4=l_g1_12+lb/2 ;
+        Double l_g8_4=l_g1_12+lb/2 ;
+        Double l_g9_4=l_g1_12-lb/2 ;
+        Double l_g10_4=l_g1_12+lb/2 ;
+        Double mtz=g0+g1+g2+g3+g4+g5+g6+g7+g8+g9+g10 ;
+        Double m_mo_4=1*10*(g9*l_g9_4) ;
+        Double m_mi_4=1*10*(g0*l_g0_4+g1*l_g1_4+g2*l_g2_4+g3*l_g3_4+g4*l_g4_4+g5*l_g5_4+g6*l_g6_4+g7*l_g7_4) ;
+        Double vad_4=(m_mi_4-m_mo_4)/(lb*2*1000) ;
+        Double vbc_4=(mtz*10)/(2*1000)-vad_4 ;
+        Double f_wcx_4=250*(a_g1+a_g2+a_g3+a_g4+a_g6) ;
+        Double m_wq_4=250*(a_g1*l_g1_11_w+a_g2*l_g2_11_w+a_g3*l_g3_11_w+a_g4*l_g4_11_w+a_g6*l_g6_11_w) ;
+        Double m_wh_4=250*(a_g1*l_g1_12+a_g2*l_g2_12+a_g3*l_g3_12+a_g4*l_g4_12+a_g6*l_g6_12) ;
+        Double v_4=m_wq_4/(la*2*1000) ;
+        Double h_4=m_wh_4/(lb*1000) ;
+        Double av_4=vad_4+v_4 ;
+        Double bv_4=vbc_4+v_4 ;
+        Double cv_4=vbc_4-v_4 ;
+        Double dv_4=vad_4-v_4 ;
+        Double at_4=av_4*0.05 ;
+        Double ah_4=-h_4+f_wcx_4/2 ;
+        Double bt_4=bv_4*0.05 ;
+        Double bh_4=h_4+f_wcx_4/2 ;
+
 
         result.put("bh",bh);
         result.put("bb",bb);
@@ -1319,12 +1321,12 @@ public class WheelLoadEntity {
         paramMap.put("l_g8_12",l_g8_12);
         paramMap.put("l_g9_12",l_g9_12);
         paramMap.put("l_g10_12",l_g10_12);
-        paramMap.put("l_swp_w",l_swp_w);
-        paramMap.put("l_g1_w",l_g1_w);
-        paramMap.put("l_g2_w",l_g2_w);
-        paramMap.put("l_g3_w",l_g3_w);
-        paramMap.put("l_g4_w",l_g4_w);
-        paramMap.put("l_g6_w",l_g6_w);
+        paramMap.put("l_swp_11_w",l_swp_11_w);
+        paramMap.put("l_g1_11_w",l_g1_11_w);
+        paramMap.put("l_g2_11_w",l_g2_11_w);
+        paramMap.put("l_g3_11_w",l_g3_11_w);
+        paramMap.put("l_g4_11_w",l_g4_11_w);
+        paramMap.put("l_g6_11_w",l_g6_11_w);
 
         paramMap.put("l_rl_12",l_rl_12);
         paramMap.put("l_hwll_12",l_hwll_12);
@@ -1576,6 +1578,8 @@ public class WheelLoadEntity {
         paramMap.put("ah_4",ah_4);
         paramMap.put("bt_4",bt_4);
         paramMap.put("bh_4",bh_4);
+
+
 
         for(Map.Entry<String, Double> entry : paramMap.entrySet()){
             result.put(entry.getKey(),CommonFunc.convertDoubleToString(entry.getValue()));
