@@ -24,4 +24,8 @@ public class CommonFunc {
         }
         return "";
     }
+
+    public static String convertDoubleToString(String value) {
+        return value;
+    }
 }
