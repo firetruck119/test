@@ -23,10 +23,10 @@ public class EmbedmentEntity {
     private String pcz ;
     private Double t ;
     private String ccz ;
-    private Double as ;
+    private Double nd ;
     private String bak ;
     private Double la ;
-    private Double co ;
+    private Double c0 ;
     private Double c10 ;
     private Double b ;
     private String ack;
@@ -167,12 +167,12 @@ public class EmbedmentEntity {
         this.ccz = ccz;
     }
 
-    public Double getAs() {
-        return as;
+    public Double getNd() {
+        return nd;
     }
 
-    public void setAs(Double as) {
-        this.as = as;
+    public void setNd(Double nd) {
+        this.nd = nd;
     }
 
     public String getBak() {
@@ -191,12 +191,12 @@ public class EmbedmentEntity {
         this.la = la;
     }
 
-    public Double getCo() {
-        return co;
+    public Double getC0() {
+        return c0;
     }
 
-    public void setCo(Double co) {
-        this.co = co;
+    public void setC0(Double c0) {
+        this.c0 = c0;
     }
 
     public Double getC10() {
@@ -290,13 +290,11 @@ public class EmbedmentEntity {
         Double fc=getFc();
         Double ft=getFt();
         Double ar =getAr();
-        Double av =	(4-0.8*d)*Math.pow(fc/fy,0.5);
+        Double av =	(4-0.08*d)*Math.pow(fc/fy,0.5);
         Double ab =0.6+0.25*t/d;
         Double as2min=n*1000/(0.8*ab*fy)+m*1000/(0.4*ar*ab*fy*by);
         Double as1min=(v*1000)/(ar*av*fy)+(n*1000)/(0.8*ab*fy)+(m*1000)/(1.3*ar*ab*fy*by);
         Double asmin= Math.max(as2min,as1min) ;
-        Double na=asmin/as;
-        String c1 = getSatisfied( na<1);
         Double a = getA();
         Double lab=a*fy/ft*d;
         Double lamin=lab*0.6;
@@ -305,17 +303,19 @@ public class EmbedmentEntity {
         Double tmin=by/8;
         Double nt=tmin/t;
         String c2=getSatisfied(nt<1);
-        Double comin=2d;
-        Double nc=comin/co;
+        Double c0min=2*d;
+        Double nc=c0min/c0;
         String c3 = getSatisfied(nc<1);
-        Double c1min=3d;
+        Double c1min=3*d;
         Double nc1=c1min/c10;
         String c8 = getSatisfied(nc1<1);
-        Double bmin=6d;
+        Double bmin=6*d;
         Double nb=bmin/b;
         String c4 = getSatisfied(nb<1);
+        Double as = (Math.PI*d*d/4)*nd;
         String c5 = getSatisfied(c2.equals("满足")&&c3.equals("满足")&&c4.equals("满足")&&c7.equals("满足")&&c8.equals("满足"));
-
+        Double na = asmin/as;
+        String c1 = getSatisfied( na<1);
 
         result.put("no",CommonFunc.convertDoubleToString(no));
         result.put("ver",CommonFunc.convertDoubleToString(ver));
@@ -338,10 +338,13 @@ public class EmbedmentEntity {
         result.put("as",CommonFunc.convertDoubleToString(as));
         result.put("bak",CommonFunc.convertDoubleToString(bak));
         result.put("la",CommonFunc.convertDoubleToString(la));
-        result.put("co",CommonFunc.convertDoubleToString(co));
+        result.put("c0",CommonFunc.convertDoubleToString(c0));
         result.put("c10",CommonFunc.convertDoubleToString(c10));
         result.put("b",CommonFunc.convertDoubleToString(b));
         result.put("ack",CommonFunc.convertDoubleToString(ack));
+
+        result.put("as1min",CommonFunc.convertDoubleToString(as1min));
+        result.put("as2min",CommonFunc.convertDoubleToString(as2min));
 
         result.put("m",CommonFunc.convertDoubleToString(m));
         result.put("fy",CommonFunc.convertDoubleToString(fy));
@@ -361,7 +364,7 @@ public class EmbedmentEntity {
         result.put("tmin",CommonFunc.convertDoubleToString(tmin));
         result.put("nt",CommonFunc.convertDoubleToString(nt));
         result.put("c2",CommonFunc.convertDoubleToString(c2));
-        result.put("comin",CommonFunc.convertDoubleToString(comin));
+        result.put("c0min",CommonFunc.convertDoubleToString(c0min));
         result.put("nc",CommonFunc.convertDoubleToString(nc));
         result.put("c3",CommonFunc.convertDoubleToString(c3));
         result.put("c1min",CommonFunc.convertDoubleToString(c1min));
