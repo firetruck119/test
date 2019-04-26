@@ -176,13 +176,13 @@ public class WireRopeEntity {
         Map<String, String> result = new HashMap<>();
         Double mwr = 4 * h * c1;
         Double s1 = rl + swp + mwr;
-        Double zp1 = f1 / s1;
+        Double zp1 = (f1*100) / s1;
         String pd1 = getSign(zp1,12.0);
         String jl1 = getSatisfied(zp1 >= 12);
         String yon1 = getYou(zp1 >= 12);
         Double hsw = h * c2;
         Double s2 = hwll + hsw;
-        Double zp2 = f2 / s2;
+        Double zp2 = (f2*100) / s2;
         String pd2 = getSign(zp2 ,6.0);
         String jl2 = getSatisfied(zp2 >= 6);
         String yon2 = getYou(zp2 >= 6);
