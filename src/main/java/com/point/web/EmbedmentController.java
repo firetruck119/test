@@ -1,6 +1,6 @@
 package com.point.web;
 
-import com.point.entity.pdf.EmbedmentEntity;
+import com.point.entity.pdf.AntiPullingEmbedmentEntity;
 import com.point.itext.PdfUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -22,18 +22,18 @@ public class EmbedmentController {
     PdfUtil pdfUtil;
 
     @GetMapping("/Embedment")
-    public String greetingForm(Model model, @ModelAttribute EmbedmentEntity embedmentEntity) {
-        model.addAttribute("EmbedmentEntity", new EmbedmentEntity());
+    public String greetingForm(Model model, @ModelAttribute AntiPullingEmbedmentEntity antiPullingEmbedmentEntity) {
+        model.addAttribute("EmbedmentEntity", new AntiPullingEmbedmentEntity());
         return "Embedment";
     }
 
     @PostMapping("/Embedment")
-    public Object pdfTest(@ModelAttribute EmbedmentEntity embedmentEntity) {
-        Map<String, String> map = embedmentEntity.getMapForPdf();
+    public Object pdfTest(@ModelAttribute AntiPullingEmbedmentEntity antiPullingEmbedmentEntity) {
+        Map<String, String> map = antiPullingEmbedmentEntity.getMapForPdf();
         HttpHeaders headers = new HttpHeaders();
         String fileName = null;
         try {
-            fileName = new String(("预埋件计算书.pdf").getBytes("gb2312"), "iso-8859-1");//解决中文乱码
+            fileName = new String(("抗拉预埋件计算书.pdf").getBytes("gb2312"), "iso-8859-1");//解决中文乱码
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }//为了解决中文名称乱码问题

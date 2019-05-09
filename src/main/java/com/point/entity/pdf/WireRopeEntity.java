@@ -176,7 +176,7 @@ public class WireRopeEntity {
         Map<String, String> result = new HashMap<>();
         Double mwr = 4 * h * c1;
         Double s1 = rl + swp + mwr;
-        Double zp1 = (f1*100) / s1;
+        Double zp1 = (f1*400) / s1;
         String pd1 = getSign(zp1,12.0);
         String jl1 = getSatisfied(zp1 >= 12);
         String yon1 = getYou(zp1 >= 12);

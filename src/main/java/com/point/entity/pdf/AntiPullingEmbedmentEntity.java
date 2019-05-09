@@ -5,7 +5,7 @@ import com.point.common.CommonFunc;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmbedmentEntity {
+public class AntiPullingEmbedmentEntity {
     private String no ;
     private String ver ;
     private String xmmc ;
@@ -278,7 +278,7 @@ public class EmbedmentEntity {
 
 
 
-    public String getSatisfied(boolean flag){
+    private String getSatisfied(boolean flag){
         return flag?"满足":"不满足";
     }
 
@@ -329,7 +329,6 @@ public class EmbedmentEntity {
         result.put("cz",CommonFunc.convertDoubleToString(cz));
         result.put("d",CommonFunc.convertDoubleToString(d));
         result.put("nr",CommonFunc.convertDoubleToString(nr));
-        result.put("nc",CommonFunc.convertDoubleToString(nc));
         result.put("by",CommonFunc.convertDoubleToString(by));
         result.put("bx",CommonFunc.convertDoubleToString(bx));
         result.put("pcz",CommonFunc.convertDoubleToString(pcz));

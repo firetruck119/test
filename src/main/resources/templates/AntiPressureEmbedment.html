@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>抗压预埋件计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <style type="text/css">
+        input {
+            width: 150px;
+            height: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function checkinput(form) {
+            return true;
+        }
+
+        function setActionType(type) {
+            $("#hidActionType").val(type);
+        }
+
+        $(document).ready(function () {
+            InitNav(1)
+            $('#AntiPressureEmbedment').addClass('o-sub-cur');
+        });
+
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<br/><br/>
+
+<form th:id="form1" opType="#" th:opType="@{/AntiPressureEmbedment}" th:object="${AntiPressureEmbedmentEntity}"
+      method="post" onsubmit="return checkinput(this)">
+    设计参数填入
+    <div>
+        <div class="fill-list-lb" style="width: 5px">1</div>
+        <div class="fill-list-lb" style="width: 170px">编号：</div>
+        <div class="fill-list-cont"><input name="no" type="text" th:field="*{no}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">2</div>
+        <div class="fill-list-lb" style="width: 170px">版本：</div>
+        <div class="fill-list-cont"><input name="ver" type="text" th:field="*{ver}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">3</div>
+        <div class="fill-list-lb" style="width: 170px">项目名称：</div>
+        <div class="fill-list-cont"><input name="xmmc" type="text" th:field="*{xmmc}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">4</div>
+        <div class="fill-list-lb" style="width: 170px">计算人：</div>
+        <div class="fill-list-cont"><input name="jsr" type="text" th:field="*{jsr}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">5</div>
+        <div class="fill-list-lb" style="width: 170px">审核人：</div>
+        <div class="fill-list-cont"><input name="shr" type="text" th:field="*{shr}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">6</div>
+        <div class="fill-list-lb" style="width: 170px">计算日期：</div>
+        <div class="fill-list-cont"><input name="date" type="text" th:field="*{date}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">7</div>
+        <div class="fill-list-lb" style="width: 170px">水平力至埋板高度：</div>
+        <div class="fill-list-cont"><input name="h" type="text" th:field="*{h}"/> mm</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">8</div>
+        <div class="fill-list-lb" style="width: 170px">剪力设计值：</div>
+        <div class="fill-list-cont"><input name="v" type="text" th:field="*{v}"/> kN</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">9</div>
+        <div class="fill-list-lb" style="width: 170px">压力设计值：</div>
+        <div class="fill-list-cont"><input name="n" type="text" th:field="*{n}"/> kN</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">10</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋材质：</div>
+        <div class="fill-list-cont">
+            <select name="cz"  th:field="*{cz}">
+                <option value="Q235B" >Q235B</option>
+                <option value="Q345B" >Q345B</option>
+                <option value="HPB300" >HPB300</option>
+                <option value="HRB335" >HRB335</option>
+                <option value="HRB400" >HRB400</option>
+                <option value="HRB500" >HRB500</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">11</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋直径：</div>
+        <div class="fill-list-cont"><input name="d" type="text" th:field="*{d}"/> mm</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">12</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋个数：</div>
+        <div class="fill-list-cont"><input name="nd" type="text" th:field="*{nd}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">13</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋层数：</div>
+        <div class="fill-list-cont"><select name="nr" th:field="*{nr}">
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+        </select>  </div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">14</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋列数：</div>
+        <div class="fill-list-cont"><input name="nc" type="text" th:field="*{nc}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">15</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋行距：</div>
+        <div class="fill-list-cont"><input name="by" type="text" th:field="*{by}"/> mm</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">16</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋列距：</div>
+        <div class="fill-list-cont"><input name="bx" type="text" th:field="*{bx}"/> mm</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">17</div>
+        <div class="fill-list-lb" style="width: 170px">埋板材质：</div>
+        <div class="fill-list-cont"><input name="pcz" type="text" th:field="*{pcz}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">18</div>
+        <div class="fill-list-lb" style="width: 170px">埋板厚度：</div>
+        <div class="fill-list-cont"><input name="t" type="text" th:field="*{t}"/> mm</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">19</div>
+        <div class="fill-list-lb" style="width: 170px">埋板宽度：</div>
+        <div class="fill-list-cont"><input name="pb" type="text" th:field="*{pb}"/> mm</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">20</div>
+        <div class="fill-list-lb" style="width: 170px">埋板长度：</div>
+        <div class="fill-list-cont"><input name="pl" type="text" th:field="*{pl}"/> mm</div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">21</div>
+        <div class="fill-list-lb" style="width: 170px">混凝土强度等级：</div>
+        <div class="fill-list-cont"><select name="ccz" th:field="*{ccz}">
+            <option value="C20" >C20</option>
+            <option value="C25" >C25</option>
+            <option value="C30" >C30</option>
+            <option value="C35" >C35</option>
+            <option value="C40" >C40</option>
+            <option value="C45" >C45</option>
+        </select> </div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">22</div>
+        <div class="fill-list-lb" style="width: 170px">锚筋类型：</div>
+        <div class="fill-list-cont"><select name="bak"  th:field="*{bak}">
+            <option value="光圆钢筋" >光圆钢筋</option>
+            <option value="带肋钢筋" >带肋钢筋</option>
+            <option value="螺旋类钢丝" >螺旋类钢丝</option>
+            <option value="三股钢绞丝" >三股钢绞丝</option>
+            <option value="七股钢绞丝" >七股钢绞丝</option>
+        </select>  </div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">23</div>
+        <div class="fill-list-lb" style="width: 170px">实际锚固长度：</div>
+        <div class="fill-list-cont"><input name="la" type="text" th:field="*{la}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">24</div>
+        <div class="fill-list-lb" style="width: 170px">实际锚筋中心距离锚板边距：</div>
+        <div class="fill-list-cont"><input name="c0" type="text" th:field="*{c0}"/></div>
+    </div>
+    <div>
+        <div class="fill-list-lb" style="width: 5px">25</div>
+        <div class="fill-list-lb" style="width: 170px">实际锚筋中心至构件边缘边距：</div>
+        <div class="fill-list-cont"><input name="c10" type="text" th:field="*{c10}"/> mm</div>
+    </div>
+
+
+    <input type="submit" value="输出PDF计算书" onclick="setActionType(1)"/> <input type="reset" value="重置"/>
+</form>
+
+</body>
+</html>
