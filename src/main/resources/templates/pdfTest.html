@@ -39,6 +39,22 @@
 
         $(document).ready(function () {
             InitNav(1)
+            $.ajax({url:"dd.php",
+                type:"post",
+                data:param,
+                async:false,
+                dataType:"json",/**这个类型很重要 */
+                cache:false,
+                error:function (data) {
+                    rtnObj = data.responseText;
+                }, beforeSend:function () {
+                    //ajaxStart();
+                }, complete:function () {
+
+                }, success:function (data) {
+                    rtnObj = data;
+                    alert(data[1].campid);
+                }});
             $('#pdfTest').addClass('o-sub-cur');
         });
 

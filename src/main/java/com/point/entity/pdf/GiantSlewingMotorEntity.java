@@ -1,7 +1,7 @@
 package com.point.entity.pdf;
 
+
 import com.point.common.CommonFunc;
-import groovy.transform.ASTTest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -116,6 +116,10 @@ public class GiantSlewingMotorEntity {
     //小齿轮参数
     private Double ms2 ;
     private Double z2 ;
+
+
+
+
 
 
     public Double getLw7() {
@@ -869,9 +873,38 @@ public class GiantSlewingMotorEntity {
     public void setZ2(Double z2) {
         this.z2 = z2;
     }
-
-    public Map<String,String> getMapForPdf(){
-        Map<String,String> result = new HashMap<>();
+    public Map<String,String> getMapForPdf1(){
+        Map<String,String> result =new HashMap<>();
+        Map<String,Double> map=getDoubleMap();
+        Boolean x1 = map.get("t")<=tn1;
+        Boolean x2 =  map.get("pa")<=p1;
+        Boolean x3 = x1 && x2;
+        Boolean x4 =  map.get("tz")<=t1;
+        Boolean x5 =  map.get("tz")<=t1;
+        Boolean x6 = x1 && x2 && x4;
+        for(Map.Entry<String,Double> e:map.entrySet()){
+            result.put(e.getKey(),CommonFunc.convertDoubleToString(e.getValue()));
+        }
+        result.put("zcxh", CommonFunc.convertDoubleToString(zcxh));
+        result.put("djxh", CommonFunc.convertDoubleToString(djxh));
+        result.put("no", CommonFunc.convertDoubleToString(no));
+        result.put("ver", CommonFunc.convertDoubleToString(ver));
+        result.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
+        result.put("zjxh",CommonFunc.convertDoubleToString(zjxh));
+        result.put("jsr", CommonFunc.convertDoubleToString(jsr));
+        result.put("shr", CommonFunc.convertDoubleToString(shr));
+        result.put("pzr", CommonFunc.convertDoubleToString(pzr));
+        result.put("date", CommonFunc.convertDoubleToString(date));
+        result.put("x1", getConclusionMark(x1));
+        result.put("x2", getConclusionMark(x2));
+        result.put("x3", getConclusionStr(x3));
+        result.put("x4", getConclusionMark(x4));
+        result.put("x5", getConclusionStr(x5));
+        result.put("x6", getConclusionStr(x6));
+        return result;
+    }
+    public Map<String,Double> getDoubleMap(){
+        Map<String,Double> result = new HashMap<>();
 
         /*
          * 备注计算
@@ -950,7 +983,7 @@ public class GiantSlewingMotorEntity {
         Double twa5=pf*aw5*lw5;
         Double twa6=pf*aw6*lw6;
         Double twa7=pf*a7*l7;
-        Double twa8=pf*a8*l8;
+        Double twa8=pf*a8*lw8;
         Double twa9=pf*aw9*l9;
         Double twa10=pf*a10*l10;
         Double twa11=pf*a11*l11;
@@ -971,7 +1004,7 @@ public class GiantSlewingMotorEntity {
          * 非工作状态擦窗机各部件抗倾覆力矩
          */
         Double mfa7=m7*l7*10;
-        Double mfa8=m8*l8*10;
+        Double mfa8=m8*lw8*10;
         Double mfa9=m9*l9*10;
         Double mfa10=m10*l10*10;
         Double mfa11=m11*l11*10;
@@ -1001,7 +1034,7 @@ public class GiantSlewingMotorEntity {
         Double mq1=mqasl+mqashl+mqa1+mqa2+mqa3+mqa4+mqa5+mqa6;
         Double mq2=mqa7+mqa8+mqa9+mqa10+mqa11+mqa12+mqa13;
         Double mq=mq1-mq2;
-        Double  fa=(tsl+tshl+m1+m2+m3+m4+m5+m6+m7+m8+m9+m10+m11+m12+m13)*10;
+        Double fa=(tsl+tshl+m1+m2+m3+m4+m5+m6+m7+m8+m9+m10+m11+m12+m13)*10;
         Double fr=fsl+fshl+f1+f2+f3+f4+f5+f6+f7+f8+f9+f10+f11+f12+f13;
         Double e=acos(d*fa/4.5/mq);
         Double n1=(fa/0.707*(1-2*e/3.14))+(2*4.5*mq/3.14/d)+(4*fr/3.14/0.707);
@@ -1033,7 +1066,7 @@ public class GiantSlewingMotorEntity {
          */
         Double mf1=mfa1+mfa2+mfa3+mfa4+mfa5+mfa6;
         Double mf2=mfa7+mfa8+mfa9+mfa10+mfa11+mfa12+mfa13;
-        Double mf=mf1-mf2;
+        Double mf=mf2-mf1;
         Double faf=(m1+m2+m3+m4+m5+m6+m7+m8+m9+m10+m11+m12+m13)*10;
         Double frf=ff1+ff2+ff3+ff4+ff5+ff6+ff7+ff8+ff9+ff10+ff11+ff12+ff13;
         Double e1=acos(d*faf/4.5/mf);
@@ -1049,247 +1082,273 @@ public class GiantSlewingMotorEntity {
         /*
          * 结论判断
          */
-        Boolean x1 = t<=tn1;
-        Boolean x2 = pa<=p1;
-        Boolean x3 = x1 && x2;
-        Boolean x4 = tz<=t1;
-        Boolean x5 = tz<=t1;
-        Boolean x6 = x1 && x2 && x4;
 
-        result.put("no", CommonFunc.convertDoubleToString(no));
-        result.put("ver", CommonFunc.convertDoubleToString(ver));
-        result.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
-        result.put("zjxh", CommonFunc.convertDoubleToString(zjxh));
-        result.put("jsr", CommonFunc.convertDoubleToString(jsr));
-        result.put("shr", CommonFunc.convertDoubleToString(shr));
-        result.put("pzr", CommonFunc.convertDoubleToString(pzr));
-        result.put("date", CommonFunc.convertDoubleToString(date));
 
-        result.put("h", CommonFunc.convertDoubleToString(h));
-        result.put("pf", CommonFunc.convertDoubleToString(pf));
 
-        result.put("tsl", CommonFunc.convertDoubleToString(tsl));
-        result.put("tshl", CommonFunc.convertDoubleToString(tshl));
-        result.put("m1", CommonFunc.convertDoubleToString(m1));
-        result.put("m2", CommonFunc.convertDoubleToString(m2));
-        result.put("m3", CommonFunc.convertDoubleToString(m3));
-        result.put("m4", CommonFunc.convertDoubleToString(m4));
-        result.put("m5", CommonFunc.convertDoubleToString(m5));
-        result.put("m6", CommonFunc.convertDoubleToString(m6));
-        result.put("m7", CommonFunc.convertDoubleToString(m7));
-        result.put("m8", CommonFunc.convertDoubleToString(m8));
-        result.put("m9", CommonFunc.convertDoubleToString(m9));
-        result.put("m10", CommonFunc.convertDoubleToString(m10));
-        result.put("m11", CommonFunc.convertDoubleToString(m11));
-        result.put("m12", CommonFunc.convertDoubleToString(m12));
-        result.put("m13", CommonFunc.convertDoubleToString(m13));
 
-        result.put("lsl", CommonFunc.convertDoubleToString(lsl));
-        result.put("lshl", CommonFunc.convertDoubleToString(lshl));
-        result.put("l1", CommonFunc.convertDoubleToString(l1));
-        result.put("l2", CommonFunc.convertDoubleToString(l2));
-        result.put("l3", CommonFunc.convertDoubleToString(l3));
-        result.put("l4", CommonFunc.convertDoubleToString(l4));
-        result.put("l5", CommonFunc.convertDoubleToString(l5));
-        result.put("l6", CommonFunc.convertDoubleToString(l6));
-        result.put("l7", CommonFunc.convertDoubleToString(l7));
-        result.put("l8", CommonFunc.convertDoubleToString(l8));
-        result.put("l9", CommonFunc.convertDoubleToString(l9));
-        result.put("l10", CommonFunc.convertDoubleToString(l10));
-        result.put("l11", CommonFunc.convertDoubleToString(l11));
-        result.put("l12", CommonFunc.convertDoubleToString(l12));
-        result.put("l13", CommonFunc.convertDoubleToString(l13));
+        result.put("h", h);
+        result.put("pf", pf);
 
-        result.put("asl", CommonFunc.convertDoubleToString(asl));
-        result.put("ashl", CommonFunc.convertDoubleToString(ashl));
-        result.put("a1", CommonFunc.convertDoubleToString(a1));
-        result.put("a2", CommonFunc.convertDoubleToString(a2));
-        result.put("a3", CommonFunc.convertDoubleToString(a3));
-        result.put("a4", CommonFunc.convertDoubleToString(a4));
-        result.put("a5", CommonFunc.convertDoubleToString(a5));
-        result.put("a6", CommonFunc.convertDoubleToString(a6));
-        result.put("a7", CommonFunc.convertDoubleToString(a7));
-        result.put("a8", CommonFunc.convertDoubleToString(a8));
-        result.put("a9", CommonFunc.convertDoubleToString(a9));
-        result.put("a10", CommonFunc.convertDoubleToString(a10));
-        result.put("a11", CommonFunc.convertDoubleToString(a11));
-        result.put("a12", CommonFunc.convertDoubleToString(a12));
-        result.put("a13", CommonFunc.convertDoubleToString(a13));
+        result.put("tsl", tsl);
+        result.put("tshl", tshl);
+        result.put("m1", m1);
+        result.put("m2", m2);
+        result.put("m3", m3);
+        result.put("m4", m4);
+        result.put("m5", m5);
+        result.put("m6", m6);
+        result.put("m7", m7);
+        result.put("m8", m8);
+        result.put("m9", m9);
+        result.put("m10", m10);
+        result.put("m11", m11);
+        result.put("m12", m12);
+        result.put("m13", m13);
 
-        result.put("lw1", CommonFunc.convertDoubleToString(lw1));
-        result.put("lw2", CommonFunc.convertDoubleToString(lw2));
-        result.put("lw3", CommonFunc.convertDoubleToString(lw3));
-        result.put("lw4", CommonFunc.convertDoubleToString(lw4));
-        result.put("lw5", CommonFunc.convertDoubleToString(lw5));
-        result.put("lw6", CommonFunc.convertDoubleToString(lw6));
-        result.put("lw12", CommonFunc.convertDoubleToString(lw12));
-        result.put("lw13", CommonFunc.convertDoubleToString(lw13));
+        result.put("lsl", lsl);
+        result.put("lshl", lshl);
+        result.put("l1", l1);
+        result.put("l2", l2);
+        result.put("l3", l3);
+        result.put("l4", l4);
+        result.put("l5", l5);
+        result.put("l6", l6);
+        result.put("l7", l7);
+        result.put("l8", l8);
+        result.put("l9", l9);
+        result.put("l10", l10);
+        result.put("l11", l11);
+        result.put("l12", l12);
+        result.put("l13", l13);
 
-        result.put("aw2", CommonFunc.convertDoubleToString(aw2));
-        result.put("aw4", CommonFunc.convertDoubleToString(aw4));
-        result.put("aw5", CommonFunc.convertDoubleToString(aw5));
-        result.put("aw6", CommonFunc.convertDoubleToString(aw6));
-        result.put("aw9", CommonFunc.convertDoubleToString(aw9));
-        result.put("aw12", CommonFunc.convertDoubleToString(aw12));
-        result.put("aw13", CommonFunc.convertDoubleToString(aw13));
+        result.put("asl", asl);
+        result.put("ashl", ashl);
+        result.put("a1", a1);
+        result.put("a2", a2);
+        result.put("a3", a3);
+        result.put("a4", a4);
+        result.put("a5", a5);
+        result.put("a6", a6);
+        result.put("a7", a7);
+        result.put("a8", a8);
+        result.put("a9", a9);
+        result.put("a10", a10);
+        result.put("a11", a11);
+        result.put("a12", a12);
+        result.put("a13", a13);
 
-        result.put("zcxh", CommonFunc.convertDoubleToString(zcxh));
-        result.put("ms1", CommonFunc.convertDoubleToString(ms1));
-        result.put("z1", CommonFunc.convertDoubleToString(z1));
-        result.put("d", CommonFunc.convertDoubleToString(d));
+        result.put("lw1", lw1);
+        result.put("lw2", lw2);
+        result.put("lw3", lw3);
+        result.put("lw4", lw4);
+        result.put("lw5", lw5);
+        result.put("lw6", lw6);
+        result.put("lw8", lw8);
+        result.put("lw12", lw12);
+        result.put("lw13", lw13);
 
-        result.put("djxh", CommonFunc.convertDoubleToString(djxh));
-        result.put("p1", CommonFunc.convertDoubleToString(p1));
-        result.put("tn1", CommonFunc.convertDoubleToString(tn1));
-        result.put("t1", CommonFunc.convertDoubleToString(t1));
-        result.put("na", CommonFunc.convertDoubleToString(na));
-        result.put("ta", CommonFunc.convertDoubleToString(ta));
-        result.put("i1", CommonFunc.convertDoubleToString(i1));
+        result.put("aw2", aw2);
+        result.put("aw4", aw4);
+        result.put("aw5", aw5);
+        result.put("aw6", aw6);
+        result.put("aw9", aw9);
+        result.put("aw12", aw12);
+        result.put("aw13", aw13);
 
-        result.put("ms2", CommonFunc.convertDoubleToString(ms2));
-        result.put("z2", CommonFunc.convertDoubleToString(z2));
+        result.put("ms1", ms1);
+        result.put("z1", z1);
+        result.put("d", d);
 
-        result.put("i2", CommonFunc.convertDoubleToString(i2));
-        result.put("n", CommonFunc.convertDoubleToString(n));
+        result.put("p1", p1);
+        result.put("tn1", tn1);
+        result.put("t1", t1);
+        result.put("na", na);
+        result.put("ta", ta);
+        result.put("i1", i1);
 
-        result.put("twsl", CommonFunc.convertDoubleToString(twsl));
-        result.put("twshl", CommonFunc.convertDoubleToString(twshl));
-        result.put("tw1", CommonFunc.convertDoubleToString(tw1));
-        result.put("tw2", CommonFunc.convertDoubleToString(tw2));
-        result.put("tw3", CommonFunc.convertDoubleToString(tw3));
-        result.put("tw4", CommonFunc.convertDoubleToString(tw4));
-        result.put("tw5", CommonFunc.convertDoubleToString(tw5));
-        result.put("tw6", CommonFunc.convertDoubleToString(tw6));
-        result.put("tw7", CommonFunc.convertDoubleToString(tw7));
-        result.put("tw8", CommonFunc.convertDoubleToString(tw8));
-        result.put("tw9", CommonFunc.convertDoubleToString(tw9));
-        result.put("tw10", CommonFunc.convertDoubleToString(tw10));
-        result.put("tw11", CommonFunc.convertDoubleToString(tw11));
-        result.put("tw12", CommonFunc.convertDoubleToString(tw12));
-        result.put("tw13", CommonFunc.convertDoubleToString(tw13));
+        result.put("ms2", ms2);
+        result.put("z2", z2);
 
-        result.put("mqasl", CommonFunc.convertDoubleToString(mqasl));
-        result.put("mqashl", CommonFunc.convertDoubleToString(mqashl));
-        result.put("mqa1", CommonFunc.convertDoubleToString(mqa1));
-        result.put("mqa2", CommonFunc.convertDoubleToString(mqa2));
-        result.put("mqa3", CommonFunc.convertDoubleToString(mqa3));
-        result.put("mqa4", CommonFunc.convertDoubleToString(mqa4));
-        result.put("mqa5", CommonFunc.convertDoubleToString(mqa5));
-        result.put("mqa6", CommonFunc.convertDoubleToString(mqa6));
+        result.put("i2", i2);
+        result.put("n", n);
 
-        result.put("mqa7", CommonFunc.convertDoubleToString(mqa7));
-        result.put("mqa8", CommonFunc.convertDoubleToString(mqa8));
-        result.put("mqa9", CommonFunc.convertDoubleToString(mqa9));
-        result.put("mqa10", CommonFunc.convertDoubleToString(mqa10));
-        result.put("mqa11", CommonFunc.convertDoubleToString(mqa11));
-        result.put("mqa12", CommonFunc.convertDoubleToString(mqa12));
-        result.put("mqa13", CommonFunc.convertDoubleToString(mqa13));
+        result.put("twsl", twsl);
+        result.put("twshl", twshl);
+        result.put("tw1", tw1);
+        result.put("tw2", tw2);
+        result.put("tw3", tw3);
+        result.put("tw4", tw4);
+        result.put("tw5", tw5);
+        result.put("tw6", tw6);
+        result.put("tw7", tw7);
+        result.put("tw8", tw8);
+        result.put("tw9", tw9);
+        result.put("tw10", tw10);
+        result.put("tw11", tw11);
+        result.put("tw12", tw12);
+        result.put("tw13", tw13);
 
-        result.put("fsl", CommonFunc.convertDoubleToString(fsl));
-        result.put("fshl", CommonFunc.convertDoubleToString(fshl));
-        result.put("f1", CommonFunc.convertDoubleToString(f1));
-        result.put("f2", CommonFunc.convertDoubleToString(f2));
-        result.put("f3", CommonFunc.convertDoubleToString(f3));
-        result.put("f4", CommonFunc.convertDoubleToString(f4));
-        result.put("f5", CommonFunc.convertDoubleToString(f5));
-        result.put("f6", CommonFunc.convertDoubleToString(f6));
-        result.put("f7", CommonFunc.convertDoubleToString(f7));
-        result.put("f8", CommonFunc.convertDoubleToString(f8));
-        result.put("f9", CommonFunc.convertDoubleToString(f9));
-        result.put("f10", CommonFunc.convertDoubleToString(f10));
-        result.put("f11", CommonFunc.convertDoubleToString(f11));
-        result.put("f12", CommonFunc.convertDoubleToString(f12));
-        result.put("f13", CommonFunc.convertDoubleToString(f13));
+        result.put("mqasl", mqasl);
+        result.put("mqashl", mqashl);
+        result.put("mqa1", mqa1);
+        result.put("mqa2", mqa2);
+        result.put("mqa3", mqa3);
+        result.put("mqa4", mqa4);
+        result.put("mqa5", mqa5);
+        result.put("mqa6", mqa6);
 
-        result.put("twa1", CommonFunc.convertDoubleToString(twa1));
-        result.put("twa2", CommonFunc.convertDoubleToString(twa2));
-        result.put("twa3", CommonFunc.convertDoubleToString(twa3));
-        result.put("twa4", CommonFunc.convertDoubleToString(twa4));
-        result.put("twa5", CommonFunc.convertDoubleToString(twa5));
-        result.put("twa6", CommonFunc.convertDoubleToString(twa6));
-        result.put("twa7", CommonFunc.convertDoubleToString(twa7));
-        result.put("twa8", CommonFunc.convertDoubleToString(twa8));
-        result.put("twa9", CommonFunc.convertDoubleToString(twa9));
-        result.put("twa10", CommonFunc.convertDoubleToString(twa10));
-        result.put("twa11", CommonFunc.convertDoubleToString(twa11));
-        result.put("twa12", CommonFunc.convertDoubleToString(twa12));
-        result.put("twa13", CommonFunc.convertDoubleToString(twa13));
+        result.put("mqa7", mqa7);
+        result.put("mqa8", mqa8);
+        result.put("mqa9", mqa9);
+        result.put("mqa10", mqa10);
+        result.put("mqa11", mqa11);
+        result.put("mqa12", mqa12);
+        result.put("mqa13", mqa13);
 
-        result.put("mfa1", CommonFunc.convertDoubleToString(mfa1));
-        result.put("mfa2", CommonFunc.convertDoubleToString(mfa2));
-        result.put("mfa3", CommonFunc.convertDoubleToString(mfa3));
-        result.put("mfa4", CommonFunc.convertDoubleToString(mfa4));
-        result.put("mfa5", CommonFunc.convertDoubleToString(mfa5));
-        result.put("mfa6", CommonFunc.convertDoubleToString(mfa6));
+        result.put("fsl", fsl);
+        result.put("fshl", fshl);
+        result.put("f1", f1);
+        result.put("f2", f2);
+        result.put("f3", f3);
+        result.put("f4", f4);
+        result.put("f5", f5);
+        result.put("f6", f6);
+        result.put("f7", f7);
+        result.put("f8", f8);
+        result.put("f9", f9);
+        result.put("f10", f10);
+        result.put("f11", f11);
+        result.put("f12", f12);
+        result.put("f13", f13);
 
-        result.put("mfa7", CommonFunc.convertDoubleToString(mfa7));
-        result.put("mfa8", CommonFunc.convertDoubleToString(mfa8));
-        result.put("mfa9", CommonFunc.convertDoubleToString(mfa9));
-        result.put("mfa10", CommonFunc.convertDoubleToString(mfa10));
-        result.put("mfa11", CommonFunc.convertDoubleToString(mfa11));
-        result.put("mfa12", CommonFunc.convertDoubleToString(mfa12));
-        result.put("mfa13", CommonFunc.convertDoubleToString(mfa13));
+        result.put("twa1", twa1);
+        result.put("twa2", twa2);
+        result.put("twa3", twa3);
+        result.put("twa4", twa4);
+        result.put("twa5", twa5);
+        result.put("twa6", twa6);
+        result.put("twa7", twa7);
+        result.put("twa8", twa8);
+        result.put("twa9", twa9);
+        result.put("twa10", twa10);
+        result.put("twa11", twa11);
+        result.put("twa12", twa12);
+        result.put("twa13", twa13);
 
-        result.put("ff1", CommonFunc.convertDoubleToString(ff1));
-        result.put("ff2", CommonFunc.convertDoubleToString(ff2));
-        result.put("ff3", CommonFunc.convertDoubleToString(ff3));
-        result.put("ff4", CommonFunc.convertDoubleToString(ff4));
-        result.put("ff5", CommonFunc.convertDoubleToString(ff5));
-        result.put("ff6", CommonFunc.convertDoubleToString(ff6));
-        result.put("ff7", CommonFunc.convertDoubleToString(ff7));
-        result.put("ff8", CommonFunc.convertDoubleToString(ff8));
-        result.put("ff9", CommonFunc.convertDoubleToString(ff9));
-        result.put("ff10", CommonFunc.convertDoubleToString(ff10));
-        result.put("ff11", CommonFunc.convertDoubleToString(ff11));
-        result.put("ff12", CommonFunc.convertDoubleToString(ff12));
-        result.put("ff13", CommonFunc.convertDoubleToString(ff13));
+        result.put("mfa1", mfa1);
+        result.put("mfa2", mfa2);
+        result.put("mfa3", mfa3);
+        result.put("mfa4", mfa4);
+        result.put("mfa5", mfa5);
+        result.put("mfa6", mfa6);
 
-        result.put("mq1", CommonFunc.convertDoubleToString(mq1));
-        result.put("mq2", CommonFunc.convertDoubleToString(mq2));
-        result.put("mq", CommonFunc.convertDoubleToString(mq));
-        result.put("fa", CommonFunc.convertDoubleToString(fa));
-        result.put("fr", CommonFunc.convertDoubleToString(fr));
-        result.put("e", CommonFunc.convertDoubleToString(e));
-        result.put("n1", CommonFunc.convertDoubleToString(n1));
+        result.put("mfa7", mfa7);
+        result.put("mfa8", mfa8);
+        result.put("mfa9", mfa9);
+        result.put("mfa10", mfa10);
+        result.put("mfa11", mfa11);
+        result.put("mfa12", mfa12);
+        result.put("mfa13", mfa13);
 
-        result.put("ja1", CommonFunc.convertDoubleToString(ja1));
-        result.put("ja2", CommonFunc.convertDoubleToString(ja2));
-        result.put("ja3", CommonFunc.convertDoubleToString(ja3));
-        result.put("ma1", CommonFunc.convertDoubleToString(ma1));
-        result.put("ma2", CommonFunc.convertDoubleToString(ma2));
-        result.put("ma", CommonFunc.convertDoubleToString(ma));
-        result.put("g0", CommonFunc.convertDoubleToString(g0));
-        result.put("lp", CommonFunc.convertDoubleToString(lp));
+        result.put("ff1", ff1);
+        result.put("ff2", ff2);
+        result.put("ff3", ff3);
+        result.put("ff4", ff4);
+        result.put("ff5", ff5);
+        result.put("ff6", ff6);
+        result.put("ff7", ff7);
+        result.put("ff8", ff8);
+        result.put("ff9", ff9);
+        result.put("ff10", ff10);
+        result.put("ff11", ff11);
+        result.put("ff12", ff12);
+        result.put("ff13", ff13);
 
-        result.put("tw", CommonFunc.convertDoubleToString(tw));
-        result.put("tm", CommonFunc.convertDoubleToString(tm));
-        result.put("tg", CommonFunc.convertDoubleToString(tg));
-        result.put("tna", CommonFunc.convertDoubleToString(tna));
-        result.put("t", CommonFunc.convertDoubleToString(t));
-        result.put("pa", CommonFunc.convertDoubleToString(pa));
+        result.put("mq1", mq1);
+        result.put("mq2", mq2);
+        result.put("mq", mq);
+        result.put("fa", fa);
+        result.put("fr", fr);
+        result.put("e", e);
+        result.put("n1", n1);
 
-        result.put("mf1", CommonFunc.convertDoubleToString(mf1));
-        result.put("mf2", CommonFunc.convertDoubleToString(mf2));
-        result.put("mf", CommonFunc.convertDoubleToString(mf));
-        result.put("faf", CommonFunc.convertDoubleToString(faf));
-        result.put("frf", CommonFunc.convertDoubleToString(frf));
-        result.put("e1", CommonFunc.convertDoubleToString(e1));
-        result.put("n2", CommonFunc.convertDoubleToString(n2));
+        result.put("ja1", ja1);
+        result.put("ja2", ja2);
+        result.put("ja3", ja3);
+        result.put("ma1", ma1);
+        result.put("ma2", ma2);
+        result.put("ma", ma);
+        result.put("g0", g0);
+        result.put("lp", lp);
 
-        result.put("twa", CommonFunc.convertDoubleToString(twa));
-        result.put("tmf", CommonFunc.convertDoubleToString(tmf));
-        result.put("tz", CommonFunc.convertDoubleToString(tz));
+        result.put("tw", tw);
+        result.put("tm", tm);
+        result.put("tg", tg);
+        result.put("tna", tna);
+        result.put("t", t);
+        result.put("pa", pa);
 
-        result.put("x1", getConclusionMark(x1));
-        result.put("x2", getConclusionMark(x2));
-        result.put("x3", getConclusionStr(x3));
-        result.put("x4", getConclusionMark(x4));
-        result.put("x5", getConclusionStr(x5));
-        result.put("x6", getConclusionStr(x6));
+        result.put("mf1", mf1);
+        result.put("mf2", mf2);
+        result.put("mf", mf);
+        result.put("faf", faf);
+        result.put("frf", frf);
+        result.put("e1", e1);
+        result.put("n2", n2);
 
+        result.put("twa", twa);
+        result.put("tmf", tmf);
+        result.put("tz", tz);
         return result;
     }
+    public Map<String,String> getMapForPdf2(){
+        Map<String,Double> map=getDoubleMap();
+        Map<String,String> resultMap = new HashMap<>();
+        Double p1=map.get("p1");
+        Double tn1=map.get("tn1");
+        Double t1=map.get("t1");
+        Double i1=map.get("i1");
+        Double i2=map.get("i2");
+        Double n=map.get("n");
+        Double tna=map.get("tna");
+        Double twa=map.get("twa");
+        Double tmf=map.get("tmf");
 
+        Double td=p1*9550*0.8*0.94/n;
+        Double tyc=t1*i2*i1;
+        Double tjc=twa-tmf;
+
+        String y1= td>=tna? "≥":"<";
+        String y2= td>=tna? "符合":"不符合";
+        String y3= tyc>=tjc?"≥":"<";
+        String y4= tyc>=tjc?"符合":"不符合";
+
+        resultMap.put("djxh",CommonFunc.convertDoubleToString(djxh));
+        resultMap.put("p1",CommonFunc.convertDoubleToString(p1));
+        resultMap.put("tn1",CommonFunc.convertDoubleToString(tn1));
+        resultMap.put("t1",CommonFunc.convertDoubleToString(t1));
+        resultMap.put("i1",CommonFunc.convertDoubleToString(i1));
+        resultMap.put("i2",CommonFunc.convertDoubleToString(i2));
+        resultMap.put("n",CommonFunc.convertDoubleToString(n));
+        resultMap.put("tna",CommonFunc.convertDoubleToString(tna));
+        resultMap.put("twa",CommonFunc.convertDoubleToString(twa));
+        resultMap.put("tmf",CommonFunc.convertDoubleToString(tmf));
+        resultMap.put("td",CommonFunc.convertDoubleToString(td));
+        resultMap.put("tyc",CommonFunc.convertDoubleToString(tyc));
+        resultMap.put("tjc",CommonFunc.convertDoubleToString(tjc));
+        resultMap.put("y1",CommonFunc.convertDoubleToString(y1));
+        resultMap.put("y2",CommonFunc.convertDoubleToString(y2));
+        resultMap.put("y3",CommonFunc.convertDoubleToString(y3));
+        resultMap.put("y4",CommonFunc.convertDoubleToString(y4));
+        return resultMap;
+    }
+    public Map<String,String> getCheck(){
+        Map<String,String> map=getMapForPdf1();
+        Map<String,String> resultMap=new HashMap<>();
+        resultMap.put("x3",map.get("x3"));
+        resultMap.put("x5",map.get("x5"));
+        return resultMap;
+    }
     private String getConclusionMark(Boolean x){
         return x?"≤":"＞";
     }
@@ -1298,9 +1357,8 @@ public class GiantSlewingMotorEntity {
     }
     //反三角函数
     private Double acos(Double temp){
-        if(temp<-1.0 || temp>1.0)
-            return null;
         return Math.acos(temp);
     }
+
 
 }
