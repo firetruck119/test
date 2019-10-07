@@ -87,6 +87,6 @@ public class PinSeatController {
     @PostMapping("pinseat/jy")
     @ResponseBody
     public Object sendjiaoyan(@ModelAttribute PinSeatEntity pinSeatEntity){
-        return pinSeatEntity.getMapForPdf2();
+        return pinSeatEntity.check();
     }
 }

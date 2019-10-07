@@ -50,6 +50,15 @@ public class PinSeatEntity {
     private Double fbt;
     private Double fbv;
     private Double fbc;
+    private Double f;
+
+    public Double getF() {
+        return f;
+    }
+
+    public void setF(Double f) {
+        this.f = f;
+    }
 
     public String getNo() {
         return no;
@@ -408,35 +417,35 @@ public class PinSeatEntity {
     }
     private Map<String,Double> getDoubleMap(){
         Map<String,Double> result = new HashMap<>();
-        Double ma =2700*l1;
+        Double ma =f*l1;
         Double oa =ma/wa;
-        Double ta =2700/aa;
+        Double ta =f/aa;
         Double o4a=Math.sqrt(oa*oa+3*ta*ta);
-        Double mb =2700*l2;
+        Double mb =f*l2;
         Double ob =mb/wb;
-        Double tb =2700/ab;
+        Double tb =f/ab;
         Double o4b=Math.sqrt(ob*ob+3*tb*tb);
-        Double mc =2700*l3;
+        Double mc =f*l3;
         Double oc =mc/wc;
-        Double tc =2700/ac;
+        Double tc =f/ac;
         Double o4c=Math.sqrt(oc*oc+3*tc*tc);
-        Double md =2700*l4;
+        Double md =f*l4;
         Double a  =0.7*k;
         Double t  =(4*md*(r+a))/(3.14*Math.pow(r+a,4)-Math.pow(r,4));
-        Double od =2700/ad;
-        Double td =2700/ad;
+        Double od =f/ad;
+        Double td =f/ad;
         Double o4d=Math.sqrt(od*od+3*td*td);
-        Double m1 =2700*l5;
+        Double m1 =f*l5;
         Double f1 =(m1*r1)/(2*r1*r1+2*r2*r2);
         Double o1 =f1/as;
-        Double t1 =2700/(4*as);
+        Double t1 =f/(4*as);
         Double o41=Math.sqrt(o1*o1+3*t1*t1);
-        Double m2 =2700*l5;
+        Double m2 =f*l5;
         Double f2 =m2/(2*lx);
         Double o2 =f2/as;
-        Double t2 =2700/(4*as);
+        Double t2 =f/(4*as);
         Double o42=Math.sqrt(o2*o2+3*t2*t2);
-        Double o3 =2700/(4*as);
+        Double o3 =f/(4*as);
 
         result.put("ma",ma);
         result.put("oa",oa);
@@ -710,5 +719,27 @@ public class PinSeatEntity {
         return resultMap;
     }
 
+    public Map<String,String> check(){
+        Map<String,String> map=getMapForPdf1();
+        map.putAll(getMapForPdf2());
+        Map<String,String> resultmap=new HashMap<>();
+        resultmap.put("o4a",map.get("o4a"));
+        resultmap.put("o4b",map.get("o4b"));
+        resultmap.put("o4c",map.get("o4c"));
+        resultmap.put("o4d",map.get("o4d"));
+        resultmap.put("o41",map.get("o41"));
+        resultmap.put("o42",map.get("o42"));
+        resultmap.put("o3",map.get("o3"));
+        resultmap.put("t",map.get("t"));
+        resultmap.put("man4" ,map.get("man4" ));
+        resultmap.put("man8" ,map.get("man8" ));
+        resultmap.put("man12",map.get("man12"));
+        resultmap.put("man13",map.get("man13"));
+        resultmap.put("man17",map.get("man17"));
+        resultmap.put("man21",map.get("man21"));
+        resultmap.put("man25",map.get("man25"));
+        resultmap.put("man26",map.get("man26"));
+        return resultmap;
+    }
 
 }
