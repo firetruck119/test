@@ -1,0 +1,832 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>回转电机校核计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <script th:src="@{js/xyz/jquery.Ajax.Form.js}"></script>
+
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <style type="text/css">
+        p{
+            font-size: 17px;
+        }
+        b{
+            letter-spacing:1px;
+            line-height: normal;
+        }
+        .main {
+            margin:20px 400px 100px;
+            width:1300px;
+            background-color:white;
+            font-size: 0;
+            border:1px solid black;
+        }
+        .boxform{
+            margin:auto;
+            width:1260px;
+            display: block;
+            font-size: 0;
+            padding: 10px 0 0 10px;
+        }
+        .main .boxform div{
+            display: inline-block;
+            font-size: 14px;
+            margin: 0 10px 10px 0;
+            vertical-align: top;
+        }
+        td{
+            border:1px solid #000;
+            text-align: center;
+            line-height: 14px;
+            height:20px;
+        }
+        tr{
+            height: 20px;
+        }
+        img{
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .tb{
+            border-radius: 5px;
+            width:100%;
+            background-color: #aaa;
+        }
+        input {
+            height: 20px;
+            width:92%;
+            border: 0;
+            text-align: center;
+        }
+        .buttonbox{
+            bottom: 5px;
+            right:5px;
+            display: block;
+            position: fixed;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .buttonbox input,.navbox input{
+            background-color: #ccc;
+            display: block;
+            width:140px;
+            height: 50px;
+            margin: 5px;
+            border-radius:25px;
+        }
+        .navbox{
+            top: 50%;;
+            left:10px;
+            display: block;
+            position: fixed;
+            margin-top: -160px;
+            font-size: 16px;
+        }
+        .navbox td {
+            padding: 0.4em 0.8em;
+        }
+    </style>
+    <script>
+        var readonlyElement=["#pf","#aw1","#aw3","#aw7","#aw8","#aw10","#aw11"
+            ,"#lw7","#lw9","#lw10","#lw11","#pf"];
+        $(document).ready(function () {
+            InitNav(1)
+            $('#GiantSlewingMotor').addClass('o-sub-cur');
+            function initReadonly(e){
+                $(e).attr("readonly",true);
+                $(e).css({"background-color":"#BBB"});
+                $(e).parent().css({"background-color":"#BBB"});
+            }
+            readonlyElement.forEach(initReadonly);
+            $('#GiantSlewingMotor').addClass('o-sub-cur');
+        })
+        function showImage(form,element) {
+            // 先获取用户上传的文件对象
+            var fileObj = form.files[0];
+            if(fileObj.size>1048576){
+                alert("上传文件大于1M，请重新选择");
+                form.value="";
+                return false;
+            }
+            // 生成一个文件读取的内置对象
+            var fileReader = new FileReader();
+            // 将文件对象传递给内置对象
+            fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+            // 将读取出文件对象替换到img标签
+            fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+                $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+            }
+        };
+        function changeInput(event) {
+            var e = event || window.event;
+            $("#pf").attr("readonly",true);
+            $("#pf").css({"background-color":"#BBB"});
+            var temp=parseInt($("#h").val());
+            if(temp>=0&&temp<=20)
+                $("#pf").val(800);
+            else if(temp>=20&&temp<=100)
+                $("#pf").val(1100);
+            else if(temp>=100&&temp<=150)
+                $("#pf").val(1300);
+            else{
+                $("#pf").attr("readonly",false);
+                $("#pf").css({"background-color":"#BBB"});
+            }
+        }
+        function janyan() {
+            $.ajax({
+                url: "motor/jy",
+                type: "post",
+                data: $("form").serialize(),
+                async: false,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    Object.keys(data).forEach(function (id) {
+                        $("#" + id).text(data[id]);
+                    })
+                }
+            })
+            return false;
+        }
+        function valueCopy(event){
+            var e=event||window.event;
+            var element=e.target || e.srcElement;
+            e=$(element);
+            var id=e.attr("id");
+            $("#"+id.slice(0,1)+"w"+ id.slice(1,3)).val(e.val());
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<br/><br/>
+<div class="main">
+    <iframe style="display: none" name="stop" src="about:blank"></iframe>
+
+    <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop"
+          th:opType="@{/HorizontalTracksEntity}" th:object="${GiantSlewingMotorEntity}"
+          method="post" enctype="multipart/form-data">
+        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">回转电机校核计算书</div>
+
+        <table>
+            <tr>
+                <!- 封面内容 ->
+                <td>
+                    <div style="width:400px;">
+                        <table class="tb">
+                            <tr>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>封面内容</b></td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                <td style="width:50%;">内容</td>
+                            </tr>
+                            <tr>
+                                <td ><b>本机计算书编号</b></td>
+                                <td ><input name="no" type="text" th:field="*{no}"/></td>
+                            </tr>
+                            <tr>
+                               <td ><b>本机版本</b></td>
+                               <td><input name="ver" type="text" th:field="*{ver}"/></td>
+                            </tr>
+                            <tr>
+                               <td ><b>项目名称</b></td>
+                               <td><input name="xmmc" type="text" th:field="*{xmmc}"/></td>
+                            </tr>
+                            <tr>
+                               <td ><b>主机型号</b></td>
+                               <td><input name="zjxh" type="text" th:field="*{zjxh}"/></td>
+                            </tr>
+                            <tr>
+                               <td ><b>计算人</b></td>
+                               <td><input name="jsr" type="text" th:field="*{jsr}"/></td>
+                            </tr>
+                            <tr>
+                               <td ><b>审核人</b></td>
+                               <td><input name="shr" type="text" th:field="*{shr}"/></td>
+                            </tr>
+                            <tr>
+                               <td ><b>批准人</b></td>
+                               <td><input name="pzr" type="text" th:field="*{pzr}"/></td>
+                            </tr>
+                            <tr>
+                               <td ><b>计算日期</b></td>
+                               <td><input name="date" type="text" th:field="*{date}" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <div style="width:400px;">
+                        <table class="tb">
+                            <tr>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>回转电机型号</b></td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;padding:10px 0;;"><b>名称</b></td>
+                                <td style="width:17%;">符号</td>
+                                <td style="width:36%;">数值</td>
+                                <td style="width:17%;">单位</td>
+                            </tr>
+                            <tr>
+                               <td ><b>回转电机型号</b></td>
+                               <td></td>
+                               <td><input name="djxh" type="text" th:field="*{djxh}" /></td>
+                               <td></td>
+                            </tr>
+                            <tr >
+                               <td><b>额定驱动功率</b></td>
+                                <td><p><i>P<sub>1</sub></i></p></td>
+                               <td><input name="p1" id="p1" type="text" th:field="*{p1}"/></td>
+                               <td>kW</td>
+                            </tr>
+                            <tr>
+                              <td ><b>输出扭矩</b></td>
+                                <td><p><i>T<sub>n1</sub></i></p></td>
+                               <td><input name="tn1" type="text" th:field="*{tn1}"  /></td>
+                              <td>N·m</td>
+                            </tr>
+                            <tr>
+                               <td ><b>制动力矩</b></td>
+                                <td><p><i>T<sub>1</sub></i></p></td>
+                               <td><input name="t1" type="text" th:field="*{t1}"/></td>
+                               <td>N·m</td>
+                            </tr>
+                            <tr>
+                              <td ><b>输出转速</b></td>
+                                <td><p><i>n<sub>a</sub></i></p></td>
+                               <td><input name="na" type="text" th:field="*{na}" /></td>
+                              <td>r/min</td>
+                            </tr>
+                            <tr>
+                              <td ><b>启动及制动时间</b></td>
+                                <td><p><i>t<sub>a</sub></i></p></td>
+                               <td><input name="ta" type="text" th:field="*{ta}"  /></td>
+                              <td>s</td>
+                            </tr>
+                            <tr>
+                              <td ><b>减速机速比</b></td>
+                                <td><p><i>i</i></p></td>
+                               <td><input name="i1" type="text" th:field="*{i1}"  /></td>
+                              <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td rowspan="2">
+                    <div style="width:400px;">
+                        <table class="tb">
+                            <tr>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>擦窗机各部件载荷</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                        <img alt="擦窗机各部件载荷" id="image1"   name="image1">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px 0">选择图片</td>
+                                <td colspan="3"><input class="image" type="file" name="tu1"  accept="image/*" oninput="showImage(this,'image1')"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width:40%;padding:10px 0;;"><b>名称</b></td>
+                                <td style="width:15%;">符号</td>
+                                <td style="width:30%;">数值</td>
+                                <td style="width:15%;">单位</td>
+                            </tr>
+                            <tr>
+                                <td ><b>总悬挂载荷</b></td>
+                                <td><p><i>T<sub>sl</sub></i></p></td>
+                                <td><input name="tsl" type="text" th:field="*{tsl}"  /></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>物料起升机构总悬挂载荷</b></td>
+                                <td><p><i>T<sub>shl</sub></i></p></td>
+                                <td><input name="tshl" type="text" th:field="*{tshl}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>臂头自重</b></td>
+                                <td><p><i>m<sub>1</sub></i></p></td>
+                                <td><input name="m1" type="text" th:field="*{m1}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>大臂自重</b></td>
+                                <td><p><i>m<sub>2</sub></i></p></td>
+                                <td><input name="m2" type="text" th:field="*{m2}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>物料起升机构装置自重</b></td>
+                                <td><p><i>m<sub>3</sub></i></p></td>
+                                <td><input name="m3" type="text" th:field="*{m3}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>液压缸自重</b></td>
+                                <td><p><i>m<sub>4</sub></i></p></td>
+                                <td><input name="m4" type="text" th:field="*{m4}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>其他I</b></td>
+                                <td><p><i>m<sub>5</sub></i></p></td>
+                                <td><input name="m5" type="text" th:field="*{m5}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>其他II</b></td>
+                                <td><p><i>m<sub>6</sub></i></p></td>
+                                <td><input name="m6" type="text" th:field="*{m6}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>配重臂自重</b></td>
+                                <td><p><i>m<sub>7</sub></i></p></td>
+                                <td><input name="m7" type="text" th:field="*{m7}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>配重自重</b></td>
+                                <td><p><i>m<sub>8</sub></i></p></td>
+                                <td><input name="m8" type="text" th:field="*{m8}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>立柱自重</b></td>
+                                <td><p><i>m<sub>9</sub></i></p></td>
+                                <td><input name="m9" type="text" th:field="*{m9}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>起升机构自重</b></td>
+                                <td><p><i>m<sub>10</sub></i></p></td>
+                                <td><input name="m10" type="text" th:field="*{m10}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>底架自重</b></td>
+                                <td><p><i>m<sub>11</sub></i></p></td>
+                                <td><input name="m11" type="text" th:field="*{m11}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>其他III</b></td>
+                                <td><p><i>m<sub>12</sub></i></p></td>
+                                <td><input name="m12" type="text" th:field="*{m12}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td><b>其他IV</b></td>
+                                <td><p><i>m<sub>13</sub></i></p></td>
+                                <td><input name="m13" type="text" th:field="*{m13}"/></td>
+                                <td>kg</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div style="width:400px;">
+                        <table class="tb">
+                            <tr>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>回转支承型号</b></td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;padding:10px 0"><b>名称</b></td>
+                                <td style="width:17%;">符号</td>
+                                <td style="width:36%;">数值</td>
+                                <td style="width:17%;">单位</td>
+                            </tr>
+                            <tr>
+                                <td><b>回转支承型号</b></td>
+                                <td></td>
+                                <td><input name="zcxh" type="text" th:field="*{zcxh}"  /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><b>模数</b></td>
+                                <td><p><i>M<sub>s1</sub></i></p></td>
+                                <td><input name="ms1" type="text" th:field="*{ms1}"/></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><b>齿数</b></td>
+                                <td><p><i>Z<sub>1</sub></i></p></td>
+                                <td><input name="z1" type="text" th:field="*{z1}"  /></td>
+                                <td></td>
+                            </tr>
+                            <tr >
+                                <td>回转滚道直径</b></td>
+                                <td><p><i>D</i></p></td>
+                                <td><input name="d" type="text" th:field="*{d}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>小齿轮参数</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>模数 </b></td>
+                                <td><p><i>M<sub>s2</sub></i></p></td>
+                                <td><input name="ms2" type="text" th:field="*{ms2}"  /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><b>齿数</b></td>
+                                <td><p><i>Z<sub>2</sub></i></p></td>
+                                <td><input name="z2"  type="text" th:field="*{z2}"/></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <div style="width:400px;">
+                        <table class="tb">
+                            <tr>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>设备安装高度及导致的非工作风压</b></td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;padding:10px 0;;"><b>名称</b></td>
+                                <td style="width:17%;">符号</td>
+                                <td style="width:36%;">数值</td>
+                                <td style="width:17%;">单位</td>
+                            </tr>
+                            <tr>
+                                <td><b>起升高度</b></td>
+                                <td><p><i>h</sub></i></p></td>
+                                <td><input name="h" onchange="return changeInput(event)" type="text" th:field="*{h}"  /></td>
+                                <td>m</td>
+                            </tr>
+                            <tr >
+                                <td>非工作风压</b></td>
+                                <td><p><i>p<sub>f</sub></i></p></td>
+                                <td><input name="pf" id="pf"  type="text" th:field="*{pf}"/></td>
+                                <td>N/m<sup>2</sup></td>
+                            </tr>
+                        </table>
+                        <p style="color : red ;font-size: 14px;width:400px">当0 < h ≤20时，pf=800；
+                            当20< h ≤100时，pf=1100；
+                            当100< h ≤150时，pf=1300；
+                            当h>150时，手动输入pf。</p>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td colspan="3">
+                    <div style="width:600px;display: inline-block">
+                        <table class="tb" style="width:600px">
+                            <tr>
+                                <td colspan="6">擦窗机各部件重心至回转中心的距离</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" height="300px">
+                                    <div style="display:inline-block;height:200px;width:280px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                        <img id="tu2" name="image">
+                                    </div>
+                                    <div style="display:inline-block;height:200px;width:280px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                        <img  id="tu4" name="image">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;padding:10px 0">选择工作时图片</td>
+                                <td colspan="5"><input class="image" type="file" name="tu2"  accept="image/*" oninput="showImage(this,'tu2')"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;padding:10px 0">选择非工作时图片</td>
+                                <td colspan="5"><input class="image" type="file" name="tu4"  accept="image/*" oninput="showImage(this,'tu4')"/></td>
+                            </tr>
+                            <tr >
+                                <td width="40%" style="width:30%;padding:10px 0">参数名称</td>
+                                <td width="8%">符号</td>
+                                <td width="20%">工作时</td>
+                                <td width="6%">符号</td>
+                                <td width="20%">非工作时</td>
+                                <td width="6%">单位</td>
+                            </tr>
+                            <tr>
+                                <td><b>吊船及人员至回转中心距离</b></td>
+                                <td><p><i>L<sub>sl</sub></i></p></td>
+                                <td  ><input name="lsl" type="text" th:field="*{lsl}"/></td>
+                                <td ><p><i></sub></i></p></td>
+                                <td  ><input type="text"  disabled="disabled" value="0"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b> 物料至回转中心距离</b></td>
+                                <td><p><i>L<sub>shl</sub></i></p></td>
+                                <td  ><input name="swp" type="text" th:field="*{lshl}"/></td>
+                                <td ><p><i></sub></i></p></td>
+                                <td  ><input type="text" disabled="disabled" value="0"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>臂头至回转中心距离</b></td>
+                                <td><p><i>L<sub>1</sub></i></p></td>
+                                <td  ><input name="l1" type="text" th:field="*{l1}"/></td>
+                                <td><p><i>L'<sub>1</sub></i></p></td>
+                                <td  ><input name="lw1" type="text" th:field="*{lw1}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>大臂至回转中心距离</b></td>
+                                <td><p><i>L<sub>2</sub></i></p></td>
+                                <td  ><input name="l2" type="text" th:field="*{l2}"/></td>
+                                <td><p><i>L'<sub>2</sub></i></p></td>
+                                <td  ><input name="lw2" type="text" th:field="*{lw2}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>物料起升机构装置至回转中心距离</b></td>
+                                <td><p><i>L<sub>3</sub></i></p></td>
+                                <td  ><input name="l3" type="text" th:field="*{l3}"/></td>
+                                <td><p><i>L'<sub>3</sub></i></p></td>
+                                <td  ><input name="lw3" type="text" th:field="*{lw3}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>液压缸至回转中心距离</b></td>
+                                <td><p><i>L<sub>4</sub></i></p></td>
+                                <td  ><input name="l4" type="text" th:field="*{l4}"/></td>
+                                <td><p><i>L'<sub>4</sub></i></p></td>
+                                <td  ><input name="lw4" type="text" th:field="*{lw4}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅰ至回转中心距离</b></td>
+                                <td><p><i>L<sub>5</sub></i></p></td>
+                                <td  ><input name="l5" type="text" th:field="*{l5}"/></td>
+                                <td><p><i>L'<sub>5</sub></i></p></td>
+                                <td  ><input name="lw5" type="text" th:field="*{lw5}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅱ至回转中心距离</b></td>
+                                <td><p><i>L<sub>6</sub></i></p></td>
+                                <td  ><input name="l6" type="text" th:field="*{l6}"/></td>
+                                <td><p><i>L'<sub>6</sub></i></p></td>
+                                <td  ><input name="lw6" type="text" th:field="*{lw6}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>配重臂至回转中心距离</b></td>
+                                <td><p><i>L<sub>7</sub></i></p></td>
+                                <td  ><input name="l7" onchange="valueCopy(event)" type="text" th:field="*{l7}"/></td>
+                                <td><p><i>L'<sub>7</sub></i></p></td>
+                                <td  ><input name="lw7" type="text" th:field="*{lw7}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>配重至回转中心距离</b></td>
+                                <td><p><i>L<sub>8</sub></i></p></td>
+                                <td  ><input name="l8" type="text" th:field="*{l8}"/></td>
+                                <td><p><i>L'<sub>8</sub></i></p></td>
+                                <td  ><input name="lw8" type="text" th:field="*{lw8}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>立柱至回转中心距离</b></td>
+                                <td><p><i>L<sub>9</sub></i></p></td>
+                                <td  ><input name="l9" onblur="valueCopy(event)" type="text" th:field="*{l9}"/></td>
+                                <td><p><i>L'<sub>9</sub></i></p></td>
+                                <td  ><input name="lw9" type="text" th:field="*{lw9}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b> 起升机构至回转中心距离</b></td>
+                                <td><p><i>L<sub>10</sub></i></p></td>
+                                <td  ><input name="l10" onchange="valueCopy(event)" type="text" th:field="*{l10}"/></td>
+                                <td><p><i>L'<sub>10</sub></i></p></td>
+                                <td  ><input name="lw10" type="text" th:field="*{lw10}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>底架至回转中心距离</b></td>
+                                <td><p><i>L<sub>11</sub></i></p></td>
+                                <td  ><input name="l11" onchange="valueCopy(event)" type="text" th:field="*{l11}"/></td>
+                                <td><p><i>L'<sub>11</sub></i></p></td>
+                                <td  ><input name="lw11" type="text" th:field="*{lw11}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅲ至回转中心距离</b></td>
+                                <td><p><i>L<sub>12</sub></i></p></td>
+                                <td  ><input name="l12" type="text" th:field="*{l12}"/></td>
+                                <td><p><i>L'<sub>12</sub></i></p></td>
+                                <td  ><input name="lw12" type="text" th:field="*{lw12}"/></td>
+                                <td>m</td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅳ至回转中心距离</b></td>
+                                <td><p><i>L<sub>13</sub></i></p></td>
+                                <td  ><input name="l13" type="text" th:field="*{l13}"/></td>
+                                <td><p><i>L'<sub>13</sub></i></p></td>
+                                <td  ><input name="lw13" type="text" th:field="*{lw13}"/></td>
+                                <td>m</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="width:600px;display: inline-block;margin-left: 10px">
+                        <table class="tb">
+                            <tr>
+                                <td colspan="6">擦窗机各部件迎风面积</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" height="300px">
+                                    <div style="display:inline-block;height:200px;width:280px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                        <img  id="tu3" name="image3">
+                                    </div>
+                                    <div style="display:inline-block;height:200px;width:280px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                        <img  id="tu5" name="image5">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;padding:10px 0">选择工作时图片</td>
+                                <td colspan="5"><input class="image" type="file" name="tu3"  accept="image/*" oninput="showImage(this,'tu3')"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;padding:10px 0">选择工作时图片</td>
+                                <td colspan="5"><input class="image" type="file" name="tu5"  accept="image/*" oninput="showImage(this,'tu5')"/></td>
+                            </tr>
+                            <tr>
+                                <td width="40%" style="width:30%;padding:10px 0">参数名称</td>
+                                <td width="8%">符号</td>
+                                <td width="20%">工作时</td>
+                                <td width="6%">符号</td>
+                                <td width="20%">非工作时</td>
+                                <td width="6%">单位</td>
+                            </tr>
+                            <tr>
+                                <td><b>吊船及人员迎风面积</b></td>
+                                <td><p><i>A<sub>sl</sub></i></p></td>
+                                <td  ><input name="asl" type="text" th:field="*{asl}"/></td>
+                                <td></td>
+                                <td  ><input name="asl" type="text" disabled="disabled" value="0"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b> 物料迎风面积</b></td>
+                                <td><p><i>A<sub>shl</sub></i></p></td>
+                                <td  ><input name="swp" type="text" th:field="*{ashl}"/></td>
+                                <td></td>
+                                <td  ><input name="swp" type="text" disabled="disabled" value="0"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>臂头迎风面积</b></td>
+                                <td><p><i>A<sub>1</sub></i></p></td>
+                                <td  ><input name="a1"  onchange="valueCopy(event)" type="text" th:field="*{a1}"/></td>
+                                <td><p><i>A'<sub>1</sub></i></p></td>
+                                <td  ><input name="aw1" type="text" th:field="*{aw1}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>大臂迎风面积</b></td>
+                                <td><p><i>A<sub>2</sub></i></p></td>
+                                <td  ><input name="a2" type="text" th:field="*{a2}"/></td>
+                                <td><p><i>A'<sub>2</sub></i></p></td>
+                                <td  ><input name="aw2" type="text" th:field="*{aw2}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>物料起升机构装置迎风面积</b></td>
+                                <td><p><i>A<sub>3</sub></i></p></td>
+                                <td  ><input name="a3" onchange="valueCopy(event)" type="text" th:field="*{a3}"/></td>
+                                <td><p><i>A'<sub>3</sub></i></p></td>
+                                <td  ><input name="aw3" type="text" th:field="*{aw3}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>液压缸迎风面积</b></td>
+                                <td><p><i>A<sub>4</sub></i></p></td>
+                                <td  ><input name="a4" type="text" th:field="*{a4}"/></td>
+                                <td><p><i>A'<sub>4</sub></i></p></td>
+                                <td  ><input name="aw4" type="text" th:field="*{aw4}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅰ迎风面积</b></td>
+                                <td><p><i>A<sub>5</sub></i></p></td>
+                                <td  ><input name="a5" type="text" th:field="*{a5}"/></td>
+                                <td><p><i>A'<sub>5</sub></i></p></td>
+                                <td  ><input name="aw5" type="text" th:field="*{aw5}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅱ迎风面积</b></td>
+                                <td><p><i>A<sub>6</sub></i></p></td>
+                                <td  ><input name="a6" type="text" th:field="*{a6}"/></td>
+                                <td><p><i>A'<sub>6</sub></i></p></td>
+                                <td  ><input name="aw6" type="text" th:field="*{aw6}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>配重臂迎风面积</b></td>
+                                <td><p><i>A<sub>7</sub></i></p></td>
+                                <td  ><input name="a7" onchange="valueCopy(event)" type="text" th:field="*{a7}"/></td>
+                                <td><p><i>A'<sub>7</sub></i></p></td>
+                                <td  ><input name="aw7" type="text" th:field="*{aw7}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>配重迎风面积</b></td>
+                                <td><p><i>A<sub>8</sub></i></p></td>
+                                <td  ><input name="a8" onchange="valueCopy(event)" type="text" th:field="*{a8}"/></td>
+                                <td ><p><i>A'<sub>8</sub></i></p></td>
+                                <td  ><input name="aw8" type="text" th:field="*{aw8}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>立柱迎风面积</b></td>
+                                <td><p><i>A<sub>9</sub></i></p></td>
+                                <td  ><input name="a9" type="text" th:field="*{a9}"/></td>
+                                <td><p><i>A'<sub>9</sub></i></p></td>
+                                <td  ><input name="aw9" type="text" th:field="*{aw9}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b> 起升机构迎风面积</b></td>
+                                <td><p><i>A<sub>10</sub></i></p></td>
+                                <td  ><input name="a10" onchange="valueCopy(event)" type="text" th:field="*{a10}"/></td>
+                                <td><p><i>A'<sub>10</sub></i></p></td>
+                                <td  ><input name="aw10" type="text" th:field="*{aw10}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>底架迎风面积</b></td>
+                                <td><p><i>A<sub>11</sub></i></p></td>
+                                <td  ><input name="a11" onchange="valueCopy(event)" type="text" th:field="*{a11}"/></td>
+                                <td><p><i>A'<sub>11</sub></i></p></td>
+                                <td  ><input name="aw11" type="text" th:field="*{aw11}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅲ迎风面积</b></td>
+                                <td><p><i>A<sub>12</sub></i></p></td>
+                                <td  ><input name="a12" type="text" th:field="*{a12}"/></td>
+                                <td><p><i>A'<sub>12</sub></i></p></td>
+                                <td  ><input name="aw12" type="text" th:field="*{aw12}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><b>其它Ⅳ迎风面积</b></td>
+                                <td><p><i>A<sub>13</sub></i></p></td>
+                                <td  ><input name="a13" type="text" th:field="*{a13}"/></td>
+                                <td><p><i>A'<sub>13</sub></i></p></td>
+                                <td  ><input name="aw13" type="text" th:field="*{aw13}"/></td>
+                                <td>m<sup>2</sup></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+    <div class="buttonbox">
+        <input type="submit" form="form1" class="button"  value="导出回转电机pdf" onclick="$('form').attr('action','motorpdf1')"/>
+        <input type="submit" form="form1" class="button"  value="导出整合验证pdf" onclick="$('form').attr('action','motorpdf2')"/>
+        <input type="reset" form="form1" value="重置"/>
+    </div>
+    <div class="navbox">
+        <div style="width:350px;height:520px; font-size: 14px;">
+            <table class="tb" id="pdf3tb">
+                <tr>
+                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+                </tr>
+                <tr>
+                    <td style="width:65%;"><b>名称</b></td>
+                    <td style="width:35%;"><b>结果显示</b></td>
+                </tr>
+                <tr>
+                                <td><b>输出矩阵、额定驱动功率校核</b></td>
+                    <td id="x3"></td>
+                </tr>
+                <tr>
+                                <td><b>制动力矩阵校核</b></td>
+                    <td id="x5"></td>
+                </tr>
+            </table>
+            <div style="margin: 0 100px 0;">
+                <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
