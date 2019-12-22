@@ -3,6 +3,7 @@ package com.point.web;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
+import com.point.entity.pdf.FsStabilityEntity;
 import com.point.entity.pdf.StabilityEnity;
 import com.point.itext.PdfCreater;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class StabilityController {
+public class FsStabilityController {
     @Autowired
     PdfCreater pdf;
     private ResponseEntity<byte[]> getResponseEntity(String localName, byte[] bytes) {
@@ -54,53 +55,26 @@ public class StabilityController {
         }
         return imageMap;
     }
-    @GetMapping("/Stability")
-    public String greetingForm(Model model, @ModelAttribute StabilityEnity stabilityEnity) {
-        model.addAttribute("StabilityEnity", new StabilityEnity());
-        return "Stability";
+    @GetMapping("/FsStability")
+    public String greetingForm(Model model) {
+        return "FsStability";
     }
 
-    @PostMapping("/stabilitypdf1")
-    public Object pdfTest(@ModelAttribute StabilityEnity stabilityEnity, HttpServletRequest request) {
+    @PostMapping("/PDF/FsStability")
+    public Object pdfTest(@ModelAttribute FsStabilityEntity stabilityEnity, HttpServletRequest request) {
         Map<String, String> textMap = new HashMap<>();
-        textMap = stabilityEnity.getMapForPDF1();
+        textMap = stabilityEnity.getMapForPDF();
         Map<String, Image> imageMap = new HashMap<>();
         try {
             imageMap = getImageMap(request);
         } catch (Exception e) {
         }
         byte[] pdfBtyes;
-        pdfBtyes = pdf.fromPDFTempletToPdfWithValue(textMap, imageMap, "稳定性校核及轮压计算书");
-        return getResponseEntity("稳定性校核及轮压计算书", pdfBtyes);
+        pdfBtyes = pdf.fromPDFTempletToPdfWithValue(textMap, imageMap, "附墙双臂机-稳定性校核及轮压计算书");
+        return getResponseEntity("附墙双臂机-稳定性校核及轮压计算书", pdfBtyes);
     }
-    @PostMapping("/stabilityenpdf1")
-    public Object ENpdfTest(@ModelAttribute StabilityEnity stabilityEnity, HttpServletRequest request) {
-        Map<String, String> textMap = new HashMap<>();
-        textMap = stabilityEnity.getMapForPDF1();
-        Map<String, Image> imageMap = new HashMap<>();
-        try {
-            imageMap = getImageMap(request);
-        } catch (Exception e) {
-        }
-        byte[] pdfBtyes;
-        pdfBtyes = pdf.fromPDFTempletToPdfWithValue(textMap, imageMap, "英文版稳定性校核及轮压计算书");
-        return getResponseEntity("英文版稳定性校核及轮压计算书", pdfBtyes);
-    }
-    @PostMapping("/stabilityaupdf1")
-    public Object AUpdfTest(@ModelAttribute StabilityEnity stabilityEnity, HttpServletRequest request) {
-        Map<String, String> textMap = new HashMap<>();
-        textMap = stabilityEnity.getMapForAuPDF1();
-        Map<String, Image> imageMap = new HashMap<>();
-        try {
-            imageMap = getImageMap(request);
-        } catch (Exception e) {
-        }
-        byte[] pdfBtyes;
-        pdfBtyes = pdf.fromPDFTempletToPdfWithValue(textMap, imageMap, "澳大利亚稳定性校核及轮压计算书");
-        return getResponseEntity("澳大利亚稳定性校核及轮压计算书", pdfBtyes);
-    }
-    @PostMapping("/stabilitypdf2")
-    public Object pdf2(@ModelAttribute StabilityEnity stabilityEnity, HttpServletRequest request) throws IOException, DocumentException {
+    @PostMapping("/PDF/Inspection/FsStability")
+    public Object pdf2(@ModelAttribute FsStabilityEntity entity, HttpServletRequest request) throws IOException, DocumentException {
         Map<String, Image> imageMap = new HashMap<>();
         try {
             imageMap = getImageMap(request);
@@ -108,20 +82,14 @@ public class StabilityController {
 
         }
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue(stabilityEnity.getMapForPDF1(), imageMap, "稳定性校核及轮压计算书"));
-        list.add(pdf.fromPDFTempletToPdfWithValue(stabilityEnity.getMapForPDF2(), imageMap, "稳定性校核及轮压计算书验证部分"));
-        return getResponseEntity("稳定性校核及轮压计算书验证部分", pdf.MergePDF(list));
+        list.add(pdf.fromPDFTempletToPdfWithValue(entity.getMapForPDF(), imageMap, "附墙双臂机-稳定性校核及轮压计算书"));
+        list.add(pdf.fromPDFTempletToPdfWithValue(entity.getMapForInspectionPDF(), imageMap, "附墙双臂机-稳定性校核及轮压计算书验证部分"));
+        return getResponseEntity("附墙双臂机-稳定性校核及轮压计算书验证部分", pdf.MergePDF(list));
     }
-    @PostMapping("Stability/cnjy")
+    @PostMapping("/Inspection/FsStability")
     @ResponseBody
-    public Object sendaujiaoyan(@ModelAttribute StabilityEnity stabilityEnity){
-        return stabilityEnity.checkCN();
-    }
-
-    @PostMapping("Stability/aujy")
-    @ResponseBody
-    public Object sendcnjiaoyan(@ModelAttribute StabilityEnity stabilityEnity){
-        return stabilityEnity.checkAU();
+    public Object sendaujiaoyan(@ModelAttribute FsStabilityEntity e){
+        return e.getMapForInspection();
     }
 
 }

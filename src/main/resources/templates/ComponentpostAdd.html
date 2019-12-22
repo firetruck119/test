@@ -54,7 +54,7 @@
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
 
 <form th:id="form1" opType="#" th:opType="@{/Componentpost}" th:object="${componentpost}"

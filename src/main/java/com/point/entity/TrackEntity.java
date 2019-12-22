@@ -206,9 +206,9 @@ public class TrackEntity implements Serializable {
             case "H250+贴板":
                 return "162";
             case "拼焊H200*216":
-                return "114.2";
+                return "114.7";
             case "拼焊H250*266":
-                return "139.2";
+                return "139.8";
             default:
                 return "";
         }

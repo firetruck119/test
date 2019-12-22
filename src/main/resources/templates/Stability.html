@@ -22,15 +22,15 @@
             line-height: normal;
         }
         .main {
-            margin:20px 10px 100px;
-            width:1700px;
+            margin:20px 540px 100px;
+            width:1150px;
             background-color:#EFF3F6;
             font-size: 0;
             border:1px solid black;
         }
         .boxform{
             margin:auto;
-            width:1680px;
+            width:1135px;
             display: block;
             font-size: 0;
             padding: 10px 0 10px 0 ;
@@ -38,6 +38,7 @@
         .subtable{
             display: inline-block;
             font-size: 14px;
+            margin: 5px;
             vertical-align: top;
             width:556px;
         }
@@ -77,7 +78,15 @@
             margin-bottom: 5px;
             font-size: 14px;
         }
-        .buttonbox input,.navbox input{
+        .buttonbox input{
+            background-color: #ccc;
+            display: block;
+            width:170px;
+            height:50px;
+            margin: 3px;
+            border-radius:25px;
+        }
+        .navbox input{
             background-color: #ccc;
             display: block;
             width:150px;
@@ -105,183 +114,12 @@
         }
     </style>
     <script>
-            $(document).ready(function () {
-                InitNav(1)
-                $('#Stability').addClass('o-sub-cur');
-                $("#pf").attr("readonly",true);
-                $("#pf").css({"background-color":"#BBB"});
-                $("#radio1").attr("checked","true");
-                valueChange(null,"lq12" ,0);
-                valueChange(null,"lh13",0);
-                $("#h").change(
-                function changeInput(event) {
-                    var e = event || window.event;
-                    $("#pf").attr("readonly",true);
-                    $("#pf").css({"background-color":"#BBB"});
-                    var temp=parseInt($("#h").val());
-                    if(temp>=0&&temp<=20)
-                        $("#pf").val(800);
-                    else if(temp>=20&&temp<=100)
-                        $("#pf").val(1100);
-                    else if(temp>=100&&temp<=150)
-                        $("#pf").val(1300);
-                    else{
-                        $("#pf").attr("readonly",false);
-                        $("#pf").css({"background-color":"#FFF"});
-                    }
-                });
-
-                function getString(v){
-                    if(v%1==0)
-                        return parseInt(v);
-                    if(v*10%1==0)
-                        return (parseInt(v*10)/10).toFixed(1);
-                    if(v*100%1==0)
-                        return v;
-                }
-                function valueChange(a,b,temp) {
-                    if(a&&b&&parseInt($("#"+a).val())==0) {
-                        $("#" + b).val(0);
-                        $("#" + b).css({"background-color":"#BBB"});
-                        return;
-                    }else if(temp||temp==0){
-                        $("#" + b).css({"background-color":"#BBB"});
-                        $("#" + b).val(getString(parseFloat(temp).toFixed(2)));
-                        if(temp==""&&temp!=0) {
-                            $("#" + b).css({"background-color": "#FFF"});
-                            $("#" + b).val();
-                        }
-                        return;
-                }
-                $("#" + b).css({"background-color":"#FFF"});
-
-            }
-
-                function f(b){
-                    var a=0.0;
-                    for(var i=1;i<arguments.length;i++){
-                        if(!$('#'+arguments[i]).val())
-                            return ;
-                        a+=parseFloat($('#'+arguments[i] ).val());
-                        console.log(parseFloat($('#'+arguments[i] ).val()))
-                    }
-                    $("#" + b).css({"background-color":"#BBB"});
-                    $("#" + b).val(getString(parseFloat(a).toFixed(2)));
-                }
-
-                function initcopy(){
-                    f("mzf","m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12","m13",);
-                    f("mz","tsl","tshl","m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12","m13",);
-                    valueChange(null  ,"lslz" ,parseFloat($('#lbd' ).val()));
-                    valueChange(null  ,"lshlz",parseFloat($('#lslz').val())-0.9);
-                    valueChange(null  ,"lz1"  ,parseFloat($('#lslz').val())-0.9);
-                    valueChange("m4","lz4",);
-                    valueChange("m5","lz5",);
-                    valueChange("m6","lz6",);
-                    valueChange("m7","lz7",);
-                    valueChange(null,"lz12",parseFloat($("#lg").val())/2);
-                    valueChange(null,"lz13",parseFloat($("#lg").val())/2);
-                    valueChange(null,"lq12" ,0);
-                    valueChange(null,"lh13",0);
-                    valueChange(null  ,"lslq" ,parseFloat($('#lslz' ).val())-parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lshlq",parseFloat($('#lshlz').val())-parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lq1"  ,parseFloat($('#lz1'  ).val())-parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lq2"  ,parseFloat($('#lz2'  ).val())-parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lq3"  ,parseFloat($('#lg'   ).val())/2-parseFloat($('#lz3').val()));
-                    valueChange("m4"  ,"lq4"  ,parseFloat($('#lg'   ).val())/2-parseFloat($('#lz4').val()));
-                    valueChange("m5"  ,"lq5"  ,parseFloat($('#lz5'  ).val())- parseFloat($('#lg' ).val())/2);
-                    valueChange("m6"  ,"lq6"  ,parseFloat($('#lz6'  ).val())- parseFloat($('#lg' ).val())/2);
-                    valueChange("m7"  ,"lq7"  ,parseFloat($('#lz7'  ).val())+ parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lq8"  ,parseFloat($('#lz8'  ).val())+ parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lq9"  ,parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lq10" ,parseFloat($('#lz10' ).val())+parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lq11" ,parseFloat($('#lg' ).val())/2);
-                    valueChange("m13" ,"lq13" ,parseFloat($('#lg' ).val()));
-
-                    valueChange(null  ,"lslql" ,parseFloat($('#lslz' ).val())-  parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lshlql",parseFloat($('#lshlz').val())-  parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lql1"  ,parseFloat($('#lz1'  ).val())-  parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lql2"  ,parseFloat($('#lz2'  ).val())-  parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lql3"  ,parseFloat($('#ll'   ).val())/2-parseFloat($('#lz3').val()));
-                    valueChange("m4"  ,"lql4"  ,parseFloat($('#ll'   ).val())/2-parseFloat($('#lz4').val()));
-                    valueChange("m5"  ,"lql5"  ,parseFloat($('#lz5'  ).val())-  parseFloat($('#ll' ).val())/2);
-                    valueChange("m6"  ,"lql6"  ,parseFloat($('#lz6'  ).val())-  parseFloat($('#ll' ).val())/2);
-                    valueChange("m7"  ,"lql7"  ,parseFloat($('#lz7'  ).val())+  parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lql8"  ,parseFloat($('#lz8'  ).val())+  parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lql9"  ,parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lql10" ,parseFloat($('#lz10' ).val())+  parseFloat($('#ll' ).val())/2);
-                    valueChange(null  ,"lql11" ,parseFloat($('#ll' ).val())/2);
-                    valueChange(null ,"lql12" ,parseFloat($('#lg' ).val()));
-                    valueChange(null ,"lql13" ,parseFloat($('#lg' ).val()));
-
-                    valueChange("m4"  ,"h4",);
-                    valueChange("m5"  ,"h5",);
-                    valueChange("m6"  ,"h6",);
-                    valueChange("m7"  ,"h7",);
-
-                    valueChange("m4"  ,"a4",);
-                    valueChange("m5"  ,"a5",);
-                    valueChange("m6"  ,"a6",);
-                    valueChange("m7"  ,"a7",);
-
-                    valueChange(null  ,"asltx" ,parseFloat($('#asl' ).val()));
-                    valueChange(null  ,"ashltx" ,parseFloat($('#ashl' ).val()));
-                    valueChange("m4"  ,"atx4",);
-                    valueChange("m5"  ,"atx5",);
-                    valueChange("m6"  ,"atx6",);
-                    valueChange("m7"  ,"atx7",);
-
-                    valueChange(null  ,"lzf1" ,parseFloat($('#lbx' ).val())-0.9);
-                    valueChange("m4"  ,"lzf4",);
-                    valueChange("m5"  ,"lzf5",);
-                    valueChange("m6"  ,"lzf6",);
-                    valueChange(null  ,"lzf7" ,parseFloat($('#lz7' ).val()) );
-                    valueChange(null  ,"lzf9"  ,parseFloat($('#lz9').val()) );
-                    valueChange(null  ,"lzf10" ,parseFloat($('#lz10' ).val()) );
-                    valueChange(null  ,"lzf11" ,parseFloat($('#lz11' ).val()) );
-                    valueChange(null ,"lzf12" ,parseFloat($("#lg").val()/2));
-                    valueChange(null ,"lzf13" ,parseFloat($("#lg").val()/2));
-
-                    valueChange(null  ,"lh1"   ,parseFloat($('#lzf1').val())+   parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lh2"   ,parseFloat($('#lzf2').val())+   parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lh3"   ,parseFloat($('#lzf3').val())+   parseFloat($('#lg' ).val())/2);
-                    valueChange("m4"  ,"lh4"   ,parseFloat($('#lzf4').val())+   parseFloat($('#lg' ).val())/2);
-                    valueChange("m5"  ,"lh5"   ,parseFloat($('#lzf5').val())+   parseFloat($('#lg' ).val())/2);
-                    valueChange("m6"  ,"lh6"   ,parseFloat($('#lzf6').val())+   parseFloat($('#lg' ).val())/2);
-                    valueChange("m7"  ,"lh7"   ,parseFloat($('#lzf7').val())-   parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lh8"   ,parseFloat($('#lzf8').val())-   parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lh9"   ,parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lh10" ,parseFloat(-$('#lzf10').val())+ parseFloat($('#lg' ).val())/2);
-                    valueChange(null  ,"lh11" ,parseFloat($('#lg' ).val())/2);
-                    valueChange("m12"  ,"lh12",parseFloat($('#lg').val()));
-
-                    valueChange("m4"  ,"hf4",);
-                    valueChange("m5"  ,"hf5",);
-                    valueChange("m6"  ,"hf6",);
-                    valueChange("m7"  ,"hf7",);
-                    valueChange(null ,"hf10",parseFloat($("#h10").val()) );
-                    valueChange(null ,"hf11",parseFloat($("#h11").val()) );
-                    valueChange(null ,"hf12",parseFloat($("#h12").val()) );
-                    valueChange(null ,"hf13",parseFloat($("#h13").val()) );
-
-                    valueChange(null ,"af1",parseFloat($("#a1").val()));
-                    valueChange(null ,"af3",parseFloat($("#a3").val()));
-                    valueChange("m4" ,"af4",);
-                    valueChange("m5" ,"af5",);
-                    valueChange("m6" ,"af6",);
-                    valueChange(null ,"af7",parseFloat($("#a7").val()) );
-                    valueChange(null ,"af8",parseFloat($("#a8").val()) );
-                    valueChange(null ,"af10",parseFloat($("#a10").val()));
-                    valueChange(null ,"af11",parseFloat($("#a11").val()));
-
-                    valueChange("m4"  ,"aft4",);
-                    valueChange("m5"  ,"aft5",);
-                    valueChange("m6"  ,"aft6",);
-                    valueChange("m7"  ,"aft7",);
-                    valueChange(null ,"aft11",parseFloat($("#atx11").val()));
-                }
-                $("input[type='text']").change(initcopy);
-        })
+        function disenable(name) {
+            $("#" + name).css({"background-color":"#BBB"});
+            $("#" + name).attr("readonly",true);
+            if($("#" + name)[0].tagName=="SELECT")
+                $("#" + name).attr("disabled",true);
+        }
         function showImage(form,element) {
             // 先获取用户上传的文件对象
             var fileObj = form.files[0];
@@ -300,9 +138,9 @@
             }
         };
 
-        function janyan() {
+        function janyan(URL) {
             $.ajax({
-                url: "Stability/jy",
+                url: URL,
                 type: "post",
                 data: $("form").serialize(),
                 async: false,
@@ -324,9 +162,410 @@
             $("#"+id.slice(0,1)+"w"+ id.slice(1,3)).val(e.val());
         }
     </script>
+    <script>
+        var copyvalue;
+        var valueChange;
+        var isYou=true;
+        function yunXingJiGou(){
+            disenable("select1");
+            $("input[name=radio]").change(function(){
+                     radioselected = $(this).val();
+                if(radioselected=="无") {
+                    isYou=false;
+                    $("#select1").attr("disabled", true);
+                    $("#select1").css("background-color", "#BBB");
+                    $("#n1").val(0).css({"background-color":"#BBB"});
+                    $("#n2").val(0).css({"background-color":"#BBB"});
+                    $("#fj").val(0).css({"background-color":"#BBB"});
+                    $("#lsxh").val("").css({"background-color":"#BBB"});
+                    $("#m12").val(0).css({"background-color":"#BBB"});
+                    $("#m13").val(0).css({"background-color":"#BBB"});
+                }else{
+                    isYou=true;
+                    $("#select1").attr("disabled",false);
+                    $("#select1").css("background-color", "#FFF");
+                    $("#n1").val(2).css({"background-color":"#BBB"});
+                    $("#n2").val(4).css({"background-color":"#BBB"});
+                }
+                $("#select1").change();
+            });
+            $("#tanxingxinhao").change(function(){
+                var selected = $(this).val();
+                var txxxh ="",ft,nt,txxcl;
+                switch (selected) {
+                    case "Ф12":txxxh="Ф12";
+                        ft="104100";
+                        $("#tanxingdengji").attr("disabled",false);
+                        break;
+                    case "Ф16":txxxh="Ф16";
+                        ft="171000";
+                        $("#tanxingdengji").attr("disabled",false);
+                        break;
+                    case "Ф20":txxxh="Ф20";
+                        ft="280600";
+                        $("#tanxingdengji").attr("disabled",false);
+                        break;
+                    case "无":txxxh="无";
+                        ft="0";
+                        $("#tanxingdengji").attr("disabled",true);
+                        nt=0;
+                        txxcl="无";
+                        break;
+                }
+                $("#txxxh").val(txxxh).css({"background-color":"#BBB"});
+                $("#txxcl").val(txxcl).css({"background-color":"#BBB"});
+                $("#ft").val(ft).css({"background-color":"#BBB"});
+                (nt!=undefined)?$("#nt").val(nt).css({"background-color":"#BBB"}):$("#nt").css({"background-color":"#FFF"});
+                $("#tanxingdengji").change();
+            })
+            $("#tanxingdengji").change(function(){
+                var selected = $(this).val();
+
+                var disabled=$("#tanxingxinhao").val()!="无";
+                if(disabled)
+                    $("#txxcl").val(selected).css({"background-color":"#BBB"});
+            })
+            $("#select1").change(function(){
+                var selected = $(this).val();
+                var lsxh="",fj,m12,m13;
+                switch (selected) {
+                    case "160LZ":
+                        lsxh="M12";fj=10790.4;break;
+                    case "170LZ":
+                    case"200LZ":
+                    case"230LZ":
+                    case"260LZ":
+                        lsxh="M16";fj=20096;break;
+                    case "350":
+                    case "450":
+                        lsxh="M20";fj=31360;break;
+                }
+                switch (selected) {
+                    case "160LZ":
+                        m12=70;
+                        m13=52;
+                        break;
+                    case "170LZ":
+                        m12=155;
+                        m13=130;
+                        break;
+                    case"200LZ":
+                        m12=175;
+                        m13=140;
+                        break;
+                    case"230LZ":
+                        m12=235;
+                        m13=195;
+                        break;
+                    case"260LZ":
+                        m12=296;
+                        m13=230;break;
+                    case "350":
+                        m12=420;
+                        m13=360;
+                        break;
+                    case "450":
+                        m12=1020;
+                        m13=825;
+                        break;
+                }
+                if(radioselected!="无") {
+                    m12&&$("#m12").val(m12 * 2).css({"background-color": "#BBB"});
+                    m13&&$("#m13").val(m13 * 2).css({"background-color": "#BBB"});
+                } else {
+                    $("#m12").val(0).css({"background-color": "#BBB"});
+                    $("#m13").val(0).css({"background-color": "#BBB"});
+                }
+                $("#lsxh").val(lsxh).css({"background-color":"#BBB"});
+                $("#fj").val($("#n1").val()==0?0:fj).css({"background-color":"#BBB"});
+                copyvalue();
+            })
+        }
+        function diJiaoLuoShuanXinHao(){
+            $("#luoshuan").change(function(){
+                var selected = $(this).val();
+                var djlsxh,a;
+                switch (selected) {
+                    case "M16": djlsxh="M16";a=157;break;
+                    case "M20": djlsxh="M20";a=245;break;
+                    case "M24": djlsxh="M24";a=353;break;
+                    case "M30": djlsxh="M30";a=561;break;
+                }
+                $("#djlsxh").val(djlsxh).css({"background-color":"#BBB"});
+                $("#a").val(a).css({"background-color":"#BBB"});
+                copyvalue();
+            })
+        }
+        var s3,s5;
+        function qiShengJiGou(){
+            $("#qishenjigou").change(function (){
+                var selected=$(this).val()
+                var temp,m10;
+                switch (selected) {
+                    case "105起升机构":
+                        !m10&&(m10=785);
+                    case "145起升机构":
+                        !m10&&(m10=830);
+                    case "175起升机构":
+                        !m10&&(m10=1450);
+                    case "275起升机构":
+                        !m10&&(m10=1500);
+                        !temp&&(temp=0.179);
+                    case "185起升机构":
+                        !m10&&(m10=2057);
+                    case "285起升机构":
+                        !m10&&(m10=2500);
+                    case "385起升机构":
+                        !m10&&(m10=3980);
+                        !temp&&(temp=0.244);
+                    case "295起升机构":
+                        !m10&&(m10=2750);
+                    case "495起升机构":
+                        !m10&&(m10=3585);
+                        !temp&&(temp=0.391);break;
+                    case "313起升机构":
+                        !m10&&(m10=4880);
+                        !temp&&(temp=0.65);
+                }
+                s3=temp;
+                $("#m10").val(m10).css({"background-color":"#BBB"});
+                valueChange(null,"s3",temp*parseFloat($("#h").val())*4);
+                copyvalue();
+            })
+        }
+        function gru(){
+            $("#gru").change(function (){
+                var selected=$(this).val()
+                switch (selected) {
+                    case "GRU 285":s5=0.252;m3=235;break;
+                    case "GRU 295":s5=0.391;m3=285;break;
+                    case "GRU 313":s5=0.65; m3=385;break;
+                }
+                $("#m3").val(m3).css({"background-color":"#BBB"});
+                valueChange(null,"s5",parseFloat($("#h").val())*s5);
+                copyvalue();
+            })
+        }
+        var readonlyList;
+        function initReadonly() {
+            readonlyList= [
+            "mz",
+            "mzf"]
+            readonlyList.forEach(function (value) {
+                disenable(value);
+            })
+        }
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            InitNav(1)
+            $('#Stability').addClass('o-sub-cur');
+            $("#pf").attr("readonly",true);
+            $("#pf").css({"background-color":"#BBB"});
+
+            initReadonly();
+            $("#h").change(
+                function changeInput(event) {
+                    var e = event || window.event;
+                    $("#pf").attr("readonly",true);
+                    $("#pf").css({"background-color":"#BBB"});
+                    var temp=parseInt($("#h").val());
+                    if(temp>=0&&temp<=20)
+                        $("#pf").val(800);
+                    else if(temp>=20&&temp<=100)
+                        $("#pf").val(1100);
+                    else if(temp>=100&&temp<=150)
+                        $("#pf").val(1300);
+                    else{
+                        $("#pf").attr("readonly",false);
+                        $("#pf").css({"background-color":"#FFF"});
+                    }
+                });
+            yunXingJiGou();
+            diJiaoLuoShuanXinHao();
+            qiShengJiGou();
+            gru();
+            // $("#radio1").attr("checked","true");
+            function getString(v){
+                if(Math.floor(v*100)%100==0)
+                    return v.toFixed(0);
+                else  if(Math.floor(v*100)%10==0)
+                    return v.toFixed(1);
+                return v.toFixed(2);
+            }
+            function f(b){
+                var a=0.0;
+                for(var i=1;i<arguments.length;i++){
+                    if(!$('#'+arguments[i]).val())
+                        return ;
+                    a+=parseFloat($('#'+arguments[i] ).val());
+                    console.log(parseFloat($('#'+arguments[i] ).val()))
+                }
+                $("#" + b).css({"background-color":"#BBB"});
+                $("#" + b).val(getString(parseFloat(a)));
+            }
+            valueChange=function(a,b,temp,has) {
+                if(has!=null&&!has){
+                    $("#" + b).css({"background-color": "#BBB"});
+                    $("#" + b).val(0);
+                    return;
+                }
+                if(a&&b&&parseInt($("#"+a).val())==0) {
+                    $("#" + b).val(0);
+                    $("#" + b).css({"background-color":"#BBB"});
+                    // $("#" + b).attr("readonly",true);
+                    return;
+                }else if(temp||temp==0){
+                    if(temp==""&&temp!="0") {
+                        $("#" + b).css({"background-color": "#FFF"});
+                        !readonlyList[b]&&$("#" + b).attr("readonly",false);
+                        return;
+                    }
+                    $("#" + b).css({"background-color":"#BBB"});
+                    var val=parseFloat(temp);
+                    $("#" + b).val(getString(val));
+                    return;
+                }
+                $("#" + b).css({"background-color":"#FFF"});
+                $("#" + b).attr("readonly",false);
+            }
+            valueChange(null,"lq12" ,0);
+            valueChange(null,"lh13",0);
+            copyvalue=function initcopy(){
+                valueChange(null  ,"fb" ,parseFloat($('#a' ).val())*270*0.64);
+                valueChange(null  ,"fn" ,2*parseFloat($('#nn3' ).val())*parseFloat($('#fb' ).val()));
+                valueChange(null  ,"s3", s3*parseFloat($("#h").val())*4);
+                valueChange(null,"s5",parseFloat($("#h").val())*s5);
+                valueChange(null,"aft6",parseFloat($("#atx6").val()));
+                f("tsl","s1","s2","s3");
+                f("tshl","s4","s5");
+                f("mzf","m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12","m13");
+                f("mz","tsl","tshl","m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12","m13");
+
+                valueChange(null  ,"lslz" ,parseFloat($('#lbd' ).val()));
+                valueChange(null  ,"lshlz",parseFloat($('#lslz').val())-0.9);
+                valueChange(null  ,"lz1"  ,parseFloat($('#lslz').val())-0.9);
+                valueChange("m4","lz4");
+                valueChange("m5","lz5");
+                valueChange("m7","lz7");
+                valueChange(null,"lz8",parseFloat($("#lbp").val()));
+                valueChange(null,"lz12",parseFloat($("#lg").val())/2,isYou);
+                valueChange(null,"lz13",parseFloat($("#lg").val())/2,isYou);
+
+                valueChange(null,"lq12" ,0);
+                valueChange(null,"lh13",0);
+
+                valueChange(null  ,"lslq" ,parseFloat($('#lslz' ).val())-parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lshlq",parseFloat($('#lshlz').val())-parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq1"  ,parseFloat($('#lz1'  ).val())-parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq2"  ,parseFloat($('#lz2'  ).val())-parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq3"  ,parseFloat($('#lg'   ).val())/2-parseFloat($('#lz3').val()));
+                valueChange("m4"  ,"lq4"  ,parseFloat($('#lg'   ).val())/2-parseFloat($('#lz4').val()));
+                valueChange("m5"  ,"lq5"  ,parseFloat($('#lz5'  ).val())- parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq6"  ,parseFloat($('#lg' ).val())/2);
+                valueChange("m7"  ,"lq7"  ,parseFloat($('#lz7'  ).val())+ parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq8"  ,parseFloat($('#lz8'  ).val())+ parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq9"  ,parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq10" ,parseFloat($('#lz10' ).val())+parseFloat($('#lg' ).val())/2);
+                valueChange(null  ,"lq11" ,parseFloat($('#lg' ).val())/2);
+                valueChange("m13" ,"lq13" ,parseFloat($('#lg' ).val()),isYou);
+
+                valueChange(null  ,"lslql" ,parseFloat($('#lslz' ).val())-  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lshlql",parseFloat($('#lshlz').val())-  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql1"  ,parseFloat($('#lz1'  ).val())-  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql2"  ,parseFloat($('#lz2'  ).val())-  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql3"  ,parseFloat($('#ll'   ).val())/2-parseFloat($('#lz3').val()));
+                valueChange("m4"  ,"lql4"  ,parseFloat($('#ll'   ).val())/2-parseFloat($('#lz4').val()));
+                valueChange("m5"  ,"lql5"  ,parseFloat($('#lz5'  ).val())-  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql6"  ,parseFloat($('#ll' ).val())/2);
+                valueChange("m7"  ,"lql7"  ,parseFloat($('#lz7'  ).val())+  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql8"  ,parseFloat($('#lz8'  ).val())+  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql9"  ,parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql10" ,parseFloat($('#lz10' ).val())+  parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lql11" ,parseFloat($('#ll' ).val())/2);
+                valueChange(null ,"lql12" ,parseFloat($('#lg' ).val()),isYou);
+                valueChange(null ,"lql13" ,parseFloat($('#lg' ).val()),isYou);
+
+                valueChange("m4"  ,"h4");
+                valueChange("m5"  ,"h5");
+                valueChange("m7"  ,"h7");
+                valueChange(null ,"h12" ,"",isYou);
+                valueChange(null ,"h13" ,"",isYou);
+
+                valueChange("m4"  ,"a4",null);
+                valueChange("m5"  ,"a5",null);
+                valueChange("m7"  ,"a7",null);
+                valueChange(null ,"a12" ,"",isYou);
+                valueChange(null ,"a13" ,"",isYou);
+
+
+                valueChange(null  ,"asltx" ,parseFloat($('#asl' ).val()));
+                valueChange(null  ,"ashltx" ,parseFloat($('#ashl' ).val()));
+                valueChange("m4"  ,"atx4");
+                valueChange("m5"  ,"atx5");
+                valueChange("m7"  ,"atx7");
+                valueChange(null ,"atx12" ,null,isYou);
+                valueChange(null ,"atx13" ,null,isYou);
+
+                valueChange(null  ,"lzf1" ,parseFloat($('#lbx' ).val())-0.9);
+                valueChange("m4"  ,"lzf4");
+                valueChange("m5"  ,"lzf5");
+                valueChange(null  ,"lzf6"  ,parseFloat($('#lz6' ).val()));
+                valueChange(null  ,"lzf7"  ,parseFloat($('#lz7' ).val()) );
+                valueChange(null  ,"lzf9"  ,parseFloat($('#lz9').val()) );
+                valueChange(null  ,"lzf10" ,parseFloat($('#lz10' ).val()) );
+                valueChange(null  ,"lzf11" ,parseFloat($('#lz11').val()) );
+                valueChange(null ,"lzf12"  ,parseFloat($("#lg").val())/2,isYou);
+                valueChange(null ,"lzf13"  ,parseFloat($("#lg").val())/2,isYou);
+
+                valueChange(null  ,"lh1"   ,parseFloat($('#lzf1').val())+   parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lh2"   ,parseFloat($('#lzf2').val())+   parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lh3"   ,parseFloat($('#lzf3').val())+   parseFloat($('#ll' ).val())/2);
+                valueChange("m4"  ,"lh4"   ,parseFloat($('#lzf4').val())+   parseFloat($('#ll' ).val())/2);
+                valueChange("m5"  ,"lh5"   ,parseFloat($('#lzf5').val())+   parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lh6"   ,parseFloat($('#ll' ).val())/2);
+                valueChange("m7"  ,"lh7"   ,parseFloat($('#lzf7').val())-   parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lh8"   ,parseFloat($('#lzf8').val())-   parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lh9"   ,parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lh10"  ,parseFloat(-$('#lzf10').val())+ parseFloat($('#ll' ).val())/2);
+                valueChange(null  ,"lh11"  ,parseFloat($('#ll' ).val())/2);
+                valueChange("m12"  ,"lh12" ,parseFloat($('#ll').val()),isYou);
+
+                valueChange("m4"  ,"hf4");
+                valueChange("m5"  ,"hf5");
+                valueChange(null  ,"hf6",parseFloat($("#h6").val()) );
+                valueChange("m7"  ,"hf7");
+                valueChange(null ,"hf10",parseFloat($("#h10").val()) );
+                valueChange(null ,"hf11",parseFloat($("#h11").val()) );
+                valueChange(null ,"hf12",parseFloat($("#h12").val()) );
+                valueChange(null ,"hf13",parseFloat($("#h13").val()) );
+
+                valueChange(null ,"af1",parseFloat($("#a1").val()));
+                valueChange(null ,"af3",parseFloat($("#a3").val()));
+                valueChange("m4" ,"af4");
+                valueChange("m5" ,"af5");
+                valueChange(null ,"af6",parseFloat($("#a6").val()));
+                valueChange(null ,"af7",parseFloat($("#a7").val()) );
+                valueChange(null ,"af8",parseFloat($("#a8").val()) );
+                valueChange(null ,"af10",parseFloat($("#a10").val()));
+                valueChange(null ,"af11",parseFloat($("#a11").val()));
+                valueChange(null ,"af12",parseFloat($("#a12").val()));
+                valueChange(null ,"af13",parseFloat($("#a13").val()));
+
+                valueChange("m4"  ,"aft4");
+                valueChange("m5"  ,"aft5");
+                valueChange("m7"  ,"aft7");
+                valueChange(null ,"aft11",parseFloat($("#atx11").val()));
+                valueChange(null ,"aft12",parseFloat($("#atx12").val()));
+                valueChange(null ,"aft13",parseFloat($("#atx13").val()));
+            }
+            $("input[type='text']").change(copyvalue);
+        })
+    </script>
 </head>
 <body>
-<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
 <div class="main">
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
@@ -334,22 +573,22 @@
     <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop"
           th:opType="@{/PinSeatEntity}" th:Object="${StabilityEnity}"
           method="post" enctype="multipart/form-data">
+
         <div class="tabletitle" >稳定性校核及轮压计算书</div>
-        <table style="width: 100%">
-            <tr>
-                <td colspan="3">
-                    <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                        <img alt="擦窗机各部件载荷" id="image1"   name="image1">
+
+                    <div class="subtable" style="height:380px;text-align: center;padding: 10px 0 0px 0;overflow: hidden;border:1px solid #aaa;">
+                        <div style="height:335px">
+                            <img alt="擦窗机各部件载荷" id="image1"   name="image1">
+                        </div>
+                        <table>
+                            <tr>
+                                <td style="padding:10px 0;font-size: 14px">选择擦窗机总图</td>
+                                <td colspan="2" style="font-size: 14px"><input class="image" type="file" name="tu1"  accept="image/*" oninput="showImage(this,'image1')"/></td>
+                            </tr>
+                        </table>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="padding:10px 0;font-size: 14px">选择擦窗机总图</td>
-                <td colspan="2" style="font-size: 14px"><input class="image" type="file" name="tu1"  accept="image/*" oninput="showImage(this,'image1')"/></td>
-            </tr>
-            <tr>
+
                 <!--封面内容-->
-                <td>
                 <div class="subtable" >
 
                     <table class="tb">
@@ -394,113 +633,132 @@
                         </tr>
                     </table>
                 </div>
-            </td>
+
                 <!--擦窗机参数-->
-                <td >
-                <div class="subtable" >
-                    <table class="tb">
+
+
+        <!--有无行走机构选择-->
+        <!--起升高度及非工作时风压-->
+        <!--埋件的抗倾覆力矩相关参数-->
+        <!--起升高度及非工作时风压-->
+
+        <div class="subtable" >
+            <table class="tb">
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">擦窗机参数</td>
+                </tr>
+                <tr>
+                    <td style="width:30%;padding:10px 0;;">名称</td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:36%;">数值</td>
+                    <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
+                    <td>最大臂长</td>
+                    <td>
+                        <p><i>L<sub>bd</sub></i></p>
+                    </td>
+                    <td><input name="lbd" type="text" th:field="*{lbd}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>最小臂长</td>
+                    <td>
+                        <p><i>L<sub>bx</sub></i></p>
+                    </td>
+                    <td><input name="lbx" type="text" th:field="*{lbx}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>最大配重臂长</td>
+                    <td>
+                        <p><i>L<sub>bp</sub></i></p>
+                    </td>
+                    <td><input name="lbp" type="text" th:field="*{lbp}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>轨距</td>
+                    <td>
+                        <p><i>L<sub>g</sub></i></p>
+                    </td>
+                    <td><input name="lg" type="text" th:field="*{lg}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>轮距</td>
+                    <td>
+                        <p><i>L<sub>l</sub></i></p>
+                    </td>
+                    <td><input name="ll" type="text" th:field="*{ll}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>惯性力作用高度</td>
+                    <td>
+                        <p><i>H</sub></i></p>
+                    </td>
+                    <td><input name="hh" type="text" th:field="*{hh}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>工作状态整机质量</td>
+                    <td>
+                        <p><i>m<sub>z</sub></i></p>
+                    </td>
+                    <td><input name="mz" type="text" th:field="*{mz}" /></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>非工作状态整机质量</td>
+                    <td>
+                        <p><i>m<sub>zf</sub></i></p>
+                    </td>
+                    <td><input name="mzf" type="text" th:field="*{mzf}" /></td>
+                    <td>kg</td>
+                </tr>
+
                         <tr>
-                            <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">擦窗机参数</td>
+                            <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">运行机构</td>
                         </tr>
                         <tr>
-                            <td style="width:30%;padding:10px 0;;">名称</td>
-                            <td style="width:17%;">符号</td>
-                            <td style="width:36%;">数值</td>
-                            <td style="width:17%;">单位</td>
-                        </tr>
-                        <tr>
-                            <td>最大臂长</td>
-                            <td>
-                                <p><i>L<sub>bd</sub></i></p>
-                            </td>
-                            <td><input name="lbd" type="text" th:field="*{lbd}" /></td>
-                            <td>m</td>
-                        </tr>
-                        <tr>
-                            <td>最小臂长</td>
-                            <td>
-                                <p><i>L<sub>bx</sub></i></p>
-                            </td>
-                            <td><input name="lbx" type="text" th:field="*{lbx}" /></td>
-                            <td>m</td>
-                        </tr>
-                        <tr>
-                            <td>最大配重臂长</td>
-                            <td>
-                                <p><i>L<sub>bp</sub></i></p>
-                            </td>
-                            <td><input name="lbp" type="text" th:field="*{lbp}" /></td>
-                            <td>m</td>
-                        </tr>
-                        <tr>
-                            <td>轨距</td>
-                            <td>
-                                <p><i>L<sub>g</sub></i></p>
-                            </td>
-                            <td><input name="lg" type="text" th:field="*{lg}" /></td>
-                            <td>m</td>
-                        </tr>
-                        <tr>
-                            <td>轮距</td>
-                            <td>
-                                <p><i>L<sub>l</sub></i></p>
-                            </td>
-                            <td><input name="ll" type="text" th:field="*{ll}" /></td>
-                            <td>m</td>
-                        </tr>
-                        <tr>
-                            <td>惯性力作用高度</td>
-                            <td>
-                                <p><i>H</sub></i></p>
-                            </td>
-                            <td><input name="hh" type="text" th:field="*{hh}" /></td>
-                            <td>m</td>
-                        </tr>
-                        <tr>
-                            <td>工作状态整机质量</td>
-                            <td>
-                                <p><i>m<sub>z</sub></i></p>
-                            </td>
-                            <td><input name="mz" type="text" th:field="*{mz}" /></td>
-                            <td>kg</td>
-                        </tr>
-                        <tr>
-                            <td>非工作状态整机质量</td>
-                            <td>
-                                <p><i>m<sub>zf</sub></i></p>
-                            </td>
-                            <td><input name="mzf" type="text" th:field="*{mzf}" /></td>
-                            <td>kg</td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-                <!--有无行走机构选择-->
-                <!--起升高度及非工作时风压-->
-                <!--埋件的抗倾覆力矩相关参数-->
-                <td  >
-                <div class="subtable" >
-                    <table class="tb">
-                        <tr>
-                            <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">行走机构</td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">有无行走机构</td>
+                            <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">有无运行机构</td>
                             <td colspan="3" style="font-size: 14px">
                                 <table width="100%">
                                     <tr>
                                         <td  style="width:50%; border:0">
-                                            <input type="radio" name="radio" value="有"  th:field="*{radio}" />有
+                                            <input  style="width:10%;" type="radio" name="radio" value="有"  th:field="*{radio}" />有
                                         </td>
                                         <td style="width:50%;border:0">
-                                            <input type="radio" name="radio" value="无" th:field="*{radio}"/>无
+                                            <input  style="width:10%;" type="radio" name="radio" value="无" th:field="*{radio}"/>无
                                         </td>
                                     </tr>
                                 </table>
                             </td>
                         </tr>
                         <tr>
-                            <td>最大承受剪力</td>
+                            <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">运行机构选择</td>
+                            <td colspan="3" style="font-size: 14px">
+                               <select id="select1" style="width:100%;height:40px;text-align-last:center">
+                                   <option style="display: none"></option>
+                                   <option value="160LZ">160LZ</option>
+                                   <option value="170LZ">170LZ</option>
+                                   <option value="200LZ">200LZ</option>
+                                   <option value="230LZ">230LZ</option>
+                                   <option value="260LZ">260LZ</option>
+                                   <option value="350">350</option>
+                                   <option value="450">450</option>
+                               </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>固定螺栓型号</td>
+                            <td></td>
+                            <td><input name="lsxh" type="text" th:field="*{lsxh}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>螺栓最大许用剪力</td>
                             <td>
                                 <p><i>F<sub>j</sub></i></p>
                             </td>
@@ -516,20 +774,64 @@
                             <td>个</td>
                         </tr>
                         <tr>
-                            <td>单个防倾装置上的螺栓数</td>
+                            <td>单个运行轮上的螺栓数</td>
                             <td>
                                 <p><i>n<sub>2</sub></i></p>
                             </td>
                             <td><input name="n2" type="text" th:field="*{n2}" /></td>
                             <td>个</td>
                         </tr>
-
-                        <!--起升高度及非工作时风压-->
+                        <tr>
+                            <td>弹性销型号选择</td>
+                            <td colspan="3">
+                                <select id="tanxingxinhao" style="width:100%;height:40px;text-align-last:center">
+                                    <option style="display: none"></option>
+                                    <option value="Ф12">Ф12</option>
+                                    <option value="Ф16">Ф16</option>
+                                    <option value="Ф20">Ф20</option>
+                                    <option value="无">无</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>弹性销性能等级</td>
+                            <td colspan="3">
+                                <select id="tanxingdengji" style="width:100%;height:40px;text-align-last:center">
+                                    <option style="display: none"></option>
+                                    <option value="65Mn">65Mn</option>
+                                    <option value="A2-70">A2-70</option>
+                                </select>
+                            </td>
+                        </tr>
+                <tr>
+                    <td>弹性销型号</td>
+                    <td><p><i></i></p></td>
+                    <td><input name="txxxh" id="txxxh" type="text" th:field="*{txxxh}"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>弹性销性能等级</td>
+                    <td><p><i></i></p></td>
+                    <td><input name="txxcl" id="txxcl" type="text" th:field="*{txxcl}"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>最小双面剪切载荷</td>
+                    <td><p><i>F<sub>t</sub></i></p></td>
+                    <td><input name="ft" id="ft" type="text" th:field="*{ft}"/></td>
+                    <td>N</td>
+                </tr>
+                <tr>
+                    <td>单个运行轮上的弹性销数</td>
+                    <td><p><i>nt</i></p></td>
+                    <td><input name="nt" id="nt" type="text" th:field="*{nt}"/></td>
+                    <td>个</td>
+                </tr>
                         <tr>
                             <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">起升高度及非工作时风压</td>
                         </tr>
                         <tr>
-                            <td>设备安装高度</td>
+                            <td>起升高度</td>
                             <td>
                                 <p><i>h</sub></i></p>
                             </td>
@@ -549,7 +851,33 @@
                             <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">埋件的抗倾覆力矩相关参数</td>
                         </tr>
                         <tr>
-                            <td>最大反拔力</td>
+                            <td>地脚螺栓型号选择</td>
+                            <td colspan="3">
+                                <select id="luoshuan" style="width:100%;height:40px;text-align-last:center">
+                                    <option style="display: none"></option>
+                                    <option value="M16">M16</option>
+                                    <option value="M20">M20</option>
+                                    <option value="M24">M24</option>
+                                    <option value="M30">M30</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>地脚螺栓型号</td>
+                            <td></td>
+                            <td><input name="djlsxh" type="text" th:field="*{djlsxh}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>螺栓公称应力截面积</td>
+                            <td>
+                                <p><i>A</i></p>
+                            </td>
+                            <td><input name="a" type="text" th:field="*{a}" /></td>
+                            <td>mm<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>单个地脚螺栓可承受最大反拔力</td>
                             <td>
                                 <p><i>F<sub>b</sub></i></p>
                             </td>
@@ -557,22 +885,26 @@
                             <td>N</td>
                         </tr>
                         <tr>
-                            <td>螺栓个数</td>
+                            <td>单个埋板上的地脚螺栓个数</td>
                             <td>
-                                <p><i>n<sub>3</sub></i></p>
+                                <p><i>nn<sub>3</sub></i></p>
                             </td>
-                            <td><input name="n3" type="text" th:field="*{n3}" /></td>
+                            <td><input name="nn3" type="text" th:field="*{nn3}" /></td>
                             <td>个</td>
+                        </tr>
+                        <tr>
+                            <td>地脚螺栓组可承受总反拔力</td>
+                            <td>
+                                <p><i>F<sub>n</sub></i></p>
+                            </td>
+                            <td><input name="fn" type="text" th:field="*{fn}" /></td>
+                            <td>N</td>
                         </tr>
                     </table>
                 </div>
-            </td>
-            </tr>
 
-            </tr>
-            <tr>
                 <!--擦窗机各部件载荷-->
-                <td>
+
                     <div class="subtable">
                         <table class="tb">
                             <tr>
@@ -590,10 +922,57 @@
                                 <td colspan="5"><input class="image" type="file" name="tu2"  accept="image/*" oninput="showImage(this,'tu2')"/></td>
                             </tr>
                             <tr>
+                                <td>起升机构选择</td>
+                                <td colspan="3">
+                                    <select id="qishenjigou" style="width:100%;height:40px;text-align-last:center">
+                                        <option style="display: none"></option>
+                                        <option value="105起升机构">105起升机构</option>
+                                        <option value="145起升机构">145起升机构</option>
+                                        <option value="175起升机构">175起升机构</option>
+                                        <option value="275起升机构">275起升机构</option>
+                                        <option value="185起升机构">185起升机构</option>
+                                        <option value="285起升机构">285起升机构</option>
+                                        <option value="385起升机构">385起升机构</option>
+                                        <option value="295起升机构">295起升机构</option>
+                                        <option value="495起升机构">495起升机构</option>
+                                        <option value="313起升机构">313起升机构</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GRU选择</td>
+                                <td colspan="3">
+                                    <select id="gru" style="width:100%;height:40px;text-align-last:center">
+                                        <option style="display: none"></option>
+                                        <option value="GRU 285">GRU 285</option>
+                                        <option value="GRU 295">GRU 295</option>
+                                        <option value="GRU 313">GRU 313</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td style="width:30%;padding:10px 0;;">名称</td>
                                 <td style="width:17%;">符号</td>
                                 <td style="width:36%;">数值</td>
                                 <td style="width:17%;">单位</td>
+                            </tr>
+                            <tr>
+                                <td>吊船自重</td>
+                                <td><p><i>s1</i></p></td>
+                                <td><input name="s1" id="s1" type="text" th:field="*{s1}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td>吊船额定载重量</td>
+                                <td><p><i>s2</i></p></td>
+                                <td><input name="s2" id="s2" type="text" th:field="*{s2}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td>吊船钢丝绳自重</td>
+                                <td><p><i>s3</i></p></td>
+                                <td><input name="s3" id="s3" type="text" th:field="*{s3}"/></td>
+                                <td>kg</td>
                             </tr>
                             <tr>
                                 <td>总悬挂载荷</td>
@@ -601,6 +980,18 @@
                                     <p><i>Tsl</sub></i></p>
                                 </td>
                                 <td><input name="tsl" type="text" th:field="*{tsl}" /></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td>物料起升机构额定载重量</td>
+                                <td><p><i>s4</i></p></td>
+                                <td><input name="s4" id="s4" type="text" th:field="*{s4}"/></td>
+                                <td>kg</td>
+                            </tr>
+                            <tr>
+                                <td>物料起升机构钢丝绳自重 </td>
+                                <td><p><i>s5</i></p></td>
+                                <td><input name="s5" id="s5" type="text" th:field="*{s5}"/></td>
                                 <td>kg</td>
                             </tr>
                             <tr>
@@ -652,7 +1043,7 @@
                                 <td>kg</td>
                             </tr>
                             <tr>
-                                <td>其它Ⅱ</td>
+                                <td>回转机构自重</td>
                                 <td>
                                     <p><i>m<sub>6</sub></i></p>
                                 </td>
@@ -692,7 +1083,7 @@
                                 <td>kg</td>
                             </tr>
                             <tr>
-                                <td>底架及回转机构自重</td>
+                                <td>底架自重</td>
                                 <td>
                                     <p><i>m<sub>11</sub></i></p>
                                 </td>
@@ -717,9 +1108,9 @@
                             </tr>
                         </table>
                     </div>
-                </td>
+
                 <!--擦窗机各部件重心至回转中心距离-->
-                <td>
+
                     <div class="subtable">
                         <table class="tb">
                             <tr>
@@ -838,7 +1229,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>其它Ⅱ至回转中心距离</td>
+                                <td>回转机构至回转中心距离</td>
                                 <td>
                                     <p><i>L<sub>z6</sub></i></p>
                                 </td>
@@ -898,7 +1289,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>底架及回转机构至回转中心距离</td>
+                                <td>底架至回转中心距离</td>
                                 <td>
                                     <p><i>L<sub>z11</sub></i></p>
                                 </td>
@@ -935,10 +1326,10 @@
                             </tr>
                         </table>
                     </div>
-                </td>
+
 
                 <!--风载荷作用高度-->
-                <td>
+
                     <div class="subtable">
                         <table class="tb">
                             <tr>
@@ -1058,7 +1449,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>其它Ⅱ至轨道上平面高度</td>
+                                <td>回转机构至轨道上平面高度</td>
                                 <td>
                                     <p><i>h6</sub></i></p>
                                 </td>
@@ -1118,7 +1509,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>底架及回转机构至轨道上平面高度</td>
+                                <td>底架至轨道上平面高度</td>
                                 <td>
                                     <p><i>h11</sub></i></p>
                                 </td>
@@ -1155,13 +1546,10 @@
                             </tr>
                         </table>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
+
                 <!--擦窗机各部件迎风面积（大臂侧向）-->
 
-                <td>
+
                     <div class="subtable">
                         <table class="tb">
                             <tr>
@@ -1280,7 +1668,7 @@
                                 <td>m<sup>2</sup></td>
                             </tr>
                             <tr>
-                                <td>其它Ⅱ迎风面积</td>
+                                <td>回转机构迎风面积</td>
                                 <td>
                                     <p><i>A<sub>6</sub></i></p>
                                 </td>
@@ -1340,7 +1728,7 @@
                                 <td>m<sup>2</sup></td>
                             </tr>
                             <tr>
-                                <td>底架及回转机构迎风面积</td>
+                                <td>底架迎风面积</td>
                                 <td>
                                     <p><i>A<sub>11</sub></i></p>
                                 </td>
@@ -1377,9 +1765,13 @@
                             </tr>
                         </table>
                     </div>
-                </td>
+
+
+
+
+
                 <!--擦窗机各部件迎风面积（大臂同向）-->
-                <td>
+
                     <div class="subtable">
                         <table class="tb">
                             <tr>
@@ -1420,7 +1812,7 @@
                             <tr>
                                 <td>吊船及人员迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>sltx</sub></i></p>
+                                    <p><i>A<sub>slt</sub></i></p>
                                 </td>
                                 <td><input name="asltx" type="text" th:field="*{asltx}" /></td>
                                 <td></td>
@@ -1430,7 +1822,7 @@
                             <tr>
                                 <td>物料迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>shltx</sub></i></p>
+                                    <p><i>A<sub>shlt</sub></i></p>
                                 </td>
                                 <td><input name="ashltx" type="text" th:field="*{ashltx}" /></td>
                                 <td></td>
@@ -1440,7 +1832,7 @@
                             <tr>
                                 <td>臂头迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx1</sub></i></p>
+                                    <p><i>A<sub>t1</sub></i></p>
                                 </td>
                                 <td><input name="atx1" type="text" th:field="*{atx1}" /></td>
                                 <td>
@@ -1452,7 +1844,7 @@
                             <tr>
                                 <td>大臂迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx2</sub></i></p>
+                                    <p><i>A<sub>t2</sub></i></p>
                                 </td>
                                 <td><input name="atx2" type="text" th:field="*{atx2}" /></td>
                                 <td>
@@ -1464,7 +1856,7 @@
                             <tr>
                                 <td>物料起升机构装置迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx3</sub></i></p>
+                                    <p><i>A<sub>t3</sub></i></p>
                                 </td>
                                 <td><input name="atx3" type="text" th:field="*{atx3}" /></td>
                                 <td>
@@ -1476,7 +1868,7 @@
                             <tr>
                                 <td>液压缸迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx4</sub></i></p>
+                                    <p><i>A<sub>t4</sub></i></p>
                                 </td>
                                 <td><input name="atx4" type="text" th:field="*{atx4}" /></td>
                                 <td>
@@ -1488,7 +1880,7 @@
                             <tr>
                                 <td>其它Ⅰ迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx5</sub></i></p>
+                                    <p><i>A<sub>t5</sub></i></p>
                                 </td>
                                 <td><input name="atx5" type="text" th:field="*{atx5}" /></td>
                                 <td>
@@ -1498,9 +1890,9 @@
                                 <td>m<sup>2</sup></td>
                             </tr>
                             <tr>
-                                <td>其它Ⅱ迎风面积</td>
+                                <td>回转机构迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx6</sub></i></p>
+                                    <p><i>A<sub>t6</sub></i></p>
                                 </td>
                                 <td><input name="atx6" type="text" th:field="*{atx6}" /></td>
                                 <td>
@@ -1512,7 +1904,7 @@
                             <tr>
                                 <td>配重臂迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx7</sub></i></p>
+                                    <p><i>A<sub>t7</sub></i></p>
                                 </td>
                                 <td><input name="atx7" type="text" th:field="*{atx7}" /></td>
                                 <td>
@@ -1524,7 +1916,7 @@
                             <tr>
                                 <td>配重迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx8</sub></i></p>
+                                    <p><i>A<sub>t8</sub></i></p>
                                 </td>
                                 <td><input name="atx8" type="text" th:field="*{atx8}" /></td>
                                 <td>
@@ -1536,7 +1928,7 @@
                             <tr>
                                 <td>立柱迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx9</sub></i></p>
+                                    <p><i>A<sub>t9</sub></i></p>
                                 </td>
                                 <td><input name="atx9" type="text" th:field="*{atx9}" /></td>
                                 <td>
@@ -1548,7 +1940,7 @@
                             <tr>
                                 <td>起升机构迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx10</sub></i></p>
+                                    <p><i>A<sub>t10</sub></i></p>
                                 </td>
                                 <td><input name="atx10" type="text" th:field="*{atx10}" /></td>
                                 <td>
@@ -1558,9 +1950,9 @@
                                 <td>m<sup>2</sup></td>
                             </tr>
                             <tr>
-                                <td>底架及回转机构迎风面积</td>
+                                <td>底架迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx11</sub></i></p>
+                                    <p><i>A<sub>t11</sub></i></p>
                                 </td>
                                 <td><input name="atx11" type="text" th:field="*{atx11}" /></td>
                                 <td>
@@ -1572,7 +1964,7 @@
                             <tr>
                                 <td>主动运行迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx12</sub></i></p>
+                                    <p><i>A<sub>t12</sub></i></p>
                                 </td>
                                 <td><input name="atx12" type="text" th:field="*{atx12}" /></td>
                                 <td>
@@ -1584,7 +1976,7 @@
                             <tr>
                                 <td>被动运行迎风面积</td>
                                 <td>
-                                    <p><i>A<sub>tx13</sub></i></p>
+                                    <p><i>A<sub>t13</sub></i></p>
                                 </td>
                                 <td><input name="atx13" type="text" th:field="*{atx13}" /></td>
                                 <td>
@@ -1595,160 +1987,159 @@
                             </tr>
                         </table>
                     </div>
-                </td>
+
+        <!--工作状态擦窗机各部件重心至前轨道距离-->
+
+        <div class="subtable">
+            <table class="tb">
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">工作状态擦窗机各部件重心至前轨道距离</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="工作状态擦窗机各部件重心至前轨道距离" id="tu3"   name="tu3">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 0;">选择图片</td>
+                    <td colspan="5"><input class="image" type="file" name="tu3"  accept="image/*" oninput="showImage(this,'tu3')"/></td>
+                </tr>
+                <tr>
+                    <td style="width:30%;padding:10px 0;;">名称</td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:36%;">数值</td>
+                    <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
+                    <td>吊船及人员至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>slq</sub></i></p>
+                    </td>
+                    <td><input name="lslq" type="text" th:field="*{lslq}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>物料至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>shlq</sub></i></p>
+                    </td>
+                    <td><input name="lshlq" type="text" th:field="*{lshlq}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>臂头至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q1</sub></i></p>
+                    </td>
+                    <td><input name="lq1" type="text" th:field="*{lq1}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>大臂至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q2</sub></i></p>
+                    </td>
+                    <td><input name="lq2" type="text" th:field="*{lq2}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构装置至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q3</sub></i></p>
+                    </td>
+                    <td><input name="lq3" type="text" th:field="*{lq3}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>液压缸至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q4</sub></i></p>
+                    </td>
+                    <td><input name="lq4" type="text" th:field="*{lq4}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其它Ⅰ至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q5</sub></i></p>
+                    </td>
+                    <td><input name="lq5" type="text" th:field="*{lq5}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>回转机构至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q6</sub></i></p>
+                    </td>
+                    <td><input name="lq6" type="text" th:field="*{lq6}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>配重臂至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q7</sub></i></p>
+                    </td>
+                    <td><input name="lq7" type="text" th:field="*{lq7}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>配重至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q8</sub></i></p>
+                    </td>
+                    <td><input name="lq8" type="text" th:field="*{lq8}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>立柱至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q9</sub></i></p>
+                    </td>
+                    <td><input name="lq9" type="text" th:field="*{lq9}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>起升机构至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q10</sub></i></p>
+                    </td>
+                    <td><input name="lq10" type="text" th:field="*{lq10}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>底架至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q11</sub></i></p>
+                    </td>
+                    <td><input name="lq11" type="text" th:field="*{lq11}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q12</sub></i></p>
+                    </td>
+                    <td><input name="lq12" type="text" th:field="*{lq12}" /></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q13</sub></i></p>
+                    </td>
+                    <td><input name="lq13" type="text" th:field="*{lq13}" /></td>
+                    <td>m</td>
+                </tr>
+            </table>
+        </div>
 
 
-            </tr>
-            <tr>
-                <!--工作状态擦窗机各部件重心至前轨道距离-->
-                <td>
-                    <div class="subtable">
-                        <table class="tb">
-                            <tr>
-                                <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">工作状态擦窗机各部件重心至前轨道距离</td>
-                            </tr>
-                            <tr>
-                                <td colspan="5">
-                                    <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                        <img alt="工作状态擦窗机各部件重心至前轨道距离" id="tu3"   name="tu3">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px 0;">选择图片</td>
-                                <td colspan="5"><input class="image" type="file" name="tu3"  accept="image/*" oninput="showImage(this,'tu3')"/></td>
-                            </tr>
-                            <tr>
-                                <td style="width:30%;padding:10px 0;;">名称</td>
-                                <td style="width:17%;">符号</td>
-                                <td style="width:36%;">数值</td>
-                                <td style="width:17%;">单位</td>
-                            </tr>
-                            <tr>
-                                <td>吊船及人员至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>slq</sub></i></p>
-                                </td>
-                                <td><input name="lslq" type="text" th:field="*{lslq}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>物料至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>shlq</sub></i></p>
-                                </td>
-                                <td><input name="lshlq" type="text" th:field="*{lshlq}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>臂头至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q1</sub></i></p>
-                                </td>
-                                <td><input name="lq1" type="text" th:field="*{lq1}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>大臂至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q2</sub></i></p>
-                                </td>
-                                <td><input name="lq2" type="text" th:field="*{lq2}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>物料起升机构装置至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q3</sub></i></p>
-                                </td>
-                                <td><input name="lq3" type="text" th:field="*{lq3}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>液压缸至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q4</sub></i></p>
-                                </td>
-                                <td><input name="lq4" type="text" th:field="*{lq4}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>其它Ⅰ至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q5</sub></i></p>
-                                </td>
-                                <td><input name="lq5" type="text" th:field="*{lq5}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>其它Ⅱ至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q6</sub></i></p>
-                                </td>
-                                <td><input name="lq6" type="text" th:field="*{lq6}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>配重臂至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q7</sub></i></p>
-                                </td>
-                                <td><input name="lq7" type="text" th:field="*{lq7}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>配重至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q8</sub></i></p>
-                                </td>
-                                <td><input name="lq8" type="text" th:field="*{lq8}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>立柱至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q9</sub></i></p>
-                                </td>
-                                <td><input name="lq9" type="text" th:field="*{lq9}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>起升机构至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q10</sub></i></p>
-                                </td>
-                                <td><input name="lq10" type="text" th:field="*{lq10}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>底架及回转机构至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q11</sub></i></p>
-                                </td>
-                                <td><input name="lq11" type="text" th:field="*{lq11}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>主动运行至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q12</sub></i></p>
-                                </td>
-                                <td><input name="lq12" type="text" th:field="*{lq12}" /></td>
-                                <td>m</td>
-                            </tr>
-                            <tr>
-                                <td>被动运行至前轨道距离</td>
-                                <td>
-                                    <p><i>L<sub>q13</sub></i></p>
-                                </td>
-                                <td><input name="lq13" type="text" th:field="*{lq13}" /></td>
-                                <td>m</td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
+
+
                 <!--工作状态擦窗机各部件重心至前轮距离-->
-                <td>
+
                     <div class="subtable">
                         <table class="tb">
                             <tr>
@@ -1828,7 +2219,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>其它Ⅱ至前轮距离</td>
+                                <td>回转机构至前轮距离</td>
                                 <td>
                                     <p><i>L<sub>ql6</sub></i></p>
                                 </td>
@@ -1868,7 +2259,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>底架及回转机构至前轮距离</td>
+                                <td>底架至前轮距离</td>
                                 <td>
                                     <p><i>L<sub>ql11</sub></i></p>
                                 </td>
@@ -1893,19 +2284,19 @@
                             </tr>
                         </table>
                     </div>
-                </td>
 
-                <!--非工作状态擦窗机各部件重心至后轨道距离-->
-                <td>
+
+                <!--非工作状态擦窗机各部件重心至后轮距离-->
+
                     <div class="subtable">
                         <table class="tb">
                             <tr>
-                                <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">非工作状态擦窗机各部件重心至后轨道距离</td>
+                                <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">非工作状态擦窗机各部件重心至后轮距离</td>
                             </tr>
                             <tr>
                                 <td colspan="5">
                                     <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                        <img alt="非工作状态擦窗机各部件重心至后轨道距离" id="tu9"   name="tu9">
+                                        <img alt="非工作状态擦窗机各部件重心至后轮距离" id="tu9"   name="tu9">
                                     </div>
                                 </td>
                             </tr>
@@ -1920,7 +2311,7 @@
                                 <td style="width:17%;">单位</td>
                             </tr>
                             <tr>
-                                <td>臂头至后轨道距离</td>
+                                <td>臂头至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h1</sub></i></p>
                                 </td>
@@ -1928,7 +2319,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>大臂至后轨道距离</td>
+                                <td>大臂至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h2</sub></i></p>
                                 </td>
@@ -1936,7 +2327,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>物料起升机构装置至后轨道距离</td>
+                                <td>物料起升机构装置至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h3</sub></i></p>
                                 </td>
@@ -1944,7 +2335,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>液压缸至后轨道距离</td>
+                                <td>液压缸至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h4</sub></i></p>
                                 </td>
@@ -1952,7 +2343,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>其它Ⅰ至后轨道距离</td>
+                                <td>其它Ⅰ至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h5</sub></i></p>
                                 </td>
@@ -1960,7 +2351,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>其它Ⅱ至后轨道距离</td>
+                                <td>回转机构至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h6</sub></i></p>
                                 </td>
@@ -1968,7 +2359,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>配重臂至后轨道距离</td>
+                                <td>配重臂至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h7</sub></i></p>
                                 </td>
@@ -1976,7 +2367,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>配重至后轨道距离</td>
+                                <td>配重至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h8</sub></i></p>
                                 </td>
@@ -1984,7 +2375,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>立柱至后轨道距离</td>
+                                <td>立柱至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h9</sub></i></p>
                                 </td>
@@ -1992,7 +2383,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>起升机构至后轨道距离</td>
+                                <td>起升机构至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h10</sub></i></p>
                                 </td>
@@ -2000,7 +2391,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>底架及回转机构至后轨道距离</td>
+                                <td>底架至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h11</sub></i></p>
                                 </td>
@@ -2008,7 +2399,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>主动运行至后轨道距离</td>
+                                <td>主动运行至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h12</sub></i></p>
                                 </td>
@@ -2016,7 +2407,7 @@
                                 <td>m</td>
                             </tr>
                             <tr>
-                                <td>被动运行至后轨道距离</td>
+                                <td>被动运行至后轮距离</td>
                                 <td>
                                     <p><i>L<sub>h13</sub></i></p>
                                 </td>
@@ -2025,19 +2416,99 @@
                             </tr>
                         </table>
                     </div>
-                </td>
-            </tr>
-        </table>
+
     </form>
 
 
 <!--    按钮-->
     <div class="buttonbox">
         <input type="submit" form="form1" class="button"  value="输出中文版计算书pdf" onclick="$('#form1').attr('action','/stabilitypdf1')"/>
+        <input type="submit" form="form1" class="button"  value="输出英文版计算书pdf" onclick="$('#form1').attr('action','/stabilityenpdf1')"/>
+        <input type="submit" form="form1" class="button"  value="输出澳大利亚版计算书pdf" onclick="$('#form1').attr('action','/stabilityaupdf1')"/>
         <input type="submit" form="form1" class="button"  value="输出验证部分pdf" onclick="$('#form1').attr('action','/stabilitypdf2')"/>
         <input type="reset" form="form1" value="重置"/>
     </div>
+    <div class="navbox" style="top:400px;left:20px;width:500px">
+        <p align="right">单位：kN</p>
+        <table class="tb" style="width:500px;position: relative">
+            <tr>
+                <td rowspan="2">
+                    <div style="top:2px;left:2px;position:absolute;width:0px;height:0px;border-left:75px solid black;border-top:131px solid transparent;">
+                    </div>
+                    <div style="top:2px;left:2px;position:absolute;margin:3px 0 0 0;width:0px;height:0px;border-left:73px solid #EFF3F6;border-top:129px solid transparent;">
+                    </div>
+                    <p style="position:absolute;top:35px;left:35px">工况</p>
+                    <p style="position:absolute;top:90px;left:15px">轮压</p>
 
+                </td>
+                <td colspan="3">工作状态</td>
+                <td>非工作状态</td>
+            </tr>
+            <tr>
+                <td style="padding:0;"><div style="padding:0;width: 99%;height:100px;">  <img style="width:100px;" th:src="@{work1.jpg}"/></div></td>
+                <td style="padding:0;"><div style="padding:0;width: 99%;height:100px;">  <img style="width:100px;" th:src="@{work2.jpg}"/></div></td>
+                <td style="padding:0;"><div style="padding:0;width: 99%;height:100px;">  <img style="width:100px;" th:src="@{work3.jpg}"/></div></td>
+                <td style="padding:0;"><div style="padding:0;width: 99%;height:100px;">  <img style="width:100px;" th:src="@{work4.jpg}"/></div></td>
+            </tr>
+            <tr>
+                <td width="15%" >Av</td>
+                <td width="21%" id="av1k"></td>
+                <td width="21%" id="av2k"></td>
+                <td width="21%" id="av3k"></td>
+                <td width="21%" id="av4k"></td>
+            </tr>
+            <tr>
+                <td>Ah</td>
+                <td id="ah1k"></td>
+                <td id="ah2k"></td>
+                <td id="ah3k"></td>
+                <td id="ah4k"></td>
+            </tr>
+            <tr>
+                <td>Bv</td>
+                <td id="bv1k"></td>
+                <td id="bv2k"></td>
+                <td id="bv3k"></td>
+                <td id="bv4k"></td>
+            </tr>
+            <tr>
+                <td>Bh</td>
+                <td id="bh1k"></td>
+                <td id="bh2k"></td>
+                <td id="bh3k"></td>
+                <td id="bh4k"></td>
+            </tr>
+            <tr>
+                <td>Cv</td>
+                <td id="cv1k"></td>
+                <td id="cv2k"></td>
+                <td id="cv3k"></td>
+                <td id="cv4k"></td>
+            </tr>
+            <tr>
+                <td>Dv</td>
+                <td id="dv1k"></td>
+                <td id="dv2k"></td>
+                <td id="dv3k"></td>
+                <td id="dv4k"></td>
+            </tr>
+
+            <tr>
+                <td>At</td>
+                <td id="at1k"></td>
+                <td id="at2k"></td>
+                <td id="at3k"></td>
+                <td id="at4k">0</td>
+            </tr>
+            <tr>
+                <td>Bt</td>
+                <td id="bt1k"></td>
+                <td id="bt2k"></td>
+                <td id="bt3k"></td>
+                <td id="bt4k">0</td>
+            </tr>
+        </table>
+    </div>
 
 <!--    校验-->
     <div class="navbox">
@@ -2048,7 +2519,6 @@
                 </tr>
                 <tr>
                     <td>工作状态稳定性校核</td>
-
                 </tr>
                 <tr>
                     <td id="x2"></td>
@@ -2058,8 +2528,9 @@
                 </tr>
                 <tr><td id="x4"></td></tr>
             </table>
-            <div style="position:absolute;margin: 0 0 0 -75px;left:50%;">
-                <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
+            <div  style="position:absolute;margin: 0 0 0 -75px;left:50%;">
+                <input type="submit"  class="button" type="submit" value="国标版校验" onclick="return janyan('Stability/cnjy')"/>
+                <input type="submit"  class="button" type="submit" value="澳大利亚版校验" onclick="return janyan('Stability/aujy')"/>
             </div>
         </div>
     </div>

@@ -15,6 +15,8 @@ public class StabilityEnity {
     private String pzr;
     private String date;
     private String radio;
+    private String lsxh;
+    private String djlsxh;
     private Double h;
     private Double pf;
     private Double lbd;
@@ -28,9 +30,16 @@ public class StabilityEnity {
     private Double fj;
     private Double n1;
     private Double n2;
+    private Double a;
     private Double fb;
-    private Double n3;
+    private Double nn3;
+    private Double fn;
+    private Double s1;
+    private Double s2;
+    private Double s3;
     private Double tsl;
+    private Double s4;
+    private Double s5;
     private Double tshl;
     private Double m1;
     private Double m2;
@@ -200,6 +209,115 @@ public class StabilityEnity {
     private Double aft11;
     private Double aft12;
     private Double aft13;
+
+    private String txxxh;
+    private String txxcl;
+    private Double ft;
+    private Double nt;
+
+    public String getTxxxh() {
+        return txxxh;
+    }
+
+    public void setTxxxh(String txxxh) {
+        this.txxxh = txxxh;
+    }
+
+    public String getTxxcl() {
+        return txxcl;
+    }
+
+    public void setTxxcl(String txxcl) {
+        this.txxcl = txxcl;
+    }
+
+    public Double getFt() {
+        return ft;
+    }
+
+    public void setFt(Double ft) {
+        this.ft = ft;
+    }
+
+    public Double getNt() {
+        return nt;
+    }
+
+    public void setNt(Double nt) {
+        this.nt = nt;
+    }
+
+    public Double getS1() {
+        return s1;
+    }
+
+    public void setS1(Double s1) {
+        this.s1 = s1;
+    }
+
+    public Double getS2() {
+        return s2;
+    }
+
+    public void setS2(Double s2) {
+        this.s2 = s2;
+    }
+
+    public Double getS3() {
+        return s3;
+    }
+
+    public void setS3(Double s3) {
+        this.s3 = s3;
+    }
+
+    public Double getS4() {
+        return s4;
+    }
+
+    public void setS4(Double s4) {
+        this.s4 = s4;
+    }
+
+    public Double getS5() {
+        return s5;
+    }
+
+    public void setS5(Double s5) {
+        this.s5 = s5;
+    }
+
+    public String getDjlsxh() {
+        return djlsxh;
+    }
+
+    public void setDjlsxh(String djlsxh) {
+        this.djlsxh = djlsxh;
+    }
+
+    public Double getA() {
+        return a;
+    }
+
+    public void setA(Double a) {
+        this.a = a;
+    }
+
+    public Double getFn() {
+        return fn;
+    }
+
+    public void setFn(Double fn) {
+        this.fn = fn;
+    }
+
+    public String getLsxh() {
+        return lsxh;
+    }
+
+    public void setLsxh(String lsxh) {
+        this.lsxh = lsxh;
+    }
 
     public String getRadio() {
         return radio;
@@ -385,12 +503,12 @@ public class StabilityEnity {
         this.fb = fb;
     }
 
-    public Double getN3() {
-        return n3;
+    public Double getNn3() {
+        return nn3;
     }
 
-    public void setN3(Double n3) {
-        this.n3 = n3;
+    public void setNn3(Double nn3) {
+        this.nn3 = nn3;
     }
 
     public Double getTsl() {
@@ -1752,8 +1870,9 @@ public class StabilityEnity {
     public void setAft13(Double aft13) {
         this.aft13 = aft13;
     }
-    private Map<String,String> getMap(){
-        Map<String,String> result=new HashMap<>();
+
+    private Map<String, String> getMap() {
+        Map<String, String> result = new HashMap<>();
         result.put("no", CommonFunc.convertDoubleToString(no));
         result.put("ver", CommonFunc.convertDoubleToString(ver));
         result.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
@@ -1777,7 +1896,8 @@ public class StabilityEnity {
         result.put("n1", CommonFunc.convertDoubleToString(n1));
         result.put("n2", CommonFunc.convertDoubleToString(n2));
         result.put("fb", CommonFunc.convertDoubleToString(fb));
-        result.put("n3", CommonFunc.convertDoubleToString(n3));
+        result.put("nn3", CommonFunc.convertDoubleToString(nn3));
+        result.put("n3", CommonFunc.convertDoubleToString(nn3 * 2));
         result.put("tsl", CommonFunc.convertDoubleToString(tsl));
         result.put("tshl", CommonFunc.convertDoubleToString(tshl));
         result.put("m1", CommonFunc.convertDoubleToString(m1));
@@ -1948,613 +2068,866 @@ public class StabilityEnity {
         result.put("aft11", CommonFunc.convertDoubleToString(aft11));
         result.put("aft12", CommonFunc.convertDoubleToString(aft12));
         result.put("aft13", CommonFunc.convertDoubleToString(aft13));
+
+        result.put("s1", CommonFunc.convertDoubleToString(s1));
+        result.put("s2", CommonFunc.convertDoubleToString(s2));
+        result.put("s3", CommonFunc.convertDoubleToString(s3));
+        result.put("s4", CommonFunc.convertDoubleToString(s4));
+        result.put("s5", CommonFunc.convertDoubleToString(s5));
+
+        result.put("djlsxh", CommonFunc.convertDoubleToString(djlsxh));
+        result.put("a", CommonFunc.convertDoubleToString(a));
+        result.put("fn", CommonFunc.convertDoubleToString(fn));
+        result.put("lsxh", CommonFunc.convertDoubleToString(lsxh));
+        result.put("txxxh", CommonFunc.convertDoubleToString(txxxh));
+        result.put("txxcl", CommonFunc.convertDoubleToString(txxcl));
+        result.put("ft", CommonFunc.convertDoubleToString(ft));
+        result.put("nt", CommonFunc.convertDoubleToString(nt));
         return result;
     }
-    private Map<String,Double> getDoublePDF(){
-        Double msla=tsl*lslq*10*2;
-        Double mshla=tshl*lshlq*10*1.4;
-        Double ma1=m1*lq1*10*1.25;
-        Double ma2=m2*lq2*10*1.25;
-        Double ma5=m5*lq5*10*1.25;
-        Double ma6=m6*lq6*10*1.25;
-        Double ma3=m3*lq3*10;
-        Double ma4=m4*lq4*10;
-        Double ma7=m7*lq7*10;
-        Double ma8=m8*lq8*10;
-        Double ma9=m9*lq9*10;
-        Double ma10=m10*lq10*10;
-        Double ma11=m11*lq11*10;
-        Double ma12=m12*lq12*10;
-        Double ma13=m13*lq13*10;
-        Double msltw=250*asltx*hsl;
-        Double mshltw=250*ashltx*hshl;
-        Double mtw1=250*atx1*h1;
-        Double mtw2=250*atx2*h2;
-        Double mtw3=250*atx3*h3;
-        Double mtw4=250*atx4*h4;
-        Double mtw5=250*atx5*h5;
-        Double mtw6=250*atx6*h6;
-        Double mtw7=250*atx7*h7;
-        Double mtw8=250*atx8*h8;
-        Double mtw9=250*atx9*h9;
-        Double mtw10=250*atx10*h10;
-        Double mtw11=250*atx11*h11;
-        Double mtw12=250*atx12*h12;
-        Double mtw13=250*atx13*h13;
-        Double mh1=m1*lh1*10;
-        Double mh2=m2*lh2*10;
-        Double mh3=m3*lh3*10;
-        Double mh4=m4*lh4*10;
-        Double mh5=m5*lh5*10;
-        Double mh6=m6*lh6*10;
-        Double mh9=m9*lh9*10;
-        Double mh10=m10*lh10*10;
-        Double mh11=m11*lh11*10;
-        Double mh7=m7*lh7*10;
-        Double mh8=m8*lh8*10;
-        Double mh12=m12*lh12*10;
-        Double mh13=m13*lh13*10;
-        Double mftw1=pf*aft1*hf1;
-        Double mftw2=pf*aft2*hf2;
-        Double mftw3=pf*aft3*hf3;
-        Double mftw4=pf*aft4*hf4;
-        Double mftw5=pf*aft5*hf5;
-        Double mftw6=pf*aft6*hf6;
-        Double mftw7=pf*aft7*hf7;
-        Double mftw8=pf*aft8*hf8;
-        Double mftw9=pf*aft9*hf9;
-        Double mftw10=pf*aft10*hf10;
-        Double mftw11=pf*aft11*hf11;
-        Double mftw12=pf*aft12*hf12;
-        Double mftw13=pf*aft13*hf13;
-        Double mq=msla+mshla+ma1+ma2+ma5+ma6;
-        Double mm2=ma3+ma4+ma7+ma8+ma9+ma10+ma11+ma12+ma13;
-        Double mtw=msltw+mshltw+mtw1+mtw2+mtw3+mtw4+mtw5+mtw6
-                +mtw7+mtw8+mtw9+mtw10+mtw11+mtw12+mtw13;
-        Double mkh=mh1+mh2+mh3+mh4+mh5+mh6+mh9+mh10+mh11+mh12+mh13;
-        Double mqh=mh7+mh8;
-        Double mftw=mftw1+mftw2+mftw3+mftw4+mftw5+mftw6+mftw7
-                +mftw8+mftw9+mftw10+mftw11+mftw12+mftw13;
-        Double mm1=mq+1.25*mtw;
-        Double mmx3=n1*n2*fj*lg/2;
-        Double mmg3=n3*fb*lg;
-        Double mm3=radio.equals("有")?Math.min(mmg3,mmx3):mmg3;
-        Double mmh1=mm2+mm3;
-        Double mm1p=mqh+mftw;
-        Double mmh2=mkh+mm3;
-        Double mslq=tsl*lslq*10*1.25;
-        Double mshlq=tshl*lshlq*10*1.25;
-        Double mq1=m1*lq1*10*1.25;
-        Double mq2=m2*lq2*10*1.25;
-        Double mq5=m5*lq5*10*1.25;
-        Double mq6=m6*lq6*10*1.25;
-        Double mq3=m3*lq3*10*1.25;
-        Double mq4=m4*lq4*10*1.25;
-        Double mq7=m7*lq7*10*1.25;
-        Double mq8=m8*lq8*10*1.25;
-        Double mq9=m9*lq9*10*1.25;
-        Double mq10=m10*lq10*10*1.25;
-        Double mq11=m11*lq11*10*1.25;
-        Double mq12=m12*lq12*10*1.25;
-        Double mq13=m13*lq13*10*1.25;
-        Double mwqsl=250*asl*hsl;
-        Double mwqshl=250*ashl*hshl;
-        Double mwq1=250*a1*h1;
-        Double mwq2=250*a2*h2;
-        Double mwq3=250*a3*h3;
-        Double mwq4=250*a4*h4;
-        Double mwq5=250*a5*h5;
-        Double mwq6=250*a6*h6;
-        Double mwq7=250*a7*h7;
-        Double mwq8=250*a8*h8;
-        Double mwq9=250*a9*h9;
-        Double mwq10=250*a10*h10;
-        Double mwq11=250*a11*h11;
-        Double mwq12=250*a12*h12;
-        Double mwq13=250*a13*h13;
-        Double mqq=mslq+mshlq+mq1+mq2+mq5+mq6;
-        Double mkq=mq3+mq4+mq7+mq8+mq9+mq10+mq11+mq12+mq13;
-        Double mwq=mwqsl+mwqshl+mwq1+mwq2+mwq3+mwq4+mwq5+mwq6
-                +mwq7+mwq8+mwq9+mwq10+mwq11+mwq12+mwq13;
-        Double mfq=mkq-mqq;
-        Double vbc=mfq/ll/2;
-        Double vad=1.25*mz*10/2-vbc;
-        Double mgq=0.064*mz*hh;
-        Double msq=mgq+mwq;
-        Double ddv1=msq/lg/2;
-        Double av1=vad+ddv1;
-        Double bv1=vbc+ddv1;
-        Double cv1=vbc-ddv1;
-        Double dv1=vad-ddv1;
-        Double at1=av1*0.05;
-        Double bt1=bv1*0.05;
-        Double fsl=250*asl;
-        Double fshl=250*ashl;
-        Double f1=250*a1;
-        Double f2=250*a2;
-        Double f3=250*a3;
-        Double f4=250*a4;
-        Double f5=250*a5;
-        Double f6=250*a6;
-        Double f7=250*a7;
-        Double f8=250*a8;
-        Double f9=250*a9;
-        Double f10=250*a10;
-        Double f11=250*a11;
-        Double f12=250*a12;
-        Double f13=250*a13;
-        Double mwzsl=fsl*lslz;
-        Double mwzshl=fshl*lshlz;
-        Double mwz1=f1*lz1;
-        Double mwz2=f2*lz2;
-        Double mwz3=f3*lz3;
-        Double mwz4=f4*lz4;
-        Double mwz5=f5*lz5;
-        Double mwz6=f6*lz6;
-        Double mwz7=f7*lz7;
-        Double mwz8=f8*lz8;
-        Double mwz9=f9*lz9;
-        Double mwz10=f10*lz10;
-        Double mwz11=f11*lz11;
-        Double mwz12=f12*lz12;
-        Double mwz13=f13*lz13;
-        Double fw=fsl+fshl+f1+f2+f3+f4+f5+f6+f7+f8+f9+f10+f11+f12+f13;
-        Double mwza=mwzsl+mwzshl+mwz1+mwz2+mwz3+mwz4+mwz5+mwz6;
-        Double mwzb=mwz7+mwz8+mwz9+mwz10+mwz11+mwz12+mwz13;
-        Double mwz=mwza-mwzb;
-        Double dh1=mwz/ll;
-        Double ah1=fw/2+dh1;
-        Double bh1=fw/2-dh1;
-        Double mslz=tsl*lslz*10*1.25;
-        Double mshlz=tshl*lshlz*10*1.25;
-        Double mz1=m1*lz1*10*1.25;
-        Double mz2=m2*lz2*10*1.25;
-        Double mz3=m3*lz3*10*1.25;
-        Double mz4=m4*lz4*10*1.25;
-        Double mz5=m5*lz5*10*1.25;
-        Double mz6=m6*lz6*10*1.25;
-        Double mz7=m7*lz7*10*1.25;
-        Double mz8=m8*lz8*10*1.25;
-        Double mz9=m9*lz9*10*1.25;
-        Double mz10=m10*lz10*10*1.25;
-        Double mz11=m11*lz11*10*1.25;
-        Double mz12=m12*lz12*10*1.25;
-        Double mz13=m13*lz13*10*1.25;
-        Double mqz=mslz+mshlz+mz1+mz2+mz3+mz4+mz5+mz6;
-        Double mkz=mz7+mz8+mz9+mz10+mz11+mz12+mz13;
-        Double vm=1.25*mz*10/4;
-        Double mfz=mqz-mkz;
-        Double mx=mfz*0.707;
-        Double my=mfz*0.707;
-        Double dvx=mx/lg/2;
-        Double dvy=my/ll/2;
-        Double ddv2=msq/Math.sqrt(lg*lg+ll*ll);
-        Double av2=vm+dvx-dvy+ddv2;
-        Double bv2=vm-dvx-dvy;
-        Double cv2=vm-dvx+dvy-ddv2;
-        Double dv2=vm+dvx+dvy;
-        Double at2=av2*0.05;
-        Double bt2=bv2*0.05;
-        Double dh2=mwz/ll;
-        Double ah2=fw*0.707+dh2;
-        Double bh2=fw*0.707-dh2;
-        Double mslql=tsl*lslql*10*1.25;
-        Double mshlql=tshl*lshlql*10*1.25;
-        Double mql1=m1*lql1*10*1.25;
-        Double mql2=m2*lql2*10*1.25;
-        Double mql5=m5*lql5*10*1.25;
-        Double mql6=m6*lql6*10*1.25;
-        Double mql3=m3*lql3*10*1.25;
-        Double mql4=m4*lql4*10*1.25;
-        Double mql7=m7*lql7*10*1.25;
-        Double mql8=m8*lql8*10*1.25;
-        Double mql9=m9*lql9*10*1.25;
-        Double mql10=m10*lql10*10*1.25;
-        Double mql11=m11*lql11*10*1.25;
-        Double mql12=m12*lql12*10*1.25;
-        Double mql13=m13*lql13*10*1.25;
-        Double mqql=mslql+mshlql+mql1+mql2+mql5+mql6;
-        Double mkql=mql3+mql4+mql7+mql8+mql9+mql10+mql11+mql12+mql13;
-        Double mfql=mkql-mqql;
-        Double vab=mfql/lg/2;
-        Double vcd=1.25*mz*10/2-vab;
-        Double ddv3=msq/ll/2;
-        Double av3=vab+ddv3;
-        Double bv3=vab-ddv3;
-        Double cv3=vcd-ddv3;
-        Double dv3=vcd+ddv3;
-        Double at3=av3*0.05;
-        Double bt3=bv3*0.05;
-        Double dh3=mwz/ll;
-        Double ah3=dh3;
-        Double bh3=-dh3;
-        Double mwqf1=pf*af1*hf1;
-        Double mwqf2=pf*af2*hf2;
-        Double mwqf3=pf*af3*hf3;
-        Double mwqf4=pf*af4*hf4;
-        Double mwqf5=pf*af5*hf5;
-        Double mwqf6=pf*af6*hf6;
-        Double mwqf7=pf*af7*hf7;
-        Double mwqf8=pf*af8*hf8;
-        Double mwqf9=pf*af9*hf9;
-        Double mwqf10=pf*af10*hf10;
-        Double mwqf11=pf*af11*hf11;
-        Double mwqf12=pf*af12*hf12;
-        Double mwqf13=pf*af13*hf13;
-        Double mfh=mkh-mqh;
-        Double mwqf=mwqf1+mwqf2+mwqf3+mwqf4+mwqf5+mwqf6+mwqf7
-                +mwqf8+mwqf9+mwqf10+mwqf11+mwqf12+mwqf13;
-        Double vbcf=mfh/ll/2;
-        Double vadf=mzf*10/2-vbcf;
-        Double ddvf=mwqf/lg/2;
-        Double av4=vadf+ddvf;
-        Double bv4=vbcf+ddvf;
-        Double cv4=vbcf-ddvf;
-        Double dv4=vadf-ddvf;
-        Double ff1=pf*af1;
-        Double ff2=pf*af2;
-        Double ff3=pf*af3;
-        Double ff4=pf*af4;
-        Double ff5=pf*af5;
-        Double ff6=pf*af6;
-        Double ff7=pf*af7;
-        Double ff8=pf*af8;
-        Double ff9=pf*af9;
-        Double ff10=pf*af10;
-        Double ff11=pf*af11;
-        Double ff12=pf*af12;
-        Double ff13=pf*af13;
-        Double mwzf1=ff1*lzf1;
-        Double mwzf2=ff2*lzf2;
-        Double mwzf3=ff3*lzf3;
-        Double mwzf4=ff4*lzf4;
-        Double mwzf5=ff5*lzf5;
-        Double mwzf6=ff6*lzf6;
-        Double mwzf7=ff7*lzf7;
-        Double mwzf8=ff8*lzf8;
-        Double mwzf9=ff9*lzf9;
-        Double mwzf10=ff10*lzf10;
-        Double mwzf11=ff11*lzf11;
-        Double mwzf12=ff12*lzf12;
-        Double mwzf13=ff13*lzf13;
-        Double fwf=ff1+ff2+ff3+ff4+ff5+ff6+ff7+ff8+ff9+ff10+ff11+ff12+ff13;
-        Double mwzfa=mwzf1+mwzf2+mwzf3+mwzf4+mwzf5+mwzf6;
-        Double mwzfb=mwzf7+mwzf8+mwzf9+mwzf10+mwzf11+mwzf12+mwzf13;
-        Double mwzf=mwzfa-mwzfb;
-        Double dhf=mwzf/ll;
-        Double ah4=fwf/2+dhf;
-        Double bh4=fwf/2-dhf;
-        Map<String,Double> result=new HashMap();
-        result.put("msla" ,msla);
-        result.put("mshla" ,mshla);
-        result.put("ma1" ,ma1);
-        result.put("ma2" ,ma2);
-        result.put("ma5" ,ma5);
-        result.put("ma6" ,ma6);
-        result.put("ma3" ,ma3);
-        result.put("ma4" ,ma4);
-        result.put("ma7" ,ma7);
-        result.put("ma8" ,ma8);
-        result.put("ma9" ,ma9);
-        result.put("ma10" ,ma10);
-        result.put("ma11" ,ma11);
-        result.put("ma12" ,ma12);
-        result.put("ma13" ,ma13);
-        result.put("msltw" ,msltw);
-        result.put("mshltw" ,mshltw);
-        result.put("mtw1" ,mtw1);
-        result.put("mtw2" ,mtw2);
-        result.put("mtw3" ,mtw3);
-        result.put("mtw4" ,mtw4);
-        result.put("mtw5" ,mtw5);
-        result.put("mtw6" ,mtw6);
-        result.put("mtw7" ,mtw7);
-        result.put("mtw8" ,mtw8);
-        result.put("mtw9" ,mtw9);
-        result.put("mtw10" ,mtw10);
-        result.put("mtw11" ,mtw11);
-        result.put("mtw12" ,mtw12);
-        result.put("mtw13" ,mtw13);
-        result.put("mh1" ,mh1);
-        result.put("mh2" ,mh2);
-        result.put("mh3" ,mh3);
-        result.put("mh4" ,mh4);
-        result.put("mh5" ,mh5);
-        result.put("mh6" ,mh6);
-        result.put("mh9" ,mh9);
-        result.put("mh10" ,mh10);
-        result.put("mh11" ,mh11);
-        result.put("mh7" ,mh7);
-        result.put("mh8" ,mh8);
-        result.put("mh12" ,mh12);
-        result.put("mh13" ,mh13);
-        result.put("mftw1" ,mftw1);
-        result.put("mftw2" ,mftw2);
-        result.put("mftw3" ,mftw3);
-        result.put("mftw4" ,mftw4);
-        result.put("mftw5" ,mftw5);
-        result.put("mftw6" ,mftw6);
-        result.put("mftw7" ,mftw7);
-        result.put("mftw8" ,mftw8);
-        result.put("mftw9" ,mftw9);
-        result.put("mftw10" ,mftw10);
-        result.put("mftw11" ,mftw11);
-        result.put("mftw12" ,mftw12);
-        result.put("mftw13" ,mftw13);
-        result.put("mq" ,mq);
-        result.put("mm2" ,mm2);
-        result.put("mtw" ,mtw);
-        result.put("mkh" ,mkh);
-        result.put("mqh" ,mqh);
-        result.put("mftw" ,mftw);
-        result.put("mm1" ,mm1);
-        result.put("mmx3" ,mmx3);
-        result.put("mmg3" ,mmg3);
-        result.put("mm3" ,mm3);
-        result.put("mmh1" ,mmh1);
-        result.put("mm1p" ,mm1p);
-        result.put("mmh2" ,mmh2);
-        result.put("mslq" ,mslq);
-        result.put("mshlq" ,mshlq);
-        result.put("mq1" ,mq1);
-        result.put("mq2" ,mq2);
-        result.put("mq5" ,mq5);
-        result.put("mq6" ,mq6);
-        result.put("mq3" ,mq3);
-        result.put("mq4" ,mq4);
-        result.put("mq7" ,mq7);
-        result.put("mq8" ,mq8);
-        result.put("mq9" ,mq9);
-        result.put("mq10" ,mq10);
-        result.put("mq11" ,mq11);
-        result.put("mq12" ,mq12);
-        result.put("mq13" ,mq13);
-        result.put("mwqsl" ,mwqsl);
-        result.put("mwqshl" ,mwqshl);
-        result.put("mwq1" ,mwq1);
-        result.put("mwq2" ,mwq2);
-        result.put("mwq3" ,mwq3);
-        result.put("mwq4" ,mwq4);
-        result.put("mwq5" ,mwq5);
-        result.put("mwq6" ,mwq6);
-        result.put("mwq7" ,mwq7);
-        result.put("mwq8" ,mwq8);
-        result.put("mwq9" ,mwq9);
-        result.put("mwq10" ,mwq10);
-        result.put("mwq11" ,mwq11);
-        result.put("mwq12" ,mwq12);
-        result.put("mwq13" ,mwq13);
-        result.put("mqq" ,mqq);
-        result.put("mkq" ,mkq);
-        result.put("mwq" ,mwq);
-        result.put("mfq" ,mfq);
-        result.put("vbc" ,vbc);
-        result.put("vad" ,vad);
-        result.put("mgq" ,mgq);
-        result.put("msq" ,msq);
-        result.put("ddv1" ,ddv1);
-        result.put("av1" ,av1);
-        result.put("bv1" ,bv1);
-        result.put("cv1" ,cv1);
-        result.put("dv1" ,dv1);
-        result.put("at1" ,at1);
-        result.put("bt1" ,bt1);
-        result.put("fsl" ,fsl);
-        result.put("fshl" ,fshl);
-        result.put("f1" ,f1);
-        result.put("f2" ,f2);
-        result.put("f3" ,f3);
-        result.put("f4" ,f4);
-        result.put("f5" ,f5);
-        result.put("f6" ,f6);
-        result.put("f7" ,f7);
-        result.put("f8" ,f8);
-        result.put("f9" ,f9);
-        result.put("f10" ,f10);
-        result.put("f11" ,f11);
-        result.put("f12" ,f12);
-        result.put("f13" ,f13);
-        result.put("mwzsl" ,mwzsl);
-        result.put("mwzshl" ,mwzshl);
-        result.put("mwz1" ,mwz1);
-        result.put("mwz2" ,mwz2);
-        result.put("mwz3" ,mwz3);
-        result.put("mwz4" ,mwz4);
-        result.put("mwz5" ,mwz5);
-        result.put("mwz6" ,mwz6);
-        result.put("mwz7" ,mwz7);
-        result.put("mwz8" ,mwz8);
-        result.put("mwz9" ,mwz9);
-        result.put("mwz10" ,mwz10);
-        result.put("mwz11" ,mwz11);
-        result.put("mwz12" ,mwz12);
-        result.put("mwz13" ,mwz13);
-        result.put("fw" ,fw);
-        result.put("mwza" ,mwza);
-        result.put("mwzb" ,mwzb);
-        result.put("mwz" ,mwz);
-        result.put("dh1" ,dh1);
-        result.put("ah1" ,ah1);
-        result.put("bh1" ,bh1);
-        result.put("mslz" ,mslz);
-        result.put("mshlz" ,mshlz);
-        result.put("mz1" ,mz1);
-        result.put("mz2" ,mz2);
-        result.put("mz3" ,mz3);
-        result.put("mz4" ,mz4);
-        result.put("mz5" ,mz5);
-        result.put("mz6" ,mz6);
-        result.put("mz7" ,mz7);
-        result.put("mz8" ,mz8);
-        result.put("mz9" ,mz9);
-        result.put("mz10" ,mz10);
-        result.put("mz11" ,mz11);
-        result.put("mz12" ,mz12);
-        result.put("mz13" ,mz13);
-        result.put("mqz" ,mqz);
-        result.put("mkz" ,mkz);
-        result.put("vm" ,vm);
-        result.put("mfz" ,mfz);
-        result.put("mx" ,mx);
-        result.put("my" ,my);
-        result.put("dvx" ,dvx);
-        result.put("dvy" ,dvy);
-        result.put("ddv2" ,ddv2);
-        result.put("av2" ,av2);
-        result.put("bv2" ,bv2);
-        result.put("cv2" ,cv2);
-        result.put("dv2" ,dv2);
-        result.put("at2" ,at2);
-        result.put("bt2" ,bt2);
-        result.put("dh2" ,dh2);
-        result.put("ah2" ,ah2);
-        result.put("bh2" ,bh2);
-        result.put("mslql" ,mslql);
-        result.put("mshlql" ,mshlql);
-        result.put("mql1" ,mql1);
-        result.put("mql2" ,mql2);
-        result.put("mql5" ,mql5);
-        result.put("mql6" ,mql6);
-        result.put("mql3" ,mql3);
-        result.put("mql4" ,mql4);
-        result.put("mql7" ,mql7);
-        result.put("mql8" ,mql8);
-        result.put("mql9" ,mql9);
-        result.put("mql10" ,mql10);
-        result.put("mql11" ,mql11);
-        result.put("mql12" ,mql12);
-        result.put("mql13" ,mql13);
-        result.put("mqql" ,mqql);
-        result.put("mkql" ,mkql);
-        result.put("mfql" ,mfql);
-        result.put("vab" ,vab);
-        result.put("vcd" ,vcd);
-        result.put("ddv3" ,ddv3);
-        result.put("av3" ,av3);
-        result.put("bv3" ,bv3);
-        result.put("cv3" ,cv3);
-        result.put("dv3" ,dv3);
-        result.put("at3" ,at3);
-        result.put("bt3" ,bt3);
-        result.put("dh3" ,dh3);
-        result.put("ah3" ,ah3);
-        result.put("bh3" ,bh3);
-        result.put("mwqf1" ,mwqf1);
-        result.put("mwqf2" ,mwqf2);
-        result.put("mwqf3" ,mwqf3);
-        result.put("mwqf4" ,mwqf4);
-        result.put("mwqf5" ,mwqf5);
-        result.put("mwqf6" ,mwqf6);
-        result.put("mwqf7" ,mwqf7);
-        result.put("mwqf8" ,mwqf8);
-        result.put("mwqf9" ,mwqf9);
-        result.put("mwqf10" ,mwqf10);
-        result.put("mwqf11" ,mwqf11);
-        result.put("mwqf12" ,mwqf12);
-        result.put("mwqf13" ,mwqf13);
-        result.put("mfh" ,mfh);
-        result.put("mwqf" ,mwqf);
-        result.put("vbcf" ,vbcf);
-        result.put("vadf" ,vadf);
-        result.put("ddvf" ,ddvf);
-        result.put("av4" ,av4);
-        result.put("bv4" ,bv4);
-        result.put("cv4" ,cv4);
-        result.put("dv4" ,dv4);
-        result.put("ff1" ,ff1);
-        result.put("ff2" ,ff2);
-        result.put("ff3" ,ff3);
-        result.put("ff4" ,ff4);
-        result.put("ff5" ,ff5);
-        result.put("ff6" ,ff6);
-        result.put("ff7" ,ff7);
-        result.put("ff8" ,ff8);
-        result.put("ff9" ,ff9);
-        result.put("ff10" ,ff10);
-        result.put("ff11" ,ff11);
-        result.put("ff12" ,ff12);
-        result.put("ff13" ,ff13);
-        result.put("mwzf1" ,mwzf1);
-        result.put("mwzf2" ,mwzf2);
-        result.put("mwzf3" ,mwzf3);
-        result.put("mwzf4" ,mwzf4);
-        result.put("mwzf5" ,mwzf5);
-        result.put("mwzf6" ,mwzf6);
-        result.put("mwzf7" ,mwzf7);
-        result.put("mwzf8" ,mwzf8);
-        result.put("mwzf9" ,mwzf9);
-        result.put("mwzf10" ,mwzf10);
-        result.put("mwzf11" ,mwzf11);
-        result.put("mwzf12" ,mwzf12);
-        result.put("mwzf13" ,mwzf13);
-        result.put("fwf" ,fwf);
-        result.put("mwzfa" ,mwzfa);
-        result.put("mwzfb" ,mwzfb);
-        result.put("mwzf" ,mwzf);
-        result.put("dhf" ,dhf);
-        result.put("ah4" ,ah4);
-        result.put("bh4" ,bh4);
-        return  result;
-    }
-    public Map<String,String> getMapForPDF1(){
-        Map<String,Double> doubleMap=getDoublePDF();
-        Map<String,String> map=getMap();
 
-        String x5=radio;
-        String x1= doubleMap.get("mmh1")>=doubleMap.get("mm1")?"≥":"<";
-        String x2= doubleMap.get("mmh1")>=doubleMap.get("mm1")?"满足":"不满足";
-        String x3= doubleMap.get("mmh2")>=doubleMap.get("mm1p")?"≥":"<";
-        String x4= doubleMap.get("mmh2")>=doubleMap.get("mm1p")?"满足":"不满足";
-        String x6= x2.equals("满足")&&x4.equals("满足")?"满足":"不满足";
-        Map<String,String> resultMap = new HashMap<>();
-        for (Map.Entry<String,Double> e:doubleMap.entrySet()) {
+    private Map<String, Double> getDoublePDF(String s) {
+        Map<String, Double> result = new HashMap();
+        //计算稳定性0°工作状态自重及载荷产生的倾覆力
+        Double msla = 0.0, mshla = 0.0, ma1 = 0.0, ma2 = 0.0, ma5 = 0.0;
+        if (s.equals("AU")) {
+            msla = tsl * lslq * 10;
+            mshla = tshl * lshlq * 10;
+            ma1 = m1 * lq1 * 10;
+            ma2 = m2 * lq2 * 10;
+            ma5 = m5 * lq5 * 10;
+        } else if (s.equals("CN")) {
+            msla = tsl * lslq * 10 * 2;
+            mshla = tshl * lshlq * 10 * 1.4;
+            ma1 = m1 * lq1 * 10 * 1.25;
+            ma2 = m2 * lq2 * 10 * 1.25;
+            ma5 = m5 * lq5 * 10 * 1.25;
+        }
+        result.put("msla", msla);
+        result.put("mshla", mshla);
+        result.put("ma1", ma1);
+        result.put("ma2", ma2);
+        result.put("ma5", ma5);
+
+        //计算稳定性0°工作状态自重产生的抗倾覆力矩
+        Double ma3 = m3 * lq3 * 10;
+        Double ma4 = m4 * lq4 * 10;
+        Double ma6 = m6 * lq6 * 10;
+        Double ma7 = m7 * lq7 * 10;
+        Double ma8 = m8 * lq8 * 10;
+        Double ma9 = m9 * lq9 * 10;
+        Double ma10 = m10 * lq10 * 10;
+        Double ma11 = m11 * lq11 * 10;
+        Double ma12 = m12 * lq12 * 10;
+        Double ma13 = m13 * lq13 * 10;
+        result.put("ma6", ma6);
+        result.put("ma3", ma3);
+        result.put("ma4", ma4);
+        result.put("ma7", ma7);
+        result.put("ma8", ma8);
+        result.put("ma9", ma9);
+        result.put("ma10", ma10);
+        result.put("ma11", ma11);
+        result.put("ma12", ma12);
+        result.put("ma13", ma13);
+
+        //计算稳定性0°工作状态风载荷产生的倾覆力矩（大臂同向）
+
+        Double msltw = 0.0;
+        Double mshltw = 0.0;
+        Double mtw1 = 0.0;
+        Double mtw2 = 0.0;
+        Double mtw3 = 0.0;
+        Double mtw4 = 0.0;
+        Double mtw5 = 0.0;
+        Double mtw6 = 0.0;
+        Double mtw7 = 0.0;
+        Double mtw8 = 0.0;
+        Double mtw9 = 0.0;
+        Double mtw10 = 0.0;
+        Double mtw11 = 0.0;
+        Double mtw12 = 0.0;
+        Double mtw13 = 0.0;
+        if (s.equals("AU")) {
+            msltw = 250 * asltx * hsl;
+            mshltw = 250 * ashltx * hshl;
+            mtw1 = 250 * atx1 * h1;
+            mtw2 = 250 * atx2 * h2;
+            mtw3 = 250 * atx3 * h3;
+            mtw4 = 250 * atx4 * h4;
+            mtw5 = 250 * atx5 * h5;
+            mtw6 = 250 * atx6 * h6;
+            mtw7 = 250 * atx7 * h7;
+            mtw8 = 250 * atx8 * h8;
+            mtw9 = 250 * atx9 * h9;
+            mtw10 = 250 * atx10 * h10;
+            mtw11 = 250 * atx11 * h11;
+            mtw12 = 250 * atx12 * h12;
+            mtw13 = 250 * atx13 * h13;
+        } else if (s.equals("CN")) {
+            msltw = 250 * asltx * hsl * 1.25;
+            mshltw = 250 * ashltx * hshl * 1.25;
+            mtw1 = 250 * atx1 * h1 * 1.25;
+            mtw2 = 250 * atx2 * h2 * 1.25;
+            mtw3 = 250 * atx3 * h3 * 1.25;
+            mtw4 = 250 * atx4 * h4 * 1.25;
+            mtw5 = 250 * atx5 * h5 * 1.25;
+            mtw6 = 250 * atx6 * h6 * 1.25;
+            mtw7 = 250 * atx7 * h7 * 1.25;
+            mtw8 = 250 * atx8 * h8 * 1.25;
+            mtw9 = 250 * atx9 * h9 * 1.25;
+            mtw10 = 250 * atx10 * h10 * 1.25;
+            mtw11 = 250 * atx11 * h11 * 1.25;
+            mtw12 = 250 * atx12 * h12 * 1.25;
+            mtw13 = 250 * atx13 * h13 * 1.25;
+        }
+        result.put("msltw", msltw);
+        result.put("mshltw", mshltw);
+        result.put("mtw1", mtw1);
+        result.put("mtw2", mtw2);
+        result.put("mtw3", mtw3);
+        result.put("mtw4", mtw4);
+        result.put("mtw5", mtw5);
+        result.put("mtw6", mtw6);
+        result.put("mtw7", mtw7);
+        result.put("mtw8", mtw8);
+        result.put("mtw9", mtw9);
+        result.put("mtw10", mtw10);
+        result.put("mtw11", mtw11);
+        result.put("mtw12", mtw12);
+        result.put("mtw13", mtw13);
+
+        //计算稳定性非工作状态自重产生的抗倾覆力矩
+
+        Double mh1 = m1 * lh1 * 10;
+        Double mh2 = m2 * lh2 * 10;
+        Double mh3 = m3 * lh3 * 10;
+        Double mh4 = m4 * lh4 * 10;
+        Double mh5 = m5 * lh5 * 10;
+        Double mh6 = m6 * lh6 * 10;
+        Double mh9 = m9 * lh9 * 10;
+        Double mh10 = m10 * lh10 * 10;
+        Double mh11 = m11 * lh11 * 10;
+        Double mh12 = m12 * lh12 * 10;
+        Double mh13 = m13 * lh13 * 10;
+        result.put("mh1", mh1);
+        result.put("mh2", mh2);
+        result.put("mh3", mh3);
+        result.put("mh4", mh4);
+        result.put("mh5", mh5);
+        result.put("mh6", mh6);
+        result.put("mh9", mh9);
+        result.put("mh10", mh10);
+        result.put("mh11", mh11);
+        result.put("mh12", mh12);
+        result.put("mh13", mh13);
+
+        //计算稳定性非工作状态自重产生的倾覆力矩
+
+        Double mh7 = m7 * lh7 * 10;
+        Double mh8 = m8 * lh8 * 10;
+        result.put("mh7", mh7);
+        result.put("mh8", mh8);
+
+        //计算稳定性非工作状态风载荷产生的倾覆力矩（大臂同向）
+
+        Double mftw1 = pf * aft1 * hf1;
+        Double mftw2 = pf * aft2 * hf2;
+        Double mftw3 = pf * aft3 * hf3;
+        Double mftw4 = pf * aft4 * hf4;
+        Double mftw5 = pf * aft5 * hf5;
+        Double mftw6 = pf * aft6 * hf6;
+        Double mftw7 = pf * aft7 * hf7;
+        Double mftw8 = pf * aft8 * hf8;
+        Double mftw9 = pf * aft9 * hf9;
+        Double mftw10 = pf * aft10 * hf10;
+        Double mftw11 = pf * aft11 * hf11;
+        Double mftw12 = pf * aft12 * hf12;
+        Double mftw13 = pf * aft13 * hf13;
+        result.put("mftw1", mftw1);
+        result.put("mftw2", mftw2);
+        result.put("mftw3", mftw3);
+        result.put("mftw4", mftw4);
+        result.put("mftw5", mftw5);
+        result.put("mftw6", mftw6);
+        result.put("mftw7", mftw7);
+        result.put("mftw8", mftw8);
+        result.put("mftw9", mftw9);
+        result.put("mftw10", mftw10);
+        result.put("mftw11", mftw11);
+        result.put("mftw12", mftw12);
+        result.put("mftw13", mftw13);
+
+        //稳定性计算和结果
+        Double mq = msla + mshla + ma1 + ma2 + ma5;
+        Double mm2 = ma3 + ma6 + ma4 + ma7 + ma8 + ma9 + ma10 + ma11 + ma12 + ma13;
+        Double mtw = msltw + mshltw + mtw1 + mtw2 + mtw3 + mtw4 + mtw5 + mtw6
+                + mtw7 + mtw8 + mtw9 + mtw10 + mtw11 + mtw12 + mtw13;
+        Double tm = 1.4 * tsl * 10 / 4;
+        Double ms = tm * lslq;
+        Double mo1 = 1.5 * (mq + mtw + ms);
+        Double mg1 = 3 * mq;
+        Double mkh = mh1 + mh2 + mh3 + mh4 + mh5 + mh6 + mh9 + mh10 + mh11 + mh12 + mh13;
+        Double mqh = mh7 + mh8;
+        Double mftw = mftw1 + mftw2 + mftw3 + mftw4 + mftw5 + mftw6 + mftw7
+                + mftw8 + mftw9 + mftw10 + mftw11 + mftw12 + mftw13;
+        Double mm1 = 0.0;
+        Double mmx3 = 0.0;
+        if (s.equals("AU")) {
+            mm1 = Math.max(mo1, mg1);
+            mmx3 = n1 * (n2 * fj + nt * ft) * lg;
+        } else if (s.equals("CN")) {
+            mm1 = mq + mtw;
+            mmx3 = n1 * n2 * fj * lg;
+        }
+
+        Double mmg3 = fn * lg;
+        Double mm3 = radio.equals("有") ? Math.min(mmg3, mmx3) : mmg3;
+        Double mmh1 = mm2 + mm3;
+        Double mm1p = mqh + mftw;
+        Double mmh2 = mkh + mm3;
+        result.put("mq", mq);
+        result.put("mm2", mm2);
+        result.put("mtw", mtw);
+        result.put("tm", tm);
+        result.put("ms", ms);
+        result.put("mo1", mo1);
+        result.put("mg1", mg1);
+        result.put("mkh", mkh);
+        result.put("mqh", mqh);
+        result.put("mftw", mftw);
+        result.put("mm1", mm1);
+        result.put("mmx3", mmx3);
+        result.put("mmg3", mmg3);
+        result.put("mm3", mm3);
+        result.put("mmh1", mmh1);
+        result.put("mm1p", mm1p);
+        result.put("mmh2", mmh2);
+
+        //0°工作状态自重及载荷产生的倾覆力矩
+        Double mslq = tsl * lslq * 10 * 1.25;
+        Double mshlq = tshl * lshlq * 10 * 1.25;
+        Double mq1 = m1 * lq1 * 10 * 1.25;
+        Double mq2 = m2 * lq2 * 10 * 1.25;
+        Double mq5 = m5 * lq5 * 10 * 1.25;
+        result.put("mslq", mslq);
+        result.put("mshlq", mshlq);
+        result.put("mq1", mq1);
+        result.put("mq2", mq2);
+        result.put("mq5", mq5);
+
+        //0°工作状态自重产生的抗倾覆力矩
+        Double mq6 = m6 * lq6 * 10 * 1.25;
+        Double mq3 = m3 * lq3 * 10 * 1.25;
+        Double mq4 = m4 * lq4 * 10 * 1.25;
+        Double mq7 = m7 * lq7 * 10 * 1.25;
+        Double mq8 = m8 * lq8 * 10 * 1.25;
+        Double mq9 = m9 * lq9 * 10 * 1.25;
+        Double mq10 = m10 * lq10 * 10 * 1.25;
+        Double mq11 = m11 * lq11 * 10 * 1.25;
+        Double mq12 = m12 * lq12 * 10 * 1.25;
+        Double mq13 = m13 * lq13 * 10 * 1.25;
+        result.put("mq6", mq6);
+        result.put("mq3", mq3);
+        result.put("mq4", mq4);
+        result.put("mq7", mq7);
+        result.put("mq8", mq8);
+        result.put("mq9", mq9);
+        result.put("mq10", mq10);
+        result.put("mq11", mq11);
+        result.put("mq12", mq12);
+        result.put("mq13", mq13);
+
+        //工作状态风载荷产生的水平倾覆力矩
+        Double mwqsl = 250 * asl * hsl * 1.25;
+        Double mwqshl = 250 * ashl * hshl * 1.25;
+        Double mwq1 = 250 * a1 * h1 * 1.25;
+        Double mwq2 = 250 * a2 * h2 * 1.25;
+        Double mwq3 = 250 * a3 * h3 * 1.25;
+        Double mwq4 = 250 * a4 * h4 * 1.25;
+        Double mwq5 = 250 * a5 * h5 * 1.25;
+        Double mwq6 = 250 * a6 * h6 * 1.25;
+        Double mwq7 = 250 * a7 * h7 * 1.25;
+        Double mwq8 = 250 * a8 * h8 * 1.25;
+        Double mwq9 = 250 * a9 * h9 * 1.25;
+        Double mwq10 = 250 * a10 * h10 * 1.25;
+        Double mwq11 = 250 * a11 * h11 * 1.25;
+        Double mwq12 = 250 * a12 * h12 * 1.25;
+        Double mwq13 = 250 * a13 * h13 * 1.25;
+        result.put("mwqsl", mwqsl);
+        result.put("mwqshl", mwqshl);
+        result.put("mwq1", mwq1);
+        result.put("mwq2", mwq2);
+        result.put("mwq3", mwq3);
+        result.put("mwq4", mwq4);
+        result.put("mwq5", mwq5);
+        result.put("mwq6", mwq6);
+        result.put("mwq7", mwq7);
+        result.put("mwq8", mwq8);
+        result.put("mwq9", mwq9);
+        result.put("mwq10", mwq10);
+        result.put("mwq11", mwq11);
+        result.put("mwq12", mwq12);
+        result.put("mwq13", mwq13);
+
+        //0°轮压值计算
+        Double mqq = mslq + mshlq + mq1 + mq2 + mq5;
+        Double mkq = mq3 + mq4 + mq6 + mq7 + mq8 + mq9 + mq10 + mq11 + mq12 + mq13;
+        Double mwq = mwqsl + mwqshl + mwq1 + mwq2 + mwq3 + mwq4 + mwq5 + mwq6
+                + mwq7 + mwq8 + mwq9 + mwq10 + mwq11 + mwq12 + mwq13;
+        Double mfq = mkq - mqq;
+        Double vcd = mfq / lg / 2;
+        Double vab = 1.25 * mz * 10 / 2 - vcd;
+        Double mgq = 2 * 0.064 * mz * hh;
+        Double msq = mgq + mwq;
+        Double ddv1 = msq / ll / 2;
+        Double av1 = vab - ddv1;
+        Double bv1 = vab + ddv1;
+        Double cv1 = vcd + ddv1;
+        Double dv1 = vcd - ddv1;
+        result.put("mqq", mqq);
+        result.put("mkq", mkq);
+        result.put("mwq", mwq);
+        result.put("mfq", mfq);
+        result.put("vcd", vcd);
+        result.put("vab", vab);
+        result.put("mgq", mgq);
+        result.put("msq", msq);
+        result.put("ddv1", ddv1);
+        result.put("av1", av1);
+        result.put("bv1", bv1);
+        result.put("cv1", cv1);
+        result.put("dv1", dv1);
+
+        //0°摩擦力计算
+        Double at1 = av1 * 0.05;
+        Double bt1 = bv1 * 0.05;
+        result.put("at1", at1);
+        result.put("bt1", bt1);
+
+        //工作状态擦窗机各部件风载荷
+        Double fsl = 250 * asl * 1.25;
+        Double fshl = 250 * ashl * 1.25;
+        Double f1 = 250 * a1 * 1.25;
+        Double f2 = 250 * a2 * 1.25;
+        Double f3 = 250 * a3 * 1.25;
+        Double f4 = 250 * a4 * 1.25;
+        Double f5 = 250 * a5 * 1.25;
+        Double f6 = 250 * a6 * 1.25;
+        Double f7 = 250 * a7 * 1.25;
+        Double f8 = 250 * a8 * 1.25;
+        Double f9 = 250 * a9 * 1.25;
+        Double f10 = 250 * a10 * 1.25;
+        Double f11 = 250 * a11 * 1.25;
+        Double f12 = 250 * a12 * 1.25;
+        Double f13 = 250 * a13 * 1.25;
+        result.put("fsl", fsl);
+        result.put("fshl", fshl);
+        result.put("f1", f1);
+        result.put("f2", f2);
+        result.put("f3", f3);
+        result.put("f4", f4);
+        result.put("f5", f5);
+        result.put("f6", f6);
+        result.put("f7", f7);
+        result.put("f8", f8);
+        result.put("f9", f9);
+        result.put("f10", f10);
+        result.put("f11", f11);
+        result.put("f12", f12);
+        result.put("f13", f13);
+
+        //工作状态风载荷对擦窗机各部件产生的正向回转力矩
+        Double mwzsl = fsl * lslz;
+        Double mwzshl = fshl * lshlz;
+        Double mwz1 = f1 * lz1;
+        Double mwz2 = f2 * lz2;
+        Double mwz3 = f3 * lz3;
+        Double mwz4 = f4 * lz4;
+        Double mwz5 = f5 * lz5;
+        result.put("mwzsl", mwzsl);
+        result.put("mwzshl", mwzshl);
+        result.put("mwz1", mwz1);
+        result.put("mwz2", mwz2);
+        result.put("mwz3", mwz3);
+        result.put("mwz4", mwz4);
+        result.put("mwz5", mwz5);
+
+        //工作状态风载荷对擦窗机各部件产生的反向回转力矩
+        Double mwz6 = f6 * lz6;
+        Double mwz7 = f7 * lz7;
+        Double mwz8 = f8 * lz8;
+        Double mwz9 = f9 * lz9;
+        Double mwz10 = f10 * lz10;
+        Double mwz11 = f11 * lz11;
+        Double mwz12 = f12 * lz12;
+        Double mwz13 = f13 * lz13;
+        result.put("mwz6", mwz6);
+        result.put("mwz7", mwz7);
+        result.put("mwz8", mwz8);
+        result.put("mwz9", mwz9);
+        result.put("mwz10", mwz10);
+        result.put("mwz11", mwz11);
+        result.put("mwz12", mwz12);
+        result.put("mwz13", mwz13);
+
+        //0°水平力计算
+        Double fw = fsl + fshl + f1 + f2 + f3 + f4 + f5 + f6 + f7 + f8 + f9 + f10 + f11 + f12 + f13;
+        Double mwza = mwzsl + mwzshl + mwz1 + mwz2 + mwz3 + mwz4 + mwz5;
+        Double mwzb = mwz6 + mwz7 + mwz8 + mwz9 + mwz10 + mwz11 + mwz12 + mwz13;
+        Double mwz = mwza - mwzb;
+        Double dh1 = mwz / ll;
+        Double ah1 = -dh1;
+        Double bh1 = dh1;
+        result.put("fw", fw);
+        result.put("mwza", mwza);
+        result.put("mwzb", mwzb);
+        result.put("mwz", mwz);
+        result.put("dh1", dh1);
+        result.put("ah1", ah1);
+        result.put("bh1", bh1);
+
+        //45°工作状态自重及载荷产生的倾覆力矩
+        Double mslz = tsl * lslz * 10 * 1.25;
+        Double mshlz = tshl * lshlz * 10 * 1.25;
+        Double mz1 = m1 * lz1 * 10 * 1.25;
+        Double mz2 = m2 * lz2 * 10 * 1.25;
+        Double mz3 = m3 * lz3 * 10 * 1.25;
+        Double mz4 = m4 * lz4 * 10 * 1.25;
+        Double mz5 = m5 * lz5 * 10 * 1.25;
+        result.put("mslz", mslz);
+        result.put("mshlz", mshlz);
+        result.put("mz1", mz1);
+        result.put("mz2", mz2);
+        result.put("mz3", mz3);
+        result.put("mz4", mz4);
+        result.put("mz5", mz5);
+
+        //45°工作状态自重产生的抗倾覆力矩
+        Double mz6 = m6 * lz6 * 10 * 1.25;
+        Double mz7 = m7 * lz7 * 10 * 1.25;
+        Double mz8 = m8 * lz8 * 10 * 1.25;
+        Double mz9 = m9 * lz9 * 10 * 1.25;
+        Double mz10 = m10 * lz10 * 10 * 1.25;
+        Double mz11 = m11 * lz11 * 10 * 1.25;
+        Double mz12 = m12 * lz12 * 10 * 1.25;
+        Double mz13 = m13 * lz13 * 10 * 1.25;
+        result.put("mz6", mz6);
+        result.put("mz7", mz7);
+        result.put("mz8", mz8);
+        result.put("mz9", mz9);
+        result.put("mz10", mz10);
+        result.put("mz11", mz11);
+        result.put("mz12", mz12);
+        result.put("mz13", mz13);
+
+        //45°轮压值计算
+        Double mqz = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5;
+        Double mkz = mz7 + mz8 + mz9 + mz10 + mz11 + mz12 + mz13 + mz6;
+        Double vm = 1.25 * mz * 10 / 4;
+        Double mfz = mqz - mkz;
+        Double mx = mfz * 0.707;
+        Double my = mfz * 0.707;
+        Double dvx = mx / ll / 2;
+        Double dvy = my / lg / 2;
+        Double ddv2 = msq / Math.sqrt(lg * lg + ll * ll);
+        Double av2 = vm - dvx + dvy - ddv2;
+        Double bv2 = vm + dvx + dvy;
+        Double cv2 = vm + dvx - dvy + ddv2;
+        Double dv2 = vm - dvx - dvy;
+        result.put("mqz", mqz);
+        result.put("mkz", mkz);
+        result.put("vm", vm);
+        result.put("mfz", mfz);
+        result.put("mx", mx);
+        result.put("my", my);
+        result.put("dvx", dvx);
+        result.put("dvy", dvy);
+        result.put("ddv2", ddv2);
+        result.put("av2", av2);
+        result.put("bv2", bv2);
+        result.put("cv2", cv2);
+        result.put("dv2", dv2);
+
+        //45°摩擦力计算
+        Double at2 = av2 * 0.05;
+        Double bt2 = bv2 * 0.05;
+        result.put("at2", at2);
+        result.put("bt2", bt2);
+
+        //45°水平力计算
+        Double dh2 = mwz / ll;
+        Double ah2 = fw * 0.707 - dh2;
+        Double bh2 = fw * 0.707 + dh2;
+        result.put("dh2", dh2);
+        result.put("ah2", ah2);
+        result.put("bh2", bh2);
+
+        //90°工作状态自重及载荷产生的倾覆力矩
+        Double mslql = tsl * lslql * 10 * 1.25;
+        Double mshlql = tshl * lshlql * 10 * 1.25;
+        Double mql1 = m1 * lql1 * 10 * 1.25;
+        Double mql2 = m2 * lql2 * 10 * 1.25;
+        Double mql5 = m5 * lql5 * 10 * 1.25;
+        result.put("mslql", mslql);
+        result.put("mshlql", mshlql);
+        result.put("mql1", mql1);
+        result.put("mql2", mql2);
+        result.put("mql5", mql5);
+
+        //90°工作状态自重产生的抗倾覆力矩
+        Double mql6 = m6 * lql6 * 10 * 1.25;
+        Double mql3 = m3 * lql3 * 10 * 1.25;
+        Double mql4 = m4 * lql4 * 10 * 1.25;
+        Double mql7 = m7 * lql7 * 10 * 1.25;
+        Double mql8 = m8 * lql8 * 10 * 1.25;
+        Double mql9 = m9 * lql9 * 10 * 1.25;
+        Double mql10 = m10 * lql10 * 10 * 1.25;
+        Double mql11 = m11 * lql11 * 10 * 1.25;
+        Double mql12 = m12 * lql12 * 10 * 1.25 / 2;
+        Double mql13 = m13 * lql13 * 10 * 1.25 / 2;
+        result.put("mql6", mql6);
+        result.put("mql3", mql3);
+        result.put("mql4", mql4);
+        result.put("mql7", mql7);
+        result.put("mql8", mql8);
+        result.put("mql9", mql9);
+        result.put("mql10", mql10);
+        result.put("mql11", mql11);
+        result.put("mql12", mql12);
+        result.put("mql13", mql13);
+
+        //90°轮压值计算
+        Double mqql = mslql + mshlql + mql1 + mql2 + mql5;
+        Double mkql = mql3 + mql4 + mql7 + mql8 + mql9 + mql10 + mql11 + mql12 + mql13 + mql6;
+        Double mfql = mkql - mqql;
+        Double vad = mfql / ll / 2;
+        Double vbc = 1.25 * mz * 10 / 2 - vad;
+        Double ddv3 = msq / lg / 2;
+        Double av3 = vad - ddv3;
+        Double bv3 = vbc - ddv3;
+        Double cv3 = vbc + ddv3;
+        Double dv3 = vad + ddv3;
+        result.put("mqql", mqql);
+        result.put("mkql", mkql);
+        result.put("mfql", mfql);
+        result.put("vad", vad);
+        result.put("vbc", vbc);
+        result.put("ddv3", ddv3);
+        result.put("av3", av3);
+        result.put("bv3", bv3);
+        result.put("cv3", cv3);
+        result.put("dv3", dv3);
+
+        //90°摩擦力计算
+        Double at3 = av3 * 0.05;
+        Double bt3 = bv3 * 0.05;
+        result.put("at3", at3);
+        result.put("bt3", bt3);
+
+        //90°水平力计算
+        Double dh3 = mwz / ll;
+        Double ah3 = fw / 2 - dh3;
+        Double bh3 = fw / 2 + dh3;
+        result.put("dh3", dh3);
+        result.put("ah3", ah3);
+        result.put("bh3", bh3);
+
+        //非工作状态风载荷产生的水平倾覆力矩
+        Double mwqf1 = pf * af1 * hf1;
+        Double mwqf2 = pf * af2 * hf2;
+        Double mwqf3 = pf * af3 * hf3;
+        Double mwqf4 = pf * af4 * hf4;
+        Double mwqf5 = pf * af5 * hf5;
+        Double mwqf6 = pf * af6 * hf6;
+        Double mwqf7 = pf * af7 * hf7;
+        Double mwqf8 = pf * af8 * hf8;
+        Double mwqf9 = pf * af9 * hf9;
+        Double mwqf10 = pf * af10 * hf10;
+        Double mwqf11 = pf * af11 * hf11;
+        Double mwqf12 = pf * af12 * hf12;
+        Double mwqf13 = pf * af13 * hf13;
+        result.put("mwqf1", mwqf1);
+        result.put("mwqf2", mwqf2);
+        result.put("mwqf3", mwqf3);
+        result.put("mwqf4", mwqf4);
+        result.put("mwqf5", mwqf5);
+        result.put("mwqf6", mwqf6);
+        result.put("mwqf7", mwqf7);
+        result.put("mwqf8", mwqf8);
+        result.put("mwqf9", mwqf9);
+        result.put("mwqf10", mwqf10);
+        result.put("mwqf11", mwqf11);
+        result.put("mwqf12", mwqf12);
+        result.put("mwqf13", mwqf13);
+
+        //非工作状态轮压值计算
+        Double mfh = mkh - mqh;
+        Double mwqf = mwqf1 + mwqf2 + mwqf3 + mwqf4 + mwqf5 + mwqf6 + mwqf7
+                + mwqf8 + mwqf9 + mwqf10 + mwqf11 + mwqf12 + mwqf13;
+        Double vbcf = mfh / ll / 2;
+        Double vadf = mzf * 10 / 2 - vbcf;
+        Double ddvf = mwqf / lg / 2;
+        Double av4 = vadf - ddvf;
+        Double bv4 = vbcf - ddvf;
+        Double cv4 = vbcf + ddvf;
+        Double dv4 = vadf + ddvf;
+        result.put("mfh", mfh);
+        result.put("mwqf", mwqf);
+        result.put("vbcf", vbcf);
+        result.put("vadf", vadf);
+        result.put("ddvf", ddvf);
+        result.put("av4", av4);
+        result.put("bv4", bv4);
+        result.put("cv4", cv4);
+        result.put("dv4", dv4);
+
+        //非工作状态擦窗机各部件风载荷
+        Double ff1 = pf * af1;
+        Double ff2 = pf * af2;
+        Double ff3 = pf * af3;
+        Double ff4 = pf * af4;
+        Double ff5 = pf * af5;
+        Double ff6 = pf * af6;
+        Double ff7 = pf * af7;
+        Double ff8 = pf * af8;
+        Double ff9 = pf * af9;
+        Double ff10 = pf * af10;
+        Double ff11 = pf * af11;
+        Double ff12 = pf * af12;
+        Double ff13 = pf * af13;
+        result.put("ff1", ff1);
+        result.put("ff2", ff2);
+        result.put("ff3", ff3);
+        result.put("ff4", ff4);
+        result.put("ff5", ff5);
+        result.put("ff6", ff6);
+        result.put("ff7", ff7);
+        result.put("ff8", ff8);
+        result.put("ff9", ff9);
+        result.put("ff10", ff10);
+        result.put("ff11", ff11);
+        result.put("ff12", ff12);
+        result.put("ff13", ff13);
+
+        //非工作状态风载荷对擦窗机各部件产生的正向回转力矩
+        Double mwzf1 = ff1 * lzf1;
+        Double mwzf2 = ff2 * lzf2;
+        Double mwzf3 = ff3 * lzf3;
+        Double mwzf4 = ff4 * lzf4;
+        Double mwzf5 = ff5 * lzf5;
+        result.put("mwzf1", mwzf1);
+        result.put("mwzf2", mwzf2);
+        result.put("mwzf3", mwzf3);
+        result.put("mwzf4", mwzf4);
+        result.put("mwzf5", mwzf5);
+
+        //非工作状态风载荷对擦窗机各部件产生的反向回转力矩
+        Double mwzf6 = ff6 * lzf6;
+        Double mwzf7 = ff7 * lzf7;
+        Double mwzf8 = ff8 * lzf8;
+        Double mwzf9 = ff9 * lzf9;
+        Double mwzf10 = ff10 * lzf10;
+        Double mwzf11 = ff11 * lzf11;
+        Double mwzf12 = ff12 * lzf12;
+        Double mwzf13 = ff13 * lzf13;
+        result.put("mwzf6", mwzf6);
+        result.put("mwzf7", mwzf7);
+        result.put("mwzf8", mwzf8);
+        result.put("mwzf9", mwzf9);
+        result.put("mwzf10", mwzf10);
+        result.put("mwzf11", mwzf11);
+        result.put("mwzf12", mwzf12);
+        result.put("mwzf13", mwzf13);
+
+        //非工作状态水平力计算
+        Double fwf = ff1 + ff2 + ff3 + ff4 + ff5 + ff6 + ff7 + ff8 + ff9 + ff10 + ff11 + ff12 + ff13;
+        Double mwzfa = mwzf1 + mwzf2 + mwzf3 + mwzf4 + mwzf5;
+        Double mwzfb = mwzf7 + mwzf8 + mwzf9 + mwzf10 + mwzf11 + mwzf12 + mwzf13 + mwzf6;
+        Double mwzf = mwzfa - mwzfb;
+        Double dhf = mwzf / ll;
+        Double ah4 = fwf / 2 - dhf;
+        Double bh4 = fwf / 2 + dhf;
+        result.put("fwf", fwf);
+        result.put("mwzfa", mwzfa);
+        result.put("mwzfb", mwzfb);
+        result.put("mwzf", mwzf);
+        result.put("dhf", dhf);
+        result.put("ah4", ah4);
+        result.put("bh4", bh4);
+
+        Double av1k = av1 / 1000;
+        Double bv1k = bv1 / 1000;
+        Double cv1k = cv1 / 1000;
+        Double dv1k = dv1 / 1000;
+        Double at1k = at1 / 1000;
+        Double bt1k = bt1 / 1000;
+        Double ah1k = ah1 / 1000;
+        Double bh1k = bh1 / 1000;
+        result.put("av1k", av1k);
+        result.put("bv1k", bv1k);
+        result.put("cv1k", cv1k);
+        result.put("dv1k", dv1k);
+        result.put("at1k", at1k);
+        result.put("bt1k", bt1k);
+        result.put("ah1k", ah1k);
+        result.put("bh1k", bh1k);
+
+        Double av2k = av2 / 1000;
+        Double bv2k = bv2 / 1000;
+        Double cv2k = cv2 / 1000;
+        Double dv2k = dv2 / 1000;
+        Double at2k = at2 / 1000;
+        Double bt2k = bt2 / 1000;
+        Double ah2k = ah2 / 1000;
+        Double bh2k = bh2 / 1000;
+        result.put("av2k", av2k);
+        result.put("bv2k", bv2k);
+        result.put("cv2k", cv2k);
+        result.put("dv2k", dv2k);
+        result.put("at2k", at2k);
+        result.put("bt2k", bt2k);
+        result.put("ah2k", ah2k);
+        result.put("bh2k", bh2k);
+
+        Double av3k = av3 / 1000;
+        Double bv3k = bv3 / 1000;
+        Double cv3k = cv3 / 1000;
+        Double dv3k = dv3 / 1000;
+        Double at3k = at3 / 1000;
+        Double bt3k = bt3 / 1000;
+        Double ah3k = ah3 / 1000;
+        Double bh3k = bh3 / 1000;
+        result.put("av3k", av3k);
+        result.put("bv3k", bv3k);
+        result.put("cv3k", cv3k);
+        result.put("dv3k", dv3k);
+        result.put("at3k", at3k);
+        result.put("bt3k", bt3k);
+        result.put("ah3k", ah3k);
+        result.put("bh3k", bh3k);
+
+        Double av4k = av4 / 1000;
+        Double bv4k = bv4 / 1000;
+        Double cv4k = cv4 / 1000;
+        Double dv4k = dv4 / 1000;
+        Double ah4k = ah4 / 1000;
+        Double bh4k = bh4 / 1000;
+        result.put("av4k", av4k);
+        result.put("bv4k", bv4k);
+        result.put("cv4k", cv4k);
+        result.put("dv4k", dv4k);
+        result.put("ah4k", ah4k);
+        result.put("bh4k", bh4k);
+
+        return result;
+    }
+
+    public Map<String, String> getMapForPDF1() {
+        Map<String, Double> doubleMap = getDoublePDF("CN");
+        Map<String, String> map = getMap();
+
+        String x5 = radio;
+        String xx5 = radio.equals("有") ? "has" : "hasn't";
+        String x1 = doubleMap.get("mmh1") >= doubleMap.get("mm1") ? "≥" : "<";
+        String x2 = doubleMap.get("mmh1") >= doubleMap.get("mm1") ? "满足" : "不满足";
+        String xx2 = doubleMap.get("mmh1") >= doubleMap.get("mm1") ? "meets" : "doesn't meet";
+        String x3 = doubleMap.get("mmh2") >= doubleMap.get("mm1p") ? "≥" : "<";
+        String x4 = doubleMap.get("mmh2") >= doubleMap.get("mm1p") ? "满足" : "不满足";
+        String xx4 = doubleMap.get("mmh2") >= doubleMap.get("mm1p") ? "meets" : "doesn't meet";
+        String x6 = x2.equals("满足") && x4.equals("满足") ? "满足" : "不满足";
+        String xx6 = x2.equals("满足") && x4.equals("满足") ? "meets" : "doesn't meet";
+        Map<String, String> resultMap = new HashMap<>();
+        for (Map.Entry<String, Double> e : doubleMap.entrySet()) {
             resultMap.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
         }
-        for (Map.Entry<String,String> e:map.entrySet()) {
+        for (Map.Entry<String, String> e : map.entrySet()) {
             resultMap.put(e.getKey(), e.getValue());
         }
-        resultMap.put("x5",x5);
-        resultMap.put("x1",x1);
-        resultMap.put("x2",x2);
-        resultMap.put("x3",x3);
-        resultMap.put("x4",x4);
-        resultMap.put("x6",x6);
+        resultMap.put("x5", x5);
+        resultMap.put("xx5", xx5);
+        resultMap.put("x1", x1);
+        resultMap.put("x2", x2);
+        resultMap.put("xx2", xx2);
+        resultMap.put("x3", x3);
+        resultMap.put("x4", x4);
+        resultMap.put("xx4", xx4);
+        resultMap.put("x6", x6);
+        resultMap.put("xx6", xx6);
         return resultMap;
     }
 
-    public Map<String,String> getMapForPDF2(){
-        Map<String,Double> doubleMap=getDoublePDF();
-        Double dvm =1.25*mz*10/4;
-        Double dvf =doubleMap.get("mfz")/Math.sqrt(lg*lg+ll*ll);
-        Double dvw =doubleMap.get("msq")/Math.sqrt(lg*lg+ll*ll);
-        Double dhh1=doubleMap.get("mwz")/ll;
-        Double av5 =dvm+0+dvw;
-        Double bv5 =dvm-dvf+0;
-        Double cv5 =dvm+0-dvw;
-        Double dv5 =dvm+dvf+0;
-        Double at5 =av5*0.05;
-        Double bt5 =bv5*0.05;
-        Double ah5 =doubleMap.get("fw")*0.707+dhh1;
-        Double bh5 =doubleMap.get("fw")*0.707-dhh1;
-        Double y1  =doubleMap.get("av2")/av5;
-        Double y2  =doubleMap.get("bv2")/bv5;
-        Double y3  =doubleMap.get("cv2")/cv5;
-        Double y4  =doubleMap.get("dv2")/dv5;
-        Double y5  =doubleMap.get("at2")/at5;
-        Double y6  =doubleMap.get("bt2")/bt5;
-        Double y7  =doubleMap.get("ah2")/ah5;
-        Double y8  =doubleMap.get("bh2")/bh5;
-        String z1  = 0.85<=y1&&y1<=1.15?"符合":"不符合";
-        String z2  = 0.85<=y2&&y2<=1.15?"符合":"不符合";
-        String z3  = 0.85<=y3&&y3<=1.15?"符合":"不符合";
-        String z4  = 0.85<=y4&&y4<=1.15?"符合":"不符合";
-        String z5  = 0.85<=y5&&y5<=1.15?"符合":"不符合";
-        String z6  = 0.85<=y6&&y6<=1.15?"符合":"不符合";
-        String z7  = 0.85<=y7&&y7<=1.15?"符合":"不符合";
-        String z8  = 0.85<=y8&&y8<=1.15?"符合":"不符合";
-        
-        Map<String,String> map=new HashMap<>();
-        
+    public Map<String, String> getMapForAuPDF1() {
+        Map<String, Double> doubleMap = getDoublePDF("AU");
+        Map<String, String> map = getMap();
+
+        double mo1 = doubleMap.get("mo1"), mg1 = doubleMap.get("mg1");
+
+        String x5 = radio;
+        String xx5 = radio.equals("有") ? "has" : "hasn't";
+        String x7 = mo1 > mg1 ? ">" : mo1 < mg1 ? "<" : "=";
+        String x1 = doubleMap.get("mmh1") >= doubleMap.get("mm1") ? "≥" : "<";
+        String x2 = doubleMap.get("mmh1") >= doubleMap.get("mm1") ? "满足" : "不满足";
+        String xx2 = doubleMap.get("mmh1") >= doubleMap.get("mm1") ? "meets" : "doesn't meet";
+        String x3 = doubleMap.get("mmh2") >= doubleMap.get("mm1p") ? "≥" : "<";
+        String x4 = doubleMap.get("mmh2") >= doubleMap.get("mm1p") ? "满足" : "不满足";
+        String xx4 = doubleMap.get("mmh2") >= doubleMap.get("mm1p") ? "meets" : "doesn't meet";
+        String x6 = x2.equals("满足") && x4.equals("满足") ? "满足" : "不满足";
+        String xx6 = x2.equals("满足") && x4.equals("满足") ? "meets" : "doesn't meet";
+        Map<String, String> resultMap = new HashMap<>();
+        for (Map.Entry<String, Double> e : doubleMap.entrySet()) {
+            resultMap.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
+        }
+        for (Map.Entry<String, String> e : map.entrySet()) {
+            resultMap.put(e.getKey(), e.getValue());
+        }
+        resultMap.put("x5", x5);
+        resultMap.put("xx5", xx5);
+        resultMap.put("x1", x1);
+        resultMap.put("x2", x2);
+        resultMap.put("xx2", xx2);
+        resultMap.put("x3", x3);
+        resultMap.put("x4", x4);
+        resultMap.put("xx4", xx4);
+        resultMap.put("x6", x6);
+        resultMap.put("xx6", xx6);
+        resultMap.put("x7", x7);
+        return resultMap;
+    }
+
+    public Map<String, String> getMapForPDF2() {
+        Map<String, Double> doubleMap = getDoublePDF("CN");
+        Double dvm = 1.25 * mz * 10 / 4;
+        Double dvf = doubleMap.get("mfz") / Math.sqrt(lg * lg + ll * ll);
+        Double dvw = doubleMap.get("msq") / Math.sqrt(lg * lg + ll * ll);
+        Double dhh1 = doubleMap.get("mwz") / ll;
+        Double av5 = dvm + 0 - dvw;
+        Double bv5 = dvm + dvf + 0;
+        Double cv5 = dvm - 0 + dvw;
+        Double dv5 = dvm - dvf - 0;
+        Double at5 = av5 * 0.05;
+        Double bt5 = bv5 * 0.05;
+        Double ah5 = doubleMap.get("fw") * 0.70 - dhh1;
+        Double bh5 = doubleMap.get("fw") * 0.707 + dhh1;
+        Double y1 = doubleMap.get("av2") / av5;
+        Double y2 = doubleMap.get("bv2") / bv5;
+        Double y3 = doubleMap.get("cv2") / cv5;
+        Double y4 = doubleMap.get("dv2") / dv5;
+        Double y5 = doubleMap.get("at2") / at5;
+        Double y6 = doubleMap.get("bt2") / bt5;
+        Double y7 = doubleMap.get("ah2") / ah5;
+        Double y8 = doubleMap.get("bh2") / bh5;
+        String z1 = 0.85 <= y1 && y1 <= 1.15 ? "符合" : "不符合";
+        String z2 = 0.85 <= y2 && y2 <= 1.15 ? "符合" : "不符合";
+        String z3 = 0.85 <= y3 && y3 <= 1.15 ? "符合" : "不符合";
+        String z4 = 0.85 <= y4 && y4 <= 1.15 ? "符合" : "不符合";
+        String z5 = 0.85 <= y5 && y5 <= 1.15 ? "符合" : "不符合";
+        String z6 = 0.85 <= y6 && y6 <= 1.15 ? "符合" : "不符合";
+        String z7 = 0.85 <= y7 && y7 <= 1.15 ? "符合" : "不符合";
+        String z8 = 0.85 <= y8 && y8 <= 1.15 ? "符合" : "不符合";
+
+        Map<String, String> map = new HashMap<>();
+
         map.put("dvm", CommonFunc.convertDoubleToString(dvm));
         map.put("dvf", CommonFunc.convertDoubleToString(dvf));
         map.put("dvw", CommonFunc.convertDoubleToString(dvw));
@@ -2601,12 +2974,86 @@ public class StabilityEnity {
         return map;
     }
 
-    public Map<String,String> check(){
-        Map<String ,String> map=getMapForPDF1();
-        Map<String ,String> result=new HashMap<>();
+    public Map<String, String> checkCN() {
+        Map<String, String> map = getMapForPDF1();
+        Map<String, String> result = new HashMap<>();
 
-        result.put("x2",map.get("x2"));
-        result.put("x4",map.get("x4"));
+        result.put("x2", map.get("x2"));
+        result.put("x4", map.get("x4"));
+        result.put("av1k", map.get("av1k"));
+        result.put("bv1k", map.get("bv1k"));
+        result.put("cv1k", map.get("cv1k"));
+        result.put("dv1k", map.get("dv1k"));
+        result.put("at1k", map.get("at1k"));
+        result.put("bt1k", map.get("bt1k"));
+        result.put("ah1k", map.get("ah1k"));
+        result.put("bh1k", map.get("bh1k"));
+        result.put("av2k", map.get("av2k"));
+        result.put("bv2k", map.get("bv2k"));
+        result.put("cv2k", map.get("cv2k"));
+        result.put("dv2k", map.get("dv2k"));
+        result.put("at2k", map.get("at2k"));
+        result.put("bt2k", map.get("bt2k"));
+        result.put("ah2k", map.get("ah2k"));
+        result.put("bh2k", map.get("bh2k"));
+        result.put("av3k", map.get("av3k"));
+        result.put("bv3k", map.get("bv3k"));
+        result.put("cv3k", map.get("cv3k"));
+        result.put("dv3k", map.get("dv3k"));
+        result.put("at3k", map.get("at3k"));
+        result.put("bt3k", map.get("bt3k"));
+        result.put("ah3k", map.get("ah3k"));
+        result.put("bh3k", map.get("bh3k"));
+        result.put("av4k", map.get("av4k"));
+        result.put("bv4k", map.get("bv4k"));
+        result.put("cv4k", map.get("cv4k"));
+        result.put("dv4k", map.get("dv4k"));
+        result.put("at4k", map.get("at4k"));
+        result.put("bt4k", map.get("bt4k"));
+        result.put("ah4k", map.get("ah4k"));
+        result.put("bh4k", map.get("bh4k"));
+
+        return result;
+    }
+
+    public Map<String, String> checkAU() {
+        Map<String, String> map = getMapForAuPDF1();
+        Map<String, String> result = new HashMap<>();
+
+        result.put("x2", map.get("x2"));
+        result.put("x4", map.get("x4"));
+        result.put("av1k", map.get("av1k"));
+        result.put("bv1k", map.get("bv1k"));
+        result.put("cv1k", map.get("cv1k"));
+        result.put("dv1k", map.get("dv1k"));
+        result.put("at1k", map.get("at1k"));
+        result.put("bt1k", map.get("bt1k"));
+        result.put("ah1k", map.get("ah1k"));
+        result.put("bh1k", map.get("bh1k"));
+        result.put("av2k", map.get("av2k"));
+        result.put("bv2k", map.get("bv2k"));
+        result.put("cv2k", map.get("cv2k"));
+        result.put("dv2k", map.get("dv2k"));
+        result.put("at2k", map.get("at2k"));
+        result.put("bt2k", map.get("bt2k"));
+        result.put("ah2k", map.get("ah2k"));
+        result.put("bh2k", map.get("bh2k"));
+        result.put("av3k", map.get("av3k"));
+        result.put("bv3k", map.get("bv3k"));
+        result.put("cv3k", map.get("cv3k"));
+        result.put("dv3k", map.get("dv3k"));
+        result.put("at3k", map.get("at3k"));
+        result.put("bt3k", map.get("bt3k"));
+        result.put("ah3k", map.get("ah3k"));
+        result.put("bh3k", map.get("bh3k"));
+        result.put("av4k", map.get("av4k"));
+        result.put("bv4k", map.get("bv4k"));
+        result.put("cv4k", map.get("cv4k"));
+        result.put("dv4k", map.get("dv4k"));
+        result.put("at4k", map.get("at4k"));
+        result.put("bt4k", map.get("bt4k"));
+        result.put("ah4k", map.get("ah4k"));
+        result.put("bh4k", map.get("bh4k"));
 
         return result;
     }

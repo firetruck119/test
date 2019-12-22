@@ -128,13 +128,14 @@
                     $("#clz").val("S31608");
                     $("#fx").val("175");
                     $("#fv").val("100");
-                    $("#f02").val("205");
+                    $("#f02").val("175");
                 }else if(this.value=="S22053"){
                     $("#clz").val("S22053");
                     $("#fx").val("385");
                     $("#fv").val("220");
-                    $("#f02").val("450");
+                    $("#f02").val("385");
                 }
+                valueChange("f02");
             });
             $("#select2").change(function () {
                 if(this.value=="S31608") {
@@ -144,38 +145,55 @@
                     $("#clh").val("S22053");
                     $("#fwf").val("260");
                 }
+                valueChange("fwf");
             });
             $("#select3").change(function () {
-                if(this.value=="50") {
+                if(this.value=="A2-50") {
                     $("#xndj").val("50");
                     $("#fbt").val("190");
                     $("#fbv").val("155");
-                    $("#fbc").val("410");
-                }else if(this.value=="70"){
+                    $("#fbc").val("190");
+                }else if(this.value=="A2-70"){
                     $("#xndj").val("70");
                     $("#fbt").val("295");
                     $("#fbv").val("245");
-                    $("#fbc").val("410");
-                }else if(this.value=="80"){
+                    $("#fbc").val("280");
+                }else if(this.value=="A2-80"){
                     $("#xndj").val("80");
                     $("#fbt").val("335");
                     $("#fbv").val("280");
-                    $("#fbc").val("410");
+                    $("#fbc").val("335");
                 }
+                valueChange("fbt")
+                valueChange("fbc")
             });
             $("#select4").change(function () {
                 var temp=parseFloat($("#select4").val().slice(1));
-                $("#dd").val(temp);
                 $("#ad").val((3.14*(temp/2)*(temp/2)).toFixed(2));
             });
-            $("#gg").change(function () {
-                var temp=parseFloat($("#gg").val());
-                $("#as").val(temp);
-                $("#as").val((3.14*(temp/2)*(temp/2)).toFixed(2));
-            });
-            $("#l3").change(function () {
-                $("#l4").val($("#l3").val());
+
+            $(":input[type=text]").change(function () {
+                autoWrite("l4",parseFloat($("#l3").val()))
+                autoWrite("l5",parseFloat($("#z").val())+parseFloat($("#l3").val()))
+                autoWrite("as",(3.14*(parseFloat($("#gg").val())/2)*(parseFloat($("#gg").val())/2)))
             })
+            function getString(v){
+                if(Math.floor(v*100)%100==0)
+                    return v.toFixed(0);
+                else  if(Math.floor(v*100)%10==0)
+                    return v.toFixed(1);
+                return v.toFixed(2);
+            }
+            function autoWrite(nodeId,value){
+                if(!value)
+                    return;
+                value&&$("#"+nodeId).val(getString(value));
+            }
+            function valueChange(classname){
+                if(!a[classname])
+                    a[classname]=$(".jy"+classname)[0].innerHTML;
+                $(".jy"+classname).html(a[classname]+$("#"+classname).val());
+            }
             $("#f02").change(function () {
                 if(!a["f02"])
                     a["f02"]=$(".jyf02")[0].innerHTML;
@@ -196,7 +214,6 @@
                     a["fwf"]=$(".jyfwf")[0].innerHTML;
                 $(".jyfwf").html( a["fwf"]+$("#fwf").val());
             })
-
         })
         function a(){};
         function showImage(form,element) {
@@ -237,7 +254,7 @@
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
 <div class="main">
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
@@ -247,14 +264,11 @@
           method="post" enctype="multipart/form-data">
         <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">防风销座强度校核计算书</div>
 
-        <table>
-            <tr>
-                <!- 封面内容 ->
-                <td>
-                    <div style="width:500px;">
+
+         <div style="width:500px;">
                         <table class="tb">
                             <tr>
-                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>封面内容</b></td>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px "><b>1.封面内容</b></td>
                             </tr>
                             <tr>
                                 <td style="width:50%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
@@ -294,12 +308,74 @@
                             </tr>
                         </table>
                     </div>
-                </td>
-                <td>
-                    <div style="width:500px;">
+        <div style="width:500px;">
+            <table class="tb">
+                <tr>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>3.焊缝的基本尺寸及相关参数</b></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img id="tu2" name="image">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">选择图片</td>
+                    <td colspan="3"><input class="image" type="file" name="tu2"  accept="image/*" oninput="showImage(this,'tu2')"/></td>
+                </tr>
+                <tr>
+                    <td>选择材料</td>
+                    <td colspan="3">
+                        <select id="select2" style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="S31608">S31608</option>
+                            <option value="S22053">S22053</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:40%;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:15%;">符号</td>
+                    <td style="width:30%;">数值</td>
+                    <td style="width:15%;">单位</td>
+                </tr>
+                <tr>
+                    <td><b>焊缝高度</b></td>
+                    <td><p><i>K</i></p></td>
+                    <td><input name="k" type="text" th:field="*{k}"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>受力点到截面D的距离</b></td>
+                    <td><p><i>L<sub>4</sub></i></p></td>
+                    <td><input name="l4" type="text" th:field="*{l4}"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>销座外侧到中心线的距离</b></td>
+                    <td><p><i>R</i></p></td>
+                    <td><input name="r" type="text" th:field="*{r}"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>焊条材料</b></td>
+                    <td></td>
+                    <td><input name="clh" type="text" th:field="*{clh}"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>抗拉、抗压和抗剪强度</b></td>
+                    <td><p><i>f<sup>w</sup><sub style="margin-left:-10px;margin-top:2px;">f</sub></i></p></td>
+                    <td><input name="fwf" type="text" th:field="*{fwf}"/></td>
+                    <td>MPa</td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:500px;">
                         <table class="tb">
                             <tr>
-                                <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>防风销座及销钉的基本尺寸及相关参数</b></td>
+                                <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>2.防风销座及销钉的基本尺寸及相关参数</b></td>
                             </tr>
                             <tr>
                                 <td colspan="4">
@@ -425,7 +501,7 @@
                                 <td>mm3</td>
                             </tr>
                             <tr>
-                                <td>选择销钉材料</td>
+                                <td>销钉直径</td>
                                 <td colspan="3">
                                     <select id="select4" style="width:100%;height:40px;text-align-last:center">
                                         <option style="display: none"></option>
@@ -439,12 +515,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>销钉直径</b></td>
-                                <td><p><i>D<sub>d</sub></i></p></td>
-                                <td><input name="dd" type="text" id="dd"/></td>
-                                <td>mm2</td>
-                            </tr>
-                            <tr>
                                 <td><b>销钉截面面积</b></td>
                                 <td><p><i>A<sub>d</sub></i></p></td>
                                 <td><input name="ad" type="text" th:field="*{ad}"/></td>
@@ -454,84 +524,14 @@
                                 <td><b>最大受力</b></td>
                                 <td><p><i>F</i></p></td>
                                 <td><input name="f" type="text" th:field="*{f}"/></td>
-                                <td>mm2</td>
+                                <td>N</td>
                             </tr>
                         </table>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td rowspan="2">
-                    <div style="width:500px;">
+        <div style="width:500px;">
                         <table class="tb">
                             <tr>
-                                <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>焊缝的基本尺寸及相关参数</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                        <img id="tu2" name="image">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding:10px 0">选择图片</td>
-                                <td colspan="3"><input class="image" type="file" name="tu2"  accept="image/*" oninput="showImage(this,'tu2')"/></td>
-                            </tr>
-                            <tr>
-                                <td>选择材料</td>
-                                <td colspan="3">
-                                    <select id="select2" style="width:100%;height:40px;text-align-last:center">
-                                        <option style="display: none"></option>
-                                        <option value="S31608">S31608</option>
-                                        <option value="S22053">S22053</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:40%;padding:10px 0;;"><b>名称</b></td>
-                                <td style="width:15%;">符号</td>
-                                <td style="width:30%;">数值</td>
-                                <td style="width:15%;">单位</td>
-                            </tr>
-                            <tr>
-                                <td><b>焊缝高度</b></td>
-                                <td><p><i>K</i></p></td>
-                                <td><input name="k" type="text" th:field="*{k}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>受力点到截面D的距离</b></td>
-                                <td><p><i>L<sub>4</sub></i></p></td>
-                                <td><input name="l4" type="text" th:field="*{l4}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>销座外侧到中心线的距离</b></td>
-                                <td><p><i>R</i></p></td>
-                                <td><input name="r" type="text" th:field="*{r}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>焊条材料</b></td>
-                                <td></td>
-                                <td><input name="clh" type="text" th:field="*{clh}"/></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b>抗拉、抗压和抗剪强度</b></td>
-                                <td><p><i>f<sup>w</sup><sub style="margin-left:-10px;margin-top:2px;">f</sub></i></p></td>
-                                <td><input name="fwf" type="text" th:field="*{fwf}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-                <td>
-                    <div style="width:500px;">
-                        <table class="tb">
-                            <tr>
-                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>连接螺栓3种工况下参数</b></td>
+                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>4.连接螺栓3种工况下参数</b></td>
                             </tr>
                             <tr>
                                 <td colspan="4">
@@ -545,13 +545,13 @@
                                 <td colspan="3"><input class="image" type="file" name="tu3"  accept="image/*" oninput="showImage(this,'tu3')"/></td>
                             </tr>
                             <tr>
-                                <td>选择材料</td>
+                                <td>性能等级</td>
                                 <td colspan="3">
                                     <select id="select3" style="width:100%;height:40px;text-align-last:center">
                                         <option style="display: none"></option>
-                                        <option value="50">50</option>
-                                        <option value="70">70</option>
-                                        <option value="80">80</option>
+                                        <option value="A2-50">A2-50</option>
+                                        <option value="A2-70">A2-70</option>
+                                        <option value="A2-80">A2-80</option>
                                     </select>
                                 </td>
                             </tr>
@@ -583,7 +583,7 @@
                             <tr>
                                 <td><b>螺栓规格</b></td>
                                 <td></td>
-                                <td><input value="M" style="display: inline ;width: 50%;height: 38px"  disabled /><input style="height: 38px;display: inline ;width: 50%" id="gg"/></td>
+                                <td><input value="M" style="display: inline ;width: 50%;height: 38px"  disabled /><input type="text" style="height: 38px;display: inline ;width: 50%;border:0;padding: 0;" id="gg"/></td>
                                 <td>mm</td>
                             </tr>
                             <tr>
@@ -591,6 +591,12 @@
                                 <td><p><i>A<sub>s</sub></i></p></td>
                                 <td><input name="as" type="text" th:field="*{as}"/></td>
                                 <td>mm2</td>
+                            </tr>
+                            <tr>
+                                <td><b>防风销座底板厚度</b></td>
+                                <td>Z</td>
+                                <td><input name="z" type="text" th:field="*{z}"/></td>
+                                <td>mm</td>
                             </tr>
                             <tr>
                                 <td><b>受力点到销座底面的距离</b></td>
@@ -624,9 +630,7 @@
                             </tr>
                         </table>
                     </div>
-                </td>
-            </tr>
-        </table>
+
     </form>
     <div class="buttonbox">
         <input type="submit" form="form1" class="button"  value="输出防风销座计算书pdf" onclick="$('form').attr('action','pinseatpdf1')"/>
@@ -637,7 +641,7 @@
         <div style="width:550px;height:520px; font-size: 14px;">
             <table class="tb" id="pdf3tb">
                 <tr>
-                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;font-size: 17px"><b>核算结果</b></td>
                 </tr>
                 <tr>
                     <td style="width:34%;"><b>名称</b></td>

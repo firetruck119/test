@@ -17,8 +17,186 @@
             width: 150px;
             height: 12px;
         }
+        .mynone{
+            display: none;
+        }
+        p{
+            font-size: 17px;
+        }
+        b{
+            letter-spacing:1px;
+            line-height: normal;
+        }
+        .main {
+            margin:20px auto 100px;
+            width:1150px;
+            background-color:#EFF3F6;
+            font-size: 0;
+            border:1px solid black;
+        }
+        .boxform{
+            margin:auto;
+            width:1135px;
+            display: block;
+            font-size: 0;
+            padding: 10px 0 10px 0 ;
+        }
+        .subtable{
+            display: inline-block;
+            font-size: 14px;
+            margin: 5px;
+            vertical-align: top;
+            width:556px;
+        }
+        td{
+            border:1px solid #000;
+            text-align: center;
+            line-height: 14px;
+            height:20px;
+        }
+        tr{
+            height: 20px;
+        }
+        img{
+            max-width: 100%;
+            max-height: 100%;
+        }
+        sub,sup{
+            font-size: 14px;
+            margin: 1px;
+        }
+        .tb{
+            border-radius: 5px;
+            width:100%;
+            background-color: #EFF3F6;
+        }
+        input {
+            height: 20px;
+            width:92%;
+            border: 0;
+            text-align: center;
+        }
+        .buttonbox{
+            bottom: 5px;
+            right:5px;
+            display: block;
+            position: fixed;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .buttonbox input{
+            background-color: #ccc;
+            display: block;
+            width:170px;
+            height:50px;
+            margin: 3px;
+            border-radius:25px;
+        }
+        .navbox input{
+            background-color: #ccc;
+            display: block;
+            width:150px;
+            height: 50px;
+            margin: 5px;
+            border-radius:25px;
+        }
+        .navbox{
+            top: 50%;;
+            right:10px;
+            display: block;
+            position: fixed;
+            margin-top: -160px;
+            font-size: 16px;
+        }
+        .navbox td {
+            padding: 0.4em 0.8em;
+        }
+        .tabletitle{
+            display: block;
+            font-size: 30px;
+            margin:10px 0  10px 0;
+            text-align: center;
+            line-height: 30px;
+        }
     </style>
+    <script>
+        function janyan(URL) {
+            $.ajax({
+                url: URL,
+                type: "post",
+                data: $("form").serialize(),
+                async: false,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    Object.keys(data).forEach(function (id) {
+                        $("#" + id).text(data[id]);
+                    })
+                }
+            })
+            return false;
+        }
+        function gssxh(){
+            var selected = $("#select1").val();
+            $("#swp," + "#r1," + "#mwr," + "#tsl,"+"#xh1," + "#d1," + "#n1," + "#f1," + "#p1").attr("disabled",false).css("background-color","#fff");
+            var xhl,dl,f1,p1;
+            $(".diaochuan").removeClass("mynone")
+            switch (selected) {
+                case "Ф7":
+                    xhl="Ф7";dl=7;f1=26;p1=0.179;break;
+                case "Ф8":
+                    xhl="Ф8";dl=8;f1=37;p1=0.244;break;
+                case "Ф10":
+                    xhl="Ф10";dl=10;f1=61;p1=0.391;break;
+                case "Ф13":
+                    xhl="Ф13";dl=13;f1=83;p1=0.65;break;
+                case "布鲁格Ф7":
+                    xhl="布鲁格Ф7";dl=7;f1=28.1;p1=0.179;break;
+                case "布鲁格Ф8":
+                    xhl="布鲁格Ф8";dl=8;f1=36.8;p1=0.217;break;
+                case "无":
+                    $("#swp," + "#r1," + "#mwr," + "#tsl,"+"#xh1," + "#d1," + "#n1," + "#f1," + "#p1").attr("disabled",true).css("background-color","#aaa").val("");
+                    $(".diaochuan").addClass("mynone");
+            }
+            xhl&&$("#xh1").val(xhl);
+            p1&&$("#p1").val(p1);
+            dl&&$("#d1").val(dl);
+            f1&&$("#f1").val(f1);
+        }
+        function wlqsjg() {
+            var selected=$("#select2").val();
+            $(".wuliaoqishengjigou").removeClass("mynone");
+            $("#hwll," + "#hsw," + "#tshl,"+"#xh2," + "#d2," + "#n2," + "#f2," + "#p2").attr("disabled",false).css("background-color","#fff");
+            var xh2,d2,f2,p2;
+            switch (selected) {
+                case "Ф8":xh2="Ф8";d2=8;f2=39;p2=0.252;break;
+                case "Ф8.3":xh2="Ф8.3";d2=8.3;f2=58;p2=0.255;break;
+                case "Ф10":xh2="Ф10";d2=10;f2=61;p2=0.391;break;
+                case "Ф13":xh2="Ф13";d2=13;f2=83;p2=0.65;break;
+                case "无":
+                    $("#hwll," + "#hsw," + "#tshl,"+"#xh2," + "#d2," + "#n2," + "#f2," + "#p2").attr("disabled",true).css("background-color","#aaa").val("");
+                    $(".wuliaoqishengjigou").addClass("mynone");
+            }
+            xh2&&$("#xh2").val(xh2);
+            p2&&$("#p2").val(p2);
+            d2&&$("#d2").val(d2);
+            f2&&$("#f2").val(f2);
+        }
+    </script>
     <script type="text/javascript">
+        function getString(v){
+            if(isNaN(v))
+                return "";
+            var s=5;
+            var temp=Math.round(parseFloat(v)*100000);
+            var c=temp.toString();
+            var l=c.length;
+            while(l>0&&c[l-1]==0&&s>0){
+                l--;
+                s--;
+            }
+            return v.toFixed(s);
+        }
         function isNumber(value) {         //验证是否为数字
             var patrn = /^(-)?\d+(\.\d+)?$/;
             if (patrn.exec(value) == null || value == "") {
@@ -27,101 +205,284 @@
                 return true
             }
         }
-
         function checkinput(form) {
             return true;
         }
-
-        function setActionType(type) {
-            $("#hidActionType").val(type);
-        }
-
         $(document).ready(function () {
             InitNav(1)
             $('#WireRope').addClass('o-sub-cur');
+            $(":input[type=text],select").change(function(){
+                gssxh();
+                wlqsjg();
+                var p1=parseFloat($("#p1").val());
+                var n1=parseFloat($("#n1").val());
+                var h=parseFloat($("#h").val());
+                var swp=parseFloat($("#swp").val());
+                var r1=parseFloat($("#r1").val());
+                var mwr=parseFloat($("#mwr").val());
+
+                var p2=parseFloat($("#p2").val());
+                var n2=parseFloat($("#n2").val());
+                var hwll=parseFloat($("#hwll").val());
+                var hsw=parseFloat($("#hsw").val());
+
+                mwr=$("#mwr").val(getString(h*p1*n1)).val();
+                $("#tsl").val(getString(parseFloat(swp)+parseFloat(r1)+parseFloat(mwr)));
+                hsw=$("#hsw").val(getString(h*p2*n2)).val();
+                $("#tshl").val(getString(parseFloat(hwll)+parseFloat(hsw)));
+            })
         });
 
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default" role="head" th:include="head"></nav>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
+<div class="main">
+<iframe style="display: none" name="stop" src="about:blank"></iframe>
+<form th:id="form1" opType="#" target="stop" method="post" id="form1" class="boxform"
+      th:opType="@{/WireRope}" th:object="${WireRopeEntity}">
+    <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">钢丝绳安全系数校核计算书</div>
 
-<form th:id="form1" opType="#" th:opType="@{/WireRope}" th:object="${WireRopeEntity}"
-      method="post" onsubmit="return checkinput(this)">
-    封面内容
-    <div ><div class="fill-list-lb" style="width: 5px">1</div>
-        <div class="fill-list-lb" style="width: 170px">编号：</div>
-        <div class="fill-list-cont"><input name="bh" type="text" th:field="*{bh}"/>  </div>
+    <!--封面内容-->
+    <div class="subtable" >
+        <table class="tb">
+            <tr>
+                <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">1.封面内容</td>
+            </tr>
+            <tr>
+                <td style="width:50%;padding:10px 0;;padding:10px 0;;">名称</td>
+                <td style="width:50%;">内容</td>
+            </tr>
+            <tr>
+                <td >本机计算书编号</td>
+                <td ><input name="no" type="text" th:field="*{no}"/></td>
+            </tr>
+            <tr>
+                <td >本机版本</td>
+                <td><input name="ver" type="text" th:field="*{ver}"/></td>
+            </tr>
+            <tr>
+                <td >项目名称</td>
+                <td><input name="xmmc" type="text" th:field="*{xmmc}"/></td>
+            </tr>
+            <tr>
+                <td >主机型号</td>
+                <td><input name="zjxh" type="text" th:field="*{zjxh}"/></td>
+            </tr>
+            <tr>
+                <td>计算人</td>
+                <td><input name="jsr" type="text" th:field="*{jsr}"/></td>
+            </tr>
+            <tr>
+                <td >审核人</td>
+                <td><input name="shr" type="text" th:field="*{shr}"/></td>
+            </tr>
+            <tr>
+                <td >批准人</td>
+                <td><input name="pzr" type="text" th:field="*{pzr}"/></td>
+            </tr>
+            <tr>
+                <td >计算日期</td>
+                <td><input name="date" type="text" th:field="*{date}" /></td>
+            </tr>
+        </table>
     </div>
-    <div><div class="fill-list-lb" style="width: 5px">2</div>
-        <div class="fill-list-lb" style="width: 170px">版本：</div>
-        <div class="fill-list-cont"><input name="bb" type="text" th:field="*{bb}"/>  </div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">3</div>
-        <div class="fill-list-lb" style="width: 170px">项目名称：</div>
-        <div class="fill-list-cont"><input name="xmmc" type="text" th:field="*{xmmc}"/>  </div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">4</div>
-        <div class="fill-list-lb" style="width: 170px">计算人：</div>
-        <div class="fill-list-cont"><input name="jsr" type="text" th:field="*{jsr}"/>  </div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">5</div>
-        <div class="fill-list-lb" style="width: 170px">审核人：</div>
-        <div class="fill-list-cont"><input name="shr" type="text" th:field="*{shr}"/>  </div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">6</div>
-        <div class="fill-list-lb" style="width: 170px">计算日期：</div>
-        <div class="fill-list-cont"><input name="jsrq" type="text" th:field="*{jsrq}"/>  </div>
-    </div>
-    主要参数
-    <div><div class="fill-list-lb" style="width: 5px">7</div>
-        <div class="fill-list-lb" style="width: 170px">起升高度：</div>
-        <div class="fill-list-cont"><input name="h" type="text" th:field="*{h}"/>m</div>
-    </div>
+    <div class="subtable">
+        <table class="tb">
+            <tr>
+                <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">3.计算钢丝绳安全系数相关参数</td>
+            </tr>
+            <tr>
+                <td width="47%">起升高度</td>
+                <td width="10%"><p><i>h</i></p></td>
+                <td width="35%"><input id="h" name="h" type="text" th:field="*{h}"/></td>
+                <td width="8%" >m</td>
+            </tr>
+            <tr>
+                <td>吊船自重</td>
+                <td><p><i>S<sub>wp</sub></i></p></td>
+                <td><input id="swp" name="swp" type="text" th:field="*{swp}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>吊船额定载荷</td>
+                <td><p><i>R<sub>1</sub></i></p></td>
+                <td><input id="r1" name="r1" type="text" th:field="*{r1}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>吊船钢丝绳自重</td>
+                <td><p><i>M<sub>wr</sub></i></p></td>
+                <td><input id="mwr" name="mwr" type="text" th:field="*{mwr}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>总悬挂载荷</td>
+                <td><p><i>T<sub>sl</sub></i></p></td>
+                <td><input id="tsl" name="tsl" type="text" th:field="*{tsl}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>物料起升机构额定载重量</td>
+                <td><p><i>H<sub>wll</sub></i></p></td>
+                <td><input id="hwll" name="hwll" type="text" th:field="*{hwll}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>物料起升机构钢丝绳自重</td>
+                <td><p><i>H<sub>sw</sub></i></td>
+                <td><input id="hsw" name="hsw" type="text" th:field="*{hsw}"/></td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>物料起升机构总悬挂载荷</td>
+                <td><p><i>T<sub>shl</sub></i></td>
+                <td><input id="tshl" name="tshl" type="text" th:field="*{tshl}"/></td>
+                <td>kg</td>
+            </tr>
+        </table>
 
-    <div><div class="fill-list-lb" style="width: 5px">8</div>
-        <div class="fill-list-lb" style="width: 170px">吊船重量：</div>
-        <div class="fill-list-cont"><input name="swp" type="text" th:field="*{swp}"/>kg</div>
     </div>
-
-    <div><div class="fill-list-lb" style="width: 5px">9</div>
-        <div class="fill-list-lb" style="width: 170px">吊船额定载重量：</div>
-        <div class="fill-list-cont"><input name="rl" type="text" th:field="*{rl}"/>kg</div>
+    <div class="subtable">
+        <table class="tb">
+            <tr>
+                <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">2.所选钢丝绳相关参数</td>
+            </tr>
+            <tr>
+                <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">吊船钢丝绳型号选择</td>
+                <td colspan="3" style="font-size: 14px">
+                    <select id="select1" style="width:100%;height:40px;text-align-last:center">
+                        <option style="display: none"></option>
+                        <option value="Ф7">Ф7</option>
+                        <option value="Ф8">Ф8</option>
+                        <option value="Ф10">Ф10</option>
+                        <option value="Ф13">Ф13</option>
+                        <option value="布鲁格Ф7">布鲁格Ф7</option>
+                        <option value="布鲁格Ф8">布鲁格Ф8</option>
+                        <option value="无">无</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">物料起升机构钢丝绳型号选择</td>
+                <td colspan="3" style="font-size: 14px">
+                    <select id="select2" style="width:100%;height:40px;text-align-last:center">
+                        <option style="display: none"></option>
+                        <option value="Ф8">Ф8</option>
+                        <option value="Ф8.3">Ф8.3</option>
+                        <option value="Ф10">Ф10</option>
+                        <option value="Ф13">Ф13</option>
+                        <option value="无">无</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="47%">吊船钢丝绳型号</td>
+                <td width="10%"><p><i></i></p></td>
+                <td width="35%"><input id="xh1" name="xh1" type="text" th:field="*{xh1}"/></td>
+                <td width="8%" ></td>
+            </tr>
+            <tr>
+                <td>吊船钢丝绳直径</td>
+                <td><p><i>d1</i></p></td>
+                <td><input id="d1" name="d1" type="text" th:field="*{d1}"/></td>
+                <td>mm</td>
+            </tr>
+            <tr>
+                <td>吊船钢丝绳数量</td>
+                <td><p><i>N<sub>1</sub></i></p></td>
+                <td><input id="n1" name="n1" type="text" th:field="*{n1}"/></td>
+                <td>根</td>
+            </tr>
+            <tr>
+                <td>单根吊船钢丝绳最小破断拉力</td>
+                <td><p><i>F<sub>1</sub></i></p></td>
+                <td><input id="f1" name="f1" type="text" th:field="*{f1}"/></td>
+                <td>kN</td>
+            </tr>
+            <tr>
+                <td>单根吊船钢丝绳每米重量</td>
+                <td><p><i>p<sub>1</sub></i></p></td>
+                <td><input id="p1" name="p1" type="text" th:field="*{p1}"/></td>
+                <td>kg/m</td>
+            </tr>
+            <tr>
+                <td>物料起升机构钢丝绳型号</td>
+                <td><p><i></i></p></td>
+                <td><input id="xh2" name="xh2" type="text" th:field="*{xh2}"/></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>物料起升机构钢丝绳直径</td>
+                <td><p><i>d2</i></p></td>
+                <td><input id="d2" name="d2" type="text" th:field="*{d2}"/></td>
+                <td>mm</td>
+            </tr>
+            <tr>
+                <td>物料起升机构钢丝绳数量</td>
+                <td><p><i>N<sub>2</sub></i></p></td>
+                <td><input id="n2" name="n2" type="text" th:field="*{n2}"/></td>
+                <td>根</td>
+            </tr>
+            <tr>
+                <td>单根物料起升机构钢丝绳最小破断拉力</td>
+                <td><p><i>F<sub>2</sub></i></p></td>
+                <td><input id="f2" name="f2" type="text" th:field="*{f2}"/></td>
+                <td>kN</td>
+            </tr>
+            <tr>
+                <td>单根物料起升机构钢丝绳每米重量</td>
+                <td><p><i>p<sub>2</sub></i></p></td>
+                <td><input id="p2" name="p2" type="text" th:field="*{p2}"/></td>
+                <td>kg/m</td>
+            </tr>
+        </table>
     </div>
-
-    <div><div class="fill-list-lb" style="width: 5px">10</div>
-        <div class="fill-list-lb" style="width: 170px">吊船钢丝绳直径：</div>
-        <div class="fill-list-cont"><input name="d1" type="text" th:field="*{d1}"/>mm</div>
+    <div class="subtable" style="width:550px">
+        <table class="tb" style="width:550px">
+            <tr>
+                <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">4.校验</td>
+             </tr>
+            <tr>
+                <td width="35%" style="height:50px">名称</td>
+                <td width="23%">实际安全系数</td>
+                <td width="18%">规定安全系数</td>
+                <td width="23%">是否满足要求</td>
+            </tr>
+            <tr class="diaochuan">
+                <td style="height:50px">吊船钢丝绳安全系数校核</td>
+                <td id="zp1p"></td>
+                <td>12</td>
+                <td id="x2"></td>
+            </tr>
+            <tr class="wuliaoqishengjigou">
+                <td style="height:50px">物料起升机构钢丝绳安全系数校核</td>
+                <td id="zp2p"></td>
+                <td>6</td>
+                <td id="x4"></td>
+            </tr>
+        </table>
+        <div class="buttonbox" style="position: relative;width: 550px">
+            <input type="submit"  class="button" type="submit" value="校验" style="width:250px;margin: 30px auto 0;" onclick="return janyan('WireRope/jy')"/>
+        </div>
     </div>
-
-    <div><div class="fill-list-lb" style="width: 5px">11</div>
-        <div class="fill-list-lb" style="width: 170px">吊船钢丝绳每米载重：</div>
-        <div class="fill-list-cont"><input name="c1" type="text" th:field="*{c1}"/>kg/m</div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">12</div>
-        <div class="fill-list-lb" style="width: 170px">吊船钢丝绳最小破断拉力：</div>
-        <div class="fill-list-cont"><input name="f1" type="text" th:field="*{f1}"/>kN</div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">13</div>
-        <div class="fill-list-lb" style="width: 170px">GRU额定载荷：</div>
-        <div class="fill-list-cont"><input name="hwll" type="text" th:field="*{hwll}"/>kg</div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">14</div>
-        <div class="fill-list-lb" style="width: 170px">GRU钢丝绳直径：</div>
-        <div class="fill-list-cont"><input name="d2" type="text" th:field="*{d2}"/>mm</div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">15</div>
-        <div class="fill-list-lb" style="width: 170px">GRU钢丝绳每米重量：</div>
-        <div class="fill-list-cont"><input name="c2" type="text" th:field="*{c2}"/>kg/m</div>
-    </div>
-    <div><div class="fill-list-lb" style="width: 5px">16</div>
-        <div class="fill-list-lb" style="width: 170px">GRU钢丝绳最小破断拉力：</div>
-        <div class="fill-list-cont"><input name="f2" type="text" th:field="*{f2}"/>kN</div>
-    </div>
-
-    <input type="submit" value="输出PDF计算书" onclick="setActionType(1)"/> <input type="reset" value="重置"/>
 </form>
+</div>
+<script>
 
+    function getPDF(URL){
+        if($("#xh1").val()==""&&$("#xh2").val()==""){
+            alert("请选择吊船或者GRU");
+            return false;
+        }
+        $('#form1').attr('action',URL);
+    }
+</script>
+<div class="buttonbox">
+    <input class="button" form="form1" type="submit" value="输出钢丝绳计算书" onclick="getPDF('/WireRopePDF1')"/>
+    <input class="button" form="form1" type="submit" value="输出检验计算书" onclick="getPDF('/WireRopePDF2')"/>
+    <input class="button" form="form1" type="reset" value="重置"/>
+</div>
 </body>
 </html>

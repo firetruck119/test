@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PinSeatEntity {
-
     private String no;
     private String ver;
     private String xmmc;
@@ -51,6 +50,15 @@ public class PinSeatEntity {
     private Double fbv;
     private Double fbc;
     private Double f;
+    private Double z;
+
+    public Double getZ() {
+        return z;
+    }
+
+    public void setZ(Double z) {
+        this.z = z;
+    }
 
     public Double getF() {
         return f;
@@ -413,6 +421,8 @@ public class PinSeatEntity {
         result.put("fbt", CommonFunc.convertDoubleToString(fbt));
         result.put("fbv", CommonFunc.convertDoubleToString(fbv));
         result.put("fbc", CommonFunc.convertDoubleToString(fbc));
+        result.put("f", CommonFunc.convertDoubleToString(f));
+        result.put("osa",f==2700.0?"OSHA STD1-3.3\r\n防风销标准":"");
         return result;
     }
     private Map<String,Double> getDoubleMap(){
@@ -482,7 +492,7 @@ public class PinSeatEntity {
     private String getString(Boolean b){
         return b?"满足":"不满足";
     }
-    private String getSign(Double a,Double b){
+    private String getSign(double a,double b){
         if(a>b)
             return">";
         if(a==b)
@@ -548,6 +558,7 @@ public class PinSeatEntity {
         for(Map.Entry<String,String> e:stringMap.entrySet()){
             result.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
         }
+
 //        result.put("boa",CommonFunc.convertDoubleToString(getSign(boa)));
         result.put("man1", CommonFunc.convertDoubleToString(getString(man1)));
 //        result.put("bta",CommonFunc.convertDoubleToString(getSign(bta)));
@@ -642,30 +653,30 @@ public class PinSeatEntity {
         Double  ft10 =(2*fbt*as*lx)/l5;
         Double  ft11 =4*fbv*as;
         Double  ft12 =4*fbv*as;
-        Boolean bf1 =ft1>=2700;
-        Boolean mf1 =ft1>=2700;
-        Boolean bf2 =ft2>=2700;
-        Boolean mf2 =ft2>=2700;
-        Boolean bf3 =ft3>=2700;
-        Boolean mf3 =ft3>=2700;
-        Boolean bf4 =ft4>=2700;
-        Boolean mf4 =ft4>=2700;
-        Boolean bf5 =ft5>=2700;
-        Boolean mf5 =ft5>=2700;
-        Boolean bf6 =ft6>=2700;
-        Boolean mf6 =ft6>=2700;
-        Boolean bf7 =ft7>=2700;
-        Boolean mf7 =ft7>=2700;
-        Boolean bf8 =ft8>=2700;
-        Boolean mf8 =ft8>=2700;
-        Boolean bf9 =ft9>=2700;
-        Boolean mf9 =ft9>=2700;
-        Boolean bf10=ft10>=2700;
-        Boolean mf10=ft10>=2700;
-        Boolean bf11=ft11>=2700;
-        Boolean mf11=ft11>=2700;
-        Boolean bf12=ft12>=2700;
-        Boolean mf12=ft12>=2700;
+        Boolean bf1 =ft1>=f;
+        Boolean mf1 =ft1>=f;
+        Boolean bf2 =ft2>=f;
+        Boolean mf2 =ft2>=f;
+        Boolean bf3 =ft3>=f;
+        Boolean mf3 =ft3>=f;
+        Boolean bf4 =ft4>=f;
+        Boolean mf4 =ft4>=f;
+        Boolean bf5 =ft5>=f;
+        Boolean mf5 =ft5>=f;
+        Boolean bf6 =ft6>=f;
+        Boolean mf6 =ft6>=f;
+        Boolean bf7 =ft7>=f;
+        Boolean mf7 =ft7>=f;
+        Boolean bf8 =ft8>=f;
+        Boolean mf8 =ft8>=f;
+        Boolean bf9 =ft9>=f;
+        Boolean mf9 =ft9>=f;
+        Boolean bf10=ft10>=f;
+        Boolean mf10=ft10>=f;
+        Boolean bf11=ft11>=f;
+        Boolean mf11=ft11>=f;
+        Boolean bf12=ft12>=f;
+        Boolean mf12=ft12>=f;
 
         resultMap.put("ft1", CommonFunc.convertDoubleToString(ft1));
         resultMap.put("ft2", CommonFunc.convertDoubleToString(ft2));
@@ -704,18 +715,18 @@ public class PinSeatEntity {
 //        resultMap.put("bf12",CommonFunc.convertDoubleToString(getreSign(bf12)));
         resultMap.put("mf12", CommonFunc.convertDoubleToString(getString(mf12)));
 
-        resultMap.put("bf1", CommonFunc.convertDoubleToString(getSign(ft1,2700.0)));
-        resultMap.put("bf2", CommonFunc.convertDoubleToString(getSign(ft2,2700.0)));
-        resultMap.put("bf3", CommonFunc.convertDoubleToString(getSign(ft3,2700.0)));
-        resultMap.put("bf4", CommonFunc.convertDoubleToString(getSign(ft4,2700.0)));
-        resultMap.put("bf5", CommonFunc.convertDoubleToString(getSign(ft5,2700.0)));
-        resultMap.put("bf6", CommonFunc.convertDoubleToString(getSign(ft6,2700.0)));
-        resultMap.put("bf7", CommonFunc.convertDoubleToString(getSign(ft7,2700.0)));
-        resultMap.put("bf8", CommonFunc.convertDoubleToString(getSign(ft8,2700.0)));
-        resultMap.put("bf9", CommonFunc.convertDoubleToString(getSign(ft9,2700.0)));
-        resultMap.put("bf10", CommonFunc.convertDoubleToString(getSign(ft10,2700.0)));
-        resultMap.put("bf11", CommonFunc.convertDoubleToString(getSign(ft11,2700.0)));
-        resultMap.put("bf12", CommonFunc.convertDoubleToString(getSign(ft12,2700.0)));
+        resultMap.put("bf1", CommonFunc.convertDoubleToString(getSign(ft1,f)));
+        resultMap.put("bf2", CommonFunc.convertDoubleToString(getSign(ft2,f)));
+        resultMap.put("bf3", CommonFunc.convertDoubleToString(getSign(ft3,f)));
+        resultMap.put("bf4", CommonFunc.convertDoubleToString(getSign(ft4,f)));
+        resultMap.put("bf5", CommonFunc.convertDoubleToString(getSign(ft5,f)));
+        resultMap.put("bf6", CommonFunc.convertDoubleToString(getSign(ft6,f)));
+        resultMap.put("bf7", CommonFunc.convertDoubleToString(getSign(ft7,f)));
+        resultMap.put("bf8", CommonFunc.convertDoubleToString(getSign(ft8,f)));
+        resultMap.put("bf9", CommonFunc.convertDoubleToString(getSign(ft9,f)));
+        resultMap.put("bf10", CommonFunc.convertDoubleToString(getSign(ft10,f)));
+        resultMap.put("bf11", CommonFunc.convertDoubleToString(getSign(ft11,f)));
+        resultMap.put("bf12", CommonFunc.convertDoubleToString(getSign(ft12,f)));
         return resultMap;
     }
 
