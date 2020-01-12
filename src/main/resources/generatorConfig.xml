@@ -23,7 +23,9 @@
                              targetProject="src/main/java" type="XMLMAPPER" />
 
         <!-- 数据库表 -->
-        <table  tableName="component" domainObjectName="Component">
+        <table  tableName="project_column_definition" domainObjectName="ProjectColumnDefinition">
+        </table>
+        <table  tableName="project_data" domainObjectName="ProjectData">
         </table>
     </context>
 </generatorConfiguration>
