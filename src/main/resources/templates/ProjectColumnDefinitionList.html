@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>组件列表</title>
+    <title>列定义</title>
     <link rel="stylesheet" type="text/css" href="../../css/grid/grid.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/GridManager.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/grid/layer.css"/>
@@ -248,11 +248,11 @@
         height : '600px',
         supportAjaxPage : false,
         supportSorting : false,
-        ajax_url : '/getProjectColumnDefinitionList/',
-        ajax_type : 'GET',
+        ajax_url : '/getProjectColumnDefinitionList',
+        ajax_type : 'POST',
         query : {
         },
-        pageSize : 20
+        pageSize : 100
         // 可以通过该方法修改全部的请求参数
         ,
         requestHandler : function(request) {

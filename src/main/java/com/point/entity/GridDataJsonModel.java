@@ -6,6 +6,7 @@ public class GridDataJsonModel<T> {
     private String status;
     private Integer totals;
     private List<T> Data;
+    private String message;
 
     public String getStatus() {
         return status;
@@ -29,5 +30,13 @@ public class GridDataJsonModel<T> {
 
     public void setData(List<T> data) {
         Data = data;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

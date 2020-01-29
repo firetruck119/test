@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>新增类型</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <style type="text/css">
+        input {
+            width: 150px;
+            height: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        /*<![CDATA[*/
+        function checkinput(form) {
+            /*
+            if (form.type.value == "") {
+                alert("基础信息必须填写");
+                return false;
+            }
+            if (!(isNumber(form.weightPerMeter.value)
+                && isNumber(form.structureHours.value)
+                && isNumber(form.multipleHours.value)
+                && isNumber(form.fitterHours.value))) {
+                alert("设计参数必须填写,且填写数字");
+                return false;
+            }
+            */
+            return true;
+        }
+        /*]]>*/
+        //<![CDATA[
+        function getQueryString(name){
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+            if(r!=null)
+                return  unescape(r[2]);
+            return null;
+        }
+        //]]>
+        //<![CDATA[
+        $(document).ready(function () {
+            InitNav(2);
+            $('#ComponentList'+getQueryString("type")).addClass('o-sub-cur');
+            $.ajax({
+                url: "/getProjectColumnDefinitionList",
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                async: false,
+                success: function(data) {
+                    if (data != null) {
+                        var i = 0;
+                        var html = "";
+                        var columnDefinitions = data.data;
+                        while (i < columnDefinitions.length) {
+                            var columnDefinition = columnDefinitions[i];
+                            
+                        }
+                    }
+                }
+            });
+
+        });
+        //]]>
+
+
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
+<br/><br/>
+<form id="searchForm" method="post">
+    <div id="searchCondition"></div>
+
+</form>
+
+
+<form id="form1" name="form1" method="post" enctype="multipart/form-data">
+    <div>excel导入数据</div>
+    <div>
+        <input class="import" type="file" name="excelData"/>
+    </div>
+    <div>
+        <input type="submit" value="提交" onclick="$('#form1').attr('action','projectDataImport')"/>
+    </div>
+</form>
+</body>
+</html>

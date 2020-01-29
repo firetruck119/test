@@ -1,116 +1,182 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>新增列定义</title>
+    <meta charset="UTF-8"/>
+    <title>新增项目</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{js/jquery-1.7.1.min.js}"></script>
     <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <script th:src="@{js/xyz/jquery.Ajax.Form.js}"></script>
+
     <link th:href="@{css/page.css}" rel="stylesheet"/>
     <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
     <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
     <link th:href="@{css/base.min.css}" rel="stylesheet"/>
     <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
     <style type="text/css">
+        p {
+            font-size: 17px;
+        }
+
+        b {
+            letter-spacing: 1px;
+            line-height: normal;
+        }
+
+        .main {
+            margin: 20px 10px 100px;
+            width: 1700px;
+            background-color: #EFF3F6;
+            font-size: 0;
+            border: 1px solid black;
+        }
+
+        .boxform {
+            margin: auto;
+            width: 1700px;
+            display: block;
+            font-size: 0;
+            padding: 10px 0 10px 0;
+        }
+
+        .subtable {
+            display: inline-block;
+            font-size: 14px;
+            margin: 5px;
+            vertical-align: top;
+            width: 556px;
+        }
+
+        td {
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 14px;
+            height: 20px;
+        }
+
+        tr {
+            height: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        sub, sup {
+            font-size: 14px;
+            margin: 1px;
+        }
+
+        .tb {
+            border-radius: 5px;
+            width: 100%;
+            background-color: #EFF3F6;
+        }
+
         input {
+            height: 20px;
+            width: 92%;
+            border: 0;
+            text-align: center;
+        }
+
+        .buttonbox {
+            bottom: 5px;
+            right: 5px;
+            display: block;
+            position: fixed;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .buttonbox input, button {
+            background-color: #ccc;
+            display: block;
+            width: 170px;
+            height: 50px;
+            margin: 3px;
+            border-radius: 25px;
+        }
+
+        .navbox input {
+            background-color: #ccc;
+            display: block;
             width: 150px;
-            height: 12px;
+            height: 50px;
+            margin: 5px;
+            border-radius: 25px;
         }
-    </style>
-    <script type="text/javascript">
 
-        /*<![CDATA[*/
-        function checkinput(form) {
-            /*
-            if (form.type.value == "") {
-                alert("基础信息必须填写");
-                return false;
-            }
-            if (!(isNumber(form.weightPerMeter.value)
-                && isNumber(form.structureHours.value)
-                && isNumber(form.multipleHours.value)
-                && isNumber(form.fitterHours.value))) {
-                alert("设计参数必须填写,且填写数字");
-                return false;
-            }
-            */
-            return true;
+        .navbox {
+            right: 10px;
+            display: block;
+            position: fixed;
+            font-size: 16px;
         }
-        /*]]>*/
-        //<![CDATA[
-        function getQueryString(name){
-            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
-            if(r!=null)
-                return  unescape(r[2]);
-            return null;
+
+        .navbox td {
+            padding: 0.4em 0.8em;
         }
-        //]]>
-        //<![CDATA[
+
+        .tabletitle {
+            display: block;
+            font-size: 30px;
+            margin: 10px 0 10px 0;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>-
+    <script>
+
         $(document).ready(function () {
-            InitNav(2);
-            $('#ComponentList'+getQueryString("type")).addClass('o-sub-cur');
-        });
-        //]]>
-
-
+            InitNav(3)
+            $('#ProjectColumnDefinitionList').addClass('o-sub-cur');
+        })
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
+<nav class="navbar navbar-default" role="head" include="head"></nav>
 <br/><br/>
+<div>
+    <iframe style="display: none" name="stop" src="about:blank"></iframe>
 
-<form th:id="form1" opType="#" th:opType="@{/Component}" th:object="${component}"
-      method="post" onsubmit="return checkinput(this)">
-    <div  id="param0" class="fill-box" ><div class="fill-list-lb">组件名称：</div><div class="fill-list-cont"><input name="componentname" type="text" readonly="readonly" th:field="*{componentname}"/></div></div>
-    <div  id="param1" class="fill-box" hidden="hidden" ><div class="fill-list-lb">型号类别：</div><div class="fill-list-cont"><input name="modeltype" type="text" th:field="*{modeltype}"/></div></div>
-    <div  id="param2" class="fill-box" hidden="hidden" ><div class="fill-list-lb">X-X惯性矩Ix(cm^4)：</div><div class="fill-list-cont"><input name="xxinertiamoment" type="text" th:field="*{xxinertiamoment}"/></div></div>
-    <div  id="param3" class="fill-box" hidden="hidden" ><div class="fill-list-lb">X-X抗弯截面系数Wx(cm^3)：</div><div class="fill-list-cont"><input name="xxcrosssection" type="text" th:field="*{xxcrosssection}"/></div></div>
-    <div  id="param4" class="fill-box" hidden="hidden" ><div class="fill-list-lb">Y-Y惯性矩Iy(cm^4)：</div><div class="fill-list-cont"><input name="yyinertiamoment" type="text" th:field="*{yyinertiamoment}"/></div></div>
-    <div  id="param5" class="fill-box" hidden="hidden" ><div class="fill-list-lb">Y-Y抗弯截面系数Wy(cm^3)：</div><div class="fill-list-cont"><input name="yycrosssection" type="text" th:field="*{yycrosssection}"/></div></div>
-    <div  id="param6" class="fill-box" hidden="hidden" ><div class="fill-list-lb">钢丝绳直径(mm)：</div><div class="fill-list-cont"><input name="ropediameter" type="text" th:field="*{ropediameter}"/></div></div>
-    <div  id="param7" class="fill-box" hidden="hidden" ><div class="fill-list-lb">高度（mm）：</div><div class="fill-list-cont"><input name="hight" type="text" th:field="*{hight}"/></div></div>
-    <div  id="param8" class="fill-box" hidden="hidden" ><div class="fill-list-lb">轨距（m）：</div><div class="fill-list-cont"><input name="trackgap" type="text" th:field="*{trackgap}"/></div></div>
-    <div  id="param9" class="fill-box" hidden="hidden" ><div class="fill-list-lb">回转角速度(r/min)：</div><div class="fill-list-cont"><input name="angularvelocity" type="text" th:field="*{angularvelocity}"/></div></div>
-    <div  id="param10" class="fill-box" hidden="hidden" ><div class="fill-list-lb">宽度（mm）：</div><div class="fill-list-cont"><input name="width" type="text" th:field="*{width}"/></div></div>
-    <div  id="param11" class="fill-box" hidden="hidden" ><div class="fill-list-lb">轮距（m）：</div><div class="fill-list-cont"><input name="wheelgap" type="text" th:field="*{wheelgap}"/></div></div>
-    <div  id="param12" class="fill-box" hidden="hidden" ><div class="fill-list-lb">每米重量 (kg/m)：</div><div class="fill-list-cont"><input name="weightpermeter" type="text" th:field="*{weightpermeter}"/></div></div>
-    <div  id="param13" class="fill-box" hidden="hidden" ><div class="fill-list-lb">适用臂长(m)：</div><div class="fill-list-cont"><input name="armlength" type="text" th:field="*{armlength}"/></div></div>
-    <div  id="param14" class="fill-box" hidden="hidden" ><div class="fill-list-lb">外形尺寸 长×宽×高 (mm)：</div><div class="fill-list-cont"><input name="outlinesize" type="text" th:field="*{outlinesize}"/></div></div>
-    <div  id="param15" class="fill-box" hidden="hidden" ><div class="fill-list-lb">迎风面积（mm^2）：</div><div class="fill-list-cont"><input name="frontalarea" type="text" th:field="*{frontalarea}"/></div></div>
-    <div  id="param16" class="fill-box" hidden="hidden" ><div class="fill-list-lb">油缸推力(KN)：</div><div class="fill-list-cont"><input name="hydrocylinderpower" type="text" th:field="*{hydrocylinderpower}"/></div></div>
-    <div  id="param17" class="fill-box" hidden="hidden" ><div class="fill-list-lb">重量(kg)：</div><div class="fill-list-cont"><input name="weight" type="text" th:field="*{weight}"/></div></div>
-    <div  id="param18" class="fill-box" hidden="hidden" ><div class="fill-list-lb">重心位置(m)：</div><div class="fill-list-cont"><input name="barycenter" type="text" th:field="*{barycenter}"/></div></div>
-    <div  id="param19" class="fill-box" hidden="hidden" ><div class="fill-list-lb">最大行程（m）：</div><div class="fill-list-cont"><input name="maxdistance" type="text" th:field="*{maxdistance}"/></div></div>
-    <div  id="param20" class="fill-box" hidden="hidden" ><div class="fill-list-lb">最大载荷(kg)：</div><div class="fill-list-cont"><input name="maxloading" type="text" th:field="*{maxloading}"/></div></div>
-    <div  id="param21" class="fill-box" hidden="hidden" ><div class="fill-list-lb">最小破断拉力（KN）：</div><div class="fill-list-cont"><input name="minbreakageforce" type="text" th:field="*{minbreakageforce}"/></div></div>
-    <div  id="param22" class="fill-box" hidden="hidden" ><div class="fill-list-lb">材质：</div><div class="fill-list-cont"><input name="material" type="text" th:field="*{material}"/></div></div>
-    <div  id="param23" class="fill-box" hidden="hidden" ><div class="fill-list-lb">电机型号：</div><div class="fill-list-cont"><input name="electricmectype" type="text" th:field="*{electricmectype}"/></div></div>
-    <div  id="param24" class="fill-box" hidden="hidden" ><div class="fill-list-lb">回转支撑型号：</div><div class="fill-list-cont"><input name="rotationsustainmodel" type="text" th:field="*{rotationsustainmodel}"/></div></div>
-    <div  id="param25" class="fill-box" hidden="hidden" ><div class="fill-list-lb">配置类别：</div><div class="fill-list-cont"><input name="apapttype" type="text" th:field="*{apapttype}"/></div></div>
-    <div  id="param26" class="fill-box" hidden="hidden" ><div class="fill-list-lb">提升机型号：</div><div class="fill-list-cont"><input name="hoistertype" type="text" th:field="*{hoistertype}"/></div></div>
-    <div  id="param27" class="fill-box" hidden="hidden" ><div class="fill-list-lb">与之匹配的运行机构：</div><div class="fill-list-cont"><input name="mechanism" type="text" th:field="*{mechanism}"/></div></div>
-    <div  id="param28" class="fill-box" hidden="hidden" ><div class="fill-list-lb">成本变动系数：</div><div class="fill-list-cont"><input name="costcoeffcient" type="text" th:field="*{costcoeffcient}"/></div></div>
-    <div  id="param29" class="fill-box" hidden="hidden" ><div class="fill-list-lb">电机价格（元）：</div><div class="fill-list-cont"><input name="electricmecprice" type="text" th:field="*{electricmecprice}"/></div></div>
-    <div  id="param30" class="fill-box" hidden="hidden" ><div class="fill-list-lb">回转支撑价格（元）：</div><div class="fill-list-cont"><input name="rotationsustainprice" type="text" th:field="*{rotationsustainprice}"/></div></div>
-    <div  id="param31" class="fill-box" hidden="hidden" ><div class="fill-list-lb">每米价格（元）：</div><div class="fill-list-cont"><input name="pricepermeter" type="text" th:field="*{pricepermeter}"/></div></div>
-    <div  id="param32" class="fill-box" hidden="hidden" ><div class="fill-list-lb">其他成本(元)：</div><div class="fill-list-cont"><input name="othercost" type="text" th:field="*{othercost}"/></div></div>
-    <div  id="param33" class="fill-box" hidden="hidden" ><div class="fill-list-lb">提升机价格（元）：</div><div class="fill-list-cont"><input name="hoisterprice" type="text" th:field="*{hoisterprice}"/></div></div>
-    <div  id="param34" class="fill-box" hidden="hidden" ><div class="fill-list-lb">外协件成本（元）：</div><div class="fill-list-cont"><input name="cooperationpartcost" type="text" th:field="*{cooperationpartcost}"/></div></div>
-    <div  id="param35" class="fill-box" hidden="hidden" ><div class="fill-list-lb">现场安装成本（元/m）：</div><div class="fill-list-cont"><input name="fieldinstallcost" type="text" th:field="*{fieldinstallcost}"/></div></div>
-    <div  id="param36" class="fill-box" hidden="hidden" ><div class="fill-list-lb">钢板(吨)：</div><div class="fill-list-cont"><input name="platetons" type="text" th:field="*{platetons}"/></div></div>
-    <div  id="param37" class="fill-box" hidden="hidden" ><div class="fill-list-lb">工字钢(吨)：</div><div class="fill-list-cont"><input name="ibeamtons" type="text" th:field="*{ibeamtons}"/></div></div>
-    <div  id="param38" class="fill-box" hidden="hidden" ><div class="fill-list-lb">H型钢(吨)：</div><div class="fill-list-cont"><input name="hsteeltons" type="text" th:field="*{hsteeltons}"/></div></div>
-    <div  id="param39" class="fill-box" hidden="hidden" ><div class="fill-list-lb">铝材(吨)：</div><div class="fill-list-cont"><input name="aluminiumtons" type="text" th:field="*{aluminiumtons}"/></div></div>
-    <div  id="param40" class="fill-box" hidden="hidden" ><div class="fill-list-lb">八边管(吨)：</div><div class="fill-list-cont"><input name="eightsidetubetons" type="text" th:field="*{eightsidetubetons}"/></div></div>
-    <div  id="param41" class="fill-box" hidden="hidden" ><div class="fill-list-lb">热浸锌(吨)：</div><div class="fill-list-cont"><input name="hotdipgalvanizingtons" type="text" th:field="*{hotdipgalvanizingtons}"/></div></div>
-    <div  id="param42" class="fill-box" hidden="hidden" ><div class="fill-list-lb">结构小件焊接工时（h）：</div><div class="fill-list-cont"><input name="smallstructurehours" type="text" th:field="*{smallstructurehours}"/></div></div>
-    <div  id="param43" class="fill-box" hidden="hidden" ><div class="fill-list-lb">结构大件焊接工时（h）：</div><div class="fill-list-cont"><input name="bigstructurehours" type="text" th:field="*{bigstructurehours}"/></div></div>
-    <div  id="param44" class="fill-box" hidden="hidden" ><div class="fill-list-lb">钳工大件装配工时（h）：</div><div class="fill-list-cont"><input name="fitterhours" type="text" th:field="*{fitterhours}"/></div></div>
-    <div  id="param45" class="fill-box" hidden="hidden" ><div class="fill-list-lb">标准件装配工时（h）：</div><div class="fill-list-cont"><input name="standardpartshours" type="text" th:field="*{standardpartshours}"/></div></div>
-    <div  id="param46" class="fill-box" hidden="hidden" ><div class="fill-list-lb">综合班工时（h）：</div><div class="fill-list-cont"><input name="multiplehours" type="text" th:field="*{multiplehours}"/></div></div>
-    <div  id="param47" class="fill-box" hidden="hidden" ><div class="fill-list-lb">电器班工时（h）：</div><div class="fill-list-cont"><input name="electricalhours" type="text" th:field="*{electricalhours}"/></div></div>
-    <div  id="param48" class="fill-box" hidden="hidden" ><div class="fill-list-lb">氩弧焊班工时（h）：</div><div class="fill-list-cont"><input name="weldinghours" type="text" th:field="*{weldinghours}"/></div></div>
-    <input type="submit" value="提交" />
-</form>
+    <form class="boxform" name="form1" id="form1" method="post" enctype="multipart/form-data">
+        <div class="subtable">
+            <table class="tb">
+                <tr>
+                    <td style="height: 50px">列名</td>
+                    <td><input name="columnname" type="text"/></td>
+                </tr>
+                <tr>
+                    <td style="height: 50px">列数据类型</td>
+                    <td>
+                        <label><input style="width: 20px" type="radio" name="columndatatype" value="1" checked="checked"/>文本</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><input style="width: 20px" type="radio" name="columndatatype" value="2"/>数值</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><input style="width: 20px" type="radio" name="columndatatype" value="3"/>网络链接</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 50px">查询条件排序</td>
+                    <td>
+                        <label><input style="width: 20px" type="radio" name="queryconditionorder" value="1" checked="checked"/>默认顺序(字符串为字母顺序,数值为数值大小顺序)</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><input style="width: 20px" type="radio" name="queryconditionorder" value="2"/>频率顺序</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+
+    <!--    按钮 -->
+    <div class="buttonbox">
+        <input type="submit" form="form1" class="button" value="新增"
+               onclick="$('#form1').attr('action','ProjectColumnDefinitionAdd')"/>
+        <input type="reset" form="form1" value="重置"/>
+    </div>
+</div>
 </body>
 </html>
