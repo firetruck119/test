@@ -8,6 +8,7 @@ public class GridDataJsonModel<T> {
     private Integer totals;
     private List<T> Data;
     private String message;
+    private List<T> headers;
 
     public String getStatus() {
         return status;
@@ -39,5 +40,13 @@ public class GridDataJsonModel<T> {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public List<T> getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(List<T> headers) {
+        this.headers = headers;
     }
 }

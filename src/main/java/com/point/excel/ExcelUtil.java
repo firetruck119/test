@@ -78,43 +78,39 @@ public class ExcelUtil {
      */
     public List<ProjectData> readExcel(MultipartFile file, int columns) throws Exception {
         List<ProjectData> list = new ArrayList<ProjectData>();
-        try {
-            checkFile(file);
-            // 获得Workbook工作薄对象
-            Workbook workbook = getWorkBook(file);
 
-            // 获取第一个张表
-            Sheet sheet = workbook.getSheetAt(0);
-            // 获取每行中的字段
-            for (int r = 1; r <= sheet.getLastRowNum(); r++) {
-                try {
-                    Row row = sheet.getRow(r); // 获取行
-                    // 获取单元格中的值并存到对象中
-                    ProjectData ProjectData = new ProjectData();
-                    String strId = row.getCell(0).toString();
-                    int id = 0;
-                    if (strId == null || !strId.isEmpty())
-                        try {
-                            id = (int) (Double.parseDouble(strId));
-                        } catch (Exception ex) {
-                            throw new CustomerException("第" + (r + 1) + "行序号不正确");
-                        }
+        checkFile(file);
+        // 获得Workbook工作薄对象
+        Workbook workbook = getWorkBook(file);
 
-                    ProjectData.setProjectdataid(id);
-                    ProjectData.setProjectname(row.getCell(1).toString());
-                    for (int column = 1; column <= columns; column++) {
-                        Field dataColumnFeild = ProjectData.class.getDeclaredField("datacolumn" + column);
-                        dataColumnFeild.setAccessible(true);
-                        dataColumnFeild.set(ProjectData, row.getCell(column + 1).toString());
+        // 获取第一个张表
+        Sheet sheet = workbook.getSheetAt(0);
+        // 获取每行中的字段
+        for (int r = 1; r <= sheet.getLastRowNum(); r++) {
+            try {
+                Row row = sheet.getRow(r); // 获取行
+                // 获取单元格中的值并存到对象中
+                ProjectData ProjectData = new ProjectData();
+                String strId = row.getCell(0).toString();
+                int id = 0;
+                if (strId == null || !strId.isEmpty())
+                    try {
+                        id = (int) (Double.parseDouble(strId));
+                    } catch (Exception ex) {
+                        throw new CustomerException("第" + (r + 1) + "行序号不正确");
                     }
-                    list.add(ProjectData);
-                } catch (Exception ex) {
-                    throw new CustomerException("第" + (r + 1) + "行数据不正确，序号必须为数字，其他列不能为空");
-                }
-            }
 
-        } catch (Exception e) {
-            throw new CustomerException("Excel导入失败！");
+                ProjectData.setProjectdataid(id);
+                ProjectData.setProjectname(row.getCell(1).toString());
+                for (int column = 1; column <= columns; column++) {
+                    Field dataColumnFeild = ProjectData.class.getDeclaredField("datacolumn" + column);
+                    dataColumnFeild.setAccessible(true);
+                    dataColumnFeild.set(ProjectData, row.getCell(column + 1).toString());
+                }
+                list.add(ProjectData);
+            } catch (Exception ex) {
+                throw new CustomerException("第" + (r + 1) + "行数据不正确，序号必须为数字，其他列不能为空");
+            }
         }
         return list;
     }

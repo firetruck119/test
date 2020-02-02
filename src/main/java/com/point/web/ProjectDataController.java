@@ -196,6 +196,7 @@ public class ProjectDataController {
             insertList.forEach(x -> projectDataMapper.insertSelective(x));
             updateList.forEach(x -> projectDataMapper.updateByPrimaryKeySelective(x));
             result.setStatus("true");
+            result.setMessage("导入成功");
         } catch (CustomerException cex) {
             result.setStatus("false");
             result.setMessage("没有数据导入," + cex);
@@ -219,10 +220,16 @@ public class ProjectDataController {
             List<ProjectColumnDefinition> columnDefinitionList = projectColumnDefinitionMapper.selectByExample(null);
             columnDefinitionList.sort(Comparator.comparing(ProjectColumnDefinition::getProjectcolumndefinitionid));
             List<ProjectData> projectDataList = queryProjectData(queryCondition, columnDefinitionList);
-            List<String> headers = new ArrayList<>();
-            headers.add("序号");
-            headers.add("名称");
-            columnDefinitionList.forEach(x -> headers.add(x.getColumnname().replace(",","，")));
+            List<ProjectColumnDefinition> headers = new ArrayList<>();
+            ProjectColumnDefinition header1 = new ProjectColumnDefinition();
+            ProjectColumnDefinition header2 = new ProjectColumnDefinition();
+            headers.add(header1);
+            headers.add(header2);
+            header1.setColumnname("序号");
+            header1.setColumndatatype(Consts.COLUMNDATATYPE_STRING);
+            header2.setColumnname("名称");
+            header2.setColumndatatype(Consts.COLUMNDATATYPE_STRING);
+            headers.addAll(columnDefinitionList);
             List<String> rows = new ArrayList<>();
             Map<ProjectColumnDefinition, Field> definitionFieldMap = excelUtil.getDataFieldMap(columnDefinitionList);
             for (ProjectData projectData : projectDataList) {
@@ -232,13 +239,14 @@ public class ProjectDataController {
                 for (ProjectColumnDefinition columnDefinition : columnDefinitionList) {
                     Field field = definitionFieldMap.get(columnDefinition);
                     Object object = field.get(projectData);
+                    //因为用半角逗号做分隔符，为防误判这里把半角逗号替换成全角
                     row.add(object == null ? Consts.NULL : object.toString().replace(",","，"));
                 }
                 rows.add(String.join(",", row.toArray(new String[0])));
             }
             model.setStatus("true");
             model.setData(rows);
-            model.setMessage(String.join(",", headers.toArray(new String[0])));
+            model.setHeaders(headers);
         } catch (Exception ex) {
 
         }

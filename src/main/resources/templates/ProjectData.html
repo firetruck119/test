@@ -113,21 +113,26 @@
                     contentType: "application/json",
                     success: function (data) {
                         var list = data.data;
-                        var headers = data.message.split(',');
+                        var headers = data.headers;
                         var html = '<table border="1"><tr>';
                         var headTdArray = new Array();
                         for (var i = 0; i < headers.length; i++) {
-                            headTdArray[i] = '<td>' + headers[i] + '</td>';
+                            headTdArray[i] = '<td>' + headers[i].columnname + '</td>';
                         }
                         //join拼接效率比+=要高
                         html += headTdArray.join('');
                         html += "</tr>";
                         var dataTrArray = new Array();
+
                         for (var i = 0; i < list.length; i++) {
                             var rowDataArray = list[i].split(',');
                             var dataTdArray = new Array();
                             for (var j = 0; j < rowDataArray.length; j++) {
-                                dataTdArray[j] = '<td>' + rowDataArray[j] + '</td>';
+                                if(headers[j].columndatatype == 3){
+                                    dataTdArray[j] = '<td><a href="' + rowDataArray[j] + '">链接</a></td>';
+                                }else {
+                                    dataTdArray[j] = '<td>' + rowDataArray[j] + '</td>';
+                                }
                             }
                             dataTrArray[i] = '<tr>' + dataTdArray.join("") + '</tr>';
                         }
@@ -152,7 +157,7 @@
         //<![CDATA[
         $(document).ready(function () {
             InitNav(3);
-            $('ProjectData').addClass('o-sub-cur');
+            $('#ProjectData').addClass('o-sub-cur');
             $.ajax({
                 url: "/getProjectColumnDefinitionDetailList",
                 type: "POST",
@@ -207,7 +212,7 @@
                             }
                         }
                         html +='<tr><td colspan="2"><input type="button" value="导出excel" onclick="queryData(1)"/>' +
-                            '<input type="button" value="查询" onclick="queryData(2)"/></td></tr>'
+                            '&nbsp&nbsp&nbsp<input type="button" value="查询" onclick="queryData(2)"/></td></tr>'
                         html +='</table>';
                     $("#searchCondition").html(html);
                     }
@@ -234,10 +239,10 @@
 <br/>
 <br/>
 <form id="form1" name="form1" method="post" enctype="multipart/form-data">
-    <table border="1" style="width: 200px">
+    <table border="1" style="width: 400px">
         <tr><td>excel导入数据</td></tr>
     <tr><td>
-        <input style="height: 40px" type="file" name="excelData"/>
+        <input style="height: 40px; width: 400px" type="file" name="excelData"/>
     </td></tr>
     <tr><td>
         <input type="submit" value="提交导入" onclick="$('#form1').attr('action','projectDataImport')"/>
