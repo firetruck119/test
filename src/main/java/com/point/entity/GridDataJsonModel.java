@@ -1,5 +1,6 @@
 package com.point.entity;
 
+import javax.swing.*;
 import java.util.List;
 
 public class GridDataJsonModel<T> {

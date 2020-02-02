@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class ExcelUtil {
@@ -29,7 +30,7 @@ public class ExcelUtil {
      * @param file
      * @throws Exception
      */
-    public static void checkFile(MultipartFile file) throws Exception {
+    public void checkFile(MultipartFile file) throws Exception {
         // 判断文件是否存在
         if (null == file) {
             throw new FileNotFoundException("文件不存在！");
@@ -48,7 +49,7 @@ public class ExcelUtil {
      * @param file
      * @return
      */
-   public static Workbook getWorkBook(MultipartFile file) {
+    public Workbook getWorkBook(MultipartFile file) {
         // 获得文件名
         String fileName = file.getOriginalFilename();
         // 创建Workbook工作薄对象，表示整个excel
@@ -118,7 +119,7 @@ public class ExcelUtil {
         return list;
     }
 
-    public static HSSFWorkbook getHSSFWorkbook(List<ProjectData> datalist, List<ProjectColumnDefinition> definitionList) {
+    public HSSFWorkbook getHSSFWorkbook(List<ProjectData> datalist, List<ProjectColumnDefinition> definitionList) {
 
         // 第一步，创建一个HSSFWorkbook，对应一个Excel文件
         HSSFWorkbook wb = new HSSFWorkbook();
@@ -145,6 +146,9 @@ public class ExcelUtil {
                 cell3.setCellStyle(style);
                 definitionMap.put(projectColumnDefinition.getProjectcolumndefinitionid(), projectColumnDefinition);
             }
+            Map<ProjectColumnDefinition, Field> dataFieldMap = getDataFieldMap(definitionList);
+            Map<Integer, Field> indexFieldMap = dataFieldMap.entrySet().stream()
+                    .collect(Collectors.toMap(x -> x.getKey().getProjectcolumndefinitionid(), x -> x.getValue()));
             //创建内容
             for (int i = 0; i < datalist.size(); i++) {
                 //第一行是表头，第二行开始插数据
@@ -157,13 +161,25 @@ public class ExcelUtil {
                 Cell nameCell = row.createCell(dataColumn++);
                 nameCell.setCellValue(projectData.getProjectname());
                 nameCell.setCellType(Cell.CELL_TYPE_STRING);
-                for (int dataColumnIndex = 0; dataColumnIndex < definitionList.size(); dataColumnIndex++) {
-                    Field dataColumnField = ProjectData.class.getDeclaredField("datacolumn" + dataColumnIndex);
-                    String value = dataColumnField.get(projectData) == null ? "null" : dataColumnField.get(projectData).toString();
+
+                for (int dataColumnIndex = 1; dataColumnIndex <= definitionList.size(); dataColumnIndex++) {
+                    Field dataColumnField = indexFieldMap.get(dataColumnIndex);
                     Cell dataCell = row.createCell(dataColumn++);
-                    dataCell.setCellValue(value);
-                    dataCell.setCellType(definitionMap.get(dataColumnIndex).getColumndatatype() == Consts.COLUMNDATATYPE_NUMBERIC
-                            ? Cell.CELL_TYPE_NUMERIC : Cell.CELL_TYPE_STRING);
+                    Object dataColumnValue = dataColumnField.get(projectData);
+                    if (dataColumnValue == null) {
+                        dataCell.setCellValue(Consts.NULL);
+                        dataCell.setCellType(Cell.CELL_TYPE_STRING);
+                    } else {
+                        String value = dataColumnValue.toString();
+                        boolean isNumberic = definitionMap.get(dataColumnIndex).getColumndatatype() == Consts.COLUMNDATATYPE_NUMBERIC;
+                        if (isNumberic) {
+                            dataCell.setCellValue(Double.parseDouble(value));
+                            dataCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        } else {
+                            dataCell.setCellValue(value);
+                            dataCell.setCellType(Cell.CELL_TYPE_STRING);
+                        }
+                    }
                 }
             }
         } catch (Exception ex) {
@@ -173,21 +189,36 @@ public class ExcelUtil {
     }
 
     /**
-    public void export(HttpServletResponse response) {
-        //excel文件名
-        String fileName = "测试一号.xls";
-        //创建HSSFWorkbook,别问我list哪来的，我哪知道你数据哪来的
-        HSSFWorkbook wb = getHSSFWorkbook(list);
-        //响应到客户端
-        try {
-            this.setResponseHeader(response, fileName);
-            OutputStream os = response.getOutputStream();
-            wb.write(os);
-            os.flush();
-            os.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+     * public void export(HttpServletResponse response) {
+     * //excel文件名
+     * String fileName = "测试一号.xls";
+     * //创建HSSFWorkbook,别问我list哪来的，我哪知道你数据哪来的
+     * HSSFWorkbook wb = getHSSFWorkbook(list);
+     * //响应到客户端
+     * try {
+     * this.setResponseHeader(response, fileName);
+     * OutputStream os = response.getOutputStream();
+     * wb.write(os);
+     * os.flush();
+     * os.close();
+     * } catch (Exception e) {
+     * e.printStackTrace();
+     * }
+     * }
      **/
+
+    public Map<ProjectColumnDefinition, Field> getDataFieldMap(List<ProjectColumnDefinition> columnDefinitionList) {
+        Map<ProjectColumnDefinition, Field> dataFieldMap = new HashMap<>();
+        try {
+            for (ProjectColumnDefinition columnDefinition : columnDefinitionList) {
+                Field dataColumnFeild = ProjectData.class.getDeclaredField("datacolumn"
+                        + columnDefinition.getProjectcolumndefinitionid());
+                dataColumnFeild.setAccessible(true);
+                dataFieldMap.put(columnDefinition, dataColumnFeild);
+            }
+        } catch (Exception ex) {
+
+        }
+        return dataFieldMap;
+    }
 }

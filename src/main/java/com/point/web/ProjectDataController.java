@@ -1,5 +1,8 @@
 package com.point.web;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.point.common.Consts;
 import com.point.common.CustomerException;
 import com.point.entity.GridDataJsonModel;
@@ -9,15 +12,24 @@ import com.point.entity.ProjectData;
 import com.point.excel.ExcelUtil;
 import com.point.mapper.ProjectColumnDefinitionMapper;
 import com.point.mapper.ProjectDataMapper;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import javax.swing.plaf.PanelUI;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -80,18 +92,27 @@ public class ProjectDataController {
             List<ProjectColumnDefinitionDetail> result = new ArrayList<>();
             List<ProjectData> projectDataList = projectDataMapper.selectByExample(null);
             List<ProjectColumnDefinition> definitionList = projectColumnDefinitionMapper.selectByExample(null);
-            definitionList.sort(Comparator.comparing(ProjectColumnDefinition::getProjectcolumndefinitionid));
-            Map<ProjectColumnDefinition, Field> dataFieldMap = getDataFieldMap(definitionList);
+            Map<ProjectColumnDefinition, Field> dataFieldMap = excelUtil.getDataFieldMap(definitionList);
             for (Map.Entry<ProjectColumnDefinition, Field> fieldEntry : dataFieldMap.entrySet()) {
                 if (fieldEntry.getKey().getColumndatatype() == Consts.COLUMNDATATYPE_STRING) {
                     ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
                     result.add(detail);
-                    Set<String> stringValues = new HashSet<>();
+                    List<String> stringValues = new ArrayList<>();
                     detail.setStringValues(stringValues);
                     for (ProjectData projectData : projectDataList) {
                         if (fieldEntry.getValue().get(projectData) != null) {
                             stringValues.add(fieldEntry.getValue().get(projectData).toString());
                         }
+                    }
+                    if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_LETTER) {
+                        stringValues = stringValues.stream().distinct().collect(Collectors.toList());
+                        stringValues.sort(Comparator.comparing(x -> x));
+                        detail.setStringValues(stringValues);
+                    } else if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_RATE) {
+                        Map<String, Long> rateMap = stringValues.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+                        stringValues = rateMap.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).collect(Collectors.toList());
+                        Collections.reverse(stringValues);
+                        detail.setStringValues(stringValues);
                     }
                 } else if (fieldEntry.getKey().getColumndatatype() == Consts.COLUMNDATATYPE_NUMBERIC) {
                     ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
@@ -109,9 +130,10 @@ public class ProjectDataController {
                     }
                 }
             }
+            result.sort(Comparator.comparing(ProjectColumnDefinition::getProjectcolumndefinitionid));
             model.setStatus("true");
-            model.setData(definitionList);
-            model.setTotals(definitionList.size());
+            model.setData(result);
+            model.setTotals(result.size());
 
         } catch (Exception ex) {
             model.setStatus("false");
@@ -121,7 +143,7 @@ public class ProjectDataController {
     }
 
     @PostMapping("/projectDataImport")
-    private GridDataJsonModel projectDataImport(@ModelAttribute MultipartFile excelData) {
+    private ModelAndView projectDataImport(@ModelAttribute MultipartFile excelData) {
         GridDataJsonModel result = new GridDataJsonModel();
         try {
             List<ProjectColumnDefinition> columnDefinitionList = projectColumnDefinitionMapper.selectByExample(null);
@@ -129,7 +151,7 @@ public class ProjectDataController {
             List<ProjectData> dataList = excelUtil.readExcel(excelData, columns);
             HashSet<String> projectNameSet = new HashSet<>();
             columnDefinitionList.sort(Comparator.comparing(ProjectColumnDefinition::getProjectcolumndefinitionid));
-            Map<ProjectColumnDefinition, Field> dataFieldMap = getDataFieldMap(columnDefinitionList);
+            Map<ProjectColumnDefinition, Field> dataFieldMap = excelUtil.getDataFieldMap(columnDefinitionList);
             for (ProjectData projectData : dataList) {
                 if (projectNameSet.contains(projectData.getProjectname())) {
                     throw new CustomerException("导入存在重复数据：" + projectData.getProjectname());
@@ -174,59 +196,158 @@ public class ProjectDataController {
             insertList.forEach(x -> projectDataMapper.insertSelective(x));
             updateList.forEach(x -> projectDataMapper.updateByPrimaryKeySelective(x));
             result.setStatus("true");
-        }catch (CustomerException cex){
-             result.setStatus("false");
+        } catch (CustomerException cex) {
+            result.setStatus("false");
             result.setMessage("没有数据导入," + cex);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             result.setStatus("false");
             result.setMessage("系统发生未知异常，请检查数据，或联系维护人员：" + ex);
+        }
+        Map<String, String> modelMap = new HashMap<>();
+        modelMap.put("message", result.getMessage());
+        return new ModelAndView("ProjectData", modelMap);
+    }
+
+    @PostMapping("queryProjectData")
+    private GridDataJsonModel queryProjectData(@RequestBody String map) {
+        GridDataJsonModel model = new GridDataJsonModel();
+        try {
+            JSONObject jb = JSONArray.parseObject(map);
+            Map<String, String> queryCondition = JSONObject.parseObject(jb.toJSONString()
+                    , new TypeReference<Map<String, String>>() {
+                    });
+            List<ProjectColumnDefinition> columnDefinitionList = projectColumnDefinitionMapper.selectByExample(null);
+            columnDefinitionList.sort(Comparator.comparing(ProjectColumnDefinition::getProjectcolumndefinitionid));
+            List<ProjectData> projectDataList = queryProjectData(queryCondition, columnDefinitionList);
+            List<String> headers = new ArrayList<>();
+            headers.add("序号");
+            headers.add("名称");
+            columnDefinitionList.forEach(x -> headers.add(x.getColumnname().replace(",","，")));
+            List<String> rows = new ArrayList<>();
+            Map<ProjectColumnDefinition, Field> definitionFieldMap = excelUtil.getDataFieldMap(columnDefinitionList);
+            for (ProjectData projectData : projectDataList) {
+                List<String> row = new ArrayList<>();
+                row.add(projectData.getProjectdataid().toString());
+                row.add(projectData.getProjectname());
+                for (ProjectColumnDefinition columnDefinition : columnDefinitionList) {
+                    Field field = definitionFieldMap.get(columnDefinition);
+                    Object object = field.get(projectData);
+                    row.add(object == null ? Consts.NULL : object.toString().replace(",","，"));
+                }
+                rows.add(String.join(",", row.toArray(new String[0])));
+            }
+            model.setStatus("true");
+            model.setData(rows);
+            model.setMessage(String.join(",", headers.toArray(new String[0])));
+        } catch (Exception ex) {
+
+        }
+        return model;
+    }
+
+    @PostMapping("/exportExcel")
+    private void exportExcel(@RequestParam String map, HttpServletResponse response) {//, HttpServletResponse response
+        try {
+            JSONObject jb = JSONArray.parseObject(map);
+            Map<String, String> queryCondition = JSONObject.parseObject(jb.toJSONString()
+                    , new TypeReference<Map<String, String>>() {
+            });
+            List<ProjectColumnDefinition> columnDefinitionList = projectColumnDefinitionMapper.selectByExample(null);
+            List<ProjectData> projectDataList = queryProjectData(queryCondition,columnDefinitionList);
+            HSSFWorkbook workbook = excelUtil.getHSSFWorkbook(projectDataList, columnDefinitionList);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            String fileName = "excel导出结果" + sdf.format(new Date());
+
+            try {
+                OutputStream os = response.getOutputStream();
+                response.setHeader("content-disposition", "attachment;filename="
+                        + URLEncoder.encode(fileName, "utf-8") + ".xls");
+
+                workbook.write(os);
+                os.flush();
+                os.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            response.sendRedirect("/ProjectData");
+        } catch (Exception ex) {
+
+        }
+    }
+
+    private List<ProjectData> queryProjectData(Map<String, String> queryCondition
+            , List<ProjectColumnDefinition> columnDefinitionList) {
+        List<ProjectData> result = new ArrayList<>();
+        try {
+            queryCondition = queryCondition.entrySet().stream()
+                    .filter(x -> !StringUtils.isEmpty(x.getValue()))
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            String primaryKey = queryCondition.get("projectDataId");
+            List<ProjectData> allData = new ArrayList<>();
+            if (primaryKey == null) {
+                allData = projectDataMapper.selectByExample(null);
+            } else {
+                ProjectData primaryData = projectDataMapper.selectByPrimaryKey(Integer.parseInt(primaryKey));
+                allData.add(primaryData);
+            }
+            Map<ProjectColumnDefinition, Field> dataFieldMap = excelUtil.getDataFieldMap(columnDefinitionList);
+            Map<Integer, Field> indexFieldMap = dataFieldMap.entrySet().stream()
+                    .collect(Collectors.toMap(x -> x.getKey().getProjectcolumndefinitionid(), x -> x.getValue()));
+
+            for (ProjectData item : allData) {
+                boolean filter = false;
+                for (Map.Entry<String, String> entry : queryCondition.entrySet()) {
+                    if (entry.getKey().equals("projectDataName")) {
+                        String projectDataName = item.getProjectname();
+                        if (!projectDataName.contains(entry.getValue())) {
+                            filter = true;
+                            break;
+                        }
+                    }
+                    if (entry.getKey().startsWith("stringValue")) {
+                        int columnIndex = Integer.parseInt(entry.getKey().substring(11));
+                        Object object = indexFieldMap.get(columnIndex).get(item);
+                        if (object == null) {
+                            filter = true;
+                            break;
+                        }
+                        String columnData = object.toString();
+                        if (!columnData.contains(entry.getValue())) {
+                            filter = true;
+                            break;
+                        }
+                    } else if (entry.getKey().startsWith("minValue") || entry.getKey().startsWith("maxValue")) {
+                        boolean greatThan = entry.getKey().startsWith("minValue");
+                        int columnIndex = Integer.parseInt(entry.getKey().substring(8));
+                        Object object = indexFieldMap.get(columnIndex).get(item);
+                        if (object == null) {
+                            filter = true;
+                            break;
+                        }
+                        double columnData = Double.parseDouble(object.toString());
+                        double compareDate = Double.parseDouble(entry.getValue());
+                        if (greatThan) {
+                            if (columnData < compareDate) {
+                                filter = true;
+                                break;
+                            }
+                        } else {
+                            if (columnData > compareDate) {
+                                filter = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!filter) {
+                    result.add(item);
+                }
+            }
+        } catch (Exception ex) {
+
         }
         return result;
     }
 
-    private void aaa(){
-        try {
-            List<ProjectData> list = new ArrayList<>();
-            Map<Integer, String> queryCondition = new HashMap<>();
-            queryCondition.put(0, "1");
-            queryCondition.put(1, "3");
-            Map<Integer, Field> fieldMap = new HashMap<>();
-            for (int i = 0; i < 2; i++) {
-                Field fieldTag = ProjectData.class.getDeclaredField("datacolumn" + i);
-                fieldMap.put(i, fieldTag);
-            }
-            List<ProjectData> result = new ArrayList<>();
-            for (ProjectData item : list) {
-                boolean isEqual = true;
-                for (Map.Entry<Integer, String> entry : queryCondition.entrySet()) {
-                    if (!entry.getValue().equals(fieldMap.get(entry.getKey()).get(item))) {
-                        isEqual = false;
-                        break;
-                    }
-                }
-                if (isEqual) {
-                    result.add(item);
-                }
-            }
-        }catch (Exception ex){
-
-        }
-    }
-
-    private Map<ProjectColumnDefinition, Field> getDataFieldMap(List<ProjectColumnDefinition> columnDefinitionList){
-        Map<ProjectColumnDefinition, Field> dataFieldMap = new HashMap<>();
-        try {
-            for (ProjectColumnDefinition columnDefinition : columnDefinitionList) {
-                Field dataColumnFeild = ProjectData.class.getDeclaredField("datacolumn"
-                        + columnDefinition.getProjectcolumndefinitionid());
-                dataColumnFeild.setAccessible(true);
-                dataFieldMap.put(columnDefinition, dataColumnFeild);
-            }
-        }catch (Exception ex){
-
-        }
-        return dataFieldMap;
-    }
 
 }

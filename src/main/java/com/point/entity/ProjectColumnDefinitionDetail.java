@@ -13,17 +13,17 @@ public class ProjectColumnDefinitionDetail extends ProjectColumnDefinition {
         this.setQueryconditionorder(projectColumnDefinition.getQueryconditionorder());
     }
 
-    private Set<String> stringValues;
+    private List<String> stringValues;
 
     private Double minValue;
 
     private Double maxValue;
 
-    public Set<String> getStringValues() {
+    public List<String> getStringValues() {
         return stringValues;
     }
 
-    public void setStringValues(Set<String> stringValues) {
+    public void setStringValues(List<String> stringValues) {
         this.stringValues = stringValues;
     }
 

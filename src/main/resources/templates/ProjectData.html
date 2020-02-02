@@ -28,22 +28,116 @@
             }
         }
 
+        function isInteger(value) {         //验证是否为数字
+            var patrn = /^[1-9]\d*$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+
         /*<![CDATA[*/
-        function checkinput(form) {
-            /*
-            if (form.type.value == "") {
-                alert("基础信息必须填写");
-                return false;
+
+        /**
+         * Map转json
+         * @param m
+         * @returns String
+         */
+        function mapToJson(map) {
+            var str = '{';
+            var i = 1;
+            map.forEach(function (item, key, mapObj) {
+                if(mapObj.size == i){
+                    str += '"'+ key+'":"'+ item + '"';
+                }else{
+                    str += '"'+ key+'":"'+ item + '",';
+                }
+                i++;
+            });
+            str +='}';
+            //console.log(str);
+            return str;
+        }
+
+        function queryData(type){
+            var map = new Map();
+            var numberFlag = true;
+            var projectDataId = $("#projectDataId").val();
+            if(projectDataId&&!isInteger(projectDataId)) {
+                alert("序号必须填写正整数");
+                numberFlag = false;
             }
-            if (!(isNumber(form.weightPerMeter.value)
-                && isNumber(form.structureHours.value)
-                && isNumber(form.multipleHours.value)
-                && isNumber(form.fitterHours.value))) {
-                alert("设计参数必须填写,且填写数字");
-                return false;
+            map.set("projectDataId",projectDataId);
+            map.set("projectDataName",$("#projectDataName").val());
+            Array.from($("input[id^='stringValue']")).forEach(function(v){
+                map.set(v.id,v.value);
+            });
+            Array.from($("input[id^='minValue']")).forEach(function(v){
+                if(v.value&&!isNumber(v.value)){
+                    alert("数值范围必须填写数字");
+                    numberFlag = false;
+                }
+                map.set(v.id,v.value);
+            });
+            Array.from($("input[id^='maxValue']")).forEach(function(v){
+                if(v.value&&!isNumber(v.value)){
+                    alert("数值范围必须填写数字");
+                    numberFlag = false;
+                }
+                map.set(v.id,v.value);
+            });
+            if(!numberFlag){
+                return;
             }
-            */
-            return true;
+            if(type==1) {
+                //模拟提交表单
+                var temp_form = document.createElement("form");
+                temp_form.action = "/exportExcel";
+                temp_form.target = "_self";
+                temp_form.method = "post";
+                temp_form.style.display = "none";
+                var opt = document.createElement("textarea");
+                opt.name = "map";
+                opt.value = mapToJson(map);
+                temp_form.appendChild(opt);
+                document.body.appendChild(temp_form);
+                temp_form.submit();
+            }else if(type==2) {
+                $.ajax({
+                    url: "/queryProjectData",
+                    type: "POST",
+                    data: mapToJson(map),
+                    async: false,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (data) {
+                        var list = data.data;
+                        var headers = data.message.split(',');
+                        var html = '<table border="1"><tr>';
+                        var headTdArray = new Array();
+                        for (var i = 0; i < headers.length; i++) {
+                            headTdArray[i] = '<td>' + headers[i] + '</td>';
+                        }
+                        //join拼接效率比+=要高
+                        html += headTdArray.join('');
+                        html += "</tr>";
+                        var dataTrArray = new Array();
+                        for (var i = 0; i < list.length; i++) {
+                            var rowDataArray = list[i].split(',');
+                            var dataTdArray = new Array();
+                            for (var j = 0; j < rowDataArray.length; j++) {
+                                dataTdArray[j] = '<td>' + rowDataArray[j] + '</td>';
+                            }
+                            dataTrArray[i] = '<tr>' + dataTdArray.join("") + '</tr>';
+                        }
+                        html += dataTrArray.join('');
+                        html += "</table>";
+                        $("#dataTable").html(html);
+                    }
+                })
+            }
+
         }
         /*]]>*/
         //<![CDATA[
@@ -57,27 +151,71 @@
         //]]>
         //<![CDATA[
         $(document).ready(function () {
-            InitNav(2);
-            $('#ComponentList'+getQueryString("type")).addClass('o-sub-cur');
+            InitNav(3);
+            $('ProjectData').addClass('o-sub-cur');
             $.ajax({
-                url: "/getProjectColumnDefinitionList",
+                url: "/getProjectColumnDefinitionDetailList",
                 type: "POST",
                 contentType: "application/json",
                 dataType: "json",
                 async: false,
                 success: function(data) {
                     if (data != null) {
-                        var i = 0;
-                        var html = "";
+                        var html = '<br/><br/><table id="queryCondition" border="1" style="width: 400px"><tr><td>检索条件</td><td>匹配文本或者数值范围</td></tr>';
+                        html += '<tr><td>序号</td><td><input id="projectDataId" type="text" style="height:15px; width:330px"/></td></tr>';
+                        html += '<tr><td>项目名称</td><td><input id="projectDataName" type="text" style="height:15px; width:330px"/></td></tr>';
                         var columnDefinitions = data.data;
-                        while (i < columnDefinitions.length) {
-                            var columnDefinition = columnDefinitions[i];
-                            
+                        for(var columnDefinitionIndex = 0; columnDefinitionIndex<columnDefinitions.length;columnDefinitionIndex++){
+                            var columnDefinition = columnDefinitions[columnDefinitionIndex];
+                            if (columnDefinition.columndatatype == 1 || columnDefinition.columndatatype == 2) {
+                                html += "<tr><td>";
+                                html += columnDefinition.columnname;
+                                html += "</td><td>";
+                                if (columnDefinition.columndatatype == 1) {
+                                    html += '<input style="height:25px; width:330px" id="stringValue';
+                                    html += columnDefinition.projectcolumndefinitionid;
+                                    html += '" list="queryValues';
+                                    html += columnDefinition.projectcolumndefinitionid;
+                                    html += '" /><datalist id="queryValues';
+                                    html += columnDefinition.projectcolumndefinitionid;
+                                    html += '">';
+                                    for (var valueIndex = 0; valueIndex < columnDefinition.stringValues.length; valueIndex++) {
+                                        var value = columnDefinition.stringValues[valueIndex];
+                                        html += '<option value="';
+                                        html += value;
+                                        html += '">';
+                                    }
+                                    html += '</datalist>';
+                                } else {
+                                    html += '<input type="text" id="minValue';
+                                    html += columnDefinition.projectcolumndefinitionid;
+                                    html += '"'
+                                    if(columnDefinition.minValue){
+                                        html+=' placeholder=';
+                                        html+=columnDefinition.minValue;
+                                    }
+                                    html +=' />&nbsp~&nbsp<input type="text" id="maxValue';
+                                    html += columnDefinition.projectcolumndefinitionid;
+                                    html += '"'
+                                    if(columnDefinition.maxValue){
+                                        html+=' placeholder=';
+                                        html+=columnDefinition.maxValue;
+                                    }
+                                    html +=' />'
+                                }
+                                html +='</td></tr>';
+                            }
                         }
+                        html +='<tr><td colspan="2"><input type="button" value="导出excel" onclick="queryData(1)"/>' +
+                            '<input type="button" value="查询" onclick="queryData(2)"/></td></tr>'
+                        html +='</table>';
+                    $("#searchCondition").html(html);
                     }
                 }
             });
-
+            if($("#message").val()){
+                alert($("#message").val())
+            }
         });
         //]]>
 
@@ -87,20 +225,25 @@
 <body>
 <nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
-<form id="searchForm" method="post">
-    <div id="searchCondition"></div>
 
-</form>
+<div id="searchCondition"></div>
+<br/>
+<br/>
+<div id="dataTable"></div>
 
-
+<br/>
+<br/>
 <form id="form1" name="form1" method="post" enctype="multipart/form-data">
-    <div>excel导入数据</div>
-    <div>
-        <input class="import" type="file" name="excelData"/>
-    </div>
-    <div>
-        <input type="submit" value="提交" onclick="$('#form1').attr('action','projectDataImport')"/>
-    </div>
+    <table border="1" style="width: 200px">
+        <tr><td>excel导入数据</td></tr>
+    <tr><td>
+        <input style="height: 40px" type="file" name="excelData"/>
+    </td></tr>
+    <tr><td>
+        <input type="submit" value="提交导入" onclick="$('#form1').attr('action','projectDataImport')"/>
+        <input type="hidden" th:value="${message}" id="message"/>
+    </td></tr>
+    </table>
 </form>
 </body>
 </html>
