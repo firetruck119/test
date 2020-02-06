@@ -33,13 +33,13 @@ public class ExcelUtil {
     public void checkFile(MultipartFile file) throws Exception {
         // 判断文件是否存在
         if (null == file) {
-            throw new FileNotFoundException("文件不存在！");
+            throw new CustomerException("文件不存在！");
         }
         // 获得文件名
         String fileName = file.getOriginalFilename();
         // 判断文件是否是excel文件
         if (!fileName.endsWith("xls") && !fileName.endsWith("xlsx")) {
-            throw new IOException(fileName + "不是excel文件");
+            throw new CustomerException(fileName + "不是excel文件");
         }
     }
 

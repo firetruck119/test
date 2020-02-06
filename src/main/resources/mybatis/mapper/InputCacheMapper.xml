@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.point.mapper.ProjectColumnDefinitionMapper" >
-  <resultMap id="BaseResultMap" type="com.point.entity.ProjectColumnDefinition" >
-    <id column="ProjectColumnDefinitionId" property="projectcolumndefinitionid" jdbcType="INTEGER" />
-    <result column="ColumnName" property="columnname" jdbcType="VARCHAR" />
-    <result column="ColumnDataType" property="columndatatype" jdbcType="INTEGER" />
-    <result column="QueryConditionOrder" property="queryconditionorder" jdbcType="INTEGER" />
+<mapper namespace="com.point.mapper.InputCacheMapper" >
+  <resultMap id="BaseResultMap" type="com.point.entity.InputCache" >
+    <id column="InputCacheId" property="inputcacheid" jdbcType="INTEGER" />
+    <result column="BatchId" property="batchid" jdbcType="VARCHAR" />
+    <result column="InputName" property="inputname" jdbcType="VARCHAR" />
+    <result column="InputValue" property="inputvalue" jdbcType="VARCHAR" />
     <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="ChangeLastTime" property="changelasttime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -68,16 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ProjectColumnDefinitionId, ColumnName, ColumnDataType, QueryConditionOrder, CreateTime, 
-    ChangeLastTime
+    InputCacheId, BatchId, InputName, InputValue, CreateTime, ChangeLastTime
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.ProjectColumnDefinitionExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.InputCacheExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from project_column_definition
+    from input_cache
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,41 +87,41 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from project_column_definition
-    where ProjectColumnDefinitionId = #{projectcolumndefinitionid,jdbcType=INTEGER}
+    from input_cache
+    where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from project_column_definition
-    where ProjectColumnDefinitionId = #{projectcolumndefinitionid,jdbcType=INTEGER}
+    delete from input_cache
+    where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.point.entity.ProjectColumnDefinitionExample" >
-    delete from project_column_definition
+  <delete id="deleteByExample" parameterType="com.point.entity.InputCacheExample" >
+    delete from input_cache
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.point.entity.ProjectColumnDefinition" >
-    insert into project_column_definition (ProjectColumnDefinitionId, ColumnName, 
-      ColumnDataType, QueryConditionOrder, CreateTime, 
-      ChangeLastTime)
-    values (#{projectcolumndefinitionid,jdbcType=INTEGER}, #{columnname,jdbcType=VARCHAR}, 
-      #{columndatatype,jdbcType=INTEGER}, #{queryconditionorder,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{changelasttime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.point.entity.InputCache" >
+    insert into input_cache (InputCacheId, BatchId, InputName, 
+      InputValue, CreateTime, ChangeLastTime
+      )
+    values (#{inputcacheid,jdbcType=INTEGER}, #{batchid,jdbcType=VARCHAR}, #{inputname,jdbcType=VARCHAR}, 
+      #{inputvalue,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{changelasttime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.point.entity.ProjectColumnDefinition" >
-    insert into project_column_definition
+  <insert id="insertSelective" parameterType="com.point.entity.InputCache" >
+    insert into input_cache
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="projectcolumndefinitionid != null" >
-        ProjectColumnDefinitionId,
+      <if test="inputcacheid != null" >
+        InputCacheId,
       </if>
-      <if test="columnname != null" >
-        ColumnName,
+      <if test="batchid != null" >
+        BatchId,
       </if>
-      <if test="columndatatype != null" >
-        ColumnDataType,
+      <if test="inputname != null" >
+        InputName,
       </if>
-      <if test="queryconditionorder != null" >
-        QueryConditionOrder,
+      <if test="inputvalue != null" >
+        InputValue,
       </if>
       <if test="createtime != null" >
         CreateTime,
@@ -132,17 +131,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="projectcolumndefinitionid != null" >
-        #{projectcolumndefinitionid,jdbcType=INTEGER},
+      <if test="inputcacheid != null" >
+        #{inputcacheid,jdbcType=INTEGER},
       </if>
-      <if test="columnname != null" >
-        #{columnname,jdbcType=VARCHAR},
+      <if test="batchid != null" >
+        #{batchid,jdbcType=VARCHAR},
       </if>
-      <if test="columndatatype != null" >
-        #{columndatatype,jdbcType=INTEGER},
+      <if test="inputname != null" >
+        #{inputname,jdbcType=VARCHAR},
       </if>
-      <if test="queryconditionorder != null" >
-        #{queryconditionorder,jdbcType=INTEGER},
+      <if test="inputvalue != null" >
+        #{inputvalue,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
@@ -152,26 +151,26 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.point.entity.ProjectColumnDefinitionExample" resultType="java.lang.Integer" >
-    select count(*) from project_column_definition
+  <select id="countByExample" parameterType="com.point.entity.InputCacheExample" resultType="java.lang.Integer" >
+    select count(*) from input_cache
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update project_column_definition
+    update input_cache
     <set >
-      <if test="record.projectcolumndefinitionid != null" >
-        ProjectColumnDefinitionId = #{record.projectcolumndefinitionid,jdbcType=INTEGER},
+      <if test="record.inputcacheid != null" >
+        InputCacheId = #{record.inputcacheid,jdbcType=INTEGER},
       </if>
-      <if test="record.columnname != null" >
-        ColumnName = #{record.columnname,jdbcType=VARCHAR},
+      <if test="record.batchid != null" >
+        BatchId = #{record.batchid,jdbcType=VARCHAR},
       </if>
-      <if test="record.columndatatype != null" >
-        ColumnDataType = #{record.columndatatype,jdbcType=INTEGER},
+      <if test="record.inputname != null" >
+        InputName = #{record.inputname,jdbcType=VARCHAR},
       </if>
-      <if test="record.queryconditionorder != null" >
-        QueryConditionOrder = #{record.queryconditionorder,jdbcType=INTEGER},
+      <if test="record.inputvalue != null" >
+        InputValue = #{record.inputvalue,jdbcType=VARCHAR},
       </if>
       <if test="record.createtime != null" >
         CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
@@ -185,28 +184,28 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update project_column_definition
-    set ProjectColumnDefinitionId = #{record.projectcolumndefinitionid,jdbcType=INTEGER},
-      ColumnName = #{record.columnname,jdbcType=VARCHAR},
-      ColumnDataType = #{record.columndatatype,jdbcType=INTEGER},
-      QueryConditionOrder = #{record.queryconditionorder,jdbcType=INTEGER},
+    update input_cache
+    set InputCacheId = #{record.inputcacheid,jdbcType=INTEGER},
+      BatchId = #{record.batchid,jdbcType=VARCHAR},
+      InputName = #{record.inputname,jdbcType=VARCHAR},
+      InputValue = #{record.inputvalue,jdbcType=VARCHAR},
       CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
       ChangeLastTime = #{record.changelasttime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.ProjectColumnDefinition" >
-    update project_column_definition
+  <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.InputCache" >
+    update input_cache
     <set >
-      <if test="columnname != null" >
-        ColumnName = #{columnname,jdbcType=VARCHAR},
+      <if test="batchid != null" >
+        BatchId = #{batchid,jdbcType=VARCHAR},
       </if>
-      <if test="columndatatype != null" >
-        ColumnDataType = #{columndatatype,jdbcType=INTEGER},
+      <if test="inputname != null" >
+        InputName = #{inputname,jdbcType=VARCHAR},
       </if>
-      <if test="queryconditionorder != null" >
-        QueryConditionOrder = #{queryconditionorder,jdbcType=INTEGER},
+      <if test="inputvalue != null" >
+        InputValue = #{inputvalue,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         CreateTime = #{createtime,jdbcType=TIMESTAMP},
@@ -215,15 +214,18 @@
         ChangeLastTime = #{changelasttime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ProjectColumnDefinitionId = #{projectcolumndefinitionid,jdbcType=INTEGER}
+    where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.point.entity.ProjectColumnDefinition" >
-    update project_column_definition
-    set ColumnName = #{columnname,jdbcType=VARCHAR},
-      ColumnDataType = #{columndatatype,jdbcType=INTEGER},
-      QueryConditionOrder = #{queryconditionorder,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.point.entity.InputCache" >
+    update input_cache
+    set BatchId = #{batchid,jdbcType=VARCHAR},
+      InputName = #{inputname,jdbcType=VARCHAR},
+      InputValue = #{inputvalue,jdbcType=VARCHAR},
       CreateTime = #{createtime,jdbcType=TIMESTAMP},
       ChangeLastTime = #{changelasttime,jdbcType=TIMESTAMP}
-    where ProjectColumnDefinitionId = #{projectcolumndefinitionid,jdbcType=INTEGER}
+    where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </update>
+  <select id="selectAllBatchId" resultType="java.lang.String" >
+    select distinct BatchId from input_cache order by ChangeLastTime desc
+  </select>
 </mapper>

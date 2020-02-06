@@ -199,7 +199,7 @@ public class ProjectDataController {
             result.setMessage("导入成功");
         } catch (CustomerException cex) {
             result.setStatus("false");
-            result.setMessage("没有数据导入," + cex);
+            result.setMessage("没有数据导入," + cex.getMessage());
         } catch (Exception ex) {
             result.setStatus("false");
             result.setMessage("系统发生未知异常，请检查数据，或联系维护人员：" + ex);
