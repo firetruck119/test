@@ -75,6 +75,9 @@ public class CacheData<T> {
 
     public void readCacheValue(String batchId, T entity){
         try {
+            if(StringUtils.isEmpty(batchId)){
+                return;
+            }
             Map<String, String> cacheMap = readCacheFromDb(batchId);
             Field[] fields = entity.getClass().getDeclaredFields();
             for (Field field : fields) {

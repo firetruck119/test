@@ -1,7 +1,9 @@
 package com.point.web;
 
+import com.point.common.CacheData;
 import com.point.entity.CleaningCycleCalculation;
 import com.point.entity.Gangsi;
+import com.point.entity.pdf.WheelLoadEntity;
 import com.point.itext.PdfUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +23,10 @@ import java.util.*;
 public class CleaningCycleCalculationController {
 
     @Autowired
-    PdfUtil pdfUtil;
+    private PdfUtil pdfUtil;
+
+    @Autowired
+    private CacheData<CleaningCycleCalculation> cacheData;
 
     @GetMapping("/aaa")
     public String test(Model model) {
@@ -29,8 +34,10 @@ public class CleaningCycleCalculationController {
     }
 
     @GetMapping("/CleaningCycleCalculation")
-    public String greetingForm(Model model,@ModelAttribute CleaningCycleCalculation cleaningCycleCalculation) {
-        model.addAttribute("CleaningCycleCalculation", new CleaningCycleCalculation());
+    public String greetingForm(String batchId, Model model) {
+        CleaningCycleCalculation cleaningCycleCalculation = new CleaningCycleCalculation();
+        cacheData.readCacheValue(batchId, cleaningCycleCalculation);
+        model.addAttribute("CleaningCycleCalculation", cleaningCycleCalculation);
         return "greeting";
     }
 
@@ -96,27 +103,26 @@ public class CleaningCycleCalculationController {
     }
 
     @PostMapping("/CleaningCycleCalculation")
-    public Object greetingSubmit(@ModelAttribute CleaningCycleCalculation cleaningCycleCalculation) {
-        Map<String,String> textMap=new HashMap<String, String>();
-        Map<String,String> imageMap=new HashMap<String, String>();
-        imageMap.put("projectName","bobo");
+    public Object greetingSubmit(@ModelAttribute CleaningCycleCalculation cleaningCycleCalculation, String batchId) {
+        cacheData.saveCacheValue(batchId, cleaningCycleCalculation);
+        Map<String, String> textMap = new HashMap<String, String>();
         //输入
         //textMap.put("projectName",cleaningCycleCalculation.getProjectName() + "项目");
-        textMap.put("calculator",cleaningCycleCalculation.getCalculator());
-        textMap.put("check",cleaningCycleCalculation.getCheck());
-        textMap.put("date",cleaningCycleCalculation.getDate());
-        textMap.put("no",cleaningCycleCalculation.getNo());
-        textMap.put("a",cleaningCycleCalculation.getA());
-        textMap.put("b",cleaningCycleCalculation.getB());
-        textMap.put("h",cleaningCycleCalculation.getH());
-        textMap.put("l",cleaningCycleCalculation.getL());
-        textMap.put("l1",cleaningCycleCalculation.getL1());
-        textMap.put("n",cleaningCycleCalculation.getN());
-        textMap.put("t1",cleaningCycleCalculation.getT1());
-        textMap.put("ti",cleaningCycleCalculation.getTi());
-        textMap.put("v1",cleaningCycleCalculation.getV1());
-        textMap.put("v2",cleaningCycleCalculation.getV2());
-        textMap.put("w",cleaningCycleCalculation.getW());
+        textMap.put("calculator", cleaningCycleCalculation.getCalculator());
+        textMap.put("check", cleaningCycleCalculation.getCheck());
+        textMap.put("date", cleaningCycleCalculation.getDate());
+        textMap.put("no", cleaningCycleCalculation.getNo());
+        textMap.put("a", cleaningCycleCalculation.getA());
+        textMap.put("b", cleaningCycleCalculation.getB());
+        textMap.put("h", cleaningCycleCalculation.getH());
+        textMap.put("l", cleaningCycleCalculation.getL());
+        textMap.put("l1", cleaningCycleCalculation.getL1());
+        textMap.put("n", cleaningCycleCalculation.getN());
+        textMap.put("t1", cleaningCycleCalculation.getT1());
+        textMap.put("ti", cleaningCycleCalculation.getTi());
+        textMap.put("v1", cleaningCycleCalculation.getV1());
+        textMap.put("v2", cleaningCycleCalculation.getV2());
+        textMap.put("w", cleaningCycleCalculation.getW());
 
         //计算
         BigDecimal a = new BigDecimal(cleaningCycleCalculation.getA());
@@ -132,25 +138,25 @@ public class CleaningCycleCalculationController {
         BigDecimal w = new BigDecimal(cleaningCycleCalculation.getW());
 
         //输出
-        BigDecimal n1 = l.divide(w,2,BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal n1 = l.divide(w, 2, BigDecimal.ROUND_HALF_EVEN);
         BigDecimal s_ = h.multiply(l1);
-        BigDecimal t2 = s_.divide(v2,2,BigDecimal.ROUND_HALF_EVEN);
-        BigDecimal t3 = h.divide(v1,2,BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal t2 = s_.divide(v2, 2, BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal t3 = h.divide(v1, 2, BigDecimal.ROUND_HALF_EVEN);
         BigDecimal t4 = a.multiply(new BigDecimal(2));
         BigDecimal t = t1.add(t2).add(t3).add(t4);
-        BigDecimal t_1 = n1.multiply(t).divide(n,2,BigDecimal.ROUND_HALF_EVEN);
-        BigDecimal t_2 = t_1.divide(ti.multiply(new BigDecimal(60)),2,BigDecimal.ROUND_HALF_EVEN);
-        BigDecimal t_3 = t_2.divide(b,2,BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal t_1 = n1.multiply(t).divide(n, 2, BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal t_2 = t_1.divide(ti.multiply(new BigDecimal(60)), 2, BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal t_3 = t_2.divide(b, 2, BigDecimal.ROUND_HALF_EVEN);
 
-        textMap.put("n1",myformatString(n1));
-        textMap.put("s_",myformatString(s_));
-        textMap.put("t2",myformatString(t2));
-        textMap.put("t3",myformatString(t3));
-        textMap.put("t4",myformatString(t4));
-        textMap.put("t",myformatString(t));
-        textMap.put("t_1",myformatString(t_1));
-        textMap.put("t_2",myformatString(t_2));
-        textMap.put("t_3",myformatString(t_3));
+        textMap.put("n1", myformatString(n1));
+        textMap.put("s_", myformatString(s_));
+        textMap.put("t2", myformatString(t2));
+        textMap.put("t3", myformatString(t3));
+        textMap.put("t4", myformatString(t4));
+        textMap.put("t", myformatString(t));
+        textMap.put("t_1", myformatString(t_1));
+        textMap.put("t_2", myformatString(t_2));
+        textMap.put("t_3", myformatString(t_3));
         cleaningCycleCalculation.setT_3(myformatString(t_3));
 
 
@@ -164,9 +170,9 @@ public class CleaningCycleCalculationController {
             }//为了解决中文名称乱码问题
             headers.setContentDispositionFormData("attachment", fileName);
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(textMap,null,"LX005"), headers, HttpStatus.OK);
+            ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfUtil.fromPDFTempletToPdfWithValue(textMap, null, "LX005"), headers, HttpStatus.OK);
             return responseEntity;
-        }else{
+        } else {
             return "result";
         }
     }
