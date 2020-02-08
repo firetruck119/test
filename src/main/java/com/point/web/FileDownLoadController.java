@@ -22,7 +22,8 @@ public class FileDownLoadController {
             // 设置输出的格式
             response.reset();
             response.setContentType("bin");
-            response.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+            response.addHeader("Content-Disposition", "attachment; filename=\""
+                    + java.net.URLEncoder.encode(fileName, "UTF-8") + "\"");
             // 循环取出流中的数据
             byte[] b = new byte[100];
             int len;
