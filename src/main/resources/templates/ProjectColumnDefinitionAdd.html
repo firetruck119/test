@@ -126,17 +126,46 @@
             text-align: center;
             line-height: 30px;
         }
-    </style>-
+    </style>
     <script>
-
         $(document).ready(function () {
             InitNav(3)
             $('#ProjectColumnDefinitionList').addClass('o-sub-cur');
+            if($("#message").val()){
+                alert($("#message").val())
+            }
+            changeLbCondion(1);
         })
+
+        function changeLbCondion(type) {
+            $("#lbCondition1").hide();
+            $("#lbCondition2").hide();
+            $("#lbCondition3").hide();
+            $("#lbCondition4").hide();
+            $("#lbCondition0").hide();
+            $("#rdCondition1").prop("checked",false);
+            $("#rdCondition2").prop("checked",false);
+            $("#rdCondition3").prop("checked",false);
+            $("#rdCondition4").prop("checked",false);
+            $("#rdCondition0").prop("checked",false);
+            if (type == 1) {
+                $("#lbCondition1").show();
+                $("#lbCondition2").show();
+                $("#rdCondition1").prop("checked",true);
+            } else if (type == 2) {
+                $("#lbCondition3").show();
+                $("#lbCondition4").show();
+                $("#rdCondition3").prop("checked",true);
+            } else if (type == 3) {
+                $("#lbCondition0").show();
+                $("#rdCondition0").prop("checked",true);
+            }
+        }
+
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default" role="head" include="head"></nav>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
 <div>
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
@@ -151,19 +180,21 @@
                 <tr>
                     <td style="height: 50px">列数据类型</td>
                     <td>
-                        <label><input style="width: 20px" type="radio" name="columndatatype" value="1" checked="checked"/>文本</label>
+                        <label><input style="width: 20px" type="radio" name="columndatatype" value="1" checked="checked" onclick="changeLbCondion(1)"/>文本</label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label><input style="width: 20px" type="radio" name="columndatatype" value="2"/>数值</label>
+                        <label><input style="width: 20px" type="radio" name="columndatatype" value="2" onclick="changeLbCondion(2)"/>数值</label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label><input style="width: 20px" type="radio" name="columndatatype" value="3"/>网络链接</label>
+                        <label><input style="width: 20px" type="radio" name="columndatatype" value="3" onclick="changeLbCondion(3)"/>网络链接</label>
                     </td>
                 </tr>
                 <tr>
                     <td style="height: 50px">查询条件排序</td>
                     <td>
-                        <label><input style="width: 20px" type="radio" name="queryconditionorder" value="1" checked="checked"/>字母顺序</label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label><input style="width: 20px" type="radio" name="queryconditionorder" value="2"/>频率顺序</label>
+                        <label id="lbCondition1"><input id="rdCondition1" style="width: 20px" type="radio" name="queryconditionorder" value="1" checked="checked"/>字母顺序&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label id="lbCondition2"><input id="rdCondition2" style="width: 20px" type="radio" name="queryconditionorder" value="2"/>频率顺序&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label id="lbCondition3"><input id="rdCondition3" style="width: 20px" type="radio" name="queryconditionorder" value="3" />数值大小&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label id="lbCondition4"><input id="rdCondition4" style="width: 20px" type="radio" name="queryconditionorder" value="4"/>范围筛选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label id="lbCondition0"><input id="rdCondition0" style="width: 20px" type="radio" name="queryconditionorder" value="0"/>不参加筛选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </td>
                 </tr>
             </table>
@@ -175,6 +206,7 @@
     <div class="buttonbox">
         <input type="submit" form="form1" class="button" value="新增"
                onclick="$('#form1').attr('action','ProjectColumnDefinitionAdd')"/>
+        <input type="hidden" th:value="${message}" id="message"/>
         <input type="reset" form="form1" value="重置"/>
     </div>
 </div>

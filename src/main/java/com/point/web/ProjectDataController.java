@@ -29,6 +29,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
+import java.text.Collator;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collector;
@@ -64,11 +65,23 @@ public class ProjectDataController {
     }
 
     @PostMapping("/ProjectColumnDefinitionAdd")
-    public String addProjectColumnDefinition(@ModelAttribute ProjectColumnDefinition projectColumnDefinition, HttpServletResponse response) {
+    public ModelAndView addProjectColumnDefinition(@ModelAttribute ProjectColumnDefinition projectColumnDefinition, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView("ProjectColumnDefinitionAdd");
         try {
+            if (StringUtils.isEmptyOrWhitespace(projectColumnDefinition.getColumnname())) {
+                modelAndView.addObject("message", "列名不能为空");
+                return modelAndView;
+            }
+            List<ProjectColumnDefinition> allData = projectColumnDefinitionMapper.selectByExample(null);
+            Set<String> allColunmNames = allData.stream().map(ProjectColumnDefinition::getColumnname).collect(Collectors.toSet());
+            if (allColunmNames.contains(projectColumnDefinition.getColumnname())) {
+                modelAndView.addObject("message",
+                        projectColumnDefinition.getColumnname() + "与已有列名重复");
+                return modelAndView;
+            }
             projectColumnDefinitionMapper.insertSelective(projectColumnDefinition);
             response.sendRedirect("/ProjectColumnDefinitionList");
-        } catch (IOException e1) {
+        } catch (IOException e) {
 
         }
         return null;
@@ -106,8 +119,10 @@ public class ProjectDataController {
                     }
                     if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_LETTER) {
                         stringValues = stringValues.stream().distinct().collect(Collectors.toList());
-                        stringValues.sort(Comparator.comparing(x -> x));
-                        detail.setStringValues(stringValues);
+                        String[] stringArray = stringValues.toArray(new String[stringValues.size()]);
+                        Collator cmp = Collator.getInstance(java.util.Locale.CHINA);
+                        Arrays.sort(stringArray, cmp);
+                        detail.setStringValues(Arrays.asList(stringArray));
                     } else if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_RATE) {
                         Map<String, Long> rateMap = stringValues.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
                         stringValues = rateMap.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).collect(Collectors.toList());
@@ -117,14 +132,27 @@ public class ProjectDataController {
                 } else if (fieldEntry.getKey().getColumndatatype() == Consts.COLUMNDATATYPE_NUMBERIC) {
                     ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
                     result.add(detail);
-                    for (ProjectData projectData : projectDataList) {
-                        if (fieldEntry.getValue().get(projectData) != null) {
-                            double doubleValue = Double.parseDouble(fieldEntry.getValue().get(projectData).toString());
-                            if (detail.getMinValue() == null || doubleValue < detail.getMinValue()) {
-                                detail.setMinValue(doubleValue);
+                    if(fieldEntry.getKey().getQueryconditionorder()==Consts.QUERYCONDITIONORDER_NUMBER_VALUE){
+                        List<Double> doubleValues = new ArrayList<>();
+                        for (ProjectData projectData : projectDataList) {
+                            if (fieldEntry.getValue().get(projectData) != null) {
+                                doubleValues.add(Double.parseDouble(fieldEntry.getValue().get(projectData).toString()));
                             }
-                            if (detail.getMaxValue() == null || doubleValue > detail.getMaxValue()) {
-                                detail.setMaxValue(doubleValue);
+                        }
+                        Collections.sort(doubleValues);
+                        detail.setStringValues(new ArrayList<>());
+                        doubleValues.forEach(x->detail.getStringValues().add(String.valueOf(x)));
+                    }else if(fieldEntry.getKey().getQueryconditionorder()==Consts.QUERYCONDITIONORDER_NUMBER_RANGE_){
+                        for (ProjectData projectData : projectDataList) {
+                            if (fieldEntry.getValue().get(projectData) != null) {
+
+                                double doubleValue = Double.parseDouble(fieldEntry.getValue().get(projectData).toString());
+                                if (detail.getMinValue() == null || doubleValue < detail.getMinValue()) {
+                                    detail.setMinValue(doubleValue);
+                                }
+                                if (detail.getMaxValue() == null || doubleValue > detail.getMaxValue()) {
+                                    detail.setMaxValue(doubleValue);
+                                }
                             }
                         }
                     }

@@ -11,5 +11,11 @@ public class Consts {
 
     public static final int QUERYCONDITIONORDER_RATE = 2;
 
+    public static final int QUERYCONDITIONORDER_NUMBER_VALUE = 3;
+
+    public static final int QUERYCONDITIONORDER_NUMBER_RANGE_ = 4;
+
+    public static final int QUERYCONDITIONORDER_NONE = 0;
+
     public static final String NULL = "null";
 }

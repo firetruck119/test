@@ -176,7 +176,7 @@
                                 html += "<tr><td>";
                                 html += columnDefinition.columnname;
                                 html += "</td><td>";
-                                if (columnDefinition.columndatatype == 1) {
+                                if (columnDefinition.columndatatype == 1||columnDefinition.queryconditionorder ==3) {
                                     html += '<input style="height:25px; width:330px" id="stringValue';
                                     html += columnDefinition.projectcolumndefinitionid;
                                     html += '" list="queryValues';

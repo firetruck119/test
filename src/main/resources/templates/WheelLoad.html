@@ -28,17 +28,16 @@
             }
         }
 
-        function checkinput(form) {
-
+        function checkinput(form) { //暂时不校验
             return true;
         }
 
-        function readCache(){
+        function readCache(){    //读取批令号，实际是url跳转
             var batchId = $("#txtBatchId").val();
             window.location.href="WheelLoad?batchId="+batchId;
         }
 
-        function getQueryString(name) {
+        function getQueryString(name) {  //获取url请求参数
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
             var r = window.location.search.substr(1).match(reg);
             if (r != null) return decodeURI(r[2]);
@@ -54,7 +53,7 @@
                 contentType: "application/json",
                 dataType: "json",
                 async: false,
-                success: function(data) {
+                success: function(data) { //动态生成批令号下拉框
                     if (data != null) {
                         var html = '批令号：<input style="height:25px; width:200px" id="txtBatchId" list="values"/>'
                             + '<datalist id="values">';
