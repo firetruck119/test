@@ -129,7 +129,7 @@
                             var dataTdArray = new Array();
                             for (var j = 0; j < rowDataArray.length; j++) {
                                 if(headers[j].columndatatype == 3){
-                                    dataTdArray[j] = '<td><a href="' + rowDataArray[j] + '">链接</a></td>';
+                                    dataTdArray[j] = '<td><a href="/downloadLocal?fileName=' + rowDataArray[j] + '">下载</a></td>';
                                 }else {
                                     dataTdArray[j] = '<td>' + rowDataArray[j] + '</td>';
                                 }
