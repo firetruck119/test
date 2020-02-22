@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{js/jquery-1.7.1.min.js}"></script>
     <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <script th:src="@{js/dataClass.js}"></script>
 
     <link th:href="@{css/page.css}" rel="stylesheet"/>
     <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
@@ -24,8 +25,8 @@
         }
 
         .main {
-            margin: 20px 540px 100px;
-            width: 1150px;
+            margin: 20px 10px 100px;
+            width: 1700px;
             background-color: #EFF3F6;
             font-size: 0;
             border: 1px solid black;
@@ -33,7 +34,7 @@
 
         .boxform {
             margin: auto;
-            width: 1135px;
+            width: 1700px;
             display: block;
             font-size: 0;
             padding: 10px 0 10px 0;
@@ -99,7 +100,7 @@
             border-radius: 25px;
         }
 
-        .navbox input {
+        .navbox input, button {
             background-color: #ccc;
             display: block;
             width: 150px;
@@ -132,13 +133,6 @@
 
     <script>
         /*<![CDATA[*/
-        function disenable(name) {
-            $("#" + name).css({"background-color": "#BBB"});
-            $("#" + name).attr("readonly", true);
-            if ($("#" + name)[0].tagName == "SELECT")
-                $("#" + name).attr("disabled", true);
-        }
-
         function showImage(form, element) {
             // 先获取用户上传的文件对象
             var fileObj = form.files[0];
@@ -157,481 +151,6 @@
             }
         };
 
-        function janyan(URL) {
-            $.ajax({
-                url: URL,
-                type: "post",
-                data: $("form").serialize(),
-                async: false,
-                dataType: "json",
-                cache: false,
-                success: function (data) {
-                    Object.keys(data).forEach(function (id) {
-                        $("#" + id).text(data[id]);
-                    })
-                }
-            })
-            return false;
-        }
-
-        function valueCopy(event) {
-            var e = event || window.event;
-            var element = e.target || e.srcElement;
-            e = $(element);
-            var id = e.attr("id");
-            $("#" + id.slice(0, 1) + "w" + id.slice(1, 3)).val(e.val());
-        }
-        /*]]>*/
-
-    </script>
-    <script>
-        /*<![CDATA[*/
-        var copyvalue;
-        var valueChange;
-        var isYou = true;
-
-        function yunXingJiGou() {
-            disenable("select1");
-            $("input[name=radio]").change(function () {
-                radioselected = $(this).val();
-                if (radioselected == "无") {
-                    isYou = false;
-                    $("#select1").attr("disabled", true);
-                    $("#select1").css("background-color", "#BBB");
-                    $("#n1").val(0).css({"background-color": "#BBB"});
-                    $("#n2").val(0).css({"background-color": "#BBB"});
-                    $("#fj").val(0).css({"background-color": "#BBB"});
-                    $("#lsxh").val("").css({"background-color": "#BBB"});
-                    $("#m12").val(0).css({"background-color": "#BBB"});
-                    $("#m13").val(0).css({"background-color": "#BBB"});
-                } else {
-                    isYou = true;
-                    $("#select1").attr("disabled", false);
-                    $("#select1").css("background-color", "#FFF");
-                    $("#n1").val(2).css({"background-color": "#BBB"});
-                    $("#n2").val(4).css({"background-color": "#BBB"});
-                }
-                $("#select1").change();
-            });
-            $("#tanxingxinhao").change(function () {
-                var selected = $(this).val();
-                var txxxh = "", ft, nt, txxcl;
-                switch (selected) {
-                    case "Ф12":
-                        txxxh = "Ф12";
-                        ft = "104100";
-                        $("#tanxingdengji").attr("disabled", false);
-                        break;
-                    case "Ф16":
-                        txxxh = "Ф16";
-                        ft = "171000";
-                        $("#tanxingdengji").attr("disabled", false);
-                        break;
-                    case "Ф20":
-                        txxxh = "Ф20";
-                        ft = "280600";
-                        $("#tanxingdengji").attr("disabled", false);
-                        break;
-                    case "无":
-                        txxxh = "无";
-                        ft = "0";
-                        $("#tanxingdengji").attr("disabled", true);
-                        nt = 0;
-                        txxcl = "无";
-                        break;
-                }
-                $("#txxxh").val(txxxh).css({"background-color": "#BBB"});
-                $("#txxcl").val(txxcl).css({"background-color": "#BBB"});
-                $("#ft").val(ft).css({"background-color": "#BBB"});
-                (nt != undefined) ? $("#nt").val(nt).css({"background-color": "#BBB"}) : $("#nt").css({"background-color": "#FFF"});
-                $("#tanxingdengji").change();
-            })
-            $("#tanxingdengji").change(function () {
-                var selected = $(this).val();
-
-                var disabled = $("#tanxingxinhao").val() != "无";
-                if (disabled)
-                    $("#txxcl").val(selected).css({"background-color": "#BBB"});
-            })
-            $("#select1").change(function () {
-                var selected = $(this).val();
-                var lsxh = "", fj, m12, m13;
-                switch (selected) {
-                    case "160LZ":
-                        lsxh = "M12";
-                        fj = 10790.4;
-                        break;
-                    case "170LZ":
-                    case"200LZ":
-                    case"230LZ":
-                    case"260LZ":
-                        lsxh = "M16";
-                        fj = 20096;
-                        break;
-                    case "350":
-                    case "450":
-                        lsxh = "M20";
-                        fj = 31360;
-                        break;
-                }
-                switch (selected) {
-                    case "160LZ":
-                        m12 = 70;
-                        m13 = 52;
-                        break;
-                    case "170LZ":
-                        m12 = 155;
-                        m13 = 130;
-                        break;
-                    case"200LZ":
-                        m12 = 175;
-                        m13 = 140;
-                        break;
-                    case"230LZ":
-                        m12 = 235;
-                        m13 = 195;
-                        break;
-                    case"260LZ":
-                        m12 = 296;
-                        m13 = 230;
-                        break;
-                    case "350":
-                        m12 = 420;
-                        m13 = 360;
-                        break;
-                    case "450":
-                        m12 = 1020;
-                        m13 = 825;
-                        break;
-                }
-                if (radioselected != "无") {
-                    m12 && $("#m12").val(m12 * 2).css({"background-color": "#BBB"});
-                    m13 && $("#m13").val(m13 * 2).css({"background-color": "#BBB"});
-                } else {
-                    $("#m12").val(0).css({"background-color": "#BBB"});
-                    $("#m13").val(0).css({"background-color": "#BBB"});
-                }
-                $("#lsxh").val(lsxh).css({"background-color": "#BBB"});
-                $("#fj").val($("#n1").val() == 0 ? 0 : fj).css({"background-color": "#BBB"});
-                copyvalue();
-            })
-        }
-
-        function diJiaoLuoShuanXinHao() {
-            $("#luoshuan").change(function () {
-                var selected = $(this).val();
-                var djlsxh, a;
-                switch (selected) {
-                    case "M16":
-                        djlsxh = "M16";
-                        a = 157;
-                        break;
-                    case "M20":
-                        djlsxh = "M20";
-                        a = 245;
-                        break;
-                    case "M24":
-                        djlsxh = "M24";
-                        a = 353;
-                        break;
-                    case "M30":
-                        djlsxh = "M30";
-                        a = 561;
-                        break;
-                }
-                $("#djlsxh").val(djlsxh).css({"background-color": "#BBB"});
-                $("#a").val(a).css({"background-color": "#BBB"});
-                copyvalue();
-            })
-        }
-
-        var s3, s5;
-
-        function qiShengJiGou() {
-            $("#qishenjigou").change(function () {
-                var selected = $(this).val()
-                var temp, m10;
-                switch (selected) {
-                    case "105起升机构":
-                        !m10 && (m10 = 785);
-                    case "145起升机构":
-                        !m10 && (m10 = 830);
-                    case "175起升机构":
-                        !m10 && (m10 = 1450);
-                    case "275起升机构":
-                        !m10 && (m10 = 1500);
-                        !temp && (temp = 0.179);
-                    case "185起升机构":
-                        !m10 && (m10 = 2057);
-                    case "285起升机构":
-                        !m10 && (m10 = 2500);
-                    case "385起升机构":
-                        !m10 && (m10 = 3980);
-                        !temp && (temp = 0.244);
-                    case "295起升机构":
-                        !m10 && (m10 = 2750);
-                    case "495起升机构":
-                        !m10 && (m10 = 3585);
-                        !temp && (temp = 0.391);
-                        break;
-                    case "313起升机构":
-                        !m10 && (m10 = 4880);
-                        !temp && (temp = 0.65);
-                }
-                s3 = temp;
-                $("#m10").val(m10).css({"background-color": "#BBB"});
-                valueChange(null, "s3", temp * parseFloat($("#h").val()) * 4);
-                copyvalue();
-            })
-        }
-
-        function gru() {
-            $("#gru").change(function () {
-                var selected = $(this).val()
-                switch (selected) {
-                    case "GRU 285":
-                        s5 = 0.252;
-                        m3 = 235;
-                        break;
-                    case "GRU 295":
-                        s5 = 0.391;
-                        m3 = 285;
-                        break;
-                    case "GRU 313":
-                        s5 = 0.65;
-                        m3 = 385;
-                        break;
-                }
-                $("#m3").val(m3).css({"background-color": "#BBB"});
-                valueChange(null, "s5", parseFloat($("#h").val()) * s5);
-                copyvalue();
-            })
-        }
-
-        var readonlyList;
-
-        function initReadonly() {
-            readonlyList = [
-                "mz",
-                "mzf"]
-            readonlyList.forEach(function (value) {
-                disenable(value);
-            })
-        }
-        /*]]>*/
-
-    </script>
-    <script>
-        /*<![CDATA[*/
-        $(document).ready(function () {
-            InitNav(1)
-            $('#Stability').addClass('o-sub-cur');
-            $("#pf").attr("readonly", true);
-            $("#pf").css({"background-color": "#BBB"});
-
-            initReadonly();
-            $("#h").change(
-                function changeInput(event) {
-                    var e = event || window.event;
-                    $("#pf").attr("readonly", true);
-                    $("#pf").css({"background-color": "#BBB"});
-                    var temp = parseInt($("#h").val());
-                    if (temp >= 0 && temp <= 20)
-                        $("#pf").val(800);
-                    else if (temp >= 20 && temp <= 100)
-                        $("#pf").val(1100);
-                    else if (temp >= 100 && temp <= 150)
-                        $("#pf").val(1300);
-                    else {
-                        $("#pf").attr("readonly", false);
-                        $("#pf").css({"background-color": "#FFF"});
-                    }
-                });
-            yunXingJiGou();
-            diJiaoLuoShuanXinHao();
-            qiShengJiGou();
-            gru();
-
-            // $("#radio1").attr("checked","true");
-            function getString(v) {
-                if (Math.floor(v * 100) % 100 == 0)
-                    return v.toFixed(0);
-                else if (Math.floor(v * 100) % 10 == 0)
-                    return v.toFixed(1);
-                return v.toFixed(2);
-            }
-
-            function f(b) {
-                var a = 0.0;
-                for (var i = 1; i < arguments.length; i++) {
-                    if (!$('#' + arguments[i]).val())
-                        return;
-                    a += parseFloat($('#' + arguments[i]).val());
-                    console.log(parseFloat($('#' + arguments[i]).val()))
-                }
-                $("#" + b).css({"background-color": "#BBB"});
-                $("#" + b).val(getString(parseFloat(a)));
-            }
-
-            valueChange = function (a, b, temp, has) {
-                if (has != null && !has) {
-                    $("#" + b).css({"background-color": "#BBB"});
-                    $("#" + b).val(0);
-                    return;
-                }
-                if (a && b && parseInt($("#" + a).val()) == 0) {
-                    $("#" + b).val(0);
-                    $("#" + b).css({"background-color": "#BBB"});
-                    // $("#" + b).attr("readonly",true);
-                    return;
-                } else if (temp || temp == 0) {
-                    if (temp == "" && temp != "0") {
-                        $("#" + b).css({"background-color": "#FFF"});
-                        !readonlyList[b] && $("#" + b).attr("readonly", false);
-                        return;
-                    }
-                    $("#" + b).css({"background-color": "#BBB"});
-                    var val = parseFloat(temp);
-                    $("#" + b).val(getString(val));
-                    return;
-                }
-                $("#" + b).css({"background-color": "#FFF"});
-                $("#" + b).attr("readonly", false);
-            }
-            valueChange(null, "lq12", 0);
-            valueChange(null, "lh13", 0);
-            copyvalue = function initcopy() {
-                valueChange(null, "fb", parseFloat($('#a').val()) * 270 * 0.64);
-                valueChange(null, "fn", 2 * parseFloat($('#nn3').val()) * parseFloat($('#fb').val()));
-                valueChange(null, "s3", s3 * parseFloat($("#h").val()) * 4);
-                valueChange(null, "s5", parseFloat($("#h").val()) * s5);
-                valueChange(null, "aft6", parseFloat($("#atx6").val()));
-                f("tsl", "s1", "s2", "s3");
-                f("tshl", "s4", "s5");
-                f("mzf", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9", "m10", "m11", "m12", "m13");
-                f("mz", "tsl", "tshl", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9", "m10", "m11", "m12", "m13");
-
-                valueChange(null, "lslz", parseFloat($('#lbd').val()));
-                valueChange(null, "lshlz", parseFloat($('#lslz').val()) - 0.9);
-                valueChange(null, "lz1", parseFloat($('#lslz').val()) - 0.9);
-                valueChange("m4", "lz4");
-                valueChange("m5", "lz5");
-                valueChange("m7", "lz7");
-                valueChange(null, "lz8", parseFloat($("#lbp").val()));
-                valueChange(null, "lz12", parseFloat($("#lg").val()) / 2, isYou);
-                valueChange(null, "lz13", parseFloat($("#lg").val()) / 2, isYou);
-
-                valueChange(null, "lq12", 0);
-                valueChange(null, "lh13", 0);
-
-                valueChange(null, "lslq", parseFloat($('#lslz').val()) - parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lshlq", parseFloat($('#lshlz').val()) - parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq1", parseFloat($('#lz1').val()) - parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq2", parseFloat($('#lz2').val()) - parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq3", parseFloat($('#lg').val()) / 2 - parseFloat($('#lz3').val()));
-                valueChange("m4", "lq4", parseFloat($('#lg').val()) / 2 - parseFloat($('#lz4').val()));
-                valueChange("m5", "lq5", parseFloat($('#lz5').val()) - parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq6", parseFloat($('#lg').val()) / 2);
-                valueChange("m7", "lq7", parseFloat($('#lz7').val()) + parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq8", parseFloat($('#lz8').val()) + parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq9", parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq10", parseFloat($('#lz10').val()) + parseFloat($('#lg').val()) / 2);
-                valueChange(null, "lq11", parseFloat($('#lg').val()) / 2);
-                valueChange("m13", "lq13", parseFloat($('#lg').val()), isYou);
-
-                valueChange(null, "lslql", parseFloat($('#lslz').val()) - parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lshlql", parseFloat($('#lshlz').val()) - parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql1", parseFloat($('#lz1').val()) - parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql2", parseFloat($('#lz2').val()) - parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql3", parseFloat($('#ll').val()) / 2 - parseFloat($('#lz3').val()));
-                valueChange("m4", "lql4", parseFloat($('#ll').val()) / 2 - parseFloat($('#lz4').val()));
-                valueChange("m5", "lql5", parseFloat($('#lz5').val()) - parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql6", parseFloat($('#ll').val()) / 2);
-                valueChange("m7", "lql7", parseFloat($('#lz7').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql8", parseFloat($('#lz8').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql9", parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql10", parseFloat($('#lz10').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql11", parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lql12", parseFloat($('#lg').val()), isYou);
-                valueChange(null, "lql13", parseFloat($('#lg').val()), isYou);
-
-                valueChange("m4", "h4");
-                valueChange("m5", "h5");
-                valueChange("m7", "h7");
-                valueChange(null, "h12", "", isYou);
-                valueChange(null, "h13", "", isYou);
-
-                valueChange("m4", "a4", null);
-                valueChange("m5", "a5", null);
-                valueChange("m7", "a7", null);
-                valueChange(null, "a12", "", isYou);
-                valueChange(null, "a13", "", isYou);
-
-
-                valueChange(null, "asltx", parseFloat($('#asl').val()));
-                valueChange(null, "ashltx", parseFloat($('#ashl').val()));
-                valueChange("m4", "atx4");
-                valueChange("m5", "atx5");
-                valueChange("m7", "atx7");
-                valueChange(null, "atx12", null, isYou);
-                valueChange(null, "atx13", null, isYou);
-
-                valueChange(null, "lzf1", parseFloat($('#lbx').val()) - 0.9);
-                valueChange("m4", "lzf4");
-                valueChange("m5", "lzf5");
-                valueChange(null, "lzf6", parseFloat($('#lz6').val()));
-                valueChange(null, "lzf7", parseFloat($('#lz7').val()));
-                valueChange(null, "lzf9", parseFloat($('#lz9').val()));
-                valueChange(null, "lzf10", parseFloat($('#lz10').val()));
-                valueChange(null, "lzf11", parseFloat($('#lz11').val()));
-                valueChange(null, "lzf12", parseFloat($("#lg").val()) / 2, isYou);
-                valueChange(null, "lzf13", parseFloat($("#lg").val()) / 2, isYou);
-
-                valueChange(null, "lh1", parseFloat($('#lzf1').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lh2", parseFloat($('#lzf2').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lh3", parseFloat($('#lzf3').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange("m4", "lh4", parseFloat($('#lzf4').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange("m5", "lh5", parseFloat($('#lzf5').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lh6", parseFloat($('#ll').val()) / 2);
-                valueChange("m7", "lh7", parseFloat($('#lzf7').val()) - parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lh8", parseFloat($('#lzf8').val()) - parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lh9", parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lh10", parseFloat(-$('#lzf10').val()) + parseFloat($('#ll').val()) / 2);
-                valueChange(null, "lh11", parseFloat($('#ll').val()) / 2);
-                valueChange("m12", "lh12", parseFloat($('#ll').val()), isYou);
-
-                valueChange("m4", "hf4");
-                valueChange("m5", "hf5");
-                valueChange(null, "hf6", parseFloat($("#h6").val()));
-                valueChange("m7", "hf7");
-                valueChange(null, "hf10", parseFloat($("#h10").val()));
-                valueChange(null, "hf11", parseFloat($("#h11").val()));
-                valueChange(null, "hf12", parseFloat($("#h12").val()));
-                valueChange(null, "hf13", parseFloat($("#h13").val()));
-
-                valueChange(null, "af1", parseFloat($("#a1").val()));
-                valueChange(null, "af3", parseFloat($("#a3").val()));
-                valueChange("m4", "af4");
-                valueChange("m5", "af5");
-                valueChange(null, "af6", parseFloat($("#a6").val()));
-                valueChange(null, "af7", parseFloat($("#a7").val()));
-                valueChange(null, "af8", parseFloat($("#a8").val()));
-                valueChange(null, "af10", parseFloat($("#a10").val()));
-                valueChange(null, "af11", parseFloat($("#a11").val()));
-                valueChange(null, "af12", parseFloat($("#a12").val()));
-                valueChange(null, "af13", parseFloat($("#a13").val()));
-
-                valueChange("m4", "aft4");
-                valueChange("m5", "aft5");
-                valueChange("m7", "aft7");
-                valueChange(null, "aft11", parseFloat($("#atx11").val()));
-                valueChange(null, "aft12", parseFloat($("#atx12").val()));
-                valueChange(null, "aft13", parseFloat($("#atx13").val()));
-            }
-            $("input[type='text']").change(copyvalue);
-        })
-        /*]]>*/
-
     </script>
 </head>
 <body>
@@ -639,81 +158,110 @@
 <br/><br/>
 <div class="main">
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
-
     <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop"
-          th:opType="@{/PinSeatEntity}" th:Object="${StabilityEnity}"
+          th:opType="@{/PinSeatEntity}" th:Object="${entity}"
           method="post" enctype="multipart/form-data">
-
         <div class="tabletitle">稳定性校核及轮压计算书</div>
-
-        <div class="subtable"
-             style="height:380px;text-align: center;padding: 10px 0 0px 0;overflow: hidden;border:1px solid #aaa;">
+        <div class="subtable" style="text-align: center;padding: 10px 0 0px 0;overflow: hidden;border:1px solid #aaa;">
             <div style="height:335px">
-                <img alt="擦窗机各部件载荷" id="image1" name="image1"/>
+                <img alt="擦窗机各部件载荷" id="wdlytu1" name="wdlytu1"/>
             </div>
             <table>
                 <tr>
                     <td style="padding:10px 0;font-size: 14px">选择擦窗机总图</td>
-                    <td colspan="2" style="font-size: 14px"><input class="image" type="file" name="tu1" accept="image/*"
-                                                                   oninput="showImage(this,'image1')"/></td>
+                    <td colspan="3" style="font-size: 14px">
+                        <input class="image" type="file" name="wdlytu1" accept="image/*"
+                               oninput="showImage(this,'wdlytu1')"/>
+                    </td>
                 </tr>
-            </table>
-        </div>
-
-        <!--封面内容-->
-        <div class="subtable">
-
-            <table class="tb">
+                <tr>
+                    <td style="padding:10px 0;font-size: 14px">擦窗机型号选择</td>
+                    <td colspan="3" style="font-size: 14px">
+                        <select name="typeOfMachine" style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="固定立柱">固定立柱</option>
+                            <option value="仰臂">仰臂</option>
+                            <option value="顶升">顶升</option>
+                            <option value="顶升+仰臂">顶升+仰臂</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td>
+                        <input name="sjht" type="text" list="txtBatchId"/>
+                        <datalist id="txtBatchId">
+                        </datalist>
+                    </td>
+                    <td style=""><input type="button" name="getData" value="读取"/></td>
+                    <script>
+                        $('input[name="getData"]').click(function () {
+                                var url = '/Stability_LSFArm/getData';
+                                var id = $('input[name="sjht"]').val();
+                                getData.geteDataFromDB(url, id)
+                            }
+                        )
+                    </script>
+                </tr>
                 <tr>
                     <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">封面内容</td>
                 </tr>
                 <tr>
-                    <td style="width:50%;padding:10px 0;;padding:10px 0;;">名称</td>
-                    <td style="width:50%;">内容</td>
+                    <td style="padding:10px 0;;padding:10px 0;;">名称</td>
+                    <td colspan="2">内容</td>
                 </tr>
                 <tr>
                     <td>本机计算书编号</td>
-                    <td><input name="no" type="text" th:field="*{no}"/></td>
+                    <td colspan="2"><input name="no" type="text" th:field="*{no}"/></td>
                 </tr>
                 <tr>
                     <td>本机版本</td>
-                    <td><input name="ver" type="text" th:field="*{ver}"/></td>
+                    <td colspan="2"><input name="ver" type="text" th:field="*{ver}"/></td>
                 </tr>
                 <tr>
                     <td>项目名称</td>
-                    <td><input name="xmmc" type="text" th:field="*{xmmc}"/></td>
+                    <td colspan="2"><input name="xmmc" type="text" th:field="*{xmmc}"/></td>
                 </tr>
                 <tr>
                     <td>主机型号</td>
-                    <td><input name="zjxh" type="text" th:field="*{zjxh}"/></td>
+                    <td colspan="2"><input name="zjxh" type="text" th:field="*{zjxh}"/></td>
                 </tr>
                 <tr>
                     <td>计算人</td>
-                    <td><input name="jsr" type="text" th:field="*{jsr}"/></td>
+                    <td colspan="2"><input name="jsr" type="text" th:field="*{jsr}"/></td>
                 </tr>
                 <tr>
                     <td>审核人</td>
-                    <td><input name="shr" type="text" th:field="*{shr}"/></td>
+                    <td colspan="3"><input name="shr" type="text" th:field="*{shr}"/></td>
                 </tr>
                 <tr>
                     <td>批准人</td>
-                    <td><input name="pzr" type="text" th:field="*{pzr}"/></td>
+                    <td colspan="2"><input name="pzr" type="text" th:field="*{pzr}"/></td>
                 </tr>
                 <tr>
                     <td>计算日期</td>
-                    <td><input name="date" type="text" th:field="*{date}"/></td>
+                    <td colspan="2"><input name="date" type="text" th:field="*{date}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">其它Ⅰ、Ⅱ名称</td>
+                </tr>
+                <tr>
+                    <td style="width:40%;">其他I的名称</td>
+                    <td style="width:43%;"><input name="qt1" type="text" th:field="*{qt1}" definevalue="其他I"/></td>
+                    <td style="width:17%;">kg</td>
+                </tr>
+                <tr>
+                    <td>其他II的名称</td>
+                    <td><input name="qt2" type="text" th:field="*{qt2}" definevalue="其他II"/></td>
+                    <td>kg</td>
                 </tr>
             </table>
         </div>
-
         <!--擦窗机参数-->
-
-
         <!--有无行走机构选择-->
         <!--起升高度及非工作时风压-->
         <!--埋件的抗倾覆力矩相关参数-->
         <!--起升高度及非工作时风压-->
-
         <div class="subtable">
             <table class="tb">
                 <tr>
@@ -770,15 +318,23 @@
                     <td>
                         <p><i>H</i></p>
                     </td>
-                    <td><input name="hh" type="text" th:field="*{hh}"/></td>
+                    <td><input name="gxh" type="text" th:field="*{gxh}"/></td>
                     <td>m</td>
+                </tr>
+                <tr>
+                    <td>工作状态大臂仰角</td>
+                    <td>
+                        <p></p>
+                    </td>
+                    <td><input name="dbyj" type="text" th:field="*{dbyj}"/></td>
+                    <td><sup>°</sup></td>
                 </tr>
                 <tr>
                     <td>工作状态整机质量</td>
                     <td>
                         <p><i>m<sub>z</sub></i></p>
                     </td>
-                    <td><input name="mz" type="text" th:field="*{mz}"/></td>
+                    <td><input name="mzj" type="text" th:field="*{mzj}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
@@ -786,32 +342,26 @@
                     <td>
                         <p><i>m<sub>zf</sub></i></p>
                     </td>
-                    <td><input name="mzf" type="text" th:field="*{mzf}"/></td>
+                    <td><input name="mzjf" type="text" th:field="*{mzjf}"/></td>
                     <td>kg</td>
                 </tr>
-
                 <tr>
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">运行机构</td>
                 </tr>
                 <tr>
                     <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">有无运行机构</td>
                     <td colspan="3" style="font-size: 14px">
-                        <table width="100%">
-                            <tr>
-                                <td style="width:50%; border:0">
-                                    <input style="width:10%;" type="radio" name="radio" value="有" th:field="*{radio}"/>有
-                                </td>
-                                <td style="width:50%;border:0">
-                                    <input style="width:10%;" type="radio" name="radio" value="无" th:field="*{radio}"/>无
-                                </td>
-                            </tr>
-                        </table>
+                        <select name="wdlyp3" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="有">有</option>
+                            <option value="无">无</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">运行机构选择</td>
                     <td colspan="3" style="font-size: 14px">
-                        <select id="select1" style="width:100%;height:40px;text-align-last:center">
+                        <select name="typeOfRunningGear" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="160LZ">160LZ</option>
                             <option value="170LZ">170LZ</option>
@@ -826,7 +376,7 @@
                 <tr>
                     <td>固定螺栓型号</td>
                     <td></td>
-                    <td><input name="lsxh" type="text" th:field="*{lsxh}"/></td>
+                    <td><input name="gdlsxh" type="text" th:field="*{gdlsxh}"/></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -834,7 +384,7 @@
                     <td>
                         <p><i>F<sub>j</sub></i></p>
                     </td>
-                    <td><input name="fj" type="text" th:field="*{fj}"/></td>
+                    <td><input name="flsjl" type="text" th:field="*{flsjl}"/></td>
                     <td>N</td>
                 </tr>
                 <tr>
@@ -842,7 +392,7 @@
                     <td>
                         <p><i>n<sub>1</sub></i></p>
                     </td>
-                    <td><input name="n1" type="text" th:field="*{n1}"/></td>
+                    <td><input name="nwd1" type="text" th:field="*{nwd1}"/></td>
                     <td>个</td>
                 </tr>
                 <tr>
@@ -850,13 +400,13 @@
                     <td>
                         <p><i>n<sub>2</sub></i></p>
                     </td>
-                    <td><input name="n2" type="text" th:field="*{n2}"/></td>
+                    <td><input name="nwd2" type="text" th:field="*{nwd2}"/></td>
                     <td>个</td>
                 </tr>
                 <tr>
                     <td>弹性销型号选择</td>
                     <td colspan="3">
-                        <select id="tanxingxinhao" style="width:100%;height:40px;text-align-last:center">
+                        <select name="typeOfPin" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="Ф12">Ф12</option>
                             <option value="Ф16">Ф16</option>
@@ -868,7 +418,7 @@
                 <tr>
                     <td>弹性销性能等级</td>
                     <td colspan="3">
-                        <select id="tanxingdengji" style="width:100%;height:40px;text-align-last:center">
+                        <select name="levelOfPin" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="65Mn">65Mn</option>
                             <option value="A2-70">A2-70</option>
@@ -884,19 +434,19 @@
                 <tr>
                     <td>弹性销性能等级</td>
                     <td><p><i></i></p></td>
-                    <td><input name="txxcl" id="txxcl" type="text" th:field="*{txxcl}"/></td>
+                    <td><input name="txxdj" id="txxdj" type="text" th:field="*{txxdj}"/></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>最小双面剪切载荷</td>
                     <td><p><i>F<sub>t</sub></i></p></td>
-                    <td><input name="ft" id="ft" type="text" th:field="*{ft}"/></td>
+                    <td><input name="ftxxjq" id="ftxxjq" type="text" th:field="*{ftxxjq}"/></td>
                     <td>N</td>
                 </tr>
                 <tr>
                     <td>单个运行轮上的弹性销数</td>
                     <td><p><i>nt</i></p></td>
-                    <td><input name="nt" id="nt" type="text" th:field="*{nt}"/></td>
+                    <td><input name="nwdt" id="nwdt" type="text" th:field="*{nwdt}"/></td>
                     <td>个</td>
                 </tr>
                 <tr>
@@ -925,7 +475,7 @@
                 <tr>
                     <td>地脚螺栓型号选择</td>
                     <td colspan="3">
-                        <select id="luoshuan" style="width:100%;height:40px;text-align-last:center">
+                        <select name="typeOfBolt" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="M16">M16</option>
                             <option value="M20">M20</option>
@@ -945,7 +495,7 @@
                     <td>
                         <p><i>A</i></p>
                     </td>
-                    <td><input name="a" type="text" th:field="*{a}"/></td>
+                    <td><input name="lsgca" type="text" th:field="*{lsgca}"/></td>
                     <td>mm<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -953,15 +503,27 @@
                     <td>
                         <p><i>F<sub>b</sub></i></p>
                     </td>
-                    <td><input name="fb" type="text" th:field="*{fb}"/></td>
+                    <td><input name="fdjlsfb" type="text" th:field="*{fdjlsfb}"/></td>
                     <td>N</td>
                 </tr>
                 <tr>
                     <td>单个埋板上的地脚螺栓个数</td>
                     <td>
-                        <p><i>nn<sub>3</sub></i></p>
+                        <p><i>n<sub>3</sub></i></p>
                     </td>
-                    <td><input name="nn3" type="text" th:field="*{nn3}"/></td>
+                    <td><input name="nwd4" type="text" th:field="*{nwd4}"/></td>
+                    <td>个</td>
+                </tr>
+                <tr style="display: none">
+                    <td>两个埋板上的地脚螺栓个数</td>
+                    <td>
+                        <p><i>n<sub>3</sub></i></p>
+                    </td>
+                    <td>
+                        <label>
+                            <input name="nwd3" type="text" th:field="*{nwd3}"/>
+                        </label>
+                    </td>
                     <td>个</td>
                 </tr>
                 <tr>
@@ -969,14 +531,12 @@
                     <td>
                         <p><i>F<sub>n</sub></i></p>
                     </td>
-                    <td><input name="fn" type="text" th:field="*{fn}"/></td>
+                    <td><input name="fdjlszfb" type="text" th:field="*{fdjlszfb}"/></td>
                     <td>N</td>
                 </tr>
             </table>
         </div>
-
         <!--擦窗机各部件载荷-->
-
         <div class="subtable">
             <table class="tb">
                 <tr>
@@ -985,19 +545,19 @@
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态擦窗机各部件载荷" id="tu2" name="tu2"/>
+                            <img alt="工作状态擦窗机各部件载荷" id="wdlytu2" name="wdlytu2"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu2" accept="image/*"
-                                           oninput="showImage(this,'tu2')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu2" accept="image/*"
+                                           oninput="showImage(this,'wdlytu2')"/></td>
                 </tr>
                 <tr>
                     <td>起升机构选择</td>
                     <td colspan="3">
-                        <select id="qishenjigou" style="width:100%;height:40px;text-align-last:center">
+                        <select name="typeOfLifting" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="105起升机构">105起升机构</option>
                             <option value="145起升机构">145起升机构</option>
@@ -1015,7 +575,7 @@
                 <tr>
                     <td>GRU选择</td>
                     <td colspan="3">
-                        <select id="gru" style="width:100%;height:40px;text-align-last:center">
+                        <select name="typeOfGRU" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="GRU 285">GRU 285</option>
                             <option value="GRU 295">GRU 295</option>
@@ -1031,40 +591,40 @@
                 </tr>
                 <tr>
                     <td>吊船自重</td>
-                    <td><p><i>s1</i></p></td>
-                    <td><input name="s1" id="s1" type="text" th:field="*{s1}"/></td>
+                    <td><p><i>S<sub>wp</sub></i></p></td>
+                    <td><input name="swp" id="swp" type="text" th:field="*{swp}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
                     <td>吊船额定载重量</td>
-                    <td><p><i>s2</i></p></td>
-                    <td><input name="s2" id="s2" type="text" th:field="*{s2}"/></td>
+                    <td><p><i>R<sub>1</sub></i></p></td>
+                    <td><input name="r1" id="r1" type="text" th:field="*{r1}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
                     <td>吊船钢丝绳自重</td>
-                    <td><p><i>s3</i></p></td>
-                    <td><input name="s3" id="s3" type="text" th:field="*{s3}"/></td>
+                    <td><p><i>M<sub>wr</sub></i></p></td>
+                    <td><input name="mwr" id="mwr" type="text" th:field="*{mwr}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
                     <td>总悬挂载荷</td>
                     <td>
-                        <p><i>Tsl</i></p>
+                        <p><i>T<sub>sl</sub></i></p>
                     </td>
                     <td><input name="tsl" type="text" th:field="*{tsl}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
                     <td>物料起升机构额定载重量</td>
-                    <td><p><i>s4</i></p></td>
-                    <td><input name="s4" id="s4" type="text" th:field="*{s4}"/></td>
+                    <td><p><i>H<sub>wll</sub></i></p></td>
+                    <td><input name="hwll" id="hwll" type="text" th:field="*{hwll}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
                     <td>物料起升机构钢丝绳自重</td>
-                    <td><p><i>s5</i></p></td>
-                    <td><input name="s5" id="s5" type="text" th:field="*{s5}"/></td>
+                    <td><p><i>H<sub>sw</sub></i></p></td>
+                    <td><input name="hsw" id="hsw" type="text" th:field="*{hsw}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
@@ -1179,6 +739,22 @@
                     <td><input name="m13" type="text" th:field="*{m13}"/></td>
                     <td>kg</td>
                 </tr>
+                <tr>
+                    <td>其他I</td>
+                    <td>
+                        <p><i>m<sub>14</sub></i></p>
+                    </td>
+                    <td><input name="m14" type="text" th:field="*{m14}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>其他II</td>
+                    <td>
+                        <p><i>m<sub>15</sub></i></p>
+                    </td>
+                    <td><input name="m15" type="text" th:field="*{m15}"/></td>
+                    <td>kg</td>
+                </tr>
             </table>
         </div>
 
@@ -1192,22 +768,22 @@
                 <tr>
                     <td colspan="6">
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态擦窗机各部件重心至回转中心距离" id="tu4" name="tu4"/>
+                            <img alt="工作状态擦窗机各部件重心至回转中心距离" id="wdlytu4" name="wdlytu4"/>
                         </div>
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态擦窗机各部件重心至回转中心距离" id="tu10" name="tu10"/>
+                            <img alt="非工作状态擦窗机各部件重心至回转中心距离" id="wdlytu10" name="wdlytu10"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu4" accept="image/*"
-                                           oninput="showImage(this,'tu4')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu4" accept="image/*"
+                                           oninput="showImage(this,'wdlytu4')"/></td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu10" accept="image/*"
-                                           oninput="showImage(this,'tu10')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu10" accept="image/*"
+                                           oninput="showImage(this,'wdlytu10')"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -1226,9 +802,9 @@
                 <tr>
                     <td>吊船及人员至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>slz</sub></i></p>
+                        <p><i>L<sub>slhz</sub></i></p>
                     </td>
-                    <td><input name="lslz" type="text" th:field="*{lslz}"/></td>
+                    <td><input name="lslhz" type="text" th:field="*{lslhz}"/></td>
                     <td></td>
                     <td></td>
                     <td>m</td>
@@ -1236,9 +812,9 @@
                 <tr>
                     <td>物料至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>shlz</sub></i></p>
+                        <p><i>L<sub>shlhz</sub></i></p>
                     </td>
-                    <td><input name="lshlz" type="text" th:field="*{lshlz}"/></td>
+                    <td><input name="lshlhz" type="text" th:field="*{lshlhz}"/></td>
                     <td></td>
                     <td></td>
                     <td>m</td>
@@ -1248,11 +824,11 @@
                     <td>
                         <p><i>L<sub>z1</sub></i></p>
                     </td>
-                    <td><input name="lz1" type="text" th:field="*{lz1}"/></td>
+                    <td><input name="lhz1" type="text" th:field="*{lhz1}"/></td>
                     <td>
                         <p><i>L<sub>zf1</sub></i></p>
                     </td>
-                    <td><input name="lzf1" type="text" th:field="*{lzf1}"/></td>
+                    <td><input name="lhzf1" type="text" th:field="*{lhzf1}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1260,11 +836,11 @@
                     <td>
                         <p><i>L<sub>z2</sub></i></p>
                     </td>
-                    <td><input name="lz2" type="text" th:field="*{lz2}"/></td>
+                    <td><input name="lhz2" type="text" th:field="*{lhz2}"/></td>
                     <td>
                         <p><i>L<sub>zf2</sub></i></p>
                     </td>
-                    <td><input name="lzf2" type="text" th:field="*{lzf2}"/></td>
+                    <td><input name="lhzf2" type="text" th:field="*{lhzf2}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1272,11 +848,11 @@
                     <td>
                         <p><i>L<sub>z3</sub></i></p>
                     </td>
-                    <td><input name="lz3" type="text" th:field="*{lz3}"/></td>
+                    <td><input name="lhz3" type="text" th:field="*{lhz3}"/></td>
                     <td>
                         <p><i>L<sub>zf3</sub></i></p>
                     </td>
-                    <td><input name="lzf3" type="text" th:field="*{lzf3}"/></td>
+                    <td><input name="lhzf3" type="text" th:field="*{lhzf3}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1284,11 +860,11 @@
                     <td>
                         <p><i>L<sub>z4</sub></i></p>
                     </td>
-                    <td><input name="lz4" type="text" th:field="*{lz4}"/></td>
+                    <td><input name="lhz4" type="text" th:field="*{lhz4}"/></td>
                     <td>
                         <p><i>L<sub>zf4</sub></i></p>
                     </td>
-                    <td><input name="lzf4" type="text" th:field="*{lzf4}"/></td>
+                    <td><input name="lhzf4" type="text" th:field="*{lhzf4}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1296,11 +872,11 @@
                     <td>
                         <p><i>L<sub>z5</sub></i></p>
                     </td>
-                    <td><input name="lz5" type="text" th:field="*{lz5}"/></td>
+                    <td><input name="lhz5" type="text" th:field="*{lhz5}"/></td>
                     <td>
                         <p><i>L<sub>zf5</sub></i></p>
                     </td>
-                    <td><input name="lzf5" type="text" th:field="*{lzf5}"/></td>
+                    <td><input name="lhzf5" type="text" th:field="*{lhzf5}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1308,11 +884,11 @@
                     <td>
                         <p><i>L<sub>z6</sub></i></p>
                     </td>
-                    <td><input name="lz6" type="text" th:field="*{lz6}"/></td>
+                    <td><input name="lhz6" type="text" th:field="*{lhz6}"/></td>
                     <td>
                         <p><i>L<sub>zf6</sub></i></p>
                     </td>
-                    <td><input name="lzf6" type="text" th:field="*{lzf6}"/></td>
+                    <td><input name="lhzf6" type="text" th:field="*{lhzf6}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1320,11 +896,11 @@
                     <td>
                         <p><i>L<sub>z7</sub></i></p>
                     </td>
-                    <td><input name="lz7" type="text" th:field="*{lz7}"/></td>
+                    <td><input name="lhz7" type="text" th:field="*{lhz7}"/></td>
                     <td>
                         <p><i>L<sub>zf7</sub></i></p>
                     </td>
-                    <td><input name="lzf7" type="text" th:field="*{lzf7}"/></td>
+                    <td><input name="lhzf7" type="text" th:field="*{lhzf7}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1332,11 +908,11 @@
                     <td>
                         <p><i>L<sub>z8</sub></i></p>
                     </td>
-                    <td><input name="lz8" type="text" th:field="*{lz8}"/></td>
+                    <td><input name="lhz8" type="text" th:field="*{lhz8}"/></td>
                     <td>
                         <p><i>L<sub>zf8</sub></i></p>
                     </td>
-                    <td><input name="lzf8" type="text" th:field="*{lzf8}"/></td>
+                    <td><input name="lhzf8" type="text" th:field="*{lhzf8}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1344,11 +920,11 @@
                     <td>
                         <p><i>L<sub>z9</sub></i></p>
                     </td>
-                    <td><input name="lz9" type="text" th:field="*{lz9}"/></td>
+                    <td><input name="lhz9" type="text" th:field="*{lhz9}"/></td>
                     <td>
                         <p><i>L<sub>zf9</sub></i></p>
                     </td>
-                    <td><input name="lzf9" type="text" th:field="*{lzf9}"/></td>
+                    <td><input name="lhzf9" type="text" th:field="*{lhzf9}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1356,11 +932,11 @@
                     <td>
                         <p><i>L<sub>z10</sub></i></p>
                     </td>
-                    <td><input name="lz10" type="text" th:field="*{lz10}"/></td>
+                    <td><input name="lhz10" type="text" th:field="*{lhz10}"/></td>
                     <td>
                         <p><i>L<sub>zf10</sub></i></p>
                     </td>
-                    <td><input name="lzf10" type="text" th:field="*{lzf10}"/></td>
+                    <td><input name="lhzf10" type="text" th:field="*{lhzf10}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1368,11 +944,11 @@
                     <td>
                         <p><i>L<sub>z11</sub></i></p>
                     </td>
-                    <td><input name="lz11" type="text" th:field="*{lz11}"/></td>
+                    <td><input name="lhz11" type="text" th:field="*{lhz11}"/></td>
                     <td>
                         <p><i>L<sub>zf11</sub></i></p>
                     </td>
-                    <td><input name="lzf11" type="text" th:field="*{lzf11}"/></td>
+                    <td><input name="lhzf11" type="text" th:field="*{lhzf11}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1380,23 +956,47 @@
                     <td>
                         <p><i>L<sub>z12</sub></i></p>
                     </td>
-                    <td><input name="lz12" type="text" th:field="*{lz12}"/></td>
+                    <td><input name="lhz12" type="text" th:field="*{lhz12}"/></td>
                     <td>
                         <p><i>L<sub>zf12</sub></i></p>
                     </td>
-                    <td><input name="lzf12" type="text" th:field="*{lzf12}"/></td>
+                    <td><input name="lhzf12" type="text" th:field="*{lhzf12}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
                     <td>被动运行至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>z13</sub></i></p>
+                        <p><i>L<sub>z12</sub></i></p>
                     </td>
-                    <td><input name="lz13" type="text" th:field="*{lz13}"/></td>
+                    <td><input name="lhz13" type="text" th:field="*{lhz13}"/></td>
                     <td>
-                        <p><i>L<sub>zf13</sub></i></p>
+                        <p><i>L<sub>zf12</sub></i></p>
                     </td>
-                    <td><input name="lzf13" type="text" th:field="*{lzf13}"/></td>
+                    <td><input name="lhzf13" type="text" th:field="*{lhzf13}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z12</sub></i></p>
+                    </td>
+                    <td><input name="lhz14" type="text" th:field="*{lhz14}"/></td>
+                    <td>
+                        <p><i>L<sub>zf12</sub></i></p>
+                    </td>
+                    <td><input name="lhzf14" type="text" th:field="*{lhzf14}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z12</sub></i></p>
+                    </td>
+                    <td><input name="lhz15" type="text" th:field="*{lhz15}"/></td>
+                    <td>
+                        <p><i>L<sub>zf12</sub></i></p>
+                    </td>
+                    <td><input name="lhzf15" type="text" th:field="*{lhzf15}"/></td>
                     <td>m</td>
                 </tr>
             </table>
@@ -1413,22 +1013,22 @@
                 <tr>
                     <td colspan="6">
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态风载荷作用高度" id="tu6" name="tu6"/>
+                            <img alt="工作状态风载荷作用高度" id="wdlytu6" name="wdlytu6"/>
                         </div>
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态风载荷作用高度" id="tu11" name="tu11"/>
+                            <img alt="非工作状态风载荷作用高度" id="wdlytu11" name="wdlytu11"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu6" accept="image/*"
-                                           oninput="showImage(this,'tu6')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu6" accept="image/*"
+                                           oninput="showImage(this,'wdlytu6')"/></td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu11" accept="image/*"
-                                           oninput="showImage(this,'tu11')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu11" accept="image/*"
+                                           oninput="showImage(this,'wdlytu11')"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -1450,7 +1050,7 @@
                     <td>
                         <p><i>hsl</i></p>
                     </td>
-                    <td><input name="hsl" type="text" th:field="*{hsl}"/></td>
+                    <td><input name="hslg" type="text" th:field="*{hslg}"/></td>
                     <td></td>
                     <td></td>
                     <td>m</td>
@@ -1460,7 +1060,7 @@
                     <td>
                         <p><i>hshl</i></p>
                     </td>
-                    <td><input name="hshl" type="text" th:field="*{hshl}"/></td>
+                    <td><input name="hshlg" type="text" th:field="*{hshlg}"/></td>
                     <td></td>
                     <td></td>
                     <td>m</td>
@@ -1470,11 +1070,11 @@
                     <td>
                         <p><i>h1</i></p>
                     </td>
-                    <td><input name="h1" type="text" th:field="*{h1}"/></td>
+                    <td><input name="hg1" type="text" th:field="*{hg1}"/></td>
                     <td>
                         <p><i>hf1</i></p>
                     </td>
-                    <td><input name="hf1" type="text" th:field="*{hf1}"/></td>
+                    <td><input name="hgf1" type="text" th:field="*{hgf1}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1482,11 +1082,11 @@
                     <td>
                         <p><i>h2</i></p>
                     </td>
-                    <td><input name="h2" type="text" th:field="*{h2}"/></td>
+                    <td><input name="hg2" type="text" th:field="*{hg2}"/></td>
                     <td>
                         <p><i>hf2</i></p>
                     </td>
-                    <td><input name="hf2" type="text" th:field="*{hf2}"/></td>
+                    <td><input name="hgf2" type="text" th:field="*{hgf2}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1494,11 +1094,11 @@
                     <td>
                         <p><i>h3</i></p>
                     </td>
-                    <td><input name="h3" type="text" th:field="*{h3}"/></td>
+                    <td><input name="hg3" type="text" th:field="*{hg3}"/></td>
                     <td>
                         <p><i>hf3</i></p>
                     </td>
-                    <td><input name="hf3" type="text" th:field="*{hf3}"/></td>
+                    <td><input name="hgf3" type="text" th:field="*{hgf3}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1506,11 +1106,11 @@
                     <td>
                         <p><i>h4</i></p>
                     </td>
-                    <td><input name="h4" type="text" th:field="*{h4}"/></td>
+                    <td><input name="hg4" type="text" th:field="*{hg4}"/></td>
                     <td>
                         <p><i>hf4</i></p>
                     </td>
-                    <td><input name="hf4" type="text" th:field="*{hf4}"/></td>
+                    <td><input name="hgf4" type="text" th:field="*{hgf4}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1518,11 +1118,11 @@
                     <td>
                         <p><i>h5</i></p>
                     </td>
-                    <td><input name="h5" type="text" th:field="*{h5}"/></td>
+                    <td><input name="hg5" type="text" th:field="*{hg5}"/></td>
                     <td>
                         <p><i>hf5</i></p>
                     </td>
-                    <td><input name="hf5" type="text" th:field="*{hf5}"/></td>
+                    <td><input name="hgf5" type="text" th:field="*{hgf5}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1530,11 +1130,11 @@
                     <td>
                         <p><i>h6</i></p>
                     </td>
-                    <td><input name="h6" type="text" th:field="*{h6}"/></td>
+                    <td><input name="hg6" type="text" th:field="*{hg6}"/></td>
                     <td>
                         <p><i>hf6</i></p>
                     </td>
-                    <td><input name="hf6" type="text" th:field="*{hf6}"/></td>
+                    <td><input name="hgf6" type="text" th:field="*{hgf6}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1542,11 +1142,11 @@
                     <td>
                         <p><i>h7</i></p>
                     </td>
-                    <td><input name="h7" type="text" th:field="*{h7}"/></td>
+                    <td><input name="hg7" type="text" th:field="*{hg7}"/></td>
                     <td>
                         <p><i>hf7</i></p>
                     </td>
-                    <td><input name="hf7" type="text" th:field="*{hf7}"/></td>
+                    <td><input name="hgf7" type="text" th:field="*{hgf7}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1554,11 +1154,11 @@
                     <td>
                         <p><i>h8</i></p>
                     </td>
-                    <td><input name="h8" type="text" th:field="*{h8}"/></td>
+                    <td><input name="hg8" type="text" th:field="*{hg8}"/></td>
                     <td>
                         <p><i>hf8</i></p>
                     </td>
-                    <td><input name="hf8" type="text" th:field="*{hf8}"/></td>
+                    <td><input name="hgf8" type="text" th:field="*{hgf8}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1566,11 +1166,11 @@
                     <td>
                         <p><i>h9</i></p>
                     </td>
-                    <td><input name="h9" type="text" th:field="*{h9}"/></td>
+                    <td><input name="hg9" type="text" th:field="*{hg9}"/></td>
                     <td>
                         <p><i>hf9</i></p>
                     </td>
-                    <td><input name="hf9" type="text" th:field="*{hf9}"/></td>
+                    <td><input name="hgf9" type="text" th:field="*{hgf9}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1578,11 +1178,11 @@
                     <td>
                         <p><i>h10</i></p>
                     </td>
-                    <td><input name="h10" type="text" th:field="*{h10}"/></td>
+                    <td><input name="hg10" type="text" th:field="*{hg10}"/></td>
                     <td>
                         <p><i>hf10</i></p>
                     </td>
-                    <td><input name="hf10" type="text" th:field="*{hf10}"/></td>
+                    <td><input name="hgf10" type="text" th:field="*{hgf10}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1590,11 +1190,11 @@
                     <td>
                         <p><i>h11</i></p>
                     </td>
-                    <td><input name="h11" type="text" th:field="*{h11}"/></td>
+                    <td><input name="hg11" type="text" th:field="*{hg11}"/></td>
                     <td>
                         <p><i>hf11</i></p>
                     </td>
-                    <td><input name="hf11" type="text" th:field="*{hf11}"/></td>
+                    <td><input name="hgf11" type="text" th:field="*{hgf11}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1602,11 +1202,11 @@
                     <td>
                         <p><i>h12</i></p>
                     </td>
-                    <td><input name="h12" type="text" th:field="*{h12}"/></td>
+                    <td><input name="hg12" type="text" th:field="*{hg12}"/></td>
                     <td>
                         <p><i>hf12</i></p>
                     </td>
-                    <td><input name="hf12" type="text" th:field="*{hf12}"/></td>
+                    <td><input name="hgf12" type="text" th:field="*{hgf12}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -1614,11 +1214,35 @@
                     <td>
                         <p><i>h13</i></p>
                     </td>
-                    <td><input name="h13" type="text" th:field="*{h13}"/></td>
+                    <td><input name="hg13" type="text" th:field="*{hg13}"/></td>
                     <td>
                         <p><i>hf13</i></p>
                     </td>
-                    <td><input name="hf13" type="text" th:field="*{hf13}"/></td>
+                    <td><input name="hgf13" type="text" th:field="*{hgf13}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I至轨道上平面高度</td>
+                    <td>
+                        <p><i>h14</i></p>
+                    </td>
+                    <td><input name="hg14" type="text" th:field="*{hg14}"/></td>
+                    <td>
+                        <p><i>hf14</i></p>
+                    </td>
+                    <td><input name="hgf14" type="text" th:field="*{hgf14}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II至轨道上平面高度</td>
+                    <td>
+                        <p><i>h15</i></p>
+                    </td>
+                    <td><input name="hg15" type="text" th:field="*{hg15}"/></td>
+                    <td>
+                        <p><i>hf15</i></p>
+                    </td>
+                    <td><input name="hgf15" type="text" th:field="*{hgf15}"/></td>
                     <td>m</td>
                 </tr>
             </table>
@@ -1635,22 +1259,22 @@
                 <tr>
                     <td colspan="6">
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态大臂侧向迎风面积" id="tu7" name="tu7"/>
+                            <img alt="工作状态大臂侧向迎风面积" id="wdlytu7" name="wdlytu7"/>
                         </div>
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态大臂侧向迎风面积" id="tu12" name="tu12"/>
+                            <img alt="非工作状态大臂侧向迎风面积" id="wdlytu12" name="wdlytu12"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu7" accept="image/*"
-                                           oninput="showImage(this,'tu7')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu7" accept="image/*"
+                                           oninput="showImage(this,'wdlytu7')"/></td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu12" accept="image/*"
-                                           oninput="showImage(this,'tu12')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu12" accept="image/*"
+                                           oninput="showImage(this,'wdlytu12')"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -1671,7 +1295,7 @@
                     <td>
                         <p><i>A<sub>sl</sub></i></p>
                     </td>
-                    <td><input name="asl" type="text" th:field="*{asl}"/></td>
+                    <td><input name="aslcx" type="text" th:field="*{aslcx}"/></td>
                     <td></td>
                     <td></td>
                     <td>m<sup>2</sup></td>
@@ -1681,7 +1305,7 @@
                     <td>
                         <p><i>A<sub>shl</sub></i></p>
                     </td>
-                    <td><input name="ashl" type="text" th:field="*{ashl}"/></td>
+                    <td><input name="ashlcx" type="text" th:field="*{ashlcx}"/></td>
                     <td></td>
                     <td></td>
                     <td>m<sup>2</sup></td>
@@ -1691,11 +1315,11 @@
                     <td>
                         <p><i>A<sub>1</sub></i></p>
                     </td>
-                    <td><input name="a1" type="text" th:field="*{a1}"/></td>
+                    <td><input name="acx1" type="text" th:field="*{acx1}"/></td>
                     <td>
                         <p><i>A<sub>f1</sub></i></p>
                     </td>
-                    <td><input name="af1" type="text" th:field="*{af1}"/></td>
+                    <td><input name="afcx1" type="text" th:field="*{afcx1}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1703,11 +1327,11 @@
                     <td>
                         <p><i>A<sub>2</sub></i></p>
                     </td>
-                    <td><input name="a2" type="text" th:field="*{a2}"/></td>
+                    <td><input name="acx2" type="text" th:field="*{acx2}"/></td>
                     <td>
                         <p><i>A<sub>f2</sub></i></p>
                     </td>
-                    <td><input name="af2" type="text" th:field="*{af2}"/></td>
+                    <td><input name="afcx2" type="text" th:field="*{afcx2}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1715,11 +1339,11 @@
                     <td>
                         <p><i>A<sub>3</sub></i></p>
                     </td>
-                    <td><input name="a3" type="text" th:field="*{a3}"/></td>
+                    <td><input name="acx3" type="text" th:field="*{acx3}"/></td>
                     <td>
                         <p><i>A<sub>f3</sub></i></p>
                     </td>
-                    <td><input name="af3" type="text" th:field="*{af3}"/></td>
+                    <td><input name="afcx3" type="text" th:field="*{afcx3}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1727,11 +1351,11 @@
                     <td>
                         <p><i>A<sub>4</sub></i></p>
                     </td>
-                    <td><input name="a4" type="text" th:field="*{a4}"/></td>
+                    <td><input name="acx4" type="text" th:field="*{acx4}"/></td>
                     <td>
                         <p><i>A<sub>f4</sub></i></p>
                     </td>
-                    <td><input name="af4" type="text" th:field="*{af4}"/></td>
+                    <td><input name="afcx4" type="text" th:field="*{afcx4}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1739,11 +1363,11 @@
                     <td>
                         <p><i>A<sub>5</sub></i></p>
                     </td>
-                    <td><input name="a5" type="text" th:field="*{a5}"/></td>
+                    <td><input name="acx5" type="text" th:field="*{acx5}"/></td>
                     <td>
                         <p><i>A<sub>f5</sub></i></p>
                     </td>
-                    <td><input name="af5" type="text" th:field="*{af5}"/></td>
+                    <td><input name="afcx5" type="text" th:field="*{afcx5}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1751,11 +1375,11 @@
                     <td>
                         <p><i>A<sub>6</sub></i></p>
                     </td>
-                    <td><input name="a6" type="text" th:field="*{a6}"/></td>
+                    <td><input name="acx6" type="text" th:field="*{acx6}"/></td>
                     <td>
                         <p><i>A<sub>f6</sub></i></p>
                     </td>
-                    <td><input name="af6" type="text" th:field="*{af6}"/></td>
+                    <td><input name="afcx6" type="text" th:field="*{afcx6}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1763,11 +1387,11 @@
                     <td>
                         <p><i>A<sub>7</sub></i></p>
                     </td>
-                    <td><input name="a7" type="text" th:field="*{a7}"/></td>
+                    <td><input name="acx7" type="text" th:field="*{acx7}"/></td>
                     <td>
                         <p><i>A<sub>f7</sub></i></p>
                     </td>
-                    <td><input name="af7" type="text" th:field="*{af7}"/></td>
+                    <td><input name="afcx7" type="text" th:field="*{afcx7}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1775,11 +1399,11 @@
                     <td>
                         <p><i>A<sub>8</sub></i></p>
                     </td>
-                    <td><input name="a8" type="text" th:field="*{a8}"/></td>
+                    <td><input name="acx8" type="text" th:field="*{acx8}"/></td>
                     <td>
                         <p><i>A<sub>f8</sub></i></p>
                     </td>
-                    <td><input name="af8" type="text" th:field="*{af8}"/></td>
+                    <td><input name="afcx8" type="text" th:field="*{afcx8}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1787,11 +1411,11 @@
                     <td>
                         <p><i>A<sub>9</sub></i></p>
                     </td>
-                    <td><input name="a9" type="text" th:field="*{a9}"/></td>
+                    <td><input name="acx9" type="text" th:field="*{acx9}"/></td>
                     <td>
                         <p><i>A<sub>f9</sub></i></p>
                     </td>
-                    <td><input name="af9" type="text" th:field="*{af9}"/></td>
+                    <td><input name="afcx9" type="text" th:field="*{afcx9}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1799,11 +1423,11 @@
                     <td>
                         <p><i>A<sub>10</sub></i></p>
                     </td>
-                    <td><input name="a10" type="text" th:field="*{a10}"/></td>
+                    <td><input name="acx10" type="text" th:field="*{acx10}"/></td>
                     <td>
                         <p><i>A<sub>f10</sub></i></p>
                     </td>
-                    <td><input name="af10" type="text" th:field="*{af10}"/></td>
+                    <td><input name="afcx10" type="text" th:field="*{afcx10}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1811,11 +1435,11 @@
                     <td>
                         <p><i>A<sub>11</sub></i></p>
                     </td>
-                    <td><input name="a11" type="text" th:field="*{a11}"/></td>
+                    <td><input name="acx11" type="text" th:field="*{acx11}"/></td>
                     <td>
                         <p><i>A<sub>f11</sub></i></p>
                     </td>
-                    <td><input name="af11" type="text" th:field="*{af11}"/></td>
+                    <td><input name="afcx11" type="text" th:field="*{afcx11}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1823,11 +1447,11 @@
                     <td>
                         <p><i>A<sub>12</sub></i></p>
                     </td>
-                    <td><input name="a12" type="text" th:field="*{a12}"/></td>
+                    <td><input name="acx12" type="text" th:field="*{acx12}"/></td>
                     <td>
                         <p><i>A<sub>f12</sub></i></p>
                     </td>
-                    <td><input name="af12" type="text" th:field="*{af12}"/></td>
+                    <td><input name="afcx12" type="text" th:field="*{afcx12}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1835,11 +1459,35 @@
                     <td>
                         <p><i>A<sub>13</sub></i></p>
                     </td>
-                    <td><input name="a13" type="text" th:field="*{a13}"/></td>
+                    <td><input name="acx13" type="text" th:field="*{acx13}"/></td>
                     <td>
                         <p><i>A<sub>f13</sub></i></p>
                     </td>
-                    <td><input name="af13" type="text" th:field="*{af13}"/></td>
+                    <td><input name="afcx13" type="text" th:field="*{afcx13}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他I运行迎风面积</td>
+                    <td>
+                        <p><i>A<sub>14</sub></i></p>
+                    </td>
+                    <td><input name="acx14" type="text" th:field="*{acx14}"/></td>
+                    <td>
+                        <p><i>A<sub>f14</sub></i></p>
+                    </td>
+                    <td><input name="afcx14" type="text" th:field="*{afcx14}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他II运行迎风面积</td>
+                    <td>
+                        <p><i>A<sub>15</sub></i></p>
+                    </td>
+                    <td><input name="acx15" type="text" th:field="*{acx15}"/></td>
+                    <td>
+                        <p><i>A<sub>f15</sub></i></p>
+                    </td>
+                    <td><input name="afcx15" type="text" th:field="*{afcx15}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
             </table>
@@ -1856,22 +1504,22 @@
                 <tr>
                     <td colspan="6">
                         <div style="display:inline-block;width:250px;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态大臂同向迎风面积" id="tu8" name="tu8"/>
+                            <img alt="工作状态大臂同向迎风面积" id="wdlytu8" name="wdlytu8"/>
                         </div>
                         <div style="display:inline-block;width:250px;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态大臂同向迎风面积" id="tu13" name="tu13"/>
+                            <img alt="非工作状态大臂同向迎风面积" id="wdlytu13" name="wdlytu13"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu8" accept="image/*"
-                                           oninput="showImage(this,'tu8')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu8" accept="image/*"
+                                           oninput="showImage(this,'wdlytu8')"/></td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu13" accept="image/*"
-                                           oninput="showImage(this,'tu13')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu13" accept="image/*"
+                                           oninput="showImage(this,'wdlytu13')"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -1916,7 +1564,7 @@
                     <td>
                         <p><i>A<sub>ft1</sub></i></p>
                     </td>
-                    <td><input name="aft1" type="text" th:field="*{aft1}"/></td>
+                    <td><input name="aftx1" type="text" th:field="*{aftx1}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1928,7 +1576,7 @@
                     <td>
                         <p><i>A<sub>ft2</sub></i></p>
                     </td>
-                    <td><input name="aft2" type="text" th:field="*{aft2}"/></td>
+                    <td><input name="aftx2" type="text" th:field="*{aftx2}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1940,7 +1588,7 @@
                     <td>
                         <p><i>A<sub>ft3</sub></i></p>
                     </td>
-                    <td><input name="aft3" type="text" th:field="*{aft3}"/></td>
+                    <td><input name="aftx3" type="text" th:field="*{aftx3}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1952,7 +1600,7 @@
                     <td>
                         <p><i>A<sub>ft4</sub></i></p>
                     </td>
-                    <td><input name="aft4" type="text" th:field="*{aft4}"/></td>
+                    <td><input name="aftx4" type="text" th:field="*{aftx4}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1964,7 +1612,7 @@
                     <td>
                         <p><i>A<sub>ft5</sub></i></p>
                     </td>
-                    <td><input name="aft5" type="text" th:field="*{aft5}"/></td>
+                    <td><input name="aftx5" type="text" th:field="*{aftx5}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1976,7 +1624,7 @@
                     <td>
                         <p><i>A<sub>ft6</sub></i></p>
                     </td>
-                    <td><input name="aft6" type="text" th:field="*{aft6}"/></td>
+                    <td><input name="aftx6" type="text" th:field="*{aftx6}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -1988,7 +1636,7 @@
                     <td>
                         <p><i>A<sub>tf7</sub></i></p>
                     </td>
-                    <td><input name="aft7" type="text" th:field="*{aft7}"/></td>
+                    <td><input name="aftx7" type="text" th:field="*{aftx7}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -2000,7 +1648,7 @@
                     <td>
                         <p><i>A<sub>ft8</sub></i></p>
                     </td>
-                    <td><input name="aft8" type="text" th:field="*{aft8}"/></td>
+                    <td><input name="aftx8" type="text" th:field="*{aftx8}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -2012,7 +1660,7 @@
                     <td>
                         <p><i>A<sub>ft9</sub></i></p>
                     </td>
-                    <td><input name="aft9" type="text" th:field="*{aft9}"/></td>
+                    <td><input name="aftx9" type="text" th:field="*{aftx9}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -2024,7 +1672,7 @@
                     <td>
                         <p><i>A<sub>ft10</sub></i></p>
                     </td>
-                    <td><input name="aft10" type="text" th:field="*{aft10}"/></td>
+                    <td><input name="aftx10" type="text" th:field="*{aftx10}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -2036,7 +1684,7 @@
                     <td>
                         <p><i>A<sub>ft11</sub></i></p>
                     </td>
-                    <td><input name="aft11" type="text" th:field="*{aft11}"/></td>
+                    <td><input name="aftx11" type="text" th:field="*{aftx11}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -2048,7 +1696,7 @@
                     <td>
                         <p><i>A<sub>ft12</sub></i></p>
                     </td>
-                    <td><input name="aft12" type="text" th:field="*{aft12}"/></td>
+                    <td><input name="aftx12" type="text" th:field="*{aftx12}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
@@ -2060,7 +1708,31 @@
                     <td>
                         <p><i>A<sub>ft13</sub></i></p>
                     </td>
-                    <td><input name="aft13" type="text" th:field="*{aft13}"/></td>
+                    <td><input name="aftx13" type="text" th:field="*{aftx13}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他I运行迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t14</sub></i></p>
+                    </td>
+                    <td><input name="atx14" type="text" th:field="*{atx14}"/></td>
+                    <td>
+                        <p><i>A<sub>ft14</sub></i></p>
+                    </td>
+                    <td><input name="aftx14" type="text" th:field="*{aftx14}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他II运行迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t15</sub></i></p>
+                    </td>
+                    <td><input name="atx15" type="text" th:field="*{atx15}"/></td>
+                    <td>
+                        <p><i>A<sub>ft15</sub></i></p>
+                    </td>
+                    <td><input name="aftx15" type="text" th:field="*{aftx15}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
             </table>
@@ -2076,14 +1748,14 @@
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态擦窗机各部件重心至前轨道距离" id="tu3" name="tu3"/>
+                            <img alt="工作状态擦窗机各部件重心至前轨道距离" id="wdlytu3" name="wdlytu3"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu3" accept="image/*"
-                                           oninput="showImage(this,'tu3')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu3" accept="image/*"
+                                           oninput="showImage(this,'wdlytu3')"/></td>
                 </tr>
                 <tr>
                     <td style="width:30%;padding:10px 0;;">名称</td>
@@ -2094,17 +1766,17 @@
                 <tr>
                     <td>吊船及人员至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>slq</sub></i></p>
+                        <p><i>L<sub>slqg</sub></i></p>
                     </td>
-                    <td><input name="lslq" type="text" th:field="*{lslq}"/></td>
+                    <td><input name="lslqg" type="text" th:field="*{lslqg}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
                     <td>物料至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>shlq</sub></i></p>
+                        <p><i>L<sub>shlqg</sub></i></p>
                     </td>
-                    <td><input name="lshlq" type="text" th:field="*{lshlq}"/></td>
+                    <td><input name="lshlqg" type="text" th:field="*{lshlqg}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2112,7 +1784,7 @@
                     <td>
                         <p><i>L<sub>q1</sub></i></p>
                     </td>
-                    <td><input name="lq1" type="text" th:field="*{lq1}"/></td>
+                    <td><input name="lqg1" type="text" th:field="*{lqg1}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2120,7 +1792,7 @@
                     <td>
                         <p><i>L<sub>q2</sub></i></p>
                     </td>
-                    <td><input name="lq2" type="text" th:field="*{lq2}"/></td>
+                    <td><input name="lqg2" type="text" th:field="*{lqg2}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2128,7 +1800,7 @@
                     <td>
                         <p><i>L<sub>q3</sub></i></p>
                     </td>
-                    <td><input name="lq3" type="text" th:field="*{lq3}"/></td>
+                    <td><input name="lqg3" type="text" th:field="*{lqg3}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2136,7 +1808,7 @@
                     <td>
                         <p><i>L<sub>q4</sub></i></p>
                     </td>
-                    <td><input name="lq4" type="text" th:field="*{lq4}"/></td>
+                    <td><input name="lqg4" type="text" th:field="*{lqg4}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2144,7 +1816,7 @@
                     <td>
                         <p><i>L<sub>q5</sub></i></p>
                     </td>
-                    <td><input name="lq5" type="text" th:field="*{lq5}"/></td>
+                    <td><input name="lqg5" type="text" th:field="*{lqg5}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2152,7 +1824,7 @@
                     <td>
                         <p><i>L<sub>q6</sub></i></p>
                     </td>
-                    <td><input name="lq6" type="text" th:field="*{lq6}"/></td>
+                    <td><input name="lqg6" type="text" th:field="*{lqg6}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2160,7 +1832,7 @@
                     <td>
                         <p><i>L<sub>q7</sub></i></p>
                     </td>
-                    <td><input name="lq7" type="text" th:field="*{lq7}"/></td>
+                    <td><input name="lqg7" type="text" th:field="*{lqg7}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2168,7 +1840,7 @@
                     <td>
                         <p><i>L<sub>q8</sub></i></p>
                     </td>
-                    <td><input name="lq8" type="text" th:field="*{lq8}"/></td>
+                    <td><input name="lqg8" type="text" th:field="*{lqg8}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2176,7 +1848,7 @@
                     <td>
                         <p><i>L<sub>q9</sub></i></p>
                     </td>
-                    <td><input name="lq9" type="text" th:field="*{lq9}"/></td>
+                    <td><input name="lqg9" type="text" th:field="*{lqg9}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2184,7 +1856,7 @@
                     <td>
                         <p><i>L<sub>q10</sub></i></p>
                     </td>
-                    <td><input name="lq10" type="text" th:field="*{lq10}"/></td>
+                    <td><input name="lqg10" type="text" th:field="*{lqg10}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2192,7 +1864,7 @@
                     <td>
                         <p><i>L<sub>q11</sub></i></p>
                     </td>
-                    <td><input name="lq11" type="text" th:field="*{lq11}"/></td>
+                    <td><input name="lqg11" type="text" th:field="*{lqg11}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2200,7 +1872,7 @@
                     <td>
                         <p><i>L<sub>q12</sub></i></p>
                     </td>
-                    <td><input name="lq12" type="text" th:field="*{lq12}"/></td>
+                    <td><input name="lqg12" type="text" th:field="*{lqg12}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2208,7 +1880,23 @@
                     <td>
                         <p><i>L<sub>q13</sub></i></p>
                     </td>
-                    <td><input name="lq13" type="text" th:field="*{lq13}"/></td>
+                    <td><input name="lqg13" type="text" th:field="*{lqg13}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q14</sub></i></p>
+                    </td>
+                    <td><input name="lqg14" type="text" th:field="*{lqg14}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q13</sub></i></p>
+                    </td>
+                    <td><input name="lqg15" type="text" th:field="*{lqg15}"/></td>
                     <td>m</td>
                 </tr>
             </table>
@@ -2225,14 +1913,14 @@
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态擦窗机各部件重心至前轮距离" id="tu5" name="tu5"/>
+                            <img alt="工作状态擦窗机各部件重心至前轮距离" id="wdlytu5" name="wdlytu5"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu5" accept="image/*"
-                                           oninput="showImage(this,'tu5')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu5" accept="image/*"
+                                           oninput="showImage(this,'wdlytu5')"/></td>
                 </tr>
                 <tr>
                     <td style="width:30%;padding:10px 0;;">名称</td>
@@ -2360,6 +2048,22 @@
                     <td><input name="lql13" type="text" th:field="*{lql13}"/></td>
                     <td>m</td>
                 </tr>
+                <tr>
+                    <td>被动运行至前轮距离</td>
+                    <td>
+                        <p><i>L<sub>ql14</sub></i></p>
+                    </td>
+                    <td><input name="lql14" type="text" th:field="*{lql14}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行至前轮距离</td>
+                    <td>
+                        <p><i>L<sub>ql15</sub></i></p>
+                    </td>
+                    <td><input name="lql15" type="text" th:field="*{lql15}"/></td>
+                    <td>m</td>
+                </tr>
             </table>
         </div>
 
@@ -2374,14 +2078,14 @@
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态擦窗机各部件重心至后轮距离" id="tu9" name="tu9"/>
+                            <img alt="非工作状态擦窗机各部件重心至后轮距离" id="wdlytu9" name="wdlytu9"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择图片</td>
-                    <td colspan="5"><input class="image" type="file" name="tu9" accept="image/*"
-                                           oninput="showImage(this,'tu9')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu9" accept="image/*"
+                                           oninput="showImage(this,'wdlytu9')"/></td>
                 </tr>
                 <tr>
                     <td style="width:30%;padding:10px 0;;">名称</td>
@@ -2394,7 +2098,7 @@
                     <td>
                         <p><i>L<sub>h1</sub></i></p>
                     </td>
-                    <td><input name="lh1" type="text" th:field="*{lh1}"/></td>
+                    <td><input name="lhl1" type="text" th:field="*{lhl1}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2402,7 +2106,7 @@
                     <td>
                         <p><i>L<sub>h2</sub></i></p>
                     </td>
-                    <td><input name="lh2" type="text" th:field="*{lh2}"/></td>
+                    <td><input name="lhl2" type="text" th:field="*{lhl2}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2410,7 +2114,7 @@
                     <td>
                         <p><i>L<sub>h3</sub></i></p>
                     </td>
-                    <td><input name="lh3" type="text" th:field="*{lh3}"/></td>
+                    <td><input name="lhl3" type="text" th:field="*{lhl3}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2418,7 +2122,7 @@
                     <td>
                         <p><i>L<sub>h4</sub></i></p>
                     </td>
-                    <td><input name="lh4" type="text" th:field="*{lh4}"/></td>
+                    <td><input name="lhl4" type="text" th:field="*{lhl4}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2426,7 +2130,7 @@
                     <td>
                         <p><i>L<sub>h5</sub></i></p>
                     </td>
-                    <td><input name="lh5" type="text" th:field="*{lh5}"/></td>
+                    <td><input name="lhl5" type="text" th:field="*{lhl5}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2434,7 +2138,7 @@
                     <td>
                         <p><i>L<sub>h6</sub></i></p>
                     </td>
-                    <td><input name="lh6" type="text" th:field="*{lh6}"/></td>
+                    <td><input name="lhl6" type="text" th:field="*{lhl6}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2442,7 +2146,7 @@
                     <td>
                         <p><i>L<sub>h7</sub></i></p>
                     </td>
-                    <td><input name="lh7" type="text" th:field="*{lh7}"/></td>
+                    <td><input name="lhl7" type="text" th:field="*{lhl7}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2450,7 +2154,7 @@
                     <td>
                         <p><i>L<sub>h8</sub></i></p>
                     </td>
-                    <td><input name="lh8" type="text" th:field="*{lh8}"/></td>
+                    <td><input name="lhl8" type="text" th:field="*{lhl8}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2458,7 +2162,7 @@
                     <td>
                         <p><i>L<sub>h9</sub></i></p>
                     </td>
-                    <td><input name="lh9" type="text" th:field="*{lh9}"/></td>
+                    <td><input name="lhl9" type="text" th:field="*{lhl9}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2466,7 +2170,7 @@
                     <td>
                         <p><i>L<sub>h10</sub></i></p>
                     </td>
-                    <td><input name="lh10" type="text" th:field="*{lh10}"/></td>
+                    <td><input name="lhl10" type="text" th:field="*{lhl10}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2474,7 +2178,7 @@
                     <td>
                         <p><i>L<sub>h11</sub></i></p>
                     </td>
-                    <td><input name="lh11" type="text" th:field="*{lh11}"/></td>
+                    <td><input name="lhl11" type="text" th:field="*{lhl11}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2482,7 +2186,7 @@
                     <td>
                         <p><i>L<sub>h12</sub></i></p>
                     </td>
-                    <td><input name="lh12" type="text" th:field="*{lh12}"/></td>
+                    <td><input name="lhl12" type="text" th:field="*{lhl12}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -2490,25 +2194,45 @@
                     <td>
                         <p><i>L<sub>h13</sub></i></p>
                     </td>
-                    <td><input name="lh13" type="text" th:field="*{lh13}"/></td>
+                    <td><input name="lhl13" type="text" th:field="*{lhl13}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I运行至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h14</sub></i></p>
+                    </td>
+                    <td><input name="lhl14" type="text" th:field="*{lhl14}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II运行至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h15</sub></i></p>
+                    </td>
+                    <td><input name="lhl15" type="text" th:field="*{lhl15}"/></td>
                     <td>m</td>
                 </tr>
             </table>
         </div>
+
     </form>
+
+
     <!--    按钮-->
-    <div class="buttonbox">
+    <div class="buttonbox" >
+
         <input type="submit" form="form1" class="button" value="输出中文版计算书pdf"
-               onclick="$('#form1').attr('action','/stabilitypdf1')"/>
-        <input type="submit" form="form1" class="button" value="输出英文版计算书pdf"
-               onclick="$('#form1').attr('action','/stabilityenpdf1')"/>
-        <input type="submit" form="form1" class="button" value="输出澳大利亚版计算书pdf"
-               onclick="$('#form1').attr('action','/stabilityaupdf1')"/>
-        <input type="submit" form="form1" class="button" value="输出验证部分pdf"
-               onclick="$('#form1').attr('action','/stabilitypdf2')"/>
+               onclick="isCheck(false);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
+        <!--        <input type="submit" form="form1" class="button" value="输出英文版计算书pdf"-->
+        <!--               onclick="$('#form1').attr('action','/stabilityenpdf1')"/>-->
+        <!--        <input type="submit" form="form1" class="button" value="输出澳大利亚版计算书pdf"-->
+        <!--               onclick="$('#form1').attr('action','/stabilityaupdf1')"/>-->
+                <input type="submit" form="form1" class="button" value="输出验证部分pdf"
+                       onclick="isCheck(true);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
         <input type="reset" form="form1" value="重置"/>
     </div>
-    <div class="navbox" style="top:400px;left:20px;width:500px">
+    <div class="navbox conllect_table" style="top:400px;left:20px;width:500px;display:none">
         <p align="right">单位：kN</p>
         <table class="tb" style="width:500px;position: relative">
             <tr>
@@ -2526,19 +2250,23 @@
             </tr>
             <tr>
                 <td style="padding:0;">
-                    <div style="padding:0;width: 99%;height:100px;"><img style="width:100px;" th:src="@{work1.jpg}"/>
+                    <div style="padding:0;width: 99%;height:100px;">
+                        <img style="width:100px;" th:src="@{work1.jpg}"/>
                     </div>
                 </td>
                 <td style="padding:0;">
-                    <div style="padding:0;width: 99%;height:100px;"><img style="width:100px;" th:src="@{work2.jpg}"/>
+                    <div style="padding:0;width: 99%;height:100px;">
+                        <img style="width:100px;" th:src="@{work2.jpg}"/>
                     </div>
                 </td>
                 <td style="padding:0;">
-                    <div style="padding:0;width: 99%;height:100px;"><img style="width:100px;" th:src="@{work3.jpg}"/>
+                    <div style="padding:0;width: 99%;height:100px;">
+                        <img style="width:100px;" th:src="@{work3.jpg}"/>
                     </div>
                 </td>
                 <td style="padding:0;">
-                    <div style="padding:0;width: 99%;height:100px;"><img style="width:100px;" th:src="@{work4.jpg}"/>
+                    <div style="padding:0;width: 99%;height:100px;">
+                        <img style="width:100px;" th:src="@{work4.jpg}"/>
                     </div>
                 </td>
             </tr>
@@ -2601,9 +2329,11 @@
             </tr>
         </table>
     </div>
+
     <!--    校验-->
     <div class="navbox">
         <div style="width:160px;font-size: 14px;">
+            <button class="button" style="font-size: 14px;width:95%">显示轮压汇总表</button>
             <table class="tb" id="pdf3tb">
                 <tr>
                     <td colspan="2" style="padding: 10px 0 10px 0;background-color: #aaa;">核算结果</td>
@@ -2612,24 +2342,633 @@
                     <td>工作状态稳定性校核</td>
                 </tr>
                 <tr>
-                    <td id="x2"></td>
+                    <td id="wdlym1"></td>
                 </tr>
                 <tr>
                     <td>非工作状态稳定性校核</td>
                 </tr>
                 <tr>
-                    <td id="x4"></td>
+                    <td id="wdlym2"></td>
                 </tr>
             </table>
             <div style="position:absolute;margin: 0 0 0 -75px;left:50%;">
-                <input  >
-                <input type="submit" class="button"  value="国标版校验"
-                       onclick="return janyan('Stability/cnjy')"/>
-                <input type="submit" class="button"  value="澳大利亚版校验"
-                       onclick="return janyan('Stability/aujy')"/>
+                <input type="submit" class="button" value="国标版校验"
+                       onclick="return janyan('Stability_LSFArm/getCheck')"/>
+<!--                <input type="submit" class="button" value="澳大利亚版校验"-->
+<!--                       onclick="return janyan('Stability/aujy')"/>-->
             </div>
         </div>
     </div>
 </div>
+<script>
+    calculateFunction = {
+        typeOfRunningGear: function () {
+            if ( wdlyp3 == '无') {
+                $('[name=typeOfRunningGear]').prop('disabled', true)
+                data.datalist['typeOfRunningGear'].color = 'rgb(227, 227, 227)';
+            }else if( wdlyp3 == '有'){
+                $('[name=typeOfRunningGear]').prop('disabled', false);
+                data.datalist['typeOfRunningGear'].color = 'white';
+            }
+        },
+        levelOfPin: function () {
+            if ( typeOfPin == '无') {
+                $('[name=levelOfPin]').prop('disabled', true);
+                data.datalist['levelOfPin'].color = 'rgb(227, 227, 227)';
+            } else {
+                $('[name=levelOfPin]').prop('disabled', false)
+                data.datalist['levelOfPin'].color = 'white';
+            }
+        },
+        pf: function () {
+            if (h <= 20 && h > 0) return 800;
+            else if (20 < h && h <= 100) return 1100;
+            else if (100 < h && h <= 150) return 1300;
+            else if (h > 150) return ' ';
+        },
+        dbyj: function () {
+            $('[name=dbyj]').prop('disabled', false);
+            data.datalist['dbyj'].color = 'white';
+            switch ( typeOfMachine ) {
+                case '固定立柱':
+                    $('[name=dbyj]').prop('disabled', true);
+                    data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
+                    break;
+                case '仰臂':break;
+                case '顶升':
+                    $('[name=dbyj]').prop('disabled', true);
+                    data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
+                    break;
+                case '顶升+仰臂':break;
+            }
+        },
+        mzj: function () {
+            return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 ;
+        },
+        mzjf: function () {
+            return  m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 ;
+        },
+        gdlsxh:function(){
+            switch (String( typeOfRunningGear )){
+                case "160LZ":
+                    return 'M12';
+                case "170LZ":case "200LZ":case "230LZ":case "260LZ":
+                    return 'M16';
+                case "350":case "450":
+                    return 'M20';
+                case "无":
+                    return '无';
+            }
+        },
+        flsjl:function(){
+            switch (String( typeOfRunningGear )){
+                case "160LZ":return 10790.4;
+                case "170LZ":case "200LZ":case "230LZ":case "260LZ":return 20096;
+                case "350":case "450":return 31360;
+                case "无":return 0;
+            }
+        },
+        nwd1:function(){
+            if ( wdlyp3 == '无') {
+                return 0;
+            }else if( wdlyp3 == '有'){
+                return 2;
+            }
+        },
+        nwd2:function(){
+            if ( wdlyp3 == '无') {
+                return 0;
+            }else if( wdlyp3 == '有'){
+                return 4;
+            }
+        },
+        txxxh:function(){
+            if( typeOfPin =='无'){
+                $('[name=txxxh]').prop('disabled', true)
+                data.datalist['txxxh'].color = 'rgb(227, 227, 227)';
+            }else{
+                $('[name=txxxh]').prop('disabled', false)
+            }
+            return typeOfPin ;
+        },
+        txxdj:function(){
+            if( txxxh =='无'){
+                $('[name=txxdj]').prop('disabled', true)
+                data.datalist['txxdj'].color = 'rgb(227, 227, 227)';
+                return '无';
+            }else
+                $('[name=txxdj]').prop('disabled', false)
+            return levelOfPin ;
+        },
+        ftxxjq:function(){
+            if( txxxh =='无'){
+                $('[name=ftxxjq]').prop('disabled', true)
+                data.datalist['ftxxjq'].color = 'rgb(227, 227, 227)';
+            }else
+                $('[name=ftxxjq]').prop('disabled', false)
+            switch ( txxxh ) {
+                case '无':return '0';
+                case 'Ф12':return '104100';
+                case 'Ф16':return '171000';
+                case 'Ф20':return '280600';
+            }
+        },
+        nwdt:function(){
+            if( txxxh =='无'){
+                $('[name=nwdt]').prop('disabled', true)
+                data.datalist['nwdt'].color = 'white';
+            }else
+                $('[name=nwdt]').prop('disabled', false)
+            switch ( txxxh ) {
+                case '无':return '0';
+                case 'Ф12':case 'Ф16':case 'Ф20':return ' ';
+            }
+        },
+        djlsxh:' typeOfBolt ',
+        lsgca:function(){
+            switch ( djlsxh ) {
+                case 'M16':return 157;
+                case 'M20':return 245;
+                case 'M24':return 353;
+                case 'M30':return 561;
+            }
+        },
+        fdjlsfb:' lsgca * 270 *0.64 ',
+        nwd3:'2 * nwd4 ',
+        fdjlszfb:' nwd3 * fdjlsfb ',
+
+        mwr:function(){
+            switch ( typeOfLifting ) {
+                case '105起升机构':
+                case '145起升机构':
+                case '175起升机构':
+                case '275起升机构':return 0.179 * h * 4;
+                case '185起升机构':
+                case '285起升机构':
+                case '385起升机构':return 0.244 * h * 4;
+                case '295起升机构':
+                case '495起升机构':return 0.391* h *4;
+                case '313起升机构':return 0.65* h *4;
+            }
+        },
+        tsl:' swp + r1 + mwr ',
+        hsw:function(){
+            switch ( typeOfGRU ) {
+                case'GRU 285':  return 0.252* h ;
+                case'GRU 295':  return 0.391* h ;
+                case'GRU 313':  return 0.65* h ;
+            }
+        },
+        tshl:' hwll + hsw ',
+        m3:function(){
+            switch ( typeOfGRU ) {
+                case'GRU 285':  return 235;
+                case'GRU 295':  return 285;
+                case'GRU 313':  return 385;
+            }
+        },
+        m4:function(){
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return ' ';
+                case '顶升':return 0;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        m5:function(){
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return ' ';
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        m7:' 0 ',
+        m10:function(){
+            switch ( typeOfLifting ) {
+                case '105起升机构':return 785;
+                case '145起升机构':return 830;
+                case '175起升机构':return 1450;
+                case '275起升机构':return 1500;
+                case '185起升机构':return 2057;
+                case '285起升机构':return 2500;
+                case '385起升机构':return 3980;
+                case '295起升机构':return 2750;
+                case '495起升机构':return 3585;
+                case '313起升机构':return 4880;
+            }
+        },
+        m12:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 140;
+                case '170LZ':return 310;
+                case '200LZ':return 350;
+                case '230LZ':return 470;
+                case '260LZ':return 592;
+                case '350'  :return 840;
+                case '450'  :return 2040;
+            }
+        },
+        m13:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 104;
+                case '170LZ':return 260;
+                case '200LZ':return 280;
+                case '230LZ':return 390;
+                case '260LZ':return 460;
+                case '350':return   720;
+                case '450':return   1650;
+            }
+        },
+        lslhz: ' lbd ',
+        lshlhz: ' lslhz - 0.9',
+        lhz1: ' lslhz - 0.9',
+        lhz4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return ' ';
+                case '顶升':return 0;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        lhz5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return ' ';
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        lhz6:' 0 ',
+        lhz7:' 0 ',
+        lhz8:' lbp ',
+        lhz9:' 0 ',
+        lhz11:' 0 ',
+        lhz12:' wdlyp3 =="有"? lg /2:0 ',
+        lhz13:' wdlyp3 =="有"? lg /2:0 ',
+        lhz14:' m14 ==0?0:" "',
+        lhz15:' m15 ==0?0:" "',
+
+        lslqg:' lslhz - lg /2',
+        lshlqg:' lshlhz - lg /2',
+        lqg1:' lhz1 - lg /2',
+        lqg2:' lhz2 - lg /2',
+        lqg3:' lg /2 - lhz3 ',
+        lqg4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return   0;
+                case '仰臂':return    lg /2- lhz4 ;
+                case '顶升':return    0;
+                case '顶升+仰臂':return lg /2- lhz4 ;
+            }
+        },
+        lqg5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return lg /2- lhz5 ;
+                case '顶升+仰臂':return lg /2- lhz5 ;
+            }
+        },
+        lqg6:' lg /2',
+        lqg7:' 0',
+        lqg8:' lhz8 + lg /2',
+        lqg9:' lg /2',
+        lqg10:' lhz10 + lg /2 ',
+        lqg11:' lg /2 ',
+        lqg12:' 0 ',
+        lqg13:' wdlyp3 =="有"? lg /2:0 ',
+        lqg14:' m14 ==0 ? 0: lhz14 - lg /2',
+        lqg15:' m15 ==0 ? 0: lhz14 - lg /2',
+
+        lslql:' lslhz - ll /2',
+        lshlql:' lshlhz - ll /2',
+        lql1:' lhz1 - ll /2',
+        lql2:' lhz2 - ll /2',
+        lql3:' ll/2 - lhz3 ',
+        lql4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return   0;
+                case '仰臂':return    ll /2- lhz4 ;
+                case '顶升':return    0;
+                case '顶升+仰臂':return ll /2- lhz4 ;
+            }
+        },
+        lql5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return ll /2- lhz5 ;
+                case '顶升+仰臂':return ll /2- lhz5 ;
+            }
+        },
+        lql6:' ll /2 ',
+        lql7:' 0 ',
+        lql8:' lhz8 + ll /2 ',
+        lql9:' ll /2 ',
+        lql10:' lhz10 + ll /2 ',
+        lql11:' ll /2 ',
+        lql12:' wdlyp3 =="有"? ll /2:0 ',
+        lql13:' wdlyp3 =="有"? ll /2:0 ',
+        lql14:' m14 ==0 ? 0: lhz14 - ll /2',
+        lql15:' m15 ==0 ? 0: lhz15 - ll /2',
+
+        hg4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return ' ';
+                case '顶升':return 0;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        hg5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return ' ';
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        hg7:'0',
+        hg12:' wdlyp3 =="有"? " ":0 ',
+        hg13:' wdlyp3 =="有"? " ":0 ',
+        hg14:' m14 ==0?0:" "',
+        hg15:' m15 ==0?0:" "',
+
+        acx4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return ' ';
+                case '顶升':return 0;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        acx5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return ' ' ;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        acx7:'0',
+        acx12:' wdlyp3 =="有"? " ":0 ',
+        acx13:' wdlyp3 =="有"? " ":0 ',
+        acx14:' m14 ==0 ? 0: " "',
+        acx15:' m15 ==0 ? 0: " "',
+
+        asltx:' aslcx ',
+        ashltx:' ashlcx ',
+        atx4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return ' ';
+                case '顶升':return 0;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        atx5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return ' ' ;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        atx7:'0',
+        atx12:' wdlyp3 =="有"? " ":0 ',
+        atx13:' wdlyp3 =="有"? " ":0 ',
+        atx14:' m14 ==0 ? 0: " "',
+        atx15:' m15 ==0 ? 0: " "',
+
+        lhzf1:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return lhz1 ;
+                case '仰臂':      return lhz1 /Math.cos( dbyj );
+                case '顶升':      return lhz1 ;
+                case '顶升+仰臂': return lhz1 /Math.cos( dbyj );
+            }
+        },
+        lhzf2:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return lhz2 ;
+                case '仰臂':      return lhz2 /Math.cos( dbyj );
+                case '顶升':      return lhz2 ;
+                case '顶升+仰臂': return lhz2 /Math.cos( dbyj );
+            }
+        },
+        lhzf3:' lhz3 ',
+        lhzf4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return ' ';
+                case '顶升':return 0;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        lhzf5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return ' ' ;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        lhzf6 :' lhz6 ',
+        lhzf7 :' lhz7 ',
+        lhzf8 :' lhz8 ',
+        lhzf9 :' lhz9 ',
+        lhzf10:' lhz10 ',
+        lhzf11:' lhz11 ',
+        lhzf12:' wdlyp3 =="有"? lg /2:0 ',
+        lhzf13:' wdlyp3 =="有"? lg /2:0 ',
+        lhzf14:' m14 ==0 ? 0: " "',
+        lhzf15:' m15 ==0 ? 0: " "',
+
+        lhl1:' lhzf1 + ll /2',
+        lhl2:' lhzf2 + ll /2',
+        lhl3:' lhzf3 + ll /2',
+        lhl4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return   lhzf4 + ll /2;
+                case '顶升':return   0;
+                case '顶升+仰臂':return lhzf4 + ll /2;
+            }
+        },
+        lhl5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱' :return 0;
+                case '仰臂'     :return 0;
+                case '顶升'     :return lhzf5 + ll /2;
+                case '顶升+仰臂':return lhzf5 + ll /2;
+            }
+        },
+        lhl6:' ll /2',
+        lhl7:' 0',
+        lhl8:' lhzf8 - ll /2',
+        lhl9:' ll /2',
+        lhl10:' ll /2- lhzf10 ',
+        lhl11:' ll /2 ',
+        lhl12:' wdlyp3 =="有"? ll :0 ',
+        lhl13:' 0',
+        lhl14:' m14 ==0 ? 0: lhzf14 + ll /2',
+        lhl15:' m15 ==0 ? 0: lhzf15 - ll /2',
+
+        hgf1:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg1 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf2:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg2 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf3:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg3 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg4 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf6:' hg6 ',
+        hgf7:' 0 ',
+        hgf8:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg8 ;
+                case '仰臂':      return hg8;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf9:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg9 ;
+                case '仰臂':      return hg9;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf10:' hg10 ',
+        hgf11:' hg11 ',
+        hgf12:' hg12 ',
+        hgf13:' hg13 ',
+        hgf14:' m14 ==0 ? 0: " "',
+        hgf15:' m15 ==0 ? 0: " "',
+
+        afcx1:' acx1 ',
+        afcx2:' acx2 ',
+        afcx3:' acx3 ',
+        afcx4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return 0;
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        afcx5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return 0;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        afcx6:' acx6 ',
+        afcx7:' acx7 ',
+        afcx8:' acx8 ',
+        afcx9:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return acx9 ;
+                case '仰臂':      return acx9;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        afcx10:' acx10 ',
+        afcx11:' acx11 ',
+        afcx12:' acx12 ',
+        afcx13:' acx13 ',
+        afcx14:' m14 ==0 ? 0: " "',
+        afcx15:' m15 ==0 ? 0: " "',
+
+        aftx3:' atx3 ',
+        aftx4:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return 0;
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        aftx5:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return 0;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        aftx6:' atx6 ',
+        aftx7:' 0 ',
+        aftx9:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return atx9 ;
+                case '仰臂':      return atx9;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        aftx11:' atx11 ',
+        aftx12:' atx12 ',
+        aftx13:' atx13 ',
+        aftx14:' m14 ==0 ? 0: " "',
+        aftx15:' m15 ==0 ? 0: " "',
+
+    }
+    data.init(calculateFunction);
+    (function () {
+        InitNav(4);
+        $('#Stability_LSFArm').addClass('o-sub-cur');
+        $("button[class='button']").on("click", function () {
+            if ($(".conllect_table").css("display") == "none") {
+                $(".conllect_table").css("display", "block");
+                $("button[class='button']")[0].innerText = "隐藏轮压汇总表";
+            } else {
+                $(".conllect_table").css("display", "none");
+                $("button[class='button']")[0].innerText = "显示轮压汇总表";
+            }
+        })
+    })()
+</script>
 </body>
 </html>
