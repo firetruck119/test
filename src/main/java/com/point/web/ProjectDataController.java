@@ -224,7 +224,7 @@ public class ProjectDataController {
             insertList.forEach(x -> projectDataMapper.insertSelective(x));
             updateList.forEach(x -> projectDataMapper.updateByPrimaryKeySelective(x));
             result.setStatus("true");
-            result.setMessage("导入成功");
+            result.setMessage("导入成功，新增"+insertList.size()+"条数据，更新"+updateList.size()+"条数据");
         } catch (CustomerException cex) {
             result.setStatus("false");
             result.setMessage("没有数据导入," + cex.getMessage());
@@ -341,7 +341,7 @@ public class ProjectDataController {
                         }
                     }
                     if (entry.getKey().startsWith("stringValue")) {
-                        int columnIndex = Integer.parseInt(entry.getKey().substring(11));
+                        int columnIndex = Integer.parseInt(entry.getKey().substring("stringValue".length()));
                         Object object = indexFieldMap.get(columnIndex).get(item);
                         if (object == null) {
                             filter = true;
@@ -354,7 +354,7 @@ public class ProjectDataController {
                         }
                     } else if (entry.getKey().startsWith("minValue") || entry.getKey().startsWith("maxValue")) {
                         boolean greatThan = entry.getKey().startsWith("minValue");
-                        int columnIndex = Integer.parseInt(entry.getKey().substring(8));
+                        int columnIndex = Integer.parseInt(entry.getKey().substring("minValue".length()));
                         Object object = indexFieldMap.get(columnIndex).get(item);
                         if (object == null) {
                             filter = true;

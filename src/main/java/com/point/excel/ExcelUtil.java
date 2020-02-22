@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
@@ -85,34 +86,60 @@ public class ExcelUtil {
 
         // 获取第一个张表
         Sheet sheet = workbook.getSheetAt(0);
-        // 获取每行中的字段
+        //判断后续表行是否已经没有数据了
+        boolean rowEndFlag = false;
         for (int r = 1; r <= sheet.getLastRowNum(); r++) {
             try {
                 Row row = sheet.getRow(r); // 获取行
+                boolean rowHasData = checkRowHasData(columns, row);
+                if(rowHasData){
+                    if(rowEndFlag){
+                        throw new CustomerException("中间不能有空白行");
+                    }
+                }else{
+                    rowEndFlag = true;
+                    continue;
+                }
                 // 获取单元格中的值并存到对象中
                 ProjectData ProjectData = new ProjectData();
                 String strId = row.getCell(0).toString();
-                int id = 0;
-                if (strId == null || !strId.isEmpty())
-                    try {
-                        id = (int) (Double.parseDouble(strId));
-                    } catch (Exception ex) {
-                        throw new CustomerException("第" + (r + 1) + "行序号不正确");
-                    }
+                int id;
+                try {
+                    id = (int) (Double.parseDouble(strId));
+                } catch (Exception ex) {
+                    throw new CustomerException("第" + (r + 1) + "行序号不正确");
+                }
 
                 ProjectData.setProjectdataid(id);
                 ProjectData.setProjectname(row.getCell(1).toString());
                 for (int column = 1; column <= columns; column++) {
+                    if(row.getCell(column + 1)==null
+                            ||StringUtils.isEmptyOrWhitespace(row.getCell(column + 1).toString())){
+                        throw new CustomerException("第" + (r + 1) + "行存在空白列");
+                    }
                     Field dataColumnFeild = ProjectData.class.getDeclaredField("datacolumn" + column);
                     dataColumnFeild.setAccessible(true);
                     dataColumnFeild.set(ProjectData, row.getCell(column + 1).toString());
                 }
                 list.add(ProjectData);
-            } catch (Exception ex) {
+            }catch (CustomerException cex){
+                throw cex;
+            }
+            catch (Exception ex) {
                 throw new CustomerException("第" + (r + 1) + "行数据不正确，序号必须为数字，其他列不能为空");
             }
         }
         return list;
+    }
+
+    private boolean checkRowHasData(int columns, Row row){
+        for (int column = 0; column <= columns; column++) {
+            if (row.getCell(column) != null
+                    && !StringUtils.isEmptyOrWhitespace(row.getCell(column).toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public HSSFWorkbook getHSSFWorkbook(List<ProjectData> datalist, List<ProjectColumnDefinition> definitionList) {
