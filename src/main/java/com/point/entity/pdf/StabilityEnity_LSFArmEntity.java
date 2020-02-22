@@ -33,7 +33,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double nwd1;
     private Double nwd2;
     private String txxxh;
-    private Double txxdj;
+    private String txxdj;
     private Double ftxxjq;
     private Double nwdt;
     private String djlsxh;
@@ -245,6 +245,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double aftx15;
 
     //Select
+    private String typeOfMachine;
     private String typeOfRunningGear;
     private String typeOfPin;
     private String levelOfPin;
@@ -582,8 +583,8 @@ public class StabilityEnity_LSFArmEntity {
         Double mfhl9 = m9 * lhl9 * 10;
         Double mfhl10 = m10 * lhl10 * 10;
         Double mfhl11 = m11 * lhl11 * 10;
-        Double mfhl12 = m12 * lhl12 * 10;
-        Double mfhl13 = m13 * lhl13 * 10;
+        Double mfhl12 = m12 * lhl12 * 10 / 2;
+        Double mfhl13 = m13 * lhl13 * 10 / 2;
         Double mfhl14 = m14 * lhl14 * 10;
         result.put("mfhl1", mfhl1);
         result.put("mfhl2", mfhl2);
@@ -1352,8 +1353,8 @@ public class StabilityEnity_LSFArmEntity {
     public Map<String, String> checkCN(String language) {
         Map<String, String> map = createMapForPDF(language);
         Map<String, String> result = new HashMap<>();
-        result.put("wdlym1",map.get("wdlym1"));
-        result.put("wdlym2",map.get("wdlym2"));
+        result.put("wdlym1", map.get("wdlym1"));
+        result.put("wdlym2", map.get("wdlym2"));
         result.put("x2", map.get("x2"));
         result.put("x4", map.get("x4"));
         result.put("av1k", map.get("av1k"));

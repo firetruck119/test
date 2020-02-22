@@ -69,22 +69,17 @@ public class Stability_LSFArmController {
                          @RequestParam(required = false) String sjht,
                          @RequestParam(required = false) Boolean check) throws IOException, DocumentException {
 
-        Map<String, InputImageCache> imageSaveMap = new HashMap<>();
+        Map<String, InputImageCache> imageMap = new HashMap<>();
         try {
-            imageSaveMap = tool.getImageCacheMap(request);
+            imageMap = tool.getImageMap_New(request);
         } catch (Exception e) {
         }
-        imageCacheData.saveCacheValue(sjht,imageSaveMap);
+        imageCacheData.saveCacheValue(sjht,imageMap);
         cacheData.saveCacheValue(sjht,entity);
-        Map<String, Image> imageMap = new HashMap<>();
-        try {
-            imageMap = tool.getImageMap(request);
-        } catch (Exception e) {
-        }
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue(entity.createMapForPDF(language), imageMap, "new/下回转固定臂-稳定性校核及轮压计算书"));
+        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转固定臂-稳定性校核及轮压计算书"));
         if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue(entity.createMapForCheckPDF(), imageMap, "new/稳定性校核及轮压计算书验证部分"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForCheckPDF(), imageMap, "new/稳定性校核及轮压计算书验证部分"));
             return tool.getResponseEntity("稳定性校核及轮压计算书", pdf.MergePDF(list));
         }
         return tool.getResponseEntity("稳定性校核及轮压计算书", list.get(0));

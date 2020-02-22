@@ -37,9 +37,10 @@ public class ImageCacheData<T> {
                     .collect(Collectors.toMap(InputImageCache::getInputname, v -> v));
             for (Map.Entry<String, InputImageCache> entry : dataMap.entrySet()) {
                 InputImageCache inputCache = existedMap.get(entry.getKey());
-                InputImageCache temp=entry.getValue();
+                InputImageCache temp = entry.getValue();
                 temp.setBatchid(batchId);
                 if (inputCache == null) {
+                    temp.setInputcacheid(null);
                     mapper.insertSelective(temp);
                 } else {
                     temp.setInputcacheid(inputCache.getInputcacheid());
@@ -52,7 +53,7 @@ public class ImageCacheData<T> {
     }
 
     private Map<String, InputImageCache> readCacheFromDb(String batchId) {
-        Map<String,InputImageCache> result = new HashMap<>();
+        Map<String, InputImageCache> result = new HashMap<>();
         try {
             InputCacheExample example = new InputCacheExample();
             InputCacheExample.Criteria criteria = example.createCriteria();
@@ -60,7 +61,7 @@ public class ImageCacheData<T> {
             List<InputImageCache> existedList = mapper.selectByExample(example);
 
             result = existedList.stream()
-                    .collect(Collectors.toMap(InputImageCache::getInputname, e->{
+                    .collect(Collectors.toMap(InputImageCache::getInputname, e -> {
                         e.setType(ImgDataType.getTypeByName(e.getType()).getTypeBybase64());
                         return e;
                     }));
@@ -128,7 +129,7 @@ public class ImageCacheData<T> {
 
     }
 
-//    public void saveCacheValueByClassName(String batchId, String className) {
+    //    public void saveCacheValueByClassName(String batchId, String className) {
 //        Class entity = getClassByClassName(className);
 //        if (StringUtils.isEmpty(batchId)) {
 //            return;
@@ -149,12 +150,17 @@ public class ImageCacheData<T> {
 //
 //        }
 //    }
-
     public Image readCacheFromById(String id) throws IOException, BadElementException {
-        byte[] bytes=mapper.selectByPrimaryKey(new Integer(id)).getInputvalue();
+        byte[] bytes = mapper.selectByPrimaryKey(new Integer(id)).getInputvalue();
         return Image.getInstance(bytes);
     }
-    public void saveCacheValue(String batchId, Map<String,InputImageCache> map) {
+
+    public InputImageCache readCacheFromById_New(String id) throws IOException, BadElementException {
+        return  mapper.selectByPrimaryKey(new Integer(id));
+
+    }
+
+    public void saveCacheValue(String batchId, Map<String, InputImageCache> map) {
         writeCache2Db(batchId, map);
     }
 }

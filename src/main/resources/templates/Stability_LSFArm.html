@@ -187,13 +187,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
-                    <td>
+                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:40%;">
                         <input name="sjht" type="text" list="txtBatchId"/>
                         <datalist id="txtBatchId">
                         </datalist>
                     </td>
-                    <td style=""><input type="button" name="getData" value="读取"/></td>
+                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
                                 var url = '/Stability_LSFArm/getData';
@@ -246,14 +246,12 @@
                     <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">其它Ⅰ、Ⅱ名称</td>
                 </tr>
                 <tr>
-                    <td style="width:40%;">其他I的名称</td>
-                    <td style="width:43%;"><input name="qt1" type="text" th:field="*{qt1}" definevalue="其他I"/></td>
-                    <td style="width:17%;">kg</td>
+                    <td>其他I的名称</td>
+                    <td colspan="2"><input name="qt1" type="text" th:field="*{qt1}" definevalue="其他I"/></td>
                 </tr>
                 <tr>
                     <td>其他II的名称</td>
-                    <td><input name="qt2" type="text" th:field="*{qt2}" definevalue="其他II"/></td>
-                    <td>kg</td>
+                    <td colspan="2"><input name="qt2" type="text" th:field="*{qt2}" definevalue="其他II"/></td>
                 </tr>
             </table>
         </div>
@@ -636,7 +634,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>臂头自重</td>
+                    <td>臂头</td>
                     <td>
                         <p><i>m<sub>1</sub></i></p>
                     </td>
@@ -644,7 +642,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>大臂自重</td>
+                    <td>大臂</td>
                     <td>
                         <p><i>m<sub>2</sub></i></p>
                     </td>
@@ -652,7 +650,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置自重</td>
+                    <td>物料起升机构装置</td>
                     <td>
                         <p><i>m<sub>3</sub></i></p>
                     </td>
@@ -660,7 +658,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>液压缸自重</td>
+                    <td>液压缸</td>
                     <td>
                         <p><i>m<sub>4</sub></i></p>
                     </td>
@@ -668,7 +666,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ</td>
+                    <td>顶升液压缸</td>
                     <td>
                         <p><i>m<sub>5</sub></i></p>
                     </td>
@@ -676,7 +674,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>回转机构自重</td>
+                    <td>回转机构</td>
                     <td>
                         <p><i>m<sub>6</sub></i></p>
                     </td>
@@ -684,7 +682,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>配重臂自重</td>
+                    <td>配重臂</td>
                     <td>
                         <p><i>m<sub>7</sub></i></p>
                     </td>
@@ -692,7 +690,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>配重自重</td>
+                    <td>配重</td>
                     <td>
                         <p><i>m<sub>8</sub></i></p>
                     </td>
@@ -700,7 +698,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>立柱自重</td>
+                    <td>立柱</td>
                     <td>
                         <p><i>m<sub>9</sub></i></p>
                     </td>
@@ -708,7 +706,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>起升机构自重</td>
+                    <td>起升机构</td>
                     <td>
                         <p><i>m<sub>10</sub></i></p>
                     </td>
@@ -716,7 +714,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>底架自重</td>
+                    <td>底架</td>
                     <td>
                         <p><i>m<sub>11</sub></i></p>
                     </td>
@@ -724,7 +722,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>主动运行自重</td>
+                    <td>主动运行</td>
                     <td>
                         <p><i>m<sub>12</sub></i></p>
                     </td>
@@ -732,7 +730,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>被动运行自重</td>
+                    <td>被动运行</td>
                     <td>
                         <p><i>m<sub>13</sub></i></p>
                     </td>
@@ -856,7 +854,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>液压缸至回转中心距离</td>
+                    <td>仰臂液压缸至回转中心距离</td>
                     <td>
                         <p><i>L<sub>z4</sub></i></p>
                     </td>
@@ -868,7 +866,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ至回转中心距离</td>
+                    <td>顶升液压缸至回转中心距离</td>
                     <td>
                         <p><i>L<sub>z5</sub></i></p>
                     </td>
@@ -966,11 +964,11 @@
                 <tr>
                     <td>被动运行至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>z12</sub></i></p>
+                        <p><i>L<sub>z13</sub></i></p>
                     </td>
                     <td><input name="lhz13" type="text" th:field="*{lhz13}"/></td>
                     <td>
-                        <p><i>L<sub>zf12</sub></i></p>
+                        <p><i>L<sub>zf13</sub></i></p>
                     </td>
                     <td><input name="lhzf13" type="text" th:field="*{lhzf13}"/></td>
                     <td>m</td>
@@ -978,11 +976,11 @@
                 <tr>
                     <td>其他I至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>z12</sub></i></p>
+                        <p><i>L<sub>z14</sub></i></p>
                     </td>
                     <td><input name="lhz14" type="text" th:field="*{lhz14}"/></td>
                     <td>
-                        <p><i>L<sub>zf12</sub></i></p>
+                        <p><i>L<sub>zf14</sub></i></p>
                     </td>
                     <td><input name="lhzf14" type="text" th:field="*{lhzf14}"/></td>
                     <td>m</td>
@@ -990,11 +988,11 @@
                 <tr>
                     <td>其他II至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>z12</sub></i></p>
+                        <p><i>L<sub>z15</sub></i></p>
                     </td>
                     <td><input name="lhz15" type="text" th:field="*{lhz15}"/></td>
                     <td>
-                        <p><i>L<sub>zf12</sub></i></p>
+                        <p><i>L<sub>zf15</sub></i></p>
                     </td>
                     <td><input name="lhzf15" type="text" th:field="*{lhzf15}"/></td>
                     <td>m</td>
@@ -1102,7 +1100,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>液压缸至轨道上平面高度</td>
+                    <td>仰臂液压缸至轨道上平面高度</td>
                     <td>
                         <p><i>h4</i></p>
                     </td>
@@ -1114,7 +1112,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ至轨道上平面高度</td>
+                    <td>顶升液压缸至轨道上平面高度</td>
                     <td>
                         <p><i>h5</i></p>
                     </td>
@@ -1347,7 +1345,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>液压缸迎风面积</td>
+                    <td>仰臂液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>4</sub></i></p>
                     </td>
@@ -1359,7 +1357,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ迎风面积</td>
+                    <td>顶升液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>5</sub></i></p>
                     </td>
@@ -1467,7 +1465,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他I运行迎风面积</td>
+                    <td>其他I迎风面积</td>
                     <td>
                         <p><i>A<sub>14</sub></i></p>
                     </td>
@@ -1479,7 +1477,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他II运行迎风面积</td>
+                    <td>其他II迎风面积</td>
                     <td>
                         <p><i>A<sub>15</sub></i></p>
                     </td>
@@ -1592,7 +1590,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>液压缸迎风面积</td>
+                    <td>仰臂液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>t4</sub></i></p>
                     </td>
@@ -1604,7 +1602,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ迎风面积</td>
+                    <td>顶升液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>t5</sub></i></p>
                     </td>
@@ -1712,7 +1710,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他I运行迎风面积</td>
+                    <td>其他I迎风面积</td>
                     <td>
                         <p><i>A<sub>t14</sub></i></p>
                     </td>
@@ -1724,7 +1722,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他II运行迎风面积</td>
+                    <td>其他II迎风面积</td>
                     <td>
                         <p><i>A<sub>t15</sub></i></p>
                     </td>
@@ -1804,7 +1802,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>液压缸至前轨道距离</td>
+                    <td>仰臂液压缸至前轨道距离</td>
                     <td>
                         <p><i>L<sub>q4</sub></i></p>
                     </td>
@@ -1812,7 +1810,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ至前轨道距离</td>
+                    <td>顶升液压缸至前轨道距离</td>
                     <td>
                         <p><i>L<sub>q5</sub></i></p>
                     </td>
@@ -1884,7 +1882,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至前轨道距离</td>
+                    <td>其他I至前轨道距离</td>
                     <td>
                         <p><i>L<sub>q14</sub></i></p>
                     </td>
@@ -1892,9 +1890,9 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至前轨道距离</td>
+                    <td>其他II至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>q13</sub></i></p>
+                        <p><i>L<sub>q15</sub></i></p>
                     </td>
                     <td><input name="lqg15" type="text" th:field="*{lqg15}"/></td>
                     <td>m</td>
@@ -1969,7 +1967,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>液压缸至前轮距离</td>
+                    <td>仰臂液压缸至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql4</sub></i></p>
                     </td>
@@ -1977,7 +1975,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ至前轮距离</td>
+                    <td>顶升液压缸至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql5</sub></i></p>
                     </td>
@@ -2049,7 +2047,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至前轮距离</td>
+                    <td>其他I至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql14</sub></i></p>
                     </td>
@@ -2057,7 +2055,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至前轮距离</td>
+                    <td>其他II至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql15</sub></i></p>
                     </td>
@@ -2118,7 +2116,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>液压缸至后轮距离</td>
+                    <td>仰臂液压缸至后轮距离</td>
                     <td>
                         <p><i>L<sub>h4</sub></i></p>
                     </td>
@@ -2126,7 +2124,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其它Ⅰ至后轮距离</td>
+                    <td>顶升液压缸至后轮距离</td>
                     <td>
                         <p><i>L<sub>h5</sub></i></p>
                     </td>
@@ -2232,7 +2230,8 @@
                        onclick="isCheck(true);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
         <input type="reset" form="form1" value="重置"/>
     </div>
-    <div class="navbox conllect_table" style="top:400px;left:20px;width:500px;display:none">
+    <div class="navbox conllect_table" style="border:5px double #0C0;background-color:#DFE3E6;
+    #top:400px;left:20px;width:500px;display:none;">
         <p align="right">单位：kN</p>
         <table class="tb" style="width:500px;position: relative">
             <tr>
@@ -2641,9 +2640,9 @@
         lqg10:' lhz10 + lg /2 ',
         lqg11:' lg /2 ',
         lqg12:' 0 ',
-        lqg13:' wdlyp3 =="有"? lg /2:0 ',
+        lqg13:' wdlyp3 =="有"? lg :0 ',
         lqg14:' m14 ==0 ? 0: lhz14 - lg /2',
-        lqg15:' m15 ==0 ? 0: lhz14 - lg /2',
+        lqg15:' m15 ==0 ? 0: lhz15 - lg /2',
 
         lslql:' lslhz - ll /2',
         lshlql:' lshlhz - ll /2',
@@ -2672,10 +2671,10 @@
         lql9:' ll /2 ',
         lql10:' lhz10 + ll /2 ',
         lql11:' ll /2 ',
-        lql12:' wdlyp3 =="有"? ll /2:0 ',
-        lql13:' wdlyp3 =="有"? ll /2:0 ',
+        lql12:' wdlyp3 =="有"? ll :0 ',
+        lql13:' wdlyp3 =="有"? ll :0 ',
         lql14:' m14 ==0 ? 0: lhz14 - ll /2',
-        lql15:' m15 ==0 ? 0: lhz15 - ll /2',
+        lql15:' m15 ==0 ? 0: lhz15 + ll /2',
 
         hg4:function () {
             switch( typeOfMachine ){
@@ -2748,17 +2747,17 @@
         lhzf1:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return lhz1 ;
-                case '仰臂':      return lhz1 /Math.cos( dbyj );
+                case '仰臂':      return lhz1 /Math.cos(Math.PI* dbyj /180 );
                 case '顶升':      return lhz1 ;
-                case '顶升+仰臂': return lhz1 /Math.cos( dbyj );
+                case '顶升+仰臂': return lhz1 /Math.cos(Math.PI* dbyj /180 );
             }
         },
         lhzf2:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return lhz2 ;
-                case '仰臂':      return lhz2 /Math.cos( dbyj );
+                case '仰臂':      return lhz2 /Math.cos(Math.PI* dbyj /180);
                 case '顶升':      return lhz2 ;
-                case '顶升+仰臂': return lhz2 /Math.cos( dbyj );
+                case '顶升+仰臂': return lhz2 /Math.cos(Math.PI* dbyj /180);
             }
         },
         lhzf3:' lhz3 ',
@@ -2815,7 +2814,7 @@
         lhl10:' ll /2- lhzf10 ',
         lhl11:' ll /2 ',
         lhl12:' wdlyp3 =="有"? ll :0 ',
-        lhl13:' 0',
+        lhl13:' wdlyp3 =="有"? ll :0 ',
         lhl14:' m14 ==0 ? 0: lhzf14 + ll /2',
         lhl15:' m15 ==0 ? 0: lhzf15 - ll /2',
 
@@ -2845,16 +2844,16 @@
         },
         hgf4:function () {
             switch( typeOfMachine ){
-                case '固定立柱':  return hg4 ;
+                case '固定立柱':  return 0 ;
                 case '仰臂':      return ' ';
-                case '顶升':      return ' ';
+                case '顶升':      return 0;
                 case '顶升+仰臂': return ' ';
             }
         },
         hgf5:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
-                case '仰臂':      return ' ';
+                case '仰臂':      return 0;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }

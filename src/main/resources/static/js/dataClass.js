@@ -49,7 +49,7 @@
                             }
                         }
                     }
-                    data.datacalculate({calList:list})
+                    data.datacalculate({calList: list})
                     data.listtoform();
                 }
             })
@@ -72,10 +72,11 @@
                 for (var key in e) {
                     var temp = e[key];
                     $("img[name= '" + key + "']")[0].src = 'data:' + temp['type'] + ',' + temp['inputvalue'];
-                    if ($('input[name=tu_' + key + ']')[0])
+                    if ($('input[name=tu_' + key + ']')[0]){
                         $('input[name=tu_' + key + ']').val(temp.inputcacheid);
-                    else
+                    } else
                         $('form').append('<input name="tu_' + key + '" type="hidden" value="' + temp.inputcacheid + '"/>');
+                    $('input[name=' + key + ']').val('');
                 }
         },
     };
@@ -110,11 +111,11 @@
             for (var temp in this.datalist) {
                 var o = this.datalist[temp];
                 var value = eval(temp);
-                if (['NaN','undefined','null'].indexOf(String(value))<0 && calObjList[temp]) {
+                if (['NaN', 'undefined', 'null'].indexOf(String(value)) < 0 && calObjList[temp]) {
                     if (String(value) != ' ')
                         o.color = 'grey';
                     else if (o.color != 'white')
-                        o.color = 'red';
+                        o.color = 'white';
                     o.value = value;
                 }
             }
@@ -161,9 +162,12 @@
                 var temp = this.datalist[data];
                 if (temp.value != null) {
                     var s = String(temp.value);
-                    if (s.indexOf('NaN') <0 &&(s.indexOf(' ') <0||s.indexOf(' ')==0)&&s.indexOf('undefined') <0) {
-                        var e = $(temp.type+'[name="' + temp.name + '"]');
-                        e.val(temp.value);
+                    if ((s.indexOf('NaN') < 0
+                        && (s.indexOf(' ') < 0 || s.indexOf(' ') == 0)
+                        && s.indexOf('undefined') < 0
+                        ) ||(temp.type=='SELECT')) {
+                        var e = $(temp.type + '[name="' + temp.name + '"]');
+                        e.val(String(temp.value)!=' '?getString(temp.value):'');
                         e.css('background-color', temp.color);
                     }
                 }
@@ -179,10 +183,8 @@
             $('form')[0].reset();
             $('input[type=hidden]').remove();
         },
-        init: function (dataf, selectf) {
+        init: function (dataf) {
             this.clear();
-            if (selectf != null)
-                data.selectFunList = selectf;
             data.formtolist();
             if (dataf != null) {
                 data.calculateFunction = dataf;
@@ -212,7 +214,8 @@
             })
             $('input[type=reset]').click(function () {
                 data.clear();
-                data.init();
+                data.listtoform();
+                data.init(data.calculateFunction);
                 return false;
             })
         },
@@ -231,9 +234,10 @@ function dataType(name, value, type) {
         this.color = c;
     }
 }
+
 function janyan(URL) {
-    var dataJson=$("form").serialize();
-    dataJson["check"]=true;
+    var dataJson = $("form").serialize();
+    dataJson["check"] = true;
     $.ajax({
         url: URL,
         type: "post",
@@ -252,8 +256,8 @@ function janyan(URL) {
 }
 
 function getString(v) {
-    if (isNaN(parseFloat(v)))
-        return "";
+    if (typeof v =='string')
+        return v;
     var s = 5;
     var temp = Math.round(parseFloat(v) * 100000);
     var c = temp.toString();
@@ -266,11 +270,11 @@ function getString(v) {
     return v.toFixed(s);
 }
 
-function isCheck(t){
-    var e=$('input[name=check]');
-    if(e.length==0){
+function isCheck(t) {
+    var e = $('input[name=check]');
+    if (e.length == 0) {
         $('form').append('<input name="check" type="hidden"/>');
     }
-    e=$('input[name=check]');
+    e = $('input[name=check]');
     e.val(t);
 }

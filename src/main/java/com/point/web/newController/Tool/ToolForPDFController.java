@@ -41,6 +41,40 @@ public class ToolForPDFController {
         return new ResponseEntity<byte[]>(bytes, headers, HttpStatus.OK);
     }
 
+    public Map<String, InputImageCache> getImageMap_New( HttpServletRequest request) throws IOException, BadElementException {
+        Map<String,InputImageCache> imageMap=new HashMap<>();
+        Map<String, MultipartFile> files = ((MultipartHttpServletRequest) request).getFileMap();
+        Map<String ,String[]> a=request.getParameterMap();
+        Map<String,String> imgIdMap=new HashMap();
+        a.forEach((key,val)-> {
+            if (key.indexOf("tu_") > -1) {
+                imgIdMap.put(key.split("_")[1], val[0]);
+            }
+        });
+        for (Map.Entry<String, MultipartFile> e : files.entrySet()) {
+            if(e.getValue().isEmpty())
+                continue;
+            InputImageCache data=new InputImageCache();
+            data.setInputvalue(e.getValue().getBytes());
+            data.setInputname(e.getKey());
+            String s[]=e.getValue().getOriginalFilename().split("\\.");
+            data.setType(s[s.length-1]);
+            imageMap.put(e.getKey(), data);
+        }
+        imgIdMap.forEach((key,id)->{
+            if(!imageMap.containsKey(key)){
+                try {
+                    imageMap.put(key,mapper.readCacheFromById_New(id));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (BadElementException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        return imageMap;
+    }
+
     public Map<String, Image> getImageMap(HttpServletRequest request) throws IOException, BadElementException {
         Map<String, MultipartFile> files = ((MultipartHttpServletRequest) request).getFileMap();
         Map<String, Image> imageMap = new HashMap<>();
@@ -71,8 +105,6 @@ public class ToolForPDFController {
     }
 
     public Map<String, InputImageCache> getImageCacheMap(HttpServletRequest request) throws IOException {
-
-
         Map<String, MultipartFile> files = ((MultipartHttpServletRequest) request).getFileMap();
         Map<String, InputImageCache> imageMap = new HashMap<>();
         for (Map.Entry<String, MultipartFile> e : files.entrySet()) {
@@ -86,7 +118,6 @@ public class ToolForPDFController {
             imageMap.put(e.getKey(), data);
         }
         return imageMap;
-
     }
 
 }
