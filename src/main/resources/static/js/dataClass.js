@@ -112,11 +112,12 @@
                 var o = this.datalist[temp];
                 var value = eval(temp);
                 if (['NaN', 'undefined', 'null'].indexOf(String(value)) < 0 && calObjList[temp]) {
-                    if (String(value) != ' ')
+                    if (String(value) != ' '){
                         o.color = 'grey';
+                        o.value = value;
+                    }
                     else if (o.color != 'white')
                         o.color = 'white';
-                    o.value = value;
                 }
             }
 
