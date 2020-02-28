@@ -52,6 +52,78 @@ public class ProjectDataController {
         return modelAndView;
     }
 
+    @GetMapping("/ProjectDataNew")
+    public ModelAndView ProjectData_New() throws IllegalAccessException {
+        ModelAndView modelAndView = new ModelAndView("ProjectData_New");
+        //获取所有数据
+        List<ProjectData> projectDataList = projectDataMapper.selectByExample(null);
+        //获取列表头信息
+        List<ProjectColumnDefinition> definitionList = projectColumnDefinitionMapper.selectByExample(null);
+        Map<String,Object> map=new HashMap<>();
+        List<ProjectColumnDefinitionDetail> result = new ArrayList<>();
+        Map<ProjectColumnDefinition, Field> dataFieldMap = excelUtil.getDataFieldMap(definitionList);
+        for (Map.Entry<ProjectColumnDefinition, Field> fieldEntry : dataFieldMap.entrySet()) {
+            if (fieldEntry.getKey().getColumndatatype() == Consts.COLUMNDATATYPE_STRING) {
+                ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
+                result.add(detail);
+                List<String> stringValues = new ArrayList<>();
+                detail.setStringValues(stringValues);
+                for (ProjectData projectData : projectDataList) {
+                    if (fieldEntry.getValue().get(projectData) != null) {
+                        stringValues.add(fieldEntry.getValue().get(projectData).toString());
+                    }
+                }
+                if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_LETTER) {
+                    stringValues = stringValues.stream().distinct().collect(Collectors.toList());
+                    String[] stringArray = stringValues.toArray(new String[stringValues.size()]);
+                    Collator cmp = Collator.getInstance(java.util.Locale.CHINA);
+                    Arrays.sort(stringArray, cmp);
+                    detail.setStringValues(Arrays.asList(stringArray));
+                } else if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_RATE) {
+                    Map<String, Long> rateMap = stringValues.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+                    stringValues = rateMap.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).collect(Collectors.toList());
+                    Collections.reverse(stringValues);
+                    detail.setStringValues(stringValues);
+                }
+            } else if (fieldEntry.getKey().getColumndatatype() == Consts.COLUMNDATATYPE_NUMBERIC) {
+                ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
+                result.add(detail);
+                if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_NUMBER_VALUE) {
+                    List<Double> doubleValues = new ArrayList<>();
+                    for (ProjectData projectData : projectDataList) {
+                        if (fieldEntry.getValue().get(projectData) != null) {
+                            doubleValues.add(Double.parseDouble(fieldEntry.getValue().get(projectData).toString()));
+                        }
+                    }
+                    Collections.sort(doubleValues);
+                    detail.setStringValues(new ArrayList<>());
+                    doubleValues.forEach(x -> detail.getStringValues().add(String.valueOf(x)));
+                } else if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_NUMBER_RANGE_) {
+                    for (ProjectData projectData : projectDataList) {
+                        if (fieldEntry.getValue().get(projectData) != null) {
+
+                            double doubleValue = Double.parseDouble(fieldEntry.getValue().get(projectData).toString());
+                            if (detail.getMinValue() == null || doubleValue < detail.getMinValue()) {
+                                detail.setMinValue(doubleValue);
+                            }
+                            if (detail.getMaxValue() == null || doubleValue > detail.getMaxValue()) {
+                                detail.setMaxValue(doubleValue);
+                            }
+                        }
+                    }
+                }
+            }else if(fieldEntry.getKey().getColumndatatype()==Consts.COLUMNDATATYPE_URL){
+                ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
+                result.add(detail);
+            }
+        }
+        result.sort(Comparator.comparing(ProjectColumnDefinition::getProjectcolumndefinitionid));
+        map.put("data",projectDataList);
+        map.put("head",result);
+        modelAndView.addAllObjects(map);
+        return modelAndView;
+    }
+
     @GetMapping("/ProjectData")
     public ModelAndView ProjectData() {
         ModelAndView modelAndView = new ModelAndView("ProjectData");
@@ -103,10 +175,13 @@ public class ProjectDataController {
         GridDataJsonModel model = new GridDataJsonModel();
         try {
             List<ProjectColumnDefinitionDetail> result = new ArrayList<>();
+            //获取所有数据
             List<ProjectData> projectDataList = projectDataMapper.selectByExample(null);
+            //获取列表头信息
             List<ProjectColumnDefinition> definitionList = projectColumnDefinitionMapper.selectByExample(null);
             Map<ProjectColumnDefinition, Field> dataFieldMap = excelUtil.getDataFieldMap(definitionList);
             for (Map.Entry<ProjectColumnDefinition, Field> fieldEntry : dataFieldMap.entrySet()) {
+                System.out.println(fieldEntry.getKey().getProjectcolumndefinitionid());
                 if (fieldEntry.getKey().getColumndatatype() == Consts.COLUMNDATATYPE_STRING) {
                     ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
                     result.add(detail);
@@ -132,7 +207,7 @@ public class ProjectDataController {
                 } else if (fieldEntry.getKey().getColumndatatype() == Consts.COLUMNDATATYPE_NUMBERIC) {
                     ProjectColumnDefinitionDetail detail = new ProjectColumnDefinitionDetail(fieldEntry.getKey());
                     result.add(detail);
-                    if(fieldEntry.getKey().getQueryconditionorder()==Consts.QUERYCONDITIONORDER_NUMBER_VALUE){
+                    if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_NUMBER_VALUE) {
                         List<Double> doubleValues = new ArrayList<>();
                         for (ProjectData projectData : projectDataList) {
                             if (fieldEntry.getValue().get(projectData) != null) {
@@ -141,8 +216,8 @@ public class ProjectDataController {
                         }
                         Collections.sort(doubleValues);
                         detail.setStringValues(new ArrayList<>());
-                        doubleValues.forEach(x->detail.getStringValues().add(String.valueOf(x)));
-                    }else if(fieldEntry.getKey().getQueryconditionorder()==Consts.QUERYCONDITIONORDER_NUMBER_RANGE_){
+                        doubleValues.forEach(x -> detail.getStringValues().add(String.valueOf(x)));
+                    } else if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_NUMBER_RANGE_) {
                         for (ProjectData projectData : projectDataList) {
                             if (fieldEntry.getValue().get(projectData) != null) {
 
@@ -224,7 +299,7 @@ public class ProjectDataController {
             insertList.forEach(x -> projectDataMapper.insertSelective(x));
             updateList.forEach(x -> projectDataMapper.updateByPrimaryKeySelective(x));
             result.setStatus("true");
-            result.setMessage("导入成功，新增"+insertList.size()+"条数据，更新"+updateList.size()+"条数据");
+            result.setMessage("导入成功，新增" + insertList.size() + "条数据，更新" + updateList.size() + "条数据");
         } catch (CustomerException cex) {
             result.setStatus("false");
             result.setMessage("没有数据导入," + cex.getMessage());
@@ -268,7 +343,7 @@ public class ProjectDataController {
                     Field field = definitionFieldMap.get(columnDefinition);
                     Object object = field.get(projectData);
                     //因为用半角逗号做分隔符，为防误判这里把半角逗号替换成全角
-                    row.add(object == null ? Consts.NULL : object.toString().replace(",","，"));
+                    row.add(object == null ? Consts.NULL : object.toString().replace(",", "，"));
                 }
                 rows.add(String.join(",", row.toArray(new String[0])));
             }
@@ -281,15 +356,15 @@ public class ProjectDataController {
         return model;
     }
 
-    @PostMapping("/exportExcel")
-    private void exportExcel(@RequestParam String map, HttpServletResponse response) {//, HttpServletResponse response
+    @GetMapping("/exportExcel")
+    private void exportExcel(String map, HttpServletResponse response) {//, HttpServletResponse response
         try {
             JSONObject jb = JSONArray.parseObject(map);
             Map<String, String> queryCondition = JSONObject.parseObject(jb.toJSONString()
                     , new TypeReference<Map<String, String>>() {
-            });
+                    });
             List<ProjectColumnDefinition> columnDefinitionList = projectColumnDefinitionMapper.selectByExample(null);
-            List<ProjectData> projectDataList = queryProjectData(queryCondition,columnDefinitionList);
+            List<ProjectData> projectDataList = queryProjectData(queryCondition, columnDefinitionList);
             HSSFWorkbook workbook = excelUtil.getHSSFWorkbook(projectDataList, columnDefinitionList);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
             String fileName = "excel导出结果" + sdf.format(new Date());

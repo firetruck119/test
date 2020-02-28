@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.point.mapper.InputImageCacheMapper" >
-  <resultMap id="BaseResultMap" type="com.point.entity.InputImageCache" >
+<mapper namespace="com.point.mapper.InputURLCacheMapper" >
+  <resultMap id="BaseResultMap" type="com.point.entity.InputURLCache" >
     <id column="InputCacheId" property="inputcacheid" jdbcType="INTEGER" />
     <result column="BatchId" property="batchid" jdbcType="VARCHAR" />
     <result column="InputName" property="inputname" jdbcType="VARCHAR" />
-    <result column="InputValue" property="inputvalue" jdbcType="VARCHAR" />
+    <result column="InputURL" property="inputvalue" jdbcType="VARCHAR" />
     <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="ChangeLastTime" property="changelasttime" jdbcType="TIMESTAMP" />
-    <result column="InputFileType" property="type" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    InputCacheId, BatchId, InputName, InputValue, CreateTime,ChangeLastTime,InputFileType
+    InputCacheId, BatchId, InputName, InputURL, CreateTime,ChangeLastTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.InputCacheExample" >
     select
@@ -77,7 +76,7 @@
         distinct
     </if>
     <include refid="Base_Column_List" />
-    from input_cache_file
+    from input_cache_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,31 +85,31 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select
+    select 
     <include refid="Base_Column_List" />
-    from input_cache_file
+    from input_cache_image
     where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from input_cache_file
+    delete from input_cache_image
     where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.point.entity.InputCacheExample" >
-    delete from input_cache_file
+    delete from input_cache_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.point.entity.InputImageCache" >
-    insert into input_cache_file (InputCacheId, BatchId, InputName,
-      InputValue, CreateTime, ChangeLastTime,InputFileType
+  <insert id="insert" parameterType="com.point.entity.InputURLCache" >
+    insert into input_cache_image (InputCacheId, BatchId, InputName, 
+      InputURL, CreateTime, ChangeLastTime
       )
-    values (#{inputcacheid,jdbcType=INTEGER}, #{batchid,jdbcType=VARCHAR}, #{inputname,jdbcType=VARCHAR},
-      #{inputvalue,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{changelasttime,jdbcType=TIMESTAMP},#{type,jdbcType=VARCHAR}
+    values (#{inputcacheid,jdbcType=INTEGER}, #{batchid,jdbcType=VARCHAR}, #{inputname,jdbcType=VARCHAR}, 
+      #{inputvalue,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{changelasttime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.point.entity.InputImageCache" >
-    insert into input_cache_file
+  <insert id="insertSelective" parameterType="com.point.entity.InputURLCache" >
+    insert into input_cache_image
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="inputcacheid != null" >
         InputCacheId,
@@ -122,16 +121,13 @@
         InputName,
       </if>
       <if test="inputvalue != null" >
-        InputValue,
+        InputURL,
       </if>
       <if test="createtime != null" >
         CreateTime,
       </if>
       <if test="changelasttime != null" >
         ChangeLastTime,
-      </if>
-      <if test="type != null" >
-        InputFileType,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -153,19 +149,16 @@
       <if test="changelasttime != null" >
         #{changelasttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="type != null" >
-        #{type,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.point.entity.InputCacheExample" resultType="java.lang.Integer" >
-    select count(*) from input_cache_file
+    select count(*) from input_cache_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update input_cache_file
+    update input_cache_image
     <set >
       <if test="record.inputcacheid != null" >
         InputCacheId = #{record.inputcacheid,jdbcType=INTEGER},
@@ -177,7 +170,7 @@
         InputName = #{record.inputname,jdbcType=VARCHAR},
       </if>
       <if test="record.inputvalue != null" >
-        InputValue = #{record.inputvalue,jdbcType=VARCHAR},
+        InputURL = #{record.inputvalue,jdbcType=VARCHAR},
       </if>
       <if test="record.createtime != null" >
         CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
@@ -185,29 +178,25 @@
       <if test="record.changelasttime != null" >
         ChangeLastTime = #{record.changelasttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.type != null" >
-        InputFileType = #{record.type,jdbcType=VARCHAR},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update input_cache_file
+    update input_cache_image
     set InputCacheId = #{record.inputcacheid,jdbcType=INTEGER},
       BatchId = #{record.batchid,jdbcType=VARCHAR},
       InputName = #{record.inputname,jdbcType=VARCHAR},
-      InputValue = #{record.inputvalue,jdbcType=VARCHAR},
+    InputURL = #{record.inputvalue,jdbcType=VARCHAR},
       CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
     ChangeLastTime = #{record.changelasttime,jdbcType=TIMESTAMP}
-    InputFileType = #{record.type,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.InputImageCache" >
-    update input_cache_file
+  <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.InputURLCache" >
+    update input_cache_image
     <set >
       <if test="batchid != null" >
         BatchId = #{batchid,jdbcType=VARCHAR},
@@ -216,7 +205,7 @@
         InputName = #{inputname,jdbcType=VARCHAR},
       </if>
       <if test="inputvalue != null" >
-        InputValue = #{inputvalue,jdbcType=VARCHAR},
+        InputURL = #{inputvalue,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         CreateTime = #{createtime,jdbcType=TIMESTAMP},
@@ -224,23 +213,19 @@
       <if test="changelasttime != null" >
         ChangeLastTime = #{changelasttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="type != null" >
-        InputFileType = #{type,jdbcType=VARCHAR},
-      </if>
     </set>
     where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.point.entity.InputImageCache" >
-    update input_cache_file
+  <update id="updateByPrimaryKey" parameterType="com.point.entity.InputURLCache" >
+    update input_cache_image
     set BatchId = #{batchid,jdbcType=VARCHAR},
       InputName = #{inputname,jdbcType=VARCHAR},
-      InputValue = #{inputvalue,jdbcType=BLOB},
+      InputURL = #{inputvalue,jdbcType=BLOB},
       CreateTime = #{createtime,jdbcType=TIMESTAMP},
       ChangeLastTime = #{changelasttime,jdbcType=TIMESTAMP},
-      InputFileType = #{type,jdbcType=VARCHAR}
     where InputCacheId = #{inputcacheid,jdbcType=INTEGER}
   </update>
   <select id="selectAllBatchId" resultType="java.lang.String" >
-    select distinct BatchId from input_cache_file order by ChangeLastTime desc
+    select distinct BatchId from input_cache_image order by ChangeLastTime desc
   </select>
 </mapper>

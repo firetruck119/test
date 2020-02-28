@@ -11,10 +11,15 @@
                 dataType: "json",
                 async: false,
                 success: function (e) {
-                    if (e != null) {
+                    var list=[];
+                    list=list.concat(e);
+                    list.sort(function(a,b){
+                        return String(a).localeCompare(String(b),'zh-CN');
+                    })
+                    if (list != null) {
                         var html = '';
-                        for (var valueIndex = 0; valueIndex < e.length; valueIndex++) {
-                            var value = e[valueIndex];
+                        for (var valueIndex = 0; valueIndex < list.length; valueIndex++) {
+                            var value = list[valueIndex];
                             html += '<option value="';
                             html += value;
                             html += '">';
@@ -40,7 +45,7 @@
                     var list = {};
                     var dataObj = e['datalist'];
                     for (var temp in dataObj) {
-                        if (dataObj[temp]) {
+                        if (isTrue(dataObj[temp])) {
                             var funlist = data.datalist[temp].calList;
                             for (var key in funlist) {
                                 if (dataObj[key] == null) {
@@ -49,7 +54,7 @@
                             }
                         }
                     }
-                    data.datacalculate({calList: list})
+                    data.datacalculate({calList: list},true)
                     data.listtoform();
                 }
             })
@@ -58,12 +63,14 @@
         //将数据对象填充到现有的数据对象
         dataToDataList: function (e) {
             for (var key in e) {
-                var temp = new dataType(key, e[key]);
-                temp.color = 'yellow';
-                if (data.datalist[key] != null)
-                    data.datalist[key].changeValueAndColor(e[key], 'yellow');
-                else
-                    data.datalist[key] = temp;
+                if(String(e[key])!='null') {
+                    var temp = new dataType(key, e[key]);
+                    temp.color = 'yellow';
+                    if (data.datalist[key] != null)
+                        data.datalist[key].changeValueAndColor(e[key], 'yellow');
+                    else
+                        data.datalist[key] = temp;
+                }
             }
         },
         //将二进制图片流加载进img
@@ -71,11 +78,13 @@
             if (e != {})
                 for (var key in e) {
                     var temp = e[key];
-                    $("img[name= '" + key + "']")[0].src = 'data:' + temp['type'] + ',' + temp['inputvalue'];
+                    // $("img[name= '" + key + "']")[0].src = 'data:' + temp['type'] + ',' + temp['inputURL'];
+                    $("img[name= '" + key + "']")[0].src = ' ';
+                    $("img[name= '" + key + "']")[0].src = 'getImg?filename='+temp['inputvalue'];
                     if ($('input[name=tu_' + key + ']')[0]){
-                        $('input[name=tu_' + key + ']').val(temp.inputcacheid);
+                        $('input[name=tu_' + key + ']').val(temp['inputvalue']);
                     } else
-                        $('form').append('<input name="tu_' + key + '" type="hidden" value="' + temp.inputcacheid + '"/>');
+                        $('form').append('<input name="tu_' + key + '" type="hidden" value="' + temp['inputvalue'] + '"/>');
                     $('input[name=' + key + ']').val('');
                 }
         },
@@ -93,7 +102,7 @@
             this.listtoform();
         },
 
-        datacalculate: function (e) {
+        datacalculate: function (e,isGetByDB) {
             var calList;
             var calObjList = {};
             calList = e.calList;
@@ -125,12 +134,29 @@
                 var list = {};
                 for (var key in calList) {
                     var fun = calList[key];
+                    if(fun==null){
+                        continue;
+                    }
+                    if((function(){
+                        for(var a in data.datalist[key].fatherValue)
+                            if((!isTrue(eval(a))||String(eval(a))==' ') && data.datalist[a].type!='SELECT')
+                                return true
+                    })())continue;
                     if (typeof fun == 'string')
                         eval(key + '=' + fun)
                     else if (typeof fun == 'function')
                         eval(key + '=' + fun + '()')
-                    list = $.extend(list, data.datalist[key].calList)
                     calObjList[key] = key;
+                    if (isGetByDB) {
+                        for (var e in data.datalist[key].calList) {
+                            if (data.datalist[e].color == 'yellow') {
+                                continue;
+                            }
+                            list[e] = data.datalist[key].calList[e]
+                        }
+                    } else {
+                        list = $.extend(list, data.datalist[key].calList)
+                    }
                 }
                 if (!$.isEmptyObject(list)) {
                     f(list)
@@ -166,7 +192,7 @@
                     if ((s.indexOf('NaN') < 0
                         && (s.indexOf(' ') < 0 || s.indexOf(' ') == 0)
                         && s.indexOf('undefined') < 0
-                        ) ||(temp.type=='SELECT')) {
+                    ) ||(temp.type=='SELECT')) {
                         var e = $(temp.type + '[name="' + temp.name + '"]');
                         e.val(String(temp.value)!=' '?getString(temp.value):'');
                         e.css('background-color', temp.color);
@@ -197,6 +223,7 @@
                         var obj = this.datalist[temp].calList;
                         if (cal.indexOf(' ' + temp + ' ') > -1) {
                             obj[key] = dataf[key];
+                            data.datalist[key].fatherValue[temp]=1
                             have = true;
                         }
                     }
@@ -219,15 +246,20 @@
                 data.init(data.calculateFunction);
                 return false;
             })
+            $('input[type=text]').keydown(function (e) {
+                if(e.keyCode==32)
+                    return false;
+            })
         },
     };
 }())
+
 
 function dataType(name, value, type) {
     this.name = name;
     this.value = value;
     this.color = 'white';
-    this.oldVlue = null;
+    this.fatherValue={};
     this.calList = {};
     this.type = type;
     this.changeValueAndColor = function (v, c) {
@@ -259,8 +291,8 @@ function janyan(URL) {
 function getString(v) {
     if (typeof v =='string')
         return v;
-    var s = 5;
-    var temp = Math.round(parseFloat(v) * 100000);
+    var s = 2;
+    var temp = Math.round(parseFloat(v) * 100);
     var c = temp.toString();
     var l = c.length;
     s = (l > s) ? s : l;
@@ -278,4 +310,12 @@ function isCheck(t) {
     }
     e = $('input[name=check]');
     e.val(t);
+}
+
+function isTrue(value) {
+    var v= String(value);
+    if(['null','undefined',''].indexOf(v)>-1){
+        return false;
+    }
+    return true;
 }

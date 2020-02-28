@@ -9,9 +9,7 @@ import com.point.common.MyEnv;
 import com.point.entity.InputImageCache;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +17,28 @@ import java.util.Map;
 @Component
 public class PdfCreater {
 
-
+    public static byte[] File2byte(File tradeFile){
+        byte[] buffer = null;
+        try
+        {
+            FileInputStream fis = new FileInputStream(tradeFile);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] b = new byte[1024];
+            int n;
+            while ((n = fis.read(b)) != -1)
+            {
+                bos.write(b, 0, n);
+            }
+            fis.close();
+            bos.close();
+            buffer = bos.toByteArray();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return buffer;
+    }
     private void setImage(PdfStamper ps,String key,Image image) throws Exception{
         AcroFields s = ps.getAcroFields(); //读取文本域
         List<AcroFields.FieldPosition> list = s.getFieldPositions(key);
@@ -66,7 +85,7 @@ public class PdfCreater {
      * 根据pdf模板填充相应的值： 1，如果是根据excel填充的话，在用Acrobat生成PDF模板前，
      * Excel单元格格式最好设置成文本，否则pdf填充值时可能中文无法显示
      */
-    public byte[] fromPDFTempletToPdfWithValue_New(Map<String, String> textMap, Map<String, InputImageCache> imageMap, String fileName) {
+    public byte[] fromPDFTempletToPdfWithValue_New(Map<String, String> textMap, Map<String, File> imageMap, String fileName) {
         ByteArrayOutputStream bos = null;
         PdfStamper ps = null;
         Document document = null;
@@ -90,8 +109,9 @@ public class PdfCreater {
                 }
             }
             if (imageMap != null) {
-                for (Map.Entry<String, InputImageCache> entry : imageMap.entrySet()) {
-                    setImage(ps, entry.getKey(), Image.getInstance(entry.getValue().getInputvalue()));
+                for (Map.Entry<String, File> entry : imageMap.entrySet()) {
+                    setImage(ps, entry.getKey(), Image.getInstance(entry.getValue().getPath()));
+                    File2byte(entry.getValue());
                 }
             }
             document = new Document();

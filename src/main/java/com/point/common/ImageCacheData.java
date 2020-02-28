@@ -38,6 +38,10 @@ public class ImageCacheData<T> {
             for (Map.Entry<String, InputImageCache> entry : dataMap.entrySet()) {
                 InputImageCache inputCache = existedMap.get(entry.getKey());
                 InputImageCache temp = entry.getValue();
+                if(entry.getValue()==null && inputCache!=null){
+                    entry.setValue(inputCache);
+                    continue;
+                }
                 temp.setBatchid(batchId);
                 if (inputCache == null) {
                     temp.setInputcacheid(null);
@@ -157,7 +161,6 @@ public class ImageCacheData<T> {
 
     public InputImageCache readCacheFromById_New(String id) throws IOException, BadElementException {
         return  mapper.selectByPrimaryKey(new Integer(id));
-
     }
 
     public void saveCacheValue(String batchId, Map<String, InputImageCache> map) {

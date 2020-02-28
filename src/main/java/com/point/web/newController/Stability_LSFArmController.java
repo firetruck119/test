@@ -4,9 +4,9 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.point.common.CacheData;
 import com.point.common.ImageCacheData;
-import com.point.entity.InputImageCache;
-import com.point.entity.pdf.PinSeatEntity;
-import com.point.entity.pdf.StabilityEnity;
+import com.point.common.MyEnv;
+import com.point.common.URLCacheData;
+import com.point.entity.InputURLCache;
 import com.point.entity.pdf.StabilityEnity_LSFArmEntity;
 import com.point.itext.PdfCreater;
 import com.point.web.newController.Tool.ToolForPDFController;
@@ -16,7 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +42,9 @@ public class Stability_LSFArmController {
     @Autowired
     ImageCacheData imageCacheData;
 
+    @Autowired
+    URLCacheData urlCacheData;
+
     @GetMapping("/Stability_LSFArm")
     public String getMap(Model model) {
         model.addAttribute("entity", new StabilityEnity_LSFArmEntity());
@@ -51,7 +58,7 @@ public class Stability_LSFArmController {
         StabilityEnity_LSFArmEntity entity = new StabilityEnity_LSFArmEntity();
         cacheData.readCacheValue(batchId, entity);
         result.put("datalist",entity);
-        Map<String,byte[]> imagemap=imageCacheData.readCacheValue(batchId);
+        Map<String, InputURLCache> imagemap=urlCacheData.readCacheValue(batchId);
         result.put("imagelist",imagemap);
         return result;
     }
@@ -69,12 +76,12 @@ public class Stability_LSFArmController {
                          @RequestParam(required = false) String sjht,
                          @RequestParam(required = false) Boolean check) throws IOException, DocumentException {
 
-        Map<String, InputImageCache> imageMap = new HashMap<>();
+        Map<String, File> imageMap = new HashMap<>();
         try {
-            imageMap = tool.getImageMap_New(request);
+            imageMap = tool.getImageMap(sjht,request);
         } catch (Exception e) {
         }
-        imageCacheData.saveCacheValue(sjht,imageMap);
+        urlCacheData.saveCacheValue(sjht,imageMap);
         cacheData.saveCacheValue(sjht,entity);
         List<byte[]> list = new ArrayList<>();
         list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转固定臂-稳定性校核及轮压计算书"));
@@ -83,5 +90,35 @@ public class Stability_LSFArmController {
             return tool.getResponseEntity("稳定性校核及轮压计算书", pdf.MergePDF(list));
         }
         return tool.getResponseEntity("稳定性校核及轮压计算书", list.get(0));
+    }
+
+    @RequestMapping("getImg")
+    public void getImg2(HttpServletRequest request, HttpServletResponse response,String filename)
+            throws IOException {
+        FileInputStream fis = null;
+        OutputStream os = null;
+        try {
+            if (MyEnv.isLocal()) {
+                fis = new FileInputStream("D:/image/"+filename);
+            } else {
+                fis = new FileInputStream("/root/image/" + filename );
+            }
+            os = response.getOutputStream();
+            int count = 0;
+            byte[] buffer = new byte[1024 * 8];
+            while ((count = fis.read(buffer)) != -1) {
+                os.write(buffer, 0, count);
+                os.flush();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fis.close();
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

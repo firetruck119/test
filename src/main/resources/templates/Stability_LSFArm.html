@@ -164,7 +164,7 @@
         <div class="tabletitle">稳定性校核及轮压计算书</div>
         <div class="subtable" style="text-align: center;padding: 10px 0 0px 0;overflow: hidden;border:1px solid #aaa;">
             <div style="height:335px">
-                <img alt="擦窗机各部件载荷" id="wdlytu1" name="wdlytu1"/>
+                <img alt="擦窗机各部件载荷" id="wdlytu1" name="wdlytu1" />
             </div>
             <table>
                 <tr>
@@ -658,7 +658,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>液压缸</td>
+                    <td>仰臂液压缸</td>
                     <td>
                         <p><i>m<sub>4</sub></i></p>
                     </td>
@@ -800,7 +800,7 @@
                 <tr>
                     <td>吊船及人员至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>slhz</sub></i></p>
+                        <p><i>L<sub>slz</sub></i></p>
                     </td>
                     <td><input name="lslhz" type="text" th:field="*{lslhz}"/></td>
                     <td></td>
@@ -810,7 +810,7 @@
                 <tr>
                     <td>物料至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>shlhz</sub></i></p>
+                        <p><i>L<sub>shlz</sub></i></p>
                     </td>
                     <td><input name="lshlhz" type="text" th:field="*{lshlhz}"/></td>
                     <td></td>
@@ -1764,7 +1764,7 @@
                 <tr>
                     <td>吊船及人员至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>slqg</sub></i></p>
+                        <p><i>L<sub>slq</sub></i></p>
                     </td>
                     <td><input name="lslqg" type="text" th:field="*{lslqg}"/></td>
                     <td>m</td>
@@ -1772,7 +1772,7 @@
                 <tr>
                     <td>物料至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>shlqg</sub></i></p>
+                        <p><i>L<sub>shlq</sub></i></p>
                     </td>
                     <td><input name="lshlqg" type="text" th:field="*{lshlqg}"/></td>
                     <td>m</td>
@@ -2408,6 +2408,9 @@
             return  m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 ;
         },
         gdlsxh:function(){
+            if( wdlyp3 == '无'){
+                return  '无';
+            }
             switch (String( typeOfRunningGear )){
                 case "160LZ":
                     return 'M12';
@@ -2415,11 +2418,12 @@
                     return 'M16';
                 case "350":case "450":
                     return 'M20';
-                case "无":
-                    return '无';
             }
         },
         flsjl:function(){
+            if( wdlyp3 == '无'){
+                return  0;
+            }
             switch (String( typeOfRunningGear )){
                 case "160LZ":return 10790.4;
                 case "170LZ":case "200LZ":case "230LZ":case "260LZ":return 20096;
@@ -2451,7 +2455,7 @@
             return typeOfPin ;
         },
         txxdj:function(){
-            if( txxxh =='无'){
+            if( typeOfPin =='无'){
                 $('[name=txxdj]').prop('disabled', true)
                 data.datalist['txxdj'].color = 'rgb(227, 227, 227)';
                 return '无';

@@ -22,12 +22,36 @@ public class FileDownLoadController {
             // 设置输出的格式
             response.reset();
             response.setContentType("bin");
+            response.setHeader("Content-Disposition", "attachment; filename=\""
+                    + java.net.URLEncoder.encode(fileName, "UTF-8") + "\"");
+            // 循环取出流中的数据
+            byte[] b = new byte[100];
+            int len;
+            while ((len = inStream.read(b)) > 0)
+                response.getOutputStream().write(b, 0, len);
+            inStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            response.setStatus(500);
+            Map<String, String> modelMap = new HashMap<>();
+            modelMap.put("message", "文件不存在");
+            return new ModelAndView("ProjectData", modelMap);
+        }
+        return null;
+    }
+    @GetMapping("/downloadLocal1")
+    public ModelAndView downloadLocal1(HttpServletResponse response, String fileName) {
+        try {
+            // 读到流中
+            InputStream inStream = new FileInputStream("D:/image/test.jpg" );// 文件的存放路径
+            // 设置输出的格式
+            response.reset();
+            response.setContentType("bin");
             response.addHeader("Content-Disposition", "attachment; filename=\""
                     + java.net.URLEncoder.encode(fileName, "UTF-8") + "\"");
             // 循环取出流中的数据
             byte[] b = new byte[100];
             int len;
-
             while ((len = inStream.read(b)) > 0)
                 response.getOutputStream().write(b, 0, len);
             inStream.close();

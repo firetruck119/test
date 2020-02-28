@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>数据维护</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <!--    <link th:href="@{css/bootstrap.css}" rel="stylesheet"/>-->
+    <link href="https://cdn.bootcss.com/jsgrid/1.5.3/jsgrid.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/jsgrid/1.5.3/jsgrid-theme.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jsgrid/1.5.3/jsgrid.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
+    <script th:inline="javascript">
+        var data = [[${data}]];
+        var head = [[${head}]];
+        console.log(data);
+
+        function duplicateRemoval(list) {
+            if (list == null) {
+                return null
+            }
+            var map = {};
+            for (var i = 0; i < list.length; i++) {
+                map[list[i]] = 1;
+            }
+            var l = [];
+            for (var i in map) {
+                l.push(i)
+            }
+            return l;
+        }
+        $(document).ready(function () {
+            InitNav(3);
+            $('#ProjectDataNew').addClass('o-sub-cur');
+        })
+    </script>
+
+    <style type="text/css">
+        .oneInput {
+            width: 98%;
+            height: 20px;
+        }
+
+        .twoInput {
+            width: 43.5%;
+            height: 20px;
+        }
+
+        td {
+            padding: 2px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
+<br/><br/>
+<div style="width: 100%;background-color: #E0F0FF;margin: 65px 0 15px 0;border:2px double #3c763d ;position: relative;">
+    <form class="filterForm">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="10"><h3>筛选栏</h3></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </form>
+
+    <button class="filterBtn" style="position: relative;left:85%;width: 100px;height: 40px;border-radius: 15px " >筛选</button>
+    <script>
+        $('.filterBtn').click(function () {
+            filter('form2Json');
+            filter('getNumberList');
+            grid.jsGrid('loadData');
+            return false;
+        });
+    </script>
+    <button class="resetBtn" style="position: relative;left:87%;width: 100px;height: 40px;border-radius: 15px " >重置</button>
+    <script>
+        $('.resetBtn').click(function () {
+            $('filterForm')[0].reset();
+            filter('form2Json');
+            filter('getNumberList');
+            grid.jsGrid('loadData');
+            return false;
+        });
+    </script>
+</div>
+<div></div>
+<div>
+    <table id="jsGrid"></table>
+</div>
+</body>
+<!-- 处理列表头-->
+<script>
+    var htmlWidth=parseInt($('html').css('width'));
+    var aw = (htmlWidth )/htmlWidth*100;
+    var w = (htmlWidth - 110) / head.length/htmlWidth*100;
+
+    function createFielObject(name, title, columndatatype, queryconditionorder, stringValues,min,max) {
+        var newObj = {
+            align: 'center',
+        };
+        newObj.width = w+'%';
+        newObj.name = name;
+        newObj.title = title;
+        switch (columndatatype) {
+            case 1:
+                newObj.type = 'string';
+                break;
+            case 2:
+                newObj.type = 'number';
+                break;
+            case 3:
+                newObj.itemTemplate = function (value, item) {
+                    return '<a target="_blank"  href="' + value + '">跳转</a>'
+                }
+        }
+        switch (queryconditionorder) {
+            case 1:
+            case 2:
+                filter('addFilter', name, 'String',title,stringValues);
+                break;
+            case 3:
+                filter('addFilter', name, 'Number',title,stringValues);
+                break;
+            case 4:
+                filter('addFilter', name, 'Rate',title,stringValues,min,max);
+                break;
+        }
+        return newObj;
+    }
+
+    var filter = (function () {
+        var filterList = {}
+        var client = {};
+        var numberList={};
+        var number;
+        function filtByNumber(value) {
+            return !number || parseFloat(value) === number
+        }
+
+        function filtByString(value) {
+            return !number || value.indexOf(number) > -1
+        }
+
+        function filtByRate(value) {
+            value=parseFloat(value)
+            return !number||
+                (!number.max && !number.min)||
+                (number.max >= value && !number.min)||
+                (!number.max && number.min<=value)||
+                (value < number.max && value > number.min);
+        }
+        function form2Json(){
+            var tds=$('td[name]');
+            for(var index=0;index < tds.length;index++){
+                var td=$(tds[index]);
+                var type=td.attr('querytype');
+                var name=td.attr('name');
+                switch (type) {
+                    case 'String':
+                        numberList[name]=td[0].children[0].value;
+                        break;
+                    case 'Number':
+                        numberList[name]=parseFloat(td[0].children[0].value);
+                        break;
+                    case 'Rate':
+                        numberList[name]={min:parseFloat(td[0].children[0].value),max:parseFloat(td[0].children[2].value)};
+                        break;
+                }
+            }
+        }
+        function createFormForFilter(filtname, filt, title,stringValues,min,max) {
+            var trList = $('.filterForm tr[capacity]');
+            var tr;
+            if (trList.length == 0 || $(trList[trList.length - 1]).attr('capacity') >= 5) {
+                tr = $("<tr capacity='1'> </tr>")
+                $('.filterForm table tbody').append(tr)
+            } else {
+                tr = $(trList[trList.length - 1])
+                tr.attr('capacity', parseInt(tr.attr('capacity')) + 1)
+            }
+            var td;
+            var datalist="";
+            if(stringValues){
+                datalist+='<datalist id="'+filtname+'">'
+                for(var i=0;i<stringValues.length;i++){
+                    datalist+='<option value="'+stringValues[i]+'">'+stringValues[i]+'</option>'
+                }
+                datalist+='</datalist>';
+            }
+            switch (filt) {
+                case 'Rate':
+                    td = $('<td width="10%"><h4>'+title+'</h4></td>' +
+                        '<td width="10%" name="'+filtname+'" queryType="'+filt+'">' +
+                        '<input  class="twoInput min" placeholder="'+min+'"/>' +
+                        '<i class="fa fa-angle-left" style="margin: 3px 5px 0 5px" aria-hidden="true">' +
+                        '</i>' +
+                        '<input queryType="'+filt+'" class="max twoInput" placeholder="'+max+'">' +
+                        '</td>');
+                    break;
+                case 'Number':
+                case 'String':
+                    td = $('<td width="10%"><h4>'+title+'</h4></td>' +
+                        '<td width="10%" name="'+filtname+'" queryType="'+filt+'">' +
+                        '<input class="oneInput" list="'+filtname+'"> ' +
+                        (datalist?datalist:'')+
+                        '</td>');
+                    break;
+            }
+
+            tr.append(td)
+        }
+
+        function fielt(data) {
+            var type = filterList[data.name];
+            var value = data.value;
+            number = numberList[data.name];
+            var result;
+            switch (type) {
+                case 'String':
+                    result = filtByString(value);
+                    break;
+                case 'Number':
+                    result = filtByNumber(value);
+                    break;
+                case 'Rate':
+                    result = filtByRate(value);
+                    break;
+            }
+            return result;
+        }
+
+        function getFilter() {
+            return filterList;
+        }
+        function getNumberList() {
+            return numberList;
+        }
+        function addFilter(filtname, filt, title,stringValues,min,max) {
+            filterList[filtname] = filt;
+            createFormForFilter(filtname, filt, title,stringValues,min,max);
+        }
+
+        return function (funName) {
+            switch (funName) {
+                case 'fielt':
+                    return fielt(arguments[1]);
+                case 'addFilter':
+                    return addFilter(arguments[1], arguments[2],arguments[3],arguments[4],arguments[5],arguments[6]);
+                case 'getFilter':
+                    return getFilter();
+                case 'form2Json':
+                    return form2Json();
+                case 'getNumberList':
+                    return getNumberList();
+            }
+        }
+    })()
+    var fiels = [
+        {
+            align: 'center',
+            width: '50px',
+            css: 'a',
+            name: 'projectdataid',
+            title: '序号',
+            type:'number',
+        }, {
+            width: '120px',
+            align: 'center',
+            css: 'a',
+            name: 'projectname',
+            title: '项目名称',
+            sorter:'string',
+        },];
+    (function () {
+        filter('addFilter', 'projectdataid', 'Number','序号');
+        filter('addFilter', 'projectname', 'String','项目名称');
+        for (var index in head) {
+            var obj = head[index];
+            var name = 'datacolumn' + obj.projectcolumndefinitionid;
+            var title = obj.columnname;
+            var type = obj.columndatatype;
+            var queryconditionorder = obj.queryconditionorder;
+            // obj.stringValues = duplicateRemoval(obj.stringValues);
+            var stringValues = obj.stringValues;
+            fiels.push(createFielObject(name, title, type, queryconditionorder, stringValues,obj.minValue,obj.maxValue))
+        }
+    })()
+</script>
+<script>
+    db = {
+        loadData:function(){
+                var array=data;
+                array= $.grep(array, function(client) {
+                    var temp=true;
+                    for(var name in client){
+                        var result=filter('fielt',{name:name, value:client[name],});
+                        if(typeof result==='boolean')
+                            temp= temp&&filter('fielt',{name:name, value:client[name],})
+                    }
+                    return temp;
+                });
+                return array;
+            },
+    }
+    var grid=$("#jsGrid");
+    $(function () {
+        grid.jsGrid({
+            height: "740px",//表单高
+            width: aw + '%',//表单宽
+            inserting: true,
+            insertRowRenderer: function () {
+                return $("<div>").css("display", "none")
+            },
+            rowDoubleClick: function (a, b, c) {
+                console.log(a)
+                console.log(b)
+                console.log(c)
+            },
+            paging: true,
+            pageSize: 15,
+            pageButtonCount: 15,
+            sorting: true,
+            autoload: true,
+            controller: db,
+            fields: fiels,
+            deleteConfirm: "确定删除?",
+        })
+    })
+
+    $('td[name] input').change(function(){
+        filter('form2Json');
+        filter('getNumberList');
+        grid.jsGrid('loadData');
+        return false;
+    })
+    /**
+     * 导出文件方法
+     * @param {url} 导出方法路径
+     * @param {data} 传输参数（Json类型）
+     * @param {loadSuccess} 调用成功回调方法
+     * @param {timeout} 请求过期时间（毫秒级  1000毫秒=1秒）
+     **/
+
+
+</script>
+</html>
