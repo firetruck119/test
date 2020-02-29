@@ -63,7 +63,7 @@
 
 <nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
-<div style="width: 100%;background-color: #E0F0FF;margin: 65px 0 15px 0;border:2px double #3c763d ;position: relative;">
+<div style="width: 100%;background-color: #E0F0FF;margin: 10px 0 15px 0;border:2px double #3c763d ;position: relative;">
     <form class="filterForm">
         <table>
             <thead>
@@ -82,16 +82,18 @@
             filter('form2Json');
             filter('getNumberList');
             grid.jsGrid('loadData');
+            grid.jsGrid('openPage',1);
             return false;
         });
     </script>
     <button class="resetBtn" style="position: relative;left:87%;width: 100px;height: 40px;border-radius: 15px " >重置</button>
     <script>
         $('.resetBtn').click(function () {
-            $('filterForm')[0].reset();
+            $('.filterForm')[0].reset();
             filter('form2Json');
             filter('getNumberList');
             grid.jsGrid('loadData');
+            grid.jsGrid('openPage',1);
             return false;
         });
     </script>
@@ -324,11 +326,6 @@
             insertRowRenderer: function () {
                 return $("<div>").css("display", "none")
             },
-            rowDoubleClick: function (a, b, c) {
-                console.log(a)
-                console.log(b)
-                console.log(c)
-            },
             paging: true,
             pageSize: 15,
             pageButtonCount: 15,
@@ -344,6 +341,7 @@
         filter('form2Json');
         filter('getNumberList');
         grid.jsGrid('loadData');
+        grid.jsGrid('openPage',1);
         return false;
     })
     /**

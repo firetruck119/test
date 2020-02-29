@@ -139,13 +139,16 @@
                     }
                     if((function(){
                         for(var a in data.datalist[key].fatherValue)
-                            if((!isTrue(eval(a))||String(eval(a))==' ') && data.datalist[a].type!='SELECT')
+                            if((!isTrue(eval(a))||String(data.datalist[a])==' ') && data.datalist[a].type!='SELECT')
                                 return true
                     })())continue;
+                    var temp;
                     if (typeof fun == 'string')
                         eval(key + '=' + fun)
-                    else if (typeof fun == 'function')
-                        eval(key + '=' + fun + '()')
+                    else if (typeof fun == 'function'){
+                        temp=fun()
+                        eval(key + '= temp')
+                    }
                     calObjList[key] = key;
                     if (isGetByDB) {
                         for (var e in data.datalist[key].calList) {

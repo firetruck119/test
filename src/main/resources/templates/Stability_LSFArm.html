@@ -2365,18 +2365,22 @@
             if ( wdlyp3 == '无') {
                 $('[name=typeOfRunningGear]').prop('disabled', true)
                 data.datalist['typeOfRunningGear'].color = 'rgb(227, 227, 227)';
+                return typeOfRunningGear;
             }else if( wdlyp3 == '有'){
                 $('[name=typeOfRunningGear]').prop('disabled', false);
                 data.datalist['typeOfRunningGear'].color = 'white';
+                return ' ';
             }
         },
         levelOfPin: function () {
             if ( typeOfPin == '无') {
                 $('[name=levelOfPin]').prop('disabled', true);
                 data.datalist['levelOfPin'].color = 'rgb(227, 227, 227)';
+                return levelOfPin;
             } else {
                 $('[name=levelOfPin]').prop('disabled', false)
                 data.datalist['levelOfPin'].color = 'white';
+                return ' ';
             }
         },
         pf: function () {
@@ -2386,16 +2390,16 @@
             else if (h > 150) return ' ';
         },
         dbyj: function () {
-            $('[name=dbyj]').prop('disabled', false);
+            $('[name=dbyj]').prop('readonly', false);
             data.datalist['dbyj'].color = 'white';
             switch ( typeOfMachine ) {
                 case '固定立柱':
-                    $('[name=dbyj]').prop('disabled', true);
+                    $('[name=dbyj]').prop('readonly', true);
                     data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
                     break;
                 case '仰臂':break;
                 case '顶升':
-                    $('[name=dbyj]').prop('disabled', true);
+                    $('[name=dbyj]').prop('readonly', true);
                     data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
                     break;
                 case '顶升+仰臂':break;
@@ -2447,28 +2451,28 @@
         },
         txxxh:function(){
             if( typeOfPin =='无'){
-                $('[name=txxxh]').prop('disabled', true)
+                $('[name=txxxh]').prop('readonly', true)
                 data.datalist['txxxh'].color = 'rgb(227, 227, 227)';
             }else{
-                $('[name=txxxh]').prop('disabled', false)
+                $('[name=txxxh]').prop('readonly', false)
             }
             return typeOfPin ;
         },
         txxdj:function(){
             if( typeOfPin =='无'){
-                $('[name=txxdj]').prop('disabled', true)
+                $('[name=txxdj]').prop('readonly', true)
                 data.datalist['txxdj'].color = 'rgb(227, 227, 227)';
                 return '无';
             }else
-                $('[name=txxdj]').prop('disabled', false)
+                $('[name=txxdj]').prop('readonly', false)
             return levelOfPin ;
         },
         ftxxjq:function(){
-            if( txxxh =='无'){
-                $('[name=ftxxjq]').prop('disabled', true)
+            if( typeOfPin =='无'){
+                $('[name=ftxxjq]').prop('readonly', true)
                 data.datalist['ftxxjq'].color = 'rgb(227, 227, 227)';
             }else
-                $('[name=ftxxjq]').prop('disabled', false)
+                $('[name=ftxxjq]').prop('readonly', false)
             switch ( txxxh ) {
                 case '无':return '0';
                 case 'Ф12':return '104100';
@@ -2478,10 +2482,10 @@
         },
         nwdt:function(){
             if( txxxh =='无'){
-                $('[name=nwdt]').prop('disabled', true)
+                $('[name=nwdt]').prop('readonly', true)
                 data.datalist['nwdt'].color = 'white';
             }else
-                $('[name=nwdt]').prop('disabled', false)
+                $('[name=nwdt]').prop('readonly', false)
             switch ( txxxh ) {
                 case '无':return '0';
                 case 'Ф12':case 'Ф16':case 'Ф20':return ' ';
