@@ -107,6 +107,26 @@ public class ProjectData {
 
     private String datacolumn50;
 
+    private String datacolumn51;
+
+    private String datacolumn52;
+
+    private String datacolumn53;
+
+    private String datacolumn54;
+
+    private String datacolumn55;
+
+    private String datacolumn56;
+
+    private String datacolumn57;
+
+    private String datacolumn58;
+
+    private String datacolumn59;
+
+    private String datacolumn60;
+
     private Date createtime;
 
     private Date changelasttime;
@@ -525,6 +545,86 @@ public class ProjectData {
 
     public void setDatacolumn50(String datacolumn50) {
         this.datacolumn50 = datacolumn50;
+    }
+
+    public String getDatacolumn51() {
+        return datacolumn51;
+    }
+
+    public void setDatacolumn51(String datacolumn51) {
+        this.datacolumn51 = datacolumn51;
+    }
+
+    public String getDatacolumn52() {
+        return datacolumn52;
+    }
+
+    public void setDatacolumn52(String datacolumn52) {
+        this.datacolumn52 = datacolumn52;
+    }
+
+    public String getDatacolumn53() {
+        return datacolumn53;
+    }
+
+    public void setDatacolumn53(String datacolumn53) {
+        this.datacolumn53 = datacolumn53;
+    }
+
+    public String getDatacolumn54() {
+        return datacolumn54;
+    }
+
+    public void setDatacolumn54(String datacolumn54) {
+        this.datacolumn54 = datacolumn54;
+    }
+
+    public String getDatacolumn55() {
+        return datacolumn55;
+    }
+
+    public void setDatacolumn55(String datacolumn55) {
+        this.datacolumn55 = datacolumn55;
+    }
+
+    public String getDatacolumn56() {
+        return datacolumn56;
+    }
+
+    public void setDatacolumn56(String datacolumn56) {
+        this.datacolumn56 = datacolumn56;
+    }
+
+    public String getDatacolumn57() {
+        return datacolumn57;
+    }
+
+    public void setDatacolumn57(String datacolumn57) {
+        this.datacolumn57 = datacolumn57;
+    }
+
+    public String getDatacolumn58() {
+        return datacolumn58;
+    }
+
+    public void setDatacolumn58(String datacolumn58) {
+        this.datacolumn58 = datacolumn58;
+    }
+
+    public String getDatacolumn59() {
+        return datacolumn59;
+    }
+
+    public void setDatacolumn59(String datacolumn59) {
+        this.datacolumn59 = datacolumn59;
+    }
+
+    public String getDatacolumn60() {
+        return datacolumn60;
+    }
+
+    public void setDatacolumn60(String datacolumn60) {
+        this.datacolumn60 = datacolumn60;
     }
 
     public Date getCreatetime() {

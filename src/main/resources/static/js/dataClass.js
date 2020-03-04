@@ -80,7 +80,7 @@
                     var temp = e[key];
                     // $("img[name= '" + key + "']")[0].src = 'data:' + temp['type'] + ',' + temp['inputURL'];
                     $("img[name= '" + key + "']")[0].src = ' ';
-                    $("img[name= '" + key + "']")[0].src = 'getImg?filename='+temp['inputvalue'];
+                    $("img[name= '" + key + "']")[0].src = 'getImg?filename='+temp['inputvalue']+'&tempid='+Math.random();
                     if ($('input[name=tu_' + key + ']')[0]){
                         $('input[name=tu_' + key + ']').val(temp['inputvalue']);
                     } else
@@ -117,19 +117,18 @@
                     eval.call(temp, 'var ' + temp + ' = ' + val);
             }
             f(calList);
-            for (var temp in this.datalist) {
-                var o = this.datalist[temp];
-                var value = eval(temp);
-                if (['NaN', 'undefined', 'null'].indexOf(String(value)) < 0 && calObjList[temp]) {
-                    if (String(value) != ' '){
-                        o.color = 'grey';
-                        o.value = value;
-                    }
-                    else if (o.color != 'white')
-                        o.color = 'white';
-                }
-            }
-
+            // for (var temp in this.datalist) {
+            //     var o = this.datalist[temp];
+            //     var value = eval(temp);
+            //     if (['NaN', 'undefined', 'null'].indexOf(String(value)) < 0 && calObjList[temp]) {
+            //         if (String(value) != ' '){
+            //             o.color = 'grey';
+            //             o.value = value;
+            //         }
+            //         else if (o.color != 'white')
+            //             o.color = 'white';
+            //     }
+            // }
             function f(calList) {
                 var list = {};
                 for (var key in calList) {
@@ -144,12 +143,22 @@
                     })())continue;
                     var temp;
                     if (typeof fun == 'string')
-                        eval(key + '=' + fun)
+                        eval(  'temp =' + fun)
                     else if (typeof fun == 'function'){
                         temp=fun()
-                        eval(key + '= temp')
                     }
-                    calObjList[key] = key;
+                    var o = data.datalist[key];
+                    if (['NaN', 'undefined', 'null'].indexOf(String(temp)) < 0 ) {
+                        if (String(temp) != ' '){
+                            o.color = 'grey';
+                            o.value = temp;
+                            eval(key+'=temp');
+                        }
+                        else if (o.color != 'white')
+                            o.color = 'white';
+                    }else{
+                        continue;
+                    }
                     if (isGetByDB) {
                         for (var e in data.datalist[key].calList) {
                             if (data.datalist[e].color == 'yellow') {

@@ -54,6 +54,16 @@
     <result column="DataColumn48" property="datacolumn48" jdbcType="VARCHAR" />
     <result column="DataColumn49" property="datacolumn49" jdbcType="VARCHAR" />
     <result column="DataColumn50" property="datacolumn50" jdbcType="VARCHAR" />
+    <result column="DataColumn51" property="datacolumn51" jdbcType="VARCHAR" />
+    <result column="DataColumn52" property="datacolumn52" jdbcType="VARCHAR" />
+    <result column="DataColumn53" property="datacolumn53" jdbcType="VARCHAR" />
+    <result column="DataColumn54" property="datacolumn54" jdbcType="VARCHAR" />
+    <result column="DataColumn55" property="datacolumn55" jdbcType="VARCHAR" />
+    <result column="DataColumn56" property="datacolumn56" jdbcType="VARCHAR" />
+    <result column="DataColumn57" property="datacolumn57" jdbcType="VARCHAR" />
+    <result column="DataColumn58" property="datacolumn58" jdbcType="VARCHAR" />
+    <result column="DataColumn59" property="datacolumn59" jdbcType="VARCHAR" />
+    <result column="DataColumn60" property="datacolumn60" jdbcType="VARCHAR" />
     <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="ChangeLastTime" property="changelasttime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -122,9 +132,11 @@
     DataColumn19, DataColumn20, DataColumn21, DataColumn22, DataColumn23, DataColumn24, 
     DataColumn25, DataColumn26, DataColumn27, DataColumn28, DataColumn29, DataColumn30, 
     DataColumn31, DataColumn32, DataColumn33, DataColumn34, DataColumn35, DataColumn36, 
-    DataColumn37, DataColumn38, DataColumn39, DataColumn40, DataColumn41, DataColumn42, 
+    DataColumn37, DataColumn38, DataColumn39, DataColumn40,DataColumn41, DataColumn42,
     DataColumn43, DataColumn44, DataColumn45, DataColumn46, DataColumn47, DataColumn48, 
-    DataColumn49, DataColumn50, CreateTime, ChangeLastTime
+    DataColumn49, DataColumn50, DataColumn51, DataColumn52, DataColumn53, DataColumn54,
+    DataColumn55, DataColumn56, DataColumn57, DataColumn58, DataColumn59, DataColumn60,
+    CreateTime, ChangeLastTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.ProjectDataExample" >
     select
@@ -174,7 +186,10 @@
       DataColumn41, DataColumn42, DataColumn43, 
       DataColumn44, DataColumn45, DataColumn46, 
       DataColumn47, DataColumn48, DataColumn49, 
-      DataColumn50, CreateTime, ChangeLastTime
+      DataColumn50, DataColumn51, DataColumn52,
+      DataColumn53, DataColumn54, DataColumn55,
+      DataColumn56, DataColumn57, DataColumn58,
+      DataColumn59, DataColumn60, CreateTime, ChangeLastTime
       )
     values (#{projectdataid,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{datacolumn1,jdbcType=VARCHAR}, 
       #{datacolumn2,jdbcType=VARCHAR}, #{datacolumn3,jdbcType=VARCHAR}, #{datacolumn4,jdbcType=VARCHAR}, 
@@ -193,7 +208,11 @@
       #{datacolumn41,jdbcType=VARCHAR}, #{datacolumn42,jdbcType=VARCHAR}, #{datacolumn43,jdbcType=VARCHAR}, 
       #{datacolumn44,jdbcType=VARCHAR}, #{datacolumn45,jdbcType=VARCHAR}, #{datacolumn46,jdbcType=VARCHAR}, 
       #{datacolumn47,jdbcType=VARCHAR}, #{datacolumn48,jdbcType=VARCHAR}, #{datacolumn49,jdbcType=VARCHAR}, 
-      #{datacolumn50,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{changelasttime,jdbcType=TIMESTAMP}
+      #{datacolumn50,jdbcType=VARCHAR}, #{datacolumn51,jdbcType=VARCHAR}, #{datacolumn52,jdbcType=VARCHAR},
+      #{datacolumn53,jdbcType=VARCHAR}, #{datacolumn54,jdbcType=VARCHAR}, #{datacolumn55,jdbcType=VARCHAR},
+      #{datacolumn56,jdbcType=VARCHAR}, #{datacolumn57,jdbcType=VARCHAR}, #{datacolumn58,jdbcType=VARCHAR},
+      #{datacolumn59,jdbcType=VARCHAR}, #{datacolumn60,jdbcType=VARCHAR} #{createtime,jdbcType=TIMESTAMP},
+      #{changelasttime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.point.entity.ProjectData" >
@@ -354,6 +373,36 @@
       </if>
       <if test="datacolumn50 != null" >
         DataColumn50,
+      </if>
+      <if test="datacolumn51 != null" >
+        DataColumn51,
+      </if>
+      <if test="datacolumn52 != null" >
+        DataColumn52,
+      </if>
+      <if test="datacolumn53 != null" >
+        DataColumn53,
+      </if>
+      <if test="datacolumn54 != null" >
+        DataColumn54,
+      </if>
+      <if test="datacolumn55 != null" >
+        DataColumn55,
+      </if>
+      <if test="datacolumn56 != null" >
+        DataColumn56,
+      </if>
+      <if test="datacolumn57 != null" >
+        DataColumn57,
+      </if>
+      <if test="datacolumn58 != null" >
+        DataColumn58,
+      </if>
+      <if test="datacolumn59 != null" >
+        DataColumn59,
+      </if>
+      <if test="datacolumn60 != null" >
+        DataColumn60,
       </if>
       <if test="createtime != null" >
         CreateTime,
@@ -518,6 +567,36 @@
       </if>
       <if test="datacolumn50 != null" >
         #{datacolumn50,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn51 != null" >
+        #{datacolumn51,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn52 != null" >
+        #{datacolumn52,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn53 != null" >
+        #{datacolumn53,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn54 != null" >
+        #{datacolumn54,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn55 != null" >
+        #{datacolumn55,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn56 != null" >
+        #{datacolumn56,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn57 != null" >
+        #{datacolumn57,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn58 != null" >
+        #{datacolumn58,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn59 != null" >
+        #{datacolumn59,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn60 != null" >
+        #{datacolumn60,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
@@ -692,6 +771,36 @@
       <if test="record.datacolumn50 != null" >
         DataColumn50 = #{record.datacolumn50,jdbcType=VARCHAR},
       </if>
+      <if test="record.datacolumn51 != null" >
+        DataColumn51 = #{record.datacolumn51,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn52 != null" >
+        DataColumn52 = #{record.datacolumn52,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn53 != null" >
+        DataColumn53 = #{record.datacolumn53,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn54 != null" >
+        DataColumn54 = #{record.datacolumn54,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn55 != null" >
+        DataColumn55 = #{record.datacolumn55,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn56 != null" >
+        DataColumn56 = #{record.datacolumn56,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn57 != null" >
+        DataColumn57 = #{record.datacolumn57,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn58 != null" >
+        DataColumn58 = #{record.datacolumn58,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn59 != null" >
+        DataColumn59 = #{record.datacolumn59,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datacolumn60 != null" >
+        DataColumn60 = #{record.datacolumn60,jdbcType=VARCHAR},
+      </if>
       <if test="record.createtime != null" >
         CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
@@ -757,6 +866,16 @@
       DataColumn48 = #{record.datacolumn48,jdbcType=VARCHAR},
       DataColumn49 = #{record.datacolumn49,jdbcType=VARCHAR},
       DataColumn50 = #{record.datacolumn50,jdbcType=VARCHAR},
+      DataColumn51 = #{record.datacolumn51,jdbcType=VARCHAR},
+      DataColumn52 = #{record.datacolumn52,jdbcType=VARCHAR},
+      DataColumn53 = #{record.datacolumn53,jdbcType=VARCHAR},
+      DataColumn54 = #{record.datacolumn54,jdbcType=VARCHAR},
+      DataColumn55 = #{record.datacolumn55,jdbcType=VARCHAR},
+      DataColumn56 = #{record.datacolumn56,jdbcType=VARCHAR},
+      DataColumn57 = #{record.datacolumn57,jdbcType=VARCHAR},
+      DataColumn58 = #{record.datacolumn58,jdbcType=VARCHAR},
+      DataColumn59 = #{record.datacolumn59,jdbcType=VARCHAR},
+      DataColumn60 = #{record.datacolumn60,jdbcType=VARCHAR},
       CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
       ChangeLastTime = #{record.changelasttime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -919,6 +1038,36 @@
       <if test="datacolumn50 != null" >
         DataColumn50 = #{datacolumn50,jdbcType=VARCHAR},
       </if>
+      <if test="datacolumn51 != null" >
+        DataColumn51 = #{datacolumn51,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn52 != null" >
+        DataColumn52 = #{datacolumn52,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn53 != null" >
+        DataColumn53 = #{datacolumn53,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn54 != null" >
+        DataColumn54 = #{datacolumn54,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn55 != null" >
+        DataColumn55 = #{datacolumn55,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn56 != null" >
+        DataColumn56 = #{datacolumn56,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn57 != null" >
+        DataColumn57 = #{datacolumn57,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn58 != null" >
+        DataColumn58 = #{datacolumn58,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn59 != null" >
+        DataColumn59 = #{datacolumn59,jdbcType=VARCHAR},
+      </if>
+      <if test="datacolumn60 != null" >
+        DataColumn60 = #{datacolumn60,jdbcType=VARCHAR},
+      </if>
       <if test="createtime != null" >
         CreateTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
@@ -981,6 +1130,16 @@
       DataColumn48 = #{datacolumn48,jdbcType=VARCHAR},
       DataColumn49 = #{datacolumn49,jdbcType=VARCHAR},
       DataColumn50 = #{datacolumn50,jdbcType=VARCHAR},
+      DataColumn51 = #{datacolumn51,jdbcType=VARCHAR},
+      DataColumn52 = #{datacolumn52,jdbcType=VARCHAR},
+      DataColumn53 = #{datacolumn53,jdbcType=VARCHAR},
+      DataColumn54 = #{datacolumn54,jdbcType=VARCHAR},
+      DataColumn55 = #{datacolumn55,jdbcType=VARCHAR},
+      DataColumn56 = #{datacolumn56,jdbcType=VARCHAR},
+      DataColumn57 = #{datacolumn57,jdbcType=VARCHAR},
+      DataColumn58 = #{datacolumn58,jdbcType=VARCHAR},
+      DataColumn59 = #{datacolumn59,jdbcType=VARCHAR},
+      DataColumn60 = #{datacolumn60,jdbcType=VARCHAR},
       CreateTime = #{createtime,jdbcType=TIMESTAMP},
       ChangeLastTime = #{changelasttime,jdbcType=TIMESTAMP}
     where ProjectDataId = #{projectdataid,jdbcType=INTEGER}

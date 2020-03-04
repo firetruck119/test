@@ -2394,15 +2394,13 @@
             data.datalist['dbyj'].color = 'white';
             switch ( typeOfMachine ) {
                 case '固定立柱':
-                    $('[name=dbyj]').prop('readonly', true);
-                    data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
-                    break;
-                case '仰臂':break;
                 case '顶升':
                     $('[name=dbyj]').prop('readonly', true);
                     data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
-                    break;
-                case '顶升+仰臂':break;
+                    return null;
+                case '顶升+仰臂':
+                case '仰臂':return dbyj;
+
             }
         },
         mzj: function () {

@@ -3,18 +3,20 @@
 <head>
     <title>数据维护</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
-    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+    <script th:src="@{js/jquery-1.8.3.js}"></script>
+<!--    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>-->
     <link th:href="@{css/page.css}" rel="stylesheet"/>
     <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
     <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
     <link th:href="@{css/base.min.css}" rel="stylesheet"/>
     <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
     <!--    <link th:href="@{css/bootstrap.css}" rel="stylesheet"/>-->
-    <link href="https://cdn.bootcss.com/jsgrid/1.5.3/jsgrid.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/jsgrid/1.5.3/jsgrid-theme.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/jsgrid/1.5.3/jsgrid.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{jsGrid/jsgrid.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{jsGrid/jsgrid-theme.css}" />
+
+    <script th:src="@{jsGrid/jsgrid.js}"></script>
+
+
     <link href="https://cdn.bootcss.com/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
     <script th:inline="javascript">
         var data = [[${data}]];
@@ -48,13 +50,13 @@
         }
 
         .twoInput {
-            width: 43.5%;
+            width: 40%;
             height: 20px;
         }
 
         td {
             padding: 2px;
-            text-align: center;
+            /*text-align: center;*/
             border: 1px solid #333;
         }
     </style>
@@ -63,7 +65,7 @@
 
 <nav class="navbar navbar-default" role="head" th:replace="head"></nav>
 <br/><br/>
-<div style="width: 100%;background-color: #E0F0FF;margin: 10px 0 15px 0;border:2px double #3c763d ;position: relative;">
+<div class="fieldGrid" style="width: 98%;background-color: #E0F0FF;margin: 0 auto 0;border:2px double #3c763d ;position: relative;">
     <form class="filterForm">
         <table>
             <thead>
@@ -75,8 +77,8 @@
             </tbody>
         </table>
     </form>
-
-    <button class="filterBtn" style="position: relative;left:85%;width: 100px;height: 40px;border-radius: 15px " >筛选</button>
+    <h4 style="display: inline-block;margin: 11px"><label class="countOfField"></label></h4>
+    <button class="filterBtn" style="position: relative;left:60%;width: 100px;height: 40px;border-radius: 15px " >筛选</button>
     <script>
         $('.filterBtn').click(function () {
             filter('form2Json');
@@ -86,7 +88,7 @@
             return false;
         });
     </script>
-    <button class="resetBtn" style="position: relative;left:87%;width: 100px;height: 40px;border-radius: 15px " >重置</button>
+    <button class="resetBtn" style="position: relative;left:62%;width: 100px;height: 40px;border-radius: 15px;" >重置</button>
     <script>
         $('.resetBtn').click(function () {
             $('.filterForm')[0].reset();
@@ -98,22 +100,19 @@
         });
     </script>
 </div>
-<div></div>
-<div>
-    <table id="jsGrid"></table>
+
+<div style="width:98%;margin:0 auto 0;border: 2px double red">
+    <div id="jsGrid"></div>
 </div>
 </body>
 <!-- 处理列表头-->
 <script>
-    var htmlWidth=parseInt($('html').css('width'));
-    var aw = (htmlWidth )/htmlWidth*100;
-    var w = (htmlWidth - 110) / head.length/htmlWidth*100;
 
     function createFielObject(name, title, columndatatype, queryconditionorder, stringValues,min,max) {
         var newObj = {
             align: 'center',
         };
-        newObj.width = w+'%';
+        newObj.width = '100px';
         newObj.name = name;
         newObj.title = title;
         switch (columndatatype) {
@@ -127,6 +126,9 @@
                 newObj.itemTemplate = function (value, item) {
                     return '<a target="_blank"  href="' + value + '">跳转</a>'
                 }
+            default:
+                newObj.type = 'string';
+                break;
         }
         switch (queryconditionorder) {
             case 1:
@@ -138,7 +140,7 @@
                 break;
             case 4:
                 filter('addFilter', name, 'Rate',title,stringValues,min,max);
-                break;
+                break
         }
         return newObj;
     }
@@ -148,6 +150,7 @@
         var client = {};
         var numberList={};
         var number;
+        var trNumberOfFilter=0;
         function filtByNumber(value) {
             return !number || parseFloat(value) === number
         }
@@ -186,6 +189,7 @@
         function createFormForFilter(filtname, filt, title,stringValues,min,max) {
             var trList = $('.filterForm tr[capacity]');
             var tr;
+            trNumberOfFilter++;
             if (trList.length == 0 || $(trList[trList.length - 1]).attr('capacity') >= 5) {
                 tr = $("<tr capacity='1'> </tr>")
                 $('.filterForm table tbody').append(tr)
@@ -276,23 +280,23 @@
             width: '50px',
             css: 'a',
             name: 'projectdataid',
-            title: '序号',
+            title: '1.序号',
             type:'number',
         }, {
             width: '120px',
             align: 'center',
             css: 'a',
             name: 'projectname',
-            title: '项目名称',
+            title: '2.项目名称',
             sorter:'string',
         },];
     (function () {
-        filter('addFilter', 'projectdataid', 'Number','序号');
-        filter('addFilter', 'projectname', 'String','项目名称');
+        filter('addFilter', 'projectdataid', 'Number','1.序号');
+        filter('addFilter', 'projectname', 'String','2.项目名称');
         for (var index in head) {
             var obj = head[index];
             var name = 'datacolumn' + obj.projectcolumndefinitionid;
-            var title = obj.columnname;
+            var title = (obj.projectcolumndefinitionid+2)+'.'+obj.columnname;
             var type = obj.columndatatype;
             var queryconditionorder = obj.queryconditionorder;
             // obj.stringValues = duplicateRemoval(obj.stringValues);
@@ -314,23 +318,27 @@
                     }
                     return temp;
                 });
+                $('.countOfField').text('总共'+data.length+'条数据，现在显示'+array.length+'条数据');
                 return array;
             },
     }
     var grid=$("#jsGrid");
+    var h=$(window).height()-100-$('.fieldGrid').height()-21
     $(function () {
         grid.jsGrid({
-            height: "740px",//表单高
-            width: aw + '%',//表单宽
-            inserting: true,
+            height:'440px',//表单高
+            width: '100%',//表单宽
             insertRowRenderer: function () {
                 return $("<div>").css("display", "none")
             },
+            filtering: false,
+            editing: false,
+            inserting: false,
+            sorting: true,
             paging: true,
+            autoload: true,
             pageSize: 15,
             pageButtonCount: 15,
-            sorting: true,
-            autoload: true,
             controller: db,
             fields: fiels,
             deleteConfirm: "确定删除?",
