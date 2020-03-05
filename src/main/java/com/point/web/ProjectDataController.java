@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.point.common.Consts;
 import com.point.common.CustomerException;
+import com.point.common.Logger;
 import com.point.entity.GridDataJsonModel;
 import com.point.entity.ProjectColumnDefinition;
 import com.point.entity.ProjectColumnDefinitionDetail;
@@ -13,7 +14,6 @@ import com.point.excel.ExcelUtil;
 import com.point.mapper.ProjectColumnDefinitionMapper;
 import com.point.mapper.ProjectDataMapper;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -54,11 +54,14 @@ public class ProjectDataController {
 
     @GetMapping("/ProjectDataNew")
     public ModelAndView ProjectData_New() throws IllegalAccessException {
+        Logger.getInstance().info("start");
         ModelAndView modelAndView = new ModelAndView("ProjectData_New");
         //获取所有数据
         List<ProjectData> projectDataList = projectDataMapper.selectByExample(null);
+        Logger.getInstance().info("projectDataList");
         //获取列表头信息
         List<ProjectColumnDefinition> definitionList = projectColumnDefinitionMapper.selectByExample(null);
+        Logger.getInstance().info("definitionList");
         Map<String,Object> map=new HashMap<>();
         List<ProjectColumnDefinitionDetail> result = new ArrayList<>();
         Map<ProjectColumnDefinition, Field> dataFieldMap = excelUtil.getDataFieldMap(definitionList);
@@ -95,7 +98,7 @@ public class ProjectDataController {
                             doubleValues.add(Double.parseDouble(fieldEntry.getValue().get(projectData).toString()));
                         }
                     }
-                    Collections.sort(doubleValues);
+                    doubleValues=doubleValues.stream().distinct().sorted().collect(Collectors.toList());
                     detail.setStringValues(new ArrayList<>());
                     doubleValues.forEach(x -> detail.getStringValues().add(String.valueOf(x)));
                 } else if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_NUMBER_RANGE_) {
@@ -121,6 +124,7 @@ public class ProjectDataController {
         map.put("data",projectDataList);
         map.put("head",result);
         modelAndView.addAllObjects(map);
+        Logger.getInstance().info("end");
         return modelAndView;
     }
 
@@ -214,7 +218,7 @@ public class ProjectDataController {
                                 doubleValues.add(Double.parseDouble(fieldEntry.getValue().get(projectData).toString()));
                             }
                         }
-                        Collections.sort(doubleValues);
+                        doubleValues=doubleValues.stream().distinct().sorted().collect(Collectors.toList());
                         detail.setStringValues(new ArrayList<>());
                         doubleValues.forEach(x -> detail.getStringValues().add(String.valueOf(x)));
                     } else if (fieldEntry.getKey().getQueryconditionorder() == Consts.QUERYCONDITIONORDER_NUMBER_RANGE_) {
@@ -239,6 +243,7 @@ public class ProjectDataController {
             model.setTotals(result.size());
 
         } catch (Exception ex) {
+            Logger.getInstance().error("ex",ex);
             model.setStatus("false");
             model.setMessage(ex.getMessage());
         }
@@ -266,6 +271,7 @@ public class ProjectDataController {
                             String columnData = entry.getValue().get(projectData) == null ? Consts.NULL : entry.getValue().get(projectData).toString();
                             Double.parseDouble(columnData);
                         } catch (Exception ex) {
+                            Logger.getInstance().error("ex",ex);
                             throw new CustomerException(entry.getKey().getColumnname() + "必须为数值, 请检查" + projectData.getProjectname());
                         }
                     }
@@ -304,6 +310,7 @@ public class ProjectDataController {
             result.setStatus("false");
             result.setMessage("没有数据导入," + cex.getMessage());
         } catch (Exception ex) {
+            Logger.getInstance().error("ex",ex);
             result.setStatus("false");
             result.setMessage("系统发生未知异常，请检查数据，或联系维护人员：" + ex);
         }
@@ -351,7 +358,7 @@ public class ProjectDataController {
             model.setData(rows);
             model.setHeaders(headers);
         } catch (Exception ex) {
-
+            Logger.getInstance().error("ex",ex);
         }
         return model;
     }
@@ -382,7 +389,7 @@ public class ProjectDataController {
             }
             response.sendRedirect("/ProjectData");
         } catch (Exception ex) {
-
+            Logger.getInstance().error("ex",ex);
         }
     }
 
@@ -455,7 +462,7 @@ public class ProjectDataController {
                 }
             }
         } catch (Exception ex) {
-
+            Logger.getInstance().error("ex",ex);
         }
         return result;
     }

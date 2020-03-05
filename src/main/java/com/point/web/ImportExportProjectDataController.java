@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.point.common.Consts;
 import com.point.common.CustomerException;
+import com.point.common.Logger;
 import com.point.entity.GridDataJsonModel;
 import com.point.entity.ProjectColumnDefinition;
 import com.point.entity.ProjectData;
@@ -66,6 +67,7 @@ public class ImportExportProjectDataController {
                             String columnData = entry.getValue().get(projectData) == null ? Consts.NULL : entry.getValue().get(projectData).toString();
                             Double.parseDouble(columnData);
                         } catch (Exception ex) {
+                            Logger.getInstance().error("ex",ex);
                             throw new CustomerException(entry.getKey().getColumnname() + "必须为数值, 请检查" + projectData.getProjectname());
                         }
                     }
@@ -104,6 +106,7 @@ public class ImportExportProjectDataController {
             result.setStatus("false");
             result.setMessage("没有数据导入," + cex.getMessage());
         } catch (Exception ex) {
+            Logger.getInstance().error("ex",ex);
             result.setStatus("false");
             result.setMessage("系统发生未知异常，请检查数据，或联系维护人员：" + ex);
         }
@@ -134,7 +137,7 @@ public class ImportExportProjectDataController {
             }
             response.sendRedirect("/ProjectData");
         } catch (Exception ex) {
-
+            Logger.getInstance().error("ex",ex);
         }
     }
 }

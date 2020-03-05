@@ -109,7 +109,7 @@ public class CacheData<T> {
             }
             writeCache2Db(batchId, cacheMap);
         } catch (Exception ex) {
-
+            Logger.getInstance().error("ex",ex);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.point.excel;
 
 import com.point.common.Consts;
 import com.point.common.CustomerException;
+import com.point.common.Logger;
 import com.point.entity.ProjectColumnDefinition;
 import com.point.entity.ProjectData;
 import org.apache.poi.hssf.usermodel.*;
@@ -107,6 +108,7 @@ public class ExcelUtil {
                 try {
                     id = (int) (Double.parseDouble(strId));
                 } catch (Exception ex) {
+                    Logger.getInstance().error("ex",ex);
                     throw new CustomerException("第" + (r + 1) + "行序号不正确");
                 }
 
