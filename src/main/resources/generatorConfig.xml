@@ -23,7 +23,7 @@
                              targetProject="src/main/java" type="XMLMAPPER" />
 
         <!-- 数据库表 -->
-        <table tableName="input_cache" domainObjectName="InputCache"></table>
+        <table tableName="project_data" domainObjectName="ProjectData"></table>
 
     </context>
 </generatorConfiguration>

@@ -132,10 +132,10 @@
     DataColumn19, DataColumn20, DataColumn21, DataColumn22, DataColumn23, DataColumn24, 
     DataColumn25, DataColumn26, DataColumn27, DataColumn28, DataColumn29, DataColumn30, 
     DataColumn31, DataColumn32, DataColumn33, DataColumn34, DataColumn35, DataColumn36, 
-    DataColumn37, DataColumn38, DataColumn39, DataColumn40,DataColumn41, DataColumn42,
+    DataColumn37, DataColumn38, DataColumn39, DataColumn40, DataColumn41, DataColumn42, 
     DataColumn43, DataColumn44, DataColumn45, DataColumn46, DataColumn47, DataColumn48, 
-    DataColumn49, DataColumn50, DataColumn51, DataColumn52, DataColumn53, DataColumn54,
-    DataColumn55, DataColumn56, DataColumn57, DataColumn58, DataColumn59, DataColumn60,
+    DataColumn49, DataColumn50, DataColumn51, DataColumn52, DataColumn53, DataColumn54, 
+    DataColumn55, DataColumn56, DataColumn57, DataColumn58, DataColumn59, DataColumn60, 
     CreateTime, ChangeLastTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.point.entity.ProjectDataExample" >
@@ -186,11 +186,11 @@
       DataColumn41, DataColumn42, DataColumn43, 
       DataColumn44, DataColumn45, DataColumn46, 
       DataColumn47, DataColumn48, DataColumn49, 
-      DataColumn50, DataColumn51, DataColumn52,
-      DataColumn53, DataColumn54, DataColumn55,
-      DataColumn56, DataColumn57, DataColumn58,
-      DataColumn59, DataColumn60, CreateTime, ChangeLastTime
-      )
+      DataColumn50, DataColumn51, DataColumn52, 
+      DataColumn53, DataColumn54, DataColumn55, 
+      DataColumn56, DataColumn57, DataColumn58, 
+      DataColumn59, DataColumn60, CreateTime, 
+      ChangeLastTime)
     values (#{projectdataid,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{datacolumn1,jdbcType=VARCHAR}, 
       #{datacolumn2,jdbcType=VARCHAR}, #{datacolumn3,jdbcType=VARCHAR}, #{datacolumn4,jdbcType=VARCHAR}, 
       #{datacolumn5,jdbcType=VARCHAR}, #{datacolumn6,jdbcType=VARCHAR}, #{datacolumn7,jdbcType=VARCHAR}, 
@@ -208,12 +208,11 @@
       #{datacolumn41,jdbcType=VARCHAR}, #{datacolumn42,jdbcType=VARCHAR}, #{datacolumn43,jdbcType=VARCHAR}, 
       #{datacolumn44,jdbcType=VARCHAR}, #{datacolumn45,jdbcType=VARCHAR}, #{datacolumn46,jdbcType=VARCHAR}, 
       #{datacolumn47,jdbcType=VARCHAR}, #{datacolumn48,jdbcType=VARCHAR}, #{datacolumn49,jdbcType=VARCHAR}, 
-      #{datacolumn50,jdbcType=VARCHAR}, #{datacolumn51,jdbcType=VARCHAR}, #{datacolumn52,jdbcType=VARCHAR},
-      #{datacolumn53,jdbcType=VARCHAR}, #{datacolumn54,jdbcType=VARCHAR}, #{datacolumn55,jdbcType=VARCHAR},
-      #{datacolumn56,jdbcType=VARCHAR}, #{datacolumn57,jdbcType=VARCHAR}, #{datacolumn58,jdbcType=VARCHAR},
-      #{datacolumn59,jdbcType=VARCHAR}, #{datacolumn60,jdbcType=VARCHAR} #{createtime,jdbcType=TIMESTAMP},
-      #{changelasttime,jdbcType=TIMESTAMP}
-      )
+      #{datacolumn50,jdbcType=VARCHAR}, #{datacolumn51,jdbcType=VARCHAR}, #{datacolumn52,jdbcType=VARCHAR}, 
+      #{datacolumn53,jdbcType=VARCHAR}, #{datacolumn54,jdbcType=VARCHAR}, #{datacolumn55,jdbcType=VARCHAR}, 
+      #{datacolumn56,jdbcType=VARCHAR}, #{datacolumn57,jdbcType=VARCHAR}, #{datacolumn58,jdbcType=VARCHAR}, 
+      #{datacolumn59,jdbcType=VARCHAR}, #{datacolumn60,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{changelasttime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.point.entity.ProjectData" >
     insert into project_data

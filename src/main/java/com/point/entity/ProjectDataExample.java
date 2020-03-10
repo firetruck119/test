@@ -3735,6 +3735,706 @@ public class ProjectDataExample {
             return (Criteria) this;
         }
 
+        public Criteria andDatacolumn51IsNull() {
+            addCriterion("DataColumn51 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51IsNotNull() {
+            addCriterion("DataColumn51 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51EqualTo(String value) {
+            addCriterion("DataColumn51 =", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51NotEqualTo(String value) {
+            addCriterion("DataColumn51 <>", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51GreaterThan(String value) {
+            addCriterion("DataColumn51 >", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn51 >=", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51LessThan(String value) {
+            addCriterion("DataColumn51 <", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn51 <=", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51Like(String value) {
+            addCriterion("DataColumn51 like", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51NotLike(String value) {
+            addCriterion("DataColumn51 not like", value, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51In(List<String> values) {
+            addCriterion("DataColumn51 in", values, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51NotIn(List<String> values) {
+            addCriterion("DataColumn51 not in", values, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51Between(String value1, String value2) {
+            addCriterion("DataColumn51 between", value1, value2, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn51NotBetween(String value1, String value2) {
+            addCriterion("DataColumn51 not between", value1, value2, "datacolumn51");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52IsNull() {
+            addCriterion("DataColumn52 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52IsNotNull() {
+            addCriterion("DataColumn52 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52EqualTo(String value) {
+            addCriterion("DataColumn52 =", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52NotEqualTo(String value) {
+            addCriterion("DataColumn52 <>", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52GreaterThan(String value) {
+            addCriterion("DataColumn52 >", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn52 >=", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52LessThan(String value) {
+            addCriterion("DataColumn52 <", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn52 <=", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52Like(String value) {
+            addCriterion("DataColumn52 like", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52NotLike(String value) {
+            addCriterion("DataColumn52 not like", value, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52In(List<String> values) {
+            addCriterion("DataColumn52 in", values, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52NotIn(List<String> values) {
+            addCriterion("DataColumn52 not in", values, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52Between(String value1, String value2) {
+            addCriterion("DataColumn52 between", value1, value2, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn52NotBetween(String value1, String value2) {
+            addCriterion("DataColumn52 not between", value1, value2, "datacolumn52");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53IsNull() {
+            addCriterion("DataColumn53 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53IsNotNull() {
+            addCriterion("DataColumn53 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53EqualTo(String value) {
+            addCriterion("DataColumn53 =", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53NotEqualTo(String value) {
+            addCriterion("DataColumn53 <>", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53GreaterThan(String value) {
+            addCriterion("DataColumn53 >", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn53 >=", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53LessThan(String value) {
+            addCriterion("DataColumn53 <", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn53 <=", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53Like(String value) {
+            addCriterion("DataColumn53 like", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53NotLike(String value) {
+            addCriterion("DataColumn53 not like", value, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53In(List<String> values) {
+            addCriterion("DataColumn53 in", values, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53NotIn(List<String> values) {
+            addCriterion("DataColumn53 not in", values, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53Between(String value1, String value2) {
+            addCriterion("DataColumn53 between", value1, value2, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn53NotBetween(String value1, String value2) {
+            addCriterion("DataColumn53 not between", value1, value2, "datacolumn53");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54IsNull() {
+            addCriterion("DataColumn54 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54IsNotNull() {
+            addCriterion("DataColumn54 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54EqualTo(String value) {
+            addCriterion("DataColumn54 =", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54NotEqualTo(String value) {
+            addCriterion("DataColumn54 <>", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54GreaterThan(String value) {
+            addCriterion("DataColumn54 >", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn54 >=", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54LessThan(String value) {
+            addCriterion("DataColumn54 <", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn54 <=", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54Like(String value) {
+            addCriterion("DataColumn54 like", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54NotLike(String value) {
+            addCriterion("DataColumn54 not like", value, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54In(List<String> values) {
+            addCriterion("DataColumn54 in", values, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54NotIn(List<String> values) {
+            addCriterion("DataColumn54 not in", values, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54Between(String value1, String value2) {
+            addCriterion("DataColumn54 between", value1, value2, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn54NotBetween(String value1, String value2) {
+            addCriterion("DataColumn54 not between", value1, value2, "datacolumn54");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55IsNull() {
+            addCriterion("DataColumn55 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55IsNotNull() {
+            addCriterion("DataColumn55 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55EqualTo(String value) {
+            addCriterion("DataColumn55 =", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55NotEqualTo(String value) {
+            addCriterion("DataColumn55 <>", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55GreaterThan(String value) {
+            addCriterion("DataColumn55 >", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn55 >=", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55LessThan(String value) {
+            addCriterion("DataColumn55 <", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn55 <=", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55Like(String value) {
+            addCriterion("DataColumn55 like", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55NotLike(String value) {
+            addCriterion("DataColumn55 not like", value, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55In(List<String> values) {
+            addCriterion("DataColumn55 in", values, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55NotIn(List<String> values) {
+            addCriterion("DataColumn55 not in", values, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55Between(String value1, String value2) {
+            addCriterion("DataColumn55 between", value1, value2, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn55NotBetween(String value1, String value2) {
+            addCriterion("DataColumn55 not between", value1, value2, "datacolumn55");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56IsNull() {
+            addCriterion("DataColumn56 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56IsNotNull() {
+            addCriterion("DataColumn56 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56EqualTo(String value) {
+            addCriterion("DataColumn56 =", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56NotEqualTo(String value) {
+            addCriterion("DataColumn56 <>", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56GreaterThan(String value) {
+            addCriterion("DataColumn56 >", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn56 >=", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56LessThan(String value) {
+            addCriterion("DataColumn56 <", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn56 <=", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56Like(String value) {
+            addCriterion("DataColumn56 like", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56NotLike(String value) {
+            addCriterion("DataColumn56 not like", value, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56In(List<String> values) {
+            addCriterion("DataColumn56 in", values, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56NotIn(List<String> values) {
+            addCriterion("DataColumn56 not in", values, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56Between(String value1, String value2) {
+            addCriterion("DataColumn56 between", value1, value2, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn56NotBetween(String value1, String value2) {
+            addCriterion("DataColumn56 not between", value1, value2, "datacolumn56");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57IsNull() {
+            addCriterion("DataColumn57 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57IsNotNull() {
+            addCriterion("DataColumn57 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57EqualTo(String value) {
+            addCriterion("DataColumn57 =", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57NotEqualTo(String value) {
+            addCriterion("DataColumn57 <>", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57GreaterThan(String value) {
+            addCriterion("DataColumn57 >", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn57 >=", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57LessThan(String value) {
+            addCriterion("DataColumn57 <", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn57 <=", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57Like(String value) {
+            addCriterion("DataColumn57 like", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57NotLike(String value) {
+            addCriterion("DataColumn57 not like", value, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57In(List<String> values) {
+            addCriterion("DataColumn57 in", values, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57NotIn(List<String> values) {
+            addCriterion("DataColumn57 not in", values, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57Between(String value1, String value2) {
+            addCriterion("DataColumn57 between", value1, value2, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn57NotBetween(String value1, String value2) {
+            addCriterion("DataColumn57 not between", value1, value2, "datacolumn57");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58IsNull() {
+            addCriterion("DataColumn58 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58IsNotNull() {
+            addCriterion("DataColumn58 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58EqualTo(String value) {
+            addCriterion("DataColumn58 =", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58NotEqualTo(String value) {
+            addCriterion("DataColumn58 <>", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58GreaterThan(String value) {
+            addCriterion("DataColumn58 >", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn58 >=", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58LessThan(String value) {
+            addCriterion("DataColumn58 <", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn58 <=", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58Like(String value) {
+            addCriterion("DataColumn58 like", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58NotLike(String value) {
+            addCriterion("DataColumn58 not like", value, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58In(List<String> values) {
+            addCriterion("DataColumn58 in", values, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58NotIn(List<String> values) {
+            addCriterion("DataColumn58 not in", values, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58Between(String value1, String value2) {
+            addCriterion("DataColumn58 between", value1, value2, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn58NotBetween(String value1, String value2) {
+            addCriterion("DataColumn58 not between", value1, value2, "datacolumn58");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59IsNull() {
+            addCriterion("DataColumn59 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59IsNotNull() {
+            addCriterion("DataColumn59 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59EqualTo(String value) {
+            addCriterion("DataColumn59 =", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59NotEqualTo(String value) {
+            addCriterion("DataColumn59 <>", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59GreaterThan(String value) {
+            addCriterion("DataColumn59 >", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn59 >=", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59LessThan(String value) {
+            addCriterion("DataColumn59 <", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn59 <=", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59Like(String value) {
+            addCriterion("DataColumn59 like", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59NotLike(String value) {
+            addCriterion("DataColumn59 not like", value, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59In(List<String> values) {
+            addCriterion("DataColumn59 in", values, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59NotIn(List<String> values) {
+            addCriterion("DataColumn59 not in", values, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59Between(String value1, String value2) {
+            addCriterion("DataColumn59 between", value1, value2, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn59NotBetween(String value1, String value2) {
+            addCriterion("DataColumn59 not between", value1, value2, "datacolumn59");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60IsNull() {
+            addCriterion("DataColumn60 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60IsNotNull() {
+            addCriterion("DataColumn60 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60EqualTo(String value) {
+            addCriterion("DataColumn60 =", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60NotEqualTo(String value) {
+            addCriterion("DataColumn60 <>", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60GreaterThan(String value) {
+            addCriterion("DataColumn60 >", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60GreaterThanOrEqualTo(String value) {
+            addCriterion("DataColumn60 >=", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60LessThan(String value) {
+            addCriterion("DataColumn60 <", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60LessThanOrEqualTo(String value) {
+            addCriterion("DataColumn60 <=", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60Like(String value) {
+            addCriterion("DataColumn60 like", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60NotLike(String value) {
+            addCriterion("DataColumn60 not like", value, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60In(List<String> values) {
+            addCriterion("DataColumn60 in", values, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60NotIn(List<String> values) {
+            addCriterion("DataColumn60 not in", values, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60Between(String value1, String value2) {
+            addCriterion("DataColumn60 between", value1, value2, "datacolumn60");
+            return (Criteria) this;
+        }
+
+        public Criteria andDatacolumn60NotBetween(String value1, String value2) {
+            addCriterion("DataColumn60 not between", value1, value2, "datacolumn60");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatetimeIsNull() {
             addCriterion("CreateTime is null");
             return (Criteria) this;
