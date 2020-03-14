@@ -69,14 +69,6 @@ public class PdfCreater {
         }
     }
 
-    public String getFileUrl(String name){
-        if (MyEnv.isLocal()) {
-            return "C://resource/pdf/" + name + ".pdf";
-        } else {
-            return "/root/pdf/" + name + ".pdf";
-        }
-    }
-
     public byte[] reFileToByteArray() {
         // TODO Auto-generated method stub
         return null;
@@ -91,12 +83,7 @@ public class PdfCreater {
         Document document = null;
         byte[] result = null;
         try {
-            PdfReader reader;
-            if (MyEnv.isLocal()) {
-                reader = new PdfReader("C://resource/pdf/" + fileName + ".pdf");
-            } else {
-                reader = new PdfReader("/root/pdf/" + fileName + ".pdf");
-            }
+            PdfReader reader = getReaderByFileName(fileName);
             bos = new ByteArrayOutputStream();
             ps = new PdfStamper(reader, bos);
             /**
@@ -145,12 +132,7 @@ public class PdfCreater {
         Document document = null;
         byte[] result = null;
         try {
-            PdfReader reader;
-            if (MyEnv.isLocal()) {
-                reader = new PdfReader("C://resource/pdf/" + fileName + ".pdf");
-            } else {
-                reader = new PdfReader("/root/pdf/" + fileName + ".pdf");
-            }
+            PdfReader reader = getReaderByFileName(fileName);
             bos = new ByteArrayOutputStream();
             ps = new PdfStamper(reader, bos);
             /**
@@ -223,5 +205,22 @@ public class PdfCreater {
         document.close();
         writer.close();
         return  bos.toByteArray();
+    }
+    public PdfReader getReaderByFileName(String fileName) throws IOException{
+        PdfReader reader;
+        if (MyEnv.isLocal()) {
+            try {
+                reader = new PdfReader("C://resource/pdf/" + fileName + ".pdf");
+            } catch (Exception ex) {
+                reader = new PdfReader("/root/pdf/" + fileName + ".pdf");
+            }
+        } else {
+            try {
+                reader = new PdfReader("/root/pdf/" + fileName + ".pdf");
+            } catch (Exception ex) {
+                reader = new PdfReader("C://resource/pdf/" + fileName + ".pdf");
+            }
+        }
+        return reader;
     }
 }

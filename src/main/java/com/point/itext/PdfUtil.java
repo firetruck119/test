@@ -7,6 +7,7 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.*;
 import com.point.common.MyEnv;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
@@ -18,6 +19,9 @@ import java.util.Set;
 
 @Component
 public class PdfUtil {
+
+    @Autowired
+    PdfCreater pdfCreater;
 
     private void setImage(PdfStamper ps,String key,String fileName) throws Exception{
         AcroFields s = ps.getAcroFields(); //读取文本域
@@ -53,12 +57,7 @@ public class PdfUtil {
         Document document=null;
         byte[] result=null;
         try {
-            PdfReader reader;
-            if(MyEnv.isLocal()){
-                reader = new PdfReader("C://resource/pdf/"+fileName+".pdf");
-            }else{
-                reader = new PdfReader("/root/pdf/"+fileName+".pdf");
-            }
+            PdfReader reader=pdfCreater.getReaderByFileName(fileName);
             bos = new ByteArrayOutputStream();
             ps = new PdfStamper(reader, bos);
             /**
