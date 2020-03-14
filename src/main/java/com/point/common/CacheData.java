@@ -43,7 +43,7 @@ public class CacheData<T> {
                 }
             }
         }catch (Exception ex){
-
+            Logger.getInstance().error("writeCache2Db",ex);
         }
     }
 
