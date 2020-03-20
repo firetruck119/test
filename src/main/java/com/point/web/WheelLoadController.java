@@ -3,6 +3,7 @@ package com.point.web;
 import com.point.common.CacheData;
 import com.point.entity.pdf.WheelLoadEntity;
 import com.point.itext.PdfUtil;
+import com.point.web.newController.Tool.ComparatorHanYuPinYin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,9 @@ public class WheelLoadController {
     @ResponseBody
     @PostMapping("/getBatchIdList")
     public List<String> getBatchIdList(){
-        return cacheData.getBatchIdList();
+        List<String> l=cacheData.getBatchIdList();
+        l.sort(new ComparatorHanYuPinYin());
+        return l;
     }
 
     @GetMapping("/WheelLoad")

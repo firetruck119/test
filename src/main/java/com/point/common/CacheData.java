@@ -2,6 +2,7 @@ package com.point.common;
 
 import com.point.entity.InputCache;
 import com.point.entity.InputCacheExample;
+import com.point.entity.pdf.WireRopeEntity;
 import com.point.mapper.InputCacheMapper;
 import org.apache.poi.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +82,13 @@ public class CacheData<T> {
             Map<String, String> cacheMap = readCacheFromDb(batchId);
             Field[] fields = entity.getClass().getDeclaredFields();
             for (Field field : fields) {
-                String cacheValue = cacheMap.get(field.getName());
+                String cacheValue=null;
+                if(cacheMap.containsKey(field.getName())){
+                    cacheValue= cacheMap.get(field.getName());
+                }
+                if(cacheValue != null&&cacheValue.equals(" ")){
+                    cacheValue=null;
+                }
                 if (cacheValue != null) {
                     field.setAccessible(true);
                     if (field.getType().getName().equals("java.lang.Double")) {
@@ -103,6 +110,7 @@ public class CacheData<T> {
             for (Field field : fields) {
                 field.setAccessible(true);
                 Object object = field.get(entity);
+
                 if (object != null && object.toString().length() > 0) {
                     cacheMap.put(field.getName(), object.toString());
                 }

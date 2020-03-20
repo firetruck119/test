@@ -7,8 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class StabilityEnity_LSFArmEntity {
+public class StabilityEnity_LTTArmEntity {
     private String sjht;
+
     private String no;
     private String ver;
     private String xmmc;
@@ -17,8 +18,10 @@ public class StabilityEnity_LSFArmEntity {
     private String shr;
     private String pzr;
     private String date;
+
     private Double h;
     private Double pf;
+
     private Double lbd;
     private Double lbx;
     private Double lbp;
@@ -28,6 +31,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double dbyj;
     private Double mzj;
     private Double mzjf;
+
     private String gdlsxh;
     private Double flsjl;
     private Double nwd1;
@@ -36,12 +40,14 @@ public class StabilityEnity_LSFArmEntity {
     private String txxdj;
     private Double ftxxjq;
     private Double nwdt;
+
     private String djlsxh;
     private Double lsgca;
     private Double fdjlsfb;
     private Double nwd4;
     private Double nwd3;
     private Double fdjlszfb;
+
     private Double swp;
     private Double r1;
     private Double mwr;
@@ -64,10 +70,12 @@ public class StabilityEnity_LSFArmEntity {
     private Double m13;
     private Double m14;
     private Double m15;
+
     private String qt1;
     private String qt2;
     private String qt1y;
     private String qt2y;
+
     private Double lslhz;
     private Double lshlhz;
     private Double lhz1;
@@ -85,6 +93,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double lhz13;
     private Double lhz14;
     private Double lhz15;
+
     private Double lslqg;
     private Double lshlqg;
     private Double lqg1;
@@ -102,6 +111,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double lqg13;
     private Double lqg14;
     private Double lqg15;
+
     private Double lslql;
     private Double lshlql;
     private Double lql1;
@@ -119,6 +129,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double lql13;
     private Double lql14;
     private Double lql15;
+
     private Double hslg;
     private Double hshlg;
     private Double hg1;
@@ -136,6 +147,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double hg13;
     private Double hg14;
     private Double hg15;
+
     private Double aslcx;
     private Double ashlcx;
     private Double acx1;
@@ -153,6 +165,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double acx13;
     private Double acx14;
     private Double acx15;
+
     private Double asltx;
     private Double ashltx;
     private Double atx1;
@@ -170,6 +183,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double atx13;
     private Double atx14;
     private Double atx15;
+
     private Double lhzf1;
     private Double lhzf2;
     private Double lhzf3;
@@ -185,6 +199,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double lhzf13;
     private Double lhzf14;
     private Double lhzf15;
+
     private Double lhl1;
     private Double lhl2;
     private Double lhl3;
@@ -200,6 +215,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double lhl13;
     private Double lhl14;
     private Double lhl15;
+
     private Double hgf1;
     private Double hgf2;
     private Double hgf3;
@@ -215,6 +231,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double hgf13;
     private Double hgf14;
     private Double hgf15;
+
     private Double afcx1;
     private Double afcx2;
     private Double afcx3;
@@ -230,6 +247,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double afcx13;
     private Double afcx14;
     private Double afcx15;
+
     private Double aftx1;
     private Double aftx2;
     private Double aftx3;
@@ -248,6 +266,7 @@ public class StabilityEnity_LSFArmEntity {
 
     //Select
     private String typeOfMachine;
+    private String haveOfMobileCounterweight;
     private String typeOfRunningGear;
     private String typeOfPin;
     private String levelOfPin;

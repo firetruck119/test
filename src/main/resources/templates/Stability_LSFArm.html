@@ -175,7 +175,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0;font-size: 14px">擦窗机型号选择</td>
+                    <td style="padding:10px 0;font-size: 14px">擦窗机机型选择</td>
                     <td colspan="3" style="font-size: 14px">
                         <select name="typeOfMachine" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
@@ -252,6 +252,14 @@
                 <tr>
                     <td>其他II的名称</td>
                     <td colspan="2"><input name="qt2" type="text" th:field="*{qt2}" definevalue="其他II"/></td>
+                </tr>
+                <tr>
+                    <td>其他I的名称英文</td>
+                    <td colspan="2"><input name="qt1y" type="text" th:field="*{qt1y}" definevalue="OtherI"/></td>
+                </tr>
+                <tr>
+                    <td>其他II的名称英文</td>
+                    <td colspan="2"><input name="qt2y" type="text" th:field="*{qt2y}" definevalue="OtherII"/></td>
                 </tr>
             </table>
         </div>
@@ -2213,25 +2221,33 @@
                 </tr>
             </table>
         </div>
-
+        <input name="language" type="hidden"/>
     </form>
 
 
     <!--    按钮-->
     <div class="buttonbox" >
-
+        <script>
+            function changeLanguage(l){
+                var e = $('input[name=language]');
+                if (e.length == 0) {
+                    $('form').append('<input name="language" type="hidden"/>');
+                }
+                e = $('input[name=language]');
+                e.val(l);
+            }
+        </script>
         <input type="submit" form="form1" class="button" value="输出中文版计算书pdf"
-               onclick="isCheck(false);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
-        <!--        <input type="submit" form="form1" class="button" value="输出英文版计算书pdf"-->
-        <!--               onclick="$('#form1').attr('action','/stabilityenpdf1')"/>-->
+               onclick="changeLanguage('CN');isCheck(false);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
+        <input type="submit" form="form1" class="button" value="输出英文版计算书pdf"
+               onclick="changeLanguage('EN');isCheck(false);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
         <!--        <input type="submit" form="form1" class="button" value="输出澳大利亚版计算书pdf"-->
         <!--               onclick="$('#form1').attr('action','/stabilityaupdf1')"/>-->
                 <input type="submit" form="form1" class="button" value="输出验证部分pdf"
-                       onclick="isCheck(true);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
+                       onclick="changeLanguage('CN');isCheck(true);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
         <input type="reset" form="form1" value="重置"/>
     </div>
-    <div class="navbox conllect_table" style="border:5px double #0C0;background-color:#DFE3E6;
-    #top:400px;left:20px;width:500px;display:none;">
+    <div class="navbox conllect_table" style="border:5px double #0C0;background-color:#DFE3E6;top:400px;left:20px;width:500px;display:none;">
         <p align="right">单位：kN</p>
         <table class="tb" style="width:500px;position: relative">
             <tr>
@@ -2390,12 +2406,12 @@
             else if (h > 150) return ' ';
         },
         dbyj: function () {
-            $('[name=dbyj]').prop('readonly', false);
+            $('[name=dbyj]').prop('disabled', false);
             data.datalist['dbyj'].color = 'white';
             switch ( typeOfMachine ) {
                 case '固定立柱':
                 case '顶升':
-                    $('[name=dbyj]').prop('readonly', true);
+                    $('[name=dbyj]').prop('disabled', true);
                     data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
                     return null;
                 case '顶升+仰臂':
@@ -2648,7 +2664,7 @@
         lqg12:' 0 ',
         lqg13:' wdlyp3 =="有"? lg :0 ',
         lqg14:' m14 ==0 ? 0: lhz14 - lg /2',
-        lqg15:' m15 ==0 ? 0: lhz15 - lg /2',
+        lqg15:' m15 ==0 ? 0: lhz15 + lg /2',
 
         lslql:' lslhz - ll /2',
         lshlql:' lshlhz - ll /2',

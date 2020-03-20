@@ -13,9 +13,9 @@
                 success: function (e) {
                     var list=[];
                     list=list.concat(e);
-                    list.sort(function(a,b){
-                        return String(a).localeCompare(String(b),'zh-CN');
-                    })
+                    // list.sort(function(a,b){
+                    //     return String(a).localeCompare(String(b),'zh-CN');
+                    // })
                     if (list != null) {
                         var html = '';
                         for (var valueIndex = 0; valueIndex < list.length; valueIndex++) {
@@ -66,8 +66,10 @@
                 if(String(e[key])!='null') {
                     var temp = new dataType(key, e[key]);
                     temp.color = 'yellow';
-                    if (data.datalist[key] != null)
+                    if (data.datalist[key] != null && data.datalist[key]!=' ')
                         data.datalist[key].changeValueAndColor(e[key], 'yellow');
+                    // else if(data.datalist[key]==' ')
+                    //     data.datalist[key].changeValueAndColor('', 'yellow');
                     else
                         data.datalist[key] = temp;
                 }
@@ -79,6 +81,9 @@
                 for (var key in e) {
                     var temp = e[key];
                     // $("img[name= '" + key + "']")[0].src = 'data:' + temp['type'] + ',' + temp['inputURL'];
+                    var img=$("img[name= '" + key + "']")[0];
+                    if(!img)
+                        continue;
                     $("img[name= '" + key + "']")[0].src = ' ';
                     $("img[name= '" + key + "']")[0].src = 'getImg?filename='+temp['inputvalue']+'&tempid='+Math.random();
                     if ($('input[name=tu_' + key + ']')[0]){
@@ -221,6 +226,7 @@
             $('img[name]').attr('src', '');
             $('form')[0].reset();
             $('input[type=hidden]').remove();
+            this.listtoform();
         },
         init: function (dataf) {
             this.clear();
@@ -303,8 +309,8 @@ function janyan(URL) {
 function getString(v) {
     if (typeof v =='string')
         return v;
-    var s = 2;
-    var temp = Math.round(parseFloat(v) * 100);
+    var s = 3;
+    var temp = Math.round(parseFloat(v) * 1000);
     var c = temp.toString();
     var l = c.length;
     s = (l > s) ? s : l;

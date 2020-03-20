@@ -97,8 +97,10 @@ public class PdfCreater {
             }
             if (imageMap != null) {
                 for (Map.Entry<String, File> entry : imageMap.entrySet()) {
-                    setImage(ps, entry.getKey(), Image.getInstance(entry.getValue().getPath()));
-                    File2byte(entry.getValue());
+                    if(entry.getValue().length()>0){
+                        setImage(ps, entry.getKey(), Image.getInstance(entry.getValue().getPath()));
+                        File2byte(entry.getValue());
+                    }
                 }
             }
             document = new Document();
@@ -189,8 +191,6 @@ public class PdfCreater {
         for (PdfReader e:readers) {
             totalPages+=e.getNumberOfPages();
         }
-
-
         int pageOfCurrentReaderPDF = 0;
         // Loop through the PDF files and add to the output.
         for (PdfReader e:readers) {
