@@ -1,13 +1,16 @@
 package com.point.entity.pdf;
 
 import com.point.common.CommonFunc;
+import lombok.Data;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
 
+@Data
 public class HorizontalTracksEntity {
     private String no;
     private String ver;
@@ -17,8 +20,8 @@ public class HorizontalTracksEntity {
     private String shr;
     private String pzr;
     private String date;
-    private Double ld;
-    private Double l;
+
+    private Double lkj;
     private Double dcw;
     private Double bcw;
     private Double fzed;
@@ -26,1021 +29,45 @@ public class HorizontalTracksEntity {
     private Double vzed;
     private Double vyed;
     private Double rzed;
-    private Double x;
-    private Double c;
+
+    private Double bef1x;
+    private Double bef1c;
+
     private String gdxh;
-    private String gdxhen;
     private String gcph;
-    private Double h;
-    private Double b;
-    private Double tw;
-    private Double tfs;
-    private Double tfx;
-    private Double hw;
-    private Double hy;
-    private Double sy;
-    private Double iy;
-    private Double iz;
-    private Double wysel;
-    private Double wyxel;
-    private Double wzel;
-    private Double z;
-    private Double y;
-    private Double ss;
-    private Double shzr;
-
-    public String getGdxhen() {
-        return gdxhen;
-    }
-
-    public void setGdxhen(String gdxhen) {
-        this.gdxhen = gdxhen;
-    }
-
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
-    public String getVer() {
-        return ver;
-    }
-
-    public void setVer(String ver) {
-        this.ver = ver;
-    }
-
-    public String getXmmc() {
-        return xmmc;
-    }
-
-    public void setXmmc(String xmmc) {
-        this.xmmc = xmmc;
-    }
-
-    public String getZjxh() {
-        return zjxh;
-    }
-
-    public void setZjxh(String zjxh) {
-        this.zjxh = zjxh;
-    }
-
-    public String getJsr() {
-        return jsr;
-    }
-
-    public void setJsr(String jsr) {
-        this.jsr = jsr;
-    }
-
-    public String getShr() {
-        return shr;
-    }
-
-    public void setShr(String shr) {
-        this.shr = shr;
-    }
-
-    public String getPzr() {
-        return pzr;
-    }
-
-    public void setPzr(String pzr) {
-        this.pzr = pzr;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public Double getLd() {
-        return ld;
-    }
-
-    public void setLd(Double ld) {
-        this.ld = ld;
-    }
-
-    public Double getL() {
-        return l;
-    }
-
-    public void setL(Double l) {
-        this.l = l;
-    }
-
-    public Double getDcw() {
-        return dcw;
-    }
-
-    public void setDcw(Double dcw) {
-        this.dcw = dcw;
-    }
-
-    public Double getBcw() {
-        return bcw;
-    }
-
-    public void setBcw(Double bcw) {
-        this.bcw = bcw;
-    }
-
-    public Double getFzed() {
-        return fzed;
-    }
-
-    public void setFzed(Double fzed) {
-        this.fzed = fzed;
-    }
-
-    public Double getFze() {
-        return fze;
-    }
-
-    public void setFze(Double fze) {
-        this.fze = fze;
-    }
-
-    public Double getVzed() {
-        return vzed;
-    }
-
-    public void setVzed(Double vzed) {
-        this.vzed = vzed;
-    }
-
-    public Double getVyed() {
-        return vyed;
-    }
-
-    public void setVyed(Double vyed) {
-        this.vyed = vyed;
-    }
-
-    public Double getRzed() {
-        return rzed;
-    }
-
-    public void setRzed(Double rzed) {
-        this.rzed = rzed;
-    }
-
-    public Double getX() {
-        return x;
-    }
-
-    public void setX(Double x) {
-        this.x = x;
-    }
-
-    public Double getC() {
-        return c;
-    }
-
-    public void setC(Double c) {
-        this.c = c;
-    }
-
-    public String getGdxh() {
-        return gdxh;
-    }
-
-    public void setGdxh(String gdxh) {
-        this.gdxh = gdxh;
-    }
-
-    public String getGcph() {
-        return gcph;
-    }
-
-    public void setGcph(String gcph) {
-        this.gcph = gcph;
-    }
-
-    public Double getH() {
-        return h;
-    }
-
-    public void setH(Double h) {
-        this.h = h;
-    }
-
-    public Double getB() {
-        return b;
-    }
-
-    public void setB(Double b) {
-        this.b = b;
-    }
-
-    public Double getTw() {
-        return tw;
-    }
-
-    public void setTw(Double tw) {
-        this.tw = tw;
-    }
-
-    public Double getTfs() {
-        return tfs;
-    }
-
-    public void setTfs(Double tfs) {
-        this.tfs = tfs;
-    }
-
-    public Double getTfx() {
-        return tfx;
-    }
-
-    public void setTfx(Double tfx) {
-        this.tfx = tfx;
-    }
-
-    public Double getHw() {
-        return hw;
-    }
-
-    public void setHw(Double hw) {
-        this.hw = hw;
-    }
-
-    public Double getHy() {
-        return hy;
-    }
-
-    public void setHy(Double hy) {
-        this.hy = hy;
-    }
-
-    public Double getSy() {
-        return sy;
-    }
-
-    public void setSy(Double sy) {
-        this.sy = sy;
-    }
-
-    public Double getIy() {
-        return iy;
-    }
-
-    public void setIy(Double iy) {
-        this.iy = iy;
-    }
-
-    public Double getIz() {
-        return iz;
-    }
-
-    public void setIz(Double iz) {
-        this.iz = iz;
-    }
-
-    public Double getWysel() {
-        return wysel;
-    }
-
-    public void setWysel(Double wysel) {
-        this.wysel = wysel;
-    }
-
-    public Double getWyxel() {
-        return wyxel;
-    }
-
-    public void setWyxel(Double wyxel) {
-        this.wyxel = wyxel;
-    }
-
-    public Double getWzel() {
-        return wzel;
-    }
-
-    public void setWzel(Double wzel) {
-        this.wzel = wzel;
-    }
-
-    public Double getZ() {
-        return z;
-    }
-
-    public void setZ(Double z) {
-        this.z = z;
-    }
-
-    public Double getY() {
-        return y;
-    }
-
-    public void setY(Double y) {
-        this.y = y;
-    }
-
-    public Double getSs() {
-        return ss;
-    }
-
-    public void setSs(Double ss) {
-        this.ss = ss;
-    }
-
-    public Double getShzr() {
-        return shzr;
-    }
-
-    public void setShzr(Double shzr) {
-        this.shzr = shzr;
-    }
-
-    private String getQlt(){
-        switch (gdxh){
-            case "I20b":
-            case "I22b":
-            case "I25b":
-            case "I28b":
-            case "I32b":
-            case "H175":
-            case "H200":
-            case "H250":
-                return "qlt1";
-            default:
-                return "qlt2";
+    private Double gdh;
+    private Double gdb;
+    private Double gdtw;
+    private Double gdtfs;
+    private Double gdtfx;
+    private Double gdhw;
+    private Double gdhy;
+    private Double gdsy;
+    private Double gdiy;
+    private Double gdiz;
+    private Double gdwysel;
+    private Double gdwyxel;
+    private Double gdwzel;
+    private Double gdz;
+    private Double gdy;
+    private Double gdss;
+    private Double gdshzr;
+    private String trackModel;
+    private String steelHave;
+    private String steelModel;
+
+    public String nameOfPDF(String type) {
+        switch (type) {
+            case "SimplySupported":
+                return "轨道校核计算书(简支梁).pdf";
+            case "DoubleSpanbeam":
+                return "轨道校核计算书(双跨梁).pdf";
         }
-    }
-    public Map<String,String> calculationPDF1(){
-        Map<String,Double> map=getDoubleMapForpdf1();
-        Map<String,String> paraMap=new HashMap<>();
-
-        String u1=  map.get("a1")>=0.6 ? "≥":"<";
-        String u2=  map.get("a2")<=1?"≤":">";
-        String u3=  map.get("a2")<=1?"满足":"不满足";
-        String u4=  map.get("a3")<=1?"≤":">";
-        String u5=  map.get("a3")<=1?"满足":"不满足";
-        String u6=  map.get("a4") <= 1 ?"≤":">";
-        String u7=  map.get("a4") <= 1 ?"满足":"不满足";
-        String u8 = map.get("a5") <= 1 ?"≤":">";
-        String u9 = map.get("a5") <= 1 ?"满足":"不满足";
-        String u10 =map.get("a6") <= 1 ?"≤":">";
-        String u11 =map.get("a6") <= 1 ?"满足":"不满足";
-        String u12 =map.get("a7") <= 1 ?"≤":">";
-        String u13 =map.get("a7") <= 1 ?"满足":"不满足";
-        String u14 =map.get("a8") <= 1 ?"≤":">";
-        String u15 =map.get("a8") <= 1 ?"满足":"不满足";
-        String u16 =map.get("a9") <= 1 ?"≤":">";
-        String u17 =map.get("a9") <= 1 ?"满足":"不满足";
-        String u18 =map.get("a10") <= 1 ?"≤":">";
-        String u19 =map.get("a10") <= 1 ?"满足":"不满足";
-        String u20 =map.get("a11") <= 1 ?"≤":">";
-        String u21 =map.get("a11") <= 1 ?"满足":"不满足";
-        String u22 =map.get("fz")<=ld/200?"≤":">";
-        String u23 =map.get("fz")<=30?"≤":">";
-        String u24 =map.get("fy")<=ld/200?"≤":">";
-        String u25 =map.get("fy")<=30?"≤":">";
-        String u26 =u22=="≤"&&u23=="≤"&&u24=="≤"&&u25=="≤"?"满足":"不满足";
-        for(Map.Entry<String,Double> e:map.entrySet())
-            paraMap.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
-        paraMap.put("u1",u1);
-        paraMap.put("u2",u2);
-        paraMap.put("u3",u3);
-        paraMap.put("u4",u4);
-        paraMap.put("u5",u5);
-        paraMap.put("u6",u6);
-        paraMap.put("u7",u7);
-        paraMap.put("u8",u8);
-        paraMap.put("u9",u9);
-        paraMap.put("u10",u10);
-        paraMap.put("u11",u11);
-        paraMap.put("u12",u12);
-        paraMap.put("u13",u13);
-        paraMap.put("u14",u14);
-        paraMap.put("u15",u15);
-        paraMap.put("u16",u16);
-        paraMap.put("u17",u17);
-        paraMap.put("u18",u18);
-        paraMap.put("u19",u19);
-        paraMap.put("u20",u20);
-        paraMap.put("u21",u21);
-        paraMap.put("u22",u22);
-        paraMap.put("u23",u23);
-        paraMap.put("u24",u24);
-        paraMap.put("u25",u25);
-        paraMap.put("u26",u26);
-        paraMap.put("no",no);
-        paraMap.put("uer",ver);
-        paraMap.put("xmmc",xmmc);
-        paraMap.put("zjxh",zjxh);
-        paraMap.put("jsr",jsr);
-        paraMap.put("shr",shr);
-        paraMap.put("pzr",pzr);
-        paraMap.put("date",date);
-        paraMap.put("gdxh",gdxh);
-        paraMap.put("gcph",gcph);
-        return paraMap;
-    }
-    private Map<String,Double> getDoubleMapForpdf1(){
-        /**
-         *表2数据
-         */
-        Arrays.sort(gdxhs);
-        boolean blm = Arrays.binarySearch(gdxhs,gdxh)<0;
-        Arrays.sort(gcphs);
-        boolean bls = Arrays.binarySearch(gcphs,gcph)<0;
-        Double iiy  = blm?iy/10000:null;
-        Double iiz  = blm?iz/10000:null;
-        Double wys  = blm?wysel/1000:null;
-        Double wyx  = blm?wyxel/1000:null;
-        Double wz   =  blm?wzel/1000:null;
-        /**
-         *表3数据
-         */
-        Double ss1=bls?ss:null;
-        Double shzr1=bls?shzr:null;
-
-        /*
-        轨道截面强度校核计算
-         */
-        Double myed=vzed*ld/4;
-        Double mzed=vyed*ld/4;
-        Double sxed=(myed*z/iy)+(mzed*y/iz);
-        Double a1=b*hy/tw/hw;
-        Double ted1=vzed*sy/tw/iy;
-        Double ted2=vzed/tw/hw;
-        Double ted=a1>=0.6 ? ted2:ted1;
-        Double a2= Math.pow(sxed/ss,2)+3* Math.pow(ted/ss,2);
-
-        /*
-        立柱屈曲失稳临界力矩校核计算
-         */
-        Double iw=iz*h*h/4;
-        Double it=0.4*(b*tfx*tfx*tfx+h*tw*tw*tw+b*hy*hy*hy);
-        Double s= sqrt(210000)*sqrt(iw)/sqrt(81000)/sqrt(it);
-        Double ccr=1.35*3.14*(sqrt(1+ Math.pow(3.14*s/ld,2)*(1+0.55*0.55))+0.55*3.14*s/ld);
-        Double mcr=ccr* sqrt(210000)*sqrt(iz)*sqrt(81000)*sqrt(it)/ld;
-        Double klt= sqrt(ss*wysel/mcr);
-        Double qlt1=0.5*(1+0.34*(klt-0.4)+0.75*klt*klt);
-        Double qlt2=0.5*(1+0.49*(klt-0.4)+0.75*klt*klt);
-        Double qlt=getQlt()=="qlt1"?qlt1:qlt2;
-        Double xlt=1/(qlt+ sqrt(qlt*qlt-0.75*klt*klt));
-        Double mbrd=xlt*ss*wysel;
-        Double a3=myed/mbrd;
-
-        /*
-        支承处轨道腹板屈曲失稳临界力矩校核计算
-         */
-        Double k1=6.93*h* sqrt(ss/210000)/3.14/tw;
-        Double q1=0.5*(1+0.49*(k1-0.2)+k1*k1);
-        Double xs1=1/(q1+sqrt(q1*q1-k1*k1));
-        Double bef1=x+c+tfx*sqrt(b/tw);
-        Double nwrd=xs1*ss*bef1*tw;
-        Double a4=rzed/nwrd;
-
-        /*
-        竖向轮载的复合应力校核计算
-         */
-        Double sx1ed=myed*z/iy;
-        Double d=0.5*50+hy;
-        Double szed=fzed/2/tw/d;
-        Double tled=szed*0.2;
-        Double a5=Math.pow(sx1ed/ss,2)+Math.pow(szed/ss,2)-sx1ed*szed/ss/ss+3*Math.pow((ted+tled)/ss,2);
-
-        /*
-        竖向轮载校核计算
-         */
-        Double fzrd=0.125*tw*tw*sqrt(210000*ss)*sqrt(hy/tw);
-        Double a6=fzed/fzrd;
-
-        /*
-        竖向轮载引起的腹板屈曲失稳校核计算
-         */
-        Double bef2=0+0.5*h;
-        Double ncrd=ss*bef2*tw;
-        Double k2=3.46*h*sqrt(ss/210000)/3.14/tw;
-        Double q2=0.5*(1+0.49*(k2-0.2)+k2*k2);
-        Double xs2=1/(q2+sqrt(q2*q2-k2*k2));
-        Double a7=fzed/xs2/ncrd;
-
-        /*\
-        腹板受压校核计算
-         */
-        Double fz1rd=ss*bef1*tw;
-        Double a8=rzed/fz1rd;
-
-        /*
-        支承反力校核计算
-         */
-        Double fz2rd=0.125*tw*tw*sqrt(210000*ss)*(sqrt(tfx/tw)+3*tw*c/tfx/hw);
-        Double a9=rzed/fz2rd;
-
-        /*
-        支承反力引起的腹板屈曲失稳校核计算
-         */
-        Double bef3=x+0.5*(c+sqrt(h*h+c*c));
-        Double nc1rd=ss*bef3*tw;
-        Double a10=fzed/xs2/nc1rd;
-
-        Double shz=sqrt(0.35*210000*fze/dcw/bcw);
-        Double a11=shz/shzr;
-
-        /*
-        正常使用极限状态校核计算
-         */
-        Double fz=vzed*ld*ld*ld/48/210000/iy;
-        Double fy=vyed*ld*ld*ld/48/210000/iz;
-
-        Map<String,Double> paraMap=new HashMap<>();
-        paraMap.put("iiy",iiy);
-        paraMap.put("iiz",iiz);
-        paraMap.put("wys",wys);
-        paraMap.put("wyx",wyx);
-        paraMap.put("wz",wz);
-        paraMap.put("ss1",ss1);
-        paraMap.put("shzr1",shzr1);
-        paraMap.put("myed",myed);
-        paraMap.put("mzed",mzed);
-        paraMap.put("sxed",sxed);
-        paraMap.put("a1",a1);
-        paraMap.put("ted1",ted1);
-        paraMap.put("ted2",ted2);
-        paraMap.put("ted",ted);
-        paraMap.put("a2",a2);
-        paraMap.put("iw", iw);
-        paraMap.put("it",it);
-        paraMap.put("s",s);
-        paraMap.put("ccr",ccr);
-        paraMap.put("mcr",mcr);
-        paraMap.put("klt",klt);
-        paraMap.put("qlt1",qlt1);
-        paraMap.put("qlt2",qlt2);
-        paraMap.put("qlt",qlt);
-        paraMap.put("xlt",xlt);
-        paraMap.put("mbrd",mbrd);
-        paraMap.put("a3",a3);
-        paraMap.put("k1",k1);
-        paraMap.put("q1",q1);
-        paraMap.put("xs1",xs1);
-        paraMap.put("bef1",bef1);
-        paraMap.put("nwrd",nwrd);
-        paraMap.put("a4",a4);
-        paraMap.put("sx1ed",sx1ed);
-        paraMap.put("d",d);
-        paraMap.put("szed",szed);
-        paraMap.put("tled",tled);
-        paraMap.put("a5",a5);
-        paraMap.put("fzrd",fzrd);
-        paraMap.put("a6",a6);
-        paraMap.put("bef2",bef2);
-        paraMap.put("ncrd",ncrd);
-        paraMap.put("k2",k2);
-        paraMap.put("q2",q2);
-        paraMap.put("xs2",xs2);
-        paraMap.put("a7",a7);
-        paraMap.put("fz1rd",fz1rd);
-        paraMap.put("a8",a8);
-        paraMap.put("fz2rd",fz2rd);
-        paraMap.put("a9",a9);
-        paraMap.put("bef3",bef3);
-        paraMap.put("nc1rd",nc1rd);
-        paraMap.put("a10",a10);
-        paraMap.put("shz",shz);
-        paraMap.put("a11",a11);
-        paraMap.put("fz",fz);
-        paraMap.put("fy",fy);
-        paraMap.put("ld",ld);
-        paraMap.put("l",l);
-        paraMap.put("dcw",dcw);
-        paraMap.put("acw",bcw);
-        paraMap.put("fzed",fzed);
-        paraMap.put("fze",fze);
-        paraMap.put("uzed",vzed);
-        paraMap.put("uyed",vyed);
-        paraMap.put("rzed",rzed);
-        paraMap.put("x",x);
-        paraMap.put("c",c);
-        paraMap.put("h",h);
-        paraMap.put("b",b);
-        paraMap.put("tw",tw);
-        paraMap.put("tfs",tfs);
-        paraMap.put("tfx",tfx);
-        paraMap.put("hw",hw);
-        paraMap.put("hy",hy);
-        paraMap.put("sy",sy);
-        paraMap.put("iy",iy);
-        paraMap.put("iz",iz);
-        paraMap.put("wysel",wysel);
-        paraMap.put("wyxel",wyxel);
-        paraMap.put("wzel",wzel);
-        paraMap.put("z",z);
-        paraMap.put("y",y);
-        paraMap.put("ss",ss);
-        paraMap.put("shzr",shzr);
-        return paraMap;
-    }
-    private String[] gdxhs={"I20b","I22b","I25b","I28b","I32b","H175","H200","H250","H200+贴板","H250+贴板","拼焊H200*216","拼焊H250*266"};
-    private String[] gcphs={"Q235","Q275","Q345"};
-
-    public Map<String,String> calculationPDF2(){
-        Map<String,Double> map=getDoubleMapForpdf2();
-        Map<String,String> paraMap=new HashMap<>();
-        String v1=map.get("b1")>=0.6 ? "≥":"<";
-        String v2=map.get("b2")<=1?"≤":">";
-        String v3=map.get("b2")<=1?"满足":"不满足";
-        String v4=map.get("b3")<=1?"≤":">";
-        String v5=map.get("b3")<=1?"满足":"不满足";
-        String v6=map.get("b4")<=1 ?"≤":">";
-        String v7=map.get("b4")<=1 ?"满足":"不满足";
-        String v8=map.get("b5")<=1?"≤":">";
-        String v9=map.get("b5")<=1?"满足":"不满足";
-        String v10=map.get("b6")<=1?"≤":">";
-        String v11=map.get("b6")<=1?"满足":"不满足";
-        String v12=map.get("b7")<=1?"≤":">";
-        String v13=map.get("b7")<=1?"满足":"不满足";
-        String v14=map.get("b8")<=1?"≤":">";
-        String v15=map.get("b8")<=1?"满足":"不满足";
-        String v16 =map.get("b9") <= 1 ?"≤":">";
-        String v17 =map.get("b9") <= 1 ?"满足":"不满足";
-        String v18 =map.get("b10") <= 1 ?"≤":">";
-        String v19 =map.get("b10") <= 1 ?"满足":"不满足";
-        String v20 =map.get("b11") <= 1 ?"≤":">";
-        String v21 =map.get("b11") <= 1 ?"满足":"不满足";
-        String v22 =map.get("fzs")<=ld/200?"≤":">";
-        String v23 =map.get("fzs")<=30?"≤":">";
-        String v24 =map.get("fys")<=ld/200?"≤":">";
-        String v25 =map.get("fys")<=30?"≤":">";
-        String v26 =v22=="≤"&&v23=="≤"&&v24=="≤"&&v25=="≤"?"满足":"不满足";
-        for(Map.Entry<String,Double> e:map.entrySet())
-            paraMap.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
-        paraMap.put("v1",v1);
-        paraMap.put("v2",v2);
-        paraMap.put("v3",v3);
-        paraMap.put("v4",v4);
-        paraMap.put("v5",v5);
-        paraMap.put("v6",v6);
-        paraMap.put("v7",v7);
-        paraMap.put("v8",v8);
-        paraMap.put("v9",v9);
-        paraMap.put("v10",v10);
-        paraMap.put("v11",v11);
-        paraMap.put("v12",v12);
-        paraMap.put("v13",v13);
-        paraMap.put("v14",v14);
-        paraMap.put("v15",v15);
-        paraMap.put("v16",v16);
-        paraMap.put("v17",v17);
-        paraMap.put("v18",v18);
-        paraMap.put("v19",v19);
-        paraMap.put("v20",v20);
-        paraMap.put("v21",v21);
-        paraMap.put("v22",v22);
-        paraMap.put("v23",v23);
-        paraMap.put("v24",v24);
-        paraMap.put("v25",v25);
-        paraMap.put("v26",v26);
-        paraMap.put("no",no);
-        paraMap.put("ver",ver);
-        paraMap.put("xmmc",xmmc);
-        paraMap.put("zjxh",zjxh);
-        paraMap.put("jsr",jsr);
-        paraMap.put("shr",shr);
-        paraMap.put("pzr",pzr);
-        paraMap.put("date",date);
-        paraMap.put("gdxh",gdxh);
-        paraMap.put("gcph",gcph);
-        return paraMap;
-    }
-    private Map<String,Double> getDoubleMapForpdf2(){
-        /*
-         表2数据
-         */
-        Arrays.sort(gdxhs);
-        boolean blm= Arrays.binarySearch(gdxhs,gdxh)<0;
-        Arrays.sort(gcphs);
-        boolean bls= Arrays.binarySearch(gcphs,gcph)<0;
-        Double iiy= blm?iy/10000:null;
-        Double iiz= blm?iz/10000:null;
-        Double wys= blm?wysel/1000:null;
-        Double wyx= blm?wyxel/1000:null;
-        Double wz=  blm?wzel/1000:null;
-
-        /*
-         表3数据
-         */
-        Double ss1=bls?ss:null;
-        Double shzr1=bls?shzr:null;
-
-        /*
-        轨道截面强度校核计算
-        */
-        Double myeds=13*vzed*ld/64;
-        Double mzeds=13*vyed*ld/64;
-        Double sxeds=(myeds*z/iy)+(mzeds*y/iz);
-        Double b1=b*hy/tw/hw;
-        Double ted1=vzed*sy/tw/iy;
-        Double ted2=vzed/tw/hw;
-        Double ted=b1>=0.6 ? ted2:ted1;
-        Double b2=Math.pow(sxeds/ss,2)+3*Math.pow(ted/ss,2);
-
-        /*
-        立柱屈曲失稳临界力矩校核计算
-        */
-        Double iw=iz*h*h/4;
-        Double it=0.4*(b*tfx*tfx*tfx+h*tw*tw*tw+b*hy*hy*hy);
-        Double s=sqrt(210000*iw/81000/it);
-        Double ccr=1.35*3.14*(sqrt(1+Math.pow(3.14*s/ld,2)*(1+0.55*0.55))+0.55*3.14*s/ld);
-        Double mcr=ccr*sqrt(210000*iz*81000*it)/ld;
-        Double klt=sqrt(ss*wysel/mcr);
-        Double qlt1=0.5*(1+0.34*(klt-0.4)+0.75*klt*klt);
-        Double qlt2=0.5*(1+0.49*(klt-0.4)+0.75*klt*klt);
-        Double qlt=getQlt()=="qlt1"?qlt1:qlt2;
-        Double xlt=1/(qlt+sqrt(qlt*qlt-0.75*klt*klt));
-        Double mbrd=xlt*ss*wysel;
-        Double b3=myeds/mbrd;
-
-        /*
-        支承处轨道腹板屈曲失稳临界力矩校核计算
-         */
-        Double k1=6.93*h*sqrt(ss/210000)/3.14/tw;
-        Double q1=0.5*(1+0.49*(k1-0.2)+k1*k1);
-        Double xs1=1/(q1+sqrt(q1*q1-k1*k1));
-        Double bef1=x+c+tfx*sqrt(b/tw);
-        Double nwrd=xs1*ss*bef1*tw;
-        Double b4=rzed/nwrd;
-
-        /*
-        竖向轮载的复合应力校核计算
-         */
-        Double sx1eds=myeds*z/iy;
-        Double d=0.5*50+hy;
-        Double szed=fzed/2/tw/d;
-        Double tled=szed*0.2;
-        Double b5=Math.pow(sx1eds/ss,2)+Math.pow(szed/ss,2)-sx1eds*szed/ss/ss+3*Math.pow((ted+tled)/ss,2);
-
-        /*
-        竖向轮载校核计算
-         */
-        Double fzrd=0.125*tw*tw*sqrt(210000*ss)*sqrt(hy/tw);
-        Double b6=fzed/fzrd;
-
-         /*
-        竖向轮载引起的腹板屈曲失稳校核计算
-         */
-        Double bef2=0+0.5*h;
-        Double ncrd=ss*bef2*tw;
-        Double k2=3.46*h*sqrt(ss/210000)/3.14/tw;
-        Double q2=0.5*(1+0.49*(k2-0.2)+k2*k2);
-        Double xs2=1/(q2+sqrt(q2*q2-k2*k2));
-        Double b7=fzed/xs2/ncrd;
-
-         /*
-        腹板受压校核计算
-        */
-        Double fz1rd=ss*bef1*tw;
-        Double b8=rzed/fz1rd;
-
-        /*
-        支承反力校核计算
-        */
-        Double fz2rd=0.125*tw*tw*sqrt(210000*ss)*(sqrt(tfx/tw)+3*tw*c/tfx/hw);
-        Double b9=rzed/fz2rd;
-
-        /*
-        支承反力引起的腹板屈曲失稳校核计算
-         */
-        Double bef3=x+0.5*(c+sqrt(h*h+c*c));
-        Double nc1rd=ss*bef3*tw;
-        Double b10 =fzed/xs2/nc1rd;
-
-        /*
-        接触应力校核计算
-         */
-        Double shz =sqrt(0.35*210000*fze/dcw/bcw);
-        Double b11 =shz/shzr;
-
-        /*
-        正常使用极限状态校核计算
-         */
-        Double fzs =0.015*vzed*ld*ld*ld/210000/iy;
-        Double fys =0.015*vyed*ld*ld*ld/210000/iz;
-
-        Map<String,Double> paraMap=new HashMap<>();
-        paraMap.put("iiy",iiy);
-        paraMap.put("iiz",iiz);
-        paraMap.put("wys",wys);
-        paraMap.put("wyx",wyx);
-        paraMap.put("wz",wz);
-        paraMap.put("ss1",ss1);
-        paraMap.put("shzr1",shzr1);
-        paraMap.put("myeds",myeds);
-        paraMap.put("mzeds",mzeds);
-        paraMap.put("sxeds",sxeds);
-        paraMap.put("b1",b1);
-        paraMap.put("ted1",ted1);
-        paraMap.put("ted2",ted2);
-        paraMap.put("ted",ted);
-        paraMap.put("b2",b2);
-        paraMap.put("iw",iw);
-        paraMap.put("it",it);
-        paraMap.put("s",s);
-        paraMap.put("ccr",ccr);
-        paraMap.put("mcr",mcr);
-        paraMap.put("klt",klt);
-        paraMap.put("qlt1",qlt1);
-        paraMap.put("qlt2",qlt2);
-        paraMap.put("qlt",qlt);
-        paraMap.put("xlt",xlt);
-        paraMap.put("mbrd",mbrd);
-        paraMap.put("b3",b3);
-        paraMap.put("k1",k1);
-        paraMap.put("q1",q1);
-        paraMap.put("xs1",xs1);
-        paraMap.put("bef1",bef1);
-        paraMap.put("nwrd",nwrd);
-        paraMap.put("b4",b4);
-        paraMap.put("sx1eds",sx1eds);
-        paraMap.put("d",d);
-        paraMap.put("szed",szed);
-        paraMap.put("tled",tled);
-        paraMap.put("b5",b5);
-        paraMap.put("fzrd",fzrd);
-        paraMap.put("b6",b6);
-        paraMap.put("bef2",bef2);
-        paraMap.put("ncrd",ncrd);
-        paraMap.put("k2",k2);
-        paraMap.put("q2",q2);
-        paraMap.put("xs2",xs2);
-        paraMap.put("b7",b7);
-        paraMap.put("fz1rd",fz1rd);
-        paraMap.put("b8",b8);
-        paraMap.put("fz2rd",fz2rd);
-        paraMap.put("b9",b9);
-        paraMap.put("bef3",bef3);
-        paraMap.put("nc1rd",nc1rd);
-        paraMap.put("b10",b10);
-        paraMap.put("shz",shz);
-        paraMap.put("b11",b11);
-        paraMap.put("fzs",fzs);
-        paraMap.put("fys",fys);
-        paraMap.put("ld",ld);
-        paraMap.put("l",l);
-        paraMap.put("dcw",dcw);
-        paraMap.put("bcw",bcw);
-        paraMap.put("fzed",fzed);
-        paraMap.put("fze",fze);
-        paraMap.put("vzed",vzed);
-        paraMap.put("vyed",vyed);
-        paraMap.put("rzed",rzed);
-        paraMap.put("x",x);
-        paraMap.put("c",c);
-        paraMap.put("h",h);
-        paraMap.put("b",b);
-        paraMap.put("tw",tw);
-        paraMap.put("tfs",tfs);
-        paraMap.put("tfx",tfx);
-        paraMap.put("hw",hw);
-        paraMap.put("hy",hy);
-        paraMap.put("sy",sy);
-        paraMap.put("iy",iy);
-        paraMap.put("iz",iz);
-        paraMap.put("wysel",wysel);
-        paraMap.put("wyxel",wyxel);
-        paraMap.put("wzel",wzel);
-        paraMap.put("z",z);
-        paraMap.put("y",y);
-        paraMap.put("ss",ss);
-        paraMap.put("shzr",shzr);
-        return paraMap;
-    }
-    private Map<String,String> calculationPDF3(Map<String,Double> pdf1map,Map<String,Double> pdf2map){
-        Double myeds =pdf2map.get("myeds");
-        Double mzeds =pdf2map.get("mzeds");
-        Double b2    =pdf2map.get("b2");
-        Double b3    =pdf2map.get("b3");
-        Double b4    =pdf2map.get("b4");
-        Double b5    =pdf2map.get("b5");
-        Double b6    =pdf2map.get("b6");
-        Double b7    =pdf2map.get("b7");
-        Double b8    =pdf2map.get("b8");
-        Double b9    =pdf2map.get("b9");
-        Double b10   =pdf2map.get("b10");
-        Double b11   =pdf2map.get("b11");
-        Double fzs   =pdf2map.get("fzs");
-        Double fys   =pdf2map.get("fys");
-
-        Double myed =pdf1map.get("myed");
-        Double mzed =pdf1map.get("mzed");
-        Double a2   =pdf1map.get("a2");
-        Double a3   =pdf1map.get("a3");
-        Double a4   =pdf1map.get("a4");
-        Double a5   =pdf1map.get("a5");
-        Double a6   =pdf1map.get("a6");
-        Double a7   =pdf1map.get("a7");
-        Double a8   =pdf1map.get("a8");
-        Double a9   =pdf1map.get("a9");
-        Double a10  =pdf1map.get("a10");
-        Double a11  =pdf1map.get("a11");
-        Double fz   =pdf1map.get("fz");
-        Double fy   =pdf1map.get("fy");
-
-        Double o1 =myeds/myed;
-        Double o2 =mzeds/mzed;
-        Double o3 =b2/a2;
-        Double o4 =b3/a3;
-        Double o5 =b4/a4;
-        Double o6 =b5/a5;
-        Double o7 =b6/a6;
-        Double o8 =b7/a7;
-        Double o9 =b8/a8;
-        Double o10=b9/a9;
-        Double o11=b10/a10;
-        Double o12=b11/a11;
-        Double o13=fzs/fz;
-        Double o14=fys/fy;
-
-        String g1 =0.77<=o1 && o1<=0.85?"符合":"不符合";
-        String g2 =0.77<=o2 && o2<=0.85?"符合":"不符合";
-        String g3 =0.66<=o3 && o3<=0.9?"符合":"不符合";
-        String g4 =0.75<=o4 && o4<=0.85?"符合":"不符合";
-        String g5 =0.95<=o5 && o5<=1?"符合":"不符合";
-        String g6 =0.79 <=o6 && o6<=1?"符合":"不符合";
-        String g7 =0.95<=o7 && o7<=1?"符合":"不符合";
-        String g8 =0.95<=o8 && o8<=1?"符合":"不符合";
-        String g9 =0.95<=o9 && o9<=1?"符合":"不符合";
-        String g10=0.95<=o10&&o10<=1?"符合":"不符合";
-        String g11=0.95<=o11&&o11<=1?"符合":"不符合";
-        String g12=0.95<=o12&&o12<=1?"符合":"不符合";
-        String g13=0.68<=o13&&o13<=0.75?"符合":"不符合";
-        String g14=0.68<=o14&&o14<=0.75?"符合":"不符合";
-
-        Map<String,String> map=new HashMap<>();
-        map.put("myeds", CommonFunc.convertDoubleToString(myeds));
-        map.put("mzeds", CommonFunc.convertDoubleToString(mzeds));
-        map.put("b2", CommonFunc.convertDoubleToString(b2));
-        map.put("b3", CommonFunc.convertDoubleToString(b3));
-        map.put("b4", CommonFunc.convertDoubleToString(b4));
-        map.put("b5", CommonFunc.convertDoubleToString(b5));
-        map.put("b6", CommonFunc.convertDoubleToString(b6));
-        map.put("b7", CommonFunc.convertDoubleToString(b7));
-        map.put("b8", CommonFunc.convertDoubleToString(b8));
-        map.put("b9", CommonFunc.convertDoubleToString(b9));
-        map.put("b10", CommonFunc.convertDoubleToString(b10));
-        map.put("b11", CommonFunc.convertDoubleToString(b11));
-        map.put("fzs", CommonFunc.convertDoubleToString(fzs));
-        map.put("fys", CommonFunc.convertDoubleToString(fys));
-        map.put("myed", CommonFunc.convertDoubleToString(myed));
-        map.put("mzed", CommonFunc.convertDoubleToString(mzed));
-        map.put("a2", CommonFunc.convertDoubleToString(a2));
-        map.put("a3", CommonFunc.convertDoubleToString(a3));
-        map.put("a4", CommonFunc.convertDoubleToString(a4));
-        map.put("a5", CommonFunc.convertDoubleToString(a5));
-        map.put("a6", CommonFunc.convertDoubleToString(a6));
-        map.put("a7", CommonFunc.convertDoubleToString(a7));
-        map.put("a8", CommonFunc.convertDoubleToString(a8));
-        map.put("a9", CommonFunc.convertDoubleToString(a9));
-        map.put("a10", CommonFunc.convertDoubleToString(a10));
-        map.put("a11", CommonFunc.convertDoubleToString(a11));
-        map.put("fz", CommonFunc.convertDoubleToString(fz));
-        map.put("fy", CommonFunc.convertDoubleToString(fy));
-        map.put("o1", CommonFunc.convertDoubleToString(o1));
-        map.put("o2", CommonFunc.convertDoubleToString(o2));
-        map.put("o3", CommonFunc.convertDoubleToString(o3));
-        map.put("o4", CommonFunc.convertDoubleToString(o4));
-        map.put("o5", CommonFunc.convertDoubleToString(o5));
-        map.put("o6", CommonFunc.convertDoubleToString(o6));
-        map.put("o7", CommonFunc.convertDoubleToString(o7));
-        map.put("o8", CommonFunc.convertDoubleToString(o8));
-        map.put("o9", CommonFunc.convertDoubleToString(o9));
-        map.put("o10", CommonFunc.convertDoubleToString(o10));
-        map.put("o11", CommonFunc.convertDoubleToString(o11));
-        map.put("o12", CommonFunc.convertDoubleToString(o12));
-        map.put("o13", CommonFunc.convertDoubleToString(o13));
-        map.put("o14", CommonFunc.convertDoubleToString(o14));
-        map.put("g1", CommonFunc.convertDoubleToString(g1));
-        map.put("g2", CommonFunc.convertDoubleToString(g2));
-        map.put("g3", CommonFunc.convertDoubleToString(g3));
-        map.put("g4", CommonFunc.convertDoubleToString(g4));
-        map.put("g5", CommonFunc.convertDoubleToString(g5));
-        map.put("g6", CommonFunc.convertDoubleToString(g6));
-        map.put("g7", CommonFunc.convertDoubleToString(g7));
-        map.put("g8", CommonFunc.convertDoubleToString(g8));
-        map.put("g9", CommonFunc.convertDoubleToString(g9));
-        map.put("g10", CommonFunc.convertDoubleToString(g10));
-        map.put("g11", CommonFunc.convertDoubleToString(g11));
-        map.put("g12", CommonFunc.convertDoubleToString(g12));
-        map.put("g13", CommonFunc.convertDoubleToString(g13));
-        map.put("g14", CommonFunc.convertDoubleToString(g14));
-        return map;
+        return null;
     }
 
-    private Map<String,String> getMap(){
-        Map<String,String>map=new HashMap<>();
+    public Map<String, String> takeMapForPDF(String type) {
+        Map map = new HashMap();
         map.put("no", CommonFunc.convertDoubleToString(no));
         map.put("ver", CommonFunc.convertDoubleToString(ver));
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
@@ -1049,8 +76,7 @@ public class HorizontalTracksEntity {
         map.put("shr", CommonFunc.convertDoubleToString(shr));
         map.put("pzr", CommonFunc.convertDoubleToString(pzr));
         map.put("date", CommonFunc.convertDoubleToString(date));
-        map.put("ld", CommonFunc.convertDoubleToString(ld));
-        map.put("l", CommonFunc.convertDoubleToString(l));
+        map.put("lkj", CommonFunc.convertDoubleToString(lkj));
         map.put("dcw", CommonFunc.convertDoubleToString(dcw));
         map.put("bcw", CommonFunc.convertDoubleToString(bcw));
         map.put("fzed", CommonFunc.convertDoubleToString(fzed));
@@ -1058,113 +84,530 @@ public class HorizontalTracksEntity {
         map.put("vzed", CommonFunc.convertDoubleToString(vzed));
         map.put("vyed", CommonFunc.convertDoubleToString(vyed));
         map.put("rzed", CommonFunc.convertDoubleToString(rzed));
-        map.put("x", CommonFunc.convertDoubleToString(x));
-        map.put("c", CommonFunc.convertDoubleToString(c));
+        map.put("bef1x", CommonFunc.convertDoubleToString(bef1x));
+        map.put("bef1c", CommonFunc.convertDoubleToString(bef1c));
         map.put("gdxh", CommonFunc.convertDoubleToString(gdxh));
         map.put("gcph", CommonFunc.convertDoubleToString(gcph));
-        map.put("h", CommonFunc.convertDoubleToString(h));
-        map.put("b", CommonFunc.convertDoubleToString(b));
-        map.put("tw", CommonFunc.convertDoubleToString(tw));
-        map.put("tfs", CommonFunc.convertDoubleToString(tfs));
-        map.put("tfx", CommonFunc.convertDoubleToString(tfx));
-        map.put("hw", CommonFunc.convertDoubleToString(hw));
-        map.put("hy", CommonFunc.convertDoubleToString(hy));
-        map.put("sy", CommonFunc.convertDoubleToString(sy));
-        map.put("iy", CommonFunc.convertDoubleToString(iy));
-        map.put("iz", CommonFunc.convertDoubleToString(iz));
-        map.put("wysel", CommonFunc.convertDoubleToString(wysel));
-        map.put("wyxel", CommonFunc.convertDoubleToString(wyxel));
-        map.put("wzel", CommonFunc.convertDoubleToString(wzel));
-        map.put("z", CommonFunc.convertDoubleToString(z));
-        map.put("y", CommonFunc.convertDoubleToString(y));
-        map.put("ss", CommonFunc.convertDoubleToString(ss));
-        map.put("shzr",String.valueOf(shzr));
-        Arrays.sort(gdxhs);
-        boolean blm = Arrays.binarySearch(gdxhs,gdxh)<0;
-        Arrays.sort(gcphs);
-        boolean bls = Arrays.binarySearch(gcphs,gcph)<0;
-        map.put("h1", CommonFunc.convertDoubleToString(blm?h:null));
-        map.put("b0", CommonFunc.convertDoubleToString(blm?b:null));
-        map.put("tw1", CommonFunc.convertDoubleToString(blm?tw:null));
-        map.put("tfs1", CommonFunc.convertDoubleToString(blm?tfs:null));
-        map.put("tfx1", CommonFunc.convertDoubleToString(blm?tfx:null));
-        map.put("z1", CommonFunc.convertDoubleToString(blm?z:null));
-        map.put("sy1", CommonFunc.convertDoubleToString(blm?sy:null));
+        map.put("gdh", CommonFunc.convertDoubleToString(gdh));
+        map.put("gdb", CommonFunc.convertDoubleToString(gdb));
+        map.put("gdtw", CommonFunc.convertDoubleToString(gdtw));
+        map.put("gdtfs", CommonFunc.convertDoubleToString(gdtfs));
+        map.put("gdtfx", CommonFunc.convertDoubleToString(gdtfx));
+        map.put("gdhw", CommonFunc.convertDoubleToString(gdhw));
+        map.put("gdhy", CommonFunc.convertDoubleToString(gdhy));
+        map.put("gdsy", CommonFunc.convertDoubleToString(gdsy));
+        map.put("gdiy", CommonFunc.convertDoubleToString(gdiy));
+        map.put("gdiz", CommonFunc.convertDoubleToString(gdiz));
+        map.put("gdwysel", CommonFunc.convertDoubleToString(gdwysel));
+        map.put("gdwyxel", CommonFunc.convertDoubleToString(gdwyxel));
+        map.put("gdwzel", CommonFunc.convertDoubleToString(gdwzel));
+        map.put("gdz", CommonFunc.convertDoubleToString(gdz));
+        map.put("gdy", CommonFunc.convertDoubleToString(gdy));
+        map.put("gdss", CommonFunc.convertDoubleToString(gdss));
+        map.put("gdshzr", CommonFunc.convertDoubleToString(gdshzr));
+        map.putAll(takeStringMapForPdf(type));
         return map;
     }
-    public Map<String,String> getMapForPdf1(){
-        Map<String,String> map=getMap();
-        map.putAll(calculationPDF1());
-        return map;
+
+    public Map<String, String> takeMapForCheckPDF() {
+        Map<String, Double> map = takeDoubleMapForPdf("");
+        Double myed = map.get("myed");
+        Double mzed = map.get("mzed");
+        Double a2 = map.get("a2");
+        Double a3 = map.get("a3");
+        Double a4 = map.get("a4");
+        Double a5 = map.get("a5");
+        Double a6 = map.get("a6");
+        Double a7 = map.get("a7");
+        Double a8 = map.get("a8");
+        Double a9 = map.get("a9");
+        Double a10 = map.get("a10");
+        Double a11 = map.get("a11");
+        Double fz = map.get("fz");
+        Double fy = map.get("fy");
+        Double myeds = map.get("myeds");
+        Double mzeds = map.get("mzeds");
+        Double b2 = map.get("b2");
+        Double b3 = map.get("b3");
+        Double b4 = map.get("b4");
+        Double b5 = map.get("b5");
+        Double b6 = map.get("b6");
+        Double b7 = map.get("b7");
+        Double b8 = map.get("b8");
+        Double b9 = map.get("b9");
+        Double b10 = map.get("b10");
+        Double b11 = map.get("b11");
+        Double fzs = map.get("fzs");
+        Double fys = map.get("fys");
+        Double o1 = myeds / myed;
+        Double o2 = mzeds / mzed;
+        Double o3 = b2 / a2;
+        Double o4 = b3 / a3;
+        Double o5 = b4 / a4;
+        Double o6 = b5 / a5;
+        Double o7 = b6 / a6;
+        Double o8 = b7 / a7;
+        Double o9 = b8 / a8;
+        Double o10 = b9 / a9;
+        Double o11 = b10 / a10;
+        Double o12 = b11 / a11;
+        Double o13 = fzs / fz;
+        Double o14 = fys / fy;
+        String g1 = (0.77 <= o1 && o1 <= 0.85) ? "符合" : "不符合";
+        String g2 = (0.77 <= o2 && o2 <= 0.85) ? "符合" : "不符合";
+        String g3 = (0.66 <= o3 && o3 <= 0.9) ? "符合" : "不符合";
+        String g4 = (0.75 <= o4 && o4 <= 0.85) ? "符合" : "不符合";
+        String g5 = (0.95 <= o5 && o5 <= 1.05) ? "符合" : "不符合";
+        String g6 = (0.79 <= o6 && o6 <= 1.05) ? "符合" : "不符合";
+        String g7 = (0.95 <= o7 && o7 <= 1.05) ? "符合" : "不符合";
+        String g8 = (0.95 <= o8 && o8 <= 1.05) ? "符合" : "不符合";
+        String g9 = (0.95 <= o9 && o9 <= 1.05) ? "符合" : "不符合";
+        String g10 = (0.95 <= o10 && o10 <= 1.05) ? "符合" : "不符合";
+        String g11 = (0.95 <= o11 && o11 <= 1.05) ? "符合" : "不符合";
+        String g12 = (0.95 <= o12 && o12 <= 1.05) ? "符合" : "不符合";
+        String g13 = (0.68 <= o13 && o13 <= 0.75) ? "符合" : "不符合";
+        String g14 = (0.68 <= o14 && o14 <= 0.75) ? "符合" : "不符合";
+
+        Map<String, String> result = new HashMap<>();
+        result.put("myeds", CommonFunc.convertDoubleToString(myeds));
+        result.put("mzeds", CommonFunc.convertDoubleToString(mzeds));
+        result.put("b2", CommonFunc.convertDoubleToString(b2));
+        result.put("b3", CommonFunc.convertDoubleToString(b3));
+        result.put("b4", CommonFunc.convertDoubleToString(b4));
+        result.put("b5", CommonFunc.convertDoubleToString(b5));
+        result.put("b6", CommonFunc.convertDoubleToString(b6));
+        result.put("b7", CommonFunc.convertDoubleToString(b7));
+        result.put("b8", CommonFunc.convertDoubleToString(b8));
+        result.put("b9", CommonFunc.convertDoubleToString(b9));
+        result.put("b10", CommonFunc.convertDoubleToString(b10));
+        result.put("b11", CommonFunc.convertDoubleToString(b11));
+        result.put("fzs", CommonFunc.convertDoubleToString(fzs));
+        result.put("fys", CommonFunc.convertDoubleToString(fys));
+        result.put("myed", CommonFunc.convertDoubleToString(myed));
+        result.put("mzed", CommonFunc.convertDoubleToString(mzed));
+        result.put("a2", CommonFunc.convertDoubleToString(a2));
+        result.put("a3", CommonFunc.convertDoubleToString(a3));
+        result.put("a4", CommonFunc.convertDoubleToString(a4));
+        result.put("a5", CommonFunc.convertDoubleToString(a5));
+        result.put("a6", CommonFunc.convertDoubleToString(a6));
+        result.put("a7", CommonFunc.convertDoubleToString(a7));
+        result.put("a8", CommonFunc.convertDoubleToString(a8));
+        result.put("a9", CommonFunc.convertDoubleToString(a9));
+        result.put("a10", CommonFunc.convertDoubleToString(a10));
+        result.put("a11", CommonFunc.convertDoubleToString(a11));
+        result.put("fz", CommonFunc.convertDoubleToString(fz));
+        result.put("fy", CommonFunc.convertDoubleToString(fy));
+        result.put("o1", CommonFunc.convertDoubleToString(o1));
+        result.put("o2", CommonFunc.convertDoubleToString(o2));
+        result.put("o3", CommonFunc.convertDoubleToString(o3));
+        result.put("o4", CommonFunc.convertDoubleToString(o4));
+        result.put("o5", CommonFunc.convertDoubleToString(o5));
+        result.put("o6", CommonFunc.convertDoubleToString(o6));
+        result.put("o7", CommonFunc.convertDoubleToString(o7));
+        result.put("o8", CommonFunc.convertDoubleToString(o8));
+        result.put("o9", CommonFunc.convertDoubleToString(o9));
+        result.put("o10", CommonFunc.convertDoubleToString(o10));
+        result.put("o11", CommonFunc.convertDoubleToString(o11));
+        result.put("o12", CommonFunc.convertDoubleToString(o12));
+        result.put("o13", CommonFunc.convertDoubleToString(o13));
+        result.put("o14", CommonFunc.convertDoubleToString(o14));
+        result.put("g1", CommonFunc.convertDoubleToString(g1));
+        result.put("g2", CommonFunc.convertDoubleToString(g2));
+        result.put("g3", CommonFunc.convertDoubleToString(g3));
+        result.put("g4", CommonFunc.convertDoubleToString(g4));
+        result.put("g5", CommonFunc.convertDoubleToString(g5));
+        result.put("g6", CommonFunc.convertDoubleToString(g6));
+        result.put("g7", CommonFunc.convertDoubleToString(g7));
+        result.put("g8", CommonFunc.convertDoubleToString(g8));
+        result.put("g9", CommonFunc.convertDoubleToString(g9));
+        result.put("g10", CommonFunc.convertDoubleToString(g10));
+        result.put("g11", CommonFunc.convertDoubleToString(g11));
+        result.put("g12", CommonFunc.convertDoubleToString(g12));
+        result.put("g13", CommonFunc.convertDoubleToString(g13));
+        result.put("g14", CommonFunc.convertDoubleToString(g14));
+
+        return result;
     }
-    public Map<String,String> getMapForPdf2(){
-        Map<String,String> map=getMap();
-        map.putAll(calculationPDF2());
-        return map;
-    }
-    public String getEnlishString(String chinese){
-        if(chinese.equals("H200+贴板"))
-            return "H200 add plate";
-        if(chinese.equals("H250+贴板"))
-            return "H250 add plate";
-        if(chinese.equals("拼焊H200*216"))
-            return "Tailor-welded H200*216";
-        if(chinese.equals("拼焊H250*266"))
-            return "Tailor-welded H200*266";
-        if(chinese.equals("满足"))
-            return "meets";
-        if(chinese.equals("不满足"))
-            return "doesn't meet";
-        return null;
-    }
-    public Map<String,String> getMapForPdf2en(){
-        Map<String,String> map=getMap();
-        map.putAll(calculationPDF2());
-        map.put("gdxhy",gdxhen);
-        map.put("vv3", getEnlishString(map.get("v3")));
-        map.put("vv5", getEnlishString(map.get("v5")));
-        map.put("vv7", getEnlishString(map.get("v7")));
-        map.put("vv9", getEnlishString(map.get("v9")));
-        map.put("vv11",getEnlishString(map.get("v11")));
-        map.put("vv13",getEnlishString(map.get("v13")));
-        map.put("vv15",getEnlishString(map.get("v15")));
-        map.put("vv17",getEnlishString(map.get("v17")));
-        map.put("vv19",getEnlishString(map.get("v19")));
-        map.put("vv21",getEnlishString(map.get("v21")));
-        map.put("vv26",getEnlishString(map.get("v26")));
-        return map;
-    }
-    public Map<String,String> getMapForPdf1en(){
-        Map<String,String> map=getMap();
-        map.putAll(calculationPDF1());
-        map.put("gdxhy",gdxhen);
-        map.put("uu3",getEnlishString(map.get("u3")));
-        map.put("uu5",getEnlishString(map.get("u5")));
-        map.put("uu7",getEnlishString(map.get("u7")));
-        map.put("uu9",getEnlishString(map.get("u9")));
-        map.put("uu11",getEnlishString(map.get("u11")));
-        map.put("uu13",getEnlishString(map.get("u13")));
-        map.put("uu15",getEnlishString(map.get("u15")));
-        map.put("uu17",getEnlishString(map.get("u17")));
-        map.put("uu19",getEnlishString(map.get("u19")));
-        map.put("uu21",getEnlishString(map.get("u21")));
-        map.put("uu26",getEnlishString(map.get("u26")));
-        return map;
-    }
-    public Map<String,String> getMapForPdf3(){
-        Map<String,String> map=getMap();
-        map.putAll(calculationPDF3(getDoubleMapForpdf1(),getDoubleMapForpdf2()));
-        return map;
-    }
-    public Map<String,String> getCheck(){
-        Map<String,String> map=getMapForPdf1();
-        map.putAll(getMapForPdf2());
-        Map<String,String> rest=new HashMap<>();
-        for (HashMap.Entry<String,String> e: map.entrySet()) {
-            String key=e.getKey();
-            if(key!=null&&key!=""&&(key.charAt(0)=='v'||key.charAt(0)=='u'))
-                rest.put(e.getKey(),e.getValue());
+
+    public Map<String, Double> takeDoubleMapForPdf(String type) {
+        Map<String, Double> map = new HashMap();
+
+        /*
+        表2数据,表3数据
+         */
+        if (trackModel.equals("其它")) {
+            Double gdh1 = gdh;
+            Double gdb1 = gdb;
+            Double gdtw1 = gdtw;
+            Double gdtfs1 = gdtfs;
+            Double gdtfx1 = gdtfx;
+            Double gdz1 = gdz;
+            Double gdsy1 = gdsy;
+            Double gdiiy = gdiy / 10000;
+            Double gdiiz = gdiz / 10000;
+            Double gdwys = gdwysel / 1000;
+            Double gdwyx = gdwyxel / 1000;
+            Double gdwz = gdwzel / 1000;
+            Double gdss1 = gdss;
+            Double gdshzr1 = gdshzr;
+            map.put("gdb1", gdb1);
+            map.put("gdh1", gdh1);
+            map.put("gdtw1", gdtw1);
+            map.put("gdtfs1", gdtfs1);
+            map.put("gdtfx1", gdtfx1);
+            map.put("gdz1", gdz1);
+            map.put("gdsy1", gdsy1);
+            map.put("gdiiy", gdiiy);
+            map.put("gdiiz", gdiiz);
+            map.put("gdwys", gdwys);
+            map.put("gdwyx", gdwyx);
+            map.put("gdwz", gdwz);
+            map.put("gdss1", gdss1);
+            map.put("gdshzr1", gdshzr1);
         }
-        return rest;
+
+        Double myed = vzed * lkj / 4;//S
+        Double myeds = 13 * vzed * lkj / 64;//D
+        Double mzed = vyed * lkj / 4;//S
+        Double mzeds = 13 * vyed * lkj / 64;//D
+        Double sxeds = (myeds * gdz / gdiy) + (mzeds * gdy / gdiz);//D
+        Double sxed = (myed * gdz / gdiy) + (mzed * gdy / gdiz);//S
+        Double b1 = gdb * gdhy / gdtw / gdhw;//D
+        Double a1 = gdb * gdhy / gdtw / gdhw;//S
+        Double ted1 = vzed * gdsy / gdtw / gdiy;
+        Double ted2 = vzed / gdtw / gdhw;
+        Double ted;
+        if (a1 < 0.6) {
+            ted = ted1;
+        } else {
+            ted = ted2;
+        }
+        if (b1 < 0.6) {
+            ted = ted1;
+        } else {
+            ted = ted2;
+        }
+        Double a2 = Math.pow(sxed / gdss, 2) + 3 * Math.pow(ted / gdss, 2);
+        Double b2 = Math.pow(sxeds / gdss, 2) + 3 * Math.pow(ted / gdss, 2);
+        map.put("myed", myed);
+        map.put("myeds", myeds);
+        map.put("mzed", mzed);
+        map.put("mzeds", mzeds);
+        map.put("sxed", sxed);
+        map.put("sxeds", sxeds);
+        map.put("a1", a1);
+        map.put("b1", b1);
+        map.put("ted1", ted1);
+        map.put("ted2", ted2);
+        map.put("ted", ted);
+        map.put("a2", a2);
+        map.put("b2", b2);
+
+        Double iw = gdiz * gdh * gdh / 4;
+        Double it = 0.4 * (gdb * gdtfx * gdtfx * gdtfx + gdh * gdtw * gdtw * gdtw + gdb * gdhy * gdhy * gdhy);
+        Double s = sqrt(210000 * iw / 81000 / it);
+        Double ccr = 1.35 * 3.14 * (sqrt(1 + Math.pow(3.14 * s / lkj, 2) * (1 + 0.55 * 0.55)) + 0.55 * 3.14 * s / lkj);
+        Double mcr = ccr * sqrt(210000 * gdiz * 81000 * it) / lkj;
+        Double klt = sqrt(gdss * gdwysel / mcr);
+        Double qlt1 = 0.5 * (1 + 0.34 * (klt - 0.4) + 0.75 * klt * klt);
+        Double qlt2 = 0.5 * (1 + 0.49 * (klt - 0.4) + 0.75 * klt * klt);
+        String[] temp = {"H200*200+贴板", "H250*250+贴板", "拼焊H216*200", "拼焊H266*250", "其它"};
+        Double qlt;
+        if (Arrays.binarySearch(temp, gdxh) > 0) {
+            qlt = qlt2;
+        } else {
+            qlt = qlt1;
+        }
+        Double xlt = 1 / (qlt + sqrt(qlt * qlt - 0.75 * klt * klt));
+        Double mbrd = xlt * gdss * gdwysel;
+        Double a3 = myed / mbrd;
+        Double b3 = myeds / mbrd;
+        map.put("iw", iw);
+        map.put("it", it);
+        map.put("s", s);
+        map.put("ccr", ccr);
+        map.put("mcr", mcr);
+        map.put("klt", klt);
+        map.put("qlt1", qlt1);
+        map.put("qlt2", qlt2);
+        map.put("qlt", qlt);
+        map.put("xlt", xlt);
+        map.put("mbrd", mbrd);
+        map.put("a3", a3);
+        map.put("b3", b3);
+
+        Double k1 = 6.93 * gdh * sqrt(gdss / 210000) / 3.14 / gdtw;
+        Double q1 = 0.5 * (1 + 0.49 * (k1 - 0.2) + k1 * k1);
+        Double xs1 = 1 / (q1 + sqrt(q1 * q1 - k1 * k1));
+        Double bef1 = bef1x + bef1c + gdtfx * sqrt(gdb / gdtw);
+        Double nwrd = xs1 * gdss * bef1 * gdtw;
+        Double a4 = rzed / nwrd;
+        Double b4 = rzed / nwrd;
+        map.put("k1", k1);
+        map.put("q1", q1);
+        map.put("xs1", xs1);
+        map.put("bef1", bef1);
+        map.put("nwrd", nwrd);
+        map.put("a4", a4);
+        map.put("b4", b4);
+
+        Double sx1ed = myed * gdz / gdiy;
+        Double sx1eds = myeds * gdz / gdiy;
+        Double d = 0.5 * 50 + gdhy;
+        Double szed = fzed / 2 / gdtw / d;
+        Double tled = szed * 0.2;
+        Double a5 = Math.pow(sx1ed / gdss, 2) + Math.pow(szed / gdss, 2) - sx1ed * szed / gdss / gdss + 3 * Math.pow((ted + tled) / gdss, 2);
+        Double b5 = pow(sx1eds / gdss, 2) + pow(szed / gdss, 2) - sx1eds * szed / gdss / gdss + 3 * pow((ted + tled) / gdss, 2);
+        map.put("sx1ed", sx1ed);
+        map.put("sx1eds", sx1eds);
+        map.put("d", d);
+        map.put("szed", szed);
+        map.put("tled", tled);
+        map.put("a5", a5);
+        map.put("b5", b5);
+
+        Double fzrd = 0.125 * gdtw * gdtw * sqrt(210000 * gdss) * sqrt(gdhy / gdtw);
+        Double a6 = fzed / fzrd;
+        Double b6 = fzed / fzrd;
+        map.put("fzrd", fzrd);
+        map.put("a6", a6);
+        map.put("b6", b6);
+
+        Double bef2d = 0 + 0.5 * gdh;
+        Double bef2z = gdh;
+        Double bef2;
+        if (steelHave.equals("有")) {
+            bef2 = bef2z;
+        } else {
+            bef2 = bef2d;
+        }
+        Double ncrd = gdss * bef2 * gdtw;
+        Double k2 = 3.46 * gdh * sqrt(gdss / 210000) / 3.14 / gdtw;
+        Double q2 = 0.5 * (1 + 0.49 * (k2 - 0.2) + k2 * k2);
+        Double xs2 = 1 / (q2 + sqrt(q2 * q2 - k2 * k2));
+        Double a7 = fzed / xs2 / ncrd;
+        Double b7 = fzed / xs2 / ncrd;
+        map.put("bef2d", bef2d);
+        map.put("bef2z", bef2z);
+        map.put("bef2", bef2);
+        map.put("ncrd", ncrd);
+        map.put("k2", k2);
+        map.put("q2", q2);
+        map.put("xs2", xs2);
+        map.put("a7", a7);
+        map.put("b7", b7);
+
+        Double fz1rd = gdss * bef1 * gdtw;
+        Double a8 = rzed / fz1rd;
+        Double b8 = rzed / fz1rd;
+        map.put("fz1rd", fz1rd);
+        map.put("a8", a8);
+        map.put("b8", b8);
+
+        Double fz2rd = 0.125 * gdtw * gdtw * sqrt(210000 * gdss) * (sqrt(gdtfx / gdtw) + 3 * gdtw * bef1c / gdtfx / gdhw);
+        Double a9 = rzed / fz2rd;
+        Double b9 = rzed / fz2rd;
+        map.put("fz2rd", fz2rd);
+        map.put("a9", a9);
+        map.put("b9", b9);
+
+        Double bef3 = bef1x + 0.5 * (bef1c + sqrt(gdh * gdh + bef1c * bef1c));
+        Double nc1rd = gdss * bef3 * gdtw;
+        Double a10 = fzed / xs2 / nc1rd;
+        Double b10 = fzed / xs2 / nc1rd;
+        map.put("bef3", bef3);
+        map.put("nc1rd", nc1rd);
+        map.put("a10", a10);
+        map.put("b10", b10);
+
+        Double shz = sqrt(0.35 * 210000 * fze / dcw / bcw);
+        Double a11 = shz / gdshzr;
+        Double b11 = shz / gdshzr;
+        map.put("shz", shz);
+        map.put("a11", a11);
+        map.put("b11", b11);
+
+        Double fz = vzed * lkj * lkj * lkj / 48 / 210000 / gdiy;
+        Double fzs = 0.015 * vzed * lkj * lkj * lkj / 210000 / gdiy;
+        Double fy = vyed * lkj * lkj * lkj / 48 / 210000 / gdiz;
+        Double fys = 0.015 * vyed * lkj * lkj * lkj / 210000 / gdiz;
+        map.put("fz", fz);
+        map.put("fy", fy);
+        map.put("fzs", fzs);
+        map.put("fys", fys);
+
+        return map;
     }
+
+
+    private String takeSignByCompareNumber(Double a, Double b) {
+        if (a > b) {
+            return ">";
+        } else if (a == b) {
+            return "=";
+        } else {
+            return "<";
+        }
+    }
+
+    private String takeStringByCompareNumber(Double a, Double b) {
+        if (a > b) {
+            return "不满足";
+        } else {
+            return "满足";
+        }
+    }
+
+    public Map<String, String> takeStringMapForPdf(String type) {
+        Map map = new HashMap();
+        Map<String, Double> doubleMap = takeDoubleMapForPdf(type);
+        Double a1 = doubleMap.get("a1");
+        Double b1 = doubleMap.get("b1");
+        Double a2 = doubleMap.get("a2");
+        Double b2 = doubleMap.get("b2");
+        String u1 = takeSignByCompareNumber(a1, 0.6);
+        String v1 = takeSignByCompareNumber(b1, 0.6);
+        String u2 = takeSignByCompareNumber(a2, 1.0);
+        String v2 = takeSignByCompareNumber(b2, 1.0);
+        String u3 = takeStringByCompareNumber(a2, 1.0);
+        String v3 = takeStringByCompareNumber(b2, 1.0);
+        map.put("u1", CommonFunc.convertDoubleToString(u1));
+        map.put("v1", CommonFunc.convertDoubleToString(v1));
+        map.put("u2", CommonFunc.convertDoubleToString(u2));
+        map.put("v2", CommonFunc.convertDoubleToString(v2));
+        map.put("u3", CommonFunc.convertDoubleToString(u3));
+        map.put("v3", CommonFunc.convertDoubleToString(v3));
+
+        Double a3 = doubleMap.get("a3");
+        Double b3 = doubleMap.get("b3");
+        String u4 = takeSignByCompareNumber(a3, 1.0);
+        String v4 = takeSignByCompareNumber(b3, 1.0);
+        String u5 = takeStringByCompareNumber(a3, 1.0);
+        String v5 = takeStringByCompareNumber(b3, 1.0);
+        map.put("u4", CommonFunc.convertDoubleToString(u4));
+        map.put("v4", CommonFunc.convertDoubleToString(v4));
+        map.put("u5", CommonFunc.convertDoubleToString(u5));
+        map.put("v5", CommonFunc.convertDoubleToString(v5));
+
+        Double a4 = doubleMap.get("a4");
+        String u6 = takeSignByCompareNumber(a4, 1.0);
+        String u7 = takeStringByCompareNumber(a4, 1.0);
+        map.put("u6", CommonFunc.convertDoubleToString(u6));
+        map.put("u7", CommonFunc.convertDoubleToString(u7));
+        Double b4 = doubleMap.get("b4");
+        String v6 = takeSignByCompareNumber(b4, 1.0);
+        String v7 = takeStringByCompareNumber(b4, 1.0);
+        map.put("v6", CommonFunc.convertDoubleToString(v6));
+        map.put("v7", CommonFunc.convertDoubleToString(v7));
+
+        Double a5 = doubleMap.get("a5");
+        String u8 = takeSignByCompareNumber(a5, 1.0);
+        String u9 = takeStringByCompareNumber(a5, 1.0);
+        map.put("u8", CommonFunc.convertDoubleToString(u8));
+        map.put("u9", CommonFunc.convertDoubleToString(u9));
+        Double b5 = doubleMap.get("b5");
+        String v8 = takeSignByCompareNumber(b5, 1.0);
+        String v9 = takeStringByCompareNumber(b5, 1.0);
+        map.put("v8", CommonFunc.convertDoubleToString(v8));
+        map.put("v9", CommonFunc.convertDoubleToString(v9));
+
+        Double a6 = doubleMap.get("a6");
+        String u10 = takeSignByCompareNumber(a6, 1.0);
+        String u11 = takeStringByCompareNumber(a6, 1.0);
+        map.put("u10", CommonFunc.convertDoubleToString(u10));
+        map.put("u11", CommonFunc.convertDoubleToString(u11));
+        Double b6 = doubleMap.get("b6");
+        String v10 = takeSignByCompareNumber(b6, 1.0);
+        String v11 = takeStringByCompareNumber(b6, 1.0);
+        map.put("v10", CommonFunc.convertDoubleToString(v10));
+        map.put("v11", CommonFunc.convertDoubleToString(v11));
+
+        Double a7 = doubleMap.get("a7");
+        String u12 = takeSignByCompareNumber(a7, 1.0);
+        String u13 = takeStringByCompareNumber(a7, 1.0);
+        map.put("u12", CommonFunc.convertDoubleToString(u12));
+        map.put("u13", CommonFunc.convertDoubleToString(u13));
+        Double b7 = doubleMap.get("a7");
+        String v12 = takeSignByCompareNumber(b7, 1.0);
+        String v13 = takeStringByCompareNumber(b7, 1.0);
+        map.put("v12", CommonFunc.convertDoubleToString(v12));
+        map.put("v13", CommonFunc.convertDoubleToString(v13));
+
+
+        Double a8 = doubleMap.get("a8");
+        String u14 = takeSignByCompareNumber(a8, 1.0);
+        String u15 = takeStringByCompareNumber(a8, 1.0);
+        map.put("u14", CommonFunc.convertDoubleToString(u14));
+        map.put("u15", CommonFunc.convertDoubleToString(u15));
+        Double b8 = doubleMap.get("b8");
+        String v14 = takeSignByCompareNumber(b8, 1.0);
+        String v15 = takeStringByCompareNumber(b8, 1.0);
+        map.put("v14", CommonFunc.convertDoubleToString(v14));
+        map.put("v15", CommonFunc.convertDoubleToString(v15));
+
+        Double a9 = doubleMap.get("a9");
+        String u16 = takeSignByCompareNumber(a9, 1.0);
+        String u17 = takeStringByCompareNumber(a9, 1.0);
+        map.put("u16", CommonFunc.convertDoubleToString(u16));
+        map.put("u17", CommonFunc.convertDoubleToString(u17));
+        Double b9 = doubleMap.get("b9");
+        String v16 = takeSignByCompareNumber(b9, 1.0);
+        String v17 = takeStringByCompareNumber(b9, 1.0);
+        map.put("v16", CommonFunc.convertDoubleToString(v16));
+        map.put("v17", CommonFunc.convertDoubleToString(v17));
+
+
+        Double a10 = doubleMap.get("a10");
+        String u18 = takeSignByCompareNumber(a10, 1.0);
+        String u19 = takeStringByCompareNumber(a10, 1.0);
+        map.put("u18", CommonFunc.convertDoubleToString(u18));
+        map.put("u19", CommonFunc.convertDoubleToString(u19));
+        Double b10 = doubleMap.get("b10");
+        String v18 = takeSignByCompareNumber(b10, 1.0);
+        String v19 = takeStringByCompareNumber(b10, 1.0);
+        map.put("v18", CommonFunc.convertDoubleToString(v18));
+        map.put("v19", CommonFunc.convertDoubleToString(v19));
+
+        Double a11 = doubleMap.get("a11");
+        String u20 = takeSignByCompareNumber(a11, 1.0);
+        String u21 = takeStringByCompareNumber(a11, 1.0);
+        map.put("u20", CommonFunc.convertDoubleToString(u20));
+        map.put("u21", CommonFunc.convertDoubleToString(u21));
+        Double b11 = doubleMap.get("b11");
+        String v20 = takeSignByCompareNumber(b11, 1.0);
+        String v21 = takeStringByCompareNumber(b11, 1.0);
+        map.put("v20", CommonFunc.convertDoubleToString(v20));
+        map.put("v21", CommonFunc.convertDoubleToString(v21));
+
+        Double fz = doubleMap.get("fz");
+        Double fy = doubleMap.get("fy");
+        String u22 = takeSignByCompareNumber(fz, lkj / 200);
+        String u23 = takeSignByCompareNumber(fz, 30.0);
+        String u24 = takeSignByCompareNumber(fy, lkj / 200);
+        String u25 = takeSignByCompareNumber(fy, 30.0);
+        String u26 = (fz > lkj / 200 || fz > 30.0 || fy > lkj / 200 || fy > 30.0) ? "不满足" : "满足";
+        map.put("u22", CommonFunc.convertDoubleToString(u22));
+        map.put("u23", CommonFunc.convertDoubleToString(u23));
+        map.put("u24", CommonFunc.convertDoubleToString(u24));
+        map.put("u25", CommonFunc.convertDoubleToString(u25));
+        map.put("u26", CommonFunc.convertDoubleToString(u26));
+        Double fzs = doubleMap.get("fzs");
+        Double fys = doubleMap.get("fys");
+        String v22 = takeSignByCompareNumber(fzs, lkj / 200);
+        String v23 = takeSignByCompareNumber(fzs, 30.0);
+        String v24 = takeSignByCompareNumber(fys, lkj / 200);
+        String v25 = takeSignByCompareNumber(fys, 30.0);
+        String v26 = (fzs > lkj / 200 || fzs > 30.0 || fys > lkj / 200 || fys > 30.0) ? "不满足" : "满足";
+        map.put("v22", CommonFunc.convertDoubleToString(v22));
+        map.put("v23", CommonFunc.convertDoubleToString(v23));
+        map.put("v24", CommonFunc.convertDoubleToString(v24));
+        map.put("v25", CommonFunc.convertDoubleToString(v25));
+        map.put("v26", CommonFunc.convertDoubleToString(v26));
+
+        for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
+            map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));
+        }
+        return map;
+    }
+
 }
