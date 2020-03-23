@@ -562,7 +562,10 @@
 <div class="buttonbox">
     <input class="button" form="form1" type="submit" value="输出钢丝绳计算书" onclick="getPDF('/WireRopePDF1')"/>
     <input class="button" form="form1" type="submit" value="输出检验计算书" onclick="getPDF('/WireRopePDF2')"/>
-    <input class="button" form="form1" type="reset" onclick="data.clear()" value="重置"/>
+    <input class="button" form="form1" type="reset" onclick="data.clear();
+                                                            $('.diaochuan td[id]').text(' ');
+                                                            $('.wuliaoqishengjigou td[id]').text(' ')
+    $('.diaochuan').css('display','table-row');  $('.wuliaoqishengjigou').css('display','table-row')" value="重置"/>
 </div>
 </body>
 </html>

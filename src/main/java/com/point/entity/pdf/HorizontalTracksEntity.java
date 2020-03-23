@@ -68,6 +68,8 @@ public class HorizontalTracksEntity {
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
+        String gdjb = steelHave;
+        map.put("gdjb",gdjb);
         map.put("no", CommonFunc.convertDoubleToString(no));
         map.put("ver", CommonFunc.convertDoubleToString(ver));
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));

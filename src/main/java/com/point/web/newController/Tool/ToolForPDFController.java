@@ -1,12 +1,9 @@
 package com.point.web.newController.Tool;
 
 import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.Image;
 import com.point.common.ImageCacheData;
 import com.point.common.MyEnv;
 import com.point.entity.InputImageCache;
-import com.point.mapper.InputImageCacheMapper;
-import org.apache.xmlbeans.impl.schema.StscChecker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,16 +15,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
-import java.util.stream.StreamSupport;
 
 @Component
 public class ToolForPDFController {

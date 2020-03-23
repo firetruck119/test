@@ -716,6 +716,7 @@
                     <td>轨道型号选择</td>
                     <td colspan="4">
                     <select name="trackModel" style="width:100%;height:40px;text-align-last:center">
+                        <option value="" style="display: none"></option>
                         <option value="I20b">I20b</option>
                         <option value="I22b">I22b</option>
                         <option value="I25b">I25b</option>
@@ -991,7 +992,7 @@
 <!--        <input type="submit" form="form1" class="button"  value="导出双跨梁英文pdf" onclick="$('form').attr('action','pdf2en')"/>-->
         <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/getPDF');
                                                                                             isCheck(true);changeType('Check')"/>
-        <input type="reset" form="form1" value="重置"/>
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
     </div>
 <script>
     function changeType(l){
