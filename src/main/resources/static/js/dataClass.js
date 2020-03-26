@@ -1,5 +1,4 @@
 (function () {
-
     var getData = window["getData"] = {
         data: window["data"],
         //从后台获取id列表，并生成datalist
@@ -228,6 +227,7 @@
             $('input[type=hidden]').remove();
             this.listtoform();
         },
+        isinit:true,
         init: function (dataf) {
             this.clear();
             data.formtolist();
@@ -252,22 +252,25 @@
                 this.datacalculate({calList: list});
                 this.listtoform();
             }
-            getData.getIDList();
-            $('input[type=text],select').change(function () {
-                if (this.name == 'sjht')
-                    return;
-                data.changeValue(this);
-            })
-            $('input[type=reset]').click(function () {
-                data.clear();
-                data.listtoform();
-                data.init(data.calculateFunction);
-                return false;
-            })
-            $('input[type=text]').keydown(function (e) {
-                if(e.keyCode==32)
+            if(this.isinit){
+                getData.getIDList();
+                $('input[type=text],select').change(function () {
+                    if (this.name == 'sjht')
+                        return;
+                    data.changeValue(this);
+                })
+                $('input[type=reset]').click(function () {
+                    data.clear();
+                    data.listtoform();
+                    data.init(data.calculateFunction);
                     return false;
-            })
+                })
+                $('input[type=text]').keydown(function (e) {
+                    if(e.keyCode==32)
+                        return false;
+                })
+                this.isinit=!this.isinit;
+            }
         },
     };
 }())

@@ -1,281 +1,128 @@
 package com.point.entity.pdf;
 
 import com.point.common.CommonFunc;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.*;
+
 public class TensileEnity {
+    @Getter
+    @Setter
     private String no;
+    @Getter
+    @Setter
     private String ver;
+    @Getter
+    @Setter
     private String xmmc;
+    @Getter
+    @Setter
     private String zjxh;
+    @Getter
+    @Setter
     private String jsr;
+    @Getter
+    @Setter
     private String shr;
+    @Getter
+    @Setter
     private String pzr;
+    @Getter
+    @Setter
     private String date;
-
-    private Double vk;
-    private Double nk;
-    private Double mk;
-    private Double z;
-    private Double d;
-    private Double t;
-    private Double a;
-    private Double b;
-    private Double b1;
-    private Double c;
-    private Double c1;
-    private Double l;
-    private String hdj;
-    private Double fc;
-    private Double ft;
-    private Double r;
-    private Double ar;
-    private Double ns;
-    private Double as;
+    @Getter
+    @Setter
+    private Double mjkn;
+    @Getter
+    @Setter
+    private Double mjkv;
+    @Getter
+    @Setter
+    private Double mjkjl;
+    @Getter
+    @Setter
+    private Double mjkm;
+    @Getter
+    @Setter
+    private Double mjz;
+    @Getter
+    @Setter
+    private Double mjd;
+    @Getter
+    @Setter
+    private Double mjt;
+    @Getter
+    @Setter
+    private Double mjmj;
+    @Getter
+    @Setter
+    private Double mja;
+    @Getter
+    @Setter
+    private Double mjb;
+    @Getter
+    @Setter
+    private Double mjb1;
+    @Getter
+    @Setter
+    private Double mjc;
+    @Getter
+    @Setter
+    private Double mjc1;
+    @Getter
+    @Setter
+    private Double mjl;
+    @Getter
+    @Setter
+    private String mjhdj;
+    @Getter
+    @Setter
+    private Double mjfc;
+    @Getter
+    @Setter
+    private Double mjft;
+    @Getter
+    @Setter
+    private Double mjr;
+    @Getter
+    @Setter
+    private Double mjar;
+    @Getter
+    @Setter
+    private Double mjns;
+    @Getter
+    @Setter
+    private Double mjas;
+    @Getter
+    @Setter
     private String mjlx;
-    private Double aw;
+    @Getter
+    @Setter
+    private Double mjaw;
+    @Getter
+    @Setter
+    private String ConcreteStrength;
+    @Getter
+    @Setter
+    private String TypeOfAnchorBars;
 
+    private Double mjn;
+    private Double mjv;
+    private Double mjjl;
+    private Double mjm;
 
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
-    public String getVer() {
-        return ver;
-    }
-
-    public void setVer(String ver) {
-        this.ver = ver;
-    }
-
-    public String getXmmc() {
-        return xmmc;
-    }
-
-    public void setXmmc(String xmmc) {
-        this.xmmc = xmmc;
-    }
-
-    public String getZjxh() {
-        return zjxh;
-    }
-
-    public void setZjxh(String zjxh) {
-        this.zjxh = zjxh;
-    }
-
-    public String getJsr() {
-        return jsr;
-    }
-
-    public void setJsr(String jsr) {
-        this.jsr = jsr;
-    }
-
-    public String getShr() {
-        return shr;
-    }
-
-    public void setShr(String shr) {
-        this.shr = shr;
-    }
-
-    public String getPzr() {
-        return pzr;
-    }
-
-    public void setPzr(String pzr) {
-        this.pzr = pzr;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public Double getVk() {
-        return vk;
-    }
-
-    public void setVk(Double vk) {
-        this.vk = vk;
-    }
-
-    public Double getNk() {
-        return nk;
-    }
-
-    public void setNk(Double nk) {
-        this.nk = nk;
-    }
-
-    public Double getMk() {
-        return mk;
-    }
-
-    public void setMk(Double mk) {
-        this.mk = mk;
-    }
-
-    public Double getZ() {
-        return z;
-    }
-
-    public void setZ(Double z) {
-        this.z = z;
-    }
-
-    public Double getD() {
-        return d;
-    }
-
-    public void setD(Double d) {
-        this.d = d;
-    }
-
-    public Double getT() {
-        return t;
-    }
-
-    public void setT(Double t) {
-        this.t = t;
-    }
-
-    public Double getA() {
-        return a;
-    }
-
-    public void setA(Double a) {
-        this.a = a;
-    }
-
-    public Double getB() {
-        return b;
-    }
-
-    public void setB(Double b) {
-        this.b = b;
-    }
-
-    public Double getB1() {
-        return b1;
-    }
-
-    public void setB1(Double b1) {
-        this.b1 = b1;
-    }
-
-    public Double getC() {
-        return c;
-    }
-
-    public void setC(Double c) {
-        this.c = c;
-    }
-
-    public Double getC1() {
-        return c1;
-    }
-
-    public void setC1(Double c1) {
-        this.c1 = c1;
-    }
-
-    public Double getL() {
-        return l;
-    }
-
-    public void setL(Double l) {
-        this.l = l;
-    }
-
-    public String getHdj() {
-        return hdj;
-    }
-
-    public void setHdj(String hdj) {
-        this.hdj = hdj;
-    }
-
-    public Double getFc() {
-        return fc;
-    }
-
-    public void setFc(Double fc) {
-        this.fc = fc;
-    }
-
-    public Double getFt() {
-        return ft;
-    }
-
-    public void setFt(Double ft) {
-        this.ft = ft;
-    }
-
-    public Double getR() {
-        return r;
-    }
-
-    public void setR(Double r) {
-        this.r = r;
-    }
-
-    public Double getAr() {
-        return ar;
-    }
-
-    public void setAr(Double ar) {
-        this.ar = ar;
-    }
-
-    public Double getNs() {
-        return ns;
-    }
-
-    public void setNs(Double ns) {
-        this.ns = ns;
-    }
-
-    public Double getAs() {
-        return as;
-    }
-
-    public void setAs(Double as) {
-        this.as = as;
-    }
-
-    public String getMjlx() {
-        return mjlx;
-    }
-
-    public void setMjlx(String mjlx) {
-        this.mjlx = mjlx;
-    }
-
-    public Double getAw() {
-        return aw;
-    }
-
-    public void setAw(Double aw) {
-        this.aw = aw;
-    }
-
-    private Map<String,String> getMap(){
-        Double v=1000*vk;
-        Double n=1000*nk;
-        Double m=1000*1000*mk;
-
-        Map<String,String> result=new HashMap<>();
+    public Map<String, String> takePDFMap() {
+        mjn = 1000 * mjkn;
+        mjv = 1000 * mjkv;
+        mjjl = 1000 * 1000 * mjkjl;
+        mjm = mjjl * mjv;
+        Map<String, String> result = new HashMap<>();
         result.put("no", CommonFunc.convertDoubleToString(no));
         result.put("ver", CommonFunc.convertDoubleToString(ver));
         result.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
@@ -284,207 +131,213 @@ public class TensileEnity {
         result.put("shr", CommonFunc.convertDoubleToString(shr));
         result.put("pzr", CommonFunc.convertDoubleToString(pzr));
         result.put("date", CommonFunc.convertDoubleToString(date));
+        result.put("mjkn", CommonFunc.convertDoubleToString(mjkn));
+        result.put("mjn", CommonFunc.convertDoubleToString(mjn));
+        result.put("mjkv", CommonFunc.convertDoubleToString(mjkv));
+        result.put("mjv", CommonFunc.convertDoubleToString(mjv));
+        result.put("mjkjl", CommonFunc.convertDoubleToString(mjkjl));
+        result.put("mjjl", CommonFunc.convertDoubleToString(mjjl));
+        result.put("mjkm", CommonFunc.convertDoubleToString(mjkm));
+        result.put("mjm", CommonFunc.convertDoubleToString(mjm));
+        result.put("mjz", CommonFunc.convertDoubleToString(mjz));
+        result.put("mjd", CommonFunc.convertDoubleToString(mjd));
+        result.put("mjt", CommonFunc.convertDoubleToString(mjt));
+        result.put("mjmj", CommonFunc.convertDoubleToString(mjmj));
+        result.put("mja", CommonFunc.convertDoubleToString(mja));
+        result.put("mjb", CommonFunc.convertDoubleToString(mjb));
+        result.put("mjb1", CommonFunc.convertDoubleToString(mjb1));
+        result.put("mjc", CommonFunc.convertDoubleToString(mjc));
+        result.put("mjc1", CommonFunc.convertDoubleToString(mjc1));
+        result.put("mjl", CommonFunc.convertDoubleToString(mjl));
+        result.put("mjhdj", CommonFunc.convertDoubleToString(mjhdj));
+        result.put("mjfc", CommonFunc.convertDoubleToString(mjfc));
+        result.put("mjft", CommonFunc.convertDoubleToString(mjft));
+        result.put("mjr", CommonFunc.convertDoubleToString(mjr));
+        result.put("mjar", CommonFunc.convertDoubleToString(mjar));
+        result.put("mjns", CommonFunc.convertDoubleToString(mjns));
+        result.put("mjas", CommonFunc.convertDoubleToString(mjas));
+        result.put("mjlx", CommonFunc.convertDoubleToString(mjlx));
+        result.put("mjaw", CommonFunc.convertDoubleToString(mjaw));
+        takeStringMapForPDF().forEach((key, val) -> {
+            result.put(key, CommonFunc.convertDoubleToString(val));
+        });
+        return result;
+    }
 
-        result.put("v",CommonFunc.convertDoubleToString(v));
-        result.put("n",CommonFunc.convertDoubleToString(n));
-        result.put("m",CommonFunc.convertDoubleToString(m));
-        result.put("z",CommonFunc.convertDoubleToString(z));
-        result.put("d",CommonFunc.convertDoubleToString(d));
-        result.put("t",CommonFunc.convertDoubleToString(t));
-        result.put("a",CommonFunc.convertDoubleToString(a));
-        result.put("b",CommonFunc.convertDoubleToString(b));
-        result.put("b1",CommonFunc.convertDoubleToString(b1));
-        result.put("c",CommonFunc.convertDoubleToString(c));
-        result.put("c1",CommonFunc.convertDoubleToString(c1));
-        result.put("l",CommonFunc.convertDoubleToString(l));
-        result.put("hdj",CommonFunc.convertDoubleToString(hdj));
-        result.put("fc",CommonFunc.convertDoubleToString(fc));
-        result.put("ft",CommonFunc.convertDoubleToString(ft));
-        result.put("r",CommonFunc.convertDoubleToString(r));
-        result.put("ar",CommonFunc.convertDoubleToString(ar));
-        result.put("ns",CommonFunc.convertDoubleToString(ns));
-        result.put("as",CommonFunc.convertDoubleToString(as));
-        result.put("mjlx",CommonFunc.convertDoubleToString(mjlx));
-        result.put("l",CommonFunc.convertDoubleToString(l));
-        result.put("aw",CommonFunc.convertDoubleToString(aw));
+    private Map<String, Double> takeDoublePDF() {
+        Double klmj2d = 2 * mjd;
+        Double klmj3d = 3 * mjd;
+        Double klmj6d = 6 * mjd;
+        Double _05fca = 0.5 * mjfc * mjmj;
+        Double klmjav = (4 - 0.08 * mjd) * sqrt(mjfc / 270);
+        Double klmjab = 0.6 + 0.25 * mjt / mjd;
+        Double klmjas1 = (mjv / (mjar * klmjav * 270)) + (mjn / (0.8 * klmjab * 270)) + (mjm / (1.3 * mjar * klmjab * 270 * mjz));
+        Double klmjas2 = (mjn / (0.8 * klmjab * 270)) + (mjm / (0.4 * mjar * klmjab * 270 * mjz));
+        Double klmjlab = mjaw * 270 / mjft * mjd;
+        Double klmjla = 0.6 * klmjlab;
+        Map<String, Double> result = new HashMap<>();
+        result.put("klmj2d", klmj2d);
+        result.put("klmj3d", klmj3d);
+        result.put("klmj6d", klmj6d);
+        result.put("05fca", _05fca);
+        result.put("klmjav", klmjav);
+        result.put("klmjab", klmjab);
+        result.put("klmjas1", klmjas1);
+        result.put("klmjas2", klmjas2);
+        result.put("klmjlab", klmjlab);
+        result.put("klmjla", klmjla);
+        return result;
+    }
+
+    private String takeSign(double a, double b) {
+        return a < b ? "<" : a > b ? ">" : "=";
+    }
+
+    private String takeString(boolean a) {
+        return a ? "满足" : "不满足";
+    }
+
+    private Map<String, String> takeStringMapForPDF() {
+        Map<String, Double> doubleMap = takeDoublePDF();
+        Double klmj2d = doubleMap.get("klmj2d");
+        Double klmj3d = doubleMap.get("klmj3d");
+        Double klmj6d = doubleMap.get("klmj6d");
+        Double _05fca = doubleMap.get("05fca");
+        Double klmjas1 = doubleMap.get("klmjas1");
+        Double klmjas2 = doubleMap.get("klmjas2");
+        String klmjp1 = takeSign(mja, klmj2d);
+        String klmjp2 = takeSign(mja, 20);
+        String klmjm1 = takeString(mja >= klmj2d && mja >= 20);
+        String klmjp3 = takeSign(mjb, klmj3d);
+        String klmjp4 = takeSign(45, mjb);
+        String klmjp5 = takeSign(mjb, 300);
+        String klmjm2 = takeString(mjb >= klmj3d && 45 <= mjb && mjb <= 300);
+        String klmjp6 = takeSign(mjb1, klmj6d);
+        String klmjp7 = takeSign(70, mjb1);
+        String klmjp8 = takeSign(mjb1, 300);
+        String klmjm3 = takeString(mjb1 >= klmj6d && 40 <= mjb1 && mjb1 <= 300);
+        String klmjm4 = takeString((mjb1 >= klmj6d && 40 <= mjb1 && mjb1 <= 300) && (mjb >= klmj3d && 45 <= mjb && mjb <= 300));
+        String klmjp9 = takeSign(mjc, klmj3d);
+        String klmjp10 = takeSign(mjc, 45);
+        String klmjm5 = takeString(mjc >= klmj3d && mjc >= 45);
+        String klmjp11 = takeSign(mjc1, klmj3d);
+        String klmjp12 = takeSign(mjc1, 45);
+        String klmjm6 = takeString(mjc1 >= klmj3d && mjc1 >= 45);
+        String klmjm7 = takeString((mjc >= klmj3d && mjc >= 45) && (mjc1 >= klmj3d && mjc1 >= 45));
+        String klmjp13 = takeSign(mjn, _05fca);
+        String klmjm8 = takeString(mjn <= _05fca);
+        String klmjp14 = takeSign(mjas, klmjas1);
+        String klmjp15 = takeSign(mjas, klmjas2);
+        String klmjm9 = takeString(mjas >= klmjas1 && mjas >= klmjas2);
+
+        Double klmjla = doubleMap.get("klmjla");
+        String klmjp16 = takeSign(mjl, klmjla);
+        String klmjp17 = takeSign(mjl, 200);
+        String klmjm10 = takeString(mjl >= 200 && mjl >= klmjla);
+
+
+        Map<String, String> result = new HashMap<>();
+        result.put("klmjp1", CommonFunc.convertDoubleToString(klmjp1));
+        result.put("klmjp2", CommonFunc.convertDoubleToString(klmjp2));
+        result.put("klmjm1", CommonFunc.convertDoubleToString(klmjm1));
+        result.put("klmjp3", CommonFunc.convertDoubleToString(klmjp3));
+        result.put("klmjp4", CommonFunc.convertDoubleToString(klmjp4));
+        result.put("klmjp5", CommonFunc.convertDoubleToString(klmjp5));
+        result.put("klmjm2", CommonFunc.convertDoubleToString(klmjm2));
+        result.put("klmjp6", CommonFunc.convertDoubleToString(klmjp6));
+        result.put("klmjp7", CommonFunc.convertDoubleToString(klmjp7));
+        result.put("klmjp8", CommonFunc.convertDoubleToString(klmjp8));
+        result.put("klmjm3", CommonFunc.convertDoubleToString(klmjm3));
+        result.put("klmjm4", CommonFunc.convertDoubleToString(klmjm4));
+        result.put("klmjp9", CommonFunc.convertDoubleToString(klmjp9));
+        result.put("klmjp10", CommonFunc.convertDoubleToString(klmjp10));
+        result.put("klmjm5", CommonFunc.convertDoubleToString(klmjm5));
+        result.put("klmjp11", CommonFunc.convertDoubleToString(klmjp11));
+        result.put("klmjp12", CommonFunc.convertDoubleToString(klmjp12));
+        result.put("klmjm6", CommonFunc.convertDoubleToString(klmjm6));
+        result.put("klmjm7", CommonFunc.convertDoubleToString(klmjm7));
+
+        result.put("klmjp13", CommonFunc.convertDoubleToString(klmjp13));
+        result.put("klmjm8", CommonFunc.convertDoubleToString(klmjm8));
+        result.put("klmjas1", CommonFunc.convertDoubleToString(klmjas1));
+        result.put("klmjas2", CommonFunc.convertDoubleToString(klmjas2));
+        result.put("klmjp14", CommonFunc.convertDoubleToString(klmjp14));
+        result.put("klmjp15", CommonFunc.convertDoubleToString(klmjp15));
+        result.put("klmjm9", CommonFunc.convertDoubleToString(klmjm9));
+        result.put("klmjp16", CommonFunc.convertDoubleToString(klmjp16));
+        result.put("klmjp17", CommonFunc.convertDoubleToString(klmjp17));
+        result.put("klmjm10", CommonFunc.convertDoubleToString(klmjm10));
+
+        doubleMap.forEach((key, val) -> {
+            result.put(key, CommonFunc.convertDoubleToString(val));
+        });
+        return result;
+    }
+
+    public Map<String, String> checkCN() {
+        Map<String, String> map = takePDFMap();
+        Map<String, String> result = new HashMap<>();
+
+
+        result.put("sja", CommonFunc.convertDoubleToString(mja));
+        result.put("sjb", CommonFunc.convertDoubleToString(mjb));
+        result.put("sjb1", CommonFunc.convertDoubleToString(mjb1));
+        result.put("sjc", CommonFunc.convertDoubleToString(mjc));
+        result.put("sjc1", CommonFunc.convertDoubleToString(mjc1));
+        result.put("sjas", CommonFunc.convertDoubleToString(mjas));
+        result.put("sjl", CommonFunc.convertDoubleToString(mjl));
+        result.put("mjmj", CommonFunc.convertDoubleToString(mjmj));
+
+        String klmj2d = map.get("klmj2d");
+        String klmj3d = map.get("klmj3d");
+        String klmj6d = map.get("klmj6d");
+        String klmjas1 = map.get("klmjas1");
+        String klmjas2 = map.get("klmjas2");
+        String klmjla = map.get("klmjla");
+        String _05fca=map.get("05fca");
+
+        result.put("klmjm1", map.get("klmjm1"));
+        result.put("klmjm2", map.get("klmjm2"));
+        result.put("klmjm3", map.get("klmjm3"));
+        result.put("klmjm5", map.get("klmjm5"));
+        result.put("klmjm6", map.get("klmjm6"));
+        result.put("klmjm9", map.get("klmjm9"));
+        result.put("klmjm10", map.get("klmjm10"));
+        result.put("klmjm8", map.get("klmjm8"));
+
+        result.put("jya", "a" + "≥" + klmj2d +
+                "<br/><br/>" + "a" + "≥ 20");
+        result.put("jyb", "b" + "≥" + klmj3d +
+                "<br/><br/>" + "45 ≤" + "b" + " ≤ 300");
+        result.put("jyb1", "b1" + " ≥" + klmj6d +
+                "<br/><br/>" + "70 ≤" + "b1" + " ≤ 300");
+        result.put("jyc", "c" + " ≥" + klmj3d +
+                "<br/><br/>" + "c" + " ≥ 45");
+        result.put("jyc1", "c1" + " ≥" + klmj3d +
+                "<br/><br/>" + "c1" + " ≥ 45");
+        result.put("jyas", "As" + " ≥" + klmjas1 +
+                "<br/><br/>" + "As" + " ≥" + klmjas2);
+        result.put("jyl", "l" + " ≥" + klmjla +
+                "<br/><br/>" + "l" + " ≥" + "200");
+        result.put("jyn", "N" + " ≥ 0.5f<sub>c</sub>A"  +
+                "<br/><br/>"  + " =" + _05fca);
+
 
         return result;
     }
 
-    private Map<String,Double> getDoublePDF(String ss){
-        Double v=1000*vk;
-        Double n=1000*nk;
-        Double m=1000*1000*mk;
-        Map<String,Double> result=new HashMap();
-        Double _2d =2*d;
-        Double _3d =3*d;
-        Double _6d =6*d;
-        Double _6dd=6*d;
-
-        result.put("2d"  ,_2d );
-        result.put("3d"  ,_3d );
-        result.put("6d"  ,_6d );
-        result.put("6dd" ,_6dd);
-
-        Double av =(4-0.08*d)*Math.sqrt(fc/270);
-        Double ab =0.6+0.25*t/d;
-        Double as1=(v/(ar*av*270))+(n/(0.8*ab*270))+(m/(1.3*ar*ab*270*z));
-        Double as2=(n/(0.8*ab*270))+(m/(0.4*ar*ab*270*z));
-
-        result.put("av" ,av );
-        result.put("ab" ,ab );
-        result.put("as1",as1);
-        result.put("as2",as2);
-
-        Double lab=aw*270/ft*d;
-        Double la =0.6*lab;
-
-        result.put("lab",lab);
-        result.put("la",la  );
-        return  result;
-    }
-
-    private String getSign(double a,double b){
-        return a<b?"<":a>b?">":"=";
-    }
-    private String getString(boolean a){
-        return a?"满足":"不满足";
-    }
-    public Map<String,String> getMapForPDF1(){
-        Double v=1000*vk;
-        Double n=1000*nk;
-        Double m=1000*1000*mk;
-        Map<String,Double> doubleMap=getDoublePDF("CN");
-        Map<String,String> map=getMap();
-
-        String  ba   =getSign(a,2*d);
-        String  b20  =getSign(a,20);
-        boolean man2 =a>=2*d&&a>=20;
-        String  bb   = getSign(b,3*d);
-        String  b45  = getSign(45,b);
-        String  b300 =getSign(b,300);
-        boolean man3 =b>=3*d&&b>=45&&b<=300;
-        String  bb1  =getSign(b1,6*d);
-        String  b170 =getSign(70,b1);
-        String  b1300=getSign(b1,300);
-        boolean man4 = b1>=3*d&&45<=b&&b<=300;
-        boolean man5 =man4&&man3;
-        String  bc   =getSign(c,3*d);
-        String  c45  =getSign(c,45);
-        boolean man6 = c>=3*d&&c>=45;
-        String  bc1  =getSign(c1,3*d);
-        String  c145 =getSign(c1,45);
-        boolean man7 = c1>=3*d&&c1>=45;
-        boolean man8 =man6&&man7;
-        Double  as1  =doubleMap.get("as1");
-        Double  as2  =doubleMap.get("as2");
-        String  bas1 =getSign(as,as1);
-        String  bas2 =getSign(as,as2);
-
-        boolean man9 = as>=as1&&as>=as2;
-        Double  la   =doubleMap.get("la");
-        String  lla  =getSign(l ,la);
-        String  l200 =getSign(l,200);
-        boolean man10= l>=200&&l>=200;
-        
-        Map<String,String> resultMap = new HashMap<>();
-        for (Map.Entry<String,Double> e:doubleMap.entrySet()) {
-            resultMap.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
-        }
-        for (Map.Entry<String,String> e:map.entrySet()) {
-            resultMap.put(e.getKey(), e.getValue());
-        }
-
-        resultMap.put("ba",ba   );
-        resultMap.put("b20",b20  );
-        resultMap.put("man2",getString(man2));
-        resultMap.put("bb",bb   );
-        resultMap.put("b45",b45  );
-        resultMap.put("b300",b300 );
-        resultMap.put("man3",getString(man3));
-        resultMap.put("bb1",bb1  );
-        resultMap.put("b170",b170 );
-        resultMap.put("b1300",b1300);
-        resultMap.put("man4",getString(man4));
-        resultMap.put("man5",getString(man5));
-        resultMap.put("bc",bc );
-        resultMap.put("c45",c45);
-        resultMap.put("man6",getString(man6));
-        resultMap.put("bc1",bc1);
-        resultMap.put("c145",c145);
-        resultMap.put("man7",getString(man7));
-        resultMap.put("man8",getString(man8));
-        resultMap.put("bas1",bas1);
-        resultMap.put("bas2",bas2);
-        resultMap.put("man9",getString(man9));
-       resultMap.put("lla",lla);
-        resultMap.put("l200",l200);
-        resultMap.put("man10",getString(man10));
-        return resultMap;
-    }
-
-
-    public Map<String,String> getMapForPDF2(){
-        Double v=1000*vk;
-        Double n=1000*nk;
-        Double m=1000*1000*mk;
-        Map<String,Double> doubleMap=getDoublePDF("CN");
-        Double s=n/172.8;
-        Double dj=2*Math.sqrt(s/3.14);
-        Map<String,String> map=new HashMap<>();
-
-        String bj=getSign(dj,d);
-        boolean man =dj<=d;
-
-        map.put("d",CommonFunc.convertDoubleToString(d));
-        map.put("n",CommonFunc.convertDoubleToString(n));
-        map.put("s",CommonFunc.convertDoubleToString(s));
-        map.put("dj",CommonFunc.convertDoubleToString(dj));
-        map.put("bj",bj);
-        map.put("man",getString(man));
+    public Map<String, String> takeCheckMapForCheck() {
+        Map<String, String> map = new HashMap<>();
+        Double s = mjn / 172.8;
+        Double dj = 2 * sqrt(s / 3.14);
+        String bj = takeSign(dj, mjd);
+        String man = takeString(dj <= mjd);
+        map.put("mjd", CommonFunc.convertDoubleToString(mjd));
+        map.put("mjn", CommonFunc.convertDoubleToString(mjn));
+        map.put("s", CommonFunc.convertDoubleToString(s));
+        map.put("dj", CommonFunc.convertDoubleToString(dj));
+        map.put("bj", CommonFunc.convertDoubleToString(bj));
+        map.put("man", CommonFunc.convertDoubleToString(man));
         return map;
     }
-
-    public Map<String,String> checkCN(){
-        Map<String ,String> map=getMapForPDF1();
-        Map<String ,String> result=new HashMap<>();
-
-        result.put("jyt",t+">"+map.get("bc8"));
-
-        String bc8=map.get("bc8");
-        String _2d=map.get("2d");
-        String _3d=map.get("3d");
-        String _6d=map.get("6d");
-        String as1=map.get("as1");
-        String as2=map.get("as2");
-        String la=map.get("la");
-
-        result.put("man2",map.get("man2"));
-        result.put("man3",map.get("man3"));
-        result.put("man4",map.get("man4"));
-        result.put("man6",map.get("man6"));
-        result.put("man7",map.get("man7"));
-        result.put("man9",map.get("man9"));
-        result.put("man10",map.get("man10"));
-
-        result.put("jyt","t "+"> "+bc8);
-        result.put("jya","a "+"≥ "+_2d+
-                "<br/><br/>"+"a "+"≥ 20");
-        result.put("jyb","b "+"≥ "+_3d+
-                "<br/><br/>"+"45 ≤ "+"b"+" ≤ 300");
-        result.put("jyb1","b1 "+" ≥ "+_6d+
-                "<br/><br/>"+"70 ≤ "+"b1"+" ≤ 300");
-        result.put("jyc","c "+" ≥ "+_3d+
-                "<br/><br/>"+"c"+" ≥ 45");
-        result.put("jyc1","c1 "+" ≥ "+_3d+
-                "<br/><br/>"+"c1"+" ≥ 45");
-        result.put("jyas","As"+" ≥ "+as1+
-                "<br/><br/>"+"As"+" ≥ "+as2);
-        result.put("jyl","l"+" ≥ "+la+
-                "<br/><br/>"+"l"+" ≥ "+"200");
-
-
-        return result;
-    }
-
 }
