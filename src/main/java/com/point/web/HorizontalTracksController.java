@@ -91,15 +91,18 @@ public class HorizontalTracksController {
         List<byte[]> list = new ArrayList<>();
         String name="";
         if(pdfType.equals("SimplySupported")) {
-            name="轨道校核计算书(简支梁)";
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/轨道校核计算书(简支梁)"));
+            name="水平轨道校核计算书(简支梁)";
         } else if(pdfType.equals("DoubleSpanbeam")){
-            name="轨道校核计算书(双跨梁)";
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/轨道校核计算书(双跨梁)"));
+            name="水平轨道校核计算书(双跨梁)";
+        }else if(pdfType.equals("SimplySupportedEn")){
+            name="水平轨道校核计算书(简支梁)英文版";
+        }else if(pdfType.equals("DoubleSpanbeamEn")){
+            name="水平轨道校核计算书(双跨梁)英文版";
         }
+        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/"+name));
         if (null != check && check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/轨道校核计算书(简支梁)"));
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/轨道校核计算书(双跨梁)"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/水平轨道校核计算书(简支梁)"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/水平轨道校核计算书(双跨梁)"));
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/水平轨道计算书校核验证"));
             return tool.getResponseEntity("水平轨道计算书校核验证", pdf.MergePDF(list));
         }

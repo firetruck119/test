@@ -34,6 +34,7 @@ public class HorizontalTracksEntity {
     private Double bef1c;
 
     private String gdxh;
+    private String gdxhy;
     private String gcph;
     private Double gdh;
     private Double gdb;
@@ -69,7 +70,9 @@ public class HorizontalTracksEntity {
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
         String gdjb = steelHave;
+        String gdjby = gdjb.equals("有")?"has":"hasn't";
         map.put("gdjb",gdjb);
+        map.put("gdjby",gdjby);
         map.put("no", CommonFunc.convertDoubleToString(no));
         map.put("ver", CommonFunc.convertDoubleToString(ver));
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
@@ -89,6 +92,7 @@ public class HorizontalTracksEntity {
         map.put("bef1x", CommonFunc.convertDoubleToString(bef1x));
         map.put("bef1c", CommonFunc.convertDoubleToString(bef1c));
         map.put("gdxh", CommonFunc.convertDoubleToString(gdxh));
+        map.put("gdxhy", CommonFunc.convertDoubleToString(gdxhy));
         map.put("gcph", CommonFunc.convertDoubleToString(gcph));
         map.put("gdh", CommonFunc.convertDoubleToString(gdh));
         map.put("gdb", CommonFunc.convertDoubleToString(gdb));
@@ -451,7 +455,13 @@ public class HorizontalTracksEntity {
             return "<";
         }
     }
-
+    private String takeEnStringByCompareNumber(Double a, Double b) {
+        if (a > b) {
+            return "doesn't meet";
+        } else {
+            return "meets";
+        }
+    }
     private String takeStringByCompareNumber(Double a, Double b) {
         if (a > b) {
             return "不满足";
@@ -605,6 +615,53 @@ public class HorizontalTracksEntity {
         map.put("v24", CommonFunc.convertDoubleToString(v24));
         map.put("v25", CommonFunc.convertDoubleToString(v25));
         map.put("v26", CommonFunc.convertDoubleToString(v26));
+        String uu3 =  takeEnStringByCompareNumber(a2, 1.0);
+        String uu5 =  takeEnStringByCompareNumber(a3, 1.0);
+        String uu7 =  takeEnStringByCompareNumber(a4, 1.0);
+        String uu9 =  takeEnStringByCompareNumber(a5, 1.0);
+        String uu11 = takeEnStringByCompareNumber(a6, 1.0);
+        String uu13 = takeEnStringByCompareNumber(a7, 1.0);
+        String uu15 = takeEnStringByCompareNumber(a8, 1.0);
+        String uu17 = takeEnStringByCompareNumber(a9, 1.0);
+        String uu19 = takeEnStringByCompareNumber(a10, 1.0);
+        String uu21 = takeEnStringByCompareNumber(a11, 1.0);
+        String uu26 = (fz > lkj / 200 || fz > 30.0 || fy > lkj / 200 || fy > 30.0) ? "doesn't meet" : "meets";
+
+        map.put("uu3" ,uu3 );
+        map.put("uu5" ,uu5 );
+        map.put("uu7" ,uu7 );
+        map.put("uu9" ,uu9 );
+        map.put("uu11",uu11);
+        map.put("uu13",uu13);
+        map.put("uu15",uu15);
+        map.put("uu17",uu17);
+        map.put("uu19",uu19);
+        map.put("uu21",uu21);
+        map.put("uu26",uu26);
+
+        String vv3 =  takeEnStringByCompareNumber(b2, 1.0);
+        String vv5 =  takeEnStringByCompareNumber(b3, 1.0);
+        String vv7 =  takeEnStringByCompareNumber(b4, 1.0);
+        String vv9 =  takeEnStringByCompareNumber(b5, 1.0);
+        String vv11 = takeEnStringByCompareNumber(b6, 1.0);
+        String vv13 = takeEnStringByCompareNumber(b7, 1.0);
+        String vv15 = takeEnStringByCompareNumber(b8, 1.0);
+        String vv17 = takeEnStringByCompareNumber(b9, 1.0);
+        String vv19 = takeEnStringByCompareNumber(b10, 1.0);
+        String vv21 = takeEnStringByCompareNumber(b11, 1.0);
+        String vv26 = (fzs > lkj / 200 || fzs > 30.0 || fys > lkj / 200 || fys > 30.0) ? "doesn't meet" : "meets";
+
+        map.put("vv3" ,vv3 );
+        map.put("vv5" ,vv5 );
+        map.put("vv7" ,vv7 );
+        map.put("vv9" ,vv9 );
+        map.put("vv11",vv11);
+        map.put("vv13",vv13);
+        map.put("vv15",vv15);
+        map.put("vv17",vv17);
+        map.put("vv19",vv19);
+        map.put("vv21",vv21);
+        map.put("vv26",vv26);
 
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));
