@@ -120,7 +120,7 @@ public class TensileEnity {
     public Map<String, String> takePDFMap() {
         mjn = 1000 * mjkn;
         mjv = 1000 * mjkv;
-        mjjl = 1000 * 1000 * mjkjl;
+        mjjl = 1000 * mjkjl;
         mjm = mjjl * mjv;
         Map<String, String> result = new HashMap<>();
         result.put("no", CommonFunc.convertDoubleToString(no));

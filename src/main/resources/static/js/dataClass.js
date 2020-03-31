@@ -206,9 +206,8 @@
                 if (temp.value != null) {
                     var s = String(temp.value);
                     if ((s.indexOf('NaN') < 0
-                        && (s.indexOf(' ') < 0 || s.indexOf(' ') == 0)
-                        && s.indexOf('undefined') < 0
-                    ) ||(temp.type=='SELECT')) {
+                            && s.indexOf('undefined') < 0)
+                        ||(temp.type=='SELECT')) {
                         var e = $(temp.type + '[name="' + temp.name + '"]');
                         e.val(String(temp.value)!=' '?getString(temp.value):'');
                         e.css('background-color', temp.color);

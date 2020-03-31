@@ -73,12 +73,12 @@ public class WireRopeEntity {
         result.put("dcgssd", CommonFunc.convertDoubleToString(dcgssd));
         result.put("dcgssn", CommonFunc.convertDoubleToString(dcgssn));
         result.put("dcgssf", CommonFunc.convertDoubleToString(dcgssf));
-        result.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
+        result.put("dcgssp", CommonFunc.convertDoubleToString3(dcgssp));
         result.put("grugssxh", CommonFunc.convertDoubleToString(grugssxh));
         result.put("grugssd", CommonFunc.convertDoubleToString(grugssd));
         result.put("grugssn", CommonFunc.convertDoubleToString(grugssn));
         result.put("grugssf", CommonFunc.convertDoubleToString(grugssf));
-        result.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
+        result.put("grugssp", CommonFunc.convertDoubleToString3(grugssp));
 
         Double gsss1 = tsl / 100 / dcgssn;
         Double zp1p = dcgssf / gsss1;
