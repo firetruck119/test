@@ -305,6 +305,7 @@ public class QxzqEntity {
         result.put("pzr", pzr);
         result.put("date",date);
         result.put("csmc",csmc);
+        result.put("cslx",cslx);
         Map<String, Double> paramMap = new HashMap<>();
         paramMap.put("h",h)	;
         paramMap.put("lc",lc);
