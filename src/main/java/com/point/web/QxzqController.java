@@ -1,8 +1,7 @@
 package com.point.web;
 
 import com.point.common.CacheData;
-import com.point.entity.pdf.WheelLoadEntity;
-import com.point.entity.pdf.YanshiEntity;
+import com.point.entity.pdf.QxzqEntity;
 import com.point.itext.PdfUtil;
 import com.point.web.newController.Tool.ComparatorHanYuPinYin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,33 +20,38 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 @Controller
-public class YanshiController {
+public class QxzqController {
     @Autowired
     private PdfUtil pdfUtil;
 
     @Autowired
-    private CacheData<YanshiEntity> cacheData;
-    @GetMapping("/yanshi")
+    private CacheData<QxzqEntity> cacheData;
+
+
+
+    @GetMapping("/qxzq")
     public String greetingForm(String batchId, Model model) {
-        YanshiEntity yanshiEntity = new YanshiEntity();
-        cacheData.readCacheValue(batchId, yanshiEntity);
-        model.addAttribute("YanshiEntity", yanshiEntity);
-        return "yanshi";
+        QxzqEntity qxzqEntity = new QxzqEntity();
+        cacheData.readCacheValue(batchId, qxzqEntity);
+        model.addAttribute("QxzqEntity", qxzqEntity);
+        return "qxzq";
     }
-    @PostMapping("/yanshipdf")
-    public Object pdfTest(@ModelAttribute YanshiEntity yanshiEntity, String batchId) {
-        cacheData.saveCacheValue(batchId,yanshiEntity);
-        Map<String, String> map = yanshiEntity.getMapForPdf();
+
+
+    @PostMapping("/qxzqpdf")
+    public Object pdfTest(@ModelAttribute QxzqEntity qxzqEntity, String batchId) {
+        cacheData.saveCacheValue(batchId,qxzqEntity);
+        Map<String , String> map = qxzqEntity.getMapForPdf();
         HttpHeaders headers = new HttpHeaders();
         String fileName = null;
         try {
-            fileName = new String(("演示计算书.pdf").getBytes("gb2312"), "iso-8859-1");//解决中文乱码
+            fileName = new String(("清洗周期计算书.pdf").getBytes("gb2312"), "iso-8859-1");//解决中文乱码
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }//为了解决中文名称乱码问题
         headers.setContentDispositionFormData("attachment", fileName);
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        byte[] pdfBtyes = pdfUtil.fromPDFTempletToPdfWithValue(map, null, "演示计算书");
+        byte[] pdfBtyes = pdfUtil.fromPDFTempletToPdfWithValue(map, null, "清洗周期计算书");
         ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(pdfBtyes, headers, HttpStatus.OK);
         return responseEntity;
     }

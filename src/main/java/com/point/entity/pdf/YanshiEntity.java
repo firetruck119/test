@@ -37,7 +37,6 @@ public class YanshiEntity {
     public Map<String,String> getMapForPdf(){
         Map<String,String> result = new HashMap<>();
         Double d=b+c;
-
         result.put("a",a);
         Map<String, Double> paramMap = new HashMap<>();
         paramMap.put("b",b);
