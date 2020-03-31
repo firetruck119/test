@@ -337,16 +337,24 @@
     <input type="reset" value="重置"/>
     <input type="button" value="检验" id="jianyan"/>
     <script>
+
+        //jquery对检验按钮进行监听，并设置事件处理方法
         $("#jianyan").click(function janyan() {
+            //对表单进行序列化，并生成对象
             var dataJson = $("form").serialize();
             dataJson["check"] = true;
+            //jquery的ajax，用来请求数据
             $.ajax({
+                //访问后台的Url
                 url: '/qxzqcheck',
+                //通过post的方式
                 type: "post",
+                //将表单数据对象上传
                 data: dataJson,
                 async: false,
                 dataType: "json",
                 cache: false,
+                //请求成功后处理接收到的数据
                 success: function (data) {
                     var s="";
                     for (let i in data) {

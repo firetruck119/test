@@ -56,9 +56,12 @@ public class QxzqController {
         return responseEntity;
     }
 
+    //设置Url，和前端ajax对应
     @PostMapping("/qxzqcheck")
+    //将返回的对象转换为Json格式的数据
     @ResponseBody
     public Object check(@ModelAttribute QxzqEntity qxzqEntity){
+        //通过对象方法获取需要的数据Map，，交由MVC，转换为Json返回给前端
         return qxzqEntity.check();
     }
 }

@@ -344,6 +344,7 @@ public class QxzqEntity {
         return result;
     }
 
+    //
     public Map<String,String> check(){
         Map<String,String> map=getMapForPdf();
         Map<String,String> result=new HashMap<>();
