@@ -41,34 +41,6 @@ public class ToolForPDFController {
         return new ResponseEntity<byte[]>(bytes, headers, HttpStatus.OK);
     }
 
-    public Map<String, InputImageCache> getImageMap_New(HttpServletRequest request) throws IOException, BadElementException {
-        Map<String, InputImageCache> imageMap = new HashMap<>();
-        Map<String, MultipartFile> files = ((MultipartHttpServletRequest) request).getFileMap();
-        Map<String, String[]> a = request.getParameterMap();
-        Map<String, String> imgIdMap = new HashMap();
-        a.forEach((key, val) -> {
-            if (key.indexOf("tu_") > -1) {
-                imgIdMap.put(key.split("_")[1], val[0]);
-            }
-        });
-        for (Map.Entry<String, MultipartFile> e : files.entrySet()) {
-            if (e.getValue().isEmpty())
-                continue;
-            InputImageCache data = new InputImageCache();
-            data.setInputvalue(e.getValue().getBytes());
-            data.setInputname(e.getKey());
-            String s[] = e.getValue().getOriginalFilename().split("\\.");
-            data.setType(s[s.length - 1]);
-            imageMap.put(e.getKey(), data);
-        }
-        imgIdMap.forEach((key, id) -> {
-            if (!imageMap.containsKey(key)) {
-                imageMap.put(key, null);
-            }
-        });
-        return imageMap;
-    }
-
     public Map<String, File> getImageMap(String sjht,HttpServletRequest request) throws IOException, BadElementException {
         Map<String, MultipartFile> files = ((MultipartHttpServletRequest) request).getFileMap();
 
@@ -98,7 +70,7 @@ public class ToolForPDFController {
             LocalDateTime t=LocalDateTime.now();
             DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyyMMdd");
             if (MyEnv.isLocal()) {
-                file = new File("D:/image/"+name+t.format(dtf2)+'.'+s[s.length - 1]);
+
             } else {
                 file = new File("/root/image/" + name +t.format(dtf2)+'.'+s[s.length - 1] );
             }
