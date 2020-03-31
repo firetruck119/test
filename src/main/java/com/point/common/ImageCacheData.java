@@ -53,8 +53,6 @@ public class ImageCacheData<T> {
             }
         } catch (Exception ex) {
             System.out.println(ex);
-            System.out.println(ex);
-            System.out.println(ex);
         }
     }
 
