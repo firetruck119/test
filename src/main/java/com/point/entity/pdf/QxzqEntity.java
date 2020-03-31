@@ -344,4 +344,11 @@ public class QxzqEntity {
         return result;
     }
 
+    public Map<String,String> check(){
+        Map<String,String> map=getMapForPdf();
+        Map<String,String> result=new HashMap<>();
+        result.put("理论全区域清洗周期",map.get("tll"));
+        result.put("考虑天气因素后的全区域清洗周期",map.get("ttq"));
+        return result;
+    }
 }

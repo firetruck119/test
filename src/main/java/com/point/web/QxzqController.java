@@ -56,4 +56,9 @@ public class QxzqController {
         return responseEntity;
     }
 
+    @PostMapping("/qxzqcheck")
+    @ResponseBody
+    public Object check(@ModelAttribute QxzqEntity qxzqEntity){
+        return qxzqEntity.check();
+    }
 }

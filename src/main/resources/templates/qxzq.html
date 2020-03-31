@@ -335,7 +335,29 @@
     </script>
     <input type="submit" value="输出PDF计算书" onclick="$('#form1').attr('action','qxzqpdf?batchId='+$('#txtBatchId').val())"/>
     <input type="reset" value="重置"/>
-
+    <input type="button" value="检验" id="jianyan"/>
+    <script>
+        $("#jianyan").click(function janyan() {
+            var dataJson = $("form").serialize();
+            dataJson["check"] = true;
+            $.ajax({
+                url: '/qxzqcheck',
+                type: "post",
+                data: dataJson,
+                async: false,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    var s="";
+                    for (let i in data) {
+                        s=s+i+":"+data[i]+"\n";
+                    }
+                    alert(s)
+                }
+            })
+            return false;
+        })
+    </script>
 </form>
 
 </body>
