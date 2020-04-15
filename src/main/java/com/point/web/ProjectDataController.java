@@ -160,7 +160,7 @@ public class ProjectDataController {
         } catch (IOException e) {
 
         }
-        return null;
+        return modelAndView;
     }
 
     @PostMapping("/getProjectColumnDefinitionList")

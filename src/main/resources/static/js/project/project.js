@@ -109,7 +109,7 @@ var projectTable = Vue.component('project_table', {
     },
     template: `
     <div>
-        <el-col :span="24">
+        <el-col :span="24" >
             <h1 style="line-height: 70px">
                 <el-alert
                     style="display: inline"

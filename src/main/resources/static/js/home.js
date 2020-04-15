@@ -280,7 +280,8 @@ asideDatas = {
                     title:'项目导入导出',
                     url:'ImportExportProjectData',
                 },{
-                    title:'列定义'
+                    title:'列定义',
+                    url:'ProjectColumnDefinitionList'
                 }
             ]
         }
