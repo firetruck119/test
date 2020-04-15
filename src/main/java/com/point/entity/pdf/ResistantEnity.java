@@ -191,7 +191,7 @@ public class ResistantEnity {
         kymjmq = abs(mjm) <= abs(_04nz) ? abs(_04nz) : abs(mjm);
         _05fca = 0.5 * mjfc * mjmj;
         kymjp14 = takeSign(abs(mjy), _05fca);
-        kymjm8 = takeString(abs(mjy) >= _05fca);
+        kymjm8 = takeString(abs(mjy) <= _05fca);
         temp = mjm - _04nz;
         kymjas1 = temp > 0 ? ((mjv - 0.3 * mjy) / (mjar * kymjav * 270)) + ((kymjmq - _04nz) / (1.3 * mjar * kymjab * 270 * mjz)) : 0;
         kymjas2 = temp > 0 ? ((mjm - _04nz) / (0.4 * mjar * kymjab * 270 * mjz)) : 0;
@@ -311,7 +311,7 @@ public class ResistantEnity {
         result.put("sjc1", CommonFunc.convertDoubleToString(mjc1));
         result.put("sjas", CommonFunc.convertDoubleToString(mjas));
         result.put("sjl", CommonFunc.convertDoubleToString(mjl));
-        result.put("mjmj", CommonFunc.convertDoubleToString(mjmj));
+        result.put("mjmj", CommonFunc.convertDoubleToString(mjn));
 
        result.put("kymjm1",CommonFunc.convertDoubleToString(kymjm1));
        result.put("kymjm2",CommonFunc.convertDoubleToString(kymjm2));
@@ -336,7 +336,7 @@ public class ResistantEnity {
                 "<br/><br/>" + "As" + " ≥" + CommonFunc.convertDoubleToString(kymjas2));
         result.put("jyl", "l" + " ≥" + CommonFunc.convertDoubleToString(kymj15d) +
                 "<br/><br/>" + "l" + " ≥" + "200");
-        result.put("jyn", "N" + " ≥ 0.5f<sub>c</sub>A" +
+        result.put("jyn", "N" + " ≤ 0.5f<sub>c</sub>A" +
                 "<br/><br/>" + " =" + CommonFunc.convertDoubleToString(_05fca));
 
         return result;

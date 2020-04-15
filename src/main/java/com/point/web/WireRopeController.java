@@ -81,11 +81,11 @@ public class WireRopeController {
         Map<String, String> map = wireRopeEntity.createMapForPdf();
         cacheData.saveCacheValue(sjht,wireRopeEntity);
         String name="钢丝绳/";
-        if(wireRopeEntity.getDcgssxh().equals("无")&&wireRopeEntity.getGrugssxh().equals("无")){
+        if(wireRopeEntity.getGondolaSelect().equals("无")&&wireRopeEntity.getGruSelect().equals("无")){
             return null;
-        }else if(wireRopeEntity.getDcgssxh().equals("无")){
+        }else if(wireRopeEntity.getGondolaSelect().equals("无")){
             name+="无吊船版钢丝绳校核计算书";
-        }else if(wireRopeEntity.getGrugssxh().equals("无")){
+        }else if(wireRopeEntity.getGruSelect().equals("无")){
 
             name+="无GRU版钢丝绳校核计算书";
         }else {
@@ -98,11 +98,11 @@ public class WireRopeController {
     public Object pdf2(@ModelAttribute WireRopeEntity wireRopeEntity,String sjht) throws IOException, DocumentException {
         String name="钢丝绳/";
         cacheData.saveCacheValue(sjht,wireRopeEntity);
-        if(wireRopeEntity.getDcgssxh().equals("无")&&wireRopeEntity.getGrugssxh().equals("无")){
+        if(wireRopeEntity.getGondolaSelect().equals("无")&&wireRopeEntity.getGruSelect().equals("无")){
             return null;
-        }else if(wireRopeEntity.getDcgssxh().equals("无")){
+        }else if(wireRopeEntity.getGondolaSelect().equals("无")){
             name+="无吊船版钢丝绳校核计算书";
-        }else if(wireRopeEntity.getGrugssxh().equals("无")){
+        }else if(wireRopeEntity.getGruSelect().equals("无")){
 
             name+="无GRU版钢丝绳校核计算书";
         }else {

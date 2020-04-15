@@ -111,7 +111,7 @@
     <script>
         $(document).ready(function () {
             InitNav(1)
-            $('#Tensile').addClass('o-sub-cur');
+            $('#Resistant').addClass('o-sub-cur');
             $("input[type=reset]").click(function(){
                 window.getData.dataToImage(imgDaefultData);
             })
@@ -299,14 +299,14 @@
                     <td style="width:15%;">单位</td>
                 </tr>
                 <tr>
-                    <td><b>剪力设计值</b></td>
-                    <td><p><i>V</i></p></td>
+                    <td><b>压力设计值</b></td>
+                    <td><p><i>N</i></p></td>
                     <td><input name="mjky" type="text" /></td>
                     <td>kN</td>
                 </tr>
                 <tr>
-                    <td><b>拉力设计值</b></td>
-                    <td><p><i>N</i></p></td>
+                    <td><b>剪力设计值</b></td>
+                    <td><p><i>V</i></p></td>
                     <td><input name="mjkv" type="text" /></td>
                     <td>kN</td>
                 </tr>
@@ -448,7 +448,7 @@
 
     </form>
     <div class="buttonbox">
-        <input type="submit" form="form1" class="button" value="输出抗拉埋件的计算书pdf"
+        <input type="submit" form="form1" class="button" value="输出抗压埋件计算书pdf"
                onclick="isCheck(false);$('form').attr('action','resistantpdf1')"/>
         <input type="submit" form="form1" class="button" value="输出验证部分pdf"
                onclick="isCheck(true);$('form').attr('action','resistantpdf1')"/>
@@ -464,7 +464,7 @@
                 <tr>
                     <td style="width:34%;"><b>名称</b></td>
                     <td style="width:22%;"><b>实际值</b></td>
-                    <td style="width:22%;"><b>极限值值</b></td>
+                    <td style="width:22%;"><b>极限值</b></td>
                     <td style="width:22%;"><b>是否满足</b></td>
                 </tr>
                 <tr>
@@ -512,7 +512,7 @@
                 </tr>
                 <tr>
                     <td><b>锚板面积</b></td>
-                    <td ><p>A=<span id="mjmj"></span></p></td>
+                    <td ><p>N=<span id="mjmj"></span></p></td>
                     <td id="jyn"></td>
                     <td id="kymjm8"></td>
                 </tr>
@@ -573,10 +573,10 @@
 <script>
     data.init(calculateFunction);
     imgDaefultData={
-        kymjtu1:{inputvalue:"tu1.png"},
-        kymjtu2:{inputvalue:"tu2.png"},
-        kymjtu3:{inputvalue:"tu3.png"},
-        kymjtu4:{inputvalue:"tu4.png"},
+        kymjtu1:{inputvalue:"Rtu1.png"},
+        kymjtu2:{inputvalue:"Rtu2.png"},
+        kymjtu3:{inputvalue:"Rtu3.png"},
+        kymjtu4:{inputvalue:"Rtu4.png"},
     }
     getData.dataToImage(imgDaefultData);
 </script>

@@ -25,6 +25,7 @@ public class WireRopeEntity {
     private Double hwll;
     private Double hsw;
     private Double tshl;
+    private Double mffbb;
 
     private String dcgssxh;
     private Double dcgssd;
@@ -37,7 +38,9 @@ public class WireRopeEntity {
     private Double grugssf;
     private Double grugssp;
     private String typeOfShipWireRope;
-    private String typeOfMaterielWireRope;
+    private String gruSelect;
+    private String gondolaSelect;
+    private String windbreakBackpackSelect;
 
     private String createSatisfied(double v1, double v2) {
         return v1 >= v2 ? "满足" : "不满足";
@@ -79,24 +82,29 @@ public class WireRopeEntity {
         result.put("grugssn", CommonFunc.convertDoubleToString(grugssn));
         result.put("grugssf", CommonFunc.convertDoubleToString(grugssf));
         result.put("grugssp", CommonFunc.convertDoubleToString3(grugssp));
+        result.put("mffbb", CommonFunc.convertDoubleToString3(mffbb));
 
-        Double gsss1 = tsl / 100 / dcgssn;
-        Double zp1p = dcgssf / gsss1;
-        String gssp1 = createSign(zp1p, 12);
-        String gssm1 = createSatisfied(zp1p, 12);
-        result.put("gsss1", CommonFunc.convertDoubleToString(gsss1));
-        result.put("zp1p", CommonFunc.convertDoubleToString(zp1p));
-        result.put("gssp1", CommonFunc.convertDoubleToString(gssp1));
-        result.put("gssm1", CommonFunc.convertDoubleToString(gssm1));
+        if (!gondolaSelect.equals("无")) {
+            Double gsss1 = tsl / 100 / dcgssn;
+            Double zp1p = dcgssf / gsss1;
+            String gssp1 = createSign(zp1p, 12);
+            String gssm1 = createSatisfied(zp1p, 12);
+            result.put("gsss1", CommonFunc.convertDoubleToString(gsss1));
+            result.put("zp1p", CommonFunc.convertDoubleToString(zp1p));
+            result.put("gssp1", CommonFunc.convertDoubleToString(gssp1));
+            result.put("gssm1", CommonFunc.convertDoubleToString(gssm1));
+        }
 
-        Double gsss2 = tshl / 100 / grugssn;
-        Double zp2p = grugssf / gsss2;
-        String gssp2 = createSign(zp2p, 6);
-        String gssm2 = createSatisfied(zp2p, 6);
-        result.put("gsss2", CommonFunc.convertDoubleToString(gsss2));
-        result.put("zp2p", CommonFunc.convertDoubleToString(zp2p));
-        result.put("gssp2", CommonFunc.convertDoubleToString(gssp2));
-        result.put("gssm2", CommonFunc.convertDoubleToString(gssm2));
+        if (!gruSelect.equals("无")) {
+            Double gsss2 = tshl / 100 / grugssn;
+            Double zp2p = grugssf / gsss2;
+            String gssp2 = createSign(zp2p, 6);
+            String gssm2 = createSatisfied(zp2p, 6);
+            result.put("gsss2", CommonFunc.convertDoubleToString(gsss2));
+            result.put("zp2p", CommonFunc.convertDoubleToString(zp2p));
+            result.put("gssp2", CommonFunc.convertDoubleToString(gssp2));
+            result.put("gssm2", CommonFunc.convertDoubleToString(gssm2));
+        }
         return result;
     }
 
@@ -129,36 +137,38 @@ public class WireRopeEntity {
         result.put("grugssn", CommonFunc.convertDoubleToString(grugssn));
         result.put("grugssf", CommonFunc.convertDoubleToString(grugssf));
         result.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
-
-        Double gsss1 = tsl / 100 / dcgssn;
-        Double zp1p = dcgssf / gsss1;
-        String gssp1 = createSign(zp1p, 12);
-        String gssm1 = createSatisfied(zp1p, 12);
-        result.put("gsss1", CommonFunc.convertDoubleToString(gsss1));
-        result.put("zp1p", CommonFunc.convertDoubleToString(zp1p));
-        result.put("gssp1", CommonFunc.convertDoubleToString(gssp1));
-        result.put("gssm1", CommonFunc.convertDoubleToString(gssm1));
-        Double gsss1p = dcgssf / 12;
-        String gssyzp1 = createSign(gsss1p, gsss1);
-        String gssyzm1 = createSatisfied(gsss1p, gsss1);
-        result.put("gsss1p", CommonFunc.convertDoubleToString(gsss1p));
-        result.put("gssyzp1", CommonFunc.convertDoubleToString(gssyzp1));
-        result.put("gssyzm1", CommonFunc.convertDoubleToString(gssyzm1));
-
-        Double gsss2 = tshl / 100 / grugssn;
-        Double zp2p = grugssf / gsss2;
-        String gssp2 = createSign(zp2p, 6);
-        String gssm2 = createSatisfied(zp2p, 6);
-        result.put("gsss2", CommonFunc.convertDoubleToString(gsss2));
-        result.put("zp2p", CommonFunc.convertDoubleToString(zp2p));
-        result.put("gssp2", CommonFunc.convertDoubleToString(gssp2));
-        result.put("gssm2", CommonFunc.convertDoubleToString(gssm2));
-        Double gsss2p = grugssf / 6;
-        String gssyzp2 = createSign(gsss1p, gsss1);
-        String gssyzm2 = createSatisfied(gsss1p, gsss1);
-        result.put("gsss2p", CommonFunc.convertDoubleToString(gsss2p));
-        result.put("gssyzp2", CommonFunc.convertDoubleToString(gssyzp2));
-        result.put("gssyzm2", CommonFunc.convertDoubleToString(gssyzm2));
+        if (!gondolaSelect.equals("无")) {
+            Double gsss1 = tsl / 100 / dcgssn;
+            Double zp1p = dcgssf / gsss1;
+            String gssp1 = createSign(zp1p, 12);
+            String gssm1 = createSatisfied(zp1p, 12);
+            result.put("gsss1", CommonFunc.convertDoubleToString(gsss1));
+            result.put("zp1p", CommonFunc.convertDoubleToString(zp1p));
+            result.put("gssp1", CommonFunc.convertDoubleToString(gssp1));
+            result.put("gssm1", CommonFunc.convertDoubleToString(gssm1));
+            Double gsss1p = dcgssf / 12;
+            String gssyzp1 = createSign(gsss1p, gsss1);
+            String gssyzm1 = createSatisfied(gsss1p, gsss1);
+            result.put("gsss1p", CommonFunc.convertDoubleToString(gsss1p));
+            result.put("gssyzp1", CommonFunc.convertDoubleToString(gssyzp1));
+            result.put("gssyzm1", CommonFunc.convertDoubleToString(gssyzm1));
+        }
+        if (!gruSelect.equals("无")) {
+            Double gsss2 = tshl / 100 / grugssn;
+            Double zp2p = grugssf / gsss2;
+            String gssp2 = createSign(zp2p, 6);
+            String gssm2 = createSatisfied(zp2p, 6);
+            result.put("gsss2", CommonFunc.convertDoubleToString(gsss2));
+            result.put("zp2p", CommonFunc.convertDoubleToString(zp2p));
+            result.put("gssp2", CommonFunc.convertDoubleToString(gssp2));
+            result.put("gssm2", CommonFunc.convertDoubleToString(gssm2));
+            Double gsss2p = grugssf / 6;
+            String gssyzp2 = createSign(gsss2p,gsss2);
+            String gssyzm2 = createSatisfied(gsss2p,gsss2);
+            result.put("gsss2p", CommonFunc.convertDoubleToString(gsss2p));
+            result.put("gssyzp2", CommonFunc.convertDoubleToString(gssyzp2));
+            result.put("gssyzm2", CommonFunc.convertDoubleToString(gssyzm2));
+        }
         return result;
     }
 

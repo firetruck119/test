@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{css/element.css}">
+    <!-- 引入组件库 -->
+    <script th:src="@{js/element.js}"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.js"></script>
+</head>
+<body>
+<form id='img' method="post" enctype="multipart/form-data">
+    <el-upload name="a"  class="avatar-uploader" :show-file-list="false" :on-success="handleAvatarSuccess" action="#"
+               :before-upload="beforeAvatarUpload" width="100px">
+        <img v-if="imageUrl" :src="imageUrl" class="avatar" >
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+    </el-upload>
+    <el-button type="primary" native-type="submit">submit</el-button>
+</form>
+
+<style>
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>
+
+<script>
+    new Vue({
+        el:'#img',
+        data: {
+            imageUrl: '',
+        },
+        methods: {
+            handleAvatarSuccess :function(res, file) {
+                this.imageUrl = URL.createObjectURL(file.raw);
+            },
+            beforeAvatarUpload:function(file) {
+                var isJPG = file.type === 'image/jpeg';
+                var isLt2M = file.size / 1024 / 1024 < 2;
+                if (!isJPG) {
+                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
+            }
+        }
+    })
+</script>
+
+<div>
+    <button>
+        get
+    </button>
+    <script>
+        axios.post('/api',{
+                // 传参
+            },
+            {
+                responseType:'blob'    // 设置响应数据类型
+            })
+            .then(res=>{
+                if (res.status == 200) {
+                    let url = window.URL.createObjectURL(new Blob([res.data]))
+                    let link= document.createElement('a')
+                    link.style.display='none'
+                    link.href=url
+                    link.setAttribute('download', "fileName")    // 自定义下载文件名（如exemple.txt）
+                    document.body.appendChild(link)
+                    link.click()
+                }
+            })
+    </script>
+</div>
+</body>
+</html>

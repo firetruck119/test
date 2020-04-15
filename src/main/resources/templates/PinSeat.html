@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{js/jquery-1.7.1.min.js}"></script>
     <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
-    <script th:src="@{js/xyz/jquery.Ajax.Form.js}"></script>
+    <script th:src="@{js/dataClass.js}"></script>
 
     <link th:href="@{css/page.css}" rel="stylesheet"/>
     <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
@@ -14,96 +14,112 @@
     <link th:href="@{css/base.min.css}" rel="stylesheet"/>
     <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
     <style type="text/css">
-        p{
+        p {
             font-size: 20px;
             display: inline;
         }
-        b{
-            letter-spacing:1px;
+
+        b {
+            letter-spacing: 1px;
             line-height: normal;
         }
+
         .main {
-            margin:20px 600px 100px;
-            width:1100px;
-            background-color:white;
+            margin: 20px 600px 100px;
+            width: 1100px;
+            background-color: white;
             font-size: 0;
-            border:1px solid black;
+            border: 1px solid black;
         }
-        .boxform{
-            margin:auto;
-            width:1040px;
+
+        .boxform {
+            margin: auto;
+            width: 1040px;
             display: block;
             font-size: 0;
             padding: 10px 0 0 10px;
         }
-        .main .boxform div{
+
+        .main .boxform div {
             display: inline-block;
             font-size: 14px;
             margin: 0 10px 10px 0;
             vertical-align: top;
         }
-        td{
-            border:1px solid #000;
+
+        td {
+            border: 1px solid #000;
             text-align: center;
             line-height: 14px;
-            height:20px;
-        }
-        tr{
             height: 20px;
         }
-        img{
+
+        tr {
+            height: 20px;
+        }
+
+        img {
             max-width: 100%;
             max-height: 100%;
         }
-        sub,sup{
+
+        sub, sup {
             font-size: 14px;
             margin-left: 3px;
         }
-        .tb{
+
+        .tb {
             border-radius: 5px;
-            width:100%;
+            width: 100%;
             background-color: #aaa;
         }
+
         input {
             height: 20px;
-            width:92%;
+            width: 92%;
             border: 0;
             text-align: center;
         }
-        .buttonbox{
+
+        .buttonbox {
             bottom: 5px;
-            right:5px;
+            right: 5px;
             display: block;
             position: fixed;
             margin-bottom: 5px;
             font-size: 14px;
         }
-        .buttonbox input,.navbox input{
+
+        .buttonbox input, .navbox input {
             background-color: #ccc;
             display: block;
-            width:150px;
+            width: 150px;
             height: 50px;
             margin: 5px;
-            border-radius:25px;
+            border-radius: 25px;
         }
-        .navbox td{
+
+        .navbox td {
             height: 38px;
         }
-        .navbox p{
+
+        .navbox p {
             font-size: 20px;
         }
-        .navbox sub,.navbox sup{
-             font-size: 10px;
-         }
 
-        .navbox{
+        .navbox sub, .navbox sup {
+            font-size: 10px;
+        }
+
+        .navbox {
             top: 50%;;
-            left:10px;
+            left: 10px;
             display: block;
             position: fixed;
             margin-top: -160px;
             font-size: 16px;
         }
+
         .navbox td {
             padding: 0.4em 0.8em;
         }
@@ -111,117 +127,14 @@
     <script>
         $(document).ready(function () {
             InitNav(1)
-            a["o4a"]=$("#o4a")[0].innerHTML;
-            a["o4b"]=$("#o4b")[0].innerHTML;
-            a["o4c"]=$("#o4c")[0].innerHTML;
-            a["t"]=$("#t")[0].innerHTML;
-            a["o4d"]=$("#o4d")[0].innerHTML;
-            a["o41"]=$("#o41")[0].innerHTML;
-            a["o42"]=$("#o42")[0].innerHTML;
-            a["o3"]=$("#o3")[0].innerHTML;
-            $('#PinSeat').addClass('o-sub-cur');
-            $("#fd").val(385).attr("readonly",true);
-            $("#fvd").val(220).attr("readonly",true);
-            $("#f02d").val(450).attr("readonly",true);
-            $("#select1").change(function () {
-                if(this.value=="S31608") {
-                    $("#clz").val("S31608");
-                    $("#fx").val("175");
-                    $("#fv").val("100");
-                    $("#f02").val("175");
-                }else if(this.value=="S22053"){
-                    $("#clz").val("S22053");
-                    $("#fx").val("385");
-                    $("#fv").val("220");
-                    $("#f02").val("385");
-                }
-                valueChange("f02");
-            });
-            $("#select2").change(function () {
-                if(this.value=="S31608") {
-                    $("#clh").val("S31608");
-                    $("#fwf").val("175");
-                }else if(this.value=="S22053"){
-                    $("#clh").val("S22053");
-                    $("#fwf").val("260");
-                }
-                valueChange("fwf");
-            });
-            $("#select3").change(function () {
-                if(this.value=="A2-50") {
-                    $("#xndj").val("50");
-                    $("#fbt").val("190");
-                    $("#fbv").val("155");
-                    $("#fbc").val("190");
-                }else if(this.value=="A2-70"){
-                    $("#xndj").val("70");
-                    $("#fbt").val("295");
-                    $("#fbv").val("245");
-                    $("#fbc").val("280");
-                }else if(this.value=="A2-80"){
-                    $("#xndj").val("80");
-                    $("#fbt").val("335");
-                    $("#fbv").val("280");
-                    $("#fbc").val("335");
-                }
-                valueChange("fbt")
-                valueChange("fbc")
-            });
-            $("#select4").change(function () {
-                var temp=parseFloat($("#select4").val().slice(1));
-                $("#ad").val((3.14*(temp/2)*(temp/2)).toFixed(2));
-            });
-
-            $(":input[type=text]").change(function () {
-                autoWrite("l4",parseFloat($("#l3").val()))
-                autoWrite("l5",parseFloat($("#z").val())+parseFloat($("#l3").val()))
-                autoWrite("as",(3.14*(parseFloat($("#gg").val())/2)*(parseFloat($("#gg").val())/2)))
-            })
-            function getString(v){
-                if(Math.floor(v*100)%100==0)
-                    return v.toFixed(0);
-                else  if(Math.floor(v*100)%10==0)
-                    return v.toFixed(1);
-                return v.toFixed(2);
-            }
-            function autoWrite(nodeId,value){
-                if(!value)
-                    return;
-                value&&$("#"+nodeId).val(getString(value));
-            }
-            function valueChange(classname){
-                if(!a[classname])
-                    a[classname]=$(".jy"+classname)[0].innerHTML;
-                $(".jy"+classname).html(a[classname]+$("#"+classname).val());
-            }
-            $("#f02").change(function () {
-                if(!a["f02"])
-                    a["f02"]=$(".jyf02")[0].innerHTML;
-                $(".jyf02").html(a["f02"]+$("#f02").val());
-            })
-            $("#fbc").change(function () {
-                if(!a["fbc"])
-                    a["fbc"]=$(".jyfbc")[0].innerHTML;
-                $(".jyfbc").html(a["fbc"]+$("#fbc").val());
-            })
-            $("#fbt").change(function () {
-                if(!a["fbt"])
-                    a["fbt"]=$(".jyfbt")[0].innerHTML;
-                $(".jyfbt").html( a["fbt"]+$("#fbt").val());
-            })
-            $("#fwf").change(function () {
-                if(!a["fwf"])
-                    a["fwf"]=$(".jyfwf")[0].innerHTML;
-                $(".jyfwf").html( a["fwf"]+$("#fwf").val());
-            })
         })
-        function a(){};
-        function showImage(form,element) {
+
+        function showImage(form, element) {
             // 先获取用户上传的文件对象
             var fileObj = form.files[0];
-            if(fileObj.size>1048576){
+            if (fileObj.size > 1048576) {
                 alert("上传文件大于1M，请重新选择");
-                form.value="";
+                form.value = "";
                 return false;
             }
             // 生成一个文件读取的内置对象
@@ -229,27 +142,10 @@
             // 将文件对象传递给内置对象
             fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
             // 将读取出文件对象替换到img标签
-            fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
-                $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+            fileReader.onload = function () {  // 等待文件阅读器读取完毕再渲染图片
+                $('#' + element).attr('src', fileReader.result).attr('display', 'inline-block')
             }
         };
-
-        function janyan() {
-            $.ajax({
-                url: "pinseat/jy",
-                type: "post",
-                data: $("form").serialize(),
-                async: false,
-                dataType: "json",
-                cache: false,
-                success: function (data) {
-                    Object.keys(data).forEach(function (id) {
-                        $("#" + id).html((a[id] ? a[id] : "") + data[id]);
-                    })
-                }
-            })
-            return false;
-        }
 
     </script>
 </head>
@@ -258,76 +154,92 @@
 <br/><br/>
 <div class="main">
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
-
-    <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop"
-          th:opType="@{/PinSeatEntity}" th:object="${PinSeatEntity}"
+    <form class="boxform" name="form1" id="form1" opType="#" target="stop"
           method="post" enctype="multipart/form-data">
-        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">防风销座强度校核计算书</div>
-
-
-         <div style="width:500px;">
-                        <table class="tb">
-                            <tr>
-                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px "><b>1.封面内容</b></td>
-                            </tr>
-                            <tr>
-                                <td style="width:50%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
-                                <td style="width:50%;">内容</td>
-                            </tr>
-                            <tr>
-                                <td ><b>本机计算书编号</b></td>
-                                <td ><input name="no" type="text" th:field="*{no}"/></td>
-                            </tr>
-                            <tr>
-                               <td ><b>本机版本</b></td>
-                               <td><input name="ver" type="text" th:field="*{ver}"/></td>
-                            </tr>
-                            <tr>
-                               <td ><b>项目名称</b></td>
-                               <td><input name="xmmc" type="text" th:field="*{xmmc}"/></td>
-                            </tr>
-                            <tr>
-                               <td ><b>主机型号</b></td>
-                               <td><input name="zjxh" type="text" th:field="*{zjxh}"/></td>
-                            </tr>
-                            <tr>
-                               <td ><b>计算人</b></td>
-                               <td><input name="jsr" type="text" th:field="*{jsr}"/></td>
-                            </tr>
-                            <tr>
-                               <td ><b>审核人</b></td>
-                               <td><input name="shr" type="text" th:field="*{shr}"/></td>
-                            </tr>
-                            <tr>
-                               <td ><b>批准人</b></td>
-                               <td><input name="pzr" type="text" th:field="*{pzr}"/></td>
-                            </tr>
-                            <tr>
-                               <td ><b>计算日期</b></td>
-                               <td><input name="date" type="text" th:field="*{date}" /></td>
-                            </tr>
-                        </table>
-                    </div>
+    <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">防风销座强度校核计算书</div>
         <div style="width:500px;">
             <table class="tb">
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>3.焊缝的基本尺寸及相关参数</b></td>
+                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:40%;">
+                        <input name="sjht" type="text" list="txtBatchId"/>
+                        <datalist id="txtBatchId">
+                        </datalist>
+                    </td>
+                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                    <script>
+                        $('input[name="getData"]').click(function () {
+                                var url = '/PinSeat/getData';
+                                var id = $('input[name="sjht"]').val();
+                                getData.geteDataFromDB(url, id)
+                            }
+                        )
+                    </script>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px "><b>1.封面内容</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:50%;">内容</td>
+                </tr>
+                <tr>
+                    <td><b>本机计算书编号</b></td>
+                    <td><input name="no" type="text"/></td>
+                </tr>
+                <tr>
+                    <td><b>本机版本</b></td>
+                    <td><input name="ver" type="text"/></td>
+                </tr>
+                <tr>
+                    <td><b>项目名称</b></td>
+                    <td><input name="xmmc" type="text"/></td>
+                </tr>
+                <tr>
+                    <td><b>主机型号</b></td>
+                    <td><input name="zjxh" type="text"/></td>
+                </tr>
+                <tr>
+                    <td><b>计算人</b></td>
+                    <td><input name="jsr" type="text"/></td>
+                </tr>
+                <tr>
+                    <td><b>审核人</b></td>
+                    <td><input name="shr" type="text"/></td>
+                </tr>
+                <tr>
+                    <td><b>批准人</b></td>
+                    <td><input name="pzr" type="text"/></td>
+                </tr>
+                <tr>
+                    <td><b>计算日期</b></td>
+                    <td><input name="date" type="text"/></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:500px;">
+            <table class="tb">
+                <tr>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>3.焊缝的基本尺寸及相关参数</b>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="4">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img id="tu2" name="image">
+                            <img id="xztu2" name="xztu2">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding:10px 0">选择图片</td>
-                    <td colspan="3"><input class="image" type="file" name="tu2"  accept="image/*" oninput="showImage(this,'tu2')"/></td>
+                    <td colspan="3"><input class="image" type="file" name="xztu2" accept="image/*"
+                                           oninput="showImage(this,'xztu2')"/></td>
                 </tr>
                 <tr>
-                    <td>选择材料</td>
+                    <td>焊条材料</td>
                     <td colspan="3">
-                        <select id="select2" style="width:100%;height:40px;text-align-last:center">
+                        <select name="materialOfElectrode" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="S31608">S31608</option>
                             <option value="S22053">S22053</option>
@@ -343,305 +255,352 @@
                 <tr>
                     <td><b>焊缝高度</b></td>
                     <td><p><i>K</i></p></td>
-                    <td><input name="k" type="text" th:field="*{k}"/></td>
+                    <td><input name="xzk" type="text"/></td>
                     <td>mm</td>
                 </tr>
                 <tr>
-                    <td><b>受力点到截面D的距离</b></td>
+                    <td><b>焊缝最外圈直径</b></td>
+                    <td><p><i>d<sub>4</sub></i></p></td>
+                    <td><input name="xzd4" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>受力点到焊缝截面的距离</b></td>
                     <td><p><i>L<sub>4</sub></i></p></td>
-                    <td><input name="l4" type="text" th:field="*{l4}"/></td>
+                    <td><input name="xzl4" type="text"/></td>
                     <td>mm</td>
                 </tr>
                 <tr>
-                    <td><b>销座外侧到中心线的距离</b></td>
-                    <td><p><i>R</i></p></td>
-                    <td><input name="r" type="text" th:field="*{r}"/></td>
-                    <td>mm</td>
+                    <td><b>焊缝截面面积</b></td>
+                    <td><p><i>A<sub>H</sub></i></p></td>
+                    <td><input name="xzah" type="text"/></td>
+                    <td>mm<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td><b>焊缝截面抗弯模量</b></td>
+                    <td><p><i>W<sub>H</sub></i></p></td>
+                    <td><input name="xzwh" type="text"/></td>
+                    <td>mm<sup>3</sup></td>
                 </tr>
                 <tr>
                     <td><b>焊条材料</b></td>
                     <td></td>
-                    <td><input name="clh" type="text" th:field="*{clh}"/></td>
+                    <td><input name="xzclh" type="text"/></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td><b>抗拉、抗压和抗剪强度</b></td>
                     <td><p><i>f<sup>w</sup><sub style="margin-left:-10px;margin-top:2px;">f</sub></i></p></td>
-                    <td><input name="fwf" type="text" th:field="*{fwf}"/></td>
+                    <td><input name="xzfwf" type="text"/></td>
                     <td>MPa</td>
                 </tr>
             </table>
         </div>
         <div style="width:500px;">
-                        <table class="tb">
-                            <tr>
-                                <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>2.防风销座及销钉的基本尺寸及相关参数</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                        <img id="tu1" name="tu1">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding:10px 0">选择图片</td>
-                                <td colspan="3"><input class="image" type="file" name="tu1"  accept="image/*" oninput="showImage(this,'tu1')"/></td>
-                            </tr>
-                            <tr>
-                                <td>选择材料</td>
-                                <td colspan="3">
-                                    <select id="select1" style="width:100%;height:40px;text-align-last:center">
-                                        <option style="display: none"></option>
-                                        <option value="S31608">S31608</option>
-                                        <option value="S22053">S22053</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:42%;padding:10px 0;;"><b>名称</b></td>
-                                <td style="width:10%;">符号</td>
-                                <td style="width:30%;">数值</td>
-                                <td style="width:10%;">单位</td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销座材料</b></td>
-                                <td></td>
-                                <td><input name="clz" type="text" th:field="*{clz}"/></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销座抗拉和抗弯强度设计值</b></td>
-                                <td><p><i>f<sub>x</sub></i></p></td>
-                                <td><input name="fx" type="text" th:field="*{fx}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销座抗剪强度设计值</b></td>
-                                <td><p><i>f<sub>v</sub></i></p></td>
-                                <td><input name="fv" type="text" th:field="*{fv}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销座名义屈服强度</b></td>
-                                <td><p><i>f<sub>0.2</sub></i></p></td>
-                                <td><input name="f02" type="text" th:field="*{f02}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销钉抗拉和抗弯强度设计值</b></td>
-                                <td><p><i>f<sub>d</sub></i></p></td>
-                                <td><input name="fd" type="text" th:field="*{fd}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销钉抗剪强度设计值</b></td>
-                                <td><p><i>f<sub>vd</sub></i></p></td>
-                                <td><input name="fvd" type="text" th:field="*{fvd}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销钉名义屈服强度</b></td>
-                                <td><p><i>f<sub>0.2d</sub></i></p></td>
-                                <td><input name="f02d" type="text" th:field="*{f02d}" value="100"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>截面A面积</b></td>
-                                <td><p><i>A<sub>a</sub></i></p></td>
-                                <td><input name="aa" type="text" th:field="*{aa}"/></td>
-                                <td>mm2</td>
-                            </tr>
-                            <tr>
-                                <td><b>截面B面积</b></td>
-                                <td><p><i>A<sub>b</sub></i></p></td>
-                                <td><input name="ab" type="text" th:field="*{ab}"/></td>
-                                <td>mm2</td>
-                            </tr>
-                            <tr>
-                                <td><b>截面C面积</b></td>
-                                <td><p><i>A<sub>c</sub></i></p></td>
-                                <td><input name="ac" type="text" th:field="*{ac}"/></td>
-                                <td>mm2</td>
-                            </tr>
-                            <tr>
-                                <td><b>受力点到截面A的距离</b></td>
-                                <td><p><i>L<sub>1</sub></i></p></td>
-                                <td><input name="l1" type="text" th:field="*{l1}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>受力点到截面B的距离</b></td>
-                                <td><p><i>L<sub>2</sub></i></p></td>
-                                <td><input name="l2" type="text" th:field="*{l2}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>受力点到截面C的距离</b></td>
-                                <td><p><i>L<sub>3</sub></i></p></td>
-                                <td><input name="l3" type="text" th:field="*{l3}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>截面A抗弯模量</b></td>
-                                <td><p><i>W<sub>a</sub></i></p></td>
-                                <td><input name="wa" type="text" th:field="*{wa}"/></td>
-                                <td>mm3</td>
-                            </tr>
-                            <tr>
-                                <td><b>截面B抗弯模量</b></td>
-                                <td><p><i>W<sub>b</sub></i></p></td>
-                                <td><input name="wb" type="text" th:field="*{wb}"/></td>
-                                <td>mm3</td>
-                            </tr>
-                            <tr>
-                                <td><b>截面C抗弯模量</b></td>
-                                <td><p><i>W<sub>c</sub></i></p></td>
-                                <td><input name="wc" type="text" th:field="*{wc}"/></td>
-                                <td>mm3</td>
-                            </tr>
-                            <tr>
-                                <td>销钉直径</td>
-                                <td colspan="3">
-                                    <select id="select4" style="width:100%;height:40px;text-align-last:center">
-                                        <option style="display: none"></option>
-                                        <option value="Φ7" >Φ7</option>
-                                        <option value="Ф8" >Ф8</option>
-                                        <option value="Ф9" >Ф9</option>
-                                        <option value="Ф10">Ф10</option>
-                                        <option value="Ф12">Ф12</option>
-                                        <option value="Ф13">Ф13</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b>销钉截面面积</b></td>
-                                <td><p><i>A<sub>d</sub></i></p></td>
-                                <td><input name="ad" type="text" th:field="*{ad}"/></td>
-                                <td>mm2</td>
-                            </tr>
-                            <tr>
-                                <td><b>最大受力</b></td>
-                                <td><p><i>F</i></p></td>
-                                <td><input name="f" type="text" th:field="*{f}"/></td>
-                                <td>N</td>
-                            </tr>
-                        </table>
-                    </div>
+            <table class="tb">
+                <tr>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>2.防风销座及销钉的基本尺寸及相关参数</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img id="xztu1" name="xztu1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">选择图片</td>
+                    <td colspan="3"><input class="image" type="file" name="xztu1" accept="image/*"
+                                           oninput="showImage(this,'xztu1')"/></td>
+                </tr>
+                <tr>
+                    <td>选择材料</td>
+                    <td colspan="3">
+                        <select name="materialOfPinSeat" style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="S31608">S31608</option>
+                            <option value="S22053">S22053</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:42%;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:10%;">符号</td>
+                    <td style="width:30%;">数值</td>
+                    <td style="width:10%;">单位</td>
+                </tr>
+                <tr>
+                    <td><b>防风销座材料</b></td>
+                    <td></td>
+                    <td><input name="xzclz" type="text"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>防风销座抗拉和抗弯强度设计值</b></td>
+                    <td><p><i>f</i></p></td>
+                    <td><input name="xzfx" type="text"/></td>
+                    <td>MPa</td>
+                </tr>
+                <tr>
+                    <td><b>防风销座抗剪强度设计值</b></td>
+                    <td><p><i>f<sub>v</sub></i></p></td>
+                    <td><input name="xzfv" type="text"/></td>
+                    <td>MPa</td>
+                </tr>
+                <tr>
+                    <td><b>防风销座名义屈服强度</b></td>
+                    <td><p><i>f<sub>0.2</sub></i></p></td>
+                    <td><input name="xzf02" type="text"/></td>
+                    <td>MPa</td>
+                </tr>
+                <tr>
+                    <td><b>防风销钉抗拉和抗弯强度设计值</b></td>
+                    <td></td>
+                    <td><input name="xzfd" type="text" value="380"/></td>
+                    <td>MPa</td>
+                </tr>
+                <tr>
+                    <td><b>防风销钉抗剪强度设计值</b></td>
+                    <td></td>
+                    <td><input name="xzfvd" type="text" value="220"/></td>
+                    <td>MPa</td>
+                </tr>
+                <tr>
+                    <td><b>防风销座外圆直径d1（如图）</b></td>
+                    <td><p><i>d<sub>1</sub></i></p></td>
+                    <td>
+                        <input name="xzd1" type="text"/>
+                    </td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>防风销座内圆直径d2（如图）</b></td>
+                    <td><p><i>d<sub>2</sub></i></p></td>
+                    <td>
+                        <input name="xzd2" type="text"/>
+                    </td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>防风销座内圆直径d3（如图）</b></td>
+                    <td><p><i>d<sub>3</sub></i></p></td>
+                    <td>
+                        <input name="xzd3" type="text"/>
+                    </td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>截面A面积</b></td>
+                    <td><p><i>A<sub>A</sub></i></p></td>
+                    <td><input name="xzaa" type="text" /></td>
+                    <td>mm<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td><b>截面B面积</b></td>
+                    <td><p><i>A<sub>B</sub></i></p></td>
+                    <td><input name="xzab" type="text"/></td>
+                    <td>mm<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td><b>截面C面积</b></td>
+                    <td><p><i>A<sub>C</sub></i></p></td>
+                    <td><input name="xzac" type="text"/></td>
+                    <td>mm<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td><b>受力点到截面A的距离</b></td>
+                    <td><p><i>L<sub>1</sub></i></p></td>
+                    <td><input name="xzl1" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>受力点到截面B的距离</b></td>
+                    <td><p><i>L<sub>2</sub></i></p></td>
+                    <td><input name="xzl2" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>受力点到截面C的距离</b></td>
+                    <td><p><i>L<sub>3</sub></i></p></td>
+                    <td><input name="xzl3" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>截面A抗弯模量</b></td>
+                    <td><p><i>W<sub>A</sub></i></p></td>
+                    <td><input name="xzwa" type="text"/></td>
+                    <td>mm<sup>3</sup></td>
+                </tr>
+                <tr>
+                    <td><b>截面B抗弯模量</b></td>
+                    <td><p><i>W<sub>B</sub></i></p></td>
+                    <td><input name="xzwb" type="text"></td>
+                    <td>mm<sup>3</sup></td>
+                </tr>
+                <tr>
+                    <td><b>截面C抗弯模量</b></td>
+                    <td><p><i>W<sub>C</sub></i></p></td>
+                    <td><input name="xzwc" type="text"/></td>
+                    <td>mm3</td>
+                </tr>
+                <tr>
+                    <td>选择销钉直径</td>
+                    <td colspan="3">
+                        <select name="pinDiameter" style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="Ф7">Ф7</option>
+                            <option value="Ф8">Ф8</option>
+                            <option value="Ф9">Ф9</option>
+                            <option value="Ф10">Ф10</option>
+                            <option value="Ф12">Ф12</option>
+                            <option value="Ф13">Ф13</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>销钉直径</b></td>
+                    <td></td>
+                    <td><input name="xzdd" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>销钉截面面积</b></td>
+                    <td><p><i>A<sub>d</sub></i></p></td>
+                    <td><input name="xzad" type="text"/></td>
+                    <td>mm2</td>
+                </tr>
+                <tr>
+                    <td><b>最大受力</b></td>
+                    <td><p><i>F</i></p></td>
+                    <td><input name="xzf" type="text"/></td>
+                    <td>N</td>
+                </tr>
+            </table>
+        </div>
         <div style="width:500px;">
-                        <table class="tb">
-                            <tr>
-                                <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>4.连接螺栓3种工况下参数</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                        <img id="tu3" name="tu3">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding:10px 0">选择图片</td>
-                                <td colspan="3"><input class="image" type="file" name="tu3"  accept="image/*" oninput="showImage(this,'tu3')"/></td>
-                            </tr>
-                            <tr>
-                                <td>性能等级</td>
-                                <td colspan="3">
-                                    <select id="select3" style="width:100%;height:40px;text-align-last:center">
-                                        <option style="display: none"></option>
-                                        <option value="A2-50">A2-50</option>
-                                        <option value="A2-70">A2-70</option>
-                                        <option value="A2-80">A2-80</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:42%;padding:10px 0"><b>名称</b></td>
-                                <td style="width:10%;">符号</td>
-                                <td style="width:30%;">数值</td>
-                                <td style="width:10%;">单位</td>
-                            </tr>
+            <table class="tb">
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>4.连接螺栓3种工况下参数</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img id="xztu3" name="xztu3">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">选择图片</td>
+                    <td colspan="3"><input class="image" type="file" name="xztu3" accept="image/*"
+                                           oninput="showImage(this,'xztu3')"/></td>
+                </tr>
+                <tr>
+                    <td>性能等级</td>
+                    <td colspan="3">
+                        <select name="boltPerformanceGrade" style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="A2-50">A2-50</option>
+                            <option value="A2-70">A2-70</option>
+                            <option value="A2-80">A2-80</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:42%;padding:10px 0"><b>名称</b></td>
+                    <td style="width:10%;">符号</td>
+                    <td style="width:30%;">数值</td>
+                    <td style="width:10%;">单位</td>
+                </tr>
 
-                            <tr>
-                                <td><b>外侧螺栓中心到销座中心的距离</b></td>
-                                <td><p><i>r<sub>1</sub></i></p></td>
-                                <td><input name="r1" type="text" th:field="*{r1}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>内侧螺栓中心到销座中心的距离</b></td>
-                                <td><p><i>r<sub>2</sub></i></p></td>
-                                <td><input name="r2" type="text" th:field="*{r2}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>销座宽度</b></td>
-                                <td><p><i>l<sub>x</sub></i></p></td>
-                                <td><input name="lx" type="text" th:field="*{lx}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>螺栓规格</b></td>
-                                <td></td>
-                                <td><input value="M" style="display: inline ;width: 50%;height: 38px"  disabled /><input type="text" style="height: 38px;display: inline ;width: 50%;border:0;padding: 0;" id="gg"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>螺栓公称应力截面积</b></td>
-                                <td><p><i>A<sub>s</sub></i></p></td>
-                                <td><input name="as" type="text" th:field="*{as}"/></td>
-                                <td>mm2</td>
-                            </tr>
-                            <tr>
-                                <td><b>防风销座底板厚度</b></td>
-                                <td>Z</td>
-                                <td><input name="z" type="text" th:field="*{z}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>受力点到销座底面的距离</b></td>
-                                <td><p><i>L<sub>5</sub></i></p></td>
-                                <td><input name="l5" type="text" th:field="*{l5}"/></td>
-                                <td>mm</td>
-                            </tr>
-                            <tr>
-                                <td><b>螺栓性能等级</b></td>
-                                <td></td>
-                                <td><input name="xndj" type="text" th:field="*{xndj}"/></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b>螺栓抗拉强度设计值</b></td>
-                                <td><p><i>f<sup>b</sup><sub style="margin-left:-10px;margin-top:2px;">t</sub></i></p></td>
-                                <td><input name="fbt" type="text" th:field="*{fbt}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>螺栓抗剪强度设计值</b></td>
-                                <td><p><i>f<sup>b</sup><sub style="margin-left:-10px;margin-top:2px;">v</sub></i></p></td>
-                                <td><input name="fbv" type="text" th:field="*{fbv}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                            <tr>
-                                <td><b>螺栓承压强度</b></td>
-                                <td><p><i>f<sup>b</sup><sub style="margin-left:-10px;margin-top:2px;">c</sub></i></p></td>
-                                <td><input name="fbc" type="text" th:field="*{fbc}"/></td>
-                                <td>MPa</td>
-                            </tr>
-                        </table>
-                    </div>
+                <tr>
+                    <td><b>外侧螺栓中心到销座中心的距离</b></td>
+                    <td><p><i>r<sub>1</sub></i></p></td>
+                    <td><input name="xzr1" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>内侧螺栓中心到销座中心的距离</b></td>
+                    <td><p><i>r<sub>2</sub></i></p></td>
+                    <td><input name="xzr2" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>销座宽度</b></td>
+                    <td><p><i>L<sub>x</sub></i></p></td>
+                    <td><input name="xzlx" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>螺栓规格</b></td>
+                    <td></td>
+                    <td><input value="M" style="display: inline ;width:49%;height: 38px" disabled/>
+                        <input type="text"
+                               style="height: 38px;display: inline ;width: 48%;border:0;padding: 0;"
+                               name="xzgg"/>
+                    </td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>螺栓公称应力截面积</b></td>
+                    <td><p><i>A<sub>s</sub></i></p></td>
+                    <td><input name="xzas" type="text"/></td>
+                    <td>mm2</td>
+                </tr>
+                <tr>
+                    <td><b>防风销座底板厚度</b></td>
+                    <td></td>
+                    <td><input name="xzdb" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>受力点到销座底面的距离</b></td>
+                    <td><p><i>L<sub>5</sub></i></p></td>
+                    <td><input name="xzl5" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>螺栓性能等级</b></td>
+                    <td></td>
+                    <td><input name="xzxndj" type="text"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>螺栓抗拉强度设计值</b></td>
+                    <td><p><i>f<sup style="">b</sup><sub >v</sub></i></p></td>
+                    <td><input name="xzfbt" type="text"/></td>
+                    <td>MPa</td>
+                </tr>
+                <tr>
+                    <td><b>螺栓抗剪强度设计值</b></td>
+                    <td><p><i>f<sup style="">b</sup><sub >t</sub></i></p></td>
+                    <td><input name="xzfbv" type="text"/></td>
+                    <td>MPa</td>
+                </tr>
+                <tr>
+                    <td><b>螺栓承压强度</b></td>
+                    <td><p><i>f<sup style="">b</sup><sub >c</sub></i></p></td>
+                    <td><input name="xzfbc" type="text"/></td>
+                    <td>MPa</td>
+                </tr>
+            </table>
+        </div>
 
     </form>
     <div class="buttonbox">
-        <input type="submit" form="form1" class="button"  value="输出防风销座计算书pdf" onclick="$('form').attr('action','pinseatpdf1')"/>
-        <input type="submit" form="form1" class="button"  value="输出验证部分pdf" onclick="$('form').attr('action','pinseatpdf2')"/>
+        <input type="submit" form="form1" class="button" value="输出T型防风销座计算书pdf"
+               onclick="isCheck(false);$('form').attr('action','pinseatpdf1')"/>
+        <input type="submit" form="form1" class="button" value="输出验证部分pdf"
+               onclick="isCheck(true);$('form').attr('action','pinseatpdf1')"/>
         <input type="reset" form="form1" value="重置"/>
     </div>
     <div class="navbox" style="text-align: left">
         <div style="width:550px;height:520px; font-size: 14px;">
             <table class="tb" id="pdf3tb">
                 <tr>
-                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;font-size: 17px"><b>核算结果</b></td>
+                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;font-size: 17px"><b>核算结果</b>
+                    </td>
                 </tr>
                 <tr>
                     <td style="width:34%;"><b>名称</b></td>
@@ -651,58 +610,229 @@
                 </tr>
                 <tr>
                     <td><b>防风销座截面A强度</b></td>
-                    <td id="o4a"><p>σ<SUB>IVA</SUB>=</p></td>
-                    <td class="jyf02"><p>f<SUB>0.2</SUB>=</p></td>
-                    <td id="man4"></td>
+                    <td ><p>σ<SUB >IVA</SUB>= </p><p  class="xzo4a"></p></td>
+                    <td ><p>f<SUB>0.2</SUB>= <p class="xzf02"></p></p></td>
+                    <td class="xzm4"></td>
                 </tr>
                 <tr>
                     <td><b>防风销座截面B强度</b></td>
-                    <td id="o4b"><p>σ<SUB>IVB</SUB>=</p></td>
-                    <td class="jyf02"><p>f<SUB>0.2</SUB>=</p></td>
-                    <td id="man8"></td>
+                    <td ><p>σ<SUB >IVB</SUB>=<p  class="xzo4b"></p></p></td>
+                    <td ><p>f<SUB >0.2</SUB>=<p class="xzf02"></p></p></td>
+                    <td class="xzm8"></td>
                 </tr>
                 <tr>
                     <td><b>防风销座截面C强度</b></td>
-                    <td id="o4c"><p>σ<SUB>IVC</SUB>=</p></td>
-                    <td class="jyf02"><p>f<SUB>0.2</SUB>=</p></td>
-                    <td id="man12"></td>
+                    <td ><p>σ<SUB>IVC</SUB>=<p  class="xzo4c"></p></p></td>
+                    <td ><p>f<SUB>0.2</SUB>=<p class="xzf02"></p></p></td>
+                    <td class="xzm12"></td>
                 </tr>
                 <tr>
                     <td><b>焊缝强度</b></td>
-                    <td id="t"><p>τ=</p></td>
-                    <td class="jyfwf"><p>f<sup>w</sup><SUB style="margin-left: -7px">f</SUB>= </p></td>
-                    <td id="man13"></td>
+                    <td ><p>σ<SUB>IVH</SUB>=<p class="xzo4h"></p></p></td>
+                    <td ><p>f<sup>w</sup><sub style="margin-left: -7px">f</sub>= <p class="xzfwf"></p></p></td>
+                    <td class="Xzm16"></td>
                 </tr>
                 <tr>
-                    <td><b>防风销钉强度</b></td>
-                    <td id="o4d"><p>σ<SUB>IVD</SUB>=</p></td>
-                    <td class="jyf02d"><p>f<SUB>0.2d</SUB> =</p>450</td>
-                    <td id="man17"></td>
+                    <td><b>防风销钉抗拉强度</b></td>
+                    <td ><p>σ<SUB>IVD</SUB>=<p class="xzod"></p></p></td>
+                    <td ><p>f<SUB>d</SUB> =</p>385</td>
+                    <td class="xzm17"></td>
+                </tr>
+                <tr>
+                    <td><b>防风销钉抗剪强度</b></td>
+                    <td ><p>τ<sub>d</sub>=<p class="xztd"></p></p></td>
+                    <td ><p>f<SUB>vd</SUB> =</p>220</td>
+                    <td class="xzm18"></td>
                 </tr>
                 <tr>
                     <td><b>工况1下连接螺栓强度</b></td>
-                    <td id="o41"><p><p>σ<SUB>IV1</SUB>=</p></td>
-                    <td class="jyfbc"><p>f<sup>b</sup><SUB style="margin-left: -7px">c</SUB> =</p></td>
-                    <td id="man21"></td>
+                    <td ><p>
+                        <p>σ<SUB>IV1</SUB>=<p class="xzo41"></p></p></td>
+                    <td ><p>f<sup>b</sup><SUB style="margin-left: -7px">c</SUB> =<p class="xzfbc"></p></p></td>
+                    <td class="xzm23"></td>
                 </tr>
                 <tr>
                     <td><b>工况2下连接螺栓强度</b></td>
-                    <td id="o42"><p><p>σ<SUB>IV2</SUB>=</p></td>
-                    <td class="jyfbc"><p>f<sup>b</sup><SUB style="margin-left: -7px">c</SUB> =</p></td>
-                    <td id="man25"></td>
+                    <td><p>
+                        <p>σ<SUB>IV2</SUB>=<p class="xzo42"></p></p></td>
+                    <td><p>f<sup>b</sup><SUB style="margin-left: -7px">c</SUB> =<p class="xzfbc"></p></p></td>
+                    <td class="xzm25"></td>
                 </tr>
                 <tr>
                     <td><b>工况3下连接螺栓强度</b></td>
-                    <td id="o3"><p><p>σ<SUB>3</SUB>=</p></td>
-                    <td class="jyfbt"><p>f<sup>b</sup><SUB style="margin-left: -7px">t</SUB> =</p></td>
-                    <td id="man26"></td>
+                    <td ><p>
+                        <p>σ<SUB>3</SUB>=<p class="xzo3"></p></p></td>
+                    <td ><p>f<sup>b</sup><SUB style="margin-left: -7px">t</SUB> =<p class="xzfbt"></p></p></td>
+                    <td class="xzm29"></td>
                 </tr>
             </table>
             <div style="margin: 0 100px 0;">
-                <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
+                <input type="submit" class="button" type="submit" value="校验" onclick="return jy()"/>
+                <script>
+                    function jy() {
+                        var dataJson = $("form").serialize();
+                        $.ajax({
+                            url: "PinSeat/jy",
+                            type: "post",
+                            data: dataJson,
+                            async: false,
+                            dataType: "json",
+                            cache: false,
+                            success: function (data) {
+                                console.log(data)
+                                Object.keys(data).forEach(function (id) {
+                                    $("." + id).text(data[id]);
+                                })
+                            }
+                        })
+                        return false;
+                    }
+                </script>
             </div>
         </div>
     </div>
 </div>
+<script>
+    materialOfPinSeatList = {
+        "S31608": {
+            xzclz: 'S31608',
+            xzfx: 175,
+            xzfv: 100,
+            xzf02: 175,
+        },
+        "S22053": {
+            xzclz: 'S22053',
+            xzfx: 385,
+            xzfv: 220,
+            xzf02: 385,
+        },
+    }
+    materialOfElectrodeList = {
+        "S31608": {
+            xzclh: 'S31608',
+            xzfwf: 175,
+        },
+        "S22053": {
+            xzclh: 'S22053',
+            xzfwf: 260,
+        },
+    }
+    boltPerformanceGradeList = {
+        "A2-50": {
+            xzxndj: 'A2-50',
+            xzfbt: 190,
+            xzfbv: 155,
+            xzfbc: 190,
+        },
+        "A2-70": {
+            xzxndj: 'A2-70',
+            xzfbt: 295,
+            xzfbv: 245,
+            xzfbc: 295,
+        },
+        "A2-80": {
+            xzxndj: 'A2-80',
+            xzfbt: 335,
+            xzfbv: 280,
+            xzfbc: 335,
+        },
+    }
+    pinDiameterList = {
+        'Ф7': {
+            xzdd: 7,
+        },
+        'Ф8': {
+            xzdd: 8,
+        },
+        'Ф9': {
+            xzdd: 9,
+        },
+        'Ф10': {
+            xzdd: 10,
+        },
+        'Ф12': {
+            xzdd: 12,
+        },
+        'Ф13': {
+            xzdd: 13,
+        },
+    }
+    calculateFunction = {
+        xzclz: function () {
+            return materialOfPinSeatList[ materialOfPinSeat ]["xzclz"];
+        },
+        xzfx: function () {
+            return materialOfPinSeatList[ materialOfPinSeat ]["xzfx"];
+        },
+        xzfv: function () {
+            return materialOfPinSeatList[ materialOfPinSeat ]["xzfv"];
+        },
+        xzf02: function () {
+            return materialOfPinSeatList[ materialOfPinSeat ]["xzf02"];
+        },
+        xzaa:function(){
+           return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( xzd2 /2,2);
+        },
+        xzab:function(){
+            return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( xzd3 /2,2);
+        },
+        xzac:function(){
+            return 3.14*Math.pow( xzd1 /2,2);
+        },
+        xzwa:function(){
+            return 0.0982*(Math.pow(xzd1,4)-Math.pow( xzd2 ,4))/ xzd1 ;
+        },
+        xzwb:function(){
+            return 0.0982*(Math.pow(xzd1,4)-Math.pow( xzd3 ,3))/ xzd1 ;
+        },
+        xzwc:function(){
+            return 0.0982*Math.pow( xzd1 ,3);
+        },
+        xzdd:function(){
+            return pinDiameterList[ pinDiameter ]["xzdd"];
+        },
+        xzad:function (){
+            return 3.14*( xzdd /2)*(xzdd/2)
+        },
+        xzah:function(){
+            return 3.14*Math.pow( xzd4 /2,2)-3.14*Math.pow( xzd1 /2,2);
+        },
+        xzwh:function(){
+            return 0.982*(Math.pow( xzd4 ,4)-Math.pow( xzd1 ,4))/xzd4;
+        },
+        xzclh:function(){
+            return materialOfElectrodeList[ materialOfElectrode ]["xzclh"];
+        },
+        xzfwf:function (){
+            return materialOfElectrodeList[ materialOfElectrode ]["xzfwf"];
+        },
+        xzas:function(){
+            return 3.14*( xzgg /2)*(xzgg/2);
+        },
+        xzl5:function (){
+            return xzdb + xzl4 ;
+        },
+        xzxndj:function(){
+            return boltPerformanceGradeList[ boltPerformanceGrade ]["xzxndj"];
+        },
+        xzfbt:function (){
+            return boltPerformanceGradeList[ boltPerformanceGrade ]["xzfbt"];
+        },
+        xzfbv:function(){
+            return boltPerformanceGradeList[ boltPerformanceGrade ]["xzfbv"];
+        },
+        xzfbc:function(){
+            return boltPerformanceGradeList[ boltPerformanceGrade ]["xzfbc"];
+        },
+
+    }
+    data.init(calculateFunction);
+    imgDaefultData={
+        xztu1:{inputvalue:"图1.防风销座及销钉各截面示意图.png"},
+        xztu2:{inputvalue:"图2.焊缝截面示意图.png"},
+        xztu3:{inputvalue:"图3.防风销座三种工况图.png"},
+    }
+    getData.dataToImage(imgDaefultData);
+</script>
 </body>
 </html>

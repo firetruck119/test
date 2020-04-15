@@ -201,6 +201,7 @@
 
         //将数组对象写入表单
         listtoform: function () {
+            console.log(2)
             for (var data in this.datalist) {
                 var temp = this.datalist[data];
                 if (temp.value != null) {

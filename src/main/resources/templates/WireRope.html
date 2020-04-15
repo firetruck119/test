@@ -164,11 +164,41 @@
                     <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
-                                var url = '/WireRope/getData';
-                                var id = $('input[name="sjht"]').val();
-                                getData.geteDataFromDB(url, id)
-                            }
-                        )
+
+                            var url = '/WireRope/getData';
+                            var id = $('input[name="sjht"]').val();
+                            // $('[type=reset]').click();
+                            $.ajax({
+                                url: url,
+                                type: "get",
+                                async: false,
+                                data: {'batchId': id},
+                                dataType: "json",
+                                cache: false,
+                                success: function (e) {
+                                    console.log(e)
+                                    getData.dataToDataList(e['datalist']);
+                                    getData.dataToImage(e['imagelist']);
+                                    var list = {};
+                                    var dataObj = e['datalist'];
+                                    for (var temp in dataObj) {
+                                        if (isTrue(dataObj[temp])) {
+                                            var funlist = data.datalist[temp].calList;
+                                            for (var key in funlist) {
+                                                if (dataObj[key] == null) {
+                                                    list[key] = funlist[key]
+                                                }
+                                            }
+                                        }
+                                    }
+                                    data.datacalculate({calList: list}, true)
+                                    data.listtoform();
+
+                                    gondolaSelectChange();
+                                    gruSelectCDhange();
+                                }
+                            })
+                        })
                     </script>
                 </tr>
                 <tr>
@@ -229,13 +259,19 @@
                 <tr>
                     <td>吊船额定载荷</td>
                     <td><p><i>R<sub>1</sub></i></p></td>
-                    <td><input id="r1" name="r1" type="text" th:field="*{r1}"/></td>
+                    <td><input id="r1" name="r1" type="text" th:field="*{r1}" value="250"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
                     <td>吊船钢丝绳自重</td>
                     <td><p><i>M<sub>wr</sub></i></p></td>
                     <td><input id="mwr" name="mwr" type="text" th:field="*{mwr}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>防风背包自重</td>
+                    <td><p><i>m<sub>ffbb</sub></i></p></td>
+                    <td><input id="mffbb" name="mffbb" type="text" /></td>
                     <td>kg</td>
                 </tr>
                 <tr>
@@ -271,31 +307,76 @@
                     <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">2.所选钢丝绳相关参数</td>
                 </tr>
                 <tr>
-                    <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">吊船钢丝绳型号选择</td>
+                    <td>吊船选择</td>
+                    <td colspan="3" style="font-size: 14px">
+                        <select  name="gondolaSelect"
+                                 style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="2.0米铝吊船">2.0米铝吊船</option>
+                            <option value="2.5米铝吊船">2.5米铝吊船</option>
+                            <option value="3.0米铝吊船">3.0米铝吊船</option>
+                            <option value="4.0米铝吊船">4.0米铝吊船</option>
+                            <option value="1.5米卫星吊船">1.5米卫星吊船</option>
+                            <option value="2.0米卫星吊船">2.0米卫星吊船</option>
+                            <option value="1.5米手动丝杠伸展吊船">1.5米手动丝杠伸展吊船</option>
+                            <option value="2.0米手动丝杠伸展吊船">2.0米手动丝杠伸展吊船</option>
+                            <option value="2.5米手动丝杠伸展吊船">2.5米手动丝杠伸展吊船</option>
+                            <option value="3.0米手动丝杠伸展吊船">3.0米手动丝杠伸展吊船</option>
+                            <option value="2.0米液压伸展吊船">2.0米液压伸展吊船</option>
+                            <option value="2.0米液压伸展吊船(2.0-2.3)">2.0米液压伸展吊船(2.0-2.3)</option>
+                            <option value="2.5米液压伸展吊船">2.5米液压伸展吊船</option>
+                            <option value="3.0米液压伸展吊船">3.0米液压伸展吊船</option>
+                            <option value="3.5米液压伸展吊船">3.5米液压伸展吊船</option>
+                            <option value="2.0米折叠吊船">2.0米折叠吊船</option>
+                            <option value="2.5米折叠吊船">2.5米折叠吊船</option>
+                            <option value="2.0米折弯吊船">2.0米折弯吊船</option>
+                            <option value="2.5米折弯吊船">2.5米折弯吊船</option>
+                            <option value="3.0米折弯吊船">3.0米折弯吊船</option>
+                            <option value="2.5米伸缩子吊船">2.5米伸缩子吊船</option>
+                            <option value="2.0米CDD吊船">2.0米CDD吊船</option>
+                            <option value="2.5米CDD吊船">2.5米CDD吊船</option>
+                            <option value="3.0米CDD吊船">3.0米CDD吊船</option>
+                            <option value="4.0米CDD吊船">4.0米CDD吊船</option>
+                            <option value="无">无</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>是否有防风背包</td>
+                    <td colspan="3" style="font-size: 14px">
+                        <select name="windbreakBackpackSelect"
+                                style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="有">有</option>
+                            <option value="无">无</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="padding: 10px 0 10px 0">吊船钢丝绳型号选择</td>
                     <td colspan="3" style="font-size: 14px">
                         <select id="select1" name="typeOfShipWireRope"
                                 style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
                             <option value="Ф7">Ф7</option>
                             <option value="Ф8">Ф8</option>
+                            <option value="Ф8.3">Ф8.3</option>
                             <option value="Ф10">Ф10</option>
                             <option value="Ф13">Ф13</option>
                             <option value="布鲁格Ф7">布鲁格Ф7</option>
                             <option value="布鲁格Ф8">布鲁格Ф8</option>
-                            <option value="无">无</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">物料起升机构钢丝绳型号选择</td>
+                    <td colspan="1" style="padding: 10px 0 10px 0">GRU选择</td>
                     <td colspan="3" style="font-size: 14px">
-                        <select id="select2" name="typeOfMaterielWireRope"
+                        <select id="select2" name="gruSelect"
                                 style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
-                            <option value="Ф8">Ф8</option>
-                            <option value="Ф8.3">Ф8.3</option>
-                            <option value="Ф10">Ф10</option>
-                            <option value="Ф13">Ф13</option>
+                            <option value="GRU 285">GRU 285</option>
+                            <option value="GRU 295">GRU 295</option>
+                            <option value="GRU 313">GRU 313</option>
                             <option value="无">无</option>
                         </select>
                     </td>
@@ -375,79 +456,111 @@
                 </tr>
                 <tr class="diaochuan">
                     <td style="height:50px">吊船钢丝绳安全系数校核</td>
-                    <td id="zp1p"></td>
+                    <td><p id="zp1p"></p></td>
                     <td>12</td>
-                    <td id="gssm1"></td>
+                    <td><p id="gssm1"></p></td>
                 </tr>
-                <tr class="wuliaoqishengjigou">
+                <tr class="wuliaoqishengjigou" >
                     <td style="height:50px">物料起升机构钢丝绳安全系数校核</td>
-                    <td id="zp2p"></td>
+                    <td><p id="zp2p"></p></td>
                     <td>6</td>
-                    <td id="gssm2"></td>
+                    <td><p id="gssm2"></p></td>
                 </tr>
             </table>
             <div class="buttonbox" style="position: relative;width: 550px">
                 <input type="submit" class="button" type="submit" value="校验" style="width:250px;margin: 30px auto 0;"
-                       onclick="return janyan('WireRope/jy')"/>
+                       onclick="return jianyan('WireRope/jy')"/>
+                <script>
+                    function jianyan(URL) {
+                        var dataJson = $("form").serialize();
+                        dataJson["check"] = true;
+                        $.ajax({
+                            url: URL,
+                            type: "post",
+                            data: dataJson,
+                            async: false,
+                            dataType: "json",
+                            cache: false,
+                            success: function (data) {
+                                console.log(data)
+                                Object.keys(data).forEach(function (id) {
+                                    if($('#'+id).css('display')!='none')
+                                        $("#" + id).text(data[id]);
+                                })
+                            }
+                        })
+                        return false;
+                    }
+                </script>
             </div>
         </div>
     </form>
 </div>
 <script>
-    (function () {
-        $('[name=typeOfShipWireRope]').change(function () {
-            var t = ['swp', 'r1', 'mwr', 'tsl', 'dcgssxh', 'dcgssd', 'dcgssn', 'dcgssf', 'dcgssp',]
-            var typeOfShipWireRope = $('[name=typeOfShipWireRope]').val();
-            for (var i in t) {
-                if (typeOfShipWireRope == '无') {
-                    $('.diaochuan').css('display','none');
-                    $('[name=' + t[i] + ']').prop('readonly', true);
-                    data.datalist[t[i]].color = 'rgb(227, 227, 227)';
-                } else if($('[name=' + t[i] + ']').prop('readonly')){
-                    $('[name=' + t[i] + ']').prop('readonly', false);
-                        data.datalist[t[i]].color = 'white';
-                    $('.diaochuan').css('display','table-row');
-
-                }
-            }
-        })
-        $('[name=typeOfMaterielWireRope]').change(function () {
-            var t = ['hwll', 'hsw', 'tshl','grugssxh', 'grugssd', 'grugssn', 'grugssf', 'grugssp']
-            var typeOfMaterielWireRope = $('[name=typeOfMaterielWireRope]').val();
-            for (var i in t) {
-                if (typeOfMaterielWireRope == '无') {
-                    $('[name=' + t[i] + ']').prop('readonly', true);
-                    data.datalist[t[i]].color = 'rgb(227, 227, 227)';
-                    $('.wuliaoqishengjigou').css('display','none');
-                } else if($('[name=' + t[i] + ']').prop('readonly')) {
-                    $('[name=' + t[i] + ']').prop('readonly', false);
-                    if(data.datalist[t[i]].color!='white')
-                        data.datalist[t[i]].color = 'white';
-                    $('.wuliaoqishengjigou').css('display','table-row');
-
-                }
-            }
-        })
-    })()
-
     function getPDF(URL) {
-        if ($("[name=typeOfShipWireRope]").val() == "无" && $("[name=typeOfMaterielWireRope]").val() == "无") {
+        if ($("[name=gondolaSelect]").val() == "无" && $("[name=gruSelect]").val() == "无") {
             alert("请选择吊船或者GRU");
             return false;
         }
         $('#form1').attr('action', URL);
-    }
+    };
 
     calculateFunction = {
+        swp:function(){
+            switch( gondolaSelect ){
+                case'2.0米铝吊船':return 96 ;
+                case'2.5米铝吊船':return 105;
+                case'3.0米铝吊船':return 115;
+                case'4.0米铝吊船':return 135;
+                case'1.5米卫星吊船':return 577;
+                case'2.0米卫星吊船':return 650;
+                case'1.5米手动丝杠伸展吊船':return 585;
+                case'2.0米手动丝杠伸展吊船':return 619;
+                case'2.5米手动丝杠伸展吊船':return 634;
+                case'3.0米手动丝杠伸展吊船':return 683;
+                case'2.0米液压伸展吊船':return 624;
+                case'2.0米液压伸展吊船(2.0-2.3)':return 651;
+                case'2.5米液压伸展吊船':return 675;
+                case'3.0米液压伸展吊船':return 696;
+                case'3.5米液压伸展吊船':return 720;
+                case'2.0米折叠吊船':return 116;
+                case'2.5米折叠吊船':return 124;
+                case'2.0米折弯吊船':return 120;
+                case'2.5米折弯吊船':return 133;
+                case'3.0米折弯吊船':return 155;
+                case'2.5米伸缩子吊船':return 1140;
+                case'2.0米CDD吊船':return 350;
+                case'2.5米CDD吊船':return 375;
+                case'3.0米CDD吊船':return 400;
+                case'4.0米CDD吊船':return 450;
+            }
+        },
+        windbreakBackpackSelect:function(){
+          if( String( gondolaSelect ) =='无' ){
+              $('[name=windbreakBackpackSelect]').prop('readonly',true);
+              return '无';
+          }
+            $('[name=windbreakBackpackSelect]').prop('readonly',false);
+          return windbreakBackpackSelect;
+        },
         mwr: function () {
             if ($('[name=mwr]').prop('readonly'))
                 return null;
             return h * dcgssp * dcgssn ;
         },
+        r1:function(){
+            if( gondolaSelect != '无')
+                return 250;
+        },
+        mffbb:function(){
+          if( windbreakBackpackSelect =='有')
+              return 100;
+          return 0;
+        },
         tsl: function () {
             if ($('[name=tsl]').prop('readonly'))
                 return null;
-            return swp + r1 + mwr ;
+            return swp + r1 + mwr + mffbb ;
         },
         hsw: function () {
             if ($('[name=hsw]').prop('readonly'))
@@ -470,6 +583,8 @@
                     return 7;
                 case 'Ф8'    :
                     return 8;
+                case 'Ф8.3'    :
+                    return 8.3;
                 case 'Ф10'   :
                     return 10;
                 case 'Ф13'   :
@@ -480,12 +595,23 @@
                     return 8;
             }
         },
+        dcgssn:function(){
+            switch( gondolaSelect ){
+                case'2.0米CDD吊船':
+                case'2.5米CDD吊船':
+                case'3.0米CDD吊船':
+                case'4.0米CDD吊船':return 2;
+                default :return 4;
+            }
+        },
         dcgssf: function () {
             switch ( typeOfShipWireRope ) {
                 case 'Ф7'    :
                     return 26;
                 case 'Ф8'    :
                     return 37;
+                case 'Ф8.3'  :
+                    return 58;
                 case 'Ф10'   :
                     return 61;
                 case 'Ф13'   :
@@ -502,6 +628,8 @@
                     return 0.179;
                 case 'Ф8'    :
                     return 0.244;
+                case 'Ф8.3'    :
+                    return 0.255;
                 case 'Ф10'   :
                     return 0.391;
                 case 'Ф13'   :
@@ -513,58 +641,118 @@
             }
         },
         grugssxh: function () {
-            return typeOfMaterielWireRope ;
+            switch ( gruSelect ) {
+                case 'GRU 285'    :
+                    return 'Ф8';
+                case 'GRU 295'   :
+                    return 'Ф10';
+                case 'GRU 313'   :
+                    return 'Ф13';
+            }
         },
         grugssd: function () {
-            switch ( typeOfMaterielWireRope ) {
-                case 'Ф8'  :
+            switch ( gruSelect ) {
+                case 'GRU 285'  :
                     return 8;
-                case 'Ф8.3':
-                    return 8.3;
-                case 'Ф10' :
+                case 'GRU 295' :
                     return 10;
-                case 'Ф13' :
+                case 'GRU 313' :
                     return 13;
             }
         },
         grugssf: function () {
-            switch ( typeOfMaterielWireRope ) {
-                case 'Ф8'  :
+            switch ( gruSelect ) {
+                case 'GRU 285'  :
                     return 39;
-                case 'Ф8.3':
-                    return 58;
-                case 'Ф10' :
+                case 'GRU 295' :
                     return 61;
-                case 'Ф13' :
+                case 'GRU 313' :
                     return 83;
             }
         },
+        grugssn:function(){
+            if( gruSelect !='无')
+                return 1;
+        },
         grugssp: function () {
-            switch ( typeOfMaterielWireRope ) {
-                case 'Ф8'  :
+            switch ( gruSelect ) {
+                case 'GRU 285'  :
                     return 0.252;
-                case 'Ф8.3':
-                    return 0.255;
-                case 'Ф10' :
+                case 'GRU 295' :
                     return 0.391;
-                case 'Ф13' :
+                case 'GRU 313' :
                     return 0.65;
             }
         },
-    }
-
+    };
+    (function () {
+        $('[name=gondolaSelect]').change(gondolaSelectChange);
+        $('[name=gruSelect]').change(gruSelectCDhange)
+    })();
     data.init(calculateFunction);
     (function () {
         InitNav(1);
         $('#WireRope').addClass('o-sub-cur');
-    })()
+    })();
+    function gondolaSelectChange() {
+        console.log(1);
+        var t = ['swp','windbreakBackpackSelect','typeOfShipWireRope', 'mffbb','r1', 'mwr', 'tsl', 'dcgssxh', 'dcgssd', 'dcgssn', 'dcgssf', 'dcgssp',]
+        var gondolaSelect = $('[name=gondolaSelect]').val();
+        for (var i in t) {
+            var e=$('select[name='+t[i]+']');
+
+            if (gondolaSelect == '无') {
+                $('[name=' + t[i] + ']').prop('disabled', true);
+                data.datalist[t[i]].color = 'rgb(227, 227, 227)';
+                $('[name='+t[i]+']').css('background-color','rgb(227, 227, 227)');
+            } else if($('[name=' + t[i] + ']').prop('disabled')){
+                $('[name=' + t[i] + ']').prop('disabled', false);
+                if(data.datalist[t[i]].color!='white' && data.datalist[t[i]].color!='yellow') {
+                    data.datalist[t[i]].color = 'white';
+                    $('[name=' + t[i] + ']').css('background-color', 'white');
+                }
+            }
+        }
+        if (gondolaSelect == '无') {
+            $('#zp1p').css('display','none');
+            $('#gssm1').css('display','none');
+        } else {
+            $('#zp1p').css('display','block');
+            $('#gssm1').css('display','block');
+        }
+    }
+    function gruSelectCDhange() {
+        var t = ['hwll', 'hsw', 'tshl','grugssxh', 'grugssd', 'grugssn', 'grugssf', 'grugssp'];
+        var gruSelect = $('[name=gruSelect]').val();
+        for (var i in t) {
+            if (gruSelect == '无') {
+                $('[name=' + t[i] + ']').prop('disabled', true);
+                data.datalist[t[i]].color = 'rgb(227, 227, 227)';
+                $('[name='+t[i]+']').css('background-color','rgb(227, 227, 227)');
+            } else if($('[name=' + t[i] + ']').prop('disabled')) {
+                $('[name=' + t[i] + ']').prop('disabled', false);
+                if(data.datalist[t[i]].color!='white' && data.datalist[t[i]].color!='yellow'){
+                    data.datalist[t[i]].color = 'white';
+                    $('[name='+t[i]+']').css('background-color','white');
+                }
+            }
+        }
+        if (gruSelect == '无') {
+            $('#zp2p').css('display','none');
+            $('#gssm2').css('display','none');
+        } else {
+            $('#zp2p').css('display','block');
+            $('#gssm2').css('display','block');
+        }
+    }
+
 </script>
 <div class="buttonbox">
     <input class="button" form="form1" type="submit" value="输出钢丝绳计算书" onclick="getPDF('/WireRopePDF1')"/>
     <input class="button" form="form1" type="submit" value="输出检验计算书" onclick="getPDF('/WireRopePDF2')"/>
     <input class="button" form="form1" type="reset" onclick="data.clear();
-                                                            $('.diaochuan td[id]').text(' ');
-                                                            $('.wuliaoqishengjigou td[id]').text(' ')
+                                                            $('.diaochuan p[id]').text(' ');
+                                                            $('.wuliaoqishengjigou p[id]').text(' ')
     $('.diaochuan').css('display','table-row');  $('.wuliaoqishengjigou').css('display','table-row')" value="重置"/>
 </div>
 </body>

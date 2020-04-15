@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="main(pdfname)">
+    <div>
+
+        <el-col :span="24" v-if="main.really">
+            <project_table ref="table" :data="main.data" :fliter="main.fliter"></project_table>
+        </el-col>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

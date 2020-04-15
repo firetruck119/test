@@ -1,0 +1,87 @@
+
+<div id='row'>
+    <template>
+        <el-row :gutter="10">
+            <el-col class='marginTop20' :span="8" v-for='table,index in tableData.tables'>
+                <el-card id='card' style='padding: 5px'>
+                    <div slot="header">
+                        <h4>{{table.tableTitle}}</h4>
+                    </div>
+                    <template v-if='index==0'>
+                        <el-table :data="table.data" border style="width: 100%">
+                            <el-table-column prop="name" label="内容" width=""></el-table-column>
+                            <el-table-column label='123' width="300">
+                                <template slot-scope="scope">
+                                    <el-input v-model="data[scope.row.id]"></el-input>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                    </template>
+
+                    <template v-else>
+                        <el-table :data="table.data" border style="width: 100%">
+                            <el-table-column prop="name" label="内容" width=""></el-table-column>
+                            <el-table-column label='123' width="300">
+                                <template slot-scope="scope">
+                                    <el-input v-model="data[scope.row.id]"></el-input>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                    </template>
+                </el-card>
+            </el-col>
+        </el-row>
+    </template>
+    <div id='computer'></div>
+</div>
+
+<script>
+    var create = function (tableData, el, computed) {
+        data = (function () {
+            var l = {};
+            for (var index in tableData.tables) {
+                var tableColumns = tableData.tables[index].data;
+                for (var column in tableColumns) {
+                    var id = tableColumns[column].id;
+                    var value = tableColumns[column].value;
+                    if (value)
+                        l[id] = value;
+                    else
+                        l[id] = undefined;
+                }
+            }
+            return l;
+        })()
+        template = '<div>'
+        for (var a in computed) {
+            template += "<input type='hidden' v-model='" + a + "'>\n"
+            computed[a] = (function () {
+                console.log(computed[a])
+                return computed[a];
+            })()
+        }
+        template += '</div>'
+        console.log(template)
+        new Vue({
+            el: '#computer',
+            data: { template: template }
+        });
+        return new Vue({
+            el: el,
+            data: {
+                tableData: tableData,
+                data: data,
+                widthOfTable: {
+                    c2: ['50%', '50%'],
+                    c4: ['40%', '10%', '40%', '10%'],
+                }
+            },
+            computed: computed,
+            methods: {
+                getTable: function (row, col) {
+                    return this.tableData.tables[(row - 1) * 3 + col - 1];
+                }
+            }
+        });
+    }
+</script>

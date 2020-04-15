@@ -70,7 +70,7 @@ public class ToolForPDFController {
             LocalDateTime t=LocalDateTime.now();
             DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyyMMdd");
             if (MyEnv.isLocal()) {
-
+                file = new File("D:/image/"+name +t.format(dtf2)+'.'+s[s.length - 1] );
             } else {
                 file = new File("/root/image/" + name +t.format(dtf2)+'.'+s[s.length - 1] );
             }

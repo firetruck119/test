@@ -1,755 +1,630 @@
 package com.point.entity.pdf;
 
 import com.point.common.CommonFunc;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import static java.lang.Math.*;
 
 public class PinSeatEntity {
+    @Getter
+    @Setter
     private String no;
+    @Getter
+    @Setter
     private String ver;
+    @Getter
+    @Setter
     private String xmmc;
+    @Getter
+    @Setter
     private String zjxh;
+    @Getter
+    @Setter
     private String jsr;
+    @Getter
+    @Setter
     private String shr;
+    @Getter
+    @Setter
     private String pzr;
+    @Getter
+    @Setter
     private String date;
 
-    private String clz;
-    private String clh;
-    private String xndj;
-
-    private Double fx;
-    private Double fv;
-    private Double f02;
-    private Double fd;
-    private Double fvd;
-    private Double f02d;
-    private Double aa;
-    private Double ab;
-    private Double ac;
-    private Double l1;
-    private Double l2;
-    private Double l3;
-    private Double wa;
-    private Double wb;
-    private Double wc;
-    private Double ad;
-
-    private Double k;
-    private Double l4;
-    private Double r;
-    private Double fwf;
-
-    private Double r1;
-    private Double r2;
-    private Double lx;
-    private Double as;
-    private Double l5;
-    private Double fbt;
-    private Double fbv;
-    private Double fbc;
-    private Double f;
-    private Double z;
-
-    public Double getZ() {
-        return z;
-    }
-
-    public void setZ(Double z) {
-        this.z = z;
-    }
-
-    public Double getF() {
-        return f;
-    }
-
-    public void setF(Double f) {
-        this.f = f;
-    }
-
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
-    public String getVer() {
-        return ver;
-    }
-
-    public void setVer(String ver) {
-        this.ver = ver;
-    }
-
-    public String getXmmc() {
-        return xmmc;
-    }
-
-    public void setXmmc(String xmmc) {
-        this.xmmc = xmmc;
-    }
-
-    public String getZjxh() {
-        return zjxh;
-    }
-
-    public void setZjxh(String zjxh) {
-        this.zjxh = zjxh;
-    }
-
-    public String getJsr() {
-        return jsr;
-    }
-
-    public void setJsr(String jsr) {
-        this.jsr = jsr;
-    }
-
-    public String getShr() {
-        return shr;
-    }
-
-    public void setShr(String shr) {
-        this.shr = shr;
-    }
-
-    public String getPzr() {
-        return pzr;
-    }
-
-    public void setPzr(String pzr) {
-        this.pzr = pzr;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getClz() {
-        return clz;
-    }
-
-    public void setClz(String clz) {
-        this.clz = clz;
-    }
-
-    public String getClh() {
-        return clh;
-    }
-
-    public void setClh(String clh) {
-        this.clh = clh;
-    }
-
-    public String getXndj() {
-        return xndj;
-    }
-
-    public void setXndj(String xndj) {
-        this.xndj = xndj;
-    }
-
-    public Double getFx() {
-        return fx;
-    }
-
-    public void setFx(Double fx) {
-        this.fx = fx;
-    }
-
-    public Double getFv() {
-        return fv;
-    }
-
-    public void setFv(Double fv) {
-        this.fv = fv;
-    }
-
-    public Double getF02() {
-        return f02;
-    }
-
-    public void setF02(Double f02) {
-        this.f02 = f02;
-    }
-
-    public Double getFd() {
-        return fd;
-    }
-
-    public void setFd(Double fd) {
-        this.fd = fd;
-    }
-
-    public Double getFvd() {
-        return fvd;
-    }
-
-    public void setFvd(Double fvd) {
-        this.fvd = fvd;
-    }
-
-    public Double getF02d() {
-        return f02d;
-    }
-
-    public void setF02d(Double f02d) {
-        this.f02d = f02d;
-    }
-
-    public Double getAa() {
-        return aa;
-    }
-
-    public void setAa(Double aa) {
-        this.aa = aa;
-    }
-
-    public Double getAb() {
-        return ab;
-    }
-
-    public void setAb(Double ab) {
-        this.ab = ab;
-    }
-
-    public Double getAc() {
-        return ac;
-    }
-
-    public void setAc(Double ac) {
-        this.ac = ac;
-    }
-
-    public Double getL1() {
-        return l1;
-    }
-
-    public void setL1(Double l1) {
-        this.l1 = l1;
-    }
-
-    public Double getL2() {
-        return l2;
-    }
-
-    public void setL2(Double l2) {
-        this.l2 = l2;
-    }
-
-    public Double getL3() {
-        return l3;
-    }
-
-    public void setL3(Double l3) {
-        this.l3 = l3;
-    }
-
-    public Double getWa() {
-        return wa;
-    }
-
-    public void setWa(Double wa) {
-        this.wa = wa;
-    }
-
-    public Double getWb() {
-        return wb;
-    }
-
-    public void setWb(Double wb) {
-        this.wb = wb;
-    }
-
-    public Double getWc() {
-        return wc;
-    }
-
-    public void setWc(Double wc) {
-        this.wc = wc;
-    }
-
-    public Double getAd() {
-        return ad;
-    }
-
-    public void setAd(Double ad) {
-        this.ad = ad;
-    }
-
-    public Double getK() {
-        return k;
-    }
-
-    public void setK(Double k) {
-        this.k = k;
-    }
-
-    public Double getL4() {
-        return l4;
-    }
-
-    public void setL4(Double l4) {
-        this.l4 = l4;
-    }
-
-    public Double getR() {
-        return r;
-    }
-
-    public void setR(Double r) {
-        this.r = r;
-    }
-
-    public Double getFwf() {
-        return fwf;
-    }
-
-    public void setFwf(Double fwf) {
-        this.fwf = fwf;
-    }
-
-    public Double getR1() {
-        return r1;
-    }
-
-    public void setR1(Double r1) {
-        this.r1 = r1;
-    }
-
-    public Double getR2() {
-        return r2;
-    }
-
-    public void setR2(Double r2) {
-        this.r2 = r2;
-    }
-
-    public Double getLx() {
-        return lx;
-    }
-
-    public void setLx(Double lx) {
-        this.lx = lx;
-    }
-
-    public Double getAs() {
-        return as;
-    }
-
-    public void setAs(Double as) {
-        this.as = as;
-    }
-
-    public Double getL5() {
-        return l5;
-    }
-
-    public void setL5(Double l5) {
-        this.l5 = l5;
-    }
-
-    public Double getFbt() {
-        return fbt;
-    }
-
-    public void setFbt(Double fbt) {
-        this.fbt = fbt;
-    }
-
-    public Double getFbv() {
-        return fbv;
-    }
-
-    public void setFbv(Double fbv) {
-        this.fbv = fbv;
-    }
-
-    public Double getFbc() {
-        return fbc;
-    }
-
-    public void setFbc(Double fbc) {
-        this.fbc = fbc;
-    }
-
-    private Map<String,String> getStringMap(){
-        Map<String,String> result =new HashMap<>();
-        result.put("no", CommonFunc.convertDoubleToString(no));
-        result.put("ver", CommonFunc.convertDoubleToString(ver));
-        result.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
-        result.put("zjxh", CommonFunc.convertDoubleToString(zjxh));
-        result.put("jsr", CommonFunc.convertDoubleToString(jsr));
-        result.put("shr", CommonFunc.convertDoubleToString(shr));
-        result.put("pzr", CommonFunc.convertDoubleToString(pzr));
-        result.put("date", CommonFunc.convertDoubleToString(date));
-        result.put("clz", CommonFunc.convertDoubleToString(clz));
-        result.put("clh", CommonFunc.convertDoubleToString(clh));
-        result.put("xndj", CommonFunc.convertDoubleToString(xndj));
-        result.put("fx", CommonFunc.convertDoubleToString(fx));
-        result.put("fv", CommonFunc.convertDoubleToString(fv));
-        result.put("f0.2", CommonFunc.convertDoubleToString(f02));
-        result.put("fd", CommonFunc.convertDoubleToString(fd));
-        result.put("fvd", CommonFunc.convertDoubleToString(fvd));
-        result.put("f0.2d", CommonFunc.convertDoubleToString(f02d));
-        result.put("aa", CommonFunc.convertDoubleToString(aa));
-        result.put("ab", CommonFunc.convertDoubleToString(ab));
-        result.put("ac", CommonFunc.convertDoubleToString(ac));
-        result.put("l1", CommonFunc.convertDoubleToString(l1));
-        result.put("l2", CommonFunc.convertDoubleToString(l2));
-        result.put("l3", CommonFunc.convertDoubleToString(l3));
-        result.put("wa", CommonFunc.convertDoubleToString(wa));
-        result.put("wb", CommonFunc.convertDoubleToString(wb));
-        result.put("wc", CommonFunc.convertDoubleToString(wc));
-        result.put("ad", CommonFunc.convertDoubleToString(ad));
-        result.put("k", CommonFunc.convertDoubleToString(k));
-        result.put("l4", CommonFunc.convertDoubleToString(l4));
-        result.put("r", CommonFunc.convertDoubleToString(r));
-        result.put("fwf", CommonFunc.convertDoubleToString(fwf));
-        result.put("r1", CommonFunc.convertDoubleToString(r1));
-        result.put("r2", CommonFunc.convertDoubleToString(r2));
-        result.put("lx", CommonFunc.convertDoubleToString(lx));
-        result.put("as", CommonFunc.convertDoubleToString(as));
-        result.put("l5", CommonFunc.convertDoubleToString(l5));
-        result.put("fbt", CommonFunc.convertDoubleToString(fbt));
-        result.put("fbv", CommonFunc.convertDoubleToString(fbv));
-        result.put("fbc", CommonFunc.convertDoubleToString(fbc));
-        result.put("f", CommonFunc.convertDoubleToString(f));
-        result.put("osa",f==2700.0?"OSHA STD1-3.3\r\n防风销标准":"");
-        return result;
-    }
-    private Map<String,Double> getDoubleMap(){
-        Map<String,Double> result = new HashMap<>();
-        Double ma =f*l1;
-        Double oa =ma/wa;
-        Double ta =f/aa;
-        Double o4a=Math.sqrt(oa*oa+3*ta*ta);
-        Double mb =f*l2;
-        Double ob =mb/wb;
-        Double tb =f/ab;
-        Double o4b=Math.sqrt(ob*ob+3*tb*tb);
-        Double mc =f*l3;
-        Double oc =mc/wc;
-        Double tc =f/ac;
-        Double o4c=Math.sqrt(oc*oc+3*tc*tc);
-        Double md =f*l4;
-        Double a  =0.7*k;
-        Double t  =(4*md*(r+a))/(3.14*Math.pow(r+a,4)-Math.pow(r,4));
-        Double od =f/ad;
-        Double td =f/ad;
-        Double o4d=Math.sqrt(od*od+3*td*td);
-        Double m1 =f*l5;
-        Double f1 =(m1*r1)/(2*r1*r1+2*r2*r2);
-        Double o1 =f1/as;
-        Double t1 =f/(4*as);
-        Double o41=Math.sqrt(o1*o1+3*t1*t1);
-        Double m2 =f*l5;
-        Double f2 =m2/(2*lx);
-        Double o2 =f2/as;
-        Double t2 =f/(4*as);
-        Double o42=Math.sqrt(o2*o2+3*t2*t2);
-        Double o3 =f/(4*as);
-
-        result.put("ma",ma);
-        result.put("oa",oa);
-        result.put("ta",ta);
-        result.put("o4a",o4a);
-        result.put("mb",mb);
-        result.put("ob",ob);
-        result.put("tb",tb);
-        result.put("o4b",o4b);
-        result.put("mc",mc);
-        result.put("oc",oc);
-        result.put("tc",tc);
-        result.put("o4c",o4c);
-        result.put("md",md);
-        result.put("a",a);
-        result.put("t",t);
-        result.put("od",od);
-        result.put("td",td);
-        result.put("o4d",o4d);
-        result.put("m1",m1);
-        result.put("f1",f1);
-        result.put("o1",o1);
-        result.put("t1",t1);
-        result.put("o41",o41);
-        result.put("m2",m2);
-        result.put("f2",f2);
-        result.put("o2",o2);
-        result.put("t2",t2);
-        result.put("o42",o42);
-        result.put("o3",o3);
+    @Getter
+    @Setter
+    private String xzclz;
+    @Getter
+    @Setter
+    private Double xzfx;
+    @Getter
+    @Setter
+    private Double xzfv;
+
+    @Getter
+    @Setter
+    private Double xzf02;
+    @Getter
+    @Setter
+    private Double xzfd;
+    @Getter
+    @Setter
+    private Double xzfvd;
+    @Getter
+    @Setter
+    private Double xzaa;
+    @Getter
+    @Setter
+    private Double xzab;
+    @Getter
+    @Setter
+    private Double xzac;
+    @Getter
+    @Setter
+    private Double xzl1;
+    @Getter
+    @Setter
+    private Double xzl2;
+    @Getter
+    @Setter
+    private Double xzl3;
+    @Getter
+    @Setter
+    private Double xzwa;
+    @Getter
+    @Setter
+    private Double xzwb;
+    @Getter
+    @Setter
+    private Double xzwc;
+    @Getter
+    @Setter
+    private Double xzdd;
+    @Getter
+    @Setter
+    private Double xzad;
+    @Getter
+    @Setter
+    private Double xzf;
+    @Getter
+    @Setter
+    private Double xzk;
+
+    @Getter
+    @Setter
+    private Double xzl4;
+    @Getter
+    @Setter
+    private Double xzah;
+    @Getter
+    @Setter
+    private Double xzwh;
+    @Getter
+    @Setter
+    private String xzclh;
+
+    @Getter
+    @Setter
+    private Double xzfwf;
+    @Getter
+    @Setter
+    private Double xzr1;
+    @Getter
+    @Setter
+    private Double xzr2;
+    @Getter
+    @Setter
+    private Double xzlx;
+    @Getter
+    @Setter
+    private String xzgg;
+    @Getter
+    @Setter
+    private Double xzas;
+    @Getter
+    @Setter
+    private Double xzdb;
+    @Getter
+    @Setter
+    private Double xzl5;
+    @Getter
+    @Setter
+    private String xzxndj;
+    @Getter
+    @Setter
+    private Double xzfbt;
+    @Getter @Setter private Double xzfbv;
+    @Getter @Setter private Double xzfbc;
+    @Getter @Setter private Double xzd1;
+    @Getter @Setter private Double xzd2;
+    @Getter @Setter private Double xzd3;
+    @Getter @Setter private Double xzd4;
+    //Select
+    @Getter @Setter private String pinDiameter;
+    @Getter @Setter private String boltPerformanceGrade;
+    @Getter @Setter private String materialOfElectrode;
+    @Getter @Setter private String materialOfPinSeat;
+
+    private String xzosa;
+
+    private Double xzma;
+    private Double xzoa;
+    private String xzp1;
+    private String xzm1;
+    private Double xzta;
+    private String xzp2;
+    private String xzm2;
+    private Double xzo4a;
+    private String xzp3;
+    private String xzm3;
+    private String xzm4;
+    private Double xzmb;
+    private Double xzob;
+    private String xzp4;
+    private String xzm5;
+    private Double xztb;
+    private String xzp5;
+    private String xzm6;
+    private Double xzo4b;
+    private String xzp6;
+    private String xzm7;
+    private String xzm8;
+    private Double xzmc;
+    private Double xzoc;
+    private String xzp7;
+    private String xzm9;
+    private Double xztc;
+    private String xzp8;
+    private String xzm10;
+    private Double xzo4c;
+    private String xzp9;
+    private String xzm11;
+    private String xzm12;
+    private Double xzmh;
+    private Double xzoh;
+    private String xzp10;
+    private String xzm13;
+    private Double xzth;
+    private String xzp11;
+    private String xzm14;
+    private Double xzo4h;
+    private String xzp12;
+    private String xzm15;
+    private String xzm16;
+    private Double xzod;
+    private String xzp13;
+    private String xzm17;
+    private Double xztd;
+    private String xzp14;
+    private String xzm18;
+    private String xzm19;
+    private Double xzma1;
+    private Double xzf1;
+    private Double xzo1;
+    private String xzp15;
+    private String xzm20;
+    private Double xzt1;
+    private String xzp16;
+    private String xzm21;
+    private Double xzo41;
+    private String xzp17;
+    private String xzm22;
+    private String xzm23;
+    private Double xzma2;
+    private Double xzf2;
+    private Double xzo2;
+    private String xzp18;
+    private String xzm24;
+    private Double xzt2;
+    private String xzp19;
+    private String xzm25;
+    private Double xzo42;
+    private String xzp20;
+    private String xzm26;
+    private String xzm27;
+    private Double xzo3;
+    private String xzp21;
+    private String xzm28;
+    private String xzm29;
+
+
+    private Double xzyft1;
+    private Double xzyft2;
+    private String xzyp1;
+    private String xzym1;
+    private String xzyp2;
+    private String xzym2;
+
+    private Double xzyft3;
+    private Double xzyft4;
+    private String xzyp3;
+    private String xzym3;
+    private String xzyp4;
+    private String xzym4;
+
+    private Double xzyft6;
+    private Double xzyft7;
+    private String xzyp6;
+    private String xzym6;
+    private String xzyp7;
+    private String xzym7;
+
+    private Double xzyft8;
+    private Double xzyft9;
+    private String xzyp8;
+    private String xzym8;
+    private String xzyp9;
+    private String xzym9;
+
+    private Double xzyft10;
+    private Double xzyft11;
+    private String xzyp10;
+    private String xzym10;
+    private String xzyp11;
+    private String xzym11;
+
+    private Double xzyft12;
+    private String xzyp12;
+    private String xzym12;
+
+
+    public Map<String, String> takeMapForPDF() {
+        calculateFun();
+        Map<String, String> result = new HashMap<>();
+        result.put("no",CommonFunc.convertDoubleToString(no));
+        result.put("ver",CommonFunc.convertDoubleToString(ver));
+        result.put("xmmc",CommonFunc.convertDoubleToString(xmmc));
+        result.put("zjxh",CommonFunc.convertDoubleToString(zjxh));
+        result.put("jsr",CommonFunc.convertDoubleToString(jsr));
+        result.put("shr",CommonFunc.convertDoubleToString(shr));
+        result.put("pzr",CommonFunc.convertDoubleToString(pzr));
+        result.put("date",CommonFunc.convertDoubleToString(date));
+        result.put("xzclz",CommonFunc.convertDoubleToString(xzclz));
+        result.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
+        result.put("xzfv",CommonFunc.convertDoubleToString(xzfv));
+        result.put("xzf0.2",CommonFunc.convertDoubleToString(xzf02));
+        result.put("xzfd",CommonFunc.convertDoubleToString(xzfd));
+        result.put("xzfvd",CommonFunc.convertDoubleToString(xzfvd));
+        result.put("xzaa",CommonFunc.convertDoubleToString(xzaa));
+        result.put("xzab",CommonFunc.convertDoubleToString(xzab));
+        result.put("xzac",CommonFunc.convertDoubleToString(xzac));
+        result.put("xzl1",CommonFunc.convertDoubleToString(xzl1));
+        result.put("xzl2",CommonFunc.convertDoubleToString(xzl2));
+        result.put("xzl3",CommonFunc.convertDoubleToString(xzl3));
+        result.put("xzwa",CommonFunc.convertDoubleToString(xzwa));
+        result.put("xzwb",CommonFunc.convertDoubleToString(xzwb));
+        result.put("xzwc",CommonFunc.convertDoubleToString(xzwc));
+        result.put("xzdd",CommonFunc.convertDoubleToString(xzdd));
+        result.put("xzad",CommonFunc.convertDoubleToString(xzad));
+        result.put("xzf",CommonFunc.convertDoubleToString(xzf));
+        result.put("xzk",CommonFunc.convertDoubleToString(xzk));
+        result.put("xzl4",CommonFunc.convertDoubleToString(xzl4));
+        result.put("xzah",CommonFunc.convertDoubleToString(xzah));
+        result.put("xzwh",CommonFunc.convertDoubleToString(xzwh));
+        result.put("xzclh",CommonFunc.convertDoubleToString(xzclh));
+        result.put("xzfwf",CommonFunc.convertDoubleToString(xzfwf));
+        result.put("xzr1",CommonFunc.convertDoubleToString(xzr1));
+        result.put("xzr2",CommonFunc.convertDoubleToString(xzr2));
+        result.put("xzlx",CommonFunc.convertDoubleToString(xzlx));
+        result.put("xzgg",CommonFunc.convertDoubleToString(xzgg));
+        result.put("xzas",CommonFunc.convertDoubleToString(xzas));
+        result.put("xzdb",CommonFunc.convertDoubleToString(xzdb));
+        result.put("xzl5",CommonFunc.convertDoubleToString(xzl5));
+        result.put("xzxndj",CommonFunc.convertDoubleToString(xzxndj));
+        result.put("xzfbt",CommonFunc.convertDoubleToString(xzfbt));
+        result.put("xzfbv",CommonFunc.convertDoubleToString(xzfbv));
+        result.put("xzfbc",CommonFunc.convertDoubleToString(xzfbc));
+        result.put("xzosa",CommonFunc.convertDoubleToString(xzosa));
+
+        result.put("xzma",CommonFunc.convertDoubleToString(xzma));
+        result.put("xzoa",CommonFunc.convertDoubleToString(xzoa));
+        result.put("xzp1",CommonFunc.convertDoubleToString(xzp1));
+        result.put("xzm1",CommonFunc.convertDoubleToString(xzm1));
+        result.put("xzta",CommonFunc.convertDoubleToString(xzta));
+        result.put("xzp2",CommonFunc.convertDoubleToString(xzp2));
+        result.put("xzm2",CommonFunc.convertDoubleToString(xzm2));
+        result.put("xzo4a",CommonFunc.convertDoubleToString(xzo4a));
+        result.put("xzp3",CommonFunc.convertDoubleToString(xzp3));
+        result.put("xzm3",CommonFunc.convertDoubleToString(xzm3));
+        result.put("xzm4",CommonFunc.convertDoubleToString(xzm4));
+        result.put("xzmb",CommonFunc.convertDoubleToString(xzmb));
+        result.put("xzob",CommonFunc.convertDoubleToString(xzob));
+        result.put("xzp4",CommonFunc.convertDoubleToString(xzp4));
+        result.put("xzm5",CommonFunc.convertDoubleToString(xzm5));
+        result.put("xztb",CommonFunc.convertDoubleToString(xztb));
+        result.put("xzp5",CommonFunc.convertDoubleToString(xzp5));
+        result.put("xzm6",CommonFunc.convertDoubleToString(xzm6));
+        result.put("xzo4b",CommonFunc.convertDoubleToString(xzo4b));
+        result.put("xzp6",CommonFunc.convertDoubleToString(xzp6));
+        result.put("xzm7",CommonFunc.convertDoubleToString(xzm7));
+        result.put("xzm8",CommonFunc.convertDoubleToString(xzm8));
+        result.put("xzmc",CommonFunc.convertDoubleToString(xzmc));
+        result.put("xzoc",CommonFunc.convertDoubleToString(xzoc));
+        result.put("xzp7",CommonFunc.convertDoubleToString(xzp7));
+        result.put("xzm9",CommonFunc.convertDoubleToString(xzm9));
+        result.put("xztc",CommonFunc.convertDoubleToString(xztc));
+        result.put("xzp8",CommonFunc.convertDoubleToString(xzp8));
+        result.put("xzm10",CommonFunc.convertDoubleToString(xzm10));
+        result.put("xzo4c",CommonFunc.convertDoubleToString(xzo4c));
+        result.put("xzp9",CommonFunc.convertDoubleToString(xzp9));
+        result.put("xzm11",CommonFunc.convertDoubleToString(xzm11));
+        result.put("xzm12",CommonFunc.convertDoubleToString(xzm12));
+        result.put("xzmh",CommonFunc.convertDoubleToString(xzmh));
+        result.put("xzoh",CommonFunc.convertDoubleToString(xzoh));
+        result.put("xzp10",CommonFunc.convertDoubleToString(xzp10));
+        result.put("xzm13",CommonFunc.convertDoubleToString(xzm13));
+        result.put("xzth",CommonFunc.convertDoubleToString(xzth));
+        result.put("xzp11",CommonFunc.convertDoubleToString(xzp11));
+        result.put("xzm14",CommonFunc.convertDoubleToString(xzm14));
+        result.put("xzo4h",CommonFunc.convertDoubleToString(xzo4h));
+        result.put("xzp12",CommonFunc.convertDoubleToString(xzp12));
+        result.put("xzm15",CommonFunc.convertDoubleToString(xzm15));
+        result.put("xzm16",CommonFunc.convertDoubleToString(xzm16));
+        result.put("xzod",CommonFunc.convertDoubleToString(xzod));
+        result.put("xzp13",CommonFunc.convertDoubleToString(xzp13));
+        result.put("xzm17",CommonFunc.convertDoubleToString(xzm17));
+        result.put("xztd",CommonFunc.convertDoubleToString(xztd));
+        result.put("xzp14",CommonFunc.convertDoubleToString(xzp14));
+        result.put("xzm18",CommonFunc.convertDoubleToString(xzm18));
+        result.put("xzm19",CommonFunc.convertDoubleToString(xzm19));
+        result.put("xzma1",CommonFunc.convertDoubleToString(xzma1));
+        result.put("xzf1",CommonFunc.convertDoubleToString(xzf1));
+        result.put("xzo1",CommonFunc.convertDoubleToString(xzo1));
+        result.put("xzp15",CommonFunc.convertDoubleToString(xzp15));
+        result.put("xzm20",CommonFunc.convertDoubleToString(xzm20));
+        result.put("xzt1",CommonFunc.convertDoubleToString(xzt1));
+        result.put("xzp16",CommonFunc.convertDoubleToString(xzp16));
+        result.put("xzm21",CommonFunc.convertDoubleToString(xzm21));
+        result.put("xzo41",CommonFunc.convertDoubleToString(xzo41));
+        result.put("xzp17",CommonFunc.convertDoubleToString(xzp17));
+        result.put("xzm22",CommonFunc.convertDoubleToString(xzm22));
+        result.put("xzm23",CommonFunc.convertDoubleToString(xzm23));
+        result.put("xzma2",CommonFunc.convertDoubleToString(xzma2));
+        result.put("xzf2",CommonFunc.convertDoubleToString(xzf2));
+        result.put("xzo2",CommonFunc.convertDoubleToString(xzo2));
+        result.put("xzp18",CommonFunc.convertDoubleToString(xzp18));
+        result.put("xzm24",CommonFunc.convertDoubleToString(xzm24));
+        result.put("xzt2",CommonFunc.convertDoubleToString(xzt2));
+        result.put("xzp19",CommonFunc.convertDoubleToString(xzp19));
+        result.put("xzm25",CommonFunc.convertDoubleToString(xzm25));
+        result.put("xzo42",CommonFunc.convertDoubleToString(xzo42));
+        result.put("xzp20",CommonFunc.convertDoubleToString(xzp20));
+        result.put("xzm26",CommonFunc.convertDoubleToString(xzm26));
+        result.put("xzm27",CommonFunc.convertDoubleToString(xzm27));
+        result.put("xzo3",CommonFunc.convertDoubleToString(xzo3));
+        result.put("xzp21",CommonFunc.convertDoubleToString(xzp21));
+        result.put("xzm28",CommonFunc.convertDoubleToString(xzm28));
+        result.put("xzm29",CommonFunc.convertDoubleToString(xzm29));
 
         return result;
     }
-    private String getString(Boolean b){
-        return b?"满足":"不满足";
-    }
-    private String getSign(double a,double b){
-        if(a>b)
-            return">";
-        if(a==b)
-            return"=";
-        if(a<b)
-            return"<";
-        return null;
-    }
-    public Map<String,String> getMapForPdf1(){
-        Map<String,String> result =new HashMap<>();
-        Map<String,Double> map=getDoubleMap();
-        Map<String,String> stringMap=getStringMap();
-        Boolean boa  =map.get("oa")<=fx;
-        Boolean man1 =map.get("oa")<=fx;
-        Boolean bta  =map.get("ta")<=fv;
-        Boolean man2 =map.get("ta")<=fv;
-        Boolean b4a  =map.get("o4a")<=f02;
-        Boolean man3 =map.get("o4a")<=f02;
-        Boolean bob  =map.get("ob")<=fx;
-        Boolean man5 =map.get("ob")<=fx;
-        Boolean btb  =map.get("tb")<=fv;
-        Boolean man6 =map.get("tb")<=fv;
-        Boolean b4b  =map.get("o4b")<=f02;
-        Boolean man7 =map.get("o4b")<=f02;
-        Boolean boc  =map.get("oc")<=fx;
-        Boolean man9 =map.get("oc")<=fx;
-        Boolean btc  =map.get("tc")<=fv;
-        Boolean man10=map.get("tc")<=fv;
-        Boolean b4c  =map.get("o4c")<=f02;
-        Boolean man11=map.get("o4c")<=f02;
-        Boolean bt   =map.get("t")<=fwf;
-        Boolean man13=map.get("t")<=fwf;
-        Boolean bod  = map.get("od")<=fd;
-        Boolean man14= map.get("od")<=fd;
-        Boolean btd  = map.get("td")<=fvd;
-        Boolean man15= map.get("td")<=fvd;
-        Boolean b4d  = map.get("o4d")<=f02d;
-        Boolean man16= map.get("o4d")<=f02d;
-        Boolean bo1  = map.get("o1")<=fbt;
-        Boolean man18= map.get("o1")<=fbt;
-        Boolean bt1  = map.get("t1")<=fbv;
-        Boolean man19= map.get("t1")<=fbv;
-        Boolean b41  = map.get("o41")<=fbc;
-        Boolean man20= map.get("o41")<=fbc;
-        Boolean bo2  = map.get("o2")<=fbt;
-        Boolean man22= map.get("o2")<=fbt;
-        Boolean bt2  = map.get("t2")<=fbv;
-        Boolean man23= map.get("t2")<=fbv;
-        Boolean b42 = map.get("o42")<=fbc;
-        Boolean man24= map.get("o42")<=fbc;
-        Boolean bo3  =map.get("o3")<=fbt;
-        Boolean man26=map.get("o3")<=fbt;
-        Boolean man4 =man1&&man2&&man3;
-        Boolean man8 =man5&&man6&&man7;
-        Boolean man12=man9&&man10&&man11;
-        Boolean man17= man14&&man15&&man16;
-        Boolean man21= man18&&man19&&man20;
-        Boolean man25= man22&&man23&&man24;
-        Boolean man27=man26;
-        for(Map.Entry<String,Double> e:map.entrySet()){
-            result.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
-        }
-        for(Map.Entry<String,String> e:stringMap.entrySet()){
-            result.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
-        }
 
-//        result.put("boa",CommonFunc.convertDoubleToString(getSign(boa)));
-        result.put("man1", CommonFunc.convertDoubleToString(getString(man1)));
-//        result.put("bta",CommonFunc.convertDoubleToString(getSign(bta)));
-        result.put("man2", CommonFunc.convertDoubleToString(getString(man2)));
-//        result.put("b4a",CommonFunc.convertDoubleToString(getSign(b4a)));
-        result.put("man3", CommonFunc.convertDoubleToString(getString(man3)));
-        result.put("man4", CommonFunc.convertDoubleToString(getString(man4)));
-//        result.put("bob",CommonFunc.convertDoubleToString(getSign(bob)));
-        result.put("man5", CommonFunc.convertDoubleToString(getString(man5)));
-//        result.put("btb",CommonFunc.convertDoubleToString(getSign(btb)));
-        result.put("man6", CommonFunc.convertDoubleToString(getString(man6)));
-//        result.put("b4b",CommonFunc.convertDoubleToString(getSign(b4b)));
-        result.put("man7", CommonFunc.convertDoubleToString(getString(man7)));
-        result.put("man8", CommonFunc.convertDoubleToString(getString(man8)));
-//        result.put("boc",CommonFunc.convertDoubleToString(getSign(boc)));
-        result.put("man9", CommonFunc.convertDoubleToString(getString(man9)));
-//        result.put("btc",CommonFunc.convertDoubleToString(getSign(btc)));
-        result.put("man10", CommonFunc.convertDoubleToString(getString(man10)));
-//        result.put("b4c",CommonFunc.convertDoubleToString(getSign(b4c)));
-        result.put("man11", CommonFunc.convertDoubleToString(getString(man11)));
-        result.put("man12", CommonFunc.convertDoubleToString(getString(man12)));
-//        result.put("bt",CommonFunc.convertDoubleToString(getSign(bt)));
-        result.put("man13", CommonFunc.convertDoubleToString(getString(man13)));
-//        result.put("bod",CommonFunc.convertDoubleToString(getSign(bod)));
-        result.put("man14", CommonFunc.convertDoubleToString(getString(man14)));
-//        result.put("btd",CommonFunc.convertDoubleToString(getSign(btd)));
-        result.put("man15", CommonFunc.convertDoubleToString(getString(man15)));
-//        result.put("b4d",CommonFunc.convertDoubleToString(getSign(b4d)));
-        result.put("man16", CommonFunc.convertDoubleToString(getString(man16)));
-        result.put("man17", CommonFunc.convertDoubleToString(getString(man17)));
-//        result.put("bo1",CommonFunc.convertDoubleToString(getSign(bo1)));
-        result.put("man18", CommonFunc.convertDoubleToString(getString(man18)));
-//        result.put("bt1",CommonFunc.convertDoubleToString(getSign(bt1)));
-        result.put("man19", CommonFunc.convertDoubleToString(getString(man19)));
-//        result.put("b41",CommonFunc.convertDoubleToString(getSign(b41)));
-        result.put("man20", CommonFunc.convertDoubleToString(getString(man20)));
-        result.put("man21", CommonFunc.convertDoubleToString(getString(man21)));
-//        result.put("bo2",CommonFunc.convertDoubleToString(getSign(bo2)));
-        result.put("man22", CommonFunc.convertDoubleToString(getString(man22)));
-//        result.put("bt2",CommonFunc.convertDoubleToString(getSign(bt2)));
-        result.put("man23", CommonFunc.convertDoubleToString(getString(man23)));
-//        result.put("b42",CommonFunc.convertDoubleToString(getSign(b42)));
-        result.put("man24", CommonFunc.convertDoubleToString(getString(man24)));
-        result.put("man25", CommonFunc.convertDoubleToString(getString(man25)));
-//        result.put("bo3",CommonFunc.convertDoubleToString(getSign(bo3)));
-        result.put("man26", CommonFunc.convertDoubleToString(getString(man26)));
-        result.put("man27", CommonFunc.convertDoubleToString(getString(man27)));
-        result.put("boa", CommonFunc.convertDoubleToString(getSign(map.get("oa"),fx)));
-        result.put("bta", CommonFunc.convertDoubleToString(getSign(map.get("ta"),fv)));
-        result.put("b4a", CommonFunc.convertDoubleToString(getSign(map.get("o4a"),f02)));
-        result.put("bob", CommonFunc.convertDoubleToString(getSign(map.get("ob"),fx)));
-        result.put("btb", CommonFunc.convertDoubleToString(getSign(map.get("tb"),fv)));
-        result.put("b4b", CommonFunc.convertDoubleToString(getSign(map.get("o4b"),f02)));
-        result.put("boc", CommonFunc.convertDoubleToString(getSign(map.get("oc"),fx)));
-        result.put("btc", CommonFunc.convertDoubleToString(getSign(map.get("tc"),fv)));
-        result.put("b4c", CommonFunc.convertDoubleToString(getSign(map.get("o4c"),f02)));
-        result.put("bt", CommonFunc.convertDoubleToString(getSign(map.get("t"),fwf)));
-        result.put("bod", CommonFunc.convertDoubleToString(getSign( map.get("od"),fd)));
-        result.put("btd", CommonFunc.convertDoubleToString(getSign( map.get("td"),fvd)));
-        result.put("b4d", CommonFunc.convertDoubleToString(getSign( map.get("o4d"),f02d)));
-        result.put("bo1", CommonFunc.convertDoubleToString(getSign( map.get("o1"),fbt)));
-        result.put("bt1", CommonFunc.convertDoubleToString(getSign( map.get("t1"),fbv)));
-        result.put("b41", CommonFunc.convertDoubleToString(getSign( map.get("o41"),fbc)));
-        result.put("bo2", CommonFunc.convertDoubleToString(getSign( map.get("o2"),fbt)));
-        result.put("bt2", CommonFunc.convertDoubleToString(getSign( map.get("t2"),fbv)));
-        result.put("b42", CommonFunc.convertDoubleToString(getSign(map.get("o42"),fbc)));
-        result.put("bo3", CommonFunc.convertDoubleToString(getSign(map.get("o3"),fbt)));
-        return result;
+
+    private void calculateFun() {
+        xzma = xzf * xzl1;
+        xzoa = xzma / xzwa;
+        xzp1 = takeSign(xzoa,xzfx);
+        xzm1 = takeString(xzoa<=xzfx);
+        xzta = xzf / xzaa;
+        xzp2 = takeSign(xzta,xzfv);
+        xzm2 = takeString(xzta<=xzfv);
+        xzo4a=sqrt(pow(xzoa,2)+3*pow(xzta,2));
+        xzp3=takeSign(xzo4a,xzf02);
+        xzm3=takeString(xzo4a<=xzf02);
+        xzm4=takeString(xzm1,xzm2,xzm3);
+        xzmb=xzf*xzl2;
+        xzob=xzmb/xzwb;
+        xzp4=takeSign(xzob,xzfx);
+        xzm5=takeString(xzob<=xzfx);
+        xztb=xzf/xzab;
+        xzp5=takeSign(xztb,xzfv);
+        xzm6=takeString(xztb<=xzfv);
+        xzo4b=sqrt(pow(xzob,2)+3*pow(xztb,2));
+        xzp6=takeSign(xzo4b,xzf02);
+        xzm7=takeString(xzo4b<=xzf02);
+        xzm8=takeString(xzm5,xzm7,xzm6);
+        xzmc=xzf*xzl3;
+        xzoc=xzmc/xzwc;
+        xzp7=takeSign(xzoc,xzfx);
+        xzm9=takeString(xzoc<=xzfx);
+        xztc=xzf/xzac;
+        xzp8=takeSign(xztc,xzfv);
+        xzm10=takeString(xztc<=xzfv);
+        xzo4c=sqrt(pow(xzoc,2)+3*pow(xztc,2));
+        xzp9=takeSign(xzo4c,xzf02);
+        xzm11=takeString(xzo4c<=xzf02);
+        xzm12=takeString(xzm9,xzm10,xzm11);
+        xzmh=xzf*xzl4;
+        xzoh=xzmh/xzwh;
+        xzp10=takeSign(xzoh,xzfwf);
+        xzm13=takeString(xzoh<=xzfwf);
+        xzth=xzf/xzah;
+        xzp11=takeSign(xzth,xzfwf);
+        xzm14=takeString(xzth<=xzfwf);
+        xzo4h=sqrt(pow(xzoh,2)+3*pow(xzth,2));
+        xzp12=takeSign(xzo4h,xzfwf);
+        xzm15=takeString(xzo4h<=xzfwf);
+        xzm16=takeString(xzm15,xzm14,xzm13);
+        xzod=xzf/xzad;
+        xzp13=takeSign(xzod,xzfd);
+        xzm17=takeString(xzod<=xzfd);
+        xztd=xzf/xzad;
+        xzp14=takeSign(xztd,xzfvd);
+        xzm18=takeString(xztd<=xzfvd);
+        xzm19=takeString(xzm18,xzm17);
+        xzma1=xzf*xzl5;
+        xzf1=(xzma1*xzr1)/(2*pow(xzr1,2)+2*pow(xzr2,2));
+        xzo1=xzf1/xzas;
+        xzp15=takeSign(xzo1,xzfbt);
+        xzm20=takeString(xzo1<=xzfbt);
+        xzt1=xzf/(4*xzas);
+        xzp16=takeSign(xzt1,xzfbv);
+        xzm21=takeString(xzt1<=xzfbv);
+        xzo41=sqrt(pow(xzo1,2)+3*pow(xzt1,2));
+        xzp17=takeSign(xzo41,xzfbc);
+        xzm22=takeString(xzo41<=xzfbc);
+        xzm23=takeString(xzm22,xzm21,xzm20);
+        xzma2=xzf*xzl5;
+        xzf2=xzma2/(2*xzlx);
+        xzo2=xzf2/xzas;
+        xzp18=takeSign(xzo2,xzfbt);
+        xzm24=takeString(xzo2<=xzfbt);
+        xzt2=xzf/(4*xzas);
+        xzp19=takeSign(xzt2,xzfbv);
+        xzm25=takeString(xzt2<=xzfbv);
+        xzo42=sqrt(pow(xzo2,2)+3*pow(xzt2,2));
+        xzp20=takeSign(xzo42,xzfbc);
+        xzm26=takeString(xzo42<=xzfbc);
+        xzm27=takeString(xzm26,xzm25,xzm24);
+        xzo3=xzf/(4*xzas);
+        xzp21=takeSign(xzo3,xzfbt);
+        xzm28=takeString(xzo3<=xzfbt);
+        xzm29=takeString(xzm28);
+
+        xzyft1=xzwa*xzfx/xzl1;
+        xzyft2=xzfv*xzaa;
+        xzyp1=takeSign(xzyft1,xzf);
+        xzym1=takeString(xzyft1>=xzf);
+        xzyp2=takeSign(xzyft2,xzf);
+        xzym2=takeString(xzyft2>=xzf);
+        xzyft3=xzwc*xzfx/xzl3;
+        xzyft4=xzfv*xzac;
+        xzyp3=takeSign(xzyft3,xzf);
+        xzym3=takeString(xzyft3>=xzf);
+        xzyp4=takeSign(xzyft4,xzf);
+        xzym4=takeString(xzyft4>=xzf);
+        xzyft6=385*xzad;
+        xzyft7=220*xzad;
+        xzyp6=takeSign(xzyft6,xzf);
+        xzym6=takeString(xzyft6>=xzf);
+        xzyp7=takeSign(xzyft7,xzf);
+        xzym7=takeString(xzyft7>=xzf);
+        xzyft8=(2*xzfbt*xzas*(pow(xzr1,2)+pow(xzr2,2)))/(xzl5*xzr1);
+        xzyft9=4*xzfbv*xzas;
+        xzyp8=takeSign(xzyft8,xzf);
+        xzym8=takeString(xzyft8>=xzf);
+        xzyp9=takeSign(xzyft9,xzf);
+        xzym9=takeString(xzyft9>=xzf);
+        xzyft10=(2*xzfbt*xzas*xzlx)/xzl5;
+        xzyft11=4*xzfbv*xzas;
+        xzyp10=takeSign(xzyft10,xzf);
+        xzym10=takeString(xzyft10>=xzf);
+        xzyp11=takeSign(xzyft11,xzf);
+        xzym11=takeString(xzyft11>=xzf);
+        xzyft12=4*xzfbt*xzas;
+        xzyp12=takeSign(xzyft12,xzf);
+        xzym12=takeString(xzyft12>=xzf);
+        xzosa=xzf==2700?"OSHA STD1-3.3防风销标准":"";
     }
 
-    public Map<String,String> getMapForPdf2(){
-        Map<String,Double> map=getDoubleMap();
-        Map<String,String> resultMap = new HashMap<>();
-        Map<String,String> pdf1Map = getMapForPdf1();
+    private String takeSign(double a, double b) {
+        return a < b ? "<" : a > b ? ">" : "=";
+    }
 
-        for(Map.Entry<String,Double> e:map.entrySet()){
-            resultMap.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
+    private String takeString(boolean a) {
+        return a ? "满足" : "不满足";
+    }
+
+    private String takeString(String ... a) {
+        Boolean b=true;
+        for (String i: a) {
+            b=b&(i.equals("满足"));
         }
-        for(Map.Entry<String,String> e:pdf1Map.entrySet()){
-            resultMap.put(e.getKey(), CommonFunc.convertDoubleToString(e.getValue()));
-        }
+        return b? "满足" : "不满足";
 
-        Double  ft1  =wa*fx/l1;
-        Double  ft2  =fv*aa;
-        Double  ft3  =wc*fx/l3;
-        Double  ft4  =fv*ac;
-        Double  ft5  =(3.14*fwf*(Math.pow(r+0.7*k,4)-Math.pow(r,4)))/(4*l4*(r+0.7*k));
-        Double  ft6  =385*ad;
-        Double  ft7  =220*ad;
-        Double  ft8  =(2*fbt*as*(Math.pow(r1,2)+Math.pow(r,2)))/(l5*r1);
-        Double  ft9  =4*fbv*as;
-        Double  ft10 =(2*fbt*as*lx)/l5;
-        Double  ft11 =4*fbv*as;
-        Double  ft12 =4*fbv*as;
-        Boolean bf1 =ft1>=f;
-        Boolean mf1 =ft1>=f;
-        Boolean bf2 =ft2>=f;
-        Boolean mf2 =ft2>=f;
-        Boolean bf3 =ft3>=f;
-        Boolean mf3 =ft3>=f;
-        Boolean bf4 =ft4>=f;
-        Boolean mf4 =ft4>=f;
-        Boolean bf5 =ft5>=f;
-        Boolean mf5 =ft5>=f;
-        Boolean bf6 =ft6>=f;
-        Boolean mf6 =ft6>=f;
-        Boolean bf7 =ft7>=f;
-        Boolean mf7 =ft7>=f;
-        Boolean bf8 =ft8>=f;
-        Boolean mf8 =ft8>=f;
-        Boolean bf9 =ft9>=f;
-        Boolean mf9 =ft9>=f;
-        Boolean bf10=ft10>=f;
-        Boolean mf10=ft10>=f;
-        Boolean bf11=ft11>=f;
-        Boolean mf11=ft11>=f;
-        Boolean bf12=ft12>=f;
-        Boolean mf12=ft12>=f;
+    }
 
-        resultMap.put("ft1", CommonFunc.convertDoubleToString(ft1));
-        resultMap.put("ft2", CommonFunc.convertDoubleToString(ft2));
-        resultMap.put("ft3", CommonFunc.convertDoubleToString(ft3));
-        resultMap.put("ft4", CommonFunc.convertDoubleToString(ft4));
-        resultMap.put("ft5", CommonFunc.convertDoubleToString(ft5));
-        resultMap.put("ft6", CommonFunc.convertDoubleToString(ft6));
-        resultMap.put("ft7", CommonFunc.convertDoubleToString(ft7));
-        resultMap.put("ft8", CommonFunc.convertDoubleToString(ft8));
-        resultMap.put("ft9", CommonFunc.convertDoubleToString(ft9));
-        resultMap.put("ft10", CommonFunc.convertDoubleToString(ft10));
-        resultMap.put("ft11", CommonFunc.convertDoubleToString(ft11));
-        resultMap.put("ft12", CommonFunc.convertDoubleToString(ft12));
-//        resultMap.put("bf1",CommonFunc.convertDoubleToString(getreSign(bf1)));
-        resultMap.put("mf1", CommonFunc.convertDoubleToString(getString(mf1)));
-//        resultMap.put("bf2",CommonFunc.convertDoubleToString(getreSign(bf2)));
-        resultMap.put("mf2", CommonFunc.convertDoubleToString(getString(mf2)));
-//        resultMap.put("bf3",CommonFunc.convertDoubleToString(getreSign(bf3)));
-        resultMap.put("mf3", CommonFunc.convertDoubleToString(getString(mf3)));
-//        resultMap.put("bf4",CommonFunc.convertDoubleToString(getreSign(bf4)));
-        resultMap.put("mf4", CommonFunc.convertDoubleToString(getString(mf4)));
-//        resultMap.put("bf5",CommonFunc.convertDoubleToString(getreSign(bf5)));
-        resultMap.put("mf5", CommonFunc.convertDoubleToString(getString(mf5)));
-//        resultMap.put("bf6",CommonFunc.convertDoubleToString(getreSign(bf6)));
-        resultMap.put("mf6", CommonFunc.convertDoubleToString(getString(mf6)));
-//        resultMap.put("bf7",CommonFunc.convertDoubleToString(getreSign(bf7)));
-        resultMap.put("mf7", CommonFunc.convertDoubleToString(getString(mf7)));
-//        resultMap.put("bf8",CommonFunc.convertDoubleToString(getreSign(bf8)));
-        resultMap.put("mf8", CommonFunc.convertDoubleToString(getString(mf8)));
-//        resultMap.put("bf9",CommonFunc.convertDoubleToString(getreSign(bf9)));
-        resultMap.put("mf9", CommonFunc.convertDoubleToString(getString(mf9)));
-//        resultMap.put("bf10",CommonFunc.convertDoubleToString(getreSign(bf10)));
-        resultMap.put("mf10", CommonFunc.convertDoubleToString(getString(mf10)));
-//        resultMap.put("bf11",CommonFunc.convertDoubleToString(getreSign(bf11)));
-        resultMap.put("mf11", CommonFunc.convertDoubleToString(getString(mf11)));
-//        resultMap.put("bf12",CommonFunc.convertDoubleToString(getreSign(bf12)));
-        resultMap.put("mf12", CommonFunc.convertDoubleToString(getString(mf12)));
+    public Map<String, String> takeMapForCheck() {
+        calculateFun();
+        Map<String,String> map=new HashMap<>();
+        map.put("xzf",CommonFunc.convertDoubleToString(xzf));
+        map.put("xzclz",CommonFunc.convertDoubleToString(xzclz));
+        map.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
+        map.put("xzwa",CommonFunc.convertDoubleToString(xzwa));
+        map.put("xzl1",CommonFunc.convertDoubleToString(xzl1));
+        map.put("xzfv",CommonFunc.convertDoubleToString(xzfv));
+        map.put("xzaa",CommonFunc.convertDoubleToString(xzaa));
+        map.put("xzwc",CommonFunc.convertDoubleToString(xzwc));
+        map.put("xzl3",CommonFunc.convertDoubleToString(xzl3));
+        map.put("xzac",CommonFunc.convertDoubleToString(xzac));
+        map.put("xzad",CommonFunc.convertDoubleToString(xzad));
+        map.put("xzxndj",CommonFunc.convertDoubleToString(xzxndj));
+        map.put("xzfbt",CommonFunc.convertDoubleToString(xzfbt));
+        map.put("xzfbv",CommonFunc.convertDoubleToString(xzfbv));
+        map.put("xzas",CommonFunc.convertDoubleToString(xzas));
+        map.put("xzr1",CommonFunc.convertDoubleToString(xzr1));
+        map.put("xzr2",CommonFunc.convertDoubleToString(xzr2));
+        map.put("xzl5",CommonFunc.convertDoubleToString(xzl5));
+        map.put("xzlx",CommonFunc.convertDoubleToString(xzlx));
 
-        resultMap.put("bf1", CommonFunc.convertDoubleToString(getSign(ft1,f)));
-        resultMap.put("bf2", CommonFunc.convertDoubleToString(getSign(ft2,f)));
-        resultMap.put("bf3", CommonFunc.convertDoubleToString(getSign(ft3,f)));
-        resultMap.put("bf4", CommonFunc.convertDoubleToString(getSign(ft4,f)));
-        resultMap.put("bf5", CommonFunc.convertDoubleToString(getSign(ft5,f)));
-        resultMap.put("bf6", CommonFunc.convertDoubleToString(getSign(ft6,f)));
-        resultMap.put("bf7", CommonFunc.convertDoubleToString(getSign(ft7,f)));
-        resultMap.put("bf8", CommonFunc.convertDoubleToString(getSign(ft8,f)));
-        resultMap.put("bf9", CommonFunc.convertDoubleToString(getSign(ft9,f)));
-        resultMap.put("bf10", CommonFunc.convertDoubleToString(getSign(ft10,f)));
-        resultMap.put("bf11", CommonFunc.convertDoubleToString(getSign(ft11,f)));
-        resultMap.put("bf12", CommonFunc.convertDoubleToString(getSign(ft12,f)));
-        return resultMap;
+        map.put("xzyft1",CommonFunc.convertDoubleToString(xzyft1));
+        map.put("xzyft2",CommonFunc.convertDoubleToString(xzyft2));
+        map.put("xzyp1",CommonFunc.convertDoubleToString(xzyp1));
+        map.put("xzym1",CommonFunc.convertDoubleToString(xzym1));
+        map.put("xzyp2",CommonFunc.convertDoubleToString(xzyp2));
+        map.put("xzym2",CommonFunc.convertDoubleToString(xzym2));
+        map.put("xzyft3",CommonFunc.convertDoubleToString(xzyft3));
+        map.put("xzyft4",CommonFunc.convertDoubleToString(xzyft4));
+        map.put("xzyp3",CommonFunc.convertDoubleToString(xzyp3));
+        map.put("xzym3",CommonFunc.convertDoubleToString(xzym3));
+        map.put("xzyp4",CommonFunc.convertDoubleToString(xzyp4));
+        map.put("xzym4",CommonFunc.convertDoubleToString(xzym4));
+        map.put("xzyft6",CommonFunc.convertDoubleToString(xzyft6));
+        map.put("xzyft7",CommonFunc.convertDoubleToString(xzyft7));
+        map.put("xzyp6",CommonFunc.convertDoubleToString(xzyp6));
+        map.put("xzym6",CommonFunc.convertDoubleToString(xzym6));
+        map.put("xzyp7",CommonFunc.convertDoubleToString(xzyp7));
+        map.put("xzym7",CommonFunc.convertDoubleToString(xzym7));
+        map.put("xzyft8",CommonFunc.convertDoubleToString(xzyft8));
+        map.put("xzyft9",CommonFunc.convertDoubleToString(xzyft9));
+        map.put("xzyp8",CommonFunc.convertDoubleToString(xzyp8));
+        map.put("xzym8",CommonFunc.convertDoubleToString(xzym8));
+        map.put("xzyp9",CommonFunc.convertDoubleToString(xzyp9));
+        map.put("xzym9",CommonFunc.convertDoubleToString(xzym9));
+        map.put("xzyft10",CommonFunc.convertDoubleToString(xzyft10));
+        map.put("xzyft11",CommonFunc.convertDoubleToString(xzyft11));
+        map.put("xzyp10",CommonFunc.convertDoubleToString(xzyp10));
+        map.put("xzym10",CommonFunc.convertDoubleToString(xzym10));
+        map.put("xzyp11",CommonFunc.convertDoubleToString(xzyp11));
+        map.put("xzym11",CommonFunc.convertDoubleToString(xzym11));
+        map.put("xzyft12",CommonFunc.convertDoubleToString(xzyft12));
+        map.put("xzyp12",CommonFunc.convertDoubleToString(xzyp12));
+        map.put("xzym12",CommonFunc.convertDoubleToString(xzym12));
+        return map;
     }
 
     public Map<String,String> check(){
-        Map<String,String> map=getMapForPdf1();
-        map.putAll(getMapForPdf2());
         Map<String,String> resultmap=new HashMap<>();
-        resultmap.put("o4a",map.get("o4a"));
-        resultmap.put("o4b",map.get("o4b"));
-        resultmap.put("o4c",map.get("o4c"));
-        resultmap.put("o4d",map.get("o4d"));
-        resultmap.put("o41",map.get("o41"));
-        resultmap.put("o42",map.get("o42"));
-        resultmap.put("o3",map.get("o3"));
-        resultmap.put("t",map.get("t"));
-        resultmap.put("man4" ,map.get("man4" ));
-        resultmap.put("man8" ,map.get("man8" ));
-        resultmap.put("man12",map.get("man12"));
-        resultmap.put("man13",map.get("man13"));
-        resultmap.put("man17",map.get("man17"));
-        resultmap.put("man21",map.get("man21"));
-        resultmap.put("man25",map.get("man25"));
-        resultmap.put("man26",map.get("man26"));
+        calculateFun();
+        resultmap.put("xzo4a",CommonFunc.convertDoubleToString( xzo4a));
+        resultmap.put("xzo4b",CommonFunc.convertDoubleToString( xzo4b));
+        resultmap.put("xzo4c",CommonFunc.convertDoubleToString( xzo4c));
+        resultmap.put("xzo4h",CommonFunc.convertDoubleToString( xzo4h));
+        resultmap.put("xzod",CommonFunc.convertDoubleToString( xzod));
+        resultmap.put("xztd",CommonFunc.convertDoubleToString( xztd));
+        resultmap.put("xzo41",CommonFunc.convertDoubleToString( xzo41));
+        resultmap.put("xzo42",CommonFunc.convertDoubleToString( xzo42));
+        resultmap.put("xzo3",CommonFunc.convertDoubleToString( xzo3));
+
+        resultmap.put("xzf02",CommonFunc.convertDoubleToString(xzf02));
+        resultmap.put("xzfwf",CommonFunc.convertDoubleToString(xzfwf));
+        resultmap.put("xzfbt",CommonFunc.convertDoubleToString(xzfbt));
+        resultmap.put("xzfbc",CommonFunc.convertDoubleToString(xzfbc));
+
+        resultmap.put("xzm4",CommonFunc.convertDoubleToString(xzm4));
+        resultmap.put("xzm8",CommonFunc.convertDoubleToString(xzm8));
+        resultmap.put("xzm12",CommonFunc.convertDoubleToString(xzm12));
+        resultmap.put("Xzm16",CommonFunc.convertDoubleToString(xzm16));
+        resultmap.put("xzm17",CommonFunc.convertDoubleToString(xzm17));
+        resultmap.put("xzm18",CommonFunc.convertDoubleToString(xzm18));
+        resultmap.put("xzm23",CommonFunc.convertDoubleToString(xzm23));
+        resultmap.put("xzm25",CommonFunc.convertDoubleToString(xzm25));
+        resultmap.put("xzm29",CommonFunc.convertDoubleToString(xzm29));
         return resultmap;
     }
 

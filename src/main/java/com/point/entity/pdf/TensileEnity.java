@@ -286,7 +286,7 @@ public class TensileEnity {
         result.put("sjc1", CommonFunc.convertDoubleToString(mjc1));
         result.put("sjas", CommonFunc.convertDoubleToString(mjas));
         result.put("sjl", CommonFunc.convertDoubleToString(mjl));
-        result.put("mjmj", CommonFunc.convertDoubleToString(mjmj));
+        result.put("mjmj", CommonFunc.convertDoubleToString(mjn));
 
         String klmj2d = map.get("klmj2d");
         String klmj3d = map.get("klmj3d");
@@ -319,7 +319,7 @@ public class TensileEnity {
                 "<br/><br/>" + "As" + " ≥" + klmjas2);
         result.put("jyl", "l" + " ≥" + klmjla +
                 "<br/><br/>" + "l" + " ≥" + "200");
-        result.put("jyn", "N" + " ≥ 0.5f<sub>c</sub>A"  +
+        result.put("jyn", "N" + " ≤ 0.5f<sub>c</sub>A"  +
                 "<br/><br/>"  + " =" + _05fca);
 
 

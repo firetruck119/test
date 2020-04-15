@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="tableDiv">
+    <el-row :gutter="5">
+        <el-col :span="24">
+            <h1 style="line-height: 70px">
+                <el-alert
+                        style="display: inline"
+                        :title="tableData.title"
+                        type="success"
+                        :closable="false">
+                </el-alert>
+            </h1>
+        </el-col>
+    </el-row>
+    <el-row :gutter="6">
+        <el-col class='marginTop20' :span="8">
+            <home_page :tabledata="tableData.tables[0]" :form="form" :css="cssInForm"></home_page>
+        </el-col>
+        <el-col class="marginTop20" :span="8">
+            <table_card_4col :tabledata="tableData.tables[1]" :form="form" :css="cssInForm"></table_card_4col>
+        </el-col>
+        <el-col class="marginTop20" :span="8">
+            <table_card_select_4col :tabledata="tableData.tables[2]" :form="form"
+                                    :css="cssInForm"></table_card_select_4col>
+        </el-col>
+    </el-row>
+    <div style="display: none">
+        <div id="calculatBox"></div>
+    </div>
+</div>
+<div th:fragment="buttonDiv">
+    <checkbox :buttons="buttons.checkButtons" style="margin-bottom: 50px"></checkbox>
+    <submitbox :buttons="buttons.submitButtons"></submitbox>
+</div>
+</body>
+</html>
