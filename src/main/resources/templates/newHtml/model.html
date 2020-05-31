@@ -13,16 +13,20 @@
             <el-col :span="10">
                 <div style="width: 1px;height: 1px"></div>
             </el-col>
-            <el-col :span="14">
+            <el-col :span="10">
                 <h1>{{header.headerTitle}}</h1>
             </el-col>
-        </el-row>
 
+        </el-row>
     </el-col>
     <el-col :span="8" style="text-align: center">
         <el-row>
-<!--            <el-button type="info" plain round>用户管理</el-button>-->
-<!--            <el-button type="info" plain round>用户退出</el-button>-->
+            <el-col :span="4">
+                <span >{{username}}</span>
+            </el-col>
+            <a href="/logout">
+                <el-button type="info" plain round>用户退出</el-button>
+            </a>
         </el-row>
     </el-col>
 </div>
@@ -42,7 +46,8 @@
                         <template slot="title" type="primary">{{index.title}}</template>
                         <template v-for="subindex in index.children">
                             <el-menu-item :index="subindex.title">
-                                <el-link type="primary" :href="'/'+index.url+(subindex.url?'/'+subindex.url:'')" style="display: block">
+                                <el-link type="primary" :href="'/'+index.url+(subindex.url?'/'+subindex.url:'')"
+                                         style="display: block">
                                     {{subindex.title}}
                                 </el-link>
                             </el-menu-item>
@@ -56,6 +61,12 @@
                     </el-menu-item>
                 </template>
             </el-submenu>
+            <el-menu-item v-else-if="e.url">
+                    <span slot="title" :index="e.title">
+                            <el-link type="primary" :href="e.url?'/'+e.url:''"
+                                     style="display: block">{{e.title}}</el-link>
+                    </span>
+            </el-menu-item>
             <el-menu-item v-else>
                 <span slot="title" :index="e.title">{{e.title}}</span>
             </el-menu-item>

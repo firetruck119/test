@@ -371,6 +371,18 @@
                     <td>mm</td>
                 </tr>
                 <tr>
+                    <td><b>锚板长度</b></td>
+                    <td></td>
+                    <td><input name="mjcd" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td><b>锚板宽度</b></td>
+                    <td></td>
+                    <td><input name="mjkd" type="text"/></td>
+                    <td>mm</td>
+                </tr>
+                <tr>
                     <td><b>锚板面积</b></td>
                     <td><p><i>A</i></p></td>
                     <td><input name="mjmj" type="text"/></td>
@@ -636,6 +648,9 @@
         },
         mjaw:function(){
             return TypeOfAnchorBarsList[ typeOfAnchorBars ]["mjaw"];
+        },
+        mjmj(){
+            return mjcd * mjkd ;
         }
     }
 </script>

@@ -59,6 +59,12 @@ public class ResistantEnity {
     private Double mjt;
     @Getter
     @Setter
+    private Double mjcd;
+    @Getter
+    @Setter
+    private Double mjkd;
+    @Getter
+    @Setter
     private Double mjmj;
     @Getter
     @Setter
@@ -155,6 +161,9 @@ public class ResistantEnity {
     private String bj;
     private String man;
 
+    private String yzp1;
+    private String yzp2;
+
     public void calculateFun() {
         mjy = 1000 * mjky;
         mjv = 1000 * mjkv;
@@ -205,10 +214,13 @@ public class ResistantEnity {
 
         mjn = mjy;
         s = mjn / 172.8;
-        dj = 2 * sqrt(s / 3.14);
+        dj = 2 * sqrt(s / 3.14)/mjns;
         bj = takeSign(dj, mjd);
-        man = takeString(dj >= mjd);
 
+        yzp1=(kymjas2==0)?"=":"≠";
+        yzp2=takeSign(abs(mjm),abs(_04nz));
+        man=takeString((yzp2.equals("<") && yzp1.equals("="))
+                ||(yzp1.equals("≠")&&(yzp2.equals("=")||yzp2.equals(">"))));
     }
 
     public Map<String, String> takePDF() {
@@ -233,6 +245,8 @@ public class ResistantEnity {
         result.put("mjz", CommonFunc.convertDoubleToString(mjz));
         result.put("mjd", CommonFunc.convertDoubleToString(mjd));
         result.put("mjt", CommonFunc.convertDoubleToString(mjt));
+        result.put("mjcd", CommonFunc.convertDoubleToString(mjcd));
+        result.put("mjkd", CommonFunc.convertDoubleToString(mjkd));
         result.put("mjmj", CommonFunc.convertDoubleToString(mjmj));
         result.put("mja", CommonFunc.convertDoubleToString(mja));
         result.put("mjb", CommonFunc.convertDoubleToString(mjb));
@@ -344,12 +358,13 @@ public class ResistantEnity {
 
     public Map<String, String> takeCheckMapForCheck() {
         Map<String, String> map = new HashMap<>();
-        map.put("mjd", CommonFunc.convertDoubleToString(mjd));
-        map.put("mjn", CommonFunc.convertDoubleToString(mjn));
-        map.put("s", CommonFunc.convertDoubleToString(s));
-        map.put("dj", CommonFunc.convertDoubleToString(dj));
-        map.put("bj", CommonFunc.convertDoubleToString(bj));
-        map.put("man", CommonFunc.convertDoubleToString(man));
+        map.put("mjm",CommonFunc.convertDoubleToString(mjm));
+        map.put("04nz",CommonFunc.convertDoubleToString(_04nz));
+        map.put("kymjas2",CommonFunc.convertDoubleToString(kymjas2));
+        map.put("yzp1",CommonFunc.convertDoubleToString(yzp1));
+        map.put("yzp2",CommonFunc.convertDoubleToString(yzp2));
+        map.put("man",CommonFunc.convertDoubleToString(man));
+
         return map;
     }
 }

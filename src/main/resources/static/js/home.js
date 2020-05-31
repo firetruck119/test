@@ -284,6 +284,10 @@ asideDatas = {
                     url:'ProjectColumnDefinitionList'
                 }
             ]
+        },
+        {
+            title:'模块编辑',
+            url:'dataTable',
         }
     ]
 };

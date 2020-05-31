@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.lang.reflect.Field;
 import java.text.Collator;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
+//@RolesAllowed({"ADMIN","OWERN"})
 public class ProjectController {
     @Autowired
     ProjectDataMapper projectDataMapper;

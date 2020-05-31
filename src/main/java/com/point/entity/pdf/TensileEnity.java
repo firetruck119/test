@@ -59,6 +59,12 @@ public class TensileEnity {
     private Double mjt;
     @Getter
     @Setter
+    private Double mjcd;
+    @Getter
+    @Setter
+    private Double mjkd;
+    @Getter
+    @Setter
     private Double mjmj;
     @Getter
     @Setter
@@ -142,6 +148,8 @@ public class TensileEnity {
         result.put("mjz", CommonFunc.convertDoubleToString(mjz));
         result.put("mjd", CommonFunc.convertDoubleToString(mjd));
         result.put("mjt", CommonFunc.convertDoubleToString(mjt));
+        result.put("mjcd", CommonFunc.convertDoubleToString(mjcd));
+        result.put("mjkd", CommonFunc.convertDoubleToString(mjkd));
         result.put("mjmj", CommonFunc.convertDoubleToString(mjmj));
         result.put("mja", CommonFunc.convertDoubleToString(mja));
         result.put("mjb", CommonFunc.convertDoubleToString(mjb));
@@ -294,7 +302,7 @@ public class TensileEnity {
         String klmjas1 = map.get("klmjas1");
         String klmjas2 = map.get("klmjas2");
         String klmjla = map.get("klmjla");
-        String _05fca=map.get("05fca");
+        String _05fca = map.get("05fca");
 
         result.put("klmjm1", map.get("klmjm1"));
         result.put("klmjm2", map.get("klmjm2"));
@@ -319,21 +327,21 @@ public class TensileEnity {
                 "<br/><br/>" + "As" + " ≥" + klmjas2);
         result.put("jyl", "l" + " ≥" + klmjla +
                 "<br/><br/>" + "l" + " ≥" + "200");
-        result.put("jyn", "N" + " ≤ 0.5f<sub>c</sub>A"  +
-                "<br/><br/>"  + " =" + _05fca);
-
+        result.put("jyn", "N" + " ≤ 0.5f<sub>c</sub>A" +
+                "<br/><br/>" + " =" + _05fca);
 
         return result;
     }
 
     public Map<String, String> takeCheckMapForCheck() {
         Map<String, String> map = new HashMap<>();
-        Double s = mjn / 172.8;
-        Double dj = 2 * sqrt(s / 3.14);
+        Double s = mjn / 135;
+        Double dj = 2 * sqrt(s / 3.14) / mjns;
         String bj = takeSign(dj, mjd);
         String man = takeString(dj <= mjd);
         map.put("mjd", CommonFunc.convertDoubleToString(mjd));
         map.put("mjn", CommonFunc.convertDoubleToString(mjn));
+        map.put("mjns", CommonFunc.convertDoubleToString(mjns));
         map.put("s", CommonFunc.convertDoubleToString(s));
         map.put("dj", CommonFunc.convertDoubleToString(dj));
         map.put("bj", CommonFunc.convertDoubleToString(bj));

@@ -50,6 +50,7 @@ var projectTable = Vue.component('project_table', {
             return a*this.sortObj.type;
         },
         changeFliter: function () {
+            this.page=1
             var data = [];
             var i=0;
             for (row in this.data) {
@@ -110,7 +111,7 @@ var projectTable = Vue.component('project_table', {
     template: `
     <div>
         <el-col :span="24" >
-            <h1 style="line-height: 70px">
+            <h1 style="line-height: 55px">
                 <el-alert
                     style="display: inline"
                     title="项目查询"
@@ -119,15 +120,14 @@ var projectTable = Vue.component('project_table', {
                 </el-alert>
                 <el-button @click="showFliter" style="position: absolute;right: 10px;top:10px">筛选</el-button>
             </h1>
-            <project_fliter_box :fliter="fliter" @changeFliter="changeFliter" ref="fliter"></project_fliter_box>
         </el-col>
         <el-col :span="24">
-    <div>
-        <fliter_tag :fliter="fliter" @changeFliter="changeFliter"></fliter_tag>
-    </div>
+              <project_fliter_box :fliter="fliter" @changeFliter="changeFliter" ref="fliter"></project_fliter_box>
+        </el-col>
+        <el-col :span="24">
     <el-table
             :fit="false"
-            max-height="665px"
+            max-height="455px"
             :data="showData"
             style="font-size: 12px"
             border>
@@ -293,31 +293,21 @@ var ratenumbertag=Vue.component('rate_number_tag',{
     }
 })
 var projectfliterbox = Vue.component('project_fliter_box', {
-    template: `<el-drawer
-                    style="overflow: auto"
-                    :modal='false'
-                    :visible.sync="drawer"
-                    :with-header="false"
-                    >
-                <el-table
-                        :data="tableData"
-                        :show-header="false"
-                        style="font-size: 12px"
-                        :row-class-name="unShowRow"
-                        border>
-                    <el-table-column
-                         :key="Math.random()"
-                         prop="name">
-                    </el-table-column>
-                    <el-table-column
-                         :key="Math.random()"
-                         width='325'>
-                        <template  slot-scope="scope">
-                              <fliter-input :head="scope.row" :fliter="fliter[scope.row.id]" @changeFliter="changeFliter" ></fliter-input>
-                        </template> 
-                    </el-table-column>
-                </el-table>
-            </el-drawer>`
+    template: `
+        <table  cellpadding="0" cellspacing="0"  style="border:2px solid gray;padding:4px;margin-bottom: 5px; border-collapse: collapse;">
+            <tr v-if="tableData[(row-1)*5]" v-for="row in 20">
+                <template v-if="tableData[(row-1)*5+col-1]" v-for="col in 5">
+                    <td width='9%'  style="font-size:12px;border: 1px solid black;padding: 2px!important;">{{tableData[(row-1)*5+col-1].name}}</td>
+                    <td width="11%" style="font-size:12px;border: 1px solid black;padding: 2px!important;" >
+                        <fliter-input 
+                        :fliter="fliter[tableData[(row-1)*5+col-1].id]"
+                        @changeFliter="changeFliter">
+                        </fliter-input>
+                    </td>
+                </template>
+            </tr>
+        </table>
+    `
     ,
     props: ['fliter'],
     data: function () {
@@ -329,6 +319,7 @@ var projectfliterbox = Vue.component('project_fliter_box', {
                 id: i
             }
         }
+        console.log(tableData)
         return {
             tableData: tableData,
             drawer: true,
@@ -336,6 +327,7 @@ var projectfliterbox = Vue.component('project_fliter_box', {
     },
     methods: {
         changeFliter:function(){
+            console.log(123)
             this.$emit("changeFliter")
         },
         show: function () {
@@ -350,7 +342,7 @@ var projectfliterbox = Vue.component('project_fliter_box', {
 
 var fliterinput = Vue.component('fliter-input', {
     template: `<div>
-        <template v-if="fliter.type==1 && fliter.stringValues==null">
+        <template v-if="(fliter.type==1||fliter.type==2||fliter.type==3) && fliter.stringValues==null">
             <el-input  @change="change" v-model.lazy="fliter.string"></el-input>
         </template>
         <template v-else-if="fliter.type==1||fliter.type==2||fliter.type==3">
@@ -363,9 +355,16 @@ var fliterinput = Vue.component('fliter-input', {
            ></el-autocomplete>
         </template>
         <template v-if="fliter.type==4">
-            <el-input v-model.lazy="fliter.minNumber" style='width:46%' @change="change" :placeholder="fliter.minValue"></el-input>
-            <i class="el-icon-d-arrow-right"></i>
-            <el-input v-model.lazy="fliter.maxNumber" style='width:46%' @change="change" :placeholder="fliter.maxValue"></el-input>
+            <el-input 
+                v-model.lazy="fliter.minNumber" 
+                style='width:43%' 
+                @change="change" 
+                :placeholder="fliter.minValue"></el-input>
+            <i style="display: inline-block;font-size: 13px">~</i>
+            <el-input 
+                v-model.lazy="fliter.maxNumber" 
+                style='width:43%' @change="change" 
+                :placeholder="fliter.maxValue"></el-input>
         </template>
 </div>`,
     props: ['fliter'],

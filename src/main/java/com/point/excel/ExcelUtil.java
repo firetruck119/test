@@ -80,11 +80,9 @@ public class ExcelUtil {
      */
     public List<ProjectData> readExcel(MultipartFile file, int columns) throws Exception {
         List<ProjectData> list = new ArrayList<ProjectData>();
-
         checkFile(file);
         // 获得Workbook工作薄对象
         Workbook workbook = getWorkBook(file);
-
         // 获取第一个张表
         Sheet sheet = workbook.getSheetAt(0);
         //判断后续表行是否已经没有数据了

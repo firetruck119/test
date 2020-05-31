@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/XX/demo.js" type="module"></script>
+    <script th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        function a(i){
+            $.ajax({
+                url: "/sendDemo",
+                type: "POST",
+                data:{a:function(){return 1;},b:1},
+                contentType: "application/json",
+                dataType: "json",
+                async: false,
+            })
+        }
+    </script>
+</head>
+<body>
+<button onclick="a(123)">
+    123
+</button>
+</body>
+</html>

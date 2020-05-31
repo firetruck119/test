@@ -5,7 +5,65 @@
     <title>Title</title>
 </head>
 <body>
-<div th:fragment="form">
+<div th:fragment="main(pdfname)">
+   <template v-if='false' id="pdf">
+       <el-row >
+           <el-col :span="24">
+               <main_head :title="main.table.title"></main_head>
+           </el-col>
+           <el-row>
+               <el-col :span="22">
+                   <form id="form1">
+                       <el-col :span="8">
+                           <el-row>
+                               <home_page :tabledata="main.table.tables[0]" ></home_page>
+                               <table_card_4col :tabledata="main.table.tables[1]" ></table_card_4col>
+                               <table_card_4col :tabledata="main.table.tables[2]" ></table_card_4col>
+                               <table_card_4col :tabledata="main.table.tables[4]" ></table_card_4col>
+                           </el-row>
+                       </el-col>
+                       <el-col :span="8">
+                           <table_card_4col_img :tabledata="main.table.tables[3]" ></table_card_4col_img>
+                       </el-col>
+                       <el-col :span="8">
+                           <table_card_4col :tabledata="main.table.tables[5]" ></table_card_4col>
+                       </el-col>
+                       <div class="clear"></div>
+                       <el-col :span="8">
+                           <table_card_4col :tabledata="main.table.tables[6]" ></table_card_4col>
+                       </el-col>
+                       <el-col :span="8">
+                           <table_card_4col :tabledata="main.table.tables[7]" ></table_card_4col>
+                       </el-col>
+                       <el-col :span="8">
+                           <table_card_4col :tabledata="main.table.tables[8]" ></table_card_4col>
+                       </el-col>
+                       <el-col :span="8">
+                           <table_card_4col :tabledata="main.table.tables[9]" ></table_card_4col>
+                       </el-col>
+                   </form>
+               </el-col>
+               <el-col :span="2">
+                   <div style="position: fixed">
+                       <el-popover
+                               placement="left"
+                               width="500"
+                               trigger="click">
+                           <el-image
+                                   style="width: 500px; height: 400px"
+                                   src="/pdf/getImg?filename=tableImage/w值选择表.png"
+                                   fit="contain"></el-image>
+                           <el-button slot="reference">w值选择表</el-button>
+                       </el-popover>
+                       <el-button @click="getPDF('123')">输出pdf</el-button>
+                   </div>
+               </el-col>
+               <computedbox ></computedbox>
+           </el-row>
+       </el-row>
+   </template>
+    <pdf :main="main">
+    </pdf>
 </div>
 </body>
 </html>
