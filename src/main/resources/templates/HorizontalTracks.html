@@ -722,6 +722,8 @@
             }
         }
     </script>
+
+
 </head>
 <body>
 <nav class="navbar navbar-default" role="head" th:replace="head"></nav>
@@ -902,6 +904,7 @@
         <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>初选轨道型号及钢材牌号参数</b></div>
         <div style="width:1220px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
             <img alt="所选轨道钢型截面示意图" id="gdtu" height="300px"  name="gdtu">
+
         </div>
         <div style="width:600px;">
             <table>
@@ -947,6 +950,28 @@
                         <option value="PH300*300-168.1">PH300*300-168.1</option>
                         <option value="其它">其它</option>
                     </select>
+                        <script>
+                        $("[name=trackModel]").change(function () {
+                        var gdxh=$("[name=trackModel]")[0].value;
+                        var filename="";
+                        if(gdxh=="I20b-31" || gdxh=="I22b-36.5" || gdxh=="I25b-42" || gdxh=="I28b-47.8" || gdxh=="I32b-57.7" ){
+                        filename="工字钢.jpg";
+                        }else if (gdxh=="H150*150-31.1" || gdxh=="H175*175-40.4"|| gdxh=="H200*200-49.9"|| gdxh=="H250*250-71.8"|| gdxh=="H152*152-30(ISO)"|| gdxh=="H152*152-37(ISO)"|| gdxh=="H203*203-46(ISO)"|| gdxh=="H203*203-52(ISO)"|| gdxh=="H203*203-60(ISO)"|| gdxh=="H203*203-71(ISO)"|| gdxh=="H203*203-86(ISO)" || gdxh=="H254*254-73(ISO)" || gdxh=="H254*254-89(ISO)" || gdxh=="H254*254-107(ISO)" || gdxh=="H254*254-132(ISO)" || gdxh=="H254*254-167(ISO)" || gdxh=="H305*305-97(ISO)" || gdxh=="H305*305-118(ISO)" || gdxh=="H305*305-137(ISO)" || gdxh=="H305*305-158(ISO)"){
+                        filename="H型钢.jpg";
+                        }else if (gdxh=="H200*200T-71" || gdxh=="H250*250T-99"){
+                        filename="H型钢贴板.jpg";
+                        }else if (gdxh=="PH216*200-84.7" || gdxh=="PH266*250-128.1"){
+                        filename="拼焊配合.jpg";
+                        }else if (gdxh=="PH200*200-90.7" || gdxh=="PH250*250-138.8" || gdxh=="PH300*300-168.1"){
+                        filename="拼焊方.jpg";
+                        }else if (gdxh=="PH220*170-82.6" || gdxh=="PH250*200-117.4" || gdxh=="PH300*250-146.6"){
+                        filename="拼焊长.jpg";
+                        }else {
+                        filename="";
+                        }
+                        $("[name=gdtu]")[0].src="/pdf/getImg?filename="+ filename+"";
+                        })
+                        </script>
                     </td>
                 </tr>
 
@@ -979,6 +1004,7 @@
                         <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="gdtu" oninput="showImage(this,'gdtu')"/>
                     </td>
                 </tr>
+
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
                     <td style="width:17%;">符号</td>

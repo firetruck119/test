@@ -106,7 +106,7 @@ public class PDFController {
             try {
                 fis = new FileInputStream("/root/image/" + filename);
             } catch (Exception e) {
-                fis = new FileInputStream("A:/image/" + filename);
+                fis = new FileInputStream("D:/image/" + filename);
             }
             os = response.getOutputStream();
             int count = 0;
