@@ -60,7 +60,7 @@
                         </el-form-item>
                         <template v-if="form.is">
                             <el-form-item >
-                                <el-select v-model="upUser  ">
+                                <el-select v-model="upUser">
                                     <el-option
                                             v-for="item in upUserNameList"
                                             :key="item"
@@ -97,6 +97,7 @@
         },
         computed:{
             getUpUser(){
+                this.upUser="";
                 var data =new FormData();
                 data.append("username",this.form.username)
                 axios.post("/login/getUpUser", data).then(e=>{

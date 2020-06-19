@@ -1,6 +1,7 @@
 package com.point.newPDF.entity;
 
 import com.alibaba.fastjson.JSON;
+import lombok.Data;
 
 import java.util.Map;
 
@@ -20,5 +21,11 @@ public interface PDFEntity {
         return (PDFEntity)obj;
     }
 
-    abstract void CalculateValue();
+    void calculateValue();
+
+    void mapForPDF(String langurage);
+
+    void mapForCkeck(String langurage);
+
+    String PDFName(String langurage);
 }

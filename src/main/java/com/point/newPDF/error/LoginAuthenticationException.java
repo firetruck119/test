@@ -1,4 +1,5 @@
-package com.point.newPDF.security.config;
+package com.point.newPDF.error;
+
 
 
 import java.nio.file.AccessDeniedException;
@@ -9,7 +10,7 @@ public class LoginAuthenticationException extends AccessDeniedException {
         super(msg);
     }
 
-    public LoginAuthenticationException(LoginError error) {
-        super(error.errStr,null,error.id+"");
+    public LoginAuthenticationException(Error error) {
+        super(error.getErrStr(),null,error.getErrStr()+"");
     }
 }

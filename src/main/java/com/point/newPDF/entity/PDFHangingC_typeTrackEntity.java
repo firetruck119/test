@@ -3,7 +3,7 @@ package com.point.newPDF.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-public class HangingC_typeTrackEntity implements PDFEntity {
+public class PDFHangingC_typeTrackEntity implements PDFEntity {
     @Getter @Setter private String no;
     @Getter @Setter private String ver;
     @Getter @Setter private String xmmc;
@@ -86,7 +86,22 @@ public class HangingC_typeTrackEntity implements PDFEntity {
     @Getter @Setter private Double mza5;
 
     @Override
-    public void CalculateValue() {
+    public void calculateValue() {
 
+    }
+
+    @Override
+    public void mapForPDF(String langurage) {
+
+    }
+
+    @Override
+    public void mapForCkeck(String langurage) {
+
+    }
+
+    @Override
+    public String PDFName(String langurage) {
+        return null;
     }
 }

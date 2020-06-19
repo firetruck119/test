@@ -1,5 +1,6 @@
 package com.point.newPDF.security.entity;
 
+import com.point.newPDF.entity.UserEntity;
 import com.point.newPDF.entity.VerificationEntity;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -21,26 +22,12 @@ public class MyUserDetails implements UserDetails {
     private List<String> roleList;
     private VerificationEntity verificationCode;
 
-    public MyUserDetails(String username, String password,
-                List<String> authorities) {
-        this.username=username;
-        this.password=password;
+    public MyUserDetails(UserEntity user, List<String> authorities,VerificationEntity entity) {
+        this.username=user.getUsername();
+        this.password=user.getPassword();
+        this.name=user.getUserrealname();
+        this.ipaddress=user.getIpaddress();
         this.roleList=authorities;
-    }
-
-    public MyUserDetails(String username, String password,
-                         List<String> authorities,String ipaddress) {
-        this.username=username;
-        this.password=password;
-        this.roleList=authorities;
-        this.ipaddress=ipaddress;
-    }
-    public MyUserDetails(String username, String password,
-                         List<String> authorities, String ipaddress, VerificationEntity entity) {
-        this.username=username;
-        this.password=password;
-        this.roleList=authorities;
-        this.ipaddress=ipaddress;
         this.verificationCode=entity;
     }
     @Override

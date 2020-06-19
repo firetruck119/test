@@ -20,7 +20,10 @@ var newTableDialog = Vue.component('new_table_dialog', {
     mounted() {
         axios.get("/usermanager/getRoleList").then(
             (e) => {
-                this.reSetList(this.rolelist, e.data);
+                if (e.data instanceof Array) {
+                    e.data.splice(e.data.length - 1)
+                    this.reSetList(this.rolelist, e.data);
+                }
             }
         )
     },
@@ -186,7 +189,7 @@ var user_manager_table = {
                     align="center">
                     <template slot-scope="scope">
                          <el-button @click="upData(scope.row)"type="primary" size="small">编辑</el-button>
-                         <el-button @click="deleteData(scope.row)" type="success" size="small">删除</el-button>
+                         <delete-button :scope="scope.row" @getuseruist="getuseruist"></delete-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -194,6 +197,7 @@ var user_manager_table = {
     data() {
         return {
             tableData: [],
+            visible:true,
         };
     },
     mounted() {
@@ -203,15 +207,8 @@ var user_manager_table = {
         upData(e) {
             this.$refs.editdialog.openEditDialog(e);
         },
-        deleteData(e) {
-            axios.post("/usermanager/deleteUser", e).then(
-                e => {
-                    this.message("chenggong")
-                })
-        },
         getuseruist() {
             var data = [];
-            console.log(123)
             axios.get("/usermanager/getUserList").then(
                 e => {
                     this.reSetList(this.tableData, JSON.parse(e.request.response))
@@ -229,6 +226,45 @@ var user_manager_table = {
             }
         },
     },
+    components: {
+        "delete-button":{
+            template:
+                `
+                    <el-popover
+                        placement="top"
+                        trigger="click"
+                        v-model="visible">
+                        <p>确定删除吗？</p>
+                        <div style="text-align: right; margin: 0">
+                            <el-button size="mini" type="text" @click="visible=false">取消</el-button>
+                            <el-button type="primary" @click="deleteData(scope)" size="mini"> 确定</el-button>
+                        </div>
+                        <el-button size="small" slot="reference">删除</el-button>
+                    </el-popover>
+            ` ,
+            props:["scope"],
+            data(){
+                return {
+                    visible:false,
+                }
+            },
+            methods:{
+                deleteData(e) {
+                    console.log(e)
+                    axios.post("/usermanager/deleteUser", e).then(
+                        e => {
+                            this.visible=false;
+                            this.$emit("getuseruist");
+                            this.$message.success("chenggong")
+                        }).catch(
+                        (e) => {
+                            this.$message.error(e.response.data.message);
+                        }
+                    )
+                },
+            }
+        }
+    }
 }
 var userManagerTable = Vue.component('user_manager_sys', {
     template: '#user_manager_sys',

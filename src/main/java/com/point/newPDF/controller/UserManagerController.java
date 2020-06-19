@@ -4,16 +4,19 @@ import com.point.common.CustomerException;
 import com.point.newPDF.Service.UsersInfoService;
 import com.point.newPDF.entity.RoleEntity;
 import com.point.newPDF.entity.UserEntity;
+import com.point.newPDF.error.UserException;
 import com.point.newPDF.security.entity.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+
+import static com.point.newPDF.error.UserError.ERROR_NOTENUUGHLEVEL;
 
 
 @Controller
@@ -29,9 +32,19 @@ public class UserManagerController {
         return "newHtml/home";
     }
 
+    public int getRoleLevelByString(String role){
+        return RoleEntity.getRoleByString(role).getLevel();
+    }
+    public int getRoleLevelByRoleString(String role){
+        return RoleEntity.valueOf(role).getLevel();
+    }
     @PostMapping("/usermanager/insertUser")
     @ResponseBody
-    public String insertUser( @RequestBody UserEntity user) throws Exception {
+    public String insertUser(@RequestBody UserEntity user, HttpServletRequest req) throws Exception {
+        MyUserDetails cuser=getCurrentUser();
+        if(getRoleLevelByString(user.getRole())>=getRoleLevelByRoleString(cuser.getRoleList().get(0)))
+            throw new UserException(ERROR_NOTENUUGHLEVEL);
+        user.setIpaddress(req.getRemoteAddr());
         userService.insertUser(user);
         return "newHtml/home";
     }
@@ -65,7 +78,11 @@ public class UserManagerController {
     @GetMapping("/usermanager/getRoleList")
     @ResponseBody
     public Object getRoleList(){
-        return RoleEntity.getRoleNameListUnderLevel(1);
+        MyUserDetails user=getCurrentUser();
+        String rolename=user.getRoleList().get(0);
+        int level=RoleEntity.valueOf(rolename).getLevel();
+        return RoleEntity.getRoleNameListUnderLevel(level);
+
     }
 
     @GetMapping("/getCurrentUser")

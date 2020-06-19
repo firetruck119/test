@@ -4,6 +4,7 @@ import com.point.mapper.UsersInfoMapper;
 import com.point.newPDF.entity.RoleEntity;
 import com.point.newPDF.entity.UserEntity;
 import com.point.newPDF.entity.VerificationEntity;
+import com.point.newPDF.security.entity.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

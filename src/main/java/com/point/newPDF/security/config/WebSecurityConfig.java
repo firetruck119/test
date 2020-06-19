@@ -46,23 +46,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedHandler(accessDeniedServletHandler());
         http.authorizeRequests()
 //                .antMatchers("/").permitAll()
-//                .antMatchers("/amchart/**",
-//                        "/bootstrap/**",
-//                        "/build/**",
+//                .antMatchers(
 //                        "/css/**",
-//                        "/dist/**",
-//                        "/documentation/**",
 //                        "/fonts/**",
 //                        "/js/**",
-//                        "/pages/**",
-//                        "/plugins/**",
 //                        "/login/**",
 //                        "/403",
 //                        "/getCurrentUserName"
 //                ).permitAll() //默认不拦截静态资源的url pattern （2）
-//                .anyRequest().authenticated().and()
-                .anyRequest().permitAll().and()
-                .formLogin().loginPage("/login").authenticationDetailsSource(authenticationDetailsSource)// 登录url请求路径 (3)
+                .and().authorizeRequests().anyRequest().permitAll()//.authenticated()
+                .and().headers().frameOptions().disable()
+                .and().formLogin().loginPage("/login").authenticationDetailsSource(authenticationDetailsSource)// 登录url请求路径 (3)
                 .successHandler(new AuthenticationSuccessHandler() {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -81,7 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .and() // 登录成功跳转路径url(4)
-                .logout().logoutSuccessUrl("/").permitAll();
+                .logout().logoutSuccessUrl("/").permitAll()
+        .and().sessionManagement().invalidSessionUrl("/login");
     }
 
     @Bean

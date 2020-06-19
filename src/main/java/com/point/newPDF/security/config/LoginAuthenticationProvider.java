@@ -1,6 +1,7 @@
 package com.point.newPDF.security.config;
 
 
+import com.point.newPDF.error.LoginAuthenticationException;
 import com.point.newPDF.security.entity.MyUserDetails;
 import com.point.newPDF.security.service.LightSwordUserDetailService;
 import lombok.SneakyThrows;
@@ -8,29 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.thymeleaf.util.StringUtils;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 
-import static com.point.newPDF.security.config.LoginError.*;
+import static com.point.newPDF.error.LoginError.*;
 
 public class LoginAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private LightSwordUserDetailService userDetailService;
 
-    public static void main(String[] args) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime ldt = LocalDateTime.parse("2020-05-20 16:07:05",df);
-        Duration d=Duration.between(ldt,LocalDateTime.now());
-        System.out.println(d);
-    }
     @SneakyThrows
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication){
         // http请求的账户密码
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
@@ -41,14 +35,18 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
         if(!user.getPassword().equals(password)){
             throw new LoginAuthenticationException(ERROR_PASSWORD);
         }
-        Duration d=Duration.between(user.getVerificationCode().getCreatetime(),LocalDateTime.now());
         if(!user.getIpaddress().equals(ipaddress)){
-           if(verificationCode==null){
+           if(StringUtils.isEmpty(verificationCode)){
                throw new LoginAuthenticationException(ERROR_IP);
-           }else if(d.toMinutes()>30){
-               throw new LoginAuthenticationException(ERROR_VERIFICATIONTIME);
+           }else if(user.getVerificationCode()==null){
+               if(user.getRoleList().get(0).equals("OWERN"))
+                   throw new LoginAuthenticationException(ERROR_HIGHESTAUTHORITY);
+               else
+                    throw new LoginAuthenticationException(ERROR_NOVERIFI);
            }else if(!user.getVerificationCode().getCode().equals(verificationCode)){
                throw new LoginAuthenticationException(ERROR_VERIFICATION);
+           }else if(Duration.between(user.getVerificationCode().getCreatetime(),LocalDateTime.now()).toMinutes()>30){
+               throw new LoginAuthenticationException(ERROR_VERIFICATIONTIME);
            }
         }
         Collection<? extends GrantedAuthority> authorities = user.getAuthorities();

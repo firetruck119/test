@@ -30,10 +30,6 @@ public class LightSwordUserDetailService implements UserDetailsService  {
         VerificationEntity code=userService.selectVerificationByUserId(user.getId());
         List<String> authorities=new ArrayList<>();
         authorities.add(RoleEntity.getRoleByLevel(user.getLevel()).toString());
-        if(code==null)
-            return new MyUserDetails(user.getUsername(),user.getPassword(),authorities,user.getIpaddress());
-        else
-            return new MyUserDetails(user.getUsername(),user.getPassword(),authorities,user.getIpaddress(),code);
-
+        return new MyUserDetails(user,authorities,code);
     }
 }

@@ -47,13 +47,6 @@ public class DataTableController {
         return selectService.updataById(entity);
     }
 
-    public static void main(String[] args) {
-        String s="{\"b\":\"2\",\"a\":\"1\",\"c\":\"3\"}";
-        Map<String, String> map = new LinkedHashMap<>();
-        map = JSON.parseObject(s, new TypeReference<LinkedHashMap<String, String>>() {
-        });
-        System.out.println(map);
-    }
     @GetMapping("/dataTable/getList")
     @ResponseBody
     public List<DataTableEntity> getList() {
@@ -102,6 +95,12 @@ public class DataTableController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @GetMapping("/dataTable/getTable/rowlist")
+    @ResponseBody
+    public Object rowlist(){
+        return "123";
     }
 
     @GetMapping("/dataTable/getTable/{tableDataId}")
