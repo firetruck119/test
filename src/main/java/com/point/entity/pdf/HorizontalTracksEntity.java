@@ -24,17 +24,26 @@ public class HorizontalTracksEntity {
     private Double lkj;
     private Double dcw;
     private Double bcw;
-    private Double fzed;
-    private Double fze;
-    private Double vzed;
-    private Double vyed;
-    private Double rzed;
+//    private Double fzed;
+//    private Double fze;
+//    private Double vzed;
+//    private Double vyed;
+//    private Double rzed;
+
+    //新加轨道计算参数输入
+    private Double fzedk;
+    private Double fzek;
+    private Double vzedk;
+    private Double vyedk;
+    private Double rzedk;
+
+
 
     private Double bef1x;
     private Double bef1c;
 
     private String gdxh;
-    private String gdxhy;
+    //private String gdxhy;
     private String gcph;
     private Double gdh;
     private Double gdb;
@@ -54,8 +63,9 @@ public class HorizontalTracksEntity {
     private Double gdss;
     private Double gdshzr;
     private String trackModel;
-    private String steelHave;
+    //private String steelHave;
     private String steelModel;
+    private String trippingModel;
 
     public String nameOfPDF(String type) {
         switch (type) {
@@ -69,10 +79,10 @@ public class HorizontalTracksEntity {
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
-        String gdjb = steelHave;
-        String gdjby = gdjb.equals("有")?"has":"hasn't";
-        map.put("gdjb",gdjb);
-        map.put("gdjby",gdjby);
+        //String gdjb = steelHave;
+        //String gdjby = gdjb.equals("有")?"has":"hasn't";
+        //map.put("gdjb",gdjb);
+        //map.put("gdjby",gdjby);
         map.put("no", CommonFunc.convertDoubleToString(no));
         map.put("ver", CommonFunc.convertDoubleToString(ver));
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
@@ -84,15 +94,22 @@ public class HorizontalTracksEntity {
         map.put("lkj", CommonFunc.convertDoubleToString(lkj));
         map.put("dcw", CommonFunc.convertDoubleToString(dcw));
         map.put("bcw", CommonFunc.convertDoubleToString(bcw));
+        map.put("fzedk", CommonFunc.convertDoubleToString(fzedk));
+        map.put("fzek", CommonFunc.convertDoubleToString(fzek));
+        map.put("vzedk", CommonFunc.convertDoubleToString(vzedk));
+        map.put("vyedk", CommonFunc.convertDoubleToString(vyedk));
+        map.put("rzedk", CommonFunc.convertDoubleToString(rzedk));
+       /*
         map.put("fzed", CommonFunc.convertDoubleToString(fzed));
         map.put("fze", CommonFunc.convertDoubleToString(fze));
         map.put("vzed", CommonFunc.convertDoubleToString(vzed));
         map.put("vyed", CommonFunc.convertDoubleToString(vyed));
         map.put("rzed", CommonFunc.convertDoubleToString(rzed));
+        */
         map.put("bef1x", CommonFunc.convertDoubleToString(bef1x));
         map.put("bef1c", CommonFunc.convertDoubleToString(bef1c));
         map.put("gdxh", CommonFunc.convertDoubleToString(gdxh));
-        map.put("gdxhy", CommonFunc.convertDoubleToString(gdxhy));
+       // map.put("gdxhy", CommonFunc.convertDoubleToString(gdxhy));
         map.put("gcph", CommonFunc.convertDoubleToString(gcph));
         map.put("gdh", CommonFunc.convertDoubleToString(gdh));
         map.put("gdb", CommonFunc.convertDoubleToString(gdb));
@@ -238,6 +255,20 @@ public class HorizontalTracksEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
+         /*
+        表1数据
+         */
+        Double fzed= fzedk * 1000;
+        Double fze= fzek * 1000;
+        Double vzed= vzedk * 1000;
+        Double vyed= vyedk * 1000;
+        Double rzed= rzedk * 1000;
+        map.put("fzed", fzed);
+        map.put("fze", fze);
+        map.put("vzed", vzed);
+        map.put("vyed", vyed);
+        map.put("rzed", rzed);
+
         /*
         表2数据,表3数据
          */
@@ -317,7 +348,8 @@ public class HorizontalTracksEntity {
         Double klt = sqrt(gdss * gdwysel / mcr);
         Double qlt1 = 0.5 * (1 + 0.34 * (klt - 0.4) + 0.75 * klt * klt);
         Double qlt2 = 0.5 * (1 + 0.49 * (klt - 0.4) + 0.75 * klt * klt);
-        String[] temp = {"H200*200+贴板", "H250*250+贴板", "拼焊H216*200", "拼焊H266*250", "其它"};
+        //String[] temp = {"H200*200+贴板", "H250*250+贴板", "拼焊H216*200", "拼焊H266*250", "其它"};
+        String[] temp = {"H200*200T-71", "H250*250T-99", "PH216*200-84.7", "PH266*250-128.1", "PH200*200-90.7", "PH220*170-82.6", "PH250*200-117.4", "PH250*250-138.8", "PH300*250-146.6", "PH300*300-168.1", "其它"};
         Double qlt;
         if (Arrays.binarySearch(temp, gdxh) > 0) {
             qlt = qlt2;
@@ -379,7 +411,7 @@ public class HorizontalTracksEntity {
         map.put("a6", a6);
         map.put("b6", b6);
 
-        Double bef2d = 0 + 0.5 * gdh;
+       /* Double bef2d = 0 + 0.5 * gdh;
         Double bef2z = gdh;
         Double bef2;
         if (steelHave.equals("有")) {
@@ -387,14 +419,16 @@ public class HorizontalTracksEntity {
         } else {
             bef2 = bef2d;
         }
+        */
+        Double bef2= 0 + 0.5*gdh;
         Double ncrd = gdss * bef2 * gdtw;
         Double k2 = 3.46 * gdh * sqrt(gdss / 210000) / 3.14 / gdtw;
         Double q2 = 0.5 * (1 + 0.49 * (k2 - 0.2) + k2 * k2);
         Double xs2 = 1 / (q2 + sqrt(q2 * q2 - k2 * k2));
         Double a7 = fzed / xs2 / ncrd;
         Double b7 = fzed / xs2 / ncrd;
-        map.put("bef2d", bef2d);
-        map.put("bef2z", bef2z);
+       // map.put("bef2d", bef2d);
+       // map.put("bef2z", bef2z);
         map.put("bef2", bef2);
         map.put("ncrd", ncrd);
         map.put("k2", k2);
