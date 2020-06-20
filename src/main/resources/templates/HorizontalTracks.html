@@ -969,6 +969,10 @@
                         }else {
                         filename="";
                         }
+                        if ($('input[name=tu_gdtu]').length == 0) {
+                            $('form').append('<input name="tu_gdtu" type="hidden"/>');
+                        }
+                        $("[name=tu_gdtu]")[0].value=filename;
                         $("[name=gdtu]")[0].src="/pdf/getImg?filename="+ filename+"";
                         })
                         </script>

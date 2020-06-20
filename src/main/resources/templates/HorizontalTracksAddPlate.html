@@ -968,32 +968,22 @@
                                 }else {
                                     filename="";
                                 }
+                                if ($('input[name=tu_gdtu]').length == 0) {
+                                    $('form').append('<input name="tu_gdtu" type="hidden"/>');
+                                }
+                                $("[name=tu_gdtu]")[0].value=filename;
                                 $("[name=gdtu]")[0].src="/pdf/getImg?filename="+ filename+"";
                             })
                         </script>
                     </td>
                 </tr>
-
-                <!--<tr>-->
-                <!--<td>是否加筋板</td>-->
-                <!--<td colspan="4">-->
-                <!--<select name="steelHave" style="width:100%;height:40px;text-align-last:center" >-->
-                <!--<option style="display: none"></option>-->
-                <!--<option value="有">有</option>-->
-                <!--<option value="无">无</option>-->
-                <!--</select>-->
-                <!--</td>-->
-                <!--</tr>-->
-
                 <tr>
                     <td>钢材型号选择</td>
                     <td colspan="4">
                         <select name="steelModel" style="width:100%;height:40px;text-align-last:center" >
                             <option style="display: none"></option>
                             <option value="Q235B">Q235B</option>
-                            <!-- <option value="Q275">Q275</option> -->
                             <option value="Q345B">Q345B</option>
-                            <!-- <option value="其它">其它</option> -->
                         </select>
                     </td>
                 </tr>

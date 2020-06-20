@@ -112,6 +112,7 @@ public class HorizontalTracksAddPlateEntity {
         map.put("gdxh", CommonFunc.convertDoubleToString(gdxh));
         // map.put("gdxhy", CommonFunc.convertDoubleToString(gdxhy));
         map.put("gcph", CommonFunc.convertDoubleToString(gcph));
+        map.put("bjb", CommonFunc.convertDoubleToString(bjb));
         map.put("gdh", CommonFunc.convertDoubleToString(gdh));
         map.put("gdb", CommonFunc.convertDoubleToString(gdb));
         map.put("gdtw", CommonFunc.convertDoubleToString(gdtw));
@@ -412,7 +413,7 @@ public class HorizontalTracksAddPlateEntity {
         map.put("a6", a6);
         map.put("b6", b6);
 
-        Double bef2d = 0 + 0.5 * gdh;
+        Double bef2d = 0 + 0.5 * gdh + bjb;
         Double bef2z = gdh;
         Double bef2;
         if (bef2d<bef2z) {
@@ -426,8 +427,8 @@ public class HorizontalTracksAddPlateEntity {
         Double xs2 = 1 / (q2 + sqrt(q2 * q2 - k2 * k2));
         Double a7 = fzed / xs2 / ncrd;
         Double b7 = fzed / xs2 / ncrd;
-        // map.put("bef2d", bef2d);
-        // map.put("bef2z", bef2z);
+        map.put("bef2d", bef2d);
+        map.put("bef2z", bef2z);
         map.put("bef2", bef2);
         map.put("ncrd", ncrd);
         map.put("k2", k2);
