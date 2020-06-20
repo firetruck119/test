@@ -689,7 +689,8 @@
 
         function janyan() {
             $.ajax({
-                url: "jy",
+                //这里的url对应后端的url
+                url: "HorizontalTracksAddPlate/jy",
                 type: "post",
                 data: $("form").serialize(),
                 async: false,
@@ -1226,15 +1227,16 @@
     </div>
 </div>
 <div class="buttonbox">
-    <input type="submit" form="form1" class="button"  value="导出简支梁模型pdf" onclick="$('form').attr('action','/getPDF');
+<!--    这里的action对应后端的url -->
+    <input type="submit" form="form1" class="button"  value="导出简支梁模型pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
                                                                                             isCheck(false);changeType('SimplySupported')"/>
-    <input type="submit" form="form1" class="button"  value="导出简支梁英文pdf" onclick="$('form').attr('action','/getPDF');
+    <input type="submit" form="form1" class="button"  value="导出简支梁英文pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
                                                                                              isCheck(false);changeType('SimplySupportedEn')"/>
-    <input type="submit" form="form1" class="button"  value="导出双跨梁模型pdf" onclick="$('form').attr('action','/getPDF');
+    <input type="submit" form="form1" class="button"  value="导出双跨梁模型pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
                                                                                             isCheck(false);changeType('DoubleSpanbeam')"/>
-    <input type="submit" form="form1" class="button"  value="导出双跨梁英文pdf" onclick="$('form').attr('action','/getPDF');
+    <input type="submit" form="form1" class="button"  value="导出双跨梁英文pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
                                                                                             isCheck(false);changeType('DoubleSpanbeamEn')"/>
-    <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/getPDF');
+    <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
                                                                                             isCheck(true);changeType('Check')"/>
     <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
 </div>

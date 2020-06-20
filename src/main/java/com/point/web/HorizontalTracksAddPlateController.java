@@ -54,13 +54,14 @@ public class HorizontalTracksAddPlateController {
         result.put("imagelist",imagemap);
         return result;
     }
-
-    @PostMapping("/jy")
+    //url不能重复
+    @PostMapping("HorizontalTracksAddPlate/jy")
     @ResponseBody
     public Object janyan (@ModelAttribute HorizontalTracksAddPlateEntity entity){
         return entity.takeMapForPDF("");
     }
-    @PostMapping("/getPDF")
+    //url不能重复
+    @PostMapping("HorizontalTracksAddPlate/getPDF")
     public Object getPDF(HttpServletRequest request,
                          @ModelAttribute HorizontalTracksAddPlateEntity entity,
                          @RequestParam(required = false) String pdfType,
