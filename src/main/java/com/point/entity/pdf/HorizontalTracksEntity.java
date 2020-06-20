@@ -70,9 +70,9 @@ public class HorizontalTracksEntity {
     public String nameOfPDF(String type) {
         switch (type) {
             case "SimplySupported":
-                return "轨道校核计算书(简支梁).pdf";
+                return "无筋板版水平轨道校核计算书(简支梁).pdf";
             case "DoubleSpanbeam":
-                return "轨道校核计算书(双跨梁).pdf";
+                return "无筋板版水平轨道校核计算书(双跨梁).pdf";
         }
         return null;
     }
