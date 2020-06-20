@@ -84,7 +84,7 @@
                     if(!img)
                         continue;
                     $("img[name= '" + key + "']")[0].src = ' ';
-                    $("img[name= '" + key + "']")[0].src = 'getImg?filename='+temp['inputvalue']+'&tempid='+Math.random();
+                    $("img[name= '" + key + "']")[0].src = '/pdf/getImg?filename='+temp['inputvalue']+'&tempid='+Math.random();
                     if ($('input[name=tu_' + key + ']')[0]){
                         $('input[name=tu_' + key + ']').val(temp['inputvalue']);
                     } else
