@@ -544,7 +544,7 @@ public class PinSeatEntity {
         Map<String,String> map=new HashMap<>();
         map.put("xzf",CommonFunc.convertDoubleToString(xzf));
         map.put("xzclz",CommonFunc.convertDoubleToString(xzclz));
-//        map.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
+        map.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
         map.put("xzwa",CommonFunc.convertDoubleToString(xzwa));
         map.put("xzl1",CommonFunc.convertDoubleToString(xzl1));
         map.put("xzfv",CommonFunc.convertDoubleToString(xzfv));
