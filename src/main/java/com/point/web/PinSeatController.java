@@ -1,31 +1,21 @@
 package com.point.web;
 
-import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
 import com.point.common.CacheData;
 import com.point.common.ImageCacheData;
 import com.point.common.URLCacheData;
 import com.point.entity.InputURLCache;
 import com.point.entity.pdf.PinSeatEntity;
-import com.point.entity.pdf.TensileEnity;
 import com.point.itext.PdfCreater;
 import com.point.web.newController.Tool.ToolForPDFController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,8 +68,8 @@ public class PinSeatController {
         List<byte[]> list = new ArrayList<>();
         list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(), imageMap, "new/T型防风销座 销钉及连接螺栓计算书"));
         if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheck(), imageMap, "new/防风销座 销钉及连接螺栓计算书验证部分"));
-            return tool.getResponseEntity("防风销座 销钉及连接螺栓计算书验证部分", pdf.MergePDF(list));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheck(), imageMap, "new/T型防风销座 销钉及连接螺栓计算书验证部分"));
+            return tool.getResponseEntity("T型防风销座 销钉及连接螺栓计算书验证部分", pdf.MergePDF(list));
         }
         return tool.getResponseEntity("T型防风销座 销钉及连接螺栓计算书", list.get(0));
     }

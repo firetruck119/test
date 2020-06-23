@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>防风销座强度校核计算书</title>
+    <title>T型防风销座强度校核计算书</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{js/jquery-1.7.1.min.js}"></script>
     <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
@@ -156,7 +156,7 @@
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
     <form class="boxform" name="form1" id="form1" opType="#" target="stop"
           method="post" enctype="multipart/form-data">
-    <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">防风销座强度校核计算书</div>
+    <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">T型防风销座强度校核计算书</div>
         <div style="width:500px;">
             <table class="tb">
                 <tr>
@@ -348,12 +348,12 @@
                     <td><input name="xzfv" type="text"/></td>
                     <td>MPa</td>
                 </tr>
-                <tr>
-                    <td><b>防风销座名义屈服强度</b></td>
-                    <td><p><i>f<sub>0.2</sub></i></p></td>
-                    <td><input name="xzf02" type="text"/></td>
-                    <td>MPa</td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td><b>防风销座名义屈服强度</b></td>-->
+                    <!--<td><p><i>f<sub>0.2</sub></i></p></td>-->
+                    <!--<td><input name="xzf02" type="text"/></td>-->
+                    <!--<td>MPa</td>-->
+                <!--</tr>-->
                 <tr>
                     <td><b>防风销钉抗拉和抗弯强度设计值</b></td>
                     <td></td>
@@ -611,19 +611,19 @@
                 <tr>
                     <td><b>防风销座截面A强度</b></td>
                     <td ><p>σ<SUB >IVA</SUB>= </p><p  class="xzo4a"></p></td>
-                    <td ><p>f<SUB>0.2</SUB>= <p class="xzf02"></p></p></td>
+                    <td ><p>f = <p class="xzfx"></p></p></td>
                     <td class="xzm4"></td>
                 </tr>
                 <tr>
                     <td><b>防风销座截面B强度</b></td>
                     <td ><p>σ<SUB >IVB</SUB>=<p  class="xzo4b"></p></p></td>
-                    <td ><p>f<SUB >0.2</SUB>=<p class="xzf02"></p></p></td>
+                    <td ><p>f =<p class="xzfx"></p></p></td>
                     <td class="xzm8"></td>
                 </tr>
                 <tr>
                     <td><b>防风销座截面C强度</b></td>
                     <td ><p>σ<SUB>IVC</SUB>=<p  class="xzo4c"></p></p></td>
-                    <td ><p>f<SUB>0.2</SUB>=<p class="xzf02"></p></p></td>
+                    <td ><p>f =<p class="xzfx"></p></p></td>
                     <td class="xzm12"></td>
                 </tr>
                 <tr>
@@ -698,13 +698,13 @@
             xzclz: 'S31608',
             xzfx: 175,
             xzfv: 100,
-            xzf02: 175,
+            // xzf02: 175,
         },
         "S22053": {
             xzclz: 'S22053',
             xzfx: 385,
             xzfv: 220,
-            xzf02: 385,
+            // xzf02: 385,
         },
     }
     materialOfElectrodeList = {
@@ -767,9 +767,9 @@
         xzfv: function () {
             return materialOfPinSeatList[ materialOfPinSeat ]["xzfv"];
         },
-        xzf02: function () {
-            return materialOfPinSeatList[ materialOfPinSeat ]["xzf02"];
-        },
+        // xzf02: function () {
+        //     return materialOfPinSeatList[ materialOfPinSeat ]["xzf02"];
+        // },
         xzaa:function(){
            return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( xzd2 /2,2);
         },

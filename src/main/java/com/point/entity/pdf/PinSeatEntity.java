@@ -4,11 +4,11 @@ import com.point.common.CommonFunc;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import static java.lang.Math.*;
+
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 public class PinSeatEntity {
     @Getter
@@ -46,9 +46,9 @@ public class PinSeatEntity {
     @Setter
     private Double xzfv;
 
-    @Getter
-    @Setter
-    private Double xzf02;
+//    @Getter
+//    @Setter
+//    private Double xzf02;
     @Getter
     @Setter
     private Double xzfd;
@@ -287,7 +287,7 @@ public class PinSeatEntity {
         result.put("xzclz",CommonFunc.convertDoubleToString(xzclz));
         result.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
         result.put("xzfv",CommonFunc.convertDoubleToString(xzfv));
-        result.put("xzf0.2",CommonFunc.convertDoubleToString(xzf02));
+//        result.put("xzf0.2",CommonFunc.convertDoubleToString(xzf02));
         result.put("xzfd",CommonFunc.convertDoubleToString(xzfd));
         result.put("xzfvd",CommonFunc.convertDoubleToString(xzfvd));
         result.put("xzaa",CommonFunc.convertDoubleToString(xzaa));
@@ -414,8 +414,8 @@ public class PinSeatEntity {
         xzp2 = takeSign(xzta,xzfv);
         xzm2 = takeString(xzta<=xzfv);
         xzo4a=sqrt(pow(xzoa,2)+3*pow(xzta,2));
-        xzp3=takeSign(xzo4a,xzf02);
-        xzm3=takeString(xzo4a<=xzf02);
+        xzp3=takeSign(xzo4a,xzfx);
+        xzm3=takeString(xzo4a<=xzfx);
         xzm4=takeString(xzm1,xzm2,xzm3);
         xzmb=xzf*xzl2;
         xzob=xzmb/xzwb;
@@ -425,8 +425,8 @@ public class PinSeatEntity {
         xzp5=takeSign(xztb,xzfv);
         xzm6=takeString(xztb<=xzfv);
         xzo4b=sqrt(pow(xzob,2)+3*pow(xztb,2));
-        xzp6=takeSign(xzo4b,xzf02);
-        xzm7=takeString(xzo4b<=xzf02);
+        xzp6=takeSign(xzo4b,xzfx);
+        xzm7=takeString(xzo4b<=xzfx);
         xzm8=takeString(xzm5,xzm7,xzm6);
         xzmc=xzf*xzl3;
         xzoc=xzmc/xzwc;
@@ -436,8 +436,8 @@ public class PinSeatEntity {
         xzp8=takeSign(xztc,xzfv);
         xzm10=takeString(xztc<=xzfv);
         xzo4c=sqrt(pow(xzoc,2)+3*pow(xztc,2));
-        xzp9=takeSign(xzo4c,xzf02);
-        xzm11=takeString(xzo4c<=xzf02);
+        xzp9=takeSign(xzo4c,xzfx);
+        xzm11=takeString(xzo4c<=xzfx);
         xzm12=takeString(xzm9,xzm10,xzm11);
         xzmh=xzf*xzl4;
         xzoh=xzmh/xzwh;
@@ -465,9 +465,9 @@ public class PinSeatEntity {
         xzt1=xzf/(4*xzas);
         xzp16=takeSign(xzt1,xzfbv);
         xzm21=takeString(xzt1<=xzfbv);
-        xzo41=sqrt(pow(xzo1,2)+3*pow(xzt1,2));
-        xzp17=takeSign(xzo41,xzfbc);
-        xzm22=takeString(xzo41<=xzfbc);
+        xzo41=sqrt(pow(xzo1/xzfbt,2)+pow(xzt1/xzfbv,2));
+        xzp17=takeSign(xzo41,1);
+        xzm22=takeString(xzo41<=1);
         xzm23=takeString(xzm22,xzm21,xzm20);
         xzma2=xzf*xzl5;
         xzf2=xzma2/(2*xzlx);
@@ -477,9 +477,9 @@ public class PinSeatEntity {
         xzt2=xzf/(4*xzas);
         xzp19=takeSign(xzt2,xzfbv);
         xzm25=takeString(xzt2<=xzfbv);
-        xzo42=sqrt(pow(xzo2,2)+3*pow(xzt2,2));
-        xzp20=takeSign(xzo42,xzfbc);
-        xzm26=takeString(xzo42<=xzfbc);
+        xzo42=sqrt(pow(xzo2/xzfbt,2)+pow(xzt2/xzfbv,2));
+        xzp20=takeSign(xzo42,1);
+        xzm26=takeString(xzo42<=1);
         xzm27=takeString(xzm26,xzm25,xzm24);
         xzo3=xzf/(4*xzas);
         xzp21=takeSign(xzo3,xzfbt);
@@ -544,7 +544,7 @@ public class PinSeatEntity {
         Map<String,String> map=new HashMap<>();
         map.put("xzf",CommonFunc.convertDoubleToString(xzf));
         map.put("xzclz",CommonFunc.convertDoubleToString(xzclz));
-        map.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
+//        map.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
         map.put("xzwa",CommonFunc.convertDoubleToString(xzwa));
         map.put("xzl1",CommonFunc.convertDoubleToString(xzl1));
         map.put("xzfv",CommonFunc.convertDoubleToString(xzfv));
@@ -611,7 +611,8 @@ public class PinSeatEntity {
         resultmap.put("xzo42",CommonFunc.convertDoubleToString( xzo42));
         resultmap.put("xzo3",CommonFunc.convertDoubleToString( xzo3));
 
-        resultmap.put("xzf02",CommonFunc.convertDoubleToString(xzf02));
+        resultmap.put("xzfx",CommonFunc.convertDoubleToString(xzfx));
+// resultmap.put("xzf02",CommonFunc.convertDoubleToString(xzf02));
         resultmap.put("xzfwf",CommonFunc.convertDoubleToString(xzfwf));
         resultmap.put("xzfbt",CommonFunc.convertDoubleToString(xzfbt));
         resultmap.put("xzfbc",CommonFunc.convertDoubleToString(xzfbc));
