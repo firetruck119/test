@@ -207,14 +207,14 @@ public class UprightMechanismEntity {
 
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
-        Double yzlltl = map.get("yzlltl");
+//        Double yzlltl = map.get("yzlltl");
         Double ff2 = map.get("ff2");
-        Double ljdcf = map.get("ljdcf");
-        Double ljcyyf = map.get("ljcyyf");
+//        Double ljdcf = map.get("ljdcf");
+//        Double ljcyyf = map.get("ljcyyf");
         Double f1 = map.get("f1");
         Double o = map.get("o");
-        Double ayg = map.get("ayg");
-        Double ljab = map.get("ljab");
+//        Double ayg = map.get("ayg");
+//        Double ljab = map.get("ljab");
         Double rr2 = map.get("rr2");
         Double rr1 = map.get("rr1");
         Double fmax1 = map.get("fmax1");
@@ -222,36 +222,36 @@ public class UprightMechanismEntity {
         Double fyt = yzlltl * 2 / 2 ;
         Double fyn = fyt * ljcyyf / ljdcf ;
         String p1;
-        if ( fyn < ff2 ) {
+        if (fyn < ff2) {
             p1 = "<" ;
-        } else if (fyn == ff2 ) {
+        } else if (fyn == ff2) {
             p1 = "=";
         } else{
             p1 = ">";
         }
-        String g1 = ( fyn >= ff2 ) ? "符合" : "不符合";
+        String g1 = (fyn >= ff2) ? "符合" : "不符合";
 
         Double ay1 = f1 / o / 230 ;
         String p2;
-        if ( ay1 < ayg ) {
+        if (ay1 < ayg) {
             p2 = "<" ;
-        } else if (ay1 == ayg ) {
+        } else if (ay1 == ayg) {
             p2 = "=";
         } else{
             p2 = ">";
         }
-        String g2 = ( ay1 <= ayg ) ? "符合" : "不符合";
+        String g2 = (ay1 <= ayg) ? "符合" : "不符合";
 
         Double fmaxy1 = 1627964.36 * ljab * rr1 * rr2 / 210000 / ( rr2 - rr1 ) ;
         String p3;
-        if ( fmaxy1 < fmax1 ) {
+        if (fmaxy1 < fmax1) {
             p3 = "<" ;
-        } else if (fmaxy1 == fmax1 ) {
+        } else if (fmaxy1 == fmax1) {
             p3 = "=";
         } else{
             p3 = ">";
         }
-        String g3 = ( fmaxy1 >= fmax1 ) ? "符合" : "不符合";
+        String g3 = (fmaxy1 >= fmax1) ? "符合" : "不符合";
 
         Map<String, String> result = new HashMap<>();
         result.put("yzlltl", CommonFunc.convertDoubleToString(yzlltl));
