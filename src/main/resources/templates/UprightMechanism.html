@@ -87,6 +87,9 @@
         .navbox td{
             padding: 0.4em 0.8em;
         }
+        /*.bxs{*/
+            /*display: none;*/
+        /*}*/
 
     </style>
     <script>
@@ -293,25 +296,25 @@
         };
         dcgssModelList={
             "Φ7":{
-                dcgssn:0.179,
+                dcgssp:0.179,
              },
             "Φ8":{
-                dcgssn:0.244,
+                dcgssp:0.244,
             },
             "Φ8.3":{
-                dcgssn:0.255,
+                dcgssp:0.255,
             },
             "Φ10":{
-                dcgssn:0.391,
+                dcgssp:0.391,
             },
             "Φ13":{
-                dcgssn:0.65,
+                dcgssp:0.65,
             },
             "布鲁格Φ7":{
-                dcgssn:0.179,
+                dcgssp:0.179,
             },
             "布鲁格Φ8":{
-                dcgssn:0.217,
+                dcgssp:0.217,
             },
           };
 
@@ -462,10 +465,10 @@
                 m5:385,
                 grugssp:0.65,
             },
-            "其它":{
-                m2:" ",
-                m5:" ",
-                grugssp:" ",
+            "无":{
+                m2:0,
+                m5:0,
+                grugssp:0,
             },
         };
 
@@ -625,12 +628,12 @@
                     <td ><input type="text" name="lbp"/></td>
                     <td >m</td>
                 </tr>
-                <tr>
-                    <td ><b>非工作状态配重臂长</b></td>
-                    <td ><p><i> </i></p></td>
-                    <td ><input type="text" name="lbpf"/></td>
-                    <td >m</td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td ><b>非工作状态配重臂长</b></td>-->
+                    <!--<td ><p><i> </i></p></td>-->
+                    <!--<td ><input type="text" name="lbpf"/></td>-->
+                    <!--<td >m</td>-->
+                <!--</tr>-->
                 <tr>
                     <td>仰柱机构型号选择</td>
                     <td colspan="4">
@@ -738,7 +741,7 @@
                             <option value="GRU285">GRU285</option>
                             <option value="GRU295">GRU295</option>
                             <option value="GRU313">GRU313</option>
-                            <option value="其它">其它</option>
+                            <option value="无">无</option>
                         </select>
                     </td>
                 </tr>
@@ -838,7 +841,7 @@
                 <!--放工作状态仰柱机构图-->
                 <tr>
                     <td  colspan="5" style="background-color: #aaa;">
-                        <img style="width:400px" th:src="@{bef1.jpg}"/>
+                        <img style="width:400px;height: 350px" th:src="@{工作状态仰柱机构距离参数.png}"/>
                     </td>
                 </tr>
                 <tr>
@@ -875,7 +878,7 @@
                 <!--放非工作状态仰柱机构图-->
                 <tr>
                     <td  colspan="5" style="background-color: #aaa;">
-                        <img style="width:400px" th:src="@{bef1.jpg}"/>
+                        <img style="width:400px;height: 350px" th:src="@{非工作状态仰柱机构距离参数.png}"/>
                     </td>
                 </tr>
                 <tr>
@@ -953,7 +956,14 @@
                 </tr>
             </table>
         </div>
-
+        <div style="display: none">
+            <input type="text" name="ljdhzf" />
+            <input type="text" name="dcgssp" />
+            <input type="text" name="grugssp" />
+            <input type="text" name="lbtzh" />
+            <input type="text" name="ldcgh" />
+            <input type="text" name="ldslzh" />
+        </div>
         <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b> </b></div>
         <!--<div style="width:1220px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
             <!--<img alt="所选轨道钢型截面示意图" id="gdtu" height="300px"  name="gdtu">-->
@@ -1185,7 +1195,8 @@
                     <td>m</td>
                 </tr>
             </table>
-
+        </div>
+        <div style="width:600px;margin-left: 10px">
             <table>
                 <tr>
                     <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>非工作状态各部件重心至铰支点D的距离</b></td>
@@ -1319,6 +1330,7 @@
                                                                                             isCheck(true);changeType('Check')"/>
         <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
     </div>
+
 <script>
     function changeType(l){
         var e = $('input[name=pdfType]');
@@ -1429,10 +1441,10 @@
             return swp + r1 + mwr + mffbb ;
         },
         hsw:function(){
-            return h * grugssp;
+            return h * grugssp ;
         },
         tshl:function(){
-            return hwll + hsw;
+            return hwll + hsw ;
         },
         m1:function(){
             return btModelList[ btModel ]['m1'];
@@ -1441,7 +1453,7 @@
             return gruModelList[ gruModel ]['m2'];
         },
         m3:function(){
-            return 0.203 * h;
+            return  h * 0.203;
         },
         m5:function(){
             return gruModelList[ gruModel ]['m5'];
@@ -1453,97 +1465,97 @@
             return m1 + m2 + m3 + m4 + m5 + m6 + m11 + m20 + m21;
         },
         lsljd:function(){
-            return lbd;
+            return lbd ;
         },
         lshljd:function(){
-            return lbd - (ldcgh - lbtzh);
+            return lbd - ( ldcgh - lbtzh ) ;
         },
         ljd1:function(){
-            return lshljd;
+            return lshljd ;
         },
         ljd2:function(){
-            if(m2 == 0){
-               return 0;
+            if( m2 === 0 ){
+               return 0 ;
             }else {
-                return lbd - (ldcgh - ldslzh)
+                return lbd - ( ldcgh - ldslzh ) ;
             }
         },
         ljd3:function(){
-            return lshljd;
+            return lshljd ;
         },
         ljd5:function(){
-            if(m5 == 0){
-                return 0;
+            if( m5 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         },
         ljd6:function(){
-            if(m6 == 0){
-                return 0;
+            if( m6 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         },
         ljd11:function(){
             return lbp ;
         },
         ljd20:function(){
-            if(m20 == 0){
-                return 0;
+            if( m20 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         },
         ljd21:function(){
-            if(m21 == 0){
-                return 0;
+            if( m21 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         },
         ljdf1:function(){
-            return lbx - (ldcgh - lbtzh) - ljdhzf;
+            return lbx - ( ldcgh - lbtzh ) - ljdhzf ;
         },
         ljdf2:function(){
-            if(m2 == 0){
-                return 0;
+            if( m2 === 0 ){
+                return 0 ;
             }else {
-                return lbx - (ldcgh - ldslzh) - ljdhzf
+                return lbx - ( ldcgh - ldslzh ) - ljdhzf ;
             }
         },
         ljdf3:function(){
-            return ljdf1;
+            return ljdf1 ;
         },
         ljdf5:function(){
-            if(m5 == 0){
-                return 0;
+            if( m5 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         },
         ljdf6:function(){
-            if(m6 == 0){
-                return 0;
+            if( m6 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         },
         ljdf11:function(){
-            return lbp + ljdhzf;
+            return ljd11 ;
         },
         ljdf20:function(){
-            if(m20 == 0){
-                return 0;
+            if( m20 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         },
         ljdf21:function(){
-            if(m21 == 0){
-                return 0;
+            if( m21 === 0 ){
+                return 0 ;
             }else {
-                return ' ';
+                return ' ' ;
             }
         }
     };

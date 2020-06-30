@@ -28,7 +28,7 @@ public class UprightMechanismEntity {
     private Double lbd;
     private Double lbx;
     private Double lbp;
-    private Double lbpf;
+//    private Double lbpf;
 
     //非页面数据
     private Double ljdhzf;
@@ -129,7 +129,7 @@ public class UprightMechanismEntity {
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));
         map.put("lbx", CommonFunc.convertDoubleToString(lbx));
         map.put("lbp", CommonFunc.convertDoubleToString(lbp));
-        map.put("lbpf", CommonFunc.convertDoubleToString(lbpf));
+//        map.put("lbpf", CommonFunc.convertDoubleToString(lbpf));
 
         map.put("ljdhzf", CommonFunc.convertDoubleToString(ljdhzf));
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
@@ -207,15 +207,74 @@ public class UprightMechanismEntity {
 
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
-        Double aja = map.get("aja");
+        Double yzlltl = map.get("yzlltl");
+        Double ff2 = map.get("ff2");
+        Double ljdcf = map.get("ljdcf");
+        Double ljcyyf = map.get("ljcyyf");
+        Double f1 = map.get("f1");
+        Double o = map.get("o");
+        Double ayg = map.get("ayg");
+        Double ljab = map.get("ljab");
+        Double rr2 = map.get("rr2");
+        Double rr1 = map.get("rr1");
         Double fmax1 = map.get("fmax1");
-        Double fy1 = 142.41 * 2 * aja;
-        String g1 = (fy1 > fmax1) ? "符合" : "不符合";
+
+        Double fyt = yzlltl * 2 / 2 ;
+        Double fyn = fyt * ljcyyf / ljdcf ;
+        String p1;
+        if ( fyn < ff2 ) {
+            p1 = "<" ;
+        } else if (fyn == ff2 ) {
+            p1 = "=";
+        } else{
+            p1 = ">";
+        }
+        String g1 = ( fyn >= ff2 ) ? "符合" : "不符合";
+
+        Double ay1 = f1 / o / 230 ;
+        String p2;
+        if ( ay1 < ayg ) {
+            p2 = "<" ;
+        } else if (ay1 == ayg ) {
+            p2 = "=";
+        } else{
+            p2 = ">";
+        }
+        String g2 = ( ay1 <= ayg ) ? "符合" : "不符合";
+
+        Double fmaxy1 = 1627964.36 * ljab * rr1 * rr2 / 210000 / ( rr2 - rr1 ) ;
+        String p3;
+        if ( fmaxy1 < fmax1 ) {
+            p3 = "<" ;
+        } else if (fmaxy1 == fmax1 ) {
+            p3 = "=";
+        } else{
+            p3 = ">";
+        }
+        String g3 = ( fmaxy1 >= fmax1 ) ? "符合" : "不符合";
+
         Map<String, String> result = new HashMap<>();
-        result.put("aja", CommonFunc.convertDoubleToString(aja));
+        result.put("yzlltl", CommonFunc.convertDoubleToString(yzlltl));
+        result.put("ff2", CommonFunc.convertDoubleToString(ff2));
+        result.put("ljdcf", CommonFunc.convertDoubleToString(ljdcf));
+        result.put("ljcyyf", CommonFunc.convertDoubleToString(ljcyyf));
+        result.put("f1", CommonFunc.convertDoubleToString(f1));
+        result.put("o", CommonFunc.convertDoubleToString(o));
+        result.put("ayg", CommonFunc.convertDoubleToString(ayg));
+        result.put("ljab", CommonFunc.convertDoubleToString(ljab));
+        result.put("rr2", CommonFunc.convertDoubleToString(rr2));
+        result.put("rr1", CommonFunc.convertDoubleToString(rr1));
         result.put("fmax1", CommonFunc.convertDoubleToString(fmax1));
-        result.put("fy1", CommonFunc.convertDoubleToString(fy1));
+        result.put("fyt", CommonFunc.convertDoubleToString(fyt));
+        result.put("fyn", CommonFunc.convertDoubleToString(fyn));
+        result.put("p1", CommonFunc.convertDoubleToString(p1));
         result.put("g1", CommonFunc.convertDoubleToString(g1));
+        result.put("ay1", CommonFunc.convertDoubleToString(ay1));
+        result.put("p2", CommonFunc.convertDoubleToString(p2));
+        result.put("g2", CommonFunc.convertDoubleToString(g2));
+        result.put("fmaxy1", CommonFunc.convertDoubleToString(fmaxy1));
+        result.put("p3", CommonFunc.convertDoubleToString(p3));
+        result.put("g3", CommonFunc.convertDoubleToString(g3));
         return result;
     }
 
