@@ -33,6 +33,7 @@ public class UprightMechanismEntity {
     //非页面数据
     private Double ljdhzf;
     private Double dcgssp;
+    private Double dcgssn;
     private Double grugssp;
     private Double lbtzh;
     private Double ldcgh;
