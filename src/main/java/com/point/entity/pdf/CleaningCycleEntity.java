@@ -113,9 +113,9 @@ public class CleaningCycleEntity {
         Double n3= lc / wcd ;
         Double smj= h * wcd ;
         Double t2= smj / vqx ;
-        Double t3= osj * h / vdc ;
+        Double t3= osj * h * 2 / vdc ;
         Double t4= nxz * txd ;
-        Double tz= tzh + t2 + 2 * t3 + t4 ;
+        Double tz= tzh + t2 + t3 + t4 ;
         Double tll= ozh * n3 * tz / nsb / 60 / tmr ;
         Double ttq= 100 * tll / oyx ;
         map.put("n3", n3);
@@ -157,11 +157,6 @@ public class CleaningCycleEntity {
     public Map<String, String> takeStringMapForPdf(String type) {
         Map map = new HashMap();
         Map<String, Double> doubleMap = takeDoubleMapForPdf(type);
-
-//        Double tll = doubleMap.get("tll");
-//        String g1 = takeSignByCompareNumber(tll, 100.0);
-//        map.put("g1", CommonFunc.convertDoubleToString(g1));
-
 
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));
