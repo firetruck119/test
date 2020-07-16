@@ -4,10 +4,9 @@ import com.point.common.CustomerException;
 import com.point.newPDF.Service.UsersInfoService;
 import com.point.newPDF.entity.RoleEntity;
 import com.point.newPDF.entity.UserEntity;
-import com.point.newPDF.error.UserException;
-import com.point.newPDF.security.entity.MyUserDetails;
+import com.point.security.error.UserException;
+import com.point.security.entity.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.point.newPDF.error.UserError.ERROR_NOTENUUGHLEVEL;
+import static com.point.security.error.UserError.ERROR_NOTENUUGHLEVEL;
 
 
 @Controller
@@ -26,6 +25,7 @@ public class UserManagerController {
     UsersInfoService userService;
 
     @GetMapping("/usermanager")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_OWERN')")
     public String getWeb(Model model) {
         model.addAttribute("mainHtml", "usermanager");
         model.addAttribute("pdfname", "usermanager");
@@ -46,7 +46,7 @@ public class UserManagerController {
             throw new UserException(ERROR_NOTENUUGHLEVEL);
         user.setIpaddress(req.getRemoteAddr());
         userService.insertUser(user);
-        return "newHtml/home";
+        return "";
     }
 
     @PostMapping("/usermanager/updataUser")
@@ -91,9 +91,15 @@ public class UserManagerController {
         Authentication authentication =SecurityContextHolder.getContext().getAuthentication();
         return (MyUserDetails) authentication.getPrincipal();
     }
+
+    @GetMapping("/getCurrentUserLevel")
+    @ResponseBody
+    public Integer getUserLevel(){
+        return getCurrentUserLevel();
+    }
+
     @PostMapping("/getCurrentUserName")
     @ResponseBody
-    @Primary
     public Object getCurrentUserName(){
         Authentication authentication =SecurityContextHolder.getContext().getAuthentication();
         MyUserDetails user=((MyUserDetails)authentication.getPrincipal());

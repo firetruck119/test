@@ -14,19 +14,26 @@
                 <div style="width: 1px;height: 1px"></div>
             </el-col>
             <el-col :span="10">
-                <h1 >{{header.headerTitle}}</h1>
+                <h1>{{header.headerTitle}}</h1>
             </el-col>
 
         </el-row>
     </el-col>
     <el-col :span="8" style="text-align: center">
         <el-row>
-            <el-col :span="16">
-                <span  style="text-align:right;width:100%;display:inline-block;overflow: auto">{{username}}</span>
+            <el-col :span="14">
+                <span style="text-align:right;width:100%;display:inline-block;overflow: auto">{{username}}</span>
             </el-col>
-            <a href="/logout">
-                <el-button type="info" plain round>用户退出</el-button>
-            </a>
+            <el-col :span="5">
+                <a href="/usermanager">
+                    <el-button type="info" plain round>用户管理</el-button>
+                </a>
+            </el-col>
+            <el-col :span="5">
+                <a href="/logout">
+                    <el-button type="info" plain round>用户退出</el-button>
+                </a>
+            </el-col>
         </el-row>
     </el-col>
 </div>

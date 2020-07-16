@@ -1,4 +1,4 @@
-package com.point.newPDF.error;
+package com.point.security.error;
 
 public enum UserError implements Error {
     ERROR_NOTENUUGHLEVEL(1, "用户等级低");
@@ -6,7 +6,6 @@ public enum UserError implements Error {
         this.id=id;
         this.errStr=errStr;
     }
-
     Integer id;
     String errStr;
 

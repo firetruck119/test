@@ -17,6 +17,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
             rolelist: [],
         }
     },
+    props:["userlevel"],
     mounted() {
         axios.get("/usermanager/getRoleList").then(
             (e) => {
@@ -117,6 +118,9 @@ var newTableDialog = Vue.component('new_table_dialog', {
             <el-form-item v-if="!isedit" label="邮箱">
                 <el-input type="email" v-model="userdata.emailaddress"></el-input>
             </el-form-item>
+           <el-form-item v-if="userlevel==4" label="ip地址">
+                <el-input  v-model="userdata.ipaddress"></el-input>
+            </el-form-item>
             <el-form-item label="身份">
                 <el-select v-model="userdata.role" placeholder="请选择身份">
                     <el-option v-for="i in rolelist" :label="i" :value="i"></el-option>
@@ -135,7 +139,7 @@ var user_manager_table = {
     template: `
         <div>
             <new_table_dialog ref="editdialog" key="editdialog"  @getuseruist="getuseruist"></new_table_dialog>
-            <el-table :data="tableData"borderstyle="width: 100%" border> 
+            <el-table :data="tableData" borderstyle="width: 100%" border> 
                 <el-table-column type="expand">
                     <template slot-scope="props">
                         <el-form label-position="left" inline class="demo-table-expand">
@@ -183,6 +187,7 @@ var user_manager_table = {
                   label="身份"
                   width="200"
                   align="center">
+                 </el-table-column>
                 </el-table-column>
                 <el-table-column
                     label="操作"
@@ -200,6 +205,7 @@ var user_manager_table = {
             visible:true,
         };
     },
+    props:["userlevel"],
     mounted() {
         this.getuseruist();
     },
@@ -266,8 +272,14 @@ var user_manager_table = {
         }
     }
 }
+
 var userManagerTable = Vue.component('user_manager_sys', {
     template: '#user_manager_sys',
+    data(){
+      return {
+          userlevel:0,
+      }
+    },
     methods: {
         createUser() {
             this.$refs.create.openInsertDialog();
@@ -275,6 +287,15 @@ var userManagerTable = Vue.component('user_manager_sys', {
         getuseruist() {
             this.$refs.userTable.getuseruist();
         }
+    },
+    mounted() {
+        axios.get("/getCurrentUserLevel").then(
+            (e) => {
+                if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                    this.userlevel=e.data;
+                }
+            }
+        )
     },
     components: {
         user_manager_table: user_manager_table,

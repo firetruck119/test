@@ -21,6 +21,7 @@ var importexportprojectdata=Vue.component('import_export_project_data',{
                     accept=".xls"
                     :on-success="afterUp"
                     :on-exceed="exceed"
+                    :on-error="uperror"
                     style="margin: 20px auto;width: 200px;height: 100px">
                     <el-button size="small" type="info" style="display: block;margin: 20px auto;width: 200px;font-size: 18px;height: 40px" round plain>选取文件并上传</el-button>
                 </el-upload>
@@ -37,13 +38,23 @@ var importexportprojectdata=Vue.component('import_export_project_data',{
            this.fileList.pop();
            this.fileList.push(f[0])
         },
+        uperror(result){
+            var massage="";
+            if(result.status===403) {
+                massage="没有权限";
+            }
+            this.$notify.error({
+                title: '上传失败',
+                message: massage,
+            });
+        },
         afterUp(result){
             this.fileList.pop();
-            const h = this.$createElement;
-            this.$notify({
-                title: '上传成功',
-                message: h('a', { style: 'color: teal'}, result.message)
-            });
+                this.$notify({
+                    title: '上传成功',
+                    message:  result.message,
+                    type: 'success'
+                });
         },
         download(){{
                 var a = document.createElement('a')

@@ -1,4 +1,4 @@
-package com.point.newPDF.security.config;
+package com.point.security.config;
 
 import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;

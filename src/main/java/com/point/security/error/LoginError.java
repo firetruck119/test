@@ -1,4 +1,4 @@
-package com.point.newPDF.error;
+package com.point.security.error;
 
 public enum LoginError implements Error {
     ERROR_USERNAME(1, "用户名错误"),

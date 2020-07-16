@@ -1,4 +1,4 @@
-package com.point.newPDF.security.config;
+package com.point.security.config;
 
 import lombok.Getter;
 import lombok.Setter;

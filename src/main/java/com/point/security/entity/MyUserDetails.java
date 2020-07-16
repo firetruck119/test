@@ -1,10 +1,9 @@
-package com.point.newPDF.security.entity;
+package com.point.security.entity;
 
 import com.point.newPDF.entity.UserEntity;
 import com.point.newPDF.entity.VerificationEntity;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.buf.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,8 +35,9 @@ public class MyUserDetails implements UserDetails {
             return AuthorityUtils.commaSeparatedStringToAuthorityList("");
         }
         StringBuilder roles = new StringBuilder("ROLE_");
-        roles.append(StringUtils.join(roleList,'.'));
-        List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(roles.toString());
+        roles.append(roleList.get(0));
+        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList(roles.toString(),"ROLE_"+name);
+
         return authorityList;
     }
 

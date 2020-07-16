@@ -25,7 +25,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
-//@RolesAllowed({"ADMIN","OWERN"})
 public class ProjectController {
     @Autowired
     ProjectDataMapper projectDataMapper;
@@ -36,10 +35,26 @@ public class ProjectController {
     @Autowired
     ExcelUtil excelUtil;
 
-    @GetMapping("projectData/{dowhat}")
-    public String getProjectMap(Model model, @PathVariable("dowhat") String dowhat){
+    @GetMapping("projectData/project")
+    public String getProjectMap(Model model){
         model.addAttribute("mainHtml","project");
-        model.addAttribute("pdfname",dowhat);
+        model.addAttribute("pdfname","project");
+        return "newHtml/home";
+    }
+
+    @GetMapping("projectData/ImportExportProjectData")
+//    @RolesAllowed({"ROLE_ADMIN","ROLE_OWERN"})
+    public String getImportExportProjectDataMap(Model model){
+        model.addAttribute("mainHtml","project");
+        model.addAttribute("pdfname","ImportExportProjectData");
+        return "newHtml/home";
+    }
+
+    @GetMapping("projectData/ProjectColumnDefinitionList")
+//    @RolesAllowed({"ROLE_ADMIN","ROLE_OWERN"})
+    public String getProjectColumnDefinitionListMap(Model model){
+        model.addAttribute("mainHtml","project");
+        model.addAttribute("pdfname","ProjectColumnDefinitionList");
         return "newHtml/home";
     }
 

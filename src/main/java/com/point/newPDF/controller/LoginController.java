@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +27,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login() {
-        return "/login/login";
+        return "login/login";
     }
 
     @PostMapping("/login/getUpUser")
@@ -60,11 +62,18 @@ public class LoginController {
         return null;
     }
     @GetMapping("/403")
-    public Object error403() {
+    public Object error403(HttpServletResponse response) throws IOException {
+        response.setStatus(403);
+//        response.getWriter().append("server error");
         return "login/403";
     }
+    @GetMapping("/home")
+    public Object loginH() {
+        return "newHtml/home";
+    }
+
     @GetMapping("/")
     public Object home() {
-        return "newHtml/home";
+        return "login/login";
     }
 }

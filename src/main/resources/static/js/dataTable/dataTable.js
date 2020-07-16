@@ -62,7 +62,11 @@ var newTableDialog = {
                 }
             ).catch(
                 (e) => {
-                    this.$message.error(e.response.data.message);
+                    if (e.response.status === 403)
+                        message = "没有权限";
+                    else
+                        message = e.response.data.message;
+                    this.$message.error(message);
                 }
             )
         },
@@ -81,7 +85,11 @@ var newTableDialog = {
                 }
             ).catch(
                 (e) => {
-                    this.$message.error(e.response.data.message);
+                    if (e.response.status === 403)
+                        message = "没有权限";
+                    else
+                        message = e.response.data.message;
+                    this.$message.error(message);
                 }
             )
         }
@@ -138,7 +146,13 @@ var editbuttons = {
                 () => {
                     window.location.href = "http://" + window.location.host + "/dataTable"
                 }
-            )
+            ).catch(e => {
+                if (e.response.status === 403)
+                    message = "没有权限";
+                else
+                    message = e.response.data.message;
+                this.$message.error(message);
+            })
         },
         before() {
             this.id = this.datainfo.id;
@@ -148,6 +162,16 @@ var editbuttons = {
         },
         getTable() {
             this.$emit("getTable");
+        },
+        uperror(result){
+            var massage="";
+            if(result.status===403) {
+                massage="没有权限";
+            }
+            this.$notify.error({
+                title: '上传失败',
+                message: massage,
+            });
         },
         download() {
             axios.post('/dataTable/downLoadExcel', {
@@ -171,7 +195,13 @@ var editbuttons = {
                     elink.click()
                     URL.revokeObjectURL(elink.href) // 释放URL 对象
                     document.body.removeChild(elink)
-                })
+                }).catch(e => {
+                if (e.response.status === 403)
+                    message = "没有权限";
+                else
+                    message = e.response.data.message;
+                this.$message.error(message);
+            })
         }
     },
     components: {
@@ -186,6 +216,7 @@ var editbuttons = {
                     :data="{id:datainfo.id,tablename:datainfo.name,tablesymbol:datainfo.tablesymbol}"
                     name="excelData"
                     :on-success="success"
+                    :on-error="uperror"
                     :before-upload="before"
                     :show-file-list="false"
                     accept=".xls">
@@ -290,7 +321,7 @@ var dataTable = Vue.component('datatable', {
                     columns: [],
                     data: [],
                     width: 200,
-                    hackReset:true,
+                    hackReset: true,
                 }
             },
             props: ['info'],
@@ -324,7 +355,7 @@ var dataTable = Vue.component('datatable', {
                 }
             },
             methods: {
-                delete(){
+                delete() {
                     this.hackReset = false
                     this.$nextTick(() => {
                         this.hackReset = true
@@ -345,7 +376,7 @@ var dataTable = Vue.component('datatable', {
                         oldL.pop();
                     }
                     for (i in newL) {
-                        newL['tableid']=this.info.id;
+                        newL['tableid'] = this.info.id;
                         oldL.push(newL[i]);
                     }
                 },

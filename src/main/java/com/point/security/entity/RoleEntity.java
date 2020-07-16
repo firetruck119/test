@@ -1,4 +1,4 @@
-package com.point.newPDF.security.entity;
+package com.point.security.entity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.point.newPDF.error;
+package com.point.security.error;
 
 public interface Error {
     String getErrStr();

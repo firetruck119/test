@@ -1,4 +1,4 @@
-package com.point.newPDF.error;
+package com.point.security.error;
 
 
 
@@ -9,6 +9,7 @@ public class LoginAuthenticationException extends AccessDeniedException {
     public LoginAuthenticationException(String msg) {
         super(msg);
     }
+
 
     public LoginAuthenticationException(Error error) {
         super(error.getErrStr(),null,error.getErrStr()+"");

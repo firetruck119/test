@@ -1,4 +1,4 @@
-package com.point.newPDF.error;
+package com.point.security.error;
 
 import java.nio.file.AccessDeniedException;
 

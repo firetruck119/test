@@ -25,7 +25,7 @@
                     </user_manager_table>
                 </el-col>
                 <el-col :span="3"><div style="font-size: 1px">1</div></el-col>
-                <new_table_dialog ref="create" key="create"  @getuseruist="getuseruist"></new_table_dialog>
+                <new_table_dialog ref="create" key="create"  @getuseruist="getuseruist" :userlevel="userlevel"></new_table_dialog>
             </el-row>
         </template>
         <user_manager_sys></user_manager_sys>
