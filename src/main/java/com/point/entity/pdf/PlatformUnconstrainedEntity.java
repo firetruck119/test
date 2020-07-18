@@ -28,7 +28,7 @@ public class PlatformUnconstrainedEntity {
 
     //非页面数据
     private Double dcgssp;
-    private Double dcgssn;
+//    private Double dcgssn;
 
     private Double swp;
     private Double r1;
@@ -61,7 +61,7 @@ public class PlatformUnconstrainedEntity {
         map.put("abz", CommonFunc.convertDoubleToString(abz));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
-        map.put("dcgssn", CommonFunc.convertDoubleToString(dcgssn));
+//        map.put("dcgssn", CommonFunc.convertDoubleToString(dcgssn));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
