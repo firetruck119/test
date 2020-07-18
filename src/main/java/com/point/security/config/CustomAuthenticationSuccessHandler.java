@@ -1,7 +1,6 @@
 package com.point.security.config;
 
 import com.alibaba.fastjson.JSONObject;
-import com.point.log.describe.MethDescribe;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -19,7 +18,7 @@ import java.util.Map;
 
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Override
-    @MethDescribe(description="用户登录成功")
+
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
         response.setContentType("application/json;charset=utf-8");
