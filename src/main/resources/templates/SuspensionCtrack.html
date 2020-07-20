@@ -326,9 +326,12 @@
             </div>
             <tr>
                 <td style="width:150px;padding:10px 0;">轨道及小车相关参数示意图</td>
-                <td colspan="4">
-                    <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="xgctu1" oninput="showImage(this,'xgctu1')"/>
-                </td>
+                <!--<td colspan="4">-->
+                    <!--<input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="xgctu1" oninput="showImage(this,'xgctu1')"/>-->
+                <!--</td>-->
+                <td colspan="3">
+                    <input class="image" type="file" name="xgctu1" accept="image/*"
+                                       oninput="showImage(this,'xgctu1')"/></td>
             </tr>
           </table>
         </div>
@@ -340,9 +343,11 @@
                 <img alt="轨道局部等效截面相关参数示意图" id="xgctu4" height="300px"  name="xgctu4">
                 <tr>
                     <td style="width:26%;padding:10px 0;">轨道局部等效截面相关参数示意图</td>
-                    <td colspan="4">
-                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="xgctu4" oninput="showImage(this,'xgctu4')"/>
-                    </td>
+                    <!--<td colspan="4">-->
+                        <!--<input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="xgctu4" oninput="showImage(this,'xgctu4')"/>-->
+                    <!--</td>-->
+                    <td colspan="3"><input class="image" type="file" name="xgctu4" accept="image/*"
+                                           oninput="showImage(this,'xgctu4')"/></td>
                 </tr>
                     </div>
             </table>
@@ -356,29 +361,38 @@
                         <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
                     </tr>
                     <tr>
-                        <td style="width:50%;"><b>名称</b></td>
-                        <td style="width:25%;"><b>简支梁结果显示</b></td>
-                        <td style="width:25%;"><b>双跨梁结果显示</b></td>
+                        <td style="width:40%;"><b>名称</b></td>
+                        <td style="width:20%;"><b>简支梁结果显示</b></td>
+                        <td style="width:20%;"><b>双跨梁结果显示</b></td>
+                        <td style="width:20%;"><b>许用值</b></td>
+
                     </tr>
                     <tr>
                         <td><b>整体弯曲强度</b></td>
                         <td id="xgco1"></td>
                         <td id="xgcko1"></td>
+                        <td id="xgcxy"></td>
+
                     </tr>
                     <tr>
                         <td><b>局部弯曲强度</b></td>
                         <td id="xgco2"></td>
                         <td id="xgcko2"></td>
+                        <td id="xgcxy1"></td>
+
                     </tr>
                     <tr>
                         <td><b>组合弯曲强度</b></td>
                         <td id="xgco3"></td>
                         <td id="xgcko3"></td>
+                        <td id="xgcxy2"></td>
+
                     </tr>
                     <tr>
                         <td><b>轨道挠度</b></td>
                         <td id="xgcuy"></td>
                         <td id="xgckuy"></td>
+                        <td id="xgnd"></td>
                     </tr>
 
                 </table>
@@ -390,11 +404,11 @@
     </div>
 
     <div class="buttonbox">
-        <input type="submit" form="form1" class="button"  value="导出简支梁pdf" onclick="$('form').attr('action','/getPDF');
-                                                                                            isCheck(false);changeType('SimplySupportedc')"/>
-        <input type="submit" form="form1" class="button"  value="导出双跨梁pdf" onclick="$('form').attr('action','/getPDF');
-                                                                                             isCheck(false);changeType('DoubleSpanbeamc')"/>
-        <input type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','/getPDF');
+        <input type="submit" form="form1" class="button"  value="导出简支梁pdf" onclick="$('form').attr('action','SuspensionCtrack/getPDF');
+                                                                                            isCheck(false);changeType('SimplySupported')"/>
+        <input type="submit" form="form1" class="button"  value="导出双跨梁pdf" onclick="$('form').attr('action','SuspensionCtrack/getPDF');
+                                                                                             isCheck(false);changeType('DoubleSpanbeam')"/>
+        <input type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','SuspensionCtrack/getPDF');
                                                                                             isCheck(true);changeType('Check')"/>
         <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
     </div>

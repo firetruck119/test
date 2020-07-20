@@ -30,9 +30,9 @@ public class SuspensionCtrackEntity {
 
     public String nameOfPDF(String type) {
         switch (type) {
-            case "SimplySupportedc":
+            case "SimplySupported":
                 return "简支梁悬挂C型轨强度及挠度校核计算书.pdf";
-            case "DoubleSpanbeamc":
+            case "DoubleSpanbeam":
                 return "双跨梁悬挂C型轨强度及挠度校核计算书.pdf";
         }
         return null;
@@ -126,13 +126,13 @@ public class SuspensionCtrackEntity {
          */
         Double xgcmax1= 1.25 * xgg * xgcl / 4;
         Double xgco1= xgcmax1 / xgcwx1;
-        Double xgcxy= xgco1 / 1.65;
+        Double xgcxy= xgrp / 1.65;
         Double xgcmax2= 1.25 * xgg * xgcxl / 2;
         Double xgcs = 2 * xgcxl;
         Double xgcwx2 = xgcl2 * xgcs * xgcs / 6;
         Double xgco2 = xgcmax2 / xgcwx2;
         Double xgco3 = xgco1 + xgco2;
-        Double xgcuy = xgg * xgcl * xgcl / ( 48 * xgce * xgci );
+        Double xgcuy = xgg * xgcl * xgcl * xgcl/ ( 48 * xgce * xgci );
         Double xgnd = xgcl / 200;
 
         Double xgckmax1 = 1.25 * 13 * xgg * xgcl / 64;
@@ -143,8 +143,11 @@ public class SuspensionCtrackEntity {
         Double xgckwx2 = xgcl2 * xgcks * xgcks / 6;
         Double xgcko2 = xgckmax2 / xgckwx2;
         Double xgcko3 = xgcko1 + xgcko2;
-        Double xgckuy = 0.15 * xgg * xgcl * xgcl * xgcl / ( xgce * xgci );
+        Double xgckuy = 0.015 * xgg * xgcl * xgcl * xgcl / ( xgce * xgci );
         Double xgknd = xgcl / 200;
+
+        Double xgcxy1 = xgcxy;
+        Double xgcxy2 = xgcxy;
 
         map.put("xgcmax1", xgcmax1);
         map.put("xgco1", xgco1);
@@ -166,6 +169,8 @@ public class SuspensionCtrackEntity {
         map.put("xgcko3", xgcko3);
         map.put("xgckuy", xgckuy);
         map.put("xgknd",xgknd);
+        map.put("xgcxy1",xgcxy1);
+        map.put("xgcxy2",xgcxy2);
         /*
         计算公式
          */
