@@ -108,10 +108,32 @@
             },
             '6063-T6':{
                 xgccl:"6063-T6",
+
             },
           };
+        xgcxhModelList={
+            '01-CXGD-110*65*14':{
+                xgcxh:"01-CXGD-110*65*14",
+                xgcxl:14,
+                xgcl2:12,
+                xgcwx1:64849,
+                xgci:1483590,
+                xgce:70000,
+                xgcbh:7,
+            },
+            '01-CXGD-110*70*22':{
+                xgcxh:"01-CXGD-110*70*22",
+                xgcxl:12,
+                xgcl2:12,
+                xgcwx1:66138,
+                xgci:1761426,
+                xgce:70000,
+                xgcbh:7,
+            },
+        };
     </script>
-    <script type="text/javascript">
+
+     <script type="text/javascript">
         function isNumber(value) {         //验证是否为数字
             var patrn = /^(-)?\d+(\.\d+)?$/;
             if (patrn.exec(value) == null || value == "") {
@@ -244,6 +266,16 @@
                     <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
+                    <td>悬挂C型轨型号选择</td>
+                    <td colspan="4">
+                        <select name="xgcxhModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="01-CXGD-110*65*14">01-CXGD-110*65*14</option>
+                            <option value="01-CXGD-110*70*22">01-CXGD-110*70*22</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td>悬挂C型轨材料选择</td>
                     <td colspan="4">
                         <select name="xgcclModel" style="width:100%;height:40px;text-align-last:center">
@@ -258,11 +290,22 @@
                     </td>
                 </tr>
                 <tr>
+                    <td ><b>悬挂C型轨型号</b></td>
+                    <td ><p><i></i></p></td>
+                    <td ><input type="text" name="xgcxh" /></td>
+                    <td ></td>
+                </tr>
+
+
+                <tr>
                     <td ><b>悬挂C型轨材料</b></td>
                     <td ><p><i></i></p></td>
                     <td ><input type="text" name="xgccl" /></td>
                     <td ></td>
                 </tr>
+
+
+
                 <tr>
                     <td ><b>小车最大工作载荷</b></td>
                     <td ><p><i>G</i></p></td>
@@ -305,6 +348,12 @@
                     <td ><p><i>E</i></p></td>
                     <td ><input type="text" name="xgce" /></td>
                     <td >MPa</td>
+                </tr>
+                <tr>
+                    <td ><b>C型轨壁厚</b></td>
+                    <td ><p><i>h</sub></i></p></td>
+                    <td ><input type="text" name="xgcbh" /></td>
+                    <td >mm</td>
                 </tr>
                 <tr>
                     <td ><b>规定非比例延伸强度</b></td>
@@ -361,37 +410,46 @@
                         <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
                     </tr>
                     <tr>
-                        <td style="width:40%;"><b>名称</b></td>
+                        <td style="width:20%;"><b>名称</b></td>
                         <td style="width:20%;"><b>简支梁结果显示</b></td>
+                        <td style="width:15%;"><b>是否满足</b></td>
                         <td style="width:20%;"><b>双跨梁结果显示</b></td>
-                        <td style="width:20%;"><b>许用值</b></td>
-
+                        <td style="width:15%;"><b>是否满足</b></td>
+                        <td style="width:10%;"><b>许用值</b></td>
                     </tr>
                     <tr>
-                        <td><b>整体弯曲强度</b></td>
+                        <td><b>整体弯曲应力（MPa）</b></td>
                         <td id="xgco1"></td>
+                        <td id="xgcm1"></td>
                         <td id="xgcko1"></td>
+                        <td id="xgckm1"></td>
                         <td id="xgcxy"></td>
 
                     </tr>
                     <tr>
-                        <td><b>局部弯曲强度</b></td>
+                        <td><b>局部弯曲应力（MPa）</b></td>
                         <td id="xgco2"></td>
+                        <td id="xgcm2"></td>
                         <td id="xgcko2"></td>
+                        <td id="xgckm2"></td>
                         <td id="xgcxy1"></td>
 
                     </tr>
                     <tr>
-                        <td><b>组合弯曲强度</b></td>
+                        <td><b>组合弯曲应力（MPa）</b></td>
                         <td id="xgco3"></td>
+                        <td id="xgcm3"></td>
                         <td id="xgcko3"></td>
+                        <td id="xgckm3"></td>
                         <td id="xgcxy2"></td>
 
                     </tr>
                     <tr>
-                        <td><b>轨道挠度</b></td>
+                        <td><b>轨道挠度（mm）</b></td>
                         <td id="xgcuy"></td>
+                        <td id="xgcm4"></td>
                         <td id="xgckuy"></td>
+                        <td id="xgckm4"></td>
                         <td id="xgnd"></td>
                     </tr>
 
@@ -427,40 +485,70 @@
         xgccl:function(){
             return xgcclModelList[ xgcclModel ]['xgccl'];
         },
+
         xgrp:function(){
-            if( xgccl == "6005-T5" && xgcl2 <= 6.3 ){
-                return 215 ;
-            }else if ( xgccl == "6005-T6" && xgcl2 <= 5 ){
-                return 215 ;
-            }
-            else if ( xgccl == "6005-T6" && xgcl2 > 5 && xgcl2 < 15 ){
+            if( xgccl == "6005-T5" && xgcbh <= 6.3 ){
                 return 200 ;
             }
-            else if ( xgccl == "6005A-T5" && xgcl2 <= 6.3  ){
+            else if ( xgccl == "6005-T5" &&  xgcbh > 6.3&& xgcbh < 25  ){
+                    return 200 ;
+            }
+            else if ( xgccl == "6005-T6" && xgcbh <= 5 ){
                 return 215 ;
             }
-            else if ( xgccl == "6005A-T6" && xgcl2 <= 5  ){
-                return 215 ;
-            }
-            else if ( xgccl == "6005A-T6" && xgcl2 > 5 && xgcl2 < 15 ){
+            else if ( xgccl == "6005-T6" && xgcbh > 5 && xgcbh < 15 ){
                 return 200 ;
             }
-            else if ( xgccl == "6063-T5" && xgcl2 <= 3  ){
-                return 175 ;
+            else if ( xgccl == "6005A-T5" && xgcbh <= 6.3  ){
+                return 200 ;
             }
-            else if ( xgccl == "6063-T5" && xgcl2 > 3 && xgcl2 < 25 ){
+            else if ( xgccl == "6005A-T5" &&  xgcbh > 6.3&& xgcbh < 25  ){
+                return 200 ;
+            }
+            else if ( xgccl == "6005A-T6" && xgcbh <= 5  ){
+                return 215 ;
+            }
+            else if ( xgccl == "6005A-T6" && xgcbh > 5 && xgcbh < 15 ){
+                return 200 ;
+            }
+            else if ( xgccl == "6063-T5" && xgcbh <= 3  ){
+                return 130 ;
+            }
+            else if ( xgccl == "6063-T5" && xgcbh > 3 && xgcbh < 25 ){
+                return 110 ;
+            }
+            else if ( xgccl == "6063-T6" && xgcbh <= 10 ){
+                return 170 ;
+            }
+            else if ( xgccl == "6063-T6" && xgcbh > 10 && xgcbh < 25 ){
                 return 160 ;
-            }
-            else if ( xgccl == "6063-T6" && xgcl2 <= 10 ){
-                return 215 ;
-            }
-            else if ( xgccl == "6063-T6" && xgcl2 > 10 && xgcl2 < 25 ){
-                return 195 ;
             }
             else{
                 return " " ;
             }
         },
+        xgcxh:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcxh'];
+        },
+        xgcxl:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcxl'];
+        },
+        xgcl2:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcl2'];
+        },
+        xgcwx1:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcwx1'];
+        },
+        xgci:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgci'];
+        },
+        xgce:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgce'];
+        },
+        xgcbh:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcbh'];
+        },
+
     };
     data.init(calculateFunction);
 </script>

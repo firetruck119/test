@@ -24,9 +24,12 @@ public class SuspensionCtrackEntity {
     private Double xgcwx1;
     private Double xgci;
     private String xgccl;
+    private String xgcxh;
     private Double xgce;
     private Double xgrp;
+    private Double xgcbh;
     private String xgcclModel;
+    private String xgcxhModel;
 
     public String nameOfPDF(String type) {
         switch (type) {
@@ -61,6 +64,8 @@ public class SuspensionCtrackEntity {
         map.put("xgccl", CommonFunc.convertDoubleToString(xgccl));
         map.put("xgce", CommonFunc.convertDoubleToString(xgce));
         map.put("xgrp", CommonFunc.convertDoubleToString(xgrp));
+        map.put("xgcbh", CommonFunc.convertDoubleToString(xgcbh));
+        map.put("xgcxh", CommonFunc.convertDoubleToString(xgcxh));
        /*
         map.put("fzed", CommonFunc.convertDoubleToString(fzed));
         map.put("fze", CommonFunc.convertDoubleToString(fze));
