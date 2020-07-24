@@ -219,6 +219,9 @@
         $(document).ready(function () {
             InitNav(5)
             $('#PtPlatformUnconstrained').addClass('o-sub-cur');
+            $("input[type=reset]").click(function(){
+              window.getData.dataToImage(ingDaefultData);
+            })
         })
 
         function janyan() {
