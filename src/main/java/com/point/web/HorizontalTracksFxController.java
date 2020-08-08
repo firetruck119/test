@@ -88,8 +88,8 @@ public class HorizontalTracksFxController {
         if(!name.equals(""))
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/"+name));
         if (null != check && check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无筋板版水平轨道校核计算书(简支梁)"));
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无筋板版水平轨道校核计算书(双跨梁)"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无筋板版水平轨道校核计算书(简支梁)(1.5倍)"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无筋板版水平轨道校核计算书(双跨梁)(1.5倍)"));
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/无筋板版水平轨道计算书校核验证"));
             return tool.getResponseEntity("无筋板版水平轨道计算书校核验证", pdf.MergePDF(list));
         }
