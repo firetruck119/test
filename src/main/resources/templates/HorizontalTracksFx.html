@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>水平轨道加筋(I／H)校核计算书</title>
+    <title>水平轨道(I／H)校核计算书(1.5倍)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{js/jquery-1.7.1.min.js}"></script>
     <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
-    <!--    <script th:src="@{js/vue.js}"></script>-->
+<!--    <script th:src="@{js/vue.js}"></script>-->
     <script th:src="@{js/xyz/jquery.Ajax.Form.js}"></script>
     <link th:href="@{css/page.css}" rel="stylesheet"/>
     <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
@@ -558,6 +558,34 @@
                 gdwyxel:1145000,
                 gdwzel:368000,
             },
+            'PH250*250-104.2':{
+                gdxh:"PH250*250-104.2",
+                gdh:250,
+                gdb:250,
+                gdtw:16,
+                gdtfs:20,
+                gdtfx:20,
+                gdsy:663200,
+                gdiy:144931333,
+                gdiz:52155013,
+                gdwysel:1159451,
+                gdwyxel:1159451,
+                gdwzel:417240,
+            },
+            'PH250*250-113.3':{
+                gdxh:"PH250*250-113.3",
+                gdh:250,
+                gdb:250,
+                gdtw:16,
+                gdtfs:25,
+                gdtfx:20,
+                gdsy:718879,
+                gdiy:156236269,
+                gdiz:58993723,
+                gdwysel:1338254,
+                gdwyxel:1172473,
+                gdwzel:469310,
+            },
             'PH250*250-138.8':{
                 gdxh:"PH250*250-138.8",
                 gdh:250,
@@ -646,7 +674,7 @@
             "160LZ":{
                 dcw:160,
                 bcw:50,
-            },
+             },
             "170LZ":{
                 dcw:170,
                 bcw:60,
@@ -671,7 +699,7 @@
                 dcw:450,
                 bcw:120,
             },
-        };
+          };
     </script>
     <script type="text/javascript">
         function isNumber(value) {         //验证是否为数字
@@ -684,13 +712,12 @@
         }
         $(document).ready(function () {
             InitNav(6)
-            $('#HorizontalTracksAddPlate').addClass('o-sub-cur');
+            $('#HorizontalTracksFx').addClass('o-sub-cur');
         })
 
         function janyan() {
             $.ajax({
-                //这里的url对应后端的url
-                url: "HorizontalTracksAddPlate/jy",
+                url: "HorizontalTracksFx/jy",
                 type: "post",
                 data: $("form").serialize(),
                 async: false,
@@ -723,6 +750,8 @@
             }
         }
     </script>
+
+
 </head>
 <body>
 <nav class="navbar navbar-default" role="head" th:replace="head"></nav>
@@ -730,7 +759,7 @@
 <div class="main">
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
     <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
-        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">水平轨道加筋(I／H)校核计算书</div>
+        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">水平轨道(I／H)校核计算书(1.5倍)</div>
         <!- 封面内容 ->
         <div style="width:400px;">
             <table>
@@ -744,7 +773,7 @@
                     <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
-                                var url = '/HorizontalTracksAddPlate/getData';
+                                var url = '/HorizontalTracksFx/getData';
                                 var id = $('input[name="sjht"]').val();
                                 getData.geteDataFromDB(url, id)
                             }
@@ -838,9 +867,15 @@
                     <td >mm</td>
                 </tr>
                 <tr>
-                    <td ><b>最大竖向轮载</b></td>
-                    <td ><p><i>F<sub>z,Ed</sub></i></p></td>
-                    <td ><input type="text" name="fzedk"/></td>
+                    <td ><b>轨道承受的最大垂直轮压</b></td>
+                    <td ><p><i>V<sub>z</sub></i></p></td>
+                    <td ><input type="text" name="vzk"/></td>
+                    <td >kN</td>
+                </tr>
+                <tr>
+                    <td ><b>轨道承受的最大水平力</b></td>
+                    <td ><p><i>V<sub>z</sub></i></p></td>
+                    <td ><input type="text" name="vyk"/></td>
                     <td >kN</td>
                 </tr>
                 <tr>
@@ -850,23 +885,30 @@
                     <td >kN</td>
                 </tr>
                 <tr>
-                    <td ><b>轨道承受的竖向剪力</b></td>
+                    <td ><b>最大竖向轮载(1.5)</b></td>
+                    <td ><p><i>F<sub>z,Ed</sub></i></p></td>
+                    <td ><input type="text" name="fzedk"/></td>
+                    <td >kN</td>
+                </tr>
+                <tr>
+                    <td ><b>轨道承受的竖向剪力(1.5)</b></td>
                     <td ><p><i>V<sub>z,Ed</sub></i></p></td>
                     <td ><input type="text" name="vzedk"  /></td>
                     <td >kN</td>
                 </tr>
                 <tr>
-                    <td ><b>轨道承受的水平力</b></td>
-                    <td ><p><i>V<sub>y,Ed</sub></i></p></td>
-                    <td ><input type="text" name="vyedk" /></td>
-                    <td >kN</td>
-                </tr>
-                <tr>
-                    <td ><b>最大支承反力</b></td>
+                    <td ><b>最大支承反力(1.5)</b></td>
                     <td ><p><i>R<sub>z,Ed</sub></i></p></td>
                     <td ><input type="text" name="rzedk" /></td>
                     <td >kN</td>
                 </tr>
+                <tr>
+                    <td ><b>轨道承受的水平力(1.5)</b></td>
+                    <td ><p><i>V<sub>y,Ed</sub></i></p></td>
+                    <td ><input type="text" name="vyedk" /></td>
+                    <td >kN</td>
+                </tr>
+
             </table>
         </div>
         <div style="width:400px;">
@@ -893,7 +935,7 @@
                     <td >mm</td>
                 </tr>
                 <tr>
-                    <td ><b>支撑长度</b></td>
+                    <td ><b>支撑长度(埋板宽度)</b></td>
                     <td ><p><i>c</i></p></td>
                     <td ><input type="text" name="bef1c" /></td>
                     <td >mm</td>
@@ -910,80 +952,96 @@
                 <tr>
                     <td>轨道型号选择</td>
                     <td colspan="4">
-                        <select name="trackModel" style="width:100%;height:40px;text-align-last:center">
-                            <option value="" style="display: none"></option>
-                            <option value="I20b-31">I20b-31</option>
-                            <option value="I22b-36.5">I22b-36.5</option>
-                            <option value="I25b-42">I25b-42</option>
-                            <option value="I28b-47.8">I28b-47.8</option>
-                            <option value="I32b-57.7">I32b-57.7</option>
-                            <option value="H150*150-31.1">H150*150-31.1</option>
-                            <option value="H175*175-40.4">H175*175-40.4</option>
-                            <option value="H200*200-49.9">H200*200-49.9</option>
-                            <option value="H250*250-71.8">H250*250-71.8</option>
-                            <option value="H152*152-30(ISO)">H152*152-30(ISO)</option>
-                            <option value="H152*152-37(ISO)">H152*152-37(ISO)</option>
-                            <option value="H203*203-46(ISO)">H203*203-46(ISO)</option>
-                            <option value="H203*203-52(ISO)">H203*203-52(ISO)</option>
-                            <option value="H203*203-60(ISO)">H203*203-60(ISO)</option>
-                            <option value="H203*203-71(ISO)">H203*203-71(ISO)</option>
-                            <option value="H203*203-86(ISO)">H203*203-86(ISO)</option>
-                            <option value="H254*254-73(ISO)">H254*254-73(ISO)</option>
-                            <option value="H254*254-89(ISO)">H254*254-89(ISO)</option>
-                            <option value="H254*254-107(ISO)">H254*254-107(ISO)</option>
-                            <option value="H254*254-132(ISO)">H254*254-132(ISO)</option>
-                            <option value="H254*254-167(ISO)">H254*254-167(ISO)</option>
-                            <option value="H305*305-97(ISO)">H305*305-97(ISO)</option>
-                            <option value="H305*305-118(ISO)">H305*305-118(ISO)</option>
-                            <option value="H305*305-137(ISO)">H305*305-137(ISO)</option>
-                            <option value="H305*305-158(ISO)">H305*305-158(ISO)</option>
-                            <option value="H200*200T-71">H200*200T-71</option>
-                            <option value="H250*250T-99">H250*250T-99</option>
-                            <option value="PH216*200-84.7">PH216*200-84.7</option>
-                            <option value="PH266*250-128.1">PH266*250-128.1</option>
-                            <option value="PH200*200-90.7">PH200*200-90.7</option>
-                            <option value="PH220*170-82.6">PH220*170-82.6</option>
-                            <option value="PH250*200-117.4">PH250*200-117.4</option>
-                            <option value="PH250*250-138.8">PH250*250-138.8</option>
-                            <option value="PH300*250-146.6">PH300*250-146.6</option>
-                            <option value="PH300*300-168.1">PH300*300-168.1</option>
-                            <option value="其它">其它</option>
-                        </select>
+                    <select name="trackModel" style="width:100%;height:40px;text-align-last:center">
+                        <option value="" style="display: none"></option>
+                        <option value="I20b-31">I20b-31</option>
+                        <option value="I22b-36.5">I22b-36.5</option>
+                        <option value="I25b-42">I25b-42</option>
+                        <option value="I28b-47.8">I28b-47.8</option>
+                        <option value="I32b-57.7">I32b-57.7</option>
+                        <option value="H150*150-31.1">H150*150-31.1</option>
+                        <option value="H175*175-40.4">H175*175-40.4</option>
+                        <option value="H200*200-49.9">H200*200-49.9</option>
+                        <option value="H250*250-71.8">H250*250-71.8</option>
+                        <option value="H152*152-30(ISO)">H152*152-30(ISO)</option>
+                        <option value="H152*152-37(ISO)">H152*152-37(ISO)</option>
+                        <option value="H203*203-46(ISO)">H203*203-46(ISO)</option>
+                        <option value="H203*203-52(ISO)">H203*203-52(ISO)</option>
+                        <option value="H203*203-60(ISO)">H203*203-60(ISO)</option>
+                        <option value="H203*203-71(ISO)">H203*203-71(ISO)</option>
+                        <option value="H203*203-86(ISO)">H203*203-86(ISO)</option>
+                        <option value="H254*254-73(ISO)">H254*254-73(ISO)</option>
+                        <option value="H254*254-89(ISO)">H254*254-89(ISO)</option>
+                        <option value="H254*254-107(ISO)">H254*254-107(ISO)</option>
+                        <option value="H254*254-132(ISO)">H254*254-132(ISO)</option>
+                        <option value="H254*254-167(ISO)">H254*254-167(ISO)</option>
+                        <option value="H305*305-97(ISO)">H305*305-97(ISO)</option>
+                        <option value="H305*305-118(ISO)">H305*305-118(ISO)</option>
+                        <option value="H305*305-137(ISO)">H305*305-137(ISO)</option>
+                        <option value="H305*305-158(ISO)">H305*305-158(ISO)</option>
+                        <option value="H200*200T-71">H200*200T-71</option>
+                        <option value="H250*250T-99">H250*250T-99</option>
+                        <option value="PH216*200-84.7">PH216*200-84.7</option>
+                        <option value="PH266*250-128.1">PH266*250-128.1</option>
+                        <option value="PH200*200-90.7">PH200*200-90.7</option>
+                        <option value="PH220*170-82.6">PH220*170-82.6</option>
+                        <option value="PH250*200-117.4">PH250*200-117.4</option>
+                        <option value="PH250*250-104.2">PH250*250-104.2</option>
+                        <option value="PH250*250-113.3">PH250*250-113.3</option>
+                        <option value="PH250*250-138.8">PH250*250-138.8</option>
+                        <option value="PH300*250-146.6">PH300*250-146.6</option>
+                        <option value="PH300*300-168.1">PH300*300-168.1</option>
+                        <option value="其它">其它</option>
+                    </select>
                         <script>
-                            $("[name=trackModel]").change(function () {
-                                var gdxh=$("[name=trackModel]")[0].value;
-                                var filename="";
-                                if(gdxh=="I20b-31" || gdxh=="I22b-36.5" || gdxh=="I25b-42" || gdxh=="I28b-47.8" || gdxh=="I32b-57.7" ){
-                                    filename="工字钢.jpg";
-                                }else if (gdxh=="H150*150-31.1" || gdxh=="H175*175-40.4"|| gdxh=="H200*200-49.9"|| gdxh=="H250*250-71.8"|| gdxh=="H152*152-30(ISO)"|| gdxh=="H152*152-37(ISO)"|| gdxh=="H203*203-46(ISO)"|| gdxh=="H203*203-52(ISO)"|| gdxh=="H203*203-60(ISO)"|| gdxh=="H203*203-71(ISO)"|| gdxh=="H203*203-86(ISO)" || gdxh=="H254*254-73(ISO)" || gdxh=="H254*254-89(ISO)" || gdxh=="H254*254-107(ISO)" || gdxh=="H254*254-132(ISO)" || gdxh=="H254*254-167(ISO)" || gdxh=="H305*305-97(ISO)" || gdxh=="H305*305-118(ISO)" || gdxh=="H305*305-137(ISO)" || gdxh=="H305*305-158(ISO)"){
-                                    filename="H型钢.jpg";
-                                }else if (gdxh=="H200*200T-71" || gdxh=="H250*250T-99"){
-                                    filename="H型钢贴板.jpg";
-                                }else if (gdxh=="PH216*200-84.7" || gdxh=="PH266*250-128.1"){
-                                    filename="拼焊配合.jpg";
-                                }else if (gdxh=="PH200*200-90.7" || gdxh=="PH250*250-138.8" || gdxh=="PH300*300-168.1"){
-                                    filename="拼焊方.jpg";
-                                }else if (gdxh=="PH220*170-82.6" || gdxh=="PH250*200-117.4" || gdxh=="PH300*250-146.6"){
-                                    filename="拼焊长.jpg";
-                                }else {
-                                    filename="";
-                                }
-                                if ($('input[name=tu_gdtu]').length == 0) {
-                                    $('form').append('<input name="tu_gdtu" type="hidden"/>');
-                                }
-                                $("[name=tu_gdtu]")[0].value=filename;
-                                $("[name=gdtu]")[0].src="/pdf/getImg?filename="+ filename+"";
-                            })
+                        $("[name=trackModel]").change(function () {
+                        var gdxh=$("[name=trackModel]")[0].value;
+                        var filename="";
+                        if(gdxh=="I20b-31" || gdxh=="I22b-36.5" || gdxh=="I25b-42" || gdxh=="I28b-47.8" || gdxh=="I32b-57.7" ){
+                        filename="工字钢.jpg";
+                        }else if (gdxh=="H150*150-31.1" || gdxh=="H175*175-40.4"|| gdxh=="H200*200-49.9"|| gdxh=="H250*250-71.8"|| gdxh=="H152*152-30(ISO)"|| gdxh=="H152*152-37(ISO)"|| gdxh=="H203*203-46(ISO)"|| gdxh=="H203*203-52(ISO)"|| gdxh=="H203*203-60(ISO)"|| gdxh=="H203*203-71(ISO)"|| gdxh=="H203*203-86(ISO)" || gdxh=="H254*254-73(ISO)" || gdxh=="H254*254-89(ISO)" || gdxh=="H254*254-107(ISO)" || gdxh=="H254*254-132(ISO)" || gdxh=="H254*254-167(ISO)" || gdxh=="H305*305-97(ISO)" || gdxh=="H305*305-118(ISO)" || gdxh=="H305*305-137(ISO)" || gdxh=="H305*305-158(ISO)"){
+                        filename="H型钢.jpg";
+                        }else if (gdxh=="H200*200T-71" || gdxh=="H250*250T-99"){
+                        filename="H型钢贴板.jpg";
+                        }else if (gdxh=="PH216*200-84.7" || gdxh=="PH266*250-128.1"){
+                        filename="拼焊配合.jpg";
+                        }else if (gdxh=="PH200*200-90.7" || gdxh=="PH250*250-104.2" || gdxh=="PH250*250-113.3" || gdxh=="PH250*250-138.8" || gdxh=="PH300*300-168.1"){
+                        filename="拼焊方.jpg";
+                        }else if (gdxh=="PH220*170-82.6" || gdxh=="PH250*200-117.4" || gdxh=="PH300*250-146.6"){
+                        filename="拼焊长.jpg";
+                        }else {
+                        filename="";
+                        }
+                        if ($('input[name=tu_gdtu]').length == 0) {
+                            $('form').append('<input name="tu_gdtu" type="hidden"/>');
+                        }
+                        $("[name=tu_gdtu]")[0].value=filename;
+                        $("[name=gdtu]")[0].src="/pdf/getImg?filename="+ filename+"";
+                        })
                         </script>
                     </td>
                 </tr>
+
+                <!--<tr>-->
+                    <!--<td>是否加筋板</td>-->
+                    <!--<td colspan="4">-->
+                        <!--<select name="steelHave" style="width:100%;height:40px;text-align-last:center" >-->
+                            <!--<option style="display: none"></option>-->
+                            <!--<option value="有">有</option>-->
+                            <!--<option value="无">无</option>-->
+                        <!--</select>-->
+                    <!--</td>-->
+                <!--</tr>-->
+
                 <tr>
                     <td>钢材型号选择</td>
                     <td colspan="4">
                         <select name="steelModel" style="width:100%;height:40px;text-align-last:center" >
                             <option style="display: none"></option>
                             <option value="Q235B">Q235B</option>
+                            <!-- <option value="Q275">Q275</option> -->
                             <option value="Q345B">Q345B</option>
+                            <!-- <option value="其它">其它</option> -->
                         </select>
                     </td>
                 </tr>
@@ -1008,10 +1066,10 @@
                 </tr>
 
                 <!--<tr>-->
-                <!--<td>轨道型号英文</td>-->
-                <!--<td><p><i></i></p></td>-->
-                <!--<td><input type='text' name="gdxhy"/></td>-->
-                <!--<td></td>-->
+                    <!--<td>轨道型号英文</td>-->
+                    <!--<td><p><i></i></p></td>-->
+                    <!--<td><input type='text' name="gdxhy"/></td>-->
+                    <!--<td></td>-->
                 <!--</tr>-->
 
                 <tr>
@@ -1019,12 +1077,6 @@
                     <td><p><i></i></p></td>
                     <td><input type='text' name="gcph"/></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>筋板宽度</td>
-                    <td><p><i>bjb</i></p></td>
-                    <td><input type='text' name="bjb"/></td>
-                    <td>mm</td>
                 </tr>
                 <tr>
                     <td>轨道高度</td>
@@ -1143,93 +1195,93 @@
         </div>
         <input type="hidden" name="pdfType"/>
     </form>
-    <div class="navbox">
-        <div style="width:460px;height:520px; font-size: 14px   ;">
-            <table id="pdf3tb">
-                <tr>
-                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
-                </tr>
-                <tr>
-                    <td style="width:40%;"><b>名称</b></td>
-                    <td style="width:30%;"><b>简支梁结果显示</b></td>
-                    <td style="width:30%;"><b>双跨梁结果显示</b></td>
-                </tr>
-                <tr>
-                    <td><b>轨道截面强度</b></td>
-                    <td id="u3"></td>
-                    <td id="v3"></td>
-                </tr>
-                <tr>
-                    <td><b>立柱屈曲失稳临界力矩</b></td>
-                    <td id="u5"></td>
-                    <td id="v5"></td>
-                </tr>
-                <tr>
-                    <td><b>支承处轨道腹板屈曲失稳临界力矩</b></td>
-                    <td id="u7"></td>
-                    <td id="v7"></td>
-                </tr>
-                <tr>
-                    <td><b>竖向轮载的复合应力</b></td>
-                    <td id="u9"></td>
-                    <td id="v9"></td>
-                </tr>
-                <tr>
-                    <td><b>竖向轮载</b></td>
-                    <td id="u11"></td>
-                    <td id="v11"></td>
-                </tr>
-                <tr>
-                    <td><b>竖向轮载引起的腹板屈曲失稳</b></td>
-                    <td id="u13"></td>
-                    <td id="v13"></td>
-                </tr>
-                <tr>
-                    <td><b>腹板受压</b></td>
-                    <td id="u15"></td>
-                    <td id="v15"></td>
-                </tr>
-                <tr>
-                    <td><b>支承反力</b></td>
-                    <td id="u17"></td>
-                    <td id="v17"></td>
-                </tr>
-                <tr>
-                    <td><b>支承反力引起的腹板屈曲失稳</b></td>
-                    <td id="u19"></td>
-                    <td id="v19"></td>
-                </tr>
-                <tr>
-                    <td><b>接触应力</b></td>
-                    <td id="u21"></td>
-                    <td id="v21"></td>
-                </tr>
-                <tr>
-                    <td><b>正常使用极限状态</b></td>
-                    <td id="u26"></td>
-                    <td id="v26"></td>
-                </tr>
-            </table>
-            <div style="margin: 0 150px 0;">
-                <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
+        <div class="navbox">
+            <div style="width:460px;height:520px; font-size: 14px   ;">
+                <table id="pdf3tb">
+                    <tr>
+                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+                    </tr>
+                    <tr>
+                        <td style="width:40%;"><b>名称</b></td>
+                        <td style="width:30%;"><b>简支梁结果显示</b></td>
+                        <td style="width:30%;"><b>双跨梁结果显示</b></td>
+
+                    </tr>
+                    <tr>
+                        <td><b>轨道截面强度</b></td>
+                        <td id="u3"></td>
+                        <td id="v3"></td>
+                    </tr>
+                    <tr>
+                        <td><b>侧向弯扭屈曲失稳</b></td>
+                        <td id="u5"></td>
+                        <td id="v5"></td>
+                    </tr>
+                    <tr>
+                        <td><b>轨道腹板屈曲失稳</b></td>
+                        <td id="u7"></td>
+                        <td id="v7"></td>
+                    </tr>
+                    <tr>
+                        <td><b>竖向轮载的复合应力</b></td>
+                        <td id="u9"></td>
+                        <td id="v9"></td>
+                    </tr>
+                    <tr>
+                        <td><b>竖向轮载</b></td>
+                        <td id="u11"></td>
+                        <td id="v11"></td>
+                    </tr>
+                    <tr>
+                        <td><b>竖向轮载引起的腹板屈曲失稳</b></td>
+                        <td id="u13"></td>
+                        <td id="v13"></td>
+                    </tr>
+                    <tr>
+                        <td><b>腹板受压</b></td>
+                        <td id="u15"></td>
+                        <td id="v15"></td>
+                    </tr>
+                    <tr>
+                        <td><b>支承反力</b></td>
+                        <td id="u17"></td>
+                        <td id="v17"></td>
+                    </tr>
+                    <tr>
+                        <td><b>支承反力引起的腹板屈曲失稳</b></td>
+                        <td id="u19"></td>
+                        <td id="v19"></td>
+                    </tr>
+                    <tr>
+                        <td><b>接触应力</b></td>
+                        <td id="u21"></td>
+                        <td id="v21"></td>
+                    </tr>
+                    <tr>
+                        <td><b>轨道挠度</b></td>
+                        <td id="u26"></td>
+                        <td id="v26"></td>
+                    </tr>
+                </table>
+                <div style="margin: 0 150px 0;">
+                    <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="buttonbox">
-<!--    这里的action对应后端的url -->
-    <input type="submit" form="form1" class="button"  value="导出简支梁模型pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
+    <div class="buttonbox">
+        <input type="submit" form="form1" class="button"  value="导出简支梁模型pdf" onclick="$('form').attr('action','/getPDF');
                                                                                             isCheck(false);changeType('SimplySupported')"/>
-    <input type="submit" form="form1" class="button"  value="导出简支梁英文pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
+        <input type="submit" form="form1" class="button"  value="导出简支梁英文pdf" onclick="$('form').attr('action','/getPDF');
                                                                                              isCheck(false);changeType('SimplySupportedEn')"/>
-    <input type="submit" form="form1" class="button"  value="导出双跨梁模型pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
+        <input type="submit" form="form1" class="button"  value="导出双跨梁模型pdf" onclick="$('form').attr('action','/getPDF');
                                                                                             isCheck(false);changeType('DoubleSpanbeam')"/>
-    <input type="submit" form="form1" class="button"  value="导出双跨梁英文pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
+        <input type="submit" form="form1" class="button"  value="导出双跨梁英文pdf" onclick="$('form').attr('action','/getPDF');
                                                                                             isCheck(false);changeType('DoubleSpanbeamEn')"/>
-    <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
+        <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/getPDF');
                                                                                             isCheck(true);changeType('Check')"/>
-    <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
-</div>
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+    </div>
 <script>
     function changeType(l){
         var e = $('input[name=pdfType]');
@@ -1242,13 +1294,22 @@
     var calculateFunction={
         <!-- 6.16修改 -->
         fzek:function(){
-            return fzedk ;
+            return vzk ;
+        },
+        fzedk:function (){
+            return 1.5 * vzk ;
         },
         vzedk:function (){
-            return fzedk ;
+            return 1.5 * vzk ;
         },
         rzedk:function(){
-            return fzedk ;
+            return 1.5 * vzk ;
+        },
+        vyedk:function(){
+            return 1.5 * vyk ;
+        },
+        bef1x:function(){
+            return 0 ;
         },
         dcw:function(){
             return trippingModelList[ trippingModel ]['dcw'];
@@ -1296,7 +1357,7 @@
         //     }
         // },
 
-        <!-- 6.16修改 -->
+       <!-- 6.16修改 -->
         gdhy:function(){
             return gdtfs ;
         },
@@ -1328,15 +1389,17 @@
                 case 'PH200*200-90.7' :return 116.71;
                 case 'PH220*170-82.6' :return 116.32;
                 case 'PH250*200-117.4' :return 130.8;
+                case 'PH250*250-104.2' :return 125;
+                case 'PH250*250-113.3' :return 133.25;
                 case 'PH250*250-138.8' :return 131.28;
                 case 'PH300*250-146.6' :return 157.48;
                 case 'PH300*300-168.1' :return 157.94;
                 case '其它':return ' ';
-                default :return gdh /2;
+                default :return gdh / 2 ;
             }
         },
         gdy:function(){
-            return gdb /2;
+            return gdb / 2 ;
         },
         gdss:function(){
             return steelModelList[ steelModel ]['gdss'];
