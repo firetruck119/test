@@ -77,21 +77,21 @@ public class HorizontalTracksFxController {
         List<byte[]> list = new ArrayList<>();
         String name="";
         if(pdfType.equals("SimplySupported")) {
-            name="无筋板版水平轨道校核计算书(简支梁)";
+            name="无筋板版水平轨道校核计算书(简支梁)(1.5倍)";
         } else if(pdfType.equals("DoubleSpanbeam")){
-            name="无筋板版水平轨道校核计算书(双跨梁)";
+            name="无筋板版水平轨道校核计算书(双跨梁)(1.5倍)";
         }else if(pdfType.equals("SimplySupportedEn")){
-            name="无筋板版水平轨道校核计算书(简支梁)英文版";
+            name="无筋板版水平轨道校核计算书(简支梁)英文版(1.5倍)";
         }else if(pdfType.equals("DoubleSpanbeamEn")){
-            name="无筋板版水平轨道校核计算书(双跨梁)英文版";
+            name="无筋板版水平轨道校核计算书(双跨梁)英文版(1.5倍)";
         }
         if(!name.equals(""))
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/"+name));
         if (null != check && check) {
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无筋板版水平轨道校核计算书(简支梁)(1.5倍)"));
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无筋板版水平轨道校核计算书(双跨梁)(1.5倍)"));
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/无筋板版水平轨道计算书校核验证"));
-            return tool.getResponseEntity("无筋板版水平轨道计算书校核验证", pdf.MergePDF(list));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/无筋板版水平轨道计算书校核验证(1.5倍)"));
+            return tool.getResponseEntity("无筋板版水平轨道计算书校核验证(1.5倍)", pdf.MergePDF(list));
         }
         return tool.getResponseEntity(name, list.get(0));
     }
