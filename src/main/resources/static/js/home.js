@@ -286,6 +286,16 @@ asideDatas = {
             ]
         },
         {
+            title:'计算书日志',
+            url:'OperationLog',
+            children:[
+                {
+                    title:'日志搜索',
+                    url:'List'
+                }
+            ]
+        },
+        {
             title:'模块编辑',
             url:'dataTable',
         }

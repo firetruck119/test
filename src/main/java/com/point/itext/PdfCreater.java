@@ -6,7 +6,9 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.*;
 import com.point.common.MyEnv;
+import com.point.common.OperationLog;
 import com.point.entity.InputImageCache;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -16,6 +18,9 @@ import java.util.Map;
 
 @Component
 public class PdfCreater {
+
+    @Autowired
+    OperationLog operationLog;
 
     public static byte[] File2byte(File tradeFile){
         byte[] buffer = null;
@@ -208,6 +213,7 @@ public class PdfCreater {
     }
     public PdfReader getReaderByFileName(String fileName) throws IOException{
         PdfReader reader;
+        operationLog.writeOperateLog(fileName);
         if (MyEnv.isLocal()) {
             try {
                 reader = new PdfReader("C://resource/pdf/" + fileName + ".pdf");

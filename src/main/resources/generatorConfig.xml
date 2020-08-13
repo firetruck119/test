@@ -23,16 +23,8 @@
                              targetProject="src/main/java" type="XMLMAPPER" />
 
         <!-- 数据库表 -->
-        <table tableName="project_data" domainObjectName="ProjectData"></table>
+        <table tableName="operate_log" domainObjectName="OperateLog"></table>
 
-        <typeHandlers>
-            <typeHandler handler="org.apache.ibatis.type.InstantTypeHandler" />
-            <typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
-            <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />
-            <typeHandler handler="org.apache.ibatis.type.LocalTimeTypeHandler" />
-            <typeHandler handler="org.apache.ibatis.type.OffsetDateTimeTypeHandler" />
-            <typeHandler handler="org.apache.ibatis.type.OffsetTimeTypeHandler" />
-            <typeHandler handler="org.apache.ibatis.type.ZonedDateTimeTypeHandler" />
-        </typeHandlers>
+
     </context>
 </generatorConfiguration>
