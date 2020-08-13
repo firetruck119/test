@@ -1,6 +1,11 @@
 asideDatas = {
     asideData: [
         {
+            title:'跳转旧模块(临时)',
+            url:"CleaningCycle"
+        },
+
+        {
             title: '整机计算书',
             url: "pdf",
             children: [
