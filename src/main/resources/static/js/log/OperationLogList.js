@@ -57,11 +57,11 @@ var  operationloglist=Vue.component('operation_log_list',{
                     >
                     <el-table-column
                         prop="userrealname"
-                        label="序号">
+                        label="用户">
                     </el-table-column>
                     <el-table-column
                         prop="operation"
-                        label="列名">
+                        label="操作内容">
                     </el-table-column>
                     <el-table-column
                         prop="changelasttime"
