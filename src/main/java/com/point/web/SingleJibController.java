@@ -5,7 +5,7 @@ import com.point.common.CacheData;
 import com.point.common.ImageCacheData;
 import com.point.common.URLCacheData;
 import com.point.entity.InputURLCache;
-import com.point.entity.pdf.PlatformUnconstrainedEntity;
+import com.point.entity.pdf.SingleJibEntity;
 import com.point.itext.PdfCreater;
 import com.point.web.newController.Tool.ToolForPDFController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class PlatformUnconstrainedController {
+public class SingleJibController {
 
     @Autowired
     PdfCreater pdf;
@@ -38,16 +38,16 @@ public class PlatformUnconstrainedController {
     @Autowired
     URLCacheData urlCacheData;
 
-    @GetMapping("/PlatformUnconstrained")
+    @GetMapping("/SingleJib")
     public String getMap() {
-        return "PlatformUnconstrained";
+        return "SingleJib";
     }
 
-    @GetMapping("/PlatformUnconstrained/getData")
+    @GetMapping("/SingleJib/getData")
     @ResponseBody
     public Object getData(String batchId) {
         Map<String,Object> result=new HashMap<>();
-        PlatformUnconstrainedEntity entity = new PlatformUnconstrainedEntity();
+        SingleJibEntity entity = new SingleJibEntity();
         cacheData.readCacheValue(batchId, entity);
         result.put("datalist",entity);
         Map<String, InputURLCache> imagemap=urlCacheData.readCacheValue(batchId);
@@ -55,13 +55,13 @@ public class PlatformUnconstrainedController {
         return result;
     }
 
-    @PostMapping("PlatformUnconstrained/jy")
+    @PostMapping("SingleJib/jy")
     @ResponseBody
-    public Object janyan (@ModelAttribute PlatformUnconstrainedEntity entity){return entity.takeMapForPDF("");
+    public Object janyan (@ModelAttribute SingleJibEntity entity){return entity.takeMapForPDF("");
     }
-    @PostMapping("PlatformUnconstrained/getPDF")
+    @PostMapping("SingleJib/getPDF")
     public Object getPDF(HttpServletRequest request,
-                         @ModelAttribute PlatformUnconstrainedEntity entity,
+                         @ModelAttribute SingleJibEntity entity,
                          @RequestParam(required = false) String pdfType,
                          @RequestParam(required = false) Boolean check,
                          @RequestParam(required = false) String sjht) throws IOException, DocumentException {
@@ -74,12 +74,12 @@ public class PlatformUnconstrainedController {
         urlCacheData.saveCacheValue(sjht, imageMap);
         cacheData.saveCacheValue(sjht, entity);
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/非普通吊船无约束系统风速计算书"));
+        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/单臂机吊臂校核计算书"));
         if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/非普通吊船无约束系统风速计算书验证部分"));
-            return tool.getResponseEntity("非普通吊船无约束系统风速计算书验证部分", pdf.MergePDF(list));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/单臂机吊臂校核计算书验证部分"));
+            return tool.getResponseEntity("单臂机吊臂校核计算书验证部分", pdf.MergePDF(list));
         }
-        return tool.getResponseEntity("非普通吊船无约束系统风速计算书", list.get(0));
+        return tool.getResponseEntity("单臂机吊臂校核计算书", list.get(0));
     }
 }
 
