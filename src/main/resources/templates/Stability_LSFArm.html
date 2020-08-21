@@ -1384,20 +1384,6 @@
             </table>
         </div>
 
-        <!--不显示部分-->
-        <div style="display: none">
-            <input type="text" name="m3f" />
-            <input type="text" name="m5f" />
-            <input type="text" name="m13f" />
-            <input type="text" name="yxjgaz" />
-            <input type="text" name="dcgssp" />
-            <input type="text" name="grugssp" />
-            <input type="text" name="lbtzh" />
-            <input type="text" name="ldcgh" />
-            <input type="text" name="ldslzh" />
-            <input type="text" name="umcxs" />
-        </div>
-
         <!--风载荷作用高度-->
 
         <div class="subtable">
@@ -3089,7 +3075,19 @@
             </table>
         </div>
 
-
+        <!--不显示部分-->
+        <div style="display: none">
+            <input type="text" name="m3f" />
+            <input type="text" name="m5f" />
+            <input type="text" name="m13f" />
+            <input type="text" name="yxjgaz" />
+            <input type="text" name="dcgssp" />
+            <input type="text" name="grugssp" />
+            <input type="text" name="lbtzh" />
+            <input type="text" name="ldcgh" />
+            <input type="text" name="ldslzh" />
+            <input type="text" name="umcxs" />
+        </div>
 
         <input name="language" type="hidden"/>
     </form>
@@ -3289,7 +3287,6 @@
 
             }
         },
-
         lbpx: function () {
             return lbp ;
         },
@@ -3391,7 +3388,6 @@
         fdjlsfb:' lsgca * 270 * 0.64 ',
         nwd3:'2 * nwd4 ',
         fdjlszfb:' nwd3 * fdjlsfb ',
-
         lbtzh:function(){
             switch ( btModel ) {
                 case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.55;
@@ -3557,33 +3553,15 @@
             }
         },
         mwr:' h * dcgssp * 4 ',
-        // mwr:function(){
-        //     switch ( typeOfLifting ) {
-        //         case '105起升机构':
-        //         case '145起升机构':
-        //         case '175起升机构':
-        //         case '275起升机构':return 0.179 * h * 4;
-        //         case '185起升机构':
-        //         case '285起升机构':
-        //         case '385起升机构':return 0.244 * h * 4;
-        //         case '295起升机构':
-        //         case '495起升机构':return 0.391* h *4;
-        //         case '313起升机构':return 0.65* h *4;
-        //     }
-        // },
         mffbb:function(){
             switch ( ffbbModel ) {
                 case'有':  return 100 ;
                 case'无':  return 0 ;
             }
         },
-
         tsl:' swp + r1 + mwr + mffbb ',
-
         hsw:' h * grugssp ',
-
         tshl:' hwll + hsw ',
-
         m1:function(){
             switch ( btModel ) {
                 case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 330;

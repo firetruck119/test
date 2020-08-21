@@ -313,13 +313,14 @@ function getString(v) {
     if (typeof v =='string')
         return v;
     var s = 3;
-    var temp = Math.round(parseFloat(v) * 1000);
-    var c = temp.toString();
-    var l = c.length;
-    s = (l > s) ? s : l;
-    while (l > 0 && c[l - 1] == 0 && s > 0) {
-        l--;
-        s--;
+    while (v.toFixed(s)[v.toFixed(s).length-1]==0&&--s){
+    // var temp = Math.round(parseFloat(v) * 1000);
+    // var c = temp.toString();
+    // var l = c.length;
+    // s = (l > s) ? s : l;
+    // while (l > 0 && c[l - 1] == 0 && s > 0) {
+    //     l--;
+    //     s--;
     }
     return v.toFixed(s);
 }
