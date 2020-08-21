@@ -388,6 +388,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double lbtzh;
     private Double ldcgh;
     private Double ldslzh;
+    private Double umcxs;
 
     //Select
     private String typeOfMachine;//机型
@@ -790,6 +791,7 @@ public class StabilityEnity_LSFArmEntity {
         result.put("lbtzh", CommonFunc.convertDoubleToString(aftx18));
         result.put("ldcgh", CommonFunc.convertDoubleToString(aftx19));
         result.put("ldslzh", CommonFunc.convertDoubleToString(aftx20));
+        result.put("umcxs", CommonFunc.convertDoubleToString(umcxs));
 
         result.put("wdlyp3", CommonFunc.convertDoubleToString(wdlyp3));
         String wdlyp3y=wdlyp3.equals("有")?"has":"hasn't";
@@ -1142,8 +1144,8 @@ public class StabilityEnity_LSFArmEntity {
         result.put("dv1", dv1);
 
         //0°摩擦力计算
-        Double at1 = av1 * 0.05;
-        Double bt1 = bv1 * 0.05;
+        Double at1 = av1 * umcxs;
+        Double bt1 = bv1 * umcxs;
         result.put("at1", at1);
         result.put("bt1", bt1);
 
@@ -1340,8 +1342,8 @@ public class StabilityEnity_LSFArmEntity {
         result.put("dv2", dv2);
 
         //45°摩擦力计算
-        Double at2 = av2 * 0.05;
-        Double bt2 = bv2 * 0.05;
+        Double at2 = av2 * umcxs;
+        Double bt2 = bv2 * umcxs;
         result.put("at2", at2);
         result.put("bt2", bt2);
 
@@ -1426,8 +1428,8 @@ public class StabilityEnity_LSFArmEntity {
         result.put("dv3", dv3);
 
         //90°摩擦力计算
-        Double at3 = av3 * 0.05;
-        Double bt3 = bv3 * 0.05;
+        Double at3 = av3 * umcxs;
+        Double bt3 = bv3 * umcxs;
         result.put("at3", at3);
         result.put("bt3", bt3);
 

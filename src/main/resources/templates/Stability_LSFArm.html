@@ -1389,6 +1389,7 @@
             <input type="text" name="lbtzh" />
             <input type="text" name="ldcgh" />
             <input type="text" name="ldslzh" />
+            <input type="text" name="umcxs" />
         </div>
 
         <!--风载荷作用高度-->
@@ -3456,6 +3457,12 @@
                 case 'MHEBT1944(MHE1944臂头)':return 0;
                 case '其它':return ' ';
             }
+        },
+        umcxs:function(){
+            if( wdlyp3 =='无')
+                return 0.0;
+            else
+                return 0.05;
         },
         dcgssp:function(){
             switch ( dcgssModel ) {
