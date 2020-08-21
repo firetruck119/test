@@ -3466,9 +3466,16 @@
         },
         umcxs:function(){
             if( wdlyp3 =='无')
-                return 0.0;
-            else
-                return 0.05;
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 0.05;
+                case '170LZ':return 0.05;
+                case '200LZ':return 0.05;
+                case '230LZ':return 0.05;
+                case '260LZ':return 0.05;
+                case '350'  :return 0.05;
+                case '450'  :return 0.05;
+            }
         },
         dcgssp:function(){
             switch ( dcgssModel ) {

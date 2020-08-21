@@ -1757,6 +1757,7 @@ public class StabilityEnity_LSFArmEntity {
         Double mwhz = doubleMap.get("mwhz");
         Double lg = this.lg;
         Double ll = this.ll;
+        Double umcxs = this.umcxs;
         Double av2 = doubleMap.get("av2");
         Double bv2 = doubleMap.get("bv2");
         Double cv2 = doubleMap.get("cv2");
@@ -1774,16 +1775,26 @@ public class StabilityEnity_LSFArmEntity {
         Double bv5 = dtvm + dtvfy + 0;
         Double cv5 = dtvm - 0 + dtvw;
         Double dv5 = dtvm - dtvfy - 0;
-        Double at5 = av5 * 0.05;
-        Double bt5 = bv5 * 0.05;
+        Double at5 = av5 * umcxs;
+        Double bt5 = bv5 * umcxs;
         Double ah5 = fwcx * 0.707 - dthh;
         Double bh5 = fwcx * 0.707 + dthh;
         Double wdlyyzb1 = av2 / av5;
         Double wdlyyzb2 = bv2 / bv5;
         Double wdlyyzb3 = cv2 / cv5;
         Double wdlyyzb4 = dv2 / dv5;
-        Double wdlyyzb5 = at2 / at5;
-        Double wdlyyzb6 = bt2 / bt5;
+        Double wdlyyzb5;
+        if ( at2 == 0 ) {
+            wdlyyzb5 = 1.0 ;
+        } else {
+            wdlyyzb5 = at2 / at5;
+        }
+        Double wdlyyzb6;
+        if ( bt2 == 0 ) {
+            wdlyyzb6 = 1.0 ;
+        } else {
+            wdlyyzb6 = bt2 / bt5;
+        }
         Double wdlyyzb7 = ah2 / ah5;
         Double wdlyyzb8 = bh2 / bh5;
         String wdlyyzp1 = 0.85 <= wdlyyzb1 && wdlyyzb1 <= 1.15 ? "符合" : "不符合";
@@ -1804,6 +1815,7 @@ public class StabilityEnity_LSFArmEntity {
         map.put("mwhz", CommonFunc.convertDoubleToString(mwhz));
         map.put("lg", CommonFunc.convertDoubleToString(lg));
         map.put("ll", CommonFunc.convertDoubleToString(ll));
+        map.put("umcxs", CommonFunc.convertDoubleToString(umcxs));
         map.put("av2", CommonFunc.convertDoubleToString(av2));
         map.put("bv2", CommonFunc.convertDoubleToString(bv2));
         map.put("cv2", CommonFunc.convertDoubleToString(cv2));
