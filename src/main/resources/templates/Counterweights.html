@@ -469,6 +469,85 @@
                 m13:0,
             },
         };
+        dhzjgModelList={
+            "HZX5.0RF57":{
+                m9:186,
+                hzzcxh:'QWD500.20',
+            },
+            "HZX5.6RF77":{
+                m9:149,
+                hzzcxh:'QWD560.20A',
+            },
+            "HZX6.3RF77":{
+                m9:160,
+                hzzcxh:'QWD630.20A',
+            },
+            "HZX7.1RF87":{
+                m9:223,
+                hzzcxh:'QWD710.20A',
+            },
+            "HZX8.0RF87":{
+                m9:237,
+                hzzcxh:'QWD800.20',
+            },
+            "HZX9.0RF97":{
+                m9:356,
+                hzzcxh:'QWD900.25',
+            },
+            "HZX10.0RF97":{
+                m9:440,
+                hzzcxh:'QWD1000.32A',
+            },
+            "HZX11.2RF107":{
+                m9:579,
+                hzzcxh:'QWD1120.32',
+            },
+            "HZX12.5RF107":{
+                m9:634,
+                hzzcxh:'QWD1250.32A',
+            },
+            "HZX12.5RF137":{
+                m9:715,
+                hzzcxh:'QWD1250.32A',
+            },
+            "HZX14.0RF137":{
+                m9:750,
+                hzzcxh:'QWD1400.32',
+            },
+            "HZX14.0RF147":{
+                m9:888,
+                hzzcxh:'QWD1400.32',
+            },
+            "HZX16.0RF147":{
+                m9:1084,
+                hzzcxh:'QWD1600.40',
+            },
+            "HZX12.5X307":{
+                m9:536,
+                hzzcxh:'QWD1250.32A',
+            },
+            "HZX14.0X307":{
+                m9:572,
+                hzzcxh:'QWD1400.32',
+            },
+            "HZX16.0X309":{
+                m9:801,
+                hzzcxh:'QWD1600.40',
+            },
+            "HZS-7.1RF77":{
+                m9:255,
+                hzzcxh:'QND710.20',
+            },
+            "HZS-8.0RF87":{
+                m9:354,
+                hzzcxh:'QND800.20',
+            },
+            "HZ-9.0RF97":{
+                m9:533,
+                hzzcxh:'QND900.25',
+            },
+
+        };
         yxjgazModelList={
             "对角安装":{
                 yxjgaz:"对角安装",
@@ -641,12 +720,12 @@
                 <tr>
                     <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.基本参数</b></td>
                 </tr>
-                <tr>
-                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:17%;">符号</td>
-                    <td style="width:40%;">数值</td>
-                    <td style="width:17%;">单位</td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td style="width:26%;padding:10px 0;;"><b>名称</b></td>-->
+                    <!--<td style="width:17%;">符号</td>-->
+                    <!--<td style="width:40%;">数值</td>-->
+                    <!--<td style="width:17%;">单位</td>-->
+                <!--</tr>-->
 
                 <tr>
                     <td>吊船型号选择</td>
@@ -698,6 +777,44 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>是否有防风背包</td>
+                    <td colspan="4">
+                        <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="有">有</option>
+                            <option value="无">无</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>臂头型号选择</td>
+                    <td colspan="4">
+                        <select name="btModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>
+                            <option value="YJBT1800Z(1.8米羊角臂头-中臂头)">YJBT1800Z(1.8米羊角臂头-中臂头)</option>
+                            <option value="YJBT1800D(1.8米羊角臂头-低臂头)">YJBT1800D(1.8米羊角臂头-低臂头)</option>
+                            <option value="YJBT2300G(2.3米羊角臂头-高臂头)">YJBT2300G(2.3米羊角臂头-高臂头)</option>
+                            <option value="YJBT2300Z(2.3米羊角臂头-中臂头)">YJBT2300Z(2.3米羊角臂头-中臂头)</option>
+                            <option value="YJBT2300D(2.3米羊角臂头-低臂头)">YJBT2300D(2.3米羊角臂头-低臂头)</option>
+                            <option value="YJBT2800G(2.8米羊角臂头-高臂头)">YJBT2800G(2.8米羊角臂头-高臂头)</option>
+                            <option value="YJBT2800Z(2.8米羊角臂头-中臂头)">YJBT2800Z(2.8米羊角臂头-中臂头)</option>
+                            <option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>
+                            <option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>
+                            <option value="XDBT2300(2.3米下挂臂头)">XDBT2300(2.3米下挂臂头)</option>
+                            <option value="XDBT2500Φ13(2.5米下挂臂头)">XDBT2500Φ13(2.5米下挂臂头)</option>
+                            <option value="XDBT3000Φ13(3.0米下挂臂头)">XDBT3000Φ13(3.0米下挂臂头)</option>
+                            <option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>
+                            <option value="DJBT2300(2.3米单角臂头)">DJBT2300(2.3米单角臂头)</option>
+                            <option value="DJBT2500Φ13(2.5米单角臂头)">DJBT2500Φ13(2.5米单角臂头)</option>
+                            <option value="DJBT3300(3.3米单角臂头)">DJBT3300(3.3米单角臂头)</option>
+                            <option value="PBT800(0.8米一字臂头)">PBT800(0.8米一字臂头)</option>
+                            <option value="MHEBT1944(MHE1944臂头)">MHEBT1944(MHE1944臂头)</option>
+                            <option value="其它">其它</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td>运行机构选择</td>
                     <td colspan="4">
                         <select name="trippingModel" style="width:100%;height:40px;text-align-last:center">
@@ -714,6 +831,7 @@
                         </select>
                     </td>
                 </tr>
+
                 <tr>
                     <td>运行机构安装位置</td>
                     <td colspan="4">
@@ -764,44 +882,8 @@
                         <!--</select>-->
                     <!--</td>-->
                 <!--</tr>-->
-                <tr>
-                    <td>是否有防风背包</td>
-                    <td colspan="4">
-                        <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
-                            <option value="" style="display: none"></option>
-                            <option value="有">有</option>
-                            <option value="无">无</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>臂头型号选择</td>
-                    <td colspan="4">
-                        <select name="btModel" style="width:100%;height:40px;text-align-last:center">
-                            <option value="" style="display: none"></option>
-                            <option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>
-                            <option value="YJBT1800Z(1.8米羊角臂头-中臂头)">YJBT1800Z(1.8米羊角臂头-中臂头)</option>
-                            <option value="YJBT1800D(1.8米羊角臂头-低臂头)">YJBT1800D(1.8米羊角臂头-低臂头)</option>
-                            <option value="YJBT2300G(2.3米羊角臂头-高臂头)">YJBT2300G(2.3米羊角臂头-高臂头)</option>
-                            <option value="YJBT2300Z(2.3米羊角臂头-中臂头)">YJBT2300Z(2.3米羊角臂头-中臂头)</option>
-                            <option value="YJBT2300D(2.3米羊角臂头-低臂头)">YJBT2300D(2.3米羊角臂头-低臂头)</option>
-                            <option value="YJBT2800G(2.8米羊角臂头-高臂头)">YJBT2800G(2.8米羊角臂头-高臂头)</option>
-                            <option value="YJBT2800Z(2.8米羊角臂头-中臂头)">YJBT2800Z(2.8米羊角臂头-中臂头)</option>
-                            <option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>
-                            <option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>
-                            <option value="XDBT2300(2.3米下挂臂头)">XDBT2300(2.3米下挂臂头)</option>
-                            <option value="XDBT2500Φ13(2.5米下挂臂头)">XDBT2500Φ13(2.5米下挂臂头)</option>
-                            <option value="XDBT3000Φ13(3.0米下挂臂头)">XDBT3000Φ13(3.0米下挂臂头)</option>
-                            <option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>
-                            <option value="DJBT2300(2.3米单角臂头)">DJBT2300(2.3米单角臂头)</option>
-                            <option value="DJBT2500Φ13(2.5米单角臂头)">DJBT2500Φ13(2.5米单角臂头)</option>
-                            <option value="DJBT3300(3.3米单角臂头)">DJBT3300(3.3米单角臂头)</option>
-                            <option value="PBT800(0.8米一字臂头)">PBT800(0.8米一字臂头)</option>
-                            <option value="MHEBT1944(MHE1944臂头)">MHEBT1944(MHE1944臂头)</option>
-                            <option value="其它">其它</option>
-                        </select>
-                    </td>
-                </tr>
+
+
                 <tr>
                     <td>GRU型号选择</td>
                     <td colspan="4">
@@ -815,7 +897,40 @@
                     </td>
                 </tr>
                 <tr>
-                    <td ><b>起升高度</b></td>
+                    <td>大回转机构选择</td>
+                    <td colspan="4">
+                        <select name="dhzjgModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="HZX5.0RF57">HZX5.0RF57</option>
+                            <option value="HZX5.6RF77">HZX5.6RF77</option>
+                            <option value="HZX6.3RF77">HZX6.3RF77</option>
+                            <option value="HZX7.1RF87">HZX7.1RF87</option>
+                            <option value="HZX8.0RF87">HZX8.0RF87</option>
+                            <option value="HZX9.0RF97">HZX9.0RF97</option>
+                            <option value="HZX10.0RF97">HZX10.0RF97</option>
+                            <option value="HZX11.2RF107">HZX11.2RF107</option>
+                            <option value="HZX12.5RF107">HZX12.5RF107</option>
+                            <option value="HZX12.5RF137">HZX12.5RF137</option>
+                            <option value="HZX14.0RF137">HZX14.0RF137</option>
+                            <option value="HZX14.0RF147">HZX14.0RF147</option>
+                            <option value="HZX16.0RF147">HZX16.0RF147</option>
+                            <option value="HZX12.5X307">HZX12.5X307</option>
+                            <option value="HZX14.0X307">HZX14.0X307</option>
+                            <option value="HZX16.0X309">HZX16.0X309</option>
+                            <option value="HZS-7.1RF77">HZS-7.1RF77</option>
+                            <option value="HZS-8.0RF87">HZS-8.0RF87</option>
+                            <option value="HZS-9.0RF97">HZS-9.0RF97</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:40%;">数值</td>
+                    <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>作业高度</b></td>
                     <td ><p><i>h</i></p></td>
                     <td ><input type="text" name="h" /></td>
                     <td >m</td>
@@ -850,7 +965,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>设备自身稳定性系数</b></td>
+                    <td ><b>配重计算系数</b></td>
                     <td ><p><i>n</i></p></td>
                     <td ><input type="text" name="npz"/></td>
                     <td ></td>
@@ -861,10 +976,10 @@
                 <div style="width:600px;">
                     <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.各部件载荷</b></td>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.各部件重量</b></td>
                 </tr>
                 <div style="width:600px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                     <img alt="工作状态擦窗机各部件载荷示意图" id="wdlytu2" height="300px"  name="wdlytu2">
+                     <img alt="工作状态擦窗机各部件重量示意图" id="wdlytu2" height="300px"  name="wdlytu2">
                 </div>
                 <tr>
                      <td>工作状态载荷示意图</td>
@@ -1068,6 +1183,7 @@
             <input type="text" name="lbtzh" />
             <input type="text" name="ldcgh" />
             <input type="text" name="ldslzh" />
+            <input type="text" name="hzzcxh" />
         </div>
 
         <div style="width:600px;">
@@ -1151,7 +1267,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>大回转机构至前轨道距离</b></td>
+                    <td ><b>大回转机构至前轨道距离（如果不在立柱重心，此处数据需手动修改）</b></td>
                     <td ><p><i>Lq9</i></p></td>
                     <td ><input type="text" name="lqg9"/></td>
                     <td >m</td>
@@ -1300,6 +1416,9 @@
     }
     var calculateFunction={
 
+        hzzcxh:function(){
+            return dhzjgModelList[ dhzjgModel ]['hzzcxh'];
+        },
         yxjgaz:function(){
             return yxjgazModelList[ yxjgazModel ]['yxjgaz'];
         },
@@ -1350,6 +1469,9 @@
         },
         m5:function(){
             return gruModelList[ gruModel ]['m5'];
+        },
+        m9:function(){
+            return dhzjgModelList[ dhzjgModel ]['m9'];
         },
         m13:function(){
             return qsjgModelList[ qsjgModel ]['m13'];

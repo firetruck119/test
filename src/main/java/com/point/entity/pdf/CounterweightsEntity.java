@@ -85,6 +85,7 @@ public class CounterweightsEntity {
     private Double ldcgh;
     private Double ldslzh;
     private String yxjgaz;
+    private String hzzcxh;
 
     private String qt1;
     private String qt2;
@@ -97,6 +98,7 @@ public class CounterweightsEntity {
     private String qsjgModel;
     private String gruModel;
     private String yxjgazModel;
+    private String dhzjgModel;
 //    private String dbModel;
 
 //    public String nameOfPDF(String type) {
@@ -198,6 +200,7 @@ public String nameOfPDF(String type) {
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
+        map.put("hzzcxh", CommonFunc.convertDoubleToString(hzzcxh));
 
         map.put("qt1", CommonFunc.convertDoubleToString(qt1));
         map.put("qt2", CommonFunc.convertDoubleToString(qt2));
