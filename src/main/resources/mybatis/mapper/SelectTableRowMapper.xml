@@ -12,6 +12,10 @@
         FROM selecttablerow WHERE tableid=#{tableid,jdbcType=INTEGER}
     </select>
 
+    <select id="getAllRowJsonByName" resultMap="ResultMap" parameterType="java.lang.String">
+        SELECT *
+        FROM selecttablerow WHERE tableid = (SELECT id FROM selecttable WHERE tablesymbol=#{tablesymbol,jdbcType=VARCHAR})
+    </select>
     <insert id="inesrtRowJson" parameterType="com.point.newPDF.entity.select.DataTableEntity" >
         INSERT INTO
         selecttablerow

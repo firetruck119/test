@@ -119,4 +119,11 @@ public class DataTableController {
     public void sendMail(){
         service.sendVerification("from","to","648485080@qq.com","DSFAFDAS");
     }
+
+    @GetMapping("/dataTable/getTableByName/{name}")
+    @ResponseBody
+    public Object getTableByName(@PathVariable("name") String name) throws CustomerException {
+        DataTableEntity entity = selectService.getTableByName(name);
+        return entity;
+    }
 }

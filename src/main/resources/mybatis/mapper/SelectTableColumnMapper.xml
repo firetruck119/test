@@ -16,6 +16,11 @@
         FROM selecttablecolumn WHERE tableid=#{tableid,jdbcType=INTEGER}
     </select>
 
+    <select id="getAllColumnJsonByName" resultMap="ResultMap" parameterType="java.lang.String">
+        SELECT *
+        FROM selecttablecolumn WHERE tableid=(SELECT id FROM selecttable WHERE tablesymbol=#{tablesymbol,jdbcType=VARCHAR})
+    </select>
+
     <insert id="inesrtColumnJson" parameterType="com.point.newPDF.entity.select.DataTableEntity" >
         INSERT INTO
         selecttablecolumn

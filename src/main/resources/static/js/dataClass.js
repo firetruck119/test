@@ -12,9 +12,6 @@
                 success: function (e) {
                     var list=[];
                     list=list.concat(e);
-                    // list.sort(function(a,b){
-                    //     return String(a).localeCompare(String(b),'zh-CN');
-                    // })
                     if (list != null) {
                         var html = '';
                         for (var valueIndex = 0; valueIndex < list.length; valueIndex++) {
@@ -67,8 +64,6 @@
                     temp.color = 'yellow';
                     if (data.datalist[key] != null && data.datalist[key]!=' ')
                         data.datalist[key].changeValueAndColor(e[key], 'yellow');
-                    // else if(data.datalist[key]==' ')
-                    //     data.datalist[key].changeValueAndColor('', 'yellow');
                     else
                         data.datalist[key] = temp;
                 }
@@ -79,7 +74,6 @@
             if (e != {})
                 for (var key in e) {
                     var temp = e[key];
-                    // $("img[name= '" + key + "']")[0].src = 'data:' + temp['type'] + ',' + temp['inputURL'];
                     var img=$("img[name= '" + key + "']")[0];
                     if(!img)
                         continue;
@@ -121,18 +115,6 @@
                     eval.call(temp, 'var ' + temp + ' = ' + val);
             }
             f(calList);
-            // for (var temp in this.datalist) {
-            //     var o = this.datalist[temp];
-            //     var value = eval(temp);
-            //     if (['NaN', 'undefined', 'null'].indexOf(String(value)) < 0 && calObjList[temp]) {
-            //         if (String(value) != ' '){
-            //             o.color = 'grey';
-            //             o.value = value;
-            //         }
-            //         else if (o.color != 'white')
-            //             o.color = 'white';
-            //     }
-            // }
             function f(calList) {
                 var list = {};
                 for (var key in calList) {
@@ -140,11 +122,11 @@
                     if(fun==null){
                         continue;
                     }
-                    if((function(){
-                        for(var a in data.datalist[key].fatherValue)
-                            if((!isTrue(eval(a))||String(data.datalist[a])==' ') && data.datalist[a].type!='SELECT')
-                                return true
-                    })())continue;
+                    // if((function(){
+                    //     for(var a in data.datalist[key].fatherValue)
+                    //         if((!isTrue(eval(a))||String(data.datalist[a])==' ') && data.datalist[a].type!='SELECT')
+                    //             return true
+                    // })())continue;
                     var temp;
                     if (typeof fun == 'string')
                         eval(  'temp =' + fun)
@@ -194,7 +176,7 @@
                     val.value = value;
                 } else
                     value = val.value;
-                var temp = new dataType(val.name, value, val.tagName);
+                var temp = new dataType(val.name, value, val.tagName,val);
                 data.datalist[val.name] = temp;
             })
         },
@@ -276,13 +258,14 @@
 }())
 
 
-function dataType(name, value, type) {
+function dataType(name, value, type,$element) {
     this.name = name;
     this.value = value;
     this.color = 'white';
     this.fatherValue={};
     this.calList = {};
     this.type = type;
+    this.$element=$element;
     this.changeValueAndColor = function (v, c) {
         this.value = v;
         this.color = c;
@@ -314,13 +297,6 @@ function getString(v) {
         return v;
     var s = 3;
     while (v.toFixed(s)[v.toFixed(s).length-1]==0&&--s){
-    // var temp = Math.round(parseFloat(v) * 1000);
-    // var c = temp.toString();
-    // var l = c.length;
-    // s = (l > s) ? s : l;
-    // while (l > 0 && c[l - 1] == 0 && s > 0) {
-    //     l--;
-    //     s--;
     }
     return v.toFixed(s);
 }
@@ -341,3 +317,111 @@ function isTrue(value) {
     }
     return true;
 }
+function getTable(tablename,tableSy){
+    if(! window['model'] )window['model']={};
+    var temp=tablename?tablename:tableSy;
+    if(! model[temp] )model[temp]={};
+    ajaxFirstTable(tablename,tableSy);
+    if(!tablename)
+        return ;
+    var $select=$("select[name="+tablename+"]");
+    $select.change((e)=>{
+        var $element=$(e.target);
+        var val=$element.val();
+        var d=model[tablename][val];
+        data.datalist[tablename].value=val;
+        for(var key in d){
+            var $e=$("[name="+key+"]");
+            if($e.length>0 && !$e.attr("undb")){
+                data.datalist[key].value=parseFloat(d[key])==d[key]?parseFloat(d[key]):d[key];
+                data.changeValue(data.datalist[key])
+            }
+        }
+    })
+}
+function getMultilevelTable(first,second,dblist){
+    if(! window['model'] )window['model']={};
+    if(! model[first] )model[first]={};
+    for(var i in dblist){
+        ajaxMultilevelTable(first,second,dblist[dblist.length-1-i]);
+    }
+    var $select=$("select[name="+first+"]");
+    var $e=$("[name="+second+"]");
+    $select.prepend('<option value="" style="display: none"></option>');
+    $select.change((e)=>{
+        var $element=$(e.target);
+        var val=$element.val();
+        var ds= model[first][val];
+        $e.empty();
+        $e.prepend('<option value="" style="display: none"></option>');
+        for(var key in ds){
+            $e.append('<option value="'+key+'" >'+key+'</option>');
+        }
+    })
+    $e.change((e)=>{
+        var $element=$(e.target);
+        var val=$element.val();
+        data.datalist[second].value=val;
+        var d=model[first][$select.val()][val];
+        for(var key in d){
+            var $e=$("[name="+key+"]");
+            if($e.length>0 && !$e.attr("undb")){
+                data.datalist[key].value=parseFloat(d[key])==d[key]?parseFloat(d[key]):d[key];
+                data.changeValue(data.datalist[key])
+            }
+        }
+    })
+}
+function ajaxMultilevelTable(first,second,dbname){
+    var datas = [];
+    var dataobjs={};
+    axios.get('/dataTable/getTableByName/' +dbname).then(
+        (e) => {
+            var data = e.data.columnsJSON;
+            var rowData = e.data.rowsJSON;
+            var name=e.data.tablename;
+            $("select[name="+first+"]").append('<option value="'+name+'" >'+name+'</option>');
+            rowData = JSON.parse(rowData);
+            rowData = (() => {
+                for (i in rowData) {
+                    datas.push(rowData[i])
+                    if(!model[first][name]) model[first][name]=dataobjs;
+                    dataobjs[rowData[i].key]=rowData[i];
+                }
+            })(rowData)
+        }
+    ).catch(
+        (e) => {
+            console.log(e)
+        }
+    )
+}
+
+function ajaxFirstTable(tablename,name){
+    var datas = [];
+    axios.get('/dataTable/getTableByName/' +name).then(
+        (e) => {
+            var columnData = e.data.columnsJSON;
+            var rowData = e.data.rowsJSON;
+            rowData = JSON.parse(rowData);
+            rowData = (() => {
+                for (i in rowData) {
+                    datas.push(rowData[i]);
+                    var temp=tablename?tablename:name;
+                    model[temp][rowData[i].key]=rowData[i];
+                }
+            })(rowData)
+            if(!tablename)
+                return ;
+            $("select[name="+tablename+"]").prepend('<option value="" style="display: none"></option>');
+            for(var a=0;a<datas.length;a++ ){
+                $("select[name="+tablename+"]").append('<option value="'+datas[a].key+'" >'+datas[a].key+'</option>');
+            }
+        }
+    ).catch(
+        (e) => {
+            console.log(e)
+        }
+    )
+}
+

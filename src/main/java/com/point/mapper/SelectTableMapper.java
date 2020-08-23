@@ -10,6 +10,8 @@ public interface SelectTableMapper {
 
    List<DataTableEntity> getAll();
 
+   DataTableEntity getOne(String tablesymbol);
+
    int insertTable(DataTableEntity entity);
 
    int deleteById(int id);

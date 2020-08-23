@@ -17,6 +17,12 @@
         FROM selecttable
     </select>
 
+    <select id="getOne" resultType="com.point.newPDF.entity.select.DataTableEntity"  parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM selecttable where tablesymbol=#{tablesymbol,jdbcType=VARCHAR}
+    </select>
+
     <insert id="insertTable" parameterType="com.point.newPDF.entity.select.DataTableEntity" >
         INSERT INTO
         selecttable

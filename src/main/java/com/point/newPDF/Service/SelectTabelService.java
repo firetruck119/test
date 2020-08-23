@@ -108,4 +108,25 @@ public class SelectTabelService {
         return entity;
     }
 
+    public DataTableEntity getTableByName(String name) throws CustomerException {
+        DataTableEntity entity=selectMapper.getOne(name);
+        List<DataTableEntity> L=selectMapper.getAllColumnJson(entity.getId());
+        List<DataTableEntity> rs= selectMapper.getAllRowJson(entity.getId());
+        if(L.size()==1){
+            entity.setColumnsJSON(L.get(0).getColumnsJSON());
+        }else if(L.size()>1){
+            throw new CustomerException("列数据错误");
+        }else if(L.size()==0){
+            throw new CustomerException("没有列数据");
+        }
+        if(rs.size()==1){
+            entity.setRowsJSON(rs.get(0).getRowsJSON());
+        }else if(rs.size()>=1){
+            throw new CustomerException("行数据错误");
+        }else if(rs.size()<1){
+            throw new CustomerException("没有行数据");
+        }
+        return entity;
+    }
+
 }
