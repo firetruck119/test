@@ -3,6 +3,7 @@ package com.point.common;
 public class CommonFunc {
     public static String convertDoubleToString4(Double value) {
         try {
+            value = value + 0 ;
             if (value == null) {
                 return "";
             }
@@ -32,6 +33,7 @@ public class CommonFunc {
     }
     public static String convertDoubleToString3(Double value) {
         try {
+            value = value + 0 ;
             if (value == null) {
                 return "";
             }
@@ -58,6 +60,7 @@ public class CommonFunc {
     }
     public static String convertDoubleToString(Double value) {
         try {
+            value = value + 0 ;
             if (value == null) {
                 return "";
             }

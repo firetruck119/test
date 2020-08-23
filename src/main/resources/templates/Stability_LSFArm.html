@@ -164,11 +164,11 @@
         <div class="tabletitle">稳定性校核及轮压计算书</div>
         <div class="subtable" style="text-align: center;padding: 10px 0 0px 0;overflow: hidden;border:1px solid #aaa;">
             <div style="height:335px">
-                <img alt="擦窗机各部件载荷" id="wdlytu1" name="wdlytu1" />
+                <img alt="擦窗机整机示意图" id="wdlytu1" name="wdlytu1" />
             </div>
             <table>
                 <tr>
-                    <td style="padding:10px 0;font-size: 14px">选择擦窗机总图</td>
+                    <td style="padding:10px 0;font-size: 14px">擦窗机整机示意图</td>
                     <td colspan="3" style="font-size: 14px">
                         <input class="image" type="file" name="wdlytu1" accept="image/*"
                                oninput="showImage(this,'wdlytu1')"/>
@@ -204,7 +204,7 @@
                     </script>
                 </tr>
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">封面内容</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">1.封面内容</td>
                 </tr>
                 <tr>
                     <td style="padding:10px 0;;padding:10px 0;;">名称</td>
@@ -242,25 +242,7 @@
                     <td>计算日期</td>
                     <td colspan="2"><input name="date" type="text" th:field="*{date}"/></td>
                 </tr>
-                <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">其它Ⅰ、Ⅱ名称</td>
-                </tr>
-                <tr>
-                    <td>其他I的名称</td>
-                    <td colspan="2"><input name="qt1" type="text" th:field="*{qt1}" definevalue="其他I"/></td>
-                </tr>
-                <tr>
-                    <td>其他II的名称</td>
-                    <td colspan="2"><input name="qt2" type="text" th:field="*{qt2}" definevalue="其他II"/></td>
-                </tr>
-                <tr>
-                    <td>其他I的名称英文</td>
-                    <td colspan="2"><input name="qt1y" type="text" th:field="*{qt1y}" definevalue="OtherI"/></td>
-                </tr>
-                <tr>
-                    <td>其他II的名称英文</td>
-                    <td colspan="2"><input name="qt2y" type="text" th:field="*{qt2y}" definevalue="OtherII"/></td>
-                </tr>
+
             </table>
         </div>
         <!--擦窗机参数-->
@@ -271,7 +253,7 @@
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">擦窗机参数</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">2.擦窗机参数</td>
                 </tr>
                 <tr>
                     <td style="width:30%;padding:10px 0;;">名称</td>
@@ -301,6 +283,14 @@
                         <p><i>L<sub>bp</sub></i></p>
                     </td>
                     <td><input name="lbp" type="text" th:field="*{lbp}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>最小配重臂长</td>
+                    <td>
+                        <p><i>L<sub>bpx</sub></i></p>
+                    </td>
+                    <td><input name="lbpx" type="text" th:field="*{lbpx}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
@@ -352,10 +342,68 @@
                     <td>kg</td>
                 </tr>
                 <tr>
+                    <td colspan="4" style="padding: 10px 0 10px 0">工作状态整机质量及非工作状态整机质量不需要手动填写，会自动填充</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">3.起升高度及非工作时风压</td>
+                </tr>
+                <tr>
+                    <td>作业高度</td>
+                    <td>
+                        <p><i>h</i></p>
+                    </td>
+                    <td><input name="h" type="text" th:field="*{h}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>非工作风压</td>
+                    <td>
+                        <p><i>p<sub>f</sub></i></p>
+                    </td>
+                    <td><input name="pf" type="text" th:field="*{pf}"/></td>
+                    <td>N/m2</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding: 10px 0 10px 0">作业高度大于150m，非工作风压根据当地条件考虑</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">4.其它Ⅰ、Ⅱ名称</td>
+                </tr>
+                <tr>
+                    <td>其他I的名称</td>
+                    <td colspan="4"><input name="qt1" type="text" th:field="*{qt1}" definevalue="其他I"/></td>
+                </tr>
+                <tr>
+                    <td>其他II的名称</td>
+                    <td colspan="4"><input name="qt2" type="text" th:field="*{qt2}" definevalue="其他II"/></td>
+                </tr>
+                <tr>
+                    <td>其他I的名称英文</td>
+                    <td colspan="4"><input name="qt1y" type="text" th:field="*{qt1y}" definevalue="OtherI"/></td>
+                </tr>
+                <tr>
+                    <td>其他II的名称英文</td>
+                    <td colspan="4"><input name="qt2y" type="text" th:field="*{qt2y}" definevalue="OtherII"/></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="subtable">
+            <table class="tb">
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">5.擦窗机抗倾覆部分参数</td>
+                </tr>
+                <tr>
+                    <td style="width:30%;padding:10px 0;;">名称</td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:36%;">数值</td>
+                    <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">运行机构</td>
                 </tr>
                 <tr>
-                    <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">有无运行机构</td>
+                    <td>有无运行机构</td>
                     <td colspan="3" style="font-size: 14px">
                         <select name="wdlyp3" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
@@ -365,7 +413,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="1" style="background-color: #aaa;padding: 10px 0 10px 0">运行机构选择</td>
+                    <td>运行机构选择</td>
                     <td colspan="3" style="font-size: 14px">
                         <select name="typeOfRunningGear" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
@@ -376,6 +424,16 @@
                             <option value="260LZ">260LZ</option>
                             <option value="350">350</option>
                             <option value="450">450</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>运行机构安装位置</td>
+                    <td colspan="3">
+                        <select name="yxjgazModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="对角安装">对角安装</option>
+                            <option value="同侧安装">同侧安装</option>
                         </select>
                     </td>
                 </tr>
@@ -409,71 +467,53 @@
                     <td><input name="nwd2" type="text" th:field="*{nwd2}"/></td>
                     <td>个</td>
                 </tr>
-                <tr>
-                    <td>弹性销型号选择</td>
-                    <td colspan="3">
-                        <select name="typeOfPin" style="width:100%;height:40px;text-align-last:center">
-                            <option style="display: none"></option>
-                            <option value="Ф12">Ф12</option>
-                            <option value="Ф16">Ф16</option>
-                            <option value="Ф20">Ф20</option>
-                            <option value="无">无</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>弹性销性能等级</td>
-                    <td colspan="3">
-                        <select name="levelOfPin" style="width:100%;height:40px;text-align-last:center">
-                            <option style="display: none"></option>
-                            <option value="65Mn">65Mn</option>
-                            <option value="A2-70">A2-70</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>弹性销型号</td>
-                    <td><p><i></i></p></td>
-                    <td><input name="txxxh" id="txxxh" type="text" th:field="*{txxxh}"/></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>弹性销性能等级</td>
-                    <td><p><i></i></p></td>
-                    <td><input name="txxdj" id="txxdj" type="text" th:field="*{txxdj}"/></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>最小双面剪切载荷</td>
-                    <td><p><i>F<sub>t</sub></i></p></td>
-                    <td><input name="ftxxjq" id="ftxxjq" type="text" th:field="*{ftxxjq}"/></td>
-                    <td>N</td>
-                </tr>
-                <tr>
-                    <td>单个运行轮上的弹性销数</td>
-                    <td><p><i>nt</i></p></td>
-                    <td><input name="nwdt" id="nwdt" type="text" th:field="*{nwdt}"/></td>
-                    <td>个</td>
-                </tr>
-                <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">起升高度及非工作时风压</td>
-                </tr>
-                <tr>
-                    <td>起升高度</td>
-                    <td>
-                        <p><i>h</i></p>
-                    </td>
-                    <td><input name="h" type="text" th:field="*{h}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>非工作风压</td>
-                    <td>
-                        <p><i>p<sub>f</sub></i></p>
-                    </td>
-                    <td><input name="pf" type="text" th:field="*{pf}"/></td>
-                    <td>N/m2</td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>弹性销型号选择</td>-->
+                    <!--<td colspan="3">-->
+                        <!--<select name="typeOfPin" style="width:100%;height:40px;text-align-last:center">-->
+                            <!--<option style="display: none"></option>-->
+                            <!--<option value="Ф12">Ф12</option>-->
+                            <!--<option value="Ф16">Ф16</option>-->
+                            <!--<option value="Ф20">Ф20</option>-->
+                            <!--<option value="无">无</option>-->
+                        <!--</select>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>弹性销性能等级</td>-->
+                    <!--<td colspan="3">-->
+                        <!--<select name="levelOfPin" style="width:100%;height:40px;text-align-last:center">-->
+                            <!--<option style="display: none"></option>-->
+                            <!--<option value="65Mn">65Mn</option>-->
+                            <!--<option value="A2-70">A2-70</option>-->
+                        <!--</select>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>弹性销型号</td>-->
+                    <!--<td><p><i></i></p></td>-->
+                    <!--<td><input name="txxxh" id="txxxh" type="text" th:field="*{txxxh}"/></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>弹性销性能等级</td>-->
+                    <!--<td><p><i></i></p></td>-->
+                    <!--<td><input name="txxdj" id="txxdj" type="text" th:field="*{txxdj}"/></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>最小双面剪切载荷</td>-->
+                    <!--<td><p><i>F<sub>t</sub></i></p></td>-->
+                    <!--<td><input name="ftxxjq" id="ftxxjq" type="text" th:field="*{ftxxjq}"/></td>-->
+                    <!--<td>N</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>单个运行轮上的弹性销数</td>-->
+                    <!--<td><p><i>nt</i></p></td>-->
+                    <!--<td><input name="nwdt" id="nwdt" type="text" th:field="*{nwdt}"/></td>-->
+                    <!--<td>个</td>-->
+                <!--</tr>-->
+
                 <!--埋件的抗倾覆力矩相关参数-->
                 <tr>
                     <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">埋件的抗倾覆力矩相关参数</td>
@@ -542,11 +582,12 @@
                 </tr>
             </table>
         </div>
+
         <!--擦窗机各部件载荷-->
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">擦窗机各部件载荷</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">6.擦窗机各部件载荷</td>
                 </tr>
                 <tr>
                     <td colspan="5">
@@ -559,6 +600,106 @@
                     <td style="padding: 10px 0;">选择图片</td>
                     <td colspan="5"><input class="image" type="file" name="wdlytu2" accept="image/*"
                                            oninput="showImage(this,'wdlytu2')"/></td>
+                </tr>
+
+                <tr>
+                    <td>吊船选择</td>
+                    <td colspan="3">
+                        <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="2.0米铝吊船(PT(250_2))">2.0米铝吊船(PT(250_2))</option>
+                            <option value="2.5米铝吊船(PT(250_2.5))">2.5米铝吊船(PT(250_2.5))</option>
+                            <option value="3.0米铝吊船(PT(250_3))">3.0米铝吊船(PT(250_3))</option>
+                            <option value="4.0米铝吊船(PT(250_4.0))">4.0米铝吊船(PT(250_4.0))</option>
+                            <option value="1.5米卫星吊船(PT(800_2.0)W(100-1.5))">1.5米卫星吊船(PT(800_2.0)W(100-1.5))</option>
+                            <option value="2.0米卫星吊船(PT(800_2.0)W(100-2.0))">2.0米卫星吊船(PT(800_2.0)W(100-2.0))</option>
+                            <option value="1.5米手动丝杠伸展吊船(SDPT250G(1.5))">1.5米手动丝杠伸展吊船(SDPT250G(1.5))</option>
+                            <option value="2.0米手动丝杠伸展吊船(SDPT250G(2.0))">2.0米手动丝杠伸展吊船(SDPT250G(2.0))</option>
+                            <option value="2.5米手动丝杠伸展吊船(SDPT250G(2.5))">2.5米手动丝杠伸展吊船(SDPT250G(2.5))</option>
+                            <option value="3.0米手动丝杠伸展吊船(SDPT250G(3.0))">3.0米手动丝杠伸展吊船(SDPT250G(3.0))</option>
+                            <option value="2.0米液压伸展吊船(YYPT200G(2.0))">2.0米液压伸展吊船(YYPT200G(2.0))</option>
+                            <option value="2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))">2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))</option>
+                            <option value="2.5米液压伸展吊船(YYPT200G(2.5))">2.5米液压伸展吊船(YYPT200G(2.5))</option>
+                            <option value="3.0米液压伸展吊船(YYPT200G(3.0))">3.0米液压伸展吊船(YYPT200G(3.0))</option>
+                            <option value="3.5米液压伸展吊船(YYPT200G(3.5))">3.5米液压伸展吊船(YYPT200G(3.5))</option>
+                            <option value="2.0米折叠吊船(SSPT(250_2.0))">2.0米折叠吊船(SSPT(250_2.0))</option>
+                            <option value="2.5米折叠吊船(SSPT(250_2.5))">2.5米折叠吊船(SSPT(250_2.5))</option>
+                            <option value="2.0米折弯吊船(ZWDC(250_2))">2.0米折弯吊船(ZWDC(250_2))</option>
+                            <option value="2.5米折弯吊船(ZWDC(250_2.5))">2.5米折弯吊船(ZWDC(250_2.5))</option>
+                            <option value="3.0米折弯吊船(ZWDC(250_3))">3.0米折弯吊船(ZWDC(250_3))</option>
+                            <option value="2.5米伸缩子吊船">2.5米伸缩子吊船</option>
+                            <option value="2.0米CDD吊船(CDD240(2A).0)">2.0米CDD吊船(CDD240(2A).0)</option>
+                            <option value="2.5米CDD吊船(CDD240(2.5))">2.5米CDD吊船(CDD240(2.5))</option>
+                            <option value="3.0米CDD吊船(CDD240(3))">3.0米CDD吊船(CDD240(3))</option>
+                            <option value="4.0米CDD吊船(CDD240(4))">4.0米CDD吊船(CDD240(4))</option>
+                            <option value="其它">其它</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>吊船钢丝绳型号选择</td>
+                    <td colspan="3">
+                        <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+                            <option value="Φ8">Φ8</option>
+                            <option value="Φ8.3">Φ8.3</option>
+                            <option value="Φ10">Φ10</option>
+                            <option value="Φ13">Φ13</option>
+                            <option value="布鲁格Φ7">布鲁格Φ7</option>
+                            <option value="布鲁格Φ8">布鲁格Φ8</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>是否有防风背包</td>
+                    <td colspan="3">
+                        <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="有">有</option>
+                            <option value="无">无</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>臂头型号选择</td>
+                    <td colspan="3">
+                        <select name="btModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>
+                            <option value="YJBT1800Z(1.8米羊角臂头-中臂头)">YJBT1800Z(1.8米羊角臂头-中臂头)</option>
+                            <option value="YJBT1800D(1.8米羊角臂头-低臂头)">YJBT1800D(1.8米羊角臂头-低臂头)</option>
+                            <option value="YJBT2300G(2.3米羊角臂头-高臂头)">YJBT2300G(2.3米羊角臂头-高臂头)</option>
+                            <option value="YJBT2300Z(2.3米羊角臂头-中臂头)">YJBT2300Z(2.3米羊角臂头-中臂头)</option>
+                            <option value="YJBT2300D(2.3米羊角臂头-低臂头)">YJBT2300D(2.3米羊角臂头-低臂头)</option>
+                            <option value="YJBT2800G(2.8米羊角臂头-高臂头)">YJBT2800G(2.8米羊角臂头-高臂头)</option>
+                            <option value="YJBT2800Z(2.8米羊角臂头-中臂头)">YJBT2800Z(2.8米羊角臂头-中臂头)</option>
+                            <option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>
+                            <option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>
+                            <option value="XDBT2300(2.3米下挂臂头)">XDBT2300(2.3米下挂臂头)</option>
+                            <option value="XDBT2500Φ13(2.5米下挂臂头)">XDBT2500Φ13(2.5米下挂臂头)</option>
+                            <option value="XDBT3000Φ13(3.0米下挂臂头)">XDBT3000Φ13(3.0米下挂臂头)</option>
+                            <option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>
+                            <option value="DJBT2300(2.3米单角臂头)">DJBT2300(2.3米单角臂头)</option>
+                            <option value="DJBT2500Φ13(2.5米单角臂头)">DJBT2500Φ13(2.5米单角臂头)</option>
+                            <option value="DJBT3300(3.3米单角臂头)">DJBT3300(3.3米单角臂头)</option>
+                            <option value="PBT800(0.8米一字臂头)">PBT800(0.8米一字臂头)</option>
+                            <option value="MHEBT1944(MHE1944臂头)">MHEBT1944(MHE1944臂头)</option>
+                            <option value="其它">其它</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GRU选择</td>
+                    <td colspan="3">
+                        <select name="typeOfGRU" style="width:100%;height:40px;text-align-last:center">
+                            <option style="display: none"></option>
+                            <option value="GRU285">GRU285</option>
+                            <option value="GRU295">GRU295</option>
+                            <option value="GRU313">GRU313</option>
+                            <option value="无">无</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>起升机构选择</td>
@@ -579,16 +720,33 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>GRU选择</td>
+                    <td>大回转机构选择</td>
                     <td colspan="3">
-                        <select name="typeOfGRU" style="width:100%;height:40px;text-align-last:center">
+                        <select name="dhzjgModel" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
-                            <option value="GRU 285">GRU 285</option>
-                            <option value="GRU 295">GRU 295</option>
-                            <option value="GRU 313">GRU 313</option>
+                            <option value="HZX5.0RF57">HZX5.0RF57</option>
+                            <option value="HZX5.6RF77">HZX5.6RF77</option>
+                            <option value="HZX6.3RF77">HZX6.3RF77</option>
+                            <option value="HZX7.1RF87">HZX7.1RF87</option>
+                            <option value="HZX8.0RF87">HZX8.0RF87</option>
+                            <option value="HZX9.0RF97">HZX9.0RF97</option>
+                            <option value="HZX10.0RF97">HZX10.0RF97</option>
+                            <option value="HZX11.2RF107">HZX11.2RF107</option>
+                            <option value="HZX12.5RF107">HZX12.5RF107</option>
+                            <option value="HZX12.5RF137">HZX12.5RF137</option>
+                            <option value="HZX14.0RF137">HZX14.0RF137</option>
+                            <option value="HZX14.0RF147">HZX14.0RF147</option>
+                            <option value="HZX16.0RF147">HZX16.0RF147</option>
+                            <option value="HZX12.5X307">HZX12.5X307</option>
+                            <option value="HZX14.0X307">HZX14.0X307</option>
+                            <option value="HZX16.0X309">HZX16.0X309</option>
+                            <option value="HZS-7.1RF77">HZS-7.1RF77</option>
+                            <option value="HZS-8.0RF87">HZS-8.0RF87</option>
+                            <option value="HZS-9.0RF97">HZS-9.0RF97</option>
                         </select>
                     </td>
                 </tr>
+
                 <tr>
                     <td style="width:30%;padding:10px 0;;">名称</td>
                     <td style="width:17%;">符号</td>
@@ -611,6 +769,12 @@
                     <td>吊船钢丝绳自重</td>
                     <td><p><i>M<sub>wr</sub></i></p></td>
                     <td><input name="mwr" id="mwr" type="text" th:field="*{mwr}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>防风背包</td>
+                    <td><p><i>M<sub>ffbb</sub></i></p></td>
+                    <td><input name="mffbb" id="mffbb" type="text" th:field="*{mffbb}"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
@@ -650,7 +814,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>大臂</td>
+                    <td>物料起升机构导绳架</td>
                     <td>
                         <p><i>m<sub>2</sub></i></p>
                     </td>
@@ -658,7 +822,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置</td>
+                    <td>安全绳</td>
                     <td>
                         <p><i>m<sub>3</sub></i></p>
                     </td>
@@ -666,7 +830,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸</td>
+                    <td>吊臂</td>
                     <td>
                         <p><i>m<sub>4</sub></i></p>
                     </td>
@@ -674,7 +838,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸</td>
+                    <td>物料起升机构装置</td>
                     <td>
                         <p><i>m<sub>5</sub></i></p>
                     </td>
@@ -682,7 +846,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>回转机构</td>
+                    <td>伸缩液压缸</td>
                     <td>
                         <p><i>m<sub>6</sub></i></p>
                     </td>
@@ -690,7 +854,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>配重臂</td>
+                    <td>仰臂液压缸</td>
                     <td>
                         <p><i>m<sub>7</sub></i></p>
                     </td>
@@ -698,7 +862,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>配重</td>
+                    <td>顶升液压缸</td>
                     <td>
                         <p><i>m<sub>8</sub></i></p>
                     </td>
@@ -706,7 +870,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>立柱</td>
+                    <td>大回转机构</td>
                     <td>
                         <p><i>m<sub>9</sub></i></p>
                     </td>
@@ -714,7 +878,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>起升机构</td>
+                    <td>配重臂</td>
                     <td>
                         <p><i>m<sub>10</sub></i></p>
                     </td>
@@ -722,7 +886,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>底架</td>
+                    <td>配重</td>
                     <td>
                         <p><i>m<sub>11</sub></i></p>
                     </td>
@@ -730,7 +894,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>主动运行</td>
+                    <td>立柱</td>
                     <td>
                         <p><i>m<sub>12</sub></i></p>
                     </td>
@@ -738,7 +902,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>被动运行</td>
+                    <td>起升机构</td>
                     <td>
                         <p><i>m<sub>13</sub></i></p>
                     </td>
@@ -746,7 +910,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>其他I</td>
+                    <td>油箱</td>
                     <td>
                         <p><i>m<sub>14</sub></i></p>
                     </td>
@@ -754,267 +918,478 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>其他II</td>
+                    <td>底架</td>
                     <td>
                         <p><i>m<sub>15</sub></i></p>
                     </td>
                     <td><input name="m15" type="text" th:field="*{m15}"/></td>
                     <td>kg</td>
                 </tr>
+                <tr>
+                    <td>主动运行1</td>
+                    <td>
+                        <p><i>m<sub>16</sub></i></p>
+                    </td>
+                    <td><input name="m16" type="text" th:field="*{m16}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>主动运行2</td>
+                    <td>
+                        <p><i>m<sub>17</sub></i></p>
+                    </td>
+                    <td><input name="m17" type="text" th:field="*{m17}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>被动运行1</td>
+                    <td>
+                        <p><i>m<sub>18</sub></i></p>
+                    </td>
+                    <td><input name="m18" type="text" th:field="*{m18}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>被动运行2</td>
+                    <td>
+                        <p><i>m<sub>19</sub></i></p>
+                    </td>
+                    <td><input name="m19" type="text" th:field="*{m19}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>其他I</td>
+                    <td>
+                        <p><i>m<sub>20</sub></i></p>
+                    </td>
+                    <td><input name="m20" type="text" th:field="*{m20}"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>其他II</td>
+                    <td>
+                        <p><i>m<sub>21</sub></i></p>
+                    </td>
+                    <td><input name="m21" type="text" th:field="*{m21}"/></td>
+                    <td>kg</td>
+                </tr>
             </table>
         </div>
 
-        <!--擦窗机各部件重心至回转中心距离-->
+        <!--工作状态擦窗机各部件重心至前轨道距离-->
 
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">擦窗机各部件重心至回转中心距离</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">7.工作状态擦窗机各部件重心至前轨道距离</td>
                 </tr>
                 <tr>
-                    <td colspan="6">
-                        <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态擦窗机各部件重心至回转中心距离" id="wdlytu4" name="wdlytu4"/>
-                        </div>
-                        <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态擦窗机各部件重心至回转中心距离" id="wdlytu10" name="wdlytu10"/>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="工作状态擦窗机各部件重心至前轨道距离" id="wdlytu3" name="wdlytu3"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px 0;">选择工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="wdlytu4" accept="image/*"
-                                           oninput="showImage(this,'wdlytu4')"/></td>
+                    <td style="padding: 10px 0;">选择图片</td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu3" accept="image/*"
+                                           oninput="showImage(this,'wdlytu3')"/></td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="wdlytu10" accept="image/*"
-                                           oninput="showImage(this,'wdlytu10')"/></td>
+                    <td style="width:30%;padding:10px 0;;">名称</td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:36%;">数值</td>
+                    <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td colspan="2" style="padding: 10px 0;">工作状态</td>
-                    <td colspan="2">非工作状态</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td style="width:28%;padding:10px 0;;">名称</td>
-                    <td style="width:10%;">符号</td>
-                    <td style="width:21%;">数值</td>
-                    <td style="width:10%;">符号</td>
-                    <td style="width:21%;">数值</td>
-                    <td style="width:10%;">单位</td>
-                </tr>
-                <tr>
-                    <td>吊船及人员至回转中心距离</td>
+                    <td>吊船及人员至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>slz</sub></i></p>
+                        <p><i>L<sub>slq</sub></i></p>
                     </td>
-                    <td><input name="lslhz" type="text" th:field="*{lslhz}"/></td>
-                    <td></td>
-                    <td></td>
+                    <td><input name="lslqg" type="text" th:field="*{lslqg}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>物料至回转中心距离</td>
+                    <td>物料至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>shlz</sub></i></p>
+                        <p><i>L<sub>shlq</sub></i></p>
                     </td>
-                    <td><input name="lshlhz" type="text" th:field="*{lshlhz}"/></td>
-                    <td></td>
-                    <td></td>
+                    <td><input name="lshlqg" type="text" th:field="*{lshlqg}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>臂头至回转中心距离</td>
+                    <td>臂头至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z1</sub></i></p>
+                        <p><i>L<sub>q1</sub></i></p>
                     </td>
-                    <td><input name="lhz1" type="text" th:field="*{lhz1}"/></td>
-                    <td>
-                        <p><i>L<sub>zf1</sub></i></p>
-                    </td>
-                    <td><input name="lhzf1" type="text" th:field="*{lhzf1}"/></td>
+                    <td><input name="lqg1" type="text" th:field="*{lqg1}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>大臂至回转中心距离</td>
+                    <td>物料起升机构导绳架至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z2</sub></i></p>
+                        <p><i>L<sub>q2</sub></i></p>
                     </td>
-                    <td><input name="lhz2" type="text" th:field="*{lhz2}"/></td>
-                    <td>
-                        <p><i>L<sub>zf2</sub></i></p>
-                    </td>
-                    <td><input name="lhzf2" type="text" th:field="*{lhzf2}"/></td>
+                    <td><input name="lqg2" type="text" th:field="*{lqg2}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置至回转中心距离</td>
+                    <td>安全绳至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z3</sub></i></p>
+                        <p><i>L<sub>q3</sub></i></p>
                     </td>
-                    <td><input name="lhz3" type="text" th:field="*{lhz3}"/></td>
-                    <td>
-                        <p><i>L<sub>zf3</sub></i></p>
-                    </td>
-                    <td><input name="lhzf3" type="text" th:field="*{lhzf3}"/></td>
+                    <td><input name="lqg3" type="text" th:field="*{lqg3}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸至回转中心距离</td>
+                    <td>吊臂至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z4</sub></i></p>
+                        <p><i>L<sub>q4</sub></i></p>
                     </td>
-                    <td><input name="lhz4" type="text" th:field="*{lhz4}"/></td>
-                    <td>
-                        <p><i>L<sub>zf4</sub></i></p>
-                    </td>
-                    <td><input name="lhzf4" type="text" th:field="*{lhzf4}"/></td>
+                    <td><input name="lqg4" type="text" th:field="*{lqg4}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸至回转中心距离</td>
+                    <td>物料起升机构装置至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z5</sub></i></p>
+                        <p><i>L<sub>q5</sub></i></p>
                     </td>
-                    <td><input name="lhz5" type="text" th:field="*{lhz5}"/></td>
-                    <td>
-                        <p><i>L<sub>zf5</sub></i></p>
-                    </td>
-                    <td><input name="lhzf5" type="text" th:field="*{lhzf5}"/></td>
+                    <td><input name="lqg5" type="text" th:field="*{lqg5}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>回转机构至回转中心距离</td>
+                    <td>伸缩液压缸至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z6</sub></i></p>
+                        <p><i>L<sub>q6</sub></i></p>
                     </td>
-                    <td><input name="lhz6" type="text" th:field="*{lhz6}"/></td>
-                    <td>
-                        <p><i>L<sub>zf6</sub></i></p>
-                    </td>
-                    <td><input name="lhzf6" type="text" th:field="*{lhzf6}"/></td>
+                    <td><input name="lqg6" type="text" th:field="*{lqg6}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重臂至回转中心距离</td>
+                    <td>仰臂液压缸至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z7</sub></i></p>
+                        <p><i>L<sub>q7</sub></i></p>
                     </td>
-                    <td><input name="lhz7" type="text" th:field="*{lhz7}"/></td>
-                    <td>
-                        <p><i>L<sub>zf7</sub></i></p>
-                    </td>
-                    <td><input name="lhzf7" type="text" th:field="*{lhzf7}"/></td>
+                    <td><input name="lqg7" type="text" th:field="*{lqg7}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重至回转中心距离</td>
+                    <td>顶升液压缸至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z8</sub></i></p>
+                        <p><i>L<sub>q8</sub></i></p>
                     </td>
-                    <td><input name="lhz8" type="text" th:field="*{lhz8}"/></td>
-                    <td>
-                        <p><i>L<sub>zf8</sub></i></p>
-                    </td>
-                    <td><input name="lhzf8" type="text" th:field="*{lhzf8}"/></td>
+                    <td><input name="lqg8" type="text" th:field="*{lqg8}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>立柱至回转中心距离</td>
+                    <td>大回转机构至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z9</sub></i></p>
+                        <p><i>L<sub>q9</sub></i></p>
                     </td>
-                    <td><input name="lhz9" type="text" th:field="*{lhz9}"/></td>
-                    <td>
-                        <p><i>L<sub>zf9</sub></i></p>
-                    </td>
-                    <td><input name="lhzf9" type="text" th:field="*{lhzf9}"/></td>
+                    <td><input name="lqg9" type="text" th:field="*{lqg9}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>起升机构至回转中心距离</td>
+                    <td>配重臂至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z10</sub></i></p>
+                        <p><i>L<sub>q10</sub></i></p>
                     </td>
-                    <td><input name="lhz10" type="text" th:field="*{lhz10}"/></td>
-                    <td>
-                        <p><i>L<sub>zf10</sub></i></p>
-                    </td>
-                    <td><input name="lhzf10" type="text" th:field="*{lhzf10}"/></td>
+                    <td><input name="lqg10" type="text" th:field="*{lqg10}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>底架至回转中心距离</td>
+                    <td>配重至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z11</sub></i></p>
+                        <p><i>L<sub>q11</sub></i></p>
                     </td>
-                    <td><input name="lhz11" type="text" th:field="*{lhz11}"/></td>
-                    <td>
-                        <p><i>L<sub>zf11</sub></i></p>
-                    </td>
-                    <td><input name="lhzf11" type="text" th:field="*{lhzf11}"/></td>
+                    <td><input name="lqg11" type="text" th:field="*{lqg11}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>主动运行至回转中心距离</td>
+                    <td>立柱至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z12</sub></i></p>
+                        <p><i>L<sub>q12</sub></i></p>
                     </td>
-                    <td><input name="lhz12" type="text" th:field="*{lhz12}"/></td>
-                    <td>
-                        <p><i>L<sub>zf12</sub></i></p>
-                    </td>
-                    <td><input name="lhzf12" type="text" th:field="*{lhzf12}"/></td>
+                    <td><input name="lqg12" type="text" th:field="*{lqg12}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至回转中心距离</td>
+                    <td>起升机构至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z13</sub></i></p>
+                        <p><i>L<sub>q13</sub></i></p>
                     </td>
-                    <td><input name="lhz13" type="text" th:field="*{lhz13}"/></td>
-                    <td>
-                        <p><i>L<sub>zf13</sub></i></p>
-                    </td>
-                    <td><input name="lhzf13" type="text" th:field="*{lhzf13}"/></td>
+                    <td><input name="lqg13" type="text" th:field="*{lqg13}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他I至回转中心距离</td>
+                    <td>油箱至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z14</sub></i></p>
+                        <p><i>L<sub>q14</sub></i></p>
                     </td>
-                    <td><input name="lhz14" type="text" th:field="*{lhz14}"/></td>
-                    <td>
-                        <p><i>L<sub>zf14</sub></i></p>
-                    </td>
-                    <td><input name="lhzf14" type="text" th:field="*{lhzf14}"/></td>
+                    <td><input name="lqg14" type="text" th:field="*{lqg14}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他II至回转中心距离</td>
+                    <td>底架至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>z15</sub></i></p>
+                        <p><i>L<sub>q15</sub></i></p>
                     </td>
-                    <td><input name="lhz15" type="text" th:field="*{lhz15}"/></td>
+                    <td><input name="lqg15" type="text" th:field="*{lqg15}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行1至前轨道距离</td>
                     <td>
-                        <p><i>L<sub>zf15</sub></i></p>
+                        <p><i>L<sub>q16</sub></i></p>
                     </td>
-                    <td><input name="lhzf15" type="text" th:field="*{lhzf15}"/></td>
+                    <td><input name="lqg16" type="text" th:field="*{lqg16}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行2至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q17</sub></i></p>
+                    </td>
+                    <td><input name="lqg17" type="text" th:field="*{lqg17}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行1至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q18</sub></i></p>
+                    </td>
+                    <td><input name="lqg18" type="text" th:field="*{lqg18}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行2至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q19</sub></i></p>
+                    </td>
+                    <td><input name="lqg19" type="text" th:field="*{lqg19}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q20</sub></i></p>
+                    </td>
+                    <td><input name="lqg20" type="text" th:field="*{lqg20}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II至前轨道距离</td>
+                    <td>
+                        <p><i>L<sub>q21</sub></i></p>
+                    </td>
+                    <td><input name="lqg21" type="text" th:field="*{lqg21}"/></td>
                     <td>m</td>
                 </tr>
             </table>
         </div>
 
+        <!--非工作状态擦窗机各部件重心至后轮距离-->
+
+        <div class="subtable">
+            <table class="tb">
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">8.非工作状态擦窗机各部件重心至后轮距离</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="非工作状态擦窗机各部件重心至后轮距离" id="wdlytu9" name="wdlytu9"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 0;">选择图片</td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu9" accept="image/*"
+                                           oninput="showImage(this,'wdlytu9')"/></td>
+                </tr>
+                <tr>
+                    <td style="width:30%;padding:10px 0;;">名称</td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:36%;">数值</td>
+                    <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
+                    <td>臂头至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h1</sub></i></p>
+                    </td>
+                    <td><input name="lhl1" type="text" th:field="*{lhl1}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构导绳架至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h2</sub></i></p>
+                    </td>
+                    <td><input name="lhl2" type="text" th:field="*{lhl2}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>安全绳至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h3</sub></i></p>
+                    </td>
+                    <td><input name="lhl3" type="text" th:field="*{lhl3}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>吊臂至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h4</sub></i></p>
+                    </td>
+                    <td><input name="lhl4" type="text" th:field="*{lhl4}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构装置至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h5</sub></i></p>
+                    </td>
+                    <td><input name="lhl5" type="text" th:field="*{lhl5}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>伸缩液压缸至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h6</sub></i></p>
+                    </td>
+                    <td><input name="lhl6" type="text" th:field="*{lhl6}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>仰臂液压缸至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h7</sub></i></p>
+                    </td>
+                    <td><input name="lhl7" type="text" th:field="*{lhl7}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>顶升液压缸至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h8</sub></i></p>
+                    </td>
+                    <td><input name="lhl8" type="text" th:field="*{lhl8}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>大回转机构至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h9</sub></i></p>
+                    </td>
+                    <td><input name="lhl9" type="text" th:field="*{lhl9}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>配重臂至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h10</sub></i></p>
+                    </td>
+                    <td><input name="lhl10" type="text" th:field="*{lhl10}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>配重至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h11</sub></i></p>
+                    </td>
+                    <td><input name="lhl11" type="text" th:field="*{lhl11}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>立柱至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h12</sub></i></p>
+                    </td>
+                    <td><input name="lhl12" type="text" th:field="*{lhl12}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>起升机构至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h13</sub></i></p>
+                    </td>
+                    <td><input name="lhl13" type="text" th:field="*{lhl13}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>油箱至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h14</sub></i></p>
+                    </td>
+                    <td><input name="lhl14" type="text" th:field="*{lhl14}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>底架至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h15</sub></i></p>
+                    </td>
+                    <td><input name="lhl15" type="text" th:field="*{lhl15}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行1至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h16</sub></i></p>
+                    </td>
+                    <td><input name="lhl16" type="text" th:field="*{lhl16}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行2至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h17</sub></i></p>
+                    </td>
+                    <td><input name="lhl17" type="text" th:field="*{lhl17}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行1至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h18</sub></i></p>
+                    </td>
+                    <td><input name="lhl18" type="text" th:field="*{lhl18}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行2至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h19</sub></i></p>
+                    </td>
+                    <td><input name="lhl19" type="text" th:field="*{lhl19}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h20</sub></i></p>
+                    </td>
+                    <td><input name="lhl20" type="text" th:field="*{lhl20}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II至后轮距离</td>
+                    <td>
+                        <p><i>L<sub>h21</sub></i></p>
+                    </td>
+                    <td><input name="lhl21" type="text" th:field="*{lhl21}"/></td>
+                    <td>m</td>
+                </tr>
+            </table>
+        </div>
 
         <!--风载荷作用高度-->
 
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">风载荷作用高度</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">9.风载荷作用高度</td>
                 </tr>
                 <tr>
                     <td colspan="6">
@@ -1022,7 +1397,7 @@
                             <img alt="工作状态风载荷作用高度" id="wdlytu6" name="wdlytu6"/>
                         </div>
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态风载荷作用高度" id="wdlytu11" name="wdlytu11"/>
+                            <img alt="非工作状态风载荷作用高度" id="wdlytu10" name="wdlytu10"/>
                         </div>
                     </td>
                 </tr>
@@ -1033,8 +1408,8 @@
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="wdlytu11" accept="image/*"
-                                           oninput="showImage(this,'wdlytu11')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu10" accept="image/*"
+                                           oninput="showImage(this,'wdlytu10')"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -1084,7 +1459,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>大臂至轨道上平面高度</td>
+                    <td>物料起升机构导绳架至轨道上平面高度</td>
                     <td>
                         <p><i>h2</i></p>
                     </td>
@@ -1096,7 +1471,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置至轨道上平面高度</td>
+                    <td>安全绳至轨道上平面高度</td>
                     <td>
                         <p><i>h3</i></p>
                     </td>
@@ -1108,7 +1483,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸至轨道上平面高度</td>
+                    <td>吊臂至轨道上平面高度</td>
                     <td>
                         <p><i>h4</i></p>
                     </td>
@@ -1120,7 +1495,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸至轨道上平面高度</td>
+                    <td>物料起升机构装置至轨道上平面高度</td>
                     <td>
                         <p><i>h5</i></p>
                     </td>
@@ -1132,7 +1507,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>回转机构至轨道上平面高度</td>
+                    <td>伸缩液压缸至轨道上平面高度</td>
                     <td>
                         <p><i>h6</i></p>
                     </td>
@@ -1144,7 +1519,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重臂至轨道上平面高度</td>
+                    <td>仰臂液压缸至轨道上平面高度</td>
                     <td>
                         <p><i>h7</i></p>
                     </td>
@@ -1156,7 +1531,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重至轨道上平面高度</td>
+                    <td>顶升液压缸至轨道上平面高度</td>
                     <td>
                         <p><i>h8</i></p>
                     </td>
@@ -1168,7 +1543,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>立柱至轨道上平面高度</td>
+                    <td>大回转机构至轨道上平面高度</td>
                     <td>
                         <p><i>h9</i></p>
                     </td>
@@ -1180,7 +1555,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>起升机构至轨道上平面高度</td>
+                    <td>配重臂至轨道上平面高度</td>
                     <td>
                         <p><i>h10</i></p>
                     </td>
@@ -1192,7 +1567,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>底架至轨道上平面高度</td>
+                    <td>配重至轨道上平面高度</td>
                     <td>
                         <p><i>h11</i></p>
                     </td>
@@ -1204,7 +1579,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>主动运行至轨道上平面高度</td>
+                    <td>立柱至轨道上平面高度</td>
                     <td>
                         <p><i>h12</i></p>
                     </td>
@@ -1216,7 +1591,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至轨道上平面高度</td>
+                    <td>起升机构至轨道上平面高度</td>
                     <td>
                         <p><i>h13</i></p>
                     </td>
@@ -1228,7 +1603,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他I至轨道上平面高度</td>
+                    <td>油箱至轨道上平面高度</td>
                     <td>
                         <p><i>h14</i></p>
                     </td>
@@ -1240,7 +1615,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他II至轨道上平面高度</td>
+                    <td>底架至轨道上平面高度</td>
                     <td>
                         <p><i>h15</i></p>
                     </td>
@@ -1251,24 +1626,95 @@
                     <td><input name="hgf15" type="text" th:field="*{hgf15}"/></td>
                     <td>m</td>
                 </tr>
+                <tr>
+                    <td>主动运行1至轨道上平面高度</td>
+                    <td>
+                        <p><i>h16</i></p>
+                    </td>
+                    <td><input name="hg16" type="text" th:field="*{hg16}"/></td>
+                    <td>
+                        <p><i>hf16</i></p>
+                    </td>
+                    <td><input name="hgf16" type="text" th:field="*{hgf16}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行2至轨道上平面高度</td>
+                    <td>
+                        <p><i>h17</i></p>
+                    </td>
+                    <td><input name="hg17" type="text" th:field="*{hg17}"/></td>
+                    <td>
+                        <p><i>hf17</i></p>
+                    </td>
+                    <td><input name="hgf17" type="text" th:field="*{hgf17}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行1至轨道上平面高度</td>
+                    <td>
+                        <p><i>h18</i></p>
+                    </td>
+                    <td><input name="hg18" type="text" th:field="*{hg18}"/></td>
+                    <td>
+                        <p><i>hf18</i></p>
+                    </td>
+                    <td><input name="hgf18" type="text" th:field="*{hgf18}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行2至轨道上平面高度</td>
+                    <td>
+                        <p><i>h19</i></p>
+                    </td>
+                    <td><input name="hg19" type="text" th:field="*{hg19}"/></td>
+                    <td>
+                        <p><i>hf19</i></p>
+                    </td>
+                    <td><input name="hgf19" type="text" th:field="*{hgf19}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I至轨道上平面高度</td>
+                    <td>
+                        <p><i>h20</i></p>
+                    </td>
+                    <td><input name="hg20" type="text" th:field="*{hg20}"/></td>
+                    <td>
+                        <p><i>hf20</i></p>
+                    </td>
+                    <td><input name="hgf20" type="text" th:field="*{hgf20}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II至轨道上平面高度</td>
+                    <td>
+                        <p><i>h21</i></p>
+                    </td>
+                    <td><input name="hg21" type="text" th:field="*{hg21}"/></td>
+                    <td>
+                        <p><i>hf21</i></p>
+                    </td>
+                    <td><input name="hgf21" type="text" th:field="*{hgf21}"/></td>
+                    <td>m</td>
+                </tr>
             </table>
         </div>
 
-        <!--擦窗机各部件迎风面积（大臂侧向）-->
-
+        <!--面心至回转中心距离-->
 
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">擦窗机各部件迎风面积（大臂侧向）</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">10.擦窗机各部件面心至回转中心距离</td>
                 </tr>
                 <tr>
                     <td colspan="6">
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态大臂侧向迎风面积" id="wdlytu7" name="wdlytu7"/>
+                            <img alt="工作状态各部件面心至回转中心距离" id="wdlytu7" name="wdlytu7"/>
                         </div>
                         <div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态大臂侧向迎风面积" id="wdlytu12" name="wdlytu12"/>
+                            <img alt="非工作状态各部件面心至回转中心距离" id="wdlytu11" name="wdlytu11"/>
                         </div>
                     </td>
                 </tr>
@@ -1279,9 +1725,325 @@
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="wdlytu12" accept="image/*"
-                                           oninput="showImage(this,'wdlytu12')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu11" accept="image/*"
+                                           oninput="showImage(this,'wdlytu11')"/></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2" style="padding: 10px 0;">工作状态</td>
+                    <td colspan="2">非工作状态</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="width:28%;padding:10px 0;;">名称</td>
+                    <td style="width:10%;">符号</td>
+                    <td style="width:21%;">数值</td>
+                    <td style="width:10%;">符号</td>
+                    <td style="width:21%;">数值</td>
+                    <td style="width:10%;">单位</td>
+                </tr>
+
+                <tr>
+                    <td>吊船及人员面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>slmz</sub></i></p>
+                    </td>
+                    <td><input name="lslmz" type="text" th:field="*{lslmz}"/></td>
+                    <td></td>
+                    <td></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>物料面心至回转中心距离</td>
+                    <td>
+                        <p>L<sub>shlmz</sub></p>
+                    </td>
+                    <td><input name="lshlmz" type="text" th:field="*{lshlmz}"/></td>
+                    <td></td>
+                    <td></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>臂头面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz1</sub></i></p>
+                    </td>
+                    <td><input name="lmz1" type="text" th:field="*{lmz1}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf1</sub></i></p>
+                    </td>
+                    <td><input name="lmzf1" type="text" th:field="*{lmzf1}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构导绳架面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz2</sub></i></p>
+                    </td>
+                    <td><input name="lmz2" type="text" th:field="*{lmz2}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf2</sub></i></p>
+                    </td>
+                    <td><input name="lmzf2" type="text" th:field="*{lmzf2}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>安全绳面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz3</sub></i></p>
+                    </td>
+                    <td><input name="lmz3" type="text" th:field="*{lmz3}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf3</sub></i></p>
+                    </td>
+                    <td><input name="lmzf3" type="text" th:field="*{lmzf3}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>吊臂面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz4</sub></i></p>
+                    </td>
+                    <td><input name="lmz4" type="text" th:field="*{lmz4}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf4</sub></i></p>
+                    </td>
+                    <td><input name="lmzf4" type="text" th:field="*{lmzf4}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构装置面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz5</sub></i></p>
+                    </td>
+                    <td><input name="lmz5" type="text" th:field="*{lmz5}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf5</sub></i></p>
+                    </td>
+                    <td><input name="lmzf5" type="text" th:field="*{lmzf5}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>伸缩液压缸面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz6</sub></i></p>
+                    </td>
+                    <td><input name="lmz6" type="text" th:field="*{lmz6}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf6</sub></i></p>
+                    </td>
+                    <td><input name="lmzf6" type="text" th:field="*{lmzf6}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>仰臂液压缸面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz7</sub></i></p>
+                    </td>
+                    <td><input name="lmz7" type="text" th:field="*{lmz7}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf7</sub></i></p>
+                    </td>
+                    <td><input name="lmzf7" type="text" th:field="*{lmzf7}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>顶升液压缸面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz8</sub></i></p>
+                    </td>
+                    <td><input name="lmz8" type="text" th:field="*{lmz8}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf8</sub></i></p>
+                    </td>
+                    <td><input name="lmzf8" type="text" th:field="*{lmzf8}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>大回转机构面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz9</sub></i></p>
+                    </td>
+                    <td><input name="lmz9" type="text" th:field="*{lmz9}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf9</sub></i></p>
+                    </td>
+                    <td><input name="lmzf9" type="text" th:field="*{lmzf9}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>配重臂面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz10</sub></i></p>
+                    </td>
+                    <td><input name="lmz10" type="text" th:field="*{lmz10}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf10</sub></i></p>
+                    </td>
+                    <td><input name="lmzf10" type="text" th:field="*{lmzf10}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>配重面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz11</sub></i></p>
+                    </td>
+                    <td><input name="lmz11" type="text" th:field="*{lmz11}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf11</sub></i></p>
+                    </td>
+                    <td><input name="lmzf11" type="text" th:field="*{lmzf11}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>立柱面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz12</sub></i></p>
+                    </td>
+                    <td><input name="lmz12" type="text" th:field="*{lmz12}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf12</sub></i></p>
+                    </td>
+                    <td><input name="lmzf12" type="text" th:field="*{lmzf12}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>起升机构面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz13</sub></i></p>
+                    </td>
+                    <td><input name="lmz13" type="text" th:field="*{lmz13}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf13</sub></i></p>
+                    </td>
+                    <td><input name="lmzf13" type="text" th:field="*{lmzf13}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>油箱面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz14</sub></i></p>
+                    </td>
+                    <td><input name="lmz14" type="text" th:field="*{lmz14}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf14</sub></i></p>
+                    </td>
+                    <td><input name="lmzf14" type="text" th:field="*{lmzf14}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>底架面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz15</sub></i></p>
+                    </td>
+                    <td><input name="lmz15" type="text" th:field="*{lmz15}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf15</sub></i></p>
+                    </td>
+                    <td><input name="lmzf15" type="text" th:field="*{lmzf15}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行1面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz16</sub></i></p>
+                    </td>
+                    <td><input name="lmz16" type="text" th:field="*{lmz16}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf16</sub></i></p>
+                    </td>
+                    <td><input name="lmzf16" type="text" th:field="*{lmzf16}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行2面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz17</sub></i></p>
+                    </td>
+                    <td><input name="lmz17" type="text" th:field="*{lmz17}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf17</sub></i></p>
+                    </td>
+                    <td><input name="lmzf17" type="text" th:field="*{lmzf17}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行1面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz18</sub></i></p>
+                    </td>
+                    <td><input name="lmz18" type="text" th:field="*{lmz18}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf18</sub></i></p>
+                    </td>
+                    <td><input name="lmzf18" type="text" th:field="*{lmzf18}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行2面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz19</sub></i></p>
+                    </td>
+                    <td><input name="lmz19" type="text" th:field="*{lmz19}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf19</sub></i></p>
+                    </td>
+                    <td><input name="lmzf19" type="text" th:field="*{lmzf19}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz20</sub></i></p>
+                    </td>
+                    <td><input name="lmz20" type="text" th:field="*{lmz20}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf20</sub></i></p>
+                    </td>
+                    <td><input name="lmzf20" type="text" th:field="*{lmzf20}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II面心至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>mz21</sub></i></p>
+                    </td>
+                    <td><input name="lmz21" type="text" th:field="*{lmz21}"/></td>
+                    <td>
+                        <p><i>L<sub>mzf21</sub></i></p>
+                    </td>
+                    <td><input name="lmzf21" type="text" th:field="*{lmzf21}"/></td>
+                    <td>m</td>
+                </tr>
+            </table>
+        </div>
+
+        <!--擦窗机各部件迎风面积（大臂侧向）-->
+        <div class="subtable">
+            <table class="tb">
+                <tr>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">11.擦窗机各部件迎风面积（大臂侧向）</td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td colspan="6">-->
+                        <!--<div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img alt="工作状态大臂侧向迎风面积" id="wdlytu7" name="wdlytu7"/>-->
+                        <!--</div>-->
+                        <!--<div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img alt="非工作状态大臂侧向迎风面积" id="wdlytu12" name="wdlytu12"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding: 10px 0;">选择工作状态图片</td>-->
+                    <!--<td colspan="5"><input class="image" type="file" name="wdlytu7" accept="image/*"-->
+                                           <!--oninput="showImage(this,'wdlytu7')"/></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding: 10px 0;">选择非工作状态图片</td>-->
+                    <!--<td colspan="5"><input class="image" type="file" name="wdlytu12" accept="image/*"-->
+                                           <!--oninput="showImage(this,'wdlytu12')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td></td>
                     <td colspan="2" style="padding: 10px 0;">工作状态</td>
@@ -1329,7 +2091,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>大臂迎风面积</td>
+                    <td>物料起升机构导绳架迎风面积</td>
                     <td>
                         <p><i>A<sub>2</sub></i></p>
                     </td>
@@ -1341,7 +2103,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置迎风面积</td>
+                    <td>安全绳迎风面积</td>
                     <td>
                         <p><i>A<sub>3</sub></i></p>
                     </td>
@@ -1353,7 +2115,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸迎风面积</td>
+                    <td>吊臂迎风面积</td>
                     <td>
                         <p><i>A<sub>4</sub></i></p>
                     </td>
@@ -1365,7 +2127,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸迎风面积</td>
+                    <td>物料起升机构装置迎风面积</td>
                     <td>
                         <p><i>A<sub>5</sub></i></p>
                     </td>
@@ -1377,7 +2139,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>回转机构迎风面积</td>
+                    <td>伸缩液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>6</sub></i></p>
                     </td>
@@ -1389,7 +2151,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>配重臂迎风面积</td>
+                    <td>仰臂液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>7</sub></i></p>
                     </td>
@@ -1401,7 +2163,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>配重迎风面积</td>
+                    <td>顶升液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>8</sub></i></p>
                     </td>
@@ -1413,7 +2175,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>立柱迎风面积</td>
+                    <td>大回转机构迎风面积</td>
                     <td>
                         <p><i>A<sub>9</sub></i></p>
                     </td>
@@ -1425,7 +2187,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>起升机构迎风面积</td>
+                    <td>配重臂迎风面积</td>
                     <td>
                         <p><i>A<sub>10</sub></i></p>
                     </td>
@@ -1437,7 +2199,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>底架迎风面积</td>
+                    <td>配重迎风面积</td>
                     <td>
                         <p><i>A<sub>11</sub></i></p>
                     </td>
@@ -1449,7 +2211,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>主动运行迎风面积</td>
+                    <td>立柱迎风面积</td>
                     <td>
                         <p><i>A<sub>12</sub></i></p>
                     </td>
@@ -1461,7 +2223,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>被动运行迎风面积</td>
+                    <td>起升机构迎风面积</td>
                     <td>
                         <p><i>A<sub>13</sub></i></p>
                     </td>
@@ -1473,7 +2235,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他I迎风面积</td>
+                    <td>油箱迎风面积</td>
                     <td>
                         <p><i>A<sub>14</sub></i></p>
                     </td>
@@ -1485,7 +2247,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他II迎风面积</td>
+                    <td>底架迎风面积</td>
                     <td>
                         <p><i>A<sub>15</sub></i></p>
                     </td>
@@ -1494,6 +2256,78 @@
                         <p><i>A<sub>f15</sub></i></p>
                     </td>
                     <td><input name="afcx15" type="text" th:field="*{afcx15}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>主动运行1迎风面积</td>
+                    <td>
+                        <p><i>A<sub>16</sub></i></p>
+                    </td>
+                    <td><input name="acx16" type="text" th:field="*{acx16}"/></td>
+                    <td>
+                        <p><i>A<sub>f16</sub></i></p>
+                    </td>
+                    <td><input name="afcx16" type="text" th:field="*{afcx16}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>主动运行2迎风面积</td>
+                    <td>
+                        <p><i>A<sub>17</sub></i></p>
+                    </td>
+                    <td><input name="acx17" type="text" th:field="*{acx17}"/></td>
+                    <td>
+                        <p><i>A<sub>f17</sub></i></p>
+                    </td>
+                    <td><input name="afcx17" type="text" th:field="*{afcx17}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>被动运行1迎风面积</td>
+                    <td>
+                        <p><i>A<sub>18</sub></i></p>
+                    </td>
+                    <td><input name="acx18" type="text" th:field="*{acx18}"/></td>
+                    <td>
+                        <p><i>A<sub>f18</sub></i></p>
+                    </td>
+                    <td><input name="afcx18" type="text" th:field="*{afcx18}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>被动运行2迎风面积</td>
+                    <td>
+                        <p><i>A<sub>19</sub></i></p>
+                    </td>
+                    <td><input name="acx19" type="text" th:field="*{acx19}"/></td>
+                    <td>
+                        <p><i>A<sub>f19</sub></i></p>
+                    </td>
+                    <td><input name="afcx19" type="text" th:field="*{afcx19}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他I迎风面积</td>
+                    <td>
+                        <p><i>A<sub>20</sub></i></p>
+                    </td>
+                    <td><input name="acx20" type="text" th:field="*{acx20}"/></td>
+                    <td>
+                        <p><i>A<sub>f20</sub></i></p>
+                    </td>
+                    <td><input name="afcx20" type="text" th:field="*{afcx20}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他II迎风面积</td>
+                    <td>
+                        <p><i>A<sub>21</sub></i></p>
+                    </td>
+                    <td><input name="acx21" type="text" th:field="*{acx21}"/></td>
+                    <td>
+                        <p><i>A<sub>f21</sub></i></p>
+                    </td>
+                    <td><input name="afcx21" type="text" th:field="*{afcx21}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
             </table>
@@ -1505,7 +2339,7 @@
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">擦窗机各部件迎风面积（大臂同向）</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">12.擦窗机各部件迎风面积（大臂同向）</td>
                 </tr>
                 <tr>
                     <td colspan="6">
@@ -1513,7 +2347,7 @@
                             <img alt="工作状态大臂同向迎风面积" id="wdlytu8" name="wdlytu8"/>
                         </div>
                         <div style="display:inline-block;width:250px;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态大臂同向迎风面积" id="wdlytu13" name="wdlytu13"/>
+                            <img alt="非工作状态大臂同向迎风面积" id="wdlytu12" name="wdlytu12"/>
                         </div>
                     </td>
                 </tr>
@@ -1524,8 +2358,8 @@
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择非工作状态图片</td>
-                    <td colspan="5"><input class="image" type="file" name="wdlytu13" accept="image/*"
-                                           oninput="showImage(this,'wdlytu13')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu12" accept="image/*"
+                                           oninput="showImage(this,'wdlytu12')"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -1574,7 +2408,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>大臂迎风面积</td>
+                    <td>物料起升机构导绳架迎风面积</td>
                     <td>
                         <p><i>A<sub>t2</sub></i></p>
                     </td>
@@ -1586,7 +2420,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置迎风面积</td>
+                    <td>安全绳迎风面积</td>
                     <td>
                         <p><i>A<sub>t3</sub></i></p>
                     </td>
@@ -1598,7 +2432,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸迎风面积</td>
+                    <td>吊臂迎风面积</td>
                     <td>
                         <p><i>A<sub>t4</sub></i></p>
                     </td>
@@ -1610,7 +2444,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸迎风面积</td>
+                    <td>物料起升机构装置迎风面积</td>
                     <td>
                         <p><i>A<sub>t5</sub></i></p>
                     </td>
@@ -1622,7 +2456,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>回转机构迎风面积</td>
+                    <td>伸缩液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>t6</sub></i></p>
                     </td>
@@ -1634,7 +2468,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>配重臂迎风面积</td>
+                    <td>仰臂液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>t7</sub></i></p>
                     </td>
@@ -1646,7 +2480,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>配重迎风面积</td>
+                    <td>顶升液压缸迎风面积</td>
                     <td>
                         <p><i>A<sub>t8</sub></i></p>
                     </td>
@@ -1658,7 +2492,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>立柱迎风面积</td>
+                    <td>大回转机构迎风面积</td>
                     <td>
                         <p><i>A<sub>t9</sub></i></p>
                     </td>
@@ -1670,7 +2504,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>起升机构迎风面积</td>
+                    <td>配重臂迎风面积</td>
                     <td>
                         <p><i>A<sub>t10</sub></i></p>
                     </td>
@@ -1682,7 +2516,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>底架迎风面积</td>
+                    <td>配重迎风面积</td>
                     <td>
                         <p><i>A<sub>t11</sub></i></p>
                     </td>
@@ -1694,7 +2528,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>主动运行迎风面积</td>
+                    <td>立柱迎风面积</td>
                     <td>
                         <p><i>A<sub>t12</sub></i></p>
                     </td>
@@ -1706,7 +2540,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>被动运行迎风面积</td>
+                    <td>起升机构迎风面积</td>
                     <td>
                         <p><i>A<sub>t13</sub></i></p>
                     </td>
@@ -1718,7 +2552,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他I迎风面积</td>
+                    <td>油箱迎风面积</td>
                     <td>
                         <p><i>A<sub>t14</sub></i></p>
                     </td>
@@ -1730,7 +2564,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>其他II迎风面积</td>
+                    <td>底架迎风面积</td>
                     <td>
                         <p><i>A<sub>t15</sub></i></p>
                     </td>
@@ -1741,27 +2575,99 @@
                     <td><input name="aftx15" type="text" th:field="*{aftx15}"/></td>
                     <td>m<sup>2</sup></td>
                 </tr>
+                <tr>
+                    <td>主动运行1迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t16</sub></i></p>
+                    </td>
+                    <td><input name="atx16" type="text" th:field="*{atx16}"/></td>
+                    <td>
+                        <p><i>A<sub>ft16</sub></i></p>
+                    </td>
+                    <td><input name="aftx16" type="text" th:field="*{aftx16}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>主动运行2迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t17</sub></i></p>
+                    </td>
+                    <td><input name="atx17" type="text" th:field="*{atx17}"/></td>
+                    <td>
+                        <p><i>A<sub>ft17</sub></i></p>
+                    </td>
+                    <td><input name="aftx17" type="text" th:field="*{aftx17}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>被动运行1迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t18</sub></i></p>
+                    </td>
+                    <td><input name="atx18" type="text" th:field="*{atx18}"/></td>
+                    <td>
+                        <p><i>A<sub>ft18</sub></i></p>
+                    </td>
+                    <td><input name="aftx18" type="text" th:field="*{aftx18}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>被动运行2迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t19</sub></i></p>
+                    </td>
+                    <td><input name="atx19" type="text" th:field="*{atx19}"/></td>
+                    <td>
+                        <p><i>A<sub>ft19</sub></i></p>
+                    </td>
+                    <td><input name="aftx19" type="text" th:field="*{aftx19}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他I迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t20</sub></i></p>
+                    </td>
+                    <td><input name="atx20" type="text" th:field="*{atx20}"/></td>
+                    <td>
+                        <p><i>A<sub>ft20</sub></i></p>
+                    </td>
+                    <td><input name="aftx20" type="text" th:field="*{aftx20}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td>其他II迎风面积</td>
+                    <td>
+                        <p><i>A<sub>t21</sub></i></p>
+                    </td>
+                    <td><input name="atx21" type="text" th:field="*{atx21}"/></td>
+                    <td>
+                        <p><i>A<sub>ft21</sub></i></p>
+                    </td>
+                    <td><input name="aftx21" type="text" th:field="*{aftx21}"/></td>
+                    <td>m<sup>2</sup></td>
+                </tr>
             </table>
         </div>
 
-        <!--工作状态擦窗机各部件重心至前轨道距离-->
+        <!--擦窗机各部件重心至回转中心距离-->
 
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">工作状态擦窗机各部件重心至前轨道距离</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">13.工作状态擦窗机各部件重心至回转中心距离</td>
                 </tr>
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="工作状态擦窗机各部件重心至前轨道距离" id="wdlytu3" name="wdlytu3"/>
+                            <img alt="工作状态擦窗机各部件重心至回转中心距离" id="wdlytu4" name="wdlytu4"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">选择图片</td>
-                    <td colspan="5"><input class="image" type="file" name="wdlytu3" accept="image/*"
-                                           oninput="showImage(this,'wdlytu3')"/></td>
+                    <td colspan="5"><input class="image" type="file" name="wdlytu4" accept="image/*"
+                                           oninput="showImage(this,'wdlytu4')"/></td>
                 </tr>
                 <tr>
                     <td style="width:30%;padding:10px 0;;">名称</td>
@@ -1770,139 +2676,187 @@
                     <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
-                    <td>吊船及人员至前轨道距离</td>
+                    <td>吊船及人员至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>slq</sub></i></p>
+                        <p><i>L<sub>slz</sub></i></p>
                     </td>
-                    <td><input name="lslqg" type="text" th:field="*{lslqg}"/></td>
+                    <td><input name="lslhz" type="text" th:field="*{lslhz}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>物料至前轨道距离</td>
+                    <td>物料至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>shlq</sub></i></p>
+                        <p><i>L<sub>shlz</sub></i></p>
                     </td>
-                    <td><input name="lshlqg" type="text" th:field="*{lshlqg}"/></td>
+                    <td><input name="lshlhz" type="text" th:field="*{lshlhz}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>臂头至前轨道距离</td>
+                    <td>臂头至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q1</sub></i></p>
+                        <p><i>L<sub>z1</sub></i></p>
                     </td>
-                    <td><input name="lqg1" type="text" th:field="*{lqg1}"/></td>
+                    <td><input name="lhz1" type="text" th:field="*{lhz1}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>大臂至前轨道距离</td>
+                    <td>物料起升机构导绳架至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q2</sub></i></p>
+                        <p><i>L<sub>z2</sub></i></p>
                     </td>
-                    <td><input name="lqg2" type="text" th:field="*{lqg2}"/></td>
+                    <td><input name="lhz2" type="text" th:field="*{lhz2}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置至前轨道距离</td>
+                    <td>安全绳至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q3</sub></i></p>
+                        <p><i>L<sub>z3</sub></i></p>
                     </td>
-                    <td><input name="lqg3" type="text" th:field="*{lqg3}"/></td>
+                    <td><input name="lhz3" type="text" th:field="*{lhz3}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸至前轨道距离</td>
+                    <td>吊臂至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q4</sub></i></p>
+                        <p><i>L<sub>z4</sub></i></p>
                     </td>
-                    <td><input name="lqg4" type="text" th:field="*{lqg4}"/></td>
+                    <td><input name="lhz4" type="text" th:field="*{lhz4}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸至前轨道距离</td>
+                    <td>物料起升机构装置至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q5</sub></i></p>
+                        <p><i>L<sub>z5</sub></i></p>
                     </td>
-                    <td><input name="lqg5" type="text" th:field="*{lqg5}"/></td>
+                    <td><input name="lhz5" type="text" th:field="*{lhz5}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>回转机构至前轨道距离</td>
+                    <td>伸缩液压缸至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q6</sub></i></p>
+                        <p><i>L<sub>z6</sub></i></p>
                     </td>
-                    <td><input name="lqg6" type="text" th:field="*{lqg6}"/></td>
+                    <td><input name="lhz6" type="text" th:field="*{lhz6}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重臂至前轨道距离</td>
+                    <td>仰臂液压缸至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q7</sub></i></p>
+                        <p><i>L<sub>z7</sub></i></p>
                     </td>
-                    <td><input name="lqg7" type="text" th:field="*{lqg7}"/></td>
+                    <td><input name="lhz7" type="text" th:field="*{lhz7}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重至前轨道距离</td>
+                    <td>顶升液压缸至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q8</sub></i></p>
+                        <p><i>L<sub>z8</sub></i></p>
                     </td>
-                    <td><input name="lqg8" type="text" th:field="*{lqg8}"/></td>
+                    <td><input name="lhz8" type="text" th:field="*{lhz8}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>立柱至前轨道距离</td>
+                    <td>大回转机构至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q9</sub></i></p>
+                        <p><i>L<sub>z9</sub></i></p>
                     </td>
-                    <td><input name="lqg9" type="text" th:field="*{lqg9}"/></td>
+                    <td><input name="lhz9" type="text" th:field="*{lhz9}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>起升机构至前轨道距离</td>
+                    <td>配重臂至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q10</sub></i></p>
+                        <p><i>L<sub>z10</sub></i></p>
                     </td>
-                    <td><input name="lqg10" type="text" th:field="*{lqg10}"/></td>
+                    <td><input name="lhz10" type="text" th:field="*{lhz10}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>底架至前轨道距离</td>
+                    <td>配重至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q11</sub></i></p>
+                        <p><i>L<sub>z11</sub></i></p>
                     </td>
-                    <td><input name="lqg11" type="text" th:field="*{lqg11}"/></td>
+                    <td><input name="lhz11" type="text" th:field="*{lhz11}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>主动运行至前轨道距离</td>
+                    <td>立柱至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q12</sub></i></p>
+                        <p><i>L<sub>z12</sub></i></p>
                     </td>
-                    <td><input name="lqg12" type="text" th:field="*{lqg12}"/></td>
+                    <td><input name="lhz12" type="text" th:field="*{lhz12}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至前轨道距离</td>
+                    <td>起升机构至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q13</sub></i></p>
+                        <p><i>L<sub>z13</sub></i></p>
                     </td>
-                    <td><input name="lqg13" type="text" th:field="*{lqg13}"/></td>
+                    <td><input name="lhz13" type="text" th:field="*{lhz13}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他I至前轨道距离</td>
+                    <td>油箱至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q14</sub></i></p>
+                        <p><i>L<sub>z14</sub></i></p>
                     </td>
-                    <td><input name="lqg14" type="text" th:field="*{lqg14}"/></td>
+                    <td><input name="lhz14" type="text" th:field="*{lhz14}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他II至前轨道距离</td>
+                    <td>底架至回转中心距离</td>
                     <td>
-                        <p><i>L<sub>q15</sub></i></p>
+                        <p><i>L<sub>z15</sub></i></p>
                     </td>
-                    <td><input name="lqg15" type="text" th:field="*{lqg15}"/></td>
+                    <td><input name="lhz15" type="text" th:field="*{lhz15}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行1至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z16</sub></i></p>
+                    </td>
+                    <td><input name="lhz16" type="text" th:field="*{lhz16}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>主动运行2至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z17</sub></i></p>
+                    </td>
+                    <td><input name="lhz17" type="text" th:field="*{lhz17}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行1至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z18</sub></i></p>
+                    </td>
+                    <td><input name="lhz18" type="text" th:field="*{lhz18}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>被动运行2至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z19</sub></i></p>
+                    </td>
+                    <td><input name="lhz19" type="text" th:field="*{lhz19}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他I至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z20</sub></i></p>
+                    </td>
+                    <td><input name="lhz20" type="text" th:field="*{lhz20}"/></td>
+                    <td>m</td>
+                </tr>
+                <tr>
+                    <td>其他II至回转中心距离</td>
+                    <td>
+                        <p><i>L<sub>z21</sub></i></p>
+                    </td>
+                    <td><input name="lhz21" type="text" th:field="*{lhz21}"/></td>
                     <td>m</td>
                 </tr>
             </table>
@@ -1914,7 +2868,7 @@
         <div class="subtable">
             <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">工作状态擦窗机各部件重心至前轮距离</td>
+                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">14.工作状态擦窗机各部件重心至前轮距离</td>
                 </tr>
                 <tr>
                     <td colspan="5">
@@ -1959,7 +2913,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>大臂至前轮距离</td>
+                    <td>物料起升机构导绳架至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql2</sub></i></p>
                     </td>
@@ -1967,7 +2921,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置至前轮距离</td>
+                    <td>安全绳至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql3</sub></i></p>
                     </td>
@@ -1975,7 +2929,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸至前轮距离</td>
+                    <td>吊臂至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql4</sub></i></p>
                     </td>
@@ -1983,7 +2937,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸至前轮距离</td>
+                    <td>物料起升机构装置至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql5</sub></i></p>
                     </td>
@@ -1991,7 +2945,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>回转机构至前轮距离</td>
+                    <td>伸缩液压缸至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql6</sub></i></p>
                     </td>
@@ -1999,7 +2953,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重臂至前轮距离</td>
+                    <td>仰臂液压缸至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql7</sub></i></p>
                     </td>
@@ -2007,7 +2961,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>配重至前轮距离</td>
+                    <td>顶升液压缸至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql8</sub></i></p>
                     </td>
@@ -2015,7 +2969,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>立柱至前轮距离</td>
+                    <td>大回转机构至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql9</sub></i></p>
                     </td>
@@ -2023,7 +2977,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>起升机构至前轮距离</td>
+                    <td>配重臂至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql10</sub></i></p>
                     </td>
@@ -2031,7 +2985,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>底架至前轮距离</td>
+                    <td>配重至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql11</sub></i></p>
                     </td>
@@ -2039,7 +2993,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>主动运行至前轮距离</td>
+                    <td>立柱至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql12</sub></i></p>
                     </td>
@@ -2047,7 +3001,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>被动运行至前轮距离</td>
+                    <td>起升机构至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql13</sub></i></p>
                     </td>
@@ -2055,7 +3009,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他I至前轮距离</td>
+                    <td>油箱至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql14</sub></i></p>
                     </td>
@@ -2063,164 +3017,78 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>其他II至前轮距离</td>
+                    <td>底架至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql15</sub></i></p>
                     </td>
                     <td><input name="lql15" type="text" th:field="*{lql15}"/></td>
                     <td>m</td>
                 </tr>
-            </table>
-        </div>
-
-
-        <!--非工作状态擦窗机各部件重心至后轮距离-->
-
-        <div class="subtable">
-            <table class="tb">
                 <tr>
-                    <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">非工作状态擦窗机各部件重心至后轮距离</td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="非工作状态擦窗机各部件重心至后轮距离" id="wdlytu9" name="wdlytu9"/>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px 0;">选择图片</td>
-                    <td colspan="5"><input class="image" type="file" name="wdlytu9" accept="image/*"
-                                           oninput="showImage(this,'wdlytu9')"/></td>
-                </tr>
-                <tr>
-                    <td style="width:30%;padding:10px 0;;">名称</td>
-                    <td style="width:17%;">符号</td>
-                    <td style="width:36%;">数值</td>
-                    <td style="width:17%;">单位</td>
-                </tr>
-                <tr>
-                    <td>臂头至后轮距离</td>
+                    <td>主动运行1至前轮距离</td>
                     <td>
-                        <p><i>L<sub>h1</sub></i></p>
+                        <p><i>L<sub>ql16</sub></i></p>
                     </td>
-                    <td><input name="lhl1" type="text" th:field="*{lhl1}"/></td>
+                    <td><input name="lql16" type="text" th:field="*{lql16}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>大臂至后轮距离</td>
+                    <td>主动运行2至前轮距离</td>
                     <td>
-                        <p><i>L<sub>h2</sub></i></p>
+                        <p><i>L<sub>ql17</sub></i></p>
                     </td>
-                    <td><input name="lhl2" type="text" th:field="*{lhl2}"/></td>
+                    <td><input name="lql17" type="text" th:field="*{lql17}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置至后轮距离</td>
+                    <td>被动运行1至前轮距离</td>
                     <td>
-                        <p><i>L<sub>h3</sub></i></p>
+                        <p><i>L<sub>ql18</sub></i></p>
                     </td>
-                    <td><input name="lhl3" type="text" th:field="*{lhl3}"/></td>
+                    <td><input name="lql18" type="text" th:field="*{lql18}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>仰臂液压缸至后轮距离</td>
+                    <td>被动运行2至前轮距离</td>
                     <td>
-                        <p><i>L<sub>h4</sub></i></p>
+                        <p><i>L<sub>ql19</sub></i></p>
                     </td>
-                    <td><input name="lhl4" type="text" th:field="*{lhl4}"/></td>
+                    <td><input name="lql19" type="text" th:field="*{lql19}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>顶升液压缸至后轮距离</td>
+                    <td>其他I至前轮距离</td>
                     <td>
-                        <p><i>L<sub>h5</sub></i></p>
+                        <p><i>L<sub>ql20</sub></i></p>
                     </td>
-                    <td><input name="lhl5" type="text" th:field="*{lhl5}"/></td>
+                    <td><input name="lql20" type="text" th:field="*{lql20}"/></td>
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>回转机构至后轮距离</td>
+                    <td>其他II至前轮距离</td>
                     <td>
-                        <p><i>L<sub>h6</sub></i></p>
+                        <p><i>L<sub>ql21</sub></i></p>
                     </td>
-                    <td><input name="lhl6" type="text" th:field="*{lhl6}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>配重臂至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h7</sub></i></p>
-                    </td>
-                    <td><input name="lhl7" type="text" th:field="*{lhl7}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>配重至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h8</sub></i></p>
-                    </td>
-                    <td><input name="lhl8" type="text" th:field="*{lhl8}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>立柱至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h9</sub></i></p>
-                    </td>
-                    <td><input name="lhl9" type="text" th:field="*{lhl9}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>起升机构至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h10</sub></i></p>
-                    </td>
-                    <td><input name="lhl10" type="text" th:field="*{lhl10}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>底架至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h11</sub></i></p>
-                    </td>
-                    <td><input name="lhl11" type="text" th:field="*{lhl11}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>主动运行至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h12</sub></i></p>
-                    </td>
-                    <td><input name="lhl12" type="text" th:field="*{lhl12}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>被动运行至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h13</sub></i></p>
-                    </td>
-                    <td><input name="lhl13" type="text" th:field="*{lhl13}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>其他I运行至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h14</sub></i></p>
-                    </td>
-                    <td><input name="lhl14" type="text" th:field="*{lhl14}"/></td>
-                    <td>m</td>
-                </tr>
-                <tr>
-                    <td>其他II运行至后轮距离</td>
-                    <td>
-                        <p><i>L<sub>h15</sub></i></p>
-                    </td>
-                    <td><input name="lhl15" type="text" th:field="*{lhl15}"/></td>
+                    <td><input name="lql21" type="text" th:field="*{lql21}"/></td>
                     <td>m</td>
                 </tr>
             </table>
         </div>
+
+        <!--不显示部分-->
+        <div style="display: none">
+            <input type="text" name="m3f" />
+            <input type="text" name="m5f" />
+            <input type="text" name="m13f" />
+            <input type="text" name="yxjgaz" />
+            <input type="text" name="dcgssp" />
+            <input type="text" name="grugssp" />
+            <input type="text" name="lbtzh" />
+            <input type="text" name="ldcgh" />
+            <input type="text" name="ldslzh" />
+            <input type="text" name="umcxs" />
+        </div>
+
         <input name="language" type="hidden"/>
     </form>
 
@@ -2286,57 +3154,56 @@
                 </td>
             </tr>
             <tr>
-                <td width="15%">Av</td>
+                <td width="15%">A<sub>v</sub></td>
                 <td width="21%" id="av1k"></td>
                 <td width="21%" id="av2k"></td>
                 <td width="21%" id="av3k"></td>
                 <td width="21%" id="av4k"></td>
             </tr>
             <tr>
-                <td>Ah</td>
-                <td id="ah1k"></td>
-                <td id="ah2k"></td>
-                <td id="ah3k"></td>
-                <td id="ah4k"></td>
-            </tr>
-            <tr>
-                <td>Bv</td>
+                <td>B<sub>v</sub></td>
                 <td id="bv1k"></td>
                 <td id="bv2k"></td>
                 <td id="bv3k"></td>
                 <td id="bv4k"></td>
             </tr>
             <tr>
-                <td>Bh</td>
-                <td id="bh1k"></td>
-                <td id="bh2k"></td>
-                <td id="bh3k"></td>
-                <td id="bh4k"></td>
-            </tr>
-            <tr>
-                <td>Cv</td>
+                <td>C<sub>v</sub></td>
                 <td id="cv1k"></td>
                 <td id="cv2k"></td>
                 <td id="cv3k"></td>
                 <td id="cv4k"></td>
             </tr>
             <tr>
-                <td>Dv</td>
+                <td>D<sub>v</sub></td>
                 <td id="dv1k"></td>
                 <td id="dv2k"></td>
                 <td id="dv3k"></td>
                 <td id="dv4k"></td>
             </tr>
-
             <tr>
-                <td>At</td>
+                <td>A<sub>h</sub></td>
+                <td id="ah1k"></td>
+                <td id="ah2k"></td>
+                <td id="ah3k"></td>
+                <td id="ah4k"></td>
+            </tr>
+            <tr>
+                <td>A<sub>t</sub></td>
                 <td id="at1k"></td>
                 <td id="at2k"></td>
                 <td id="at3k"></td>
                 <td id="at4k">0</td>
             </tr>
             <tr>
-                <td>Bt</td>
+                <td>B<sub>h</sub></td>
+                <td id="bh1k"></td>
+                <td id="bh2k"></td>
+                <td id="bh3k"></td>
+                <td id="bh4k"></td>
+            </tr>
+            <tr>
+                <td>B<sub>t</sub></td>
                 <td id="bt1k"></td>
                 <td id="bt2k"></td>
                 <td id="bt3k"></td>
@@ -2375,6 +3242,7 @@
         </div>
     </div>
 </div>
+
 <script>
     calculateFunction = {
         typeOfRunningGear: function () {
@@ -2388,17 +3256,17 @@
                 return ' ';
             }
         },
-        levelOfPin: function () {
-            if ( typeOfPin == '无') {
-                $('[name=levelOfPin]').prop('disabled', true);
-                data.datalist['levelOfPin'].color = 'rgb(227, 227, 227)';
-                return levelOfPin;
-            } else {
-                $('[name=levelOfPin]').prop('disabled', false)
-                data.datalist['levelOfPin'].color = 'white';
-                return ' ';
-            }
-        },
+        // levelOfPin: function () {
+        //     if ( typeOfPin == '无') {
+        //         $('[name=levelOfPin]').prop('disabled', true);
+        //         data.datalist['levelOfPin'].color = 'rgb(227, 227, 227)';
+        //         return levelOfPin;
+        //     } else {
+        //         $('[name=levelOfPin]').prop('disabled', false)
+        //         data.datalist['levelOfPin'].color = 'white';
+        //         return ' ';
+        //     }
+        // },
         pf: function () {
             if (h <= 20 && h > 0) return 800;
             else if (20 < h && h <= 100) return 1100;
@@ -2419,11 +3287,14 @@
 
             }
         },
+        lbpx: function () {
+            return lbp ;
+        },
         mzj: function () {
-            return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 ;
+            return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
         },
         mzjf: function () {
-            return  m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 ;
+            return  m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
         },
         gdlsxh:function(){
             if( wdlyp3 == '无'){
@@ -2463,48 +3334,48 @@
                 return 4;
             }
         },
-        txxxh:function(){
-            if( typeOfPin =='无'){
-                $('[name=txxxh]').prop('readonly', true)
-                data.datalist['txxxh'].color = 'rgb(227, 227, 227)';
-            }else{
-                $('[name=txxxh]').prop('readonly', false)
-            }
-            return typeOfPin ;
-        },
-        txxdj:function(){
-            if( typeOfPin =='无'){
-                $('[name=txxdj]').prop('readonly', true)
-                data.datalist['txxdj'].color = 'rgb(227, 227, 227)';
-                return '无';
-            }else
-                $('[name=txxdj]').prop('readonly', false)
-            return levelOfPin ;
-        },
-        ftxxjq:function(){
-            if( typeOfPin =='无'){
-                $('[name=ftxxjq]').prop('readonly', true)
-                data.datalist['ftxxjq'].color = 'rgb(227, 227, 227)';
-            }else
-                $('[name=ftxxjq]').prop('readonly', false)
-            switch ( txxxh ) {
-                case '无':return '0';
-                case 'Ф12':return '104100';
-                case 'Ф16':return '171000';
-                case 'Ф20':return '280600';
-            }
-        },
-        nwdt:function(){
-            if( txxxh =='无'){
-                $('[name=nwdt]').prop('readonly', true)
-                data.datalist['nwdt'].color = 'white';
-            }else
-                $('[name=nwdt]').prop('readonly', false)
-            switch ( txxxh ) {
-                case '无':return '0';
-                case 'Ф12':case 'Ф16':case 'Ф20':return ' ';
-            }
-        },
+        // txxxh:function(){
+        //     if( typeOfPin =='无'){
+        //         $('[name=txxxh]').prop('readonly', true)
+        //         data.datalist['txxxh'].color = 'rgb(227, 227, 227)';
+        //     }else{
+        //         $('[name=txxxh]').prop('readonly', false)
+        //     }
+        //     return typeOfPin ;
+        // },
+        // txxdj:function(){
+        //     if( typeOfPin =='无'){
+        //         $('[name=txxdj]').prop('readonly', true)
+        //         data.datalist['txxdj'].color = 'rgb(227, 227, 227)';
+        //         return '无';
+        //     }else
+        //         $('[name=txxdj]').prop('readonly', false)
+        //     return levelOfPin ;
+        // },
+        // ftxxjq:function(){
+        //     if( typeOfPin =='无'){
+        //         $('[name=ftxxjq]').prop('readonly', true)
+        //         data.datalist['ftxxjq'].color = 'rgb(227, 227, 227)';
+        //     }else
+        //         $('[name=ftxxjq]').prop('readonly', false)
+        //     switch ( txxxh ) {
+        //         case '无':return '0';
+        //         case 'Ф12':return '104100';
+        //         case 'Ф16':return '171000';
+        //         case 'Ф20':return '280600';
+        //     }
+        // },
+        // nwdt:function(){
+        //     if( txxxh =='无'){
+        //         $('[name=nwdt]').prop('readonly', true)
+        //         data.datalist['nwdt'].color = 'white';
+        //     }else
+        //         $('[name=nwdt]').prop('readonly', false)
+        //     switch ( txxxh ) {
+        //         case '无':return '0';
+        //         case 'Ф12':case 'Ф16':case 'Ф20':return ' ';
+        //     }
+        // },
         djlsxh:' typeOfBolt ',
         lsgca:function(){
             switch ( djlsxh ) {
@@ -2514,41 +3385,226 @@
                 case 'M30':return 561;
             }
         },
-        fdjlsfb:' lsgca * 270 *0.64 ',
+        fdjlsfb:' lsgca * 270 * 0.64 ',
         nwd3:'2 * nwd4 ',
         fdjlszfb:' nwd3 * fdjlsfb ',
-
-        mwr:function(){
-            switch ( typeOfLifting ) {
-                case '105起升机构':
-                case '145起升机构':
-                case '175起升机构':
-                case '275起升机构':return 0.179 * h * 4;
-                case '185起升机构':
-                case '285起升机构':
-                case '385起升机构':return 0.244 * h * 4;
-                case '295起升机构':
-                case '495起升机构':return 0.391* h *4;
-                case '313起升机构':return 0.65* h *4;
+        lbtzh:function(){
+            switch ( btModel ) {
+                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.55;
+                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.55;
+                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.55;
+                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.55;
+                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.55;
+                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.55;
+                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.55;
+                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.55;
+                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.55;
+                case 'HDBT2300(2.3米蝴蝶臂头)':return 0.8;
+                case 'XDBT2300(2.3米下挂臂头)':return 0;
+                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
+                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
+                case 'DJBT1800(1.8米单角臂头)':return 0.8;
+                case 'DJBT2300(2.3米单角臂头)':return 0.9;
+                case 'DJBT2500Φ13(2.5米单角臂头)':return 1.6;
+                case 'DJBT3300(3.3米单角臂头)':return 1.2;
+                case 'PBT800(0.8米一字臂头)':return 0.4;
+                case 'MHEBT1944(MHE1944臂头)':return 0.4;
+                case '其它':return ' ';
             }
         },
-        tsl:' swp + r1 + mwr ',
-        hsw:function(){
+        ldcgh:function(){
+            switch ( btModel ) {
+                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 1.35;
+                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 1.35;
+                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 1.35;
+                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 1.35;
+                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 1.35;
+                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 1.35;
+                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 1.35;
+                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 1.35;
+                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 1.35;
+                case 'HDBT2300(2.3米蝴蝶臂头)':return 1.8;
+                case 'XDBT2300(2.3米下挂臂头)':return 0;
+                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
+                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
+                case 'DJBT1800(1.8米单角臂头)':return 2;
+                case 'DJBT2300(2.3米单角臂头)':return 2;
+                case 'DJBT2500Φ13(2.5米单角臂头)':return 2.2;
+                case 'DJBT3300(3.3米单角臂头)':return 2.5;
+                case 'PBT800(0.8米一字臂头)':return 0.4;
+                case 'MHEBT1944(MHE1944臂头)':return 0.4;
+                case '其它':return ' ';
+            }
+        },
+        ldslzh:function(){
+            switch ( btModel ) {
+                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.35;
+                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.35;
+                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.35;
+                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.35;
+                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.35;
+                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.35;
+                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.35;
+                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.35;
+                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.35;
+                case 'HDBT2300(2.3米蝴蝶臂头)':return 0.8;
+                case 'XDBT2300(2.3米下挂臂头)':return 0;
+                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
+                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
+                case 'DJBT1800(1.8米单角臂头)':return 1;
+                case 'DJBT2300(2.3米单角臂头)':return 1;
+                case 'DJBT2500Φ13(2.5米单角臂头)':return 1.2;
+                case 'DJBT3300(3.3米单角臂头)':return 1.5;
+                case 'PBT800(0.8米一字臂头)':return 0;
+                case 'MHEBT1944(MHE1944臂头)':return 0;
+                case '其它':return ' ';
+            }
+        },
+        umcxs:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 0.05;
+                case '170LZ':return 0.05;
+                case '200LZ':return 0.05;
+                case '230LZ':return 0.05;
+                case '260LZ':return 0.05;
+                case '350'  :return 0.05;
+                case '450'  :return 0.05;
+            }
+        },
+        dcgssp:function(){
+            switch ( dcgssModel ) {
+                case'Φ7':  return  0.179;
+                case'Φ8':  return  0.244;
+                case'Φ8.3':  return  0.255;
+                case'Φ10':  return  0.391;
+                case'Φ13':  return  0.65;
+                case'布鲁格Φ7':  return  0.179;
+                case'布鲁格Φ8':  return  0.217;
+            }
+        },
+        grugssp:function(){
             switch ( typeOfGRU ) {
-                case'GRU 285':  return 0.252* h ;
-                case'GRU 295':  return 0.391* h ;
-                case'GRU 313':  return 0.65* h ;
+                case'GRU285':  return 0.252 ;
+                case'GRU295':  return 0.391 ;
+                case'GRU313':  return 0.65 ;
+                case'无':  return 0 ;
             }
         },
+        swp:function(){
+            switch ( dcModel ) {
+                case '2.0米铝吊船(PT(250_2))':return 96;
+                case '2.5米铝吊船(PT(250_2.5))':return 105;
+                case '3.0米铝吊船(PT(250_3))':return 115;
+                case '4.0米铝吊船(PT(250_4.0))':return 135;
+                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 577;
+                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 650;
+                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 585;
+                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 619;
+                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 634;
+                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 683;
+                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 624;
+                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 651;
+                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 675;
+                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 696;
+                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 720;
+                case '2.0米折叠吊船(SSPT(250_2.0))':return 116;
+                case '2.5米折叠吊船(SSPT(250_2.5))':return 124;
+                case '2.0米折弯吊船(ZWDC(250_2))':return 120;
+                case '2.5米折弯吊船(ZWDC(250_2.5))':return 133;
+                case '3.0米折弯吊船(ZWDC(250_3))':return 155;
+                case '2.5米伸缩子吊船':return 1140;
+                case '2.0米CDD吊船(CDD240(2A).0)':return 350;
+                case '2.5米CDD吊船(CDD240(2.5))':return 375;
+                case '3.0米CDD吊船(CDD240(3))':return 400;
+                case '4.0米CDD吊船(CDD240(4))':return 450;
+                case '其它':return ' ';
+            }
+        },
+        r1:function(){
+            switch ( dcModel ) {
+                case '2.0米铝吊船(PT(250_2))':return 250;
+                case '2.5米铝吊船(PT(250_2.5))':return 250;
+                case '3.0米铝吊船(PT(250_3))':return 250;
+                case '4.0米铝吊船(PT(250_4.0))':return 250;
+                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 250;
+                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 250;
+                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 250;
+                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 250;
+                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 250;
+                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 250;
+                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 250;
+                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 250;
+                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 250;
+                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 250;
+                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 250;
+                case '2.0米折叠吊船(SSPT(250_2.0))':return 250;
+                case '2.5米折叠吊船(SSPT(250_2.5))':return 250;
+                case '2.0米折弯吊船(ZWDC(250_2))':return 250;
+                case '2.5米折弯吊船(ZWDC(250_2.5))':return 250;
+                case '3.0米折弯吊船(ZWDC(250_3))':return 250;
+                case '2.5米伸缩子吊船':return 250;
+                case '2.0米CDD吊船(CDD240(2A).0)':return 250;
+                case '2.5米CDD吊船(CDD240(2.5))':return 250;
+                case '3.0米CDD吊船(CDD240(3))':return 250;
+                case '4.0米CDD吊船(CDD240(4))':return 250;
+                case '其它':return ' ';
+            }
+        },
+        mwr:' h * dcgssp * 4 ',
+        mffbb:function(){
+            switch ( ffbbModel ) {
+                case'有':  return 100 ;
+                case'无':  return 0 ;
+            }
+        },
+        tsl:' swp + r1 + mwr + mffbb ',
+        hsw:' h * grugssp ',
         tshl:' hwll + hsw ',
-        m3:function(){
-            switch ( typeOfGRU ) {
-                case'GRU 285':  return 235;
-                case'GRU 295':  return 285;
-                case'GRU 313':  return 385;
+        m1:function(){
+            switch ( btModel ) {
+                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 330;
+                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 305;
+                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 297;
+                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 339;
+                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 312;
+                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 302;
+                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 344;
+                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 317;
+                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 309;
+                case 'HDBT2300(2.3米蝴蝶臂头)':return 554;
+                case 'XDBT2300(2.3米下挂臂头)':return 208;
+                case 'XDBT2500Φ13(2.5米下挂臂头)':return 312;
+                case 'XDBT3000Φ13(3.0米下挂臂头)':return 346;
+                case 'DJBT1800(1.8米单角臂头)':return 280;
+                case 'DJBT2300(2.3米单角臂头)':return 308;
+                case 'DJBT2500Φ13(2.5米单角臂头)':return 403;
+                case 'DJBT3300(3.3米单角臂头)':return 359;
+                case 'PBT800(0.8米一字臂头)':return 207;
+                case 'MHEBT1944(MHE1944臂头)':return 235;
+                case '其它':return ' ';
             }
         },
-        m4:function(){
+        m2:function(){
+            switch ( typeOfGRU ) {
+                case'GRU285':  return 50;
+                case'GRU295':  return 50;
+                case'GRU313':  return 50;
+                case'无':  return 0;
+            }
+        },
+        m3:' h * 0.203 ',
+        m5:function(){
+            switch ( typeOfGRU ) {
+                case'GRU285':  return 235;
+                case'GRU295':  return 285;
+                case'GRU313':  return 385;
+                case'无':  return 0;
+            }
+        },
+        m6:' 0',
+        m7:function(){
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return ' ';
@@ -2556,7 +3612,7 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        m5:function(){
+        m8:function(){
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return 0;
@@ -2564,8 +3620,38 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        m7:' 0 ',
+        m9:function(){
+            switch( dhzjgModel ){
+                case 'HZX5.0RF57':return 186;
+                case 'HZX5.6RF77':return 149;
+                case 'HZX6.3RF77':return 160;
+                case 'HZX7.1RF87':return 223;
+                case 'HZX8.0RF87':return 237;
+                case 'HZX9.0RF97':return 356;
+                case 'HZX10.0RF97':return 440;
+                case 'HZX11.2RF107':return 579;
+                case 'HZX12.5RF107':return 634;
+                case 'HZX12.5RF137':return 715;
+                case 'HZX14.0RF137':return 750;
+                case 'HZX14.0RF147':return 888;
+                case 'HZX16.0RF147':return 1084;
+                case 'HZX12.5X307':return 536;
+                case 'HZX14.0X307':return 572;
+                case 'HZX16.0X309':return 801;
+                case 'HZS-7.1RF77':return 255;
+                case 'HZS-8.0RF87':return 354;
+                case 'HZS-9.0RF97':return 533;
+            }
+        },
         m10:function(){
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return ' ';
+                case '顶升':return 0;
+                case '顶升+仰臂':return ' ';
+            }
+        },
+        m13:function(){
             switch ( typeOfLifting ) {
                 case '105起升机构':return 785;
                 case '145起升机构':return 830;
@@ -2579,36 +3665,73 @@
                 case '313起升机构':return 4880;
             }
         },
-        m12:function(){
+
+        m14:function(){
+            if( m6 == 0 && m7 == 0 && m8 == 0)
+                return 0;
+            else return '';
+        },
+
+
+        m16:function(){
             if( wdlyp3 =='无')
                 return 0;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 140;
-                case '170LZ':return 310;
-                case '200LZ':return 350;
-                case '230LZ':return 470;
-                case '260LZ':return 592;
-                case '350'  :return 840;
-                case '450'  :return 2040;
+                case '160LZ':return 70;
+                case '170LZ':return 155;
+                case '200LZ':return 175;
+                case '230LZ':return 235;
+                case '260LZ':return 296;
+                case '350'  :return 420;
+                case '450'  :return 1020;
             }
         },
-        m13:function(){
+        m17:function(){
             if( wdlyp3 =='无')
                 return 0;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 104;
-                case '170LZ':return 260;
-                case '200LZ':return 280;
-                case '230LZ':return 390;
-                case '260LZ':return 460;
-                case '350':return   720;
-                case '450':return   1650;
+                case '160LZ':return 70;
+                case '170LZ':return 155;
+                case '200LZ':return 175;
+                case '230LZ':return 235;
+                case '260LZ':return 296;
+                case '350'  :return 420;
+                case '450'  :return 1020;
             }
         },
-        lslhz: ' lbd ',
-        lshlhz: ' lslhz - 0.9',
-        lhz1: ' lslhz - 0.9',
-        lhz4:function () {
+        m18:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 52;
+                case '170LZ':return 130;
+                case '200LZ':return 140;
+                case '230LZ':return 195;
+                case '260LZ':return 230;
+                case '350':return   360;
+                case '450':return   825;
+            }
+        },
+        m19:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 52;
+                case '170LZ':return 130;
+                case '200LZ':return 140;
+                case '230LZ':return 195;
+                case '260LZ':return 230;
+                case '350':return   360;
+                case '450':return   825;
+            }
+        },
+        lslqg: ' lbd - lg / 2 ',
+        lshlqg: ' lbd - ( ldcgh - lbtzh ) - lg / 2 ',
+        lqg1: ' lshlqg ',
+        lqg2: ' lbd - ( ldcgh - ldslzh ) - lg / 2 ',
+        lqg3: ' lshlqg ',
+        lqg6: ' 0 ',
+        lqg7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return ' ';
@@ -2616,7 +3739,7 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        lhz5:function () {
+        lqg8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return 0;
@@ -2624,81 +3747,257 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        lhz6:' 0 ',
-        lhz7:' 0 ',
-        lhz8:' lbp ',
+        lqg9: ' lg / 2 ',
+        lqg10:function(){
+            if( m10 == 0)
+                return 0;
+            else return '';
+        },
+        lqg11: ' lbp + lg / 2 ',
+        lqg12: ' lg / 2 ',
+        lqg14:function(){
+            if( m14 == 0)
+                return 0;
+            else return '';
+        },
+        lqg15: ' lg / 2 ',
+
+        yxjgaz:function () {
+            switch( yxjgazModel ){
+                case '对角安装':return "对角安装";
+                case '同侧安装':return "同侧安装";
+            }
+        },
+        lqg16:function(){
+            if( m16 == 0 ){
+                return 0 ;
+            }else if ( m16 != 0 && yxjgaz ==="对角安装" ){
+                return 0 ;
+            }else if ( m16 != 0 && yxjgaz ==="同侧安装" ){
+                return 0 ;
+            }
+        },
+        lqg17:function(){
+            if( m17 == 0 ){
+                return 0 ;
+            }else if ( m17 != 0 && yxjgaz ==="对角安装" ){
+                return lg ;
+            }else if ( m17 != 0 && yxjgaz ==="同侧安装" ){
+                return 0 ;
+            }
+        },
+        lqg18:function(){
+            if( m18 == 0 ){
+                return 0 ;
+            }else if ( m18 != 0 && yxjgaz ==="对角安装" ){
+                return lg ;
+            }else if ( m18 != 0 && yxjgaz ==="同侧安装" ){
+                return lg ;
+            }
+        },
+        lqg19:function(){
+            if( m19 == 0 ){
+                return 0 ;
+            }else if ( m19 != 0 && yxjgaz ==="对角安装" ){
+                return 0 ;
+            }else if ( m19 != 0 && yxjgaz ==="同侧安装" ){
+                return lg ;
+            }
+        },
+        lqg20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        lqg21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+
+
+
+        lslhz: ' lslqg + lg / 2 ',
+        lshlhz: ' lshlqg + lg / 2 ',
+        lhz1: ' lqg1 + lg / 2 ',
+        lhz2: ' lqg2 + lg / 2 ',
+        lhz3: ' lqg3 + lg / 2 ',
+        lhz4: ' lqg4 + lg / 2 ',
+        lhz5: ' lg / 2 - lqg5 ',
+        lhz6: ' 0 ',
+        lhz7:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return lg / 2 - lqg7 ;
+                case '顶升':return 0;
+                case '顶升+仰臂':return lg / 2 - lqg7 ;
+            }
+        },
+        lhz8:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0;
+                case '仰臂':return 0;
+                case '顶升':return lg / 2 - lqg8 ;
+                case '顶升+仰臂':return lg / 2 - lqg8 ;
+            }
+        },
         lhz9:' 0 ',
-        lhz11:' 0 ',
-        lhz12:' wdlyp3 =="有"? lg /2:0 ',
-        lhz13:' wdlyp3 =="有"? lg /2:0 ',
-        lhz14:' m14 ==0?0:" "',
-        lhz15:' m15 ==0?0:" "',
-
-        lslqg:' lslhz - lg /2',
-        lshlqg:' lshlhz - lg /2',
-        lqg1:' lhz1 - lg /2',
-        lqg2:' lhz2 - lg /2',
-        lqg3:' lg /2 - lhz3 ',
-        lqg4:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':return   0;
-                case '仰臂':return    lg /2- lhz4 ;
-                case '顶升':return    0;
-                case '顶升+仰臂':return lg /2- lhz4 ;
+        lhz10:function(){
+            if( m10 == 0 ){
+                return 0 ;
+            }else {
+                return lqg10 - lg / 2 ;
             }
         },
-        lqg5:function () {
+        lhz11:' lbp ',
+        lhz12:' 0 ',
+        lhz13:' lqg13 - lg / 2 ',
+        lhz14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return lqg14 - lg / 2 ;
+            }
+        },
+        lhz15:' 0 ',
+        lhz16:function(){
+            if( m16 == 0 ){
+                return 0 ;
+            }else {
+                return lqg16 - lg / 2 ;
+            }
+        },
+        lhz17:function(){
+            if( m17 == 0 ){
+                return 0 ;
+            }else {
+                return lqg17 - lg / 2 ;
+            }
+        },
+        lhz18:function(){
+            if( m18 == 0 ){
+                return 0 ;
+            }else {
+                return lqg18 - lg / 2 ;
+            }
+        },
+        lhz19:function(){
+            if( m19 == 0 ){
+                return 0 ;
+            }else {
+                return lqg19 - lg / 2 ;
+            }
+        },
+        lhz20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return lqg20 + lg / 2 ;
+            }
+        },
+        lhz21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return lqg21 - lg / 2 ;
+            }
+        },
+
+        lslql:' lslhz - ll / 2 ',
+        lshlql:' lshlhz - ll / 2 ',
+        lql1:' lhz1 - ll / 2 ',
+        lql2:' lhz2 - ll / 2 ',
+        lql3:' lhz3 - ll / 2 ',
+        lql4:' lhz4 - ll / 2 ',
+        lql5:' ll / 2 - lhz5 ',
+        lql6:' 0 ',
+        lql7:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return  0;
+                case '仰臂':return    ll / 2 - lhz7 ;
+                case '顶升':return    0;
+                case '顶升+仰臂':return ll / 2 - lhz7 ;
+            }
+        },
+        lql8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return 0;
-                case '顶升':return lg /2- lhz5 ;
-                case '顶升+仰臂':return lg /2- lhz5 ;
+                case '顶升':return ll / 2 - lhz8 ;
+                case '顶升+仰臂':return ll / 2 - lhz8 ;
             }
         },
-        lqg6:' lg /2',
-        lqg7:' 0',
-        lqg8:' lhz8 + lg /2',
-        lqg9:' lg /2',
-        lqg10:' lhz10 + lg /2 ',
-        lqg11:' lg /2 ',
-        lqg12:' 0 ',
-        lqg13:' wdlyp3 =="有"? lg :0 ',
-        lqg14:' m14 ==0 ? 0: lhz14 - lg /2',
-        lqg15:' m15 ==0 ? 0: lhz15 + lg /2',
-
-        lslql:' lslhz - ll /2',
-        lshlql:' lshlhz - ll /2',
-        lql1:' lhz1 - ll /2',
-        lql2:' lhz2 - ll /2',
-        lql3:' ll/2 - lhz3 ',
-        lql4:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':return   0;
-                case '仰臂':return    ll /2- lhz4 ;
-                case '顶升':return    0;
-                case '顶升+仰臂':return ll /2- lhz4 ;
-            }
-        },
-        lql5:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
-                case '顶升':return ll /2- lhz5 ;
-                case '顶升+仰臂':return ll /2- lhz5 ;
-            }
-        },
-        lql6:' ll /2 ',
-        lql7:' 0 ',
-        lql8:' lhz8 + ll /2 ',
         lql9:' ll /2 ',
-        lql10:' lhz10 + ll /2 ',
-        lql11:' ll /2 ',
-        lql12:' wdlyp3 =="有"? ll :0 ',
-        lql13:' wdlyp3 =="有"? ll :0 ',
-        lql14:' m14 ==0 ? 0: lhz14 - ll /2',
-        lql15:' m15 ==0 ? 0: lhz15 + ll /2',
+        lql10:function(){
+            if( m10 == 0 ){
+                return 0 ;
+            }else {
+                return lhz10 + ll / 2 ;
+            }
+        },
 
-        hg4:function () {
+        lql11:' lhz11 + ll / 2 ',
+        lql12:' ll / 2 ',
+        lql13:' lhz13 + ll / 2 ',
+        lql14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return lhz14 + ll / 2 ;
+            }
+        },
+        lql15:' ll / 2 ',
+        lql16:function(){
+            if( m16 == 0 ){
+                return 0 ;
+            }else {
+                return 0 ;
+            }
+        },
+        lql17:function(){
+            if( m17 == 0 ){
+                return 0 ;
+            }else {
+                return ll ;
+            }
+        },
+        lql18:function(){
+            if( m18 == 0 ){
+                return 0 ;
+            }else {
+                return 0 ;
+            }
+        },
+        lql19:function(){
+            if( m19 == 0 ){
+                return 0 ;
+            }else {
+                return ll ;
+            }
+        },
+        lql20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return lhz20 - ll / 2 ;
+            }
+        },
+        lql21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return lhz21 + ll / 2 ;
+            }
+        },
+
+
+
+        hg6:' 0 ',
+        hg7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return ' ';
@@ -2706,7 +4005,7 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        hg5:function () {
+        hg8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return 0;
@@ -2714,13 +4013,178 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        hg7:'0',
-        hg12:' wdlyp3 =="有"? " ":0 ',
-        hg13:' wdlyp3 =="有"? " ":0 ',
-        hg14:' m14 ==0?0:" "',
-        hg15:' m15 ==0?0:" "',
+        hg10:function(){
+            if( m10 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        hg14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        hg16:function(){
+            if( m16 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        hg17:function(){
+            if( m17 == 0 ){
+                return 0 ;
+            }else {
+                return hg16 ;
+            }
+        },
+        hg18:function(){
+            if( m18 == 0 ){
+                return 0 ;
+            }else {
+                return hg16 ;
+            }
+        },
+        hg19:function(){
+            if( m19 == 0 ){
+                return 0 ;
+            }else {
+                return hg16 ;
+            }
+        },
+        hg20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        hg21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
 
-        acx4:function () {
+        lslmz:' lslhz ',
+        lshlmz:' lshlhz ',
+        lmz1:' lhz1 ',
+        lmz2:' lhz2 ',
+        lmz3:' lhz3 ',
+        lmz5:' lhz5 ',
+        lmz6:' 0 ',
+        lmz7:' lhz7 ',
+        lmz8:' lhz8 ',
+        lmz9:' lhz9 ',
+        lmz10:function(){
+            if( m10 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        lmz11:' lhz11 ',
+        lmz12:' lhz12 ',
+        lmz13:' lhz13 ',
+        lmz14:' lhz14 ',
+        lmz15:' lhz15 ',
+        lmz16:' lhz16 ',
+        lmz17:' lhz17 ',
+        lmz18:' lhz18 ',
+        lmz19:' lhz19 ',
+        lmz20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        lmz21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+
+
+        aslcx:function(){
+            switch ( dcModel ) {
+                case '2.0米铝吊船(PT(250_2))':return 1.46;
+                case '2.5米铝吊船(PT(250_2.5))':return 1.46;
+                case '3.0米铝吊船(PT(250_3))':return 1.46;
+                case '4.0米铝吊船(PT(250_4.0))':return 1.46;
+                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 3.26;
+                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 3.26;
+                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 1.59;
+                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 2.17;
+                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 2.75;
+                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 3.33;
+                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 2.84;
+                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 2.84;
+                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 3.09;
+                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 3.25;
+                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 3.5;
+                case '2.0米折叠吊船(SSPT(250_2.0))':return 1.62;
+                case '2.5米折叠吊船(SSPT(250_2.5))':return 1.62;
+                case '2.0米折弯吊船(ZWDC(250_2))':return 1.46;
+                case '2.5米折弯吊船(ZWDC(250_2.5))':return 1.46;
+                case '3.0米折弯吊船(ZWDC(250_3))':return 1.46;
+                case '2.5米伸缩子吊船':return 3.46;
+                case '2.0米CDD吊船(CDD240(2A).0)':return 1.8;
+                case '2.5米CDD吊船(CDD240(2.5))':return 1.8;
+                case '3.0米CDD吊船(CDD240(3))':return 1.8;
+                case '4.0米CDD吊船(CDD240(4))':return 1.8;
+                case '其它':return ' ';
+            }
+        },
+        acx1:function(){
+            switch ( btModel ) {
+                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.95;
+                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.77;
+                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.73;
+                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.95;
+                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.77;
+                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.73;
+                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.95;
+                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.77;
+                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.73;
+                case 'HDBT2300(2.3米蝴蝶臂头)':return 0.72;
+                case 'XDBT2300(2.3米下挂臂头)':return 0.41;
+                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0.74;
+                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0.86;
+                case 'DJBT1800(1.8米单角臂头)':return 0.9;
+                case 'DJBT2300(2.3米单角臂头)':return 1.08;
+                case 'DJBT2500Φ13(2.5米单角臂头)':return 1.13;
+                case 'DJBT3300(3.3米单角臂头)':return 1.3;
+                case 'PBT800(0.8米一字臂头)':return 0.54;
+                case 'MHEBT1944(MHE1944臂头)':return 0.7;
+                case '其它':return ' ';
+            }
+        },
+        acx2:function(){
+            switch ( typeOfGRU ) {
+                case'GRU285':  return 0.1;
+                case'GRU295':  return 0.1;
+                case'GRU313':  return 0.1;
+                case'无':  return 0;
+            }
+        },
+        acx3:' h * 0.018 ',
+        acx5:function(){
+            switch ( typeOfGRU ) {
+                case'GRU285':  return 0.42;
+                case'GRU295':  return 0.5;
+                case'GRU313':  return 0.62;
+                case'无':  return 0;
+            }
+        },
+        acx6:' 0 ',
+        acx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return ' ';
@@ -2728,7 +4192,7 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        acx5:function () {
+        acx8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return 0;
@@ -2736,15 +4200,158 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        acx7:'0',
-        acx12:' wdlyp3 =="有"? " ":0 ',
-        acx13:' wdlyp3 =="有"? " ":0 ',
-        acx14:' m14 ==0 ? 0: " "',
-        acx15:' m15 ==0 ? 0: " "',
+        acx9:function(){
+            switch( dhzjgModel ){
+                case 'HZX5.0RF57':return 0.18;
+                case 'HZX5.6RF77':return 0.26;
+                case 'HZX6.3RF77':return 0.27;
+                case 'HZX7.1RF87':return 0.36;
+                case 'HZX8.0RF87':return 0.37;
+                case 'HZX9.0RF97':return 0.46;
+                case 'HZX10.0RF97':return 0.49;
+                case 'HZX11.2RF107':return 0.64;
+                case 'HZX12.5RF107':return 0.66;
+                case 'HZX12.5RF137':return 0.7;
+                case 'HZX14.0RF137':return 0.73;
+                case 'HZX14.0RF147':return 0.8;
+                case 'HZX16.0RF147':return 0.85;
+                case 'HZX12.5X307':return 0.53;
+                case 'HZX14.0X307':return 0.56;
+                case 'HZX16.0X309':return 0.64;
+                case 'HZS-7.1RF77':return 0.39;
+                case 'HZS-8.0RF87':return 0.53;
+                case 'HZS-9.0RF97':return 0.72;
+            }
+        },
+        acx10:function(){
+            if( m10 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        acx13:function(){
+            switch ( typeOfLifting ) {
+                case '105起升机构':return 1.29;
+                case '145起升机构':return 1.29;
+                case '175起升机构':return 1.48;
+                case '275起升机构':return 1.64;
+                case '185起升机构':return 2.15;
+                case '285起升机构':return 2.41;
+                case '385起升机构':return 3.14;
+                case '295起升机构':return 2.86;
+                case '495起升机构':return 3.38;
+                case '313起升机构':return 4.03;
+            }
+        },
+        acx14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        acx16:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 0.12;
+                case '170LZ':return 0.18;
+                case '200LZ':return 0.22;
+                case '230LZ':return 0.28;
+                case '260LZ':return 0.31;
+                case '350'  :return 0.42;
+                case '450'  :return 0.8;
+            }
+        },
+        acx17:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 0.12;
+                case '170LZ':return 0.18;
+                case '200LZ':return 0.22;
+                case '230LZ':return 0.28;
+                case '260LZ':return 0.31;
+                case '350'  :return 0.42;
+                case '450'  :return 0.8;
+            }
+        },
+        acx18:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 0.07;
+                case '170LZ':return 0.12;
+                case '200LZ':return 0.15;
+                case '230LZ':return 0.19;
+                case '260LZ':return 0.2;
+                case '350':return   0.27;
+                case '450':return   0.6;
+            }
+        },
+        acx19:function(){
+            if( wdlyp3 =='无')
+                return 0;
+            switch (String( typeOfRunningGear )) {
+                case '160LZ':return 0.07;
+                case '170LZ':return 0.12;
+                case '200LZ':return 0.15;
+                case '230LZ':return 0.19;
+                case '260LZ':return 0.2;
+                case '350':return   0.27;
+                case '450':return   0.6;
+            }
+        },
+        acx20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        acx21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
 
-        asltx:' aslcx ',
-        ashltx:' ashlcx ',
-        atx4:function () {
+
+        asltx:function(){
+            switch ( dcModel ) {
+                case '2.0米铝吊船(PT(250_2))':return 3.02;
+                case '2.5米铝吊船(PT(250_2.5))':return 3.6;
+                case '3.0米铝吊船(PT(250_3))':return 4.18;
+                case '4.0米铝吊船(PT(250_4.0))':return 5.34;
+                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 3.35;
+                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 3.35;
+                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 3.79;
+                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 3.79;
+                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 3.79;
+                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 3.79;
+                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 3.89;
+                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 4.52;
+                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 3.89;
+                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 3.89;
+                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 3.89;
+                case '2.0米折叠吊船(SSPT(250_2.0))':return 3.02;
+                case '2.5米折叠吊船(SSPT(250_2.5))':return 3.6;
+                case '2.0米折弯吊船(ZWDC(250_2))':return 3.02;
+                case '2.5米折弯吊船(ZWDC(250_2.5))':return 3.6;
+                case '3.0米折弯吊船(ZWDC(250_3))':return 4.18;
+                case '2.5米伸缩子吊船':return 4.18;
+                case '2.0米CDD吊船(CDD240(2A).0)':return 2.79;
+                case '2.5米CDD吊船(CDD240(2.5))':return 3;
+                case '3.0米CDD吊船(CDD240(3))':return 3.2;
+                case '4.0米CDD吊船(CDD240(4))':return 3.6;
+                case '其它':return ' ';
+            }
+        },
+        atx3:' h * 0.018 ',
+        atx6:' 0 ',
+        atx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return ' ';
@@ -2752,7 +4359,7 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        atx5:function () {
+        atx8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
                 case '仰臂':return 0;
@@ -2760,85 +4367,164 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        atx7:'0',
-        atx12:' wdlyp3 =="有"? " ":0 ',
-        atx13:' wdlyp3 =="有"? " ":0 ',
-        atx14:' m14 ==0 ? 0: " "',
-        atx15:' m15 ==0 ? 0: " "',
+        atx10:function(){
+            if( m10 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        atx14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        atx16:function(){
+            if( m16 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        atx17:function(){
+            if( m17 == 0 ){
+                return 0 ;
+            }else {
+                return atx16 ;
+            }
+        },
+        atx18:function(){
+            if( m18 == 0 ){
+                return 0 ;
+            }else {
+                return atx16 ;
+            }
+        },
+        atx19:function(){
+            if( m19 == 0 ){
+                return 0 ;
+            }else {
+                return atx16 ;
+            }
+        },
+        atx20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        atx21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
 
-        lhzf1:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':  return lhz1 ;
-                case '仰臂':      return lhz1 /Math.cos(Math.PI* dbyj /180 );
-                case '顶升':      return lhz1 ;
-                case '顶升+仰臂': return lhz1 /Math.cos(Math.PI* dbyj /180 );
-            }
-        },
-        lhzf2:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':  return lhz2 ;
-                case '仰臂':      return lhz2 /Math.cos(Math.PI* dbyj /180);
-                case '顶升':      return lhz2 ;
-                case '顶升+仰臂': return lhz2 /Math.cos(Math.PI* dbyj /180);
-            }
-        },
-        lhzf3:' lhz3 ',
-        lhzf4:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return ' ';
-                case '顶升':return 0;
-                case '顶升+仰臂':return ' ';
-            }
-        },
-        lhzf5:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
-                case '顶升':return ' ' ;
-                case '顶升+仰臂':return ' ';
-            }
-        },
-        lhzf6 :' lhz6 ',
-        lhzf7 :' lhz7 ',
-        lhzf8 :' lhz8 ',
-        lhzf9 :' lhz9 ',
-        lhzf10:' lhz10 ',
-        lhzf11:' lhz11 ',
-        lhzf12:' wdlyp3 =="有"? lg /2:0 ',
-        lhzf13:' wdlyp3 =="有"? lg /2:0 ',
-        lhzf14:' m14 ==0 ? 0: " "',
-        lhzf15:' m15 ==0 ? 0: " "',
+        m3f:' 0 ',
+        m5f:' m5 + hsw ',
+        m13f:' m13 + mwr ',
 
-        lhl1:' lhzf1 + ll /2',
-        lhl2:' lhzf2 + ll /2',
-        lhl3:' lhzf3 + ll /2',
+        lhl1:' lbx - ( ldcgh - lbtzh ) + ll / 2',
+        lhl2:' lbx - ( ldcgh - ldslzh ) + ll / 2',
+        lhl3:' lhl1 ',
         lhl4:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return   lhzf4 + ll /2;
-                case '顶升':return   0;
-                case '顶升+仰臂':return lhzf4 + ll /2;
+                case '固定立柱':return lhz4 + ll / 2 ;
+                case '仰臂':return   lhz4 / cos(dbyj) + ll / 2 ;
+                case '顶升':return   lhz4 + ll / 2 ;
+                case '顶升+仰臂':return lhz4 / cos(dbyj) + ll / 2 ;
             }
         },
         lhl5:function () {
             switch( typeOfMachine ){
-                case '固定立柱' :return 0;
-                case '仰臂'     :return 0;
-                case '顶升'     :return lhzf5 + ll /2;
-                case '顶升+仰臂':return lhzf5 + ll /2;
+                case '固定立柱' :return lhz5 + ll / 2 ;
+                case '仰臂'     :return lhz5 / cos(dbyj) + ll / 2 ;
+                case '顶升'     :return lhz5 + ll / 2 ;
+                case '顶升+仰臂':return lhz5 / cos(dbyj) + ll / 2 ;
             }
         },
-        lhl6:' ll /2',
-        lhl7:' 0',
-        lhl8:' lhzf8 - ll /2',
-        lhl9:' ll /2',
-        lhl10:' ll /2- lhzf10 ',
-        lhl11:' ll /2 ',
-        lhl12:' wdlyp3 =="有"? ll :0 ',
-        lhl13:' wdlyp3 =="有"? ll :0 ',
-        lhl14:' m14 ==0 ? 0: lhzf14 + ll /2',
-        lhl15:' m15 ==0 ? 0: lhzf15 - ll /2',
+        lhl6:' 0',
+        lhl7:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':return 0 ;
+                case '仰臂':return   ' ' ;
+                case '顶升':return   0 ;
+                case '顶升+仰臂':return ' ' ;
+            }
+        },
+        lhl8:function () {
+            switch( typeOfMachine ){
+                case '固定立柱' :return 0 ;
+                case '仰臂'     :return 0 ;
+                case '顶升'     :return lhz8 + ll / 2 ;
+                case '顶升+仰臂':return lhz8 + ll / 2 ;
+            }
+        },
+        lhl9:' ll / 2',
+        lhl10:function(){
+            if( m10 == 0 ){
+                return 0 ;
+            }else {
+                return lhz10 - ll / 2 ;
+            }
+        },
+        lhl11:' lbpx - ll / 2 ',
+        lhl12:' ll / 2 ',
+        lhl13:' ll / 2 - lhz13 ',
+        lhl14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return ll / 2 - lhz14 ;
+            }
+        },
+        lhl15:' ll / 2 ',
+        lhl16:function(){
+            if( m16 == 0 ){
+                return 0 ;
+            }else {
+                return ll ;
+            }
+        },
+        lhl17:function(){
+            if( m17 == 0 ){
+                return 0 ;
+            }else {
+                return 0 ;
+            }
+        },
+        lhl18:function(){
+            if( m18 == 0 ){
+                return 0 ;
+            }else {
+                return ll ;
+            }
+        },
+        lhl19:function(){
+            if( m19 == 0 ){
+                return 0 ;
+            }else {
+                return 0 ;
+            }
+        },
+        lhl20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        lhl21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
 
         hgf1:function () {
             switch( typeOfMachine ){
@@ -2856,59 +4542,167 @@
                 case '顶升+仰臂': return ' ';
             }
         },
-        hgf3:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':  return hg3 ;
-                case '仰臂':      return ' ';
-                case '顶升':      return ' ';
-                case '顶升+仰臂': return ' ';
-            }
-        },
+        hgf3:' 0 ',
         hgf4:function () {
             switch( typeOfMachine ){
-                case '固定立柱':  return 0 ;
+                case '固定立柱':  return hg4 ;
                 case '仰臂':      return ' ';
-                case '顶升':      return 0;
+                case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }
         },
         hgf5:function () {
             switch( typeOfMachine ){
+                case '固定立柱':  return hg5 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf6:' 0 ',
+        hgf7:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return 0;
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf8:function () {
+            switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return 0;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }
         },
-        hgf6:' hg6 ',
-        hgf7:' 0 ',
-        hgf8:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':  return hg8 ;
-                case '仰臂':      return hg8;
-                case '顶升':      return ' ';
-                case '顶升+仰臂': return ' ';
-            }
-        },
-        hgf9:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':  return hg9 ;
-                case '仰臂':      return hg9;
-                case '顶升':      return ' ';
-                case '顶升+仰臂': return ' ';
-            }
-        },
+        hgf9:' hg9 ',
         hgf10:' hg10 ',
-        hgf11:' hg11 ',
-        hgf12:' hg12 ',
+        hgf11:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg11 ;
+                case '仰臂':      return hg11;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
+        hgf12:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg12 ;
+                case '仰臂':      return hg12;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
         hgf13:' hg13 ',
-        hgf14:' m14 ==0 ? 0: " "',
-        hgf15:' m15 ==0 ? 0: " "',
+        hgf14:' hg14 ',
+        hgf15:' hg15 ',
+        hgf16:' hg16 ',
+        hgf17:' hg17 ',
+        hgf18:' hg18 ',
+        hgf19:' hg19 ',
+        hgf20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        hgf21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+
+        lmzf1:' lhl1 - ll / 2 ',
+        lmzf2:' lhl2 - ll / 2 ',
+        lmzf3:' lhl3 - ll / 2 ',
+        lmzf5:' lhl5 - ll / 2 ',
+        lmzf6:' 0 ',
+        lmzf7:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return lhl7 - ll / 2 ;
+                case '顶升':      return 0;
+                case '顶升+仰臂': return lhl7 - ll / 2 ;
+            }
+        },
+        lmzf8:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return 0 ;
+                case '仰臂':      return 0 ;
+                case '顶升':      return lhl8 - ll / 2 ;
+                case '顶升+仰臂': return lhl8 - ll / 2 ;
+            }
+        },
+        lmzf9:' 0 ',
+        lmzf10:' lmz10 ',
+        lmzf11:' lhl11 + ll / 2 ',
+        lmzf12:' 0 ',
+        lmzf13:' ll / 2 - lhl13 ',
+        lmzf14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return ll / 2 - lhl14 ;
+            }
+        },
+        lmzf15:' 0 ',
+        lmzf16:function(){
+            if( m16 == 0 ){
+                return 0 ;
+            }else {
+                return -ll / 2 ;
+            }
+        },
+        lmzf17:function(){
+            if( m17 == 0 ){
+                return 0 ;
+            }else {
+                return ll / 2 ;
+            }
+        },
+        lmzf18:function(){
+            if( m18 == 0 ){
+                return 0 ;
+            }else {
+                return -ll / 2 ;
+            }
+        },
+        lmzf19:function(){
+            if( m19 == 0 ){
+                return 0 ;
+            }else {
+                return ll / 2 ;
+            }
+        },
+        lmzf20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return lhl20 - ll / 2 ;
+            }
+        },
+        lmzf21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return lhl21 + ll / 2 ;
+            }
+        },
+
 
         afcx1:' acx1 ',
         afcx2:' acx2 ',
         afcx3:' acx3 ',
-        afcx4:function () {
+        afcx4:' acx4 ',
+        afcx5:' acx5 ',
+        afcx6:' acx6 ',
+
+
+        afcx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return ' ';
@@ -2916,7 +4710,7 @@
                 case '顶升+仰臂': return ' ';
             }
         },
-        afcx5:function () {
+        afcx8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return 0;
@@ -2924,26 +4718,45 @@
                 case '顶升+仰臂': return ' ';
             }
         },
-        afcx6:' acx6 ',
-        afcx7:' acx7 ',
-        afcx8:' acx8 ',
-        afcx9:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':  return acx9 ;
-                case '仰臂':      return acx9;
-                case '顶升':      return ' ';
-                case '顶升+仰臂': return ' ';
-            }
-        },
+        afcx9:' acx9 ',
         afcx10:' acx10 ',
         afcx11:' acx11 ',
-        afcx12:' acx12 ',
+        afcx12:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return acx12 ;
+                case '仰臂':      return acx12 ;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
         afcx13:' acx13 ',
-        afcx14:' m14 ==0 ? 0: " "',
-        afcx15:' m15 ==0 ? 0: " "',
+        afcx14:' acx14 ',
+        afcx15:' acx15 ',
+        afcx16:' acx16 ',
+        afcx17:' acx17 ',
+        afcx18:' acx18 ',
+        afcx19:' acx19 ',
+        afcx20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        afcx21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
 
+
+        aftx2:' atx2 ',
         aftx3:' atx3 ',
-        aftx4:function () {
+        aftx5:' atx5 ',
+        aftx6:' 0 ',
+        aftx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return ' ';
@@ -2951,7 +4764,7 @@
                 case '顶升+仰臂': return ' ';
             }
         },
-        aftx5:function () {
+        aftx8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return 0;
@@ -2959,21 +4772,44 @@
                 case '顶升+仰臂': return ' ';
             }
         },
-        aftx6:' atx6 ',
-        aftx7:' 0 ',
-        aftx9:function () {
+        aftx9:' atx9 ',
+        aftx10:' atx10 ',
+        aftx12:function () {
             switch( typeOfMachine ){
-                case '固定立柱':  return atx9 ;
-                case '仰臂':      return atx9;
+                case '固定立柱':  return atx12 ;
+                case '仰臂':      return atx12 ;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }
         },
-        aftx11:' atx11 ',
-        aftx12:' atx12 ',
-        aftx13:' atx13 ',
-        aftx14:' m14 ==0 ? 0: " "',
-        aftx15:' m15 ==0 ? 0: " "',
+        aftx14:function(){
+            if( m14 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        aftx15:' atx15 ',
+        aftx16:' atx16 ',
+        aftx17:' atx17 ',
+        aftx18:' atx18 ',
+        aftx19:' atx19 ',
+        aftx20:function(){
+            if( m20 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        aftx21:function(){
+            if( m21 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+
+
 
     }
     data.init(calculateFunction);
