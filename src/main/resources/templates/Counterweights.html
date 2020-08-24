@@ -917,7 +917,7 @@
     $('[name=lzType]').change((e)=>{
         var $element=$(e.target);
         var val=$element.val();
-        if(val=='1+1顶升立柱数据库'){
+        if(val!='1+1顶升立柱数据库'){
             $('[name=llzgdn],[name=llzgdw]').attr("readonly",true);
             data.datalist["llzgdn"].color="#bbb";
             data.datalist["llzgdw"].color="#bbb";
