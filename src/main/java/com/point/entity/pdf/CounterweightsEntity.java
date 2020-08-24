@@ -216,15 +216,42 @@ public String nameOfPDF(String type) {
         Map<String, Double> map = takeDoubleMapForPdf("");
 
 
-        Double msla= map.get("msla");
-        Double mshla = map.get("mshla");
+//        Double msla= map.get("msla");
+//        Double mshla = map.get("mshla");
+//        Double ma1 = map.get("ma1");
+//        Double ma2 = map.get("ma2");
+//        Double ma3 = map.get("ma3");
+//        Double ma4 = map.get("ma4");
+//        Double ma6 = map.get("ma6");
+//        Double ma20 = map.get("ma20");
+//        Double mq = map.get("mq");
+//
+//        Double ma5 = map.get("ma5");
+//        Double ma7 = map.get("ma7");
+//        Double ma8 = map.get("ma8");
+//        Double ma9 = map.get("ma9");
+//        Double ma10 = map.get("ma10");
+//        Double ma12 = map.get("ma12");
+//        Double ma13 = map.get("ma13");
+//        Double ma14 = map.get("ma14");
+//        Double ma15 = map.get("ma15");
+//        Double ma16 = map.get("ma16");
+//        Double ma17 = map.get("ma17");
+//        Double ma18 = map.get("ma18");
+//        Double ma19 = map.get("ma19");
+//        Double ma21 = map.get("ma21");
+//
+//        Double ma11= m11 * lqg11 * 10 ;
+//        Double mqxs = 1.05 * mq ;
+//        Double mkpzyz = ma5 + ma7 + ma8 + ma9 + ma10 + ma11 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21 ;
+
+
         Double ma1 = map.get("ma1");
         Double ma2 = map.get("ma2");
         Double ma3 = map.get("ma3");
         Double ma4 = map.get("ma4");
         Double ma6 = map.get("ma6");
         Double ma20 = map.get("ma20");
-        Double mq = map.get("mq");
 
         Double ma5 = map.get("ma5");
         Double ma7 = map.get("ma7");
@@ -240,25 +267,35 @@ public String nameOfPDF(String type) {
         Double ma18 = map.get("ma18");
         Double ma19 = map.get("ma19");
         Double ma21 = map.get("ma21");
+//        String pzyzp1;
 
-        Double ma11= m11 * lqg11 * 10 ;
-        Double mqxs = 1.05 * mq ;
+        Double tsljz= swp + 1.5 * r1 + mwr + mffbb ;
+        Double tshljz = 1.25 * hwll + hsw ;
+        Double mslajz = tsljz * lslqg * 10 ;
+        Double mshlajz = tshljz * lshlqg * 10 ;
+        Double mqyz = mslajz + mshlajz + ma1 + ma2 + ma3 + ma4 + ma6 + ma20 ;
+        Double ma11 = m11 * lqg11 * 10 ;
         Double mkpzyz = ma5 + ma7 + ma8 + ma9 + ma10 + ma11 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21 ;
+//        if( mqyz < mkpzyz ) {
+//            pzyzp1="<";
+//        }else if( mqyz == mkpzyz ) {
+//            pzyzp1="=";
+//        }else{
+//            pzyzp1=">";
+//        }
 
-        String pzyzp1;
-        if( mqxs < mkpzyz ) {
-            pzyzp1="<";
-        }else if( mqxs == mkpzyz ) {
-            pzyzp1="=";
-        }else{
-            pzyzp1=">";
-        }
-
-        String pzyzm1 = ( mqxs<=mkpzyz ) ? "符合" : "不符合";
+        String pzyzy1 = ( mqyz<=mkpzyz ) ? "没有" : "有";
+        String pzyzm1 = ( mqyz<=mkpzyz ) ? "符合" : "不符合";
 
         Map<String, String> result = new HashMap<>();
-        result.put("tsl", CommonFunc.convertDoubleToString(tsl));
-        result.put("tshl", CommonFunc.convertDoubleToString(tshl));
+//        result.put("tsl", CommonFunc.convertDoubleToString(tsl));
+//        result.put("tshl", CommonFunc.convertDoubleToString(tshl));
+        result.put("swp", CommonFunc.convertDoubleToString(swp));
+        result.put("r1", CommonFunc.convertDoubleToString(r1));
+        result.put("mwr", CommonFunc.convertDoubleToString(mwr));
+        result.put("mffbb", CommonFunc.convertDoubleToString(mffbb));
+        result.put("hwll", CommonFunc.convertDoubleToString(hwll));
+        result.put("hsw", CommonFunc.convertDoubleToString(hsw));
         result.put("m1", CommonFunc.convertDoubleToString(m1));
         result.put("m2", CommonFunc.convertDoubleToString(m2));
         result.put("m3", CommonFunc.convertDoubleToString(m3));
@@ -277,21 +314,21 @@ public String nameOfPDF(String type) {
         result.put("lqg6", CommonFunc.convertDoubleToString(lqg6));
         result.put("lqg20", CommonFunc.convertDoubleToString(lqg20));
 
-        result.put("msla", CommonFunc.convertDoubleToString(msla));
-        result.put("mshla", CommonFunc.convertDoubleToString(mshla));
+
         result.put("ma1", CommonFunc.convertDoubleToString(ma1));
         result.put("ma2", CommonFunc.convertDoubleToString(ma2));
         result.put("ma3", CommonFunc.convertDoubleToString(ma3));
         result.put("ma4", CommonFunc.convertDoubleToString(ma4));
         result.put("ma6", CommonFunc.convertDoubleToString(ma6));
         result.put("ma20", CommonFunc.convertDoubleToString(ma20));
-        result.put("mq", CommonFunc.convertDoubleToString(mq));
+
 
         result.put("m5", CommonFunc.convertDoubleToString(m5));
         result.put("m7", CommonFunc.convertDoubleToString(m7));
         result.put("m8", CommonFunc.convertDoubleToString(m8));
         result.put("m9", CommonFunc.convertDoubleToString(m9));
         result.put("m10", CommonFunc.convertDoubleToString(m10));
+        result.put("m11", CommonFunc.convertDoubleToString(m11));
         result.put("m12", CommonFunc.convertDoubleToString(m12));
         result.put("m13", CommonFunc.convertDoubleToString(m13));
         result.put("m14", CommonFunc.convertDoubleToString(m14));
@@ -307,6 +344,7 @@ public String nameOfPDF(String type) {
         result.put("lqg8", CommonFunc.convertDoubleToString(lqg8));
         result.put("lqg9", CommonFunc.convertDoubleToString(lqg9));
         result.put("lqg10", CommonFunc.convertDoubleToString(lqg10));
+        result.put("lqg11", CommonFunc.convertDoubleToString(lqg11));
         result.put("lqg12", CommonFunc.convertDoubleToString(lqg12));
         result.put("lqg13", CommonFunc.convertDoubleToString(lqg13));
         result.put("lqg14", CommonFunc.convertDoubleToString(lqg14));
@@ -331,11 +369,17 @@ public String nameOfPDF(String type) {
         result.put("ma18", CommonFunc.convertDoubleToString(ma18));
         result.put("ma19", CommonFunc.convertDoubleToString(ma19));
         result.put("ma21", CommonFunc.convertDoubleToString(ma21));
+
+        result.put("tsljz", CommonFunc.convertDoubleToString(tsljz));
+        result.put("tshljz", CommonFunc.convertDoubleToString(tshljz));
+        result.put("mslajz", CommonFunc.convertDoubleToString(mslajz));
+        result.put("mshlajz", CommonFunc.convertDoubleToString(mshlajz));
+        result.put("mqyz", CommonFunc.convertDoubleToString(mqyz));
         result.put("ma11", CommonFunc.convertDoubleToString(ma11));
         result.put("mkpzyz", CommonFunc.convertDoubleToString(mkpzyz));
-        result.put("mqxs", CommonFunc.convertDoubleToString(mqxs));
+        result.put("pzyzy1", CommonFunc.convertDoubleToString(pzyzy1));
+//        result.put("pzyzp1", CommonFunc.convertDoubleToString(pzyzp1));
         result.put("pzyzm1", CommonFunc.convertDoubleToString(pzyzm1));
-        result.put("pzyzp1", CommonFunc.convertDoubleToString(pzyzp1));
         result.put("m11", CommonFunc.convertDoubleToString(m11));
         result.put("lqg11", CommonFunc.convertDoubleToString(lqg11));
 

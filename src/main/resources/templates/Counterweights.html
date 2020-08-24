@@ -248,16 +248,25 @@
                     <td colspan="4">
                         <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="Φ7">Φ7</option>
-                            <option value="Φ8">Φ8</option>
-                            <option value="Φ8.3">Φ8.3</option>
-                            <option value="Φ10">Φ10</option>
-                            <option value="Φ13">Φ13</option>
-                            <option value="布鲁格Φ7">布鲁格Φ7</option>
-                            <option value="布鲁格Φ8">布鲁格Φ8</option>
+                            <option value="其它">其它</option>
                         </select>
                     </td>
                 </tr>
+                <!--<tr>-->
+                    <!--<td>吊船钢丝绳型号选择</td>-->
+                    <!--<td colspan="4">-->
+                        <!--<select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">-->
+                            <!--<option value="" style="display: none"></option>-->
+                            <!--<option value="Φ7">Φ7</option>-->
+                            <!--<option value="Φ8">Φ8</option>-->
+                            <!--<option value="Φ8.3">Φ8.3</option>-->
+                            <!--<option value="Φ10">Φ10</option>-->
+                            <!--<option value="Φ13">Φ13</option>-->
+                            <!--<option value="布鲁格Φ7">布鲁格Φ7</option>-->
+                            <!--<option value="布鲁格Φ8">布鲁格Φ8</option>-->
+                        <!--</select>-->
+                    <!--</td>-->
+                <!--</tr>-->
                 <tr>
                     <td>是否有防风背包</td>
                     <td colspan="4">
@@ -845,7 +854,7 @@
                 </tr>
                 <tr>
                     <td style="width:40%;"><b>名称</b></td>
-                    <td style="width:40%;"><b>计算结果显示</b></td>
+                    <td style="width:40%;"><b>数值</b></td>
                     <td style="width:20%;"><b>单位</b></td>
                 </tr>
 
@@ -853,6 +862,31 @@
                     <td><b>配重计算质量</b></td>
                     <td id="m11s"></td>
                     <td><b>kg</b></td>
+                </tr>
+                <tr>
+                    <td><b>配重实际取值</b></td>
+                    <td id="m11"></td>
+                    <td><b>kg</b></td>
+                </tr>
+                <tr>
+                    <td><b>静载试验倾覆力矩</b></td>
+                    <td id="mqyz"></td>
+                    <td><b>N*m</b></td>
+                </tr>
+                <tr>
+                    <td><b>静载试验抗倾覆力矩</b></td>
+                    <td id="mkpzyz"></td>
+                    <td><b>N*m</b></td>
+                </tr>
+                <tr>
+                   <td><b>有无反拔力</b></td>
+                   <td id="pzyzy1"></td>
+                   <td><b> </b></td>
+                </tr>
+                <tr>
+                    <td><b>是否满足要求</b></td>
+                    <td id="mkyzm1"></td>
+                    <td><b> </b></td>
                 </tr>
             </table>
             <div style="margin: 0 150px 0;">
@@ -897,6 +931,7 @@
         mwr:function() {
             return h * dcgssp * 4 ;
         },
+
         mffbb:function(){
             return ffbbModelList[ ffbbModel ]['mffbb'];
         },
@@ -937,12 +972,27 @@
             return data;
         },
         m6:()=>{
-            if ( dbModel &&dbModel.indexOf('DB(200*300)')<=-1 ||
-                dbModel.indexOf('DB(250*400)')<=-1 ||
-                dbModel.indexOf('DB(300*500)')<=-1 ||
-                dbModel.indexOf('DB(400*600)')<=-1)
+            if ( dbType .indexOf('单臂')>-1)
                 return 0;
         },
+        m7:()=>{
+            if ( lzType .indexOf('固定')>-1 ||
+                 lzType .indexOf('1+1顶升')>-1||
+                 lzType .indexOf('仰柱机构')>-1)
+                return 0;
+    },
+       m8:()=>{
+           if ( lzType .indexOf('固定')>-1 ||
+                lzType .indexOf('仰臂固定')>-1 ||
+                lzType .indexOf('仰柱机构')>-1)
+               return 0;
+    },
+       m10:()=>{
+           if ( lzType .indexOf('固定')>-1 ||
+                 lzType .indexOf('1+1顶升')>-1 ||
+                 lzType .indexOf('仰柱机构')>-1)
+                return 0;
+    },
         m12:()=>{
             if( lzType .indexOf('仰臂固定')>-1)return mlz1gd + llzgd * lz1mmzl ;
             if( lzType .indexOf('固定')>-1)   return mlz1gd + llzgd * lz1mmzl ;
@@ -1096,6 +1146,7 @@
     getTable("btModel","btxz");
     getTable("qsjgModel","qsjgxz");
     getTable("trippingModel","yxjgxz");
+    getTable("dcgssModel","dcgssxz");
     data.init(calculateFunction);
 
 </script>
