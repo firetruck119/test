@@ -58,7 +58,7 @@ public class CounterweightsController {
     @PostMapping("Counterweights/jy")
     @ResponseBody
     public Object janyan (@ModelAttribute CounterweightsEntity entity){
-        return entity.takeMapForPDF("");
+        return entity.check();
     }
     @PostMapping("Counterweights/getPDF")
     public Object getPDF(HttpServletRequest request,
@@ -90,13 +90,6 @@ public class CounterweightsController {
             return tool.getResponseEntity("配重计算书验证部分", pdf.MergePDF(list));
         }
 
-//        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/配重计算书"));
-//        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无图版配重计算书"));
-//        if (null!=check&&check) {
-//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/配重计算书验证部分"));
-//            return tool.getResponseEntity("配重计算书验证部分", pdf.MergePDF(list));
-//        }
-//        return tool.getResponseEntity("配重计算书", list.get(0));
          return tool.getResponseEntity(name, list.get(0));
 
     }

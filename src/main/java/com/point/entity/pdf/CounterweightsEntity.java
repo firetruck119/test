@@ -78,7 +78,7 @@ public class CounterweightsEntity {
     private Double lqg20;
     private Double lqg21;
 
-//    非界面
+    //    非界面
     private Double dcgssp;
     private Double grugssp;
     private Double lbtzh;
@@ -99,32 +99,9 @@ public class CounterweightsEntity {
     private String gruModel;
     private String yxjgazModel;
     private String dhzjgModel;
-//    private String dbModel;
-
-//    public String nameOfPDF(String type) {
-//        switch (type) {
-//            case "Counterweights":
-//                return "配重计算书.pdf";
-//
-//        }
-//        return null;
-//    }
-public String nameOfPDF(String type) {
-    switch (type) {
-        case "PeiZhong":
-            return "配重计算书.pdf";
-        case "PeiZhongWuTu":
-            return "无图版配重计算书.pdf";
-    }
-    return null;
-}
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
-        //String gdjb = steelHave;
-        //String gdjby = gdjb.equals("有")?"has":"hasn't";
-        //map.put("gdjb",gdjb);
-        //map.put("gdjby",gdjby);
         map.put("no", CommonFunc.convertDoubleToString(no));
         map.put("ver", CommonFunc.convertDoubleToString(ver));
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
@@ -205,46 +182,29 @@ public String nameOfPDF(String type) {
         map.put("qt1", CommonFunc.convertDoubleToString(qt1));
         map.put("qt2", CommonFunc.convertDoubleToString(qt2));
 
-
         map.putAll(takeStringMapForPdf(type));
         return map;
+    }
+
+    public Map<String,String> check(){
+        Map<String,String> map=new HashMap<>();
+        Map<String,String> cp=takeMapForCheckPDF();
+        Map<String,String> p=takeMapForPDF("");
+        map.put("m11s",CommonFunc.convertDoubleToString(p.get("m11s")));
+
+        map.put("m11",CommonFunc.convertDoubleToString(m11));
+        map.put("mqyz",CommonFunc.convertDoubleToString(cp.get("mqyz")));
+        map.put("mkpzyz",CommonFunc.convertDoubleToString(cp.get("mkpzyz")));
+        map.put("pzyzy1",CommonFunc.convertDoubleToString(cp.get("pzyzy1")));
+        map.put("pzyzm1",CommonFunc.convertDoubleToString(cp.get("pzyzm1")));
+        return map;
+
     }
     /*
           验证部分
            */
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
-
-
-//        Double msla= map.get("msla");
-//        Double mshla = map.get("mshla");
-//        Double ma1 = map.get("ma1");
-//        Double ma2 = map.get("ma2");
-//        Double ma3 = map.get("ma3");
-//        Double ma4 = map.get("ma4");
-//        Double ma6 = map.get("ma6");
-//        Double ma20 = map.get("ma20");
-//        Double mq = map.get("mq");
-//
-//        Double ma5 = map.get("ma5");
-//        Double ma7 = map.get("ma7");
-//        Double ma8 = map.get("ma8");
-//        Double ma9 = map.get("ma9");
-//        Double ma10 = map.get("ma10");
-//        Double ma12 = map.get("ma12");
-//        Double ma13 = map.get("ma13");
-//        Double ma14 = map.get("ma14");
-//        Double ma15 = map.get("ma15");
-//        Double ma16 = map.get("ma16");
-//        Double ma17 = map.get("ma17");
-//        Double ma18 = map.get("ma18");
-//        Double ma19 = map.get("ma19");
-//        Double ma21 = map.get("ma21");
-//
-//        Double ma11= m11 * lqg11 * 10 ;
-//        Double mqxs = 1.05 * mq ;
-//        Double mkpzyz = ma5 + ma7 + ma8 + ma9 + ma10 + ma11 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21 ;
-
 
         Double ma1 = map.get("ma1");
         Double ma2 = map.get("ma2");
@@ -267,29 +227,19 @@ public String nameOfPDF(String type) {
         Double ma18 = map.get("ma18");
         Double ma19 = map.get("ma19");
         Double ma21 = map.get("ma21");
-//        String pzyzp1;
 
-        Double tsljz= swp + 1.5 * r1 + mwr + mffbb ;
-        Double tshljz = 1.25 * hwll + hsw ;
-        Double mslajz = tsljz * lslqg * 10 ;
-        Double mshlajz = tshljz * lshlqg * 10 ;
-        Double mqyz = mslajz + mshlajz + ma1 + ma2 + ma3 + ma4 + ma6 + ma20 ;
-        Double ma11 = m11 * lqg11 * 10 ;
-        Double mkpzyz = ma5 + ma7 + ma8 + ma9 + ma10 + ma11 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21 ;
-//        if( mqyz < mkpzyz ) {
-//            pzyzp1="<";
-//        }else if( mqyz == mkpzyz ) {
-//            pzyzp1="=";
-//        }else{
-//            pzyzp1=">";
-//        }
+        Double tsljz = swp + 1.5 * r1 + mwr + mffbb;
+        Double tshljz = 1.25 * hwll + hsw;
+        Double mslajz = tsljz * lslqg * 10;
+        Double mshlajz = tshljz * lshlqg * 10;
+        Double mqyz = mslajz + mshlajz + ma1 + ma2 + ma3 + ma4 + ma6 + ma20;
+        Double ma11 = m11 * lqg11 * 10;
+        Double mkpzyz = ma5 + ma7 + ma8 + ma9 + ma10 + ma11 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21;
 
-        String pzyzy1 = ( mqyz<=mkpzyz ) ? "没有" : "有";
-        String pzyzm1 = ( mqyz<=mkpzyz ) ? "符合" : "不符合";
+        String pzyzy1 = (mqyz <= mkpzyz) ? "没有" : "有";
+        String pzyzm1 = (mqyz <= mkpzyz) ? "符合" : "不符合";
 
         Map<String, String> result = new HashMap<>();
-//        result.put("tsl", CommonFunc.convertDoubleToString(tsl));
-//        result.put("tshl", CommonFunc.convertDoubleToString(tshl));
         result.put("swp", CommonFunc.convertDoubleToString(swp));
         result.put("r1", CommonFunc.convertDoubleToString(r1));
         result.put("mwr", CommonFunc.convertDoubleToString(mwr));
@@ -314,14 +264,12 @@ public String nameOfPDF(String type) {
         result.put("lqg6", CommonFunc.convertDoubleToString(lqg6));
         result.put("lqg20", CommonFunc.convertDoubleToString(lqg20));
 
-
         result.put("ma1", CommonFunc.convertDoubleToString(ma1));
         result.put("ma2", CommonFunc.convertDoubleToString(ma2));
         result.put("ma3", CommonFunc.convertDoubleToString(ma3));
         result.put("ma4", CommonFunc.convertDoubleToString(ma4));
         result.put("ma6", CommonFunc.convertDoubleToString(ma6));
         result.put("ma20", CommonFunc.convertDoubleToString(ma20));
-
 
         result.put("m5", CommonFunc.convertDoubleToString(m5));
         result.put("m7", CommonFunc.convertDoubleToString(m7));
@@ -378,14 +326,13 @@ public String nameOfPDF(String type) {
         result.put("ma11", CommonFunc.convertDoubleToString(ma11));
         result.put("mkpzyz", CommonFunc.convertDoubleToString(mkpzyz));
         result.put("pzyzy1", CommonFunc.convertDoubleToString(pzyzy1));
-//        result.put("pzyzp1", CommonFunc.convertDoubleToString(pzyzp1));
         result.put("pzyzm1", CommonFunc.convertDoubleToString(pzyzm1));
         result.put("m11", CommonFunc.convertDoubleToString(m11));
         result.put("lqg11", CommonFunc.convertDoubleToString(lqg11));
 
-
         return result;
     }
+
     /*
             正文部分程序
              */
@@ -395,33 +342,33 @@ public String nameOfPDF(String type) {
          /*
         倾覆力矩和抗倾覆力矩
          */
-        Double msla= tsl * lslqg * 10 ;
-        Double mshla= tshl * lshlqg * 10 ;
-        Double ma1= m1 * lqg1 * 10 ;
-        Double ma2= m2 * lqg2 * 10 ;
-        Double ma3= m3 * lqg3 * 10 ;
-        Double ma4= m4 * lqg4 * 10 ;
-        Double ma5= m5 * lqg5 * 10 ;
-        Double ma6= m6 * lqg6 * 10 ;
-        Double ma7= m7 * lqg7 * 10 ;
-        Double ma8= m8 * lqg8 * 10 ;
-        Double ma9= m9 * lqg9 * 10 ;
-        Double ma10= m10 * lqg10 * 10 ;
+        Double msla = tsl * lslqg * 10;
+        Double mshla = tshl * lshlqg * 10;
+        Double ma1 = m1 * lqg1 * 10;
+        Double ma2 = m2 * lqg2 * 10;
+        Double ma3 = m3 * lqg3 * 10;
+        Double ma4 = m4 * lqg4 * 10;
+        Double ma5 = m5 * lqg5 * 10;
+        Double ma6 = m6 * lqg6 * 10;
+        Double ma7 = m7 * lqg7 * 10;
+        Double ma8 = m8 * lqg8 * 10;
+        Double ma9 = m9 * lqg9 * 10;
+        Double ma10 = m10 * lqg10 * 10;
 //        Double ma11= m11*lqg11*10;
-        Double ma12= m12 * lqg12 * 10 ;
-        Double ma13= m13 * lqg13 * 10 ;
-        Double ma14= m14 * lqg14 * 10 ;
-        Double ma15= m15 * lqg15 * 10 ;
-        Double ma16= m16 * lqg16 * 10 ;
-        Double ma17= m17 * lqg17 * 10 ;
-        Double ma18= m18 * lqg18 * 10 ;
-        Double ma19= m19 * lqg19 * 10 ;
-        Double ma20= m20 * lqg20 * 10 ;
-        Double ma21= m21 * lqg21 * 10 ;
+        Double ma12 = m12 * lqg12 * 10;
+        Double ma13 = m13 * lqg13 * 10;
+        Double ma14 = m14 * lqg14 * 10;
+        Double ma15 = m15 * lqg15 * 10;
+        Double ma16 = m16 * lqg16 * 10;
+        Double ma17 = m17 * lqg17 * 10;
+        Double ma18 = m18 * lqg18 * 10;
+        Double ma19 = m19 * lqg19 * 10;
+        Double ma20 = m20 * lqg20 * 10;
+        Double ma21 = m21 * lqg21 * 10;
 
-        Double mq= msla + mshla + ma1 + ma2 + ma3 + ma4 + ma6 + ma20 ;
-        Double mkpz= ma5 + ma7 + ma8 + ma9 + ma10 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21 ;
-        Double m11s= ( npz * mq - mkpz ) / ( lqg11 * 10 ) ;
+        Double mq = msla + mshla + ma1 + ma2 + ma3 + ma4 + ma6 + ma20;
+        Double mkpz = ma5 + ma7 + ma8 + ma9 + ma10 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21;
+        Double m11s = (npz * mq - mkpz) / (lqg11 * 10);
 
         map.put("msla", msla);
         map.put("mshla", mshla);
@@ -458,32 +405,9 @@ public String nameOfPDF(String type) {
         return map;
     }
 
-
-    private String takeSignByCompareNumber(Double a, Double b) {
-        if (a > b) {
-            return ">";
-        } else if (a == b) {
-            return "=";
-        } else {
-            return "<";
-        }
-    }
-
-    private String takeStringByCompareNumber(Double a, Double b) {
-        if (a > b) {
-            return "不满足";
-        } else {
-            return "满足";
-        }
-    }
-
     public Map<String, String> takeStringMapForPdf(String type) {
         Map map = new HashMap();
         Map<String, Double> doubleMap = takeDoubleMapForPdf(type);
-
-
-
-
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));
         }
