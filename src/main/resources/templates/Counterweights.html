@@ -846,6 +846,7 @@
                      <td >kg</td>
                  </tr>
             </table>
+            <input style="background-color: #ccc;display: block;width:140px;height: 50px;margin: 5px;border-radius:25px;margin-left: -180px;margin-top: -50px" class="button" type="submit" value="配重计算值" onclick="return janyan()"/>
         </div>
     </form>
 
@@ -887,8 +888,7 @@
                 </tr>
             </table>
             <div style="margin: 0 50px 0;">
-                <input type="submit" style="display: inline-block" class="button" type="submit" value="配重计算值" onclick="return janyan()"/>
-                <input type="submit" style="display: inline-block" class="button" type="submit" value="校验" onclick="return janyan()"/>
+                <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
             </div>
         </div>
     </div>
@@ -915,6 +915,13 @@
     $('[name=lzType]').change((e)=>{
         var $element=$(e.target);
         var val=$element.val();
+        if(val.indexOf("仰臂固定立柱")>-1){
+            $('[name=dbyj]').attr("readonly",true);
+            data.datalist["dbyj"].color="#bbb";
+        }else{
+            $('[name=dbyj]').attr("readonly",false);
+            data.datalist["dbyj"].color="#FFF";
+        }
         if(val!='1+1顶升立柱数据库'){
             $('[name=llzgdn],[name=llzgdw]').attr("readonly",true);
             data.datalist["llzgdn"].color="#bbb";
@@ -924,6 +931,7 @@
             data.datalist["llzgdn"].color="#FFF";
             data.datalist["llzgdw"].color="#FFF";
         }
+
     })
     var calculateFunction={
         mwr:function() {
