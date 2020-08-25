@@ -851,7 +851,7 @@
     </form>
 
     <div class="navbox">
-        <div style="width:460px;height:520px; font-size: 14px   ;">
+        <div style="width:460px;height:460px; font-size: 14px   ;">
             <table id="pdf3tb">
                 <tr>
                     <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
@@ -874,12 +874,12 @@
                 <tr>
                     <td><b>工作状态是否有反拔力</b></td>
                     <td id="pzyzy1"></td>
-                    <td><b>N*m</b></td>
+                    <td><b> </b></td>
                 </tr>
                 <tr>
                     <td><b>停机状态是否有反拔力</b></td>
                     <td id="pzyzy2"></td>
-                    <td><b>N*m</b></td>
+                    <td><b> </b></td>
                 </tr>
                 <tr>
                    <td><b>配重是否满足要求</b></td>
@@ -915,7 +915,7 @@
     $('[name=lzType]').change((e)=>{
         var $element=$(e.target);
         var val=$element.val();
-        if(val.indexOf("仰臂固定立柱")>-1){
+        if(val.indexOf("仰臂固定立柱")<=-1){
             $('[name=dbyj]').attr("readonly",true);
             data.datalist["dbyj"].color="#bbb";
         }else{
