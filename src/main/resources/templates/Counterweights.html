@@ -380,10 +380,22 @@
                     <td ><input type="text" name="lbx" /></td>
                     <td >m</td>
                 </tr>
+                <!--<tr>-->
+                    <!--<td ><b>基臂长度</b></td>-->
+                    <!--<td ><p><i></i></p></td>-->
+                    <!--<td ><input type="text" name="lbj"/></td>-->
+                    <!--<td >m</td>-->
+                <!--</tr>-->
                 <tr>
-                    <td ><b>基臂长度</b></td>
+                    <td ><b>停机臂长+配重臂总长</b></td>
                     <td ><p><i></i></p></td>
-                    <td ><input type="text" name="lbj"/></td>
+                    <td ><input type="text" name="ltjbpz"/></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>配重臂长</b></td>
+                    <td ><p><i></i></p></td>
+                    <td ><input type="text" name="lbp"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -658,6 +670,7 @@
             <input type="text" name="lz1mmzl"/>
             <input type="text" name="lz2mmzl"/>
             <input type="text" name="myzjg"/>
+            <input type="text" name="lbj"/>
 
         </div>
 
@@ -836,6 +849,7 @@
                         <td style="width:40%;">数值</td>
                         <td style="width:17%;">单位</td>
                    </tr>
+
                    <tr>
                         <td ><b>配重实际取值</b></td>
                         <td ><p><i>m11</i></p></td>
@@ -1035,6 +1049,9 @@
         lshlqg:function(){
             return lbd - ( lg / 2 ) - ( ldcgh - lbtzh ) ;
         },
+         lbj:function(){
+           return ltjbpz - lbp ;
+          },
         lqg1:function(){
             return lshlqg ;
         },
@@ -1075,9 +1092,14 @@
                 return ' ' ;
             }
         },
+        lqg11:function(){
+             return lbp + lg / 2 ;
+              },
+
         lqg12:function(){
             return lg / 2 ;
         },
+
         lqg14:function(){
             if( m14 == 0 ){
                 return 0 ;
@@ -1098,7 +1120,7 @@
             if( trippingModel == "无" ){
                 return 0 ;
             }else if ( yxjgazModel =="对角安装" ){
-                return lg;
+                return lg ;
             }else if ( yxjgazModel =="同侧安装" ){
                 return 0 ;
             }
@@ -1109,7 +1131,7 @@
             }else if ( yxjgazModel =="对角安装" ){
                 return lg;
             }else if ( yxjgazModel =="同侧安装" ){
-                return lg;
+                return lg ;
             }
         },
         lqg19:function(){
@@ -1118,7 +1140,7 @@
             }else if ( yxjgazModel =="对角安装" ){
                 return 0 ;
             }else if ( yxjgazModel =="同侧安装" ){
-                return lg;
+                return lg ;
             }
         },
         lqg20:function(){

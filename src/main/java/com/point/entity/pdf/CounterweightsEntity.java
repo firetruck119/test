@@ -77,6 +77,8 @@ public class CounterweightsEntity {
     private Double lqg19;
     private Double lqg20;
     private Double lqg21;
+    private Double ltjbpz;
+    private Double lbp;
 
     //    非界面
     private Double dcgssp;
@@ -147,6 +149,7 @@ public class CounterweightsEntity {
         map.put("m20", CommonFunc.convertDoubleToString(m20));
         map.put("m21", CommonFunc.convertDoubleToString(m21));
 
+
         map.put("lslqg", CommonFunc.convertDoubleToString(lslqg));
         map.put("lshlqg", CommonFunc.convertDoubleToString(lshlqg));
         map.put("lqg1", CommonFunc.convertDoubleToString(lqg1));
@@ -170,6 +173,8 @@ public class CounterweightsEntity {
         map.put("lqg19", CommonFunc.convertDoubleToString(lqg19));
         map.put("lqg20", CommonFunc.convertDoubleToString(lqg20));
         map.put("lqg21", CommonFunc.convertDoubleToString(lqg21));
+        map.put("ltjbpz", CommonFunc.convertDoubleToString(ltjbpz));
+        map.put("lbp", CommonFunc.convertDoubleToString(lbp));
 
         map.put("yxjgaz", CommonFunc.convertDoubleToString(yxjgaz));
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
@@ -192,6 +197,9 @@ public class CounterweightsEntity {
         Map<String,String> p=takeMapForPDF("");
         map.put("m11s",CommonFunc.convertDoubleToString(p.get("m11s")));
 
+        if( m11==null ) {
+            return map;
+        };
         map.put("m11",CommonFunc.convertDoubleToString(m11));
         map.put("mqyz",CommonFunc.convertDoubleToString(cp.get("mqyz")));
         map.put("mkpzyz",CommonFunc.convertDoubleToString(cp.get("mkpzyz")));
@@ -205,6 +213,10 @@ public class CounterweightsEntity {
            */
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
+
+      if( m11==null ) {
+          return null;
+      };
 
         Double ma1 = map.get("ma1");
         Double ma2 = map.get("ma2");
@@ -227,8 +239,6 @@ public class CounterweightsEntity {
         Double ma18 = map.get("ma18");
         Double ma19 = map.get("ma19");
         Double ma21 = map.get("ma21");
-//        String pzyzp1 ;
-
 
         Double tsljz = swp + 1.5 * r1 + mwr + mffbb;
         Double tshljz = 1.25 * hwll + hsw;
@@ -238,13 +248,6 @@ public class CounterweightsEntity {
         Double ma11 = m11 * lqg11 * 10;
         Double mkpzyz = ma5 + ma7 + ma8 + ma9 + ma10 + ma11 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21;
 
-//        if( mqyz < mkpzyz ) {
-////            pzyzp1="<";
-////        }else if( mqyz == mkpzyz ) {
-////            pzyzp1="=";
-////        }else{
-////            pzyzp1=">";
-////        };
         String pzyzy1 = (mqyz <= mkpzyz) ? "没有" : "有";
         String pzyzm1 = (mqyz <= mkpzyz) ? "符合" : "不符合";
 
@@ -338,7 +341,6 @@ public class CounterweightsEntity {
         result.put("pzyzm1", CommonFunc.convertDoubleToString(pzyzm1));
         result.put("m11", CommonFunc.convertDoubleToString(m11));
         result.put("lqg11", CommonFunc.convertDoubleToString(lqg11));
-//        result.put("pzyzp1", CommonFunc.convertDoubleToString(pzyzp1));
 
         return result;
     }
