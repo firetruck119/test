@@ -398,7 +398,7 @@ public class CounterweightsEntity {
         else pzyzy2 = "有";
         if (mqhl <= mkhl) pzyzm2 = "满足";
         else pzyzm2 = "不满足";
-        if (pzyzm1.equals("满足") && pzyzm2.equals("满足"))
+        if (pzyzy1.equals("没有") && pzyzy2.equals("没有"))
             pzyzm = "满足";
         else
             pzyzm = "不满足";
