@@ -99,13 +99,22 @@
                 mffbb:0,
             },
         };
-        yxjgazModelList={
-            "对角安装":{
-                yxjgaz:"对角安装",
+        yxjgazModelList= {
+            "对角安装": {
+                yxjgaz: "对角安装",
             },
-            "同侧安装":{
-                yxjgaz:"同侧安装",
+            "同侧安装": {
+                yxjgaz: "同侧安装",
             },
+        }
+        ydpzModelList= {
+                "是": {
+                    ydpz: "是",
+                },
+                "否": {
+                    ydpz: "否",
+                },
+            }
         };
     </script>
 
@@ -293,6 +302,17 @@
                 </tr>
 
                 <tr>
+                    <td>是否是移动配重</td>
+                    <td colspan="4">
+                        <select name="ydpzModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="是">是</option>
+                            <option value="否">否</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
                     <td>起升机构选择</td>
                     <td colspan="4">
                         <select name="qsjgModel" style="width:100%;height:40px;text-align-last:center">
@@ -319,6 +339,7 @@
                         </select>
                     </td>
                 </tr>
+
                 <tr>
                     <td>大臂选择</td>
                     <td colspan="4">
@@ -371,12 +392,12 @@
                     <td ><input type="text" name="dbyj"/></td>
                     <td >度</td>
                 </tr>
-                <tr>
-                    <td ><b>停机臂长+配重臂总长</b></td>
-                    <td ><p><i></i></p></td>
-                    <td ><input type="text" name="ltjbpz"/></td>
-                    <td >m</td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td ><b>停机臂长+配重臂总长</b></td>-->
+                    <!--<td ><p><i></i></p></td>-->
+                    <!--<td ><input type="text" name="ltjbpz"/></td>-->
+                    <!--<td >m</td>-->
+                <!--</tr>-->
                 <tr>
                     <td ><b>最大配重臂长</b></td>
                     <td ><p><i></i></p></td>
@@ -496,6 +517,7 @@
                     <td ><input type="text" name="tshl"/></td>
                     <td >kg</td>
                 </tr>
+                        <tr><td colspan="5">gru285额定载荷600<br></br>gru295额定载荷750<br></br>gru313额定载荷1000</td></tr>
                 <tr>
                     <td ><b>臂头自重</b></td>
                     <td ><p><i>m1</i></p></td>
@@ -520,7 +542,7 @@
                     <td ><input type="text" name="m4"/></td>
                     <td >kg</td>
                 </tr>
-                <tr><td colspan="5">大臂质量计算方式：每节臂每米质量 X 每节臂长度 + 每节臂固定部分质量（箍板及滚轮总质量）之和</td></tr>
+                <tr><td colspan="5">备注：伸缩臂每节臂搭接量长度为伸出部分长度的一半</td></tr>
                 <tr>
                     <td ><b>物料起升机构装置自重</b></td>
                     <td ><p><i>m5</i></p></td>
@@ -871,8 +893,9 @@
                     <td id="m11"></td>
                     <td><b>kg</b></td>
                 </tr>
+
                 <tr>
-                    <td><b>工作状态是否有反拔力</b></td>
+                    <td><b>静载试验状态是否有反拔力</b></td>
                     <td id="pzyzy1"></td>
                     <td><b> </b></td>
                 </tr>
@@ -912,26 +935,44 @@
         e = $('input[name=pdfType]');
         e.val(l);
     }
-    $('[name=lzType]').change((e)=>{
-        var $element=$(e.target);
-        var val=$element.val();
-        if(val.indexOf("仰臂固定立柱")<=-1){
-            $('[name=dbyj]').attr("readonly",true);
-            data.datalist["dbyj"].color="#bbb";
-        }else{
-            $('[name=dbyj]').attr("readonly",false);
-            data.datalist["dbyj"].color="#FFF";
-        }
-        if(val!='1+1顶升立柱数据库'){
-            $('[name=llzgdn],[name=llzgdw]').attr("readonly",true);
-            data.datalist["llzgdn"].color="#bbb";
-            data.datalist["llzgdw"].color="#bbb";
-        }else{
-            $('[name=llzgdn],[name=llzgdw]').attr("readonly",false);
-            data.datalist["llzgdn"].color="#FFF";
-            data.datalist["llzgdw"].color="#FFF";
-        }
+    $('[name=lzType]').change((e)=> {
+        var $element = $(e.target);
+    var val = $element.val();
+    if (val.indexOf("仰臂固定立柱") <= -1) {
+        $('[name=dbyj]').attr("readonly", true);
+        data.datalist["dbyj"].color = "#bbb";
+    } else {
+        $('[name=dbyj]').attr("readonly", false);
+        data.datalist["dbyj"].color = "#FFF";
+    }
+    if (val != '1+1顶升立柱数据库') {
+        $('[name=llzgdn],[name=llzgdw]').attr("readonly", true);
+        data.datalist["llzgdn"].color = "#bbb";
+        data.datalist["llzgdw"].color = "#bbb";
+    } else {
+        $('[name=llzgdn],[name=llzgdw]').attr("readonly", false);
+        data.datalist["llzgdn"].color = "#FFF";
+        data.datalist["llzgdw"].color = "#FFF";
+    }
+    if (val.indexOf("1+1顶升立柱数据库") > -1) {
+        $('[name=llzgd]').attr("readonly", true);
+        data.datalist["llzgd"].color = "#bbb";
+    } else {
+        $('[name=dbyj]').attr("readonly", false);
+        data.datalist["llzgd"].color = "#FFF";
+    };
+    })
 
+    $('[name=ydpzModel]').change((e)=>{
+        var $element=$(e.target);
+    var val=$element.val();
+    if(val.indexOf("是")<=-1){
+        $('[name=lbpx]').attr("readonly",true);
+        data.datalist["lbpx"].color="#bbb";
+    }else{
+        $('[name=lbpx]').attr("readonly",false);
+        data.datalist["lbpx"].color="#FFF";
+    }
     })
     var calculateFunction={
         mwr:function() {
@@ -967,6 +1008,9 @@
         },
         ldbm:()=>{
             return lxtm + ldjm ;
+        },
+         ydpz:function(){
+             return ydpzModelList[ ydpzModel ]['ydpz'];
         },
         m4:()=>{
             var data;
@@ -1057,8 +1101,15 @@
             }else if(temp.indexOf('单臂')>-1){
                 dbjs=0;
             }
-            return ltjbpz - lbp - ldcgh -0.1* dbjs ;
+            return lbx - ldcgh -0.1* dbjs ;
          },
+
+        lbpx:function(){
+            if( ydpzModel == "是" )
+                return lbp-lxtz;
+            else
+                return lbp;
+        },
         lqg1:function(){
             return lshlqg ;
         },

@@ -97,6 +97,8 @@ public class CounterweightsEntity {
     private String qt1;
     private String qt2;
 
+    private String ydpz;
+
     private String dbType;
     private String dbModel;
     private String lzType;
@@ -110,6 +112,9 @@ public class CounterweightsEntity {
     private String dcgssModel;
     private String yxjgazModel;
     private String ffbbModel;
+    private String ydpzModel;
+
+
 
     private Double ma1;
     private Double ma2;
@@ -249,6 +254,7 @@ public class CounterweightsEntity {
         map.put("m20", CommonFunc.convertDoubleToString(m20));
         map.put("m21", CommonFunc.convertDoubleToString(m21));
 
+        map.put("ydpz", CommonFunc.convertDoubleToString(ydpz));
 
         map.put("lslqg", CommonFunc.convertDoubleToString(lslqg));
         map.put("lshlqg", CommonFunc.convertDoubleToString(lshlqg));
@@ -398,7 +404,7 @@ public class CounterweightsEntity {
         else pzyzy2 = "有";
         if (mqhl <= mkhl) pzyzm2 = "满足";
         else pzyzm2 = "不满足";
-        if (pzyzy1.equals("没有") && pzyzy2.equals("没有"))
+        if (pzyzy1.equals("没有") && pzyzy2.equals("没有") && m11s <= m11)
             pzyzm = "满足";
         else
             pzyzm = "不满足";
