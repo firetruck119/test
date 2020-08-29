@@ -1,0 +1,2578 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>整机成本估算计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+<!--    <script th:src="@{js/vue.js}"></script>-->
+    <script th:src="@{js/xyz/jquery.Ajax.Form.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <script th:src="@{js/dataClass.js}" ></script>
+    <script th:src="@{js/axios.js}"></script>
+    <style type="text/css">
+        p{
+            font-size: 17px;
+        }
+        b{
+            letter-spacing:1px;
+            line-height: normal;
+        }
+        .main {
+            margin:20px 480px 100px;
+            width:1250px;
+            background-color:white;
+            font-size: 0;
+            border:1px solid black;
+        }
+        .boxform{
+            margin:auto;
+            width:1230px;
+            display: block;
+            font-size: 0;
+            padding: 10px 0 0 10px;
+        }
+        .main .boxform div{
+            display: inline-block;
+            font-size: 14px;
+            margin: 0 10px 10px 0;
+            vertical-align: top;
+        }
+        td{
+            border:1px solid #000;
+            text-align: center;
+            line-height: 14px;
+            height:20px;
+        }
+        tr{
+            height: 20px;
+        }
+        table{
+            border-radius: 5px;
+            width:100%;
+            background-color: #aaa;
+        }
+        input {
+            height: 20px;
+            width:95%;
+            border: 0;
+            text-align: center;
+        }
+        .buttonbox{
+            bottom: 5px;
+            right:5px;
+            display: block;
+            position: fixed;
+            margin-bottom: 5px;
+        }
+        .buttonbox input,.navbox input{
+            background-color: #ccc;
+            display: block;
+            width:140px;
+            height: 50px;
+            margin: 5px;
+            border-radius:25px;
+        }
+        .navbox{
+            top: 50%;;
+            left:10px;
+            display: block;
+            position: fixed;
+            margin-top: -160px;
+            font-size: 16px;
+        }
+        .navbox td{
+            padding: 0.4em 0.8em;
+        }
+
+    </style>
+    <script>
+        // 吊船
+        dcModelList={
+            "2.0米铝吊船(PT(250_2))":{
+                cbdct:'PT(250_2)',
+                cbdcmc:'2.0米铝吊船',
+                cbdcsl:1,
+                cbdcdj:2200,
+            },
+            "2.5米铝吊船(PT(250_2.5))":{
+                cbdct:'PT(250_2.5)',
+                cbdcmc:'2.5米铝吊船',
+                cbdcsl:1,
+                cbdcdj:2300,
+            },
+            "3.0米铝吊船(PT(250_3))":{
+                cbdct:'(PT(250_3))',
+                cbdcmc:'3.0米铝吊船',
+                cbdcsl:1,
+                cbdcdj:2400,
+           },
+            "2.0米折弯吊船(ZWDC(250_2))":{
+                cbdct:'ZWDC(250_2)',
+                cbdcmc:'2.0米折弯吊船',
+                cbdcsl:1,
+                cbdcdj:3000,
+            },
+            "2.5米折弯吊船(ZWDC(250_2.5))":{
+                cbdct:'ZWDC(250_2.5)',
+                cbdcmc:'2.5米折弯吊船',
+                cbdcsl:1,
+                cbdcdj:3500,
+            },
+            "3.0米折弯吊船(ZWDC(250_3))":{
+                cbdct:'ZWDC(250_3)',
+                cbdcmc:'3.0米折弯吊船',
+                cbdcsl:1,
+                cbdcdj:4200,
+            },
+            "其它":{
+                cbdct:" ",
+                cbdcmc:" ",
+                cbdcsl:" ",
+                cbdcdj:" ",
+            }
+        };
+        // 吊船钢丝绳
+        dcgssModelList={
+            "Φ7":{
+                cbdcgssmc:'7mm钢丝绳',
+                cbdcgssdj:11,
+             },
+            "Φ8":{
+                cbdcgssmc:'8mm钢丝绳',
+                cbdcgssdj:12,
+            },
+            "Φ8.3":{
+                cbdcgssmc:'8.3mm钢丝绳',
+                cbdcgssdj:4,
+            },
+            "Φ10":{
+                cbdcgssmc:'10mm钢丝绳',
+                cbdcgssdj:22,
+            },
+            "Φ13":{
+                cbdcgssmc:'13mm钢丝绳',
+                cbdcgssdj:26,
+            },
+            "布鲁格Φ7":{
+                cbdcgssmc:'布鲁格7mm钢丝绳',
+                cbdcgssdj:46,
+            },
+            "布鲁格Φ8":{
+                cbdcgssmc:'布鲁格8mm钢丝绳',
+                cbdcgssdj:47,
+            },
+            "其它":{
+                cbdcgssmc:" ",
+                cbdcgssdj:" ",
+            },
+          };
+        //臂头
+        btModelList={
+            "YJBT1800G(1.8米羊角臂头-高臂头)":{
+                cbbtt:'YJBT1800G',
+                cbbtmc:'1.8米羊角臂头-高臂头',
+                cbbtdj:3100,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT1800Z(1.8米羊角臂头-中臂头)":{
+                cbbtt:'YJBT1800Z',
+                cbbtmc:'1.8米羊角臂头-中臂头',
+                cbbtdj:3250,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT1800D(1.8米羊角臂头-低臂头)":{
+                cbbtt:'YJBT1800D',
+                cbbtmc:'1.8米羊角臂头-低臂头',
+                cbbtdj:3200,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT2300G(2.3米羊角臂头-高臂头)":{
+                cbbtt:'YJBT2300G',
+                cbbtmc:'2.3米羊角臂头-高臂头',
+                cbbtdj:3300,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT2300Z(2.3米羊角臂头-中臂头)":{
+                cbbtt:'YJBT2300Z',
+                cbbtmc:'2.3米羊角臂头-中臂头',
+                cbbtdj:3300,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT2300D(2.3米羊角臂头-低臂头)":{
+                cbbtt:'YJBT2300D',
+                cbbtmc:'2.3米羊角臂头-低臂头',
+                cbbtdj:3250,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT2800G(2.8米羊角臂头-高臂头)":{
+                cbbtt:'YJBT2800G',
+                cbbtmc:'2.8米羊角臂头-高臂头',
+                cbbtdj:3300,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT2800Z(2.8米羊角臂头-中臂头)":{
+                cbbtt:'YJBT2800Z',
+                cbbtmc:'2.8米羊角臂头-中臂头',
+                cbbtdj:3350,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "YJBT2800D(2.8米羊角臂头-低臂头)":{
+                cbbtt:'YJBT2800D',
+                cbbtmc:'2.8米羊角臂头-低臂头',
+                cbbtdj:3450,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "HDBT2300(2.3米蝴蝶臂头)":{
+                cbbtt:'HDBT2300',
+                cbbtmc:'2.3米蝴蝶臂头',
+                cbbtdj:5500,
+                cbbtdjxh:'RF57DRS71S4/BE05/FL200/C',
+                cbbtdjsl:1,
+                cbbtdjdj:3210,
+                cbbthzzcxh:'QWD500.20',
+                cbbthzzcdj:1650,
+            },
+            "DJBT1800(1.8米单角臂头)":{
+                cbbtt:'DJBT1800',
+                cbbtmc:'1.8米单角臂头',
+                cbbtdj:1500,
+                cbbtdjxh:'F37R17DRS71S4/BE05/OS2',
+                cbbtdjsl:1,
+                cbbtdjdj:4030,
+                cbbthzzcxh:'QND400.20',
+                cbbthzzcdj:1600,
+            },
+            "其它":{
+                cbbtt:" ",
+                cbbtmc:" ",
+                cbbtdj:" ",
+                cbbtdjxh:" ",
+                cbbtdjsl:" ",
+                cbbtdjdj:" ",
+                cbbthzzcxh:" ",
+                cbbthzzcdj:" ",
+            },
+        };
+        // 伸缩机构
+        ssjgModelList={
+            "6模数2.78伸缩机构(SSJG6(2.78))":{
+                cbssjgt:'SSJG6(2.78)',
+                cbssjgmc:'6模数2.78伸缩机构',
+                cbssjgsl:" ",
+                cbssjgdj:750,
+                cbssjgdjxh:'FA57DRS71M4/BE1/OS2',
+                cbssjgdjdj:4375,
+
+            },
+            "6模数1.7伸缩机构(SSJG6(1.7))":{
+                cbssjgt:'SSJG6(1.7)',
+                cbssjgmc:'6模数1.7伸缩机构',
+                cbssjgsl:" ",
+                cbssjgdj:1150,
+                cbssjgdjxh:'FA77DRS80S4/BE1/OS2',
+                cbssjgdjdj:6620,
+
+            },
+            "8模数1.7伸缩机构(SSJG8(1.7))":{
+                cbssjgt:'SSJG8(1.7)',
+                cbssjgmc:'8模数1.7伸缩机构',
+                cbssjgsl:" ",
+                cbssjgdj:1750,
+                cbssjgdjxh:'FA87DRS80M4/BE2/OS2',
+                cbssjgdjdj:9235,
+
+            },
+            "无":{
+                cbssjgt:'无',
+                cbssjgmc:'无',
+                cbssjgsl:0,
+                cbssjgdj:0,
+                cbssjgdjxh:'无',
+                cbssjgdjdj:0,
+
+            },
+        };
+        // GRU
+        gruModelList={
+            "GRU285":{
+                cbgrut:'GRU285',
+                cbgrumc:'285卷扬式玻璃起吊',
+                cbgrusl:1,
+                cbgrudj:2450,
+                cbgrudjxh:'SA77DRS90M4/BE05/HR/OS2',
+                cbgrudjdj:10415,
+                cbgrugssmc:'8mm钢丝绳',
+                cbgrugssdj:6.2,
+            },
+            "GRU295":{
+                cbgrut:'GRU295',
+                cbgrumc:'295卷扬式玻璃起吊',
+                cbgrusl:1,
+                cbgrudj:2500,
+                cbgrudjxh:'SA87DRS90L4/BE05/HR/OS2',
+                cbgrudjdj:11440,
+                cbgrugssmc:'10mm钢丝绳',
+                cbgrugssdj:8.6,
+            },
+            "GRU313":{
+                cbgrut:'GRU313',
+                cbgrumc:'313卷扬式玻璃起吊',
+                cbgrusl:1,
+                cbgrudj:2700,
+                cbgrudjxh:'SA97DRS112M4/BE05/HR/OS2',
+                cbgrudjdj:17620,
+                cbgrugssmc:'13mm钢丝绳',
+                cbgrugssdj:14,
+            },
+            "GRU285-启丽":{
+                cbgrut:'GRU285-QL',
+                cbgrumc:'285卷扬式玻璃起吊',
+                cbgrusl:1,
+                cbgrudj:2450,
+                cbgrudjxh:'SA77DRS90M4/BE05/HR/OS2',
+                cbgrudjdj:4800,
+                cbgrugssmc:'8mm钢丝绳',
+                cbgrugssdj:6.2,
+            },
+            "GRU295-启丽":{
+                cbgrut:'GRU295-QL',
+                cbgrumc:'295卷扬式玻璃起吊',
+                cbgrusl:1,
+                cbgrudj:2500,
+                cbgrudjxh:'SA87DRS90L4/BE05/HR/OS2',
+                cbgrudjdj:7450,
+                cbgrugssmc:'10mm钢丝绳',
+                cbgrugssdj:8.6,
+            },
+            "GRU313-启丽":{
+                cbgrut:'GRU313-QL',
+                cbgrumc:'313卷扬式玻璃起吊',
+                cbgrusl:1,
+                cbgrudj:2700,
+                cbgrudjxh:'SA97DRS112M4/BE05/HR/OS2',
+                cbgrudjdj:10200,
+                cbgrugssmc:'13mm钢丝绳',
+                cbgrugssdj:14,
+            },
+            "无":{
+                cbgrut:'无',
+                cbgrumc:'无',
+                cbgrusl:0,
+                cbgrudj:0,
+                cbgrudjxh:'无',
+                cbgrudjdj:0,
+                cbgrugssmc:'无',
+                cbgrugssdj:0,
+            },
+        };
+        // 起升机构
+        qsjgModelList={
+            "105起升机构":{
+                cbqsjgt:'DCQS105Φ7',
+                cbqsjgmc:'105起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:8200,
+                cbqsjgdj1xh:'RF57DRS90M4/BE5/HR',
+                cbqsjgdj1sl:1,
+                cbqsjgdj1dj:3555,
+                cbqsjgdj2xh:'无',
+                cbqsjgdj2sl:0,
+                cbqsjgdj2dj:0,
+            },
+            "145起升机构":{
+                cbqsjgt:'DCQS145Φ7',
+                cbqsjgmc:'145起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:9200,
+                cbqsjgdj1xh:'RF57DRS90M4/BE5/HR',
+                cbqsjgdj1sl:1,
+                cbqsjgdj1dj:3555,
+                cbqsjgdj2xh:'无',
+                cbqsjgdj2sl:0,
+                cbqsjgdj2dj:0,
+
+            },
+            "175起升机构":{
+                cbqsjgt:'DCQS175Φ7',
+                cbqsjgmc:'175起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:9700,
+                cbqsjgdj1xh:'R67DRS90M4/BE5/HR',
+                cbqsjgdj1sl:1,
+                cbqsjgdj1dj:4110,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+
+            },
+            "275起升机构":{
+                cbqsjgt:'DCQS275Φ7',
+                cbqsjgmc:'275起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:11200,
+                cbqsjgdj1xh:'R67DRS90M4/BE2/HR',
+                cbqsjgdj1sl:1,
+                cbqsjgdj1dj:3840,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+            },
+            "185起升机构":{
+                cbqsjgt:'DCQS185Φ8',
+                cbqsjgmc:'185起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:16700,
+                cbqsjgdj1xh:'RF87DRS100M4/BE5/HR',
+                cbqsjgdj1sl:1,
+                cbqsjgdj1dj:6480,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+            },
+            "285起升机构":{
+                cbqsjgt:'DCQS285Φ8',
+                cbqsjgmc:'285起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:22600,
+                cbqsjgdj1xh:'RF87DRS100M4/BE5/HR',
+                cbqsjgdj1sl:1,
+                cbqsjgdj1dj:6480,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+            },
+            "385起升机构":{
+                cbqsjgt:'DCQS385Φ8',
+                cbqsjgmc:'385起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:23100,
+                cbqsjgdj1xh:'RF87DRS100M4/BE5/HR',
+                cbqsjgdj1sl:1,
+                cbqsjgdj1dj:6480,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+            },
+            "295起升机构":{
+                cbqsjgt:'DCQS295Φ10',
+                cbqsjgmc:'295起升机构',
+                cbqsjgsl:1,
+                cbqsjgdj:29000,
+                cbqsjgdj1xh:,
+                cbqsjgdj1sl:,
+                cbqsjgdj1dj:,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+            },
+            "495起升机构":{
+                cbqsjgt:'DCQS495Φ10',
+                cbqsjgmc:'495起升机构',
+                cbqsjgsl:,
+                cbqsjgdj:,
+                cbqsjgdj1xh:,
+                cbqsjgdj1sl:,
+                cbqsjgdj1dj:,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+
+            },
+            "313起升机构":{
+                cbqsjgt:'DCQS313Φ13',
+                cbqsjgmc:'313起升机构',
+                cbqsjgsl:,
+                cbqsjgdj:,
+                cbqsjgdj1xh:,
+                cbqsjgdj1sl:,
+                cbqsjgdj1dj:,
+                cbqsjgdj2xh:,
+                cbqsjgdj2sl:,
+                cbqsjgdj2dj:,
+            },
+            "无":{
+                cbqsjgt:'无',
+                cbqsjgmc:'无',
+                cbqsjgsl:0,
+                cbqsjgdj:0,
+                cbqsjgdj1xh:'无',
+                cbqsjgdj1sl:0,
+                cbqsjgdj1dj:0,
+                cbqsjgdj2xh:'无',
+                cbqsjgdj2sl:0,
+                cbqsjgdj2dj:0,
+            },
+        };
+        // 收揽器
+        slqModelList={
+            "SL30(吊臂)":{
+                cbslqt:,
+                cbslqmc:,
+                cbslqsl:,
+                cbslqdj:,
+            },
+            "SL20(底架)":{
+                cbslqt:,
+                cbslqmc:,
+                cbslqsl:,
+                cbslqdj:,
+            },
+        };
+        // 大回转机构
+        dhzjgModelList={
+            "HZX5.6RF77":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZX6.3RF77":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+
+            },
+            "HZX7.1RF87":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZX8.0RF87":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+
+            },
+            "HZX9.0RF97":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZX10.0RF97":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZX11.2RF107":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+
+            },
+            "HZX12.5RF107":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+
+            },
+            "HZX12.5RF137":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZX14.0RF137":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZX14.0RF147":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+
+            },
+            "HZX16.0RF147":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZX12.5X307":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+
+            },
+            "HZX14.0X307":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+
+            },
+            "HZX16.0X309":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZS-7.1RF77":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZS-8.0RF87":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+            "HZS9.0-RF97":{
+                cbhzt:,
+                cbhzmc:,
+                cbhzsl:,
+                cbhzdj:,
+                cbhzdjxh:,
+                cbhzdjsl:,
+                cbhzdjdj:,
+            },
+        };
+        // 运行机构
+        yxjgModelList={
+            "160LZ":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+            },
+            "170LZ":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+
+            },
+            "200LZ":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+
+            },
+            "230LZ":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+
+            },
+            "260LZ":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+            },
+            "350":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+
+            },
+            "450":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+
+            },
+            "轮载300":{
+                cbyxt:,
+                cbyxmc:,
+                cbyxsl:,
+                cbyxdj:,
+                cbyxdjxh:,
+                cbyxdjsl:,
+                cbyxdjdj:,
+
+            },
+            "无":{
+                cbyxt:'无',
+                cbyxmc:'无',
+                cbyxsl:0,
+                cbyxdj:0,
+                cbyxdjxh:'无',
+                cbyxdjsl:0,
+                cbyxdjdj:0,
+
+            },
+        };
+        //夹轨器
+        jgqModelList={
+            "JG160I20b":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG170I20I22":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG170I25I28I32":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG170H175":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG170H200":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG170H203":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG170H250":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG200I22I25":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG200I28I32":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG200H175":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG200H200":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG200H250":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG200H300":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "JG200H350":{
+                cbjgqt:,
+                cbjgqmc:,
+                cbjgqsl:,
+                cbjgqdj:,
+            },
+            "其它":{
+                cbjgqt:" ",
+                cbjgqmc:" ",
+                cbjgqsl:" ",
+                cbjgqdj:" ",
+            },
+        };
+        //底架类型
+        djxhModelList={
+            "管材式":{
+                djlx:"管材式",
+                cbdjdj:,
+            },
+            "板拼式":{
+                djlx:"板拼式",
+                cbdjdj:,
+            },
+        };
+        //大臂类型
+        dbxhModelList={
+            "单臂横截面":{
+                cbdbmc:,
+                cbdbdj:,
+                cb3yqdj:,
+                cbssjjmc:,
+                cbssjjsl:,
+                cbssjjdj:,
+                cbdbxzmc:,
+                cbdbxzdj:,
+                cbdqmc:,
+                cbdqdj:,
+            },
+            "单臂变截面":{
+                cbdbmc:,
+                cbdbdj:,
+                cb3yqdj:,
+                cbssjjmc:,
+                cbssjjsl:,
+                cbssjjdj:,
+                cbdbxzmc:,
+                cbdbxzdj:,
+                cbdqmc:,
+                cbdqdj:,
+
+            },
+            "1+1伸缩臂":{
+                cbdbmc:,
+                cbdbdj:,
+                cb3yqdj:,
+                cbssjjmc:,
+                cbssjjsl:,
+                cbssjjdj:,
+                cbdbxzmc:,
+                cbdbxzdj:,
+                cbdqmc:,
+                cbdqdj:,
+
+            },
+            "2+1伸缩臂":{
+                cbdbmc:,
+                cbdbdj:,
+                cb3yqdj:,
+                cbssjjmc:,
+                cbssjjsl:,
+                cbssjjdj:,
+                cbdbxzmc:,
+                cbdbxzdj:,
+                cbdqmc:,
+                cbdqdj:,
+
+            },
+            "3+1伸缩臂":{
+                cbdbmc:,
+                cbdbdj:,
+                cb3yqdj:,
+                cbssjjmc:,
+                cbssjjsl:,
+                cbssjjdj:,
+                cbdbxzmc:,
+                cbdbxzdj:,
+                cbdqmc:,
+                cbdqdj:,
+
+            },
+            "4+1伸缩臂":{
+                cbdbmc:,
+                cbdbdj:,
+                cb3yqdj:,
+                cbssjjmc:,
+                cbssjjsl:,
+                cbssjjdj:,
+                cbdbxzmc:,
+                cbdbxzdj:,
+                cbdqmc:,
+                cbdqdj:,
+
+            },
+        };
+        //配重块
+        pzkModelList={
+            "混凝土配重块":{
+                cbpzkmc:,
+                cbpzkdj:,
+                cbpzxtzl:,
+                cbpzxtdj:,
+                cbpzxtlyl:,
+            },
+            "钢板配重块":{
+                cbpzkmc:,
+                cbpzkdj:,
+                cbpzxtzl:,
+                cbpzxtdj:,
+                cbpzxtlyl:,
+            },
+        };
+        //立柱类型
+        lzxhModelList={
+            "固定立柱":{
+                cblzmc:,
+                cblzdj:,
+            },
+            "1+1立柱":{
+                cblzmc:,
+                cblzdj:,
+            },
+            "2+1立柱":{
+                cblzmc:,
+                cblzdj:,
+            },
+        };
+        //齿条
+        ctxhModelList={
+            "6模齿条":{
+                cbctmc:,
+                cbctsl:,
+                cbctcd:,
+                cbctdj:,
+            },
+            "8模齿条":{
+                cbctmc:,
+                cbctsl:,
+                cbctcd:,
+                cbctdj:,
+            },
+            "无":{
+                cbctmc:'无',
+                cbctsl:0,
+                cbctcd:0,
+                cbctdj:0,
+            },
+        };
+        //1246伸缩臂链条型号
+        lt1ModelList={
+            "碳钢链条1246":{
+                cblt1sl:,
+                cblt1cd:,
+                cblt1dj:,
+            },
+            "304链条1246":{
+                cblt1sl:,
+                cblt1cd:,
+                cblt1dj:,
+
+            },
+            "无":{
+                cblt1sl:0,
+                cblt1cd:0,
+                cblt1dj:0,
+            },
+        };
+        //1266伸缩臂链条型号
+        lt2ModelList={
+            "碳钢链条1266":{
+                cblt2sl:,
+                cblt2cd:,
+                cblt2dj:,
+
+            },
+            "304链条1266":{
+                cblt2sl:,
+                cblt2cd:,
+                cblt2dj:,
+
+
+            },
+            "无":{
+                cblt2sl:0,
+                cblt2cd:0,
+                cblt2dj:0,
+            },
+        };
+        //1666伸缩臂链条型号
+        lt3ModelList={
+            "碳钢链条1666":{
+                cblt3sl:,
+                cblt3cd:,
+                cblt3dj:,
+
+
+            },
+            "304链条1666":{
+                cblt3sl:,
+                cblt3cd:,
+                cblt3dj:,
+
+
+            },
+            "无":{
+                cblt3sl:0,
+                cblt3cd:0,
+                cblt3dj:0,
+
+
+            },
+        };
+        //2466伸缩臂链条型号
+        lt4ModelList={
+            "碳钢链条2466":{
+                cblt4sl:,
+                cblt4cd:,
+                cblt4dj:,
+
+
+            },
+            "304链条2466":{
+                cblt4sl:,
+                cblt4cd:,
+                cblt4dj:,
+
+            },
+            "无":{
+                cblt4sl:0,
+                cblt4cd:0,
+                cblt4dj:0,
+
+            },
+        };
+        //1246移动配重链条型号
+        lt5ModelList={
+            "碳钢链条1246":{
+                cblt5sl:,
+                cblt5cd:,
+                cblt5dj:,
+
+            },
+            "304链条1246":{
+                cblt5sl:,
+                cblt5cd:,
+                cblt5dj:,
+
+            },
+            "无":{
+                cblt5sl:0,
+                cblt5cd:0,
+                cblt5dj:0,
+
+            },
+        };
+        //防风销钉型号
+        xdModelList={
+            "8mm防风销钉":{
+                cbxdxh:,
+                cbxddj:,
+
+            },
+            "9mm防风销钉":{
+                cbxdxh:,
+                cbxddj:,
+
+            },
+            "10mm防风销钉":{
+                cbxdxh:,
+                cbxddj:,
+
+            },
+            "12mm防风销钉":{
+                cbxdxh:,
+                cbxddj:,
+
+            },
+        };
+
+        //轨道
+        gdModelList={
+            'I20b-31':{
+                cbgdxh:"I20b-31",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'I22b-36.5':{
+                cbgdxh:"I22b-36.5",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'I25b-42':{
+                cbgdxh:"I25b-42",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'I28b-47.8':{
+                cbgdxh:"I28b-47.8",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'I32b-57.7':{
+                cbgdxh:"I32b-57.7",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'H150*150-31.1':{
+                cbgdxh:"H150*150-31.1",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'H175*175-40.4':{
+                cbgdxh:"H175*175-40.4",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'H200*200-49.9':{
+                cbgdxh:"H200*200-49.9",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'H250*250-71.8':{
+                cbgdxh:"H250*250-71.8",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'H200*200T-71':{
+                cbgdxh:"H200*200T-71",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'H250*250T-99':{
+                cbgdxh:"H250*250T-99",
+                cbgdcz:"Q235B",
+                cbgddj:,
+            },
+            'PH216*200-84.7':{
+                cbgdxh:"PH216*200-84.7",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH266*250-128.1':{
+                cbgdxh:"PH266*250-128.1",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH200*200-90.7':{
+                cbgdxh:"PH200*200-90.7",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH220*170-82.6':{
+                cbgdxh:"PH220*170-82.6",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH250*200-117.4':{
+                cbgdxh:"PH250*200-117.4",
+
+            },
+            'PH250*250-104.2':{
+                cbgdxh:"PH250*250-104.2",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH250*250-113.3':{
+                cbgdxh:"PH250*250-113.3",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH250*250-138.8':{
+                cbgdxh:"PH250*250-138.8",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH300*250-146.6':{
+                cbgdxh:"PH300*250-146.6",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            'PH300*300-168.1':{
+                cbgdxh:"PH300*300-168.1",
+                cbgdcz:"Q355B",
+                cbgddj:,
+            },
+            "其它":{
+                cbgdxh:" ",
+                cbgdcz:" ",
+                cbgddj:" ",
+            }
+        };
+        //埋板
+        mbModelList={
+            "350*350*12":{
+                cbmbxh:,
+                cbmbdj:,
+                cbmbdjdw:,
+                cbmblyl:,
+
+            },
+            "400*400*16":{
+                cbmbxh:,
+                cbmbdj:,
+                cbmbdjdw:,
+                cbmblyl:,
+
+            },
+            "450*450*16":{
+                cbmbxh:,
+                cbmbdj:,
+                cbmbdjdw:,
+                cbmblyl:,
+
+            },
+            "500*500*20":{
+                cbmbxh:,
+                cbmbdj:,
+                cbmbdjdw:,
+                cbmblyl:,
+            },
+            "550*550*20":{
+                cbmbxh:,
+                cbmbdj:,
+                cbmbdjdw:,
+                cbmblyl:,
+            },
+            "其它":{
+                cbmbxh:,
+                cbmbdj:,
+                cbmbdjdw:,
+                cbmblyl:,
+
+            },
+        };
+        //地脚螺栓
+        djlsModelList={
+            "M20碳钢":{
+                cbdjlsxh:,
+                cbdjlscz:,
+                cbdjlsdj:,
+
+            },
+            "M24碳钢":{
+                cbdjlsxh:,
+                cbdjlscz:,
+                cbdjlsdj:,
+
+            },
+            "M30碳钢":{
+                cbdjlsxh:,
+                cbdjlscz:,
+                cbdjlsdj:,
+
+            },
+            "M20不锈钢304":{
+                cbdjlsxh:,
+                cbdjlscz:,
+                cbdjlsdj:,
+
+            },
+            "M20不锈钢316":{
+                cbdjlsxh:,
+                cbdjlscz:,
+                cbdjlsdj:,
+
+            },
+            "M24不锈钢316":{
+                cbdjlsxh:,
+                cbdjlscz:,
+                cbdjlsdj:,
+            },
+            "无":{
+                cbdjlsxh:'无',
+                cbdjlscz:'无',
+                cbdjlsdj:0,
+            },
+        };
+        //GRU检修平台
+        grujxModelList={
+            "GRU285检修平台":{
+                cbgrujxmc:,
+                cbgrujxsl:,
+            },
+            "GRU295检修平台":{
+                cbgrujxmc:,
+                cbgrujxsl:,
+
+            },
+            "GRU313检修平台":{
+                cbgrujxmc:,
+                cbgrujxsl:,
+
+            },
+            "无":{
+                cbgrujxmc:'无',
+                cbgrujxsl:0,
+
+            },
+        };
+        //起升机构检修平台
+        qsjgjxModelList={
+            "105起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+            },
+            "145起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+
+            },
+            "175起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+            },
+            "275起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+            },
+            "185起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+
+            },
+            "285起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+            },
+            "385起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+
+            },
+            "295起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+
+            },
+            "495起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+
+            },
+            "313起升机构检修平台":{
+                cbqsjgjxmc:,
+                cbqsjgjxsl:,
+            },
+            "无":{
+                cbqsjgjxmc:'无',
+                cbqsjgjxsl:0,
+
+            },
+
+        };
+        //伸缩机构检修平台
+        ssjgjxModelList={
+            "6模数2.78伸缩机构检修平台":{
+                cbssjgjxmc:,
+                cbssjgjxsl:,
+            },
+            "6模数1.7伸缩机构检修平台":{
+                cbssjgjxmc:,
+                cbssjgjxsl:,
+            },
+            "8模数1.7伸缩机构检修平台":{
+                cbssjgjxmc:,
+                cbssjgjxsl:,
+
+            },
+            "无":{
+                cbssjgjxmc:'无',
+                cbssjgjxsl:0,
+
+            },
+        };
+        //木方
+        mfModelList={
+            "国内":{
+                cbmftj:,
+                cbmfdj:,
+                cbmfdjdw:,
+            },
+            "国外(EGS、MHE等)":{
+                cbmftj:,
+                cbmfdj:,
+                cbmfdjdw:,
+            },
+        };
+        //运输城市
+        yscsModelList={
+            "上海":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+            },
+            "苏州":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "南京":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "广州":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "深圳":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "昆明":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "重庆":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "武汉":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:
+            },
+            "天津":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "北京":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+            "长春":{
+                cbc1dj:,
+                cbc2dj:,
+                cbc3dj:,
+                cbc4dj:,
+
+            },
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+        $(document).ready(function () {
+            InitNav(7)
+            $('#SingleJib').addClass('o-sub-cur');
+        })
+
+        function janyan() {
+            $.ajax({
+                url: "SingleJib/jy",
+                type: "post",
+                data: $("form").serialize(),
+                async: false,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    Object.keys(data).forEach(function (id) {
+                        $("#" + id).text(data[id]);
+                    })
+                }
+            })
+            return false;
+        }
+
+        function showImage(form,element) {
+            // 先获取用户上传的文件对象
+            var fileObj = form.files[0];
+            if(fileObj.size>1048576){
+                alert("上传文件大于1M，请重新选择");
+                form.value="";
+                return false;
+            }
+            // 生成一个文件读取的内置对象
+            var fileReader = new FileReader();
+            // 将文件对象传递给内置对象
+            fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+            // 将读取出文件对象替换到img标签
+            fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+                $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
+<br/><br/>
+<div class="main">
+    <iframe style="display: none" name="stop" src="about:blank"></iframe>
+    <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">单臂机吊臂校核计算书</div>
+        <!- 封面内容 ->
+        <div style="width:600px;">
+            <table>
+                <tr>
+                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:40%;">
+                        <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                        <datalist id="txtBatchId">
+                        </datalist>
+                    </td>
+                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                    <script>
+                        $('input[name="getData"]').click(function () {
+                                var url = '/SingleJib/getData';
+                                var id = $('input[name="sjht"]').val();
+                                getData.geteDataFromDB(url, id)
+                            }
+                        )
+                    </script>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                </tr>
+                <tr>
+                    <td style="width:26%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:50%;">内容</td>
+                </tr>
+                <tr>
+                    <td ><b>本机计算书编号</b></td>
+                    <td ><input type="text" name="no"/></td>
+                </tr>
+                <tr>
+                    <td ><b>本机版本</b></td>
+                    <td ><input type="text" name="ver" /></td>
+                </tr>
+                <tr>
+                    <td ><b>项目名称</b></td>
+                    <td ><input type="text" name="xmmc" /></td>
+                </tr>
+                <tr>
+                    <td ><b>主机型号</b></td>
+                    <td ><input type="text" name="zjxh" /></td>
+                </tr>
+                <tr>
+                    <td ><b>计算人</b></td>
+                    <td ><input type="text" name="jsr" /></td>
+                </tr>
+                <tr>
+                    <td ><b>审核人</b></td>
+                    <td ><input type="text" name="shr" /></td>
+                </tr>
+                <tr>
+                    <td ><b>批准人</b></td>
+                    <td ><input type="text" name="pzr" /></td>
+                </tr>
+                <tr>
+                    <td ><b>计算日期</b></td>
+                    <td ><input type="text" name="date" /></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:600px;">
+            <table>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.8模块选择</b></td>
+                </tr>
+                <tr>
+                    <td>吊船型号选择</td>
+                    <td colspan="4">
+                        <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="2.0米铝吊船(PT(250_2))">2.0米铝吊船(PT(250_2))</option>
+                            <option value="2.5米铝吊船(PT(250_2.5))">2.5米铝吊船(PT(250_2.5))</option>
+                            <option value="3.0米铝吊船(PT(250_3))">3.0米铝吊船(PT(250_3))</option>
+                            <option value="2.0米折弯吊船(ZWDC(250_2))">2.0米折弯吊船(ZWDC(250_2))</option>
+                            <option value="2.5米折弯吊船(ZWDC(250_2.5))">2.5米折弯吊船(ZWDC(250_2.5))</option>
+                            <option value="3.0米折弯吊船(ZWDC(250_3))">3.0米折弯吊船(ZWDC(250_3))</option>
+                            <option value="其它">其它</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>臂头型号选择</td>
+                    <td colspan="4">
+                        <select name="btModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>
+                            <option value="YJBT1800Z(1.8米羊角臂头-中臂头)">YJBT1800Z(1.8米羊角臂头-中臂头)</option>
+                            <option value="YJBT1800D(1.8米羊角臂头-低臂头)">YJBT1800D(1.8米羊角臂头-低臂头)</option>
+                            <option value="YJBT2300G(2.3米羊角臂头-高臂头)">YJBT2300G(2.3米羊角臂头-高臂头)</option>
+                            <option value="YJBT2300Z(2.3米羊角臂头-中臂头)">YJBT2300Z(2.3米羊角臂头-中臂头)</option>
+                            <option value="YJBT2300D(2.3米羊角臂头-低臂头)">YJBT2300D(2.3米羊角臂头-低臂头)</option>
+                            <option value="YJBT2800G(2.8米羊角臂头-高臂头)">YJBT2800G(2.8米羊角臂头-高臂头)</option>
+                            <option value="YJBT2800Z(2.8米羊角臂头-中臂头)">YJBT2800Z(2.8米羊角臂头-中臂头)</option>
+                            <option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>
+                            <option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>
+                            <option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>
+                            <option value="其它">其它</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>伸缩机构型号选择</td>
+                    <td colspan="4">
+                        <select name="ssjgModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GRU型号选择</td>
+                    <td colspan="4">
+                        <select name="gruModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>起升机构型号选择</td>
+                    <td colspan="4">
+                        <select name="qsjgModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>收揽器型号选择</td>
+                    <td colspan="4">
+                        <select name="slqModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>大回转机构型号选择</td>
+                    <td colspan="4">
+                        <select name="dhzjgModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>运行机构型号选择</td>
+                    <td colspan="4">
+                        <select name="yxjgModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>夹轨器型号选择</td>
+                    <td colspan="4">
+                        <select name="jgqModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="Φ7">Φ7</option>
+
+                        </select>
+                    </td>
+                </tr>
+             </table>
+        </div>
+
+        <div style="width:1220px;">
+            <table>
+                <tr>
+                    <td colspan="7" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.8模块材料成本</b></td>
+                </tr>
+                <tr>
+                    <td style="width:6%;padding:10px 0;;">序号</td>
+                    <td style="width:10%;">部件类别</td>
+                    <td style="width:30%;">图号</td>
+                    <td style="width:30%;">名称</td>
+                    <td style="width:6%;">数量</td>
+                    <td style="width:9%;">单价(元/件)</td>
+                    <td style="width:9%;">总价(万元)</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂钢材牌号</b></td>
+                    <td ><p><i> </i></p></td>
+                    <td ><input type="text" name="dbgcph"/></td>
+                    <td > </td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂材料屈服强度</b></td>
+                    <td ><p><i>σ<sub>s</sub></i></p></td>
+                    <td ><input type="text" name="dbss"/></td>
+                    <td >N/mm<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂截面高度</b></td>
+                    <td ><p><i>h</i></p></td>
+                    <td ><input type="text" name="dbjh"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂截面宽度</b></td>
+                    <td ><p><i>b</i></p></td>
+                    <td ><input type="text" name="dbjb"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂截面厚度</b></td>
+                    <td ><p><i>e</i></p></td>
+                    <td ><input type="text" name="dbje"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂最危险截面X向抗弯模量(螺栓孔影响)</b></td>
+                    <td ><p><i>W<sub>x</sub></i></p></td>
+                    <td ><input type="text" name="dbwxls"/></td>
+                    <td >mm<sup>3</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂最危险截面Y向抗弯模量(螺栓孔影响)</b></td>
+                    <td ><p><i>W<sub>y</sub></i></p></td>
+                    <td ><input type="text" name="dbwyls"/></td>
+                    <td >mm<sup>3</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂最危险截面X向惯性矩(螺栓孔影响)</b></td>
+                    <td ><p><i>I<sub>x</sub></i></p></td>
+                    <td ><input type="text" name="dbixls"/></td>
+                    <td >mm<sup>4</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂前支撑点前部长度</b></td>
+                    <td ><p><i>L<sub>m</sub></i></p></td>
+                    <td ><input type="text" name="dblm"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂前后支撑点间距</b></td>
+                    <td ><p><i>L<sub>l</sub></i></p></td>
+                    <td ><input type="text" name="dbll"/></td>
+                    <td >mm</td>
+                </tr>
+             </table>
+        </div>
+
+        <div style="width:400px;">
+            <table>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.吊臂前支撑点前部载荷</b></td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img src="/image/Tensile/dbjbtu4.png" width="400px" id="dbjbtu4" name="dbjbtu4" >
+                            <input type="hidden" value="tu_dbjbtu4.png"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">吊臂前支撑点前部载荷图</td>
+                    <td colspan="4"><input class="image" type="file" name="dbjbtu4" accept="image/*"
+                                           oninput="showImage(this,'dbjbtu4')"/></td>
+                </tr>
+
+                <tr>
+                    <td style="width:104px;padding:10px 0;"><b>名称</b></td>
+                    <td style="width:68px;">符号</td>
+                    <td style="width:160px;">数值</td>
+                    <td style="width:68px;">单位</td>
+                </tr>
+                <tr>
+                    <td>吊船自重</td>
+                    <td><p><i>S<sub>wp</sub></i></p></td>
+                    <td><input type='text' name="swp"/></td>
+                    <td>kg</td>
+                </tr>
+
+                <tr>
+                    <td>吊船额定载重量</td>
+                    <td><p><i>R<sub>1</sub></i></p></td>
+                    <td><input type='text' name="r1"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>吊船钢丝绳自重</td>
+                    <td><p><i>M<sub>wr</sub></i></p></td>
+                    <td><input type='text' name="mwr"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>防风背包自重</td>
+                    <td><p><i>m<sub>ffbb</sub></i></p></td>
+                    <td><input type='text' name="mffbb"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>总悬挂载荷</td>
+                    <td><p><i>T<sub>sl</sub></i></p></td>
+                    <td><input type='text' name="tsl"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构额定载重量</td>
+                    <td><p><i>H<sub>wll</sub></i></p></td>
+                    <td><input type='text' name="hwll"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构钢丝绳自重</td>
+                    <td><p><i>H<sub>sw</sub></i></p></td>
+                    <td><input type='text' name="hsw"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构总悬挂载荷</td>
+                    <td><p><i>T<sub>shl</sub></i></p></td>
+                    <td><input type='text' name="tshl"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>臂头自重</td>
+                    <td><p><i>m<sub>1</sub></i></p></td>
+                    <td><input type='text' name="m1"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构导绳架自重</td>
+                    <td><p><i>m<sub>2</sub></i></p></td>
+                    <td><input type='text' name="m2"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>安全绳自重</td>
+                    <td><p><i>m<sub>3</sub></i></p></td>
+                    <td><input type='text' name="m3"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>吊臂前支撑点前部自重</td>
+                    <td><p><i>m<sub>4</sub></i></p></td>
+                    <td><input type='text' name="m4jbcq"/></td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>物料起升机构装置自重</td>
+                    <td><p><i>m<sub>5</sub></i></p></td>
+                    <td><input type='text' name="m5db"/></td>
+                    <td>kg</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width:400px;">
+            <table>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.重心至吊臂前支撑点距离</b></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img src="/image/Tensile/dbjbtu6.png" width="400px" id="dbjbtu6" name="dbjbtu6" >
+                            <input type="hidden" value="tu_dbjbtu6.png"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">吊臂重心至吊臂前支撑点距离图</td>
+                    <td colspan="4"><input class="image" type="file" name="dbjbtu6" accept="image/*"
+                                           oninput="showImage(this,'dbjbtu6')"/></td>
+                </tr>
+                <tr>
+                    <td style="width:104px;padding:10px 0;"><b>名称</b></td>
+                    <td style="width:68px;">符号</td>
+                    <td style="width:160px;">数值</td>
+                    <td style="width:68px;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>总悬挂载荷重心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>slc</sub></i></p></td>
+                    <td ><input type="text" name="lslc" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构总悬挂载荷重心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>shlc</sub></i></p></td>
+                    <td ><input type="text" name="lshlc" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>臂头重心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>c1</sub></i></p></td>
+                    <td ><input type="text" name="lc1" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构导绳架重心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>c2</sub></i></p></td>
+                    <td ><input type="text" name="lc2" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>安全绳重心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>c3</sub></i></p></td>
+                    <td ><input type="text" name="lc3" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂前支撑点前部自重重心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>c4</sub></i></p></td>
+                    <td ><input type="text" name="lc4" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构装置重心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>c5</sub></i></p></td>
+                    <td ><input type="text" name="lc5" /></td>
+                    <td >m</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width:400px;">
+            <table>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.迎风面积</b></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img src="/image/Tensile/dbjbtu5.png" width="400px" id="dbjbtu5" name="dbjbtu5" >
+                            <input type="hidden" value="tu_dbjbtu5.png"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">吊臂风载荷示意图</td>
+                    <td colspan="4"><input class="image" type="file" name="dbjbtu5" accept="image/*"
+                                           oninput="showImage(this,'dbjbtu5')"/></td>
+                </tr>
+                <tr>
+                    <td style="width:104px;padding:10px 0;"><b>名称</b></td>
+                    <td style="width:68px;">符号</td>
+                    <td style="width:160px;">数值</td>
+                    <td style="width:68px;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>总悬挂载荷迎风面积</b></td>
+                    <td ><p><i>A<sub>sl</sub></i></p></td>
+                    <td ><input type="text" name="aslcx" /></td>
+                    <td >m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构总悬挂载荷迎风面积</b></td>
+                    <td ><p><i>A<sub>shl</sub></i></p></td>
+                    <td ><input type="text" name="ashlcx" /></td>
+                    <td >m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>臂头迎风面积</b></td>
+                    <td ><p><i>A<sub>1</sub></i></p></td>
+                    <td ><input type="text" name="acx1" /></td>
+                    <td >m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构导绳架迎风面积</b></td>
+                    <td ><p><i>A<sub>2</sub></i></p></td>
+                    <td ><input type="text" name="acx2" /></td>
+                    <td >m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>安全绳迎风面积</b></td>
+                    <td ><p><i>A<sub>3</sub></i></p></td>
+                    <td ><input type="text" name="acx3" /></td>
+                    <td >m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂前支撑点前部自重迎风面积</b></td>
+                    <td ><p><i>A<sub>4</sub></i></p></td>
+                    <td ><input type="text" name="acx4cq" /></td>
+                    <td >m<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构装置迎风面积</b></td>
+                    <td ><p><i>A<sub>5</sub></i></p></td>
+                    <td ><input type="text" name="acx5db" /></td>
+                    <td >m<sup>2</sup></td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width:400px;">
+            <table>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.面心至吊臂前支撑点距离</b></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img src="/image/Tensile/dbjbtu7.png" width="400px" id="dbjbtu7" name="dbjbtu7" >
+                            <input type="hidden" value="tu_dbjbtu7.png"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">吊臂面心至吊臂前支撑点距离图</td>
+                    <td colspan="4"><input class="image" type="file" name="dbjbtu7" accept="image/*"
+                                           oninput="showImage(this,'dbjbtu7')"/></td>
+                </tr>
+                <tr>
+                    <td style="width:104px;padding:10px 0;"><b>名称</b></td>
+                    <td style="width:68px;">符号</td>
+                    <td style="width:160px;">数值</td>
+                    <td style="width:68px;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>总悬挂载荷面心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>slx</sub></i></p></td>
+                    <td ><input type="text" name="lslx" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构总悬挂载荷面心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>shlx</sub></i></p></td>
+                    <td ><input type="text" name="lshlx" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>臂头面心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>x1</sub></i></p></td>
+                    <td ><input type="text" name="lx1" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构导绳架面心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>x2</sub></i></p></td>
+                    <td ><input type="text" name="lx2" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>安全绳面心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>x3</sub></i></p></td>
+                    <td ><input type="text" name="lx3" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂前支撑点前部自重面心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>x4</sub></i></p></td>
+                    <td ><input type="text" name="lx4" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构装置面心至吊臂前支撑点距离</b></td>
+                    <td ><p><i>L<sub>x5</sub></i></p></td>
+                    <td ><input type="text" name="lx5" /></td>
+                    <td >m</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width:400px;">
+            <table>
+                <tr>
+                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.重心至吊臂前端法兰距离</b></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img src="/image/Tensile/dbjbtu8.png" width="400px" id="dbjbtu8" name="dbjbtu8" >
+                            <input type="hidden" value="tu_dbjbtu8.png"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0">吊臂外部载荷重心至吊臂前端法兰距离图</td>
+                    <td colspan="4"><input class="image" type="file" name="dbjbtu8" accept="image/*"
+                                           oninput="showImage(this,'dbjbtu8')"/></td>
+                </tr>
+                <tr>
+                    <td style="width:104px;padding:10px 0;"><b>名称</b></td>
+                    <td style="width:68px;">符号</td>
+                    <td style="width:160px;">数值</td>
+                    <td style="width:68px;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>总悬挂载荷重心至吊臂前端法兰距离</b></td>
+                    <td ><p><i>L<sub>slwq</sub></i></p></td>
+                    <td ><input type="text" name="lslwq" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构总悬挂载荷重心至吊臂前端法兰距离</b></td>
+                    <td ><p><i>L<sub>shlwq</sub></i></p></td>
+                    <td ><input type="text" name="lshlwq" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>臂头重心至吊臂前端法兰距离</b></td>
+                    <td ><p><i>L<sub>wq1</sub></i></p></td>
+                    <td ><input type="text" name="lwq1" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构导绳架重心至吊臂前端法兰距离</b></td>
+                    <td ><p><i>L<sub>wq2</sub></i></p></td>
+                    <td ><input type="text" name="lwq2" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>安全绳重心至吊臂前端法兰距离</b></td>
+                    <td ><p><i>L<sub>wq3</sub></i></p></td>
+                    <td ><input type="text" name="lwq3" /></td>
+                    <td >m</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="display: none">
+            <input type="text" name="dcgssp" />
+            <input type="text" name="grugssp" />
+            <input type="text" name="m5" />
+            <input type="text" name="acx5" />
+            <input type="text" name="gruqhxs" />
+            <input type="text" name="lbtzh" />
+            <input type="text" name="ldcgh" />
+            <input type="text" name="ldslzh" />
+            <input type="text" name="mbmj" />
+            <input type="text" name="ldbb" />
+            <input type="text" name="ldbbz" />
+            <input type="text" name="mdbb" />
+            <input type="text" name="adbb" />
+            <input type="text" name="dbmjb" />
+            <input type="text" name="dbwx" />
+            <input type="text" name="dbwy" />
+            <input type="text" name="dbix" />
+            <input type="text" name="dbjbxh" />
+        </div>
+        <input type="hidden" name="pdfType"/>
+    </form>
+
+        <div class="navbox">
+            <div style="width:460px;height:520px; font-size: 14px   ;">
+                <table id="pdf3tb">
+                    <tr>
+                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+                    </tr>
+                    <tr>
+                        <td style="width:25%;"><b>名称</b></td>
+                        <td style="width:25%;"><b>标准值</b></td>
+                        <td style="width:25%;"><b>计算值</b></td>
+                        <td style="width:25%;"><b>是否满足</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>吊臂强度校核</b></td>
+                        <!--<td id="ssqd"></td>-->
+                        <!--<td id="smax"></td>-->
+                        <td><p><span id="ssqd"></span>N/mm<sup>2</sup></p></td>
+                        <td><p><span id="smax"></span>N/mm<sup>2</sup></p></td>
+                        <td id="dbm1"></td>
+                    </tr>
+                    <tr>
+                        <td><b>吊臂挠度校核</b></td>
+                        <!--<td id="nd"></td>-->
+                        <!--<td id="f"></td>-->
+                        <td><p><span id="nd"></span>mm</p></td>
+                        <td><p><span id="f"></span>mm</p></td>
+                        <td id="dbm2"></td>
+                    </tr>
+                 </table>
+                <div style="margin: 0 150px 0;">
+                    <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttonbox">
+        <input type="submit" form="form1" class="button"  value="导出单臂吊臂pdf" onclick="$('form').attr('action','SingleJib/getPDF');
+                                                                                            isCheck(false);changeType('Calculation')"/>
+        <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','SingleJib/getPDF');
+                                                                                            isCheck(true);changeType('Check')"/>
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+    </div>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+        dbjbxh:function(){
+            return dbjbModelList[ dbjbModel ]['dbjbxh'];
+        },
+        dcgssp:function(){
+            return dcgssModelList[ dcgssModel ]['dcgssp'];
+        },
+        grugssp:function(){
+            return gruModelList[ gruModel ]['grugssp'];
+        },
+        m5:function(){
+            return gruModelList[ gruModel ]['m5'];
+        },
+        acx5:function(){
+            return gruModelList[ gruModel ]['acx5'];
+        },
+        gruqhxs:function(){
+            return gruazModelList[ gruazModel ]['gruqhxs'];
+        },
+        lbtzh:function(){
+            return btModelList[ btModel ]['lbtzh'];
+        },
+        ldcgh:function(){
+            return btModelList[ btModel ]['ldcgh'];
+        },
+        ldslzh:function(){
+            return btModelList[ btModel ]['ldslzh'];
+        },
+        mbmj:function(){
+            return dbjbModelList[ dbjbModel ]['mbmj'];
+        },
+        ldbb:function(){
+            return dbjbModelList[ dbjbModel ]['ldbb'];
+        },
+        ldbbz:function(){
+            return dbjbModelList[ dbjbModel ]['ldbbz'];
+        },
+        mdbb:function(){
+            return dbjbModelList[ dbjbModel ]['mdbb'];
+        },
+        adbb:function(){
+            return dbjbModelList[ dbjbModel ]['adbb'];
+        },
+        dbmjb:function(){
+            return dbjbModelList[ dbjbModel ]['dbmjb'];
+        },
+        dbwx:function(){
+            return dbjbModelList[ dbjbModel ]['dbwx'];
+        },
+        dbwy:function(){
+            return dbjbModelList[ dbjbModel ]['dbwy'];
+        },
+        dbix:function(){
+            return dbjbModelList[ dbjbModel ]['dbix'];
+        },
+        dbgcph:function(){
+            return ' Q355B ' ;
+        },
+        dbss:function(){
+            return 355 ;
+        },
+        dbjh:function(){
+            return dbjbModelList[ dbjbModel ]['dbjh'];
+        },
+        dbjb:function(){
+            return dbjbModelList[ dbjbModel ]['dbjb'];
+        },
+        dbje:function(){
+            return dbjbModelList[ dbjbModel ]['dbje'];
+        },
+        dbll:function(){
+            return dbjbModelList[ dbjbModel ]['dbll'];
+        },
+        dbwxls:function(){
+            return dbwx * ( 1 - 0.05 * nlsk ) ;
+        },
+        dbwyls:function(){
+            return dbwy * ( 1 - 0.05 * nlsk ) ;
+        },
+        dbixls:function(){
+            return dbix * ( 1 - 0.05 * nlsk ) ;
+        },
+        dblm:function(){
+            return ( lbd - ldcgh - dbll / 2000 ) * 1000 ;
+        },
+        swp:function(){
+            return dcModelList[ dcModel ]['swp'];
+        },
+        r1:function(){
+            return dcModelList[ dcModel ]['r1'];
+        },
+        mwr:function(){
+            return h * dcgssp * 4 ;
+        },
+        mffbb:function(){
+            return ffbbModelList[ ffbbModel ]['mffbb'];
+        },
+        tsl:function (){
+            return swp + r1 + mwr + mffbb ;
+        },
+        hwll:function(){
+            return gruModelList[ gruModel ]['hwll'];
+        },
+        hsw:function(){
+            return h * grugssp ;
+        },
+        tshl:function(){
+            return hwll + hsw ;
+        },
+        m1:function(){
+            return btModelList[ btModel ]['m1'];
+        },
+        m2:function(){
+            return gruModelList[ gruModel ]['m2'];
+        },
+        m3:function(){
+            return  h * 0.203;
+        },
+        m4jbcq:function(){
+            return  mdbb + ( dblm - ldbbz ) * mbmj / 1000 ;
+        },
+        m5db:function(){
+            return m5 * gruqhxs ;
+        },
+
+
+        lslc:function(){
+            return lbd - dbll / 2000 ;
+        },
+        lshlc:function(){
+            return dblm / 1000 + lbtzh ;
+        },
+        lc1:function(){
+            return lshlc ;
+        },
+        lc2:function(){
+            if( m2 == 0 ){
+               return 0 ;
+            }else {
+                return dblm / 1000 + ldslzh ;
+            }
+        },
+        lc3:function(){
+            return lshlc ;
+        },
+        lc4:function(){
+            return ( mdbb * ( dblm - ldbb ) / 1000 + ( dblm - ldbbz ) * mbmj * ( dblm - ldbbz ) / 2000000 ) / m4jbcq ;
+        },
+        lc5:function(){
+            if( m5db == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        aslcx:function(){
+            return dcModelList[ dcModel ]['aslcx'];
+        },
+        acx1:function(){
+            return btModelList[ btModel ]['acx1'];
+        },
+        acx2:function(){
+            return gruModelList[ gruModel ]['acx2'];
+        },
+        acx3:function(){
+            return h * 0.018 ;
+        },
+        acx4cq:function(){
+            return adbb + dbjh * ( dblm - ldbbz ) / 1000000 ;
+        },
+        acx5db:function(){
+            return acx5 * gruqhxs ;
+        },
+
+        lslx:function(){
+            return lslc ;
+        },
+        lshlx:function(){
+            return lshlc ;
+        },
+        lx1:function(){
+            return lc1 ;
+        },
+        lx2:function(){
+            return lc2 ;
+        },
+        lx3:function(){
+            return lc3 ;
+        },
+        lx4:function(){
+            return lc4 ;
+        },
+        lx5:function(){
+            return lc5 ;
+        },
+
+        lslwq:function(){
+            return lslc - dblm / 1000 ;
+        },
+        lshlwq:function(){
+            return lshlc - dblm / 1000 ;
+        },
+        lwq1:function(){
+            return lc1 - dblm / 1000 ;
+        },
+        lwq2:function(){
+            if( m2 == 0 ){
+                return 0 ;
+            }else {
+                return lc2 - dblm / 1000 ;
+            }
+        },
+        lwq3:function(){
+            return lc3 - dblm / 1000 ;
+        },
+    };
+    data.init(calculateFunction);
+    imgDaefultData={
+        dbjbtu1:{inputvalue:"dbjbtu1.png"},
+        dbjbtu3:{inputvalue:"dbjbtu3.png"},
+        dbjbtu4:{inputvalue:"dbjbtu4.png"},
+        dbjbtu5:{inputvalue:"dbjbtu5.png"},
+        dbjbtu6:{inputvalue:"dbjbtu6.png"},
+        dbjbtu7:{inputvalue:"dbjbtu7.png"},
+        dbjbtu8:{inputvalue:"dbjbtu8.png"},
+    }
+    getData.dataToImage(imgDaefultData);
+</script>
+</body>
+</html>
