@@ -102,7 +102,6 @@
 
         datacalculate: function (e,isGetByDB) {
             var calList;
-            var calObjList = {};
             calList = e.calList;
             for (var temp in this.datalist) {
                 var o = this.datalist[temp];

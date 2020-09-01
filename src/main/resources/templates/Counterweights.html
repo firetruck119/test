@@ -108,13 +108,12 @@
             },
         }
         ydpzModelList= {
-                "是": {
-                    ydpz: "是",
-                },
-                "否": {
-                    ydpz: "否",
-                },
-            }
+            "是": {
+                ydpz: "是",
+            },
+            "否": {
+                ydpz: "否",
+            },
         };
     </script>
 
@@ -517,7 +516,7 @@
                     <td ><input type="text" name="tshl"/></td>
                     <td >kg</td>
                 </tr>
-                        <tr><td colspan="5">gru285额定载荷600<br></br>gru295额定载荷750<br></br>gru313额定载荷1000</td></tr>
+                        <tr><td colspan="5" style="line-height: 20px">gru285额定载荷600<br/>gru295额定载荷750<br/>gru313额定载荷1000</td></tr>
                 <tr>
                     <td ><b>臂头自重</b></td>
                     <td ><p><i>m1</i></p></td>
@@ -867,56 +866,47 @@
                      <td ><input type="text" name="m11"/></td>
                      <td >kg</td>
                  </tr>
+                 <tr >
+                     <td style="line-height: 40px;"><b>配重计算质量</b></td>
+                     <td ><p><i>m11s</i></p></td>
+                     <td id="m11s" ></td>
+                     <td >kg</td>
+                 </tr>
             </table>
             <input style="background-color: #ccc;display: block;width:140px;height: 50px;margin: 5px;border-radius:25px;margin-left: -180px;margin-top: -50px" class="button" type="submit" value="配重计算值" onclick="return janyan()"/>
         </div>
     </form>
 
-    <div class="navbox">
-        <div style="width:460px;height:460px; font-size: 14px   ;">
-            <table id="pdf3tb">
-                <tr>
-                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
-                </tr>
-                <tr>
-                    <td style="width:40%;"><b>名称</b></td>
-                    <td style="width:40%;"><b>数值</b></td>
-                    <td style="width:20%;"><b>单位</b></td>
-                </tr>
-                <tr>
-                    <td><b>配重计算质量</b></td>
-                    <td id="m11s"></td>
-                    <td><b>kg</b></td>
-                </tr>
-                <tr>
-                    <td><b>配重实际取值</b></td>
-                    <td id="m11"></td>
-                    <td><b>kg</b></td>
-                </tr>
 
-                <tr>
-                    <td><b>静载试验状态是否有反拔力</b></td>
-                    <td id="pzyzy1"></td>
-                    <td><b> </b></td>
-                </tr>
-                <tr>
-                    <td><b>停机状态是否有反拔力</b></td>
-                    <td id="pzyzy2"></td>
-                    <td><b> </b></td>
-                </tr>
-                <tr>
-                   <td><b>配重是否满足要求</b></td>
-                   <td id="pzyzm"></td>
-                   <td><b></b></td>
-                </tr>
-            </table>
-            <div style="margin: 0 50px 0;">
-                <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
-            </div>
+</div>
+<div class="navbox" style="position:relative;bottom:300px;top:auto;height:100px">
+    <div style="width:460px;height:460px; font-size: 14px   ;">
+        <table id="pdf3tb">
+            <tr>
+                <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+            </tr>
+            <tr>
+                <td style="width:40%;"><b>名称</b></td>
+                <td style="width:40%;"><b>数值</b></td>
+            </tr>
+            <tr>
+                <td><b>静载试验状态是否有反拔力</b></td>
+                <td id="pzyzy1"></td>
+            </tr>
+            <tr>
+                <td><b>停机状态是否有反拔力</b></td>
+                <td id="pzyzy2"></td>
+            </tr>
+            <tr>
+                <td><b>配重是否满足要求</b></td>
+                <td id="pzyzm"></td>
+            </tr>
+        </table>
+        <div style="margin: 0 50px 0;">
+            <input type="submit"  class="button" type="submit" value="校验" onclick="return janyan()"/>
         </div>
     </div>
 </div>
-
     <div class="buttonbox">
         <input type="submit" form="form1" class="button"  value="导出配重计算书pdf" onclick="$('form').attr('action','Counterweights/getPDF');
                                                                                             isCheck(false);changeType('PeiZhong')"/>
@@ -935,44 +925,45 @@
         e = $('input[name=pdfType]');
         e.val(l);
     }
+
     $('[name=lzType]').change((e)=> {
         var $element = $(e.target);
-    var val = $element.val();
-    if (val.indexOf("仰臂固定立柱") <= -1) {
-        $('[name=dbyj]').attr("readonly", true);
-        data.datalist["dbyj"].color = "#bbb";
-    } else {
-        $('[name=dbyj]').attr("readonly", false);
-        data.datalist["dbyj"].color = "#FFF";
-    }
-    if (val != '1+1顶升立柱数据库') {
-        $('[name=llzgdn],[name=llzgdw]').attr("readonly", true);
-        data.datalist["llzgdn"].color = "#bbb";
-        data.datalist["llzgdw"].color = "#bbb";
-    } else {
-        $('[name=llzgdn],[name=llzgdw]').attr("readonly", false);
-        data.datalist["llzgdn"].color = "#FFF";
-        data.datalist["llzgdw"].color = "#FFF";
-    }
-    if (val.indexOf("1+1顶升立柱数据库") > -1) {
-        $('[name=llzgd]').attr("readonly", true);
-        data.datalist["llzgd"].color = "#bbb";
-    } else {
-        $('[name=dbyj]').attr("readonly", false);
-        data.datalist["llzgd"].color = "#FFF";
-    };
+        var val = $element.val();
+        if (val.indexOf("仰臂固定立柱") <= -1) {
+            $('[name=dbyj]').attr("readonly", true);
+            data.datalist["dbyj"].color = "#bbb";
+        } else {
+            $('[name=dbyj]').attr("readonly", false);
+            data.datalist["dbyj"].color = "#FFF";
+        }
+        if (val != '1+1顶升立柱数据库') {
+            $('[name=llzgdn],[name=llzgdw]').attr("readonly", true);
+            data.datalist["llzgdn"].color = "#bbb";
+            data.datalist["llzgdw"].color = "#bbb";
+        } else {
+            $('[name=llzgdn],[name=llzgdw]').attr("readonly", false);
+            data.datalist["llzgdn"].color = "#FFF";
+            data.datalist["llzgdw"].color = "#FFF";
+        }
+        if (val.indexOf("1+1顶升立柱数据库") > -1) {
+            $('[name=llzgd]').attr("readonly", true);
+            data.datalist["llzgd"].color = "#bbb";
+        } else {
+            $('[name=dbyj]').attr("readonly", false);
+            data.datalist["llzgd"].color = "#FFF";
+        };
     })
 
     $('[name=ydpzModel]').change((e)=>{
         var $element=$(e.target);
-    var val=$element.val();
-    if(val.indexOf("是")<=-1){
-        $('[name=lbpx]').attr("readonly",true);
-        data.datalist["lbpx"].color="#bbb";
-    }else{
-        $('[name=lbpx]').attr("readonly",false);
-        data.datalist["lbpx"].color="#FFF";
-    }
+        var val=$element.val();
+        if(val.indexOf("是")<=-1){
+            $('[name=lbpx]').attr("readonly",true);
+            data.datalist["lbpx"].color="#bbb";
+        }else{
+            $('[name=lbpx]').attr("readonly",false);
+            data.datalist["lbpx"].color="#FFF";
+        }
     })
     var calculateFunction={
         mwr:function() {
@@ -1008,9 +999,6 @@
         },
         ldbm:()=>{
             return lxtm + ldjm ;
-        },
-         ydpz:function(){
-             return ydpzModelList[ ydpzModel ]['ydpz'];
         },
         m4:()=>{
             var data;
@@ -1228,6 +1216,22 @@
     getTable("trippingModel","yxjgxz");
     getTable("dcgssModel","dcgssxz");
     data.init(calculateFunction);
+    $('[name=gruModel],[name=tsl]').change(()=>{
+        var se=$('[name=gruModel]').val();
+        var ie=$('[name=tsl]').val();
+        var temp;
+        switch (se) {
+            case 'GRU285':temp=600;break;
+            case 'GRU295':temp=750;break;
+            case 'GRU313':temp=1000;break;
+        }
+        if(ie>temp){
+            data.datalist['tsl'].val='';
+            $('[name=tsl]').attr('placeholder','超过GRU额定载荷').val('')
+        }else{
+            $('[name=tsl]').attr('placeholder','')
+        }
+    })
 
 </script>
 </body>
