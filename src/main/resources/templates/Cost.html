@@ -3198,7 +3198,7 @@
         </div>
     </div>
     <div class="buttonbox">
-        <input type="submit" form="form1" class="button"  value="导出单臂吊臂pdf" onclick="$('form').attr('action','Cost/getPDF');
+        <input type="submit" form="form1" class="button"  value="导出成本估算pdf" onclick="$('form').attr('action','Cost/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
         <!--<input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','Cost/getPDF');-->
                                                                                             <!--isCheck(true);changeType('Check')"/>-->
@@ -3221,11 +3221,11 @@
             var datas = [];
             for (var key in djxz) {
                 var data = djxz[key];
-                if ((!lg || data["lg"] == lg) &&
-                    (!ll || data["ll"] == ll) &&
-                    (!cbhzhzzcxh || data["hzzcxh"] == cbhzhzzcxh) &&
-                    (!yxjgModel || data["yxjgxz"] == yxjgModel) &&
-                    (!djxhModel || data["djlx"] == djxhModel))
+                if ((!lg || data["lg"] == lg ) &&
+                    (!ll || data["ll"] == ll ) &&
+                    (!cbhzhzzcxh || data["hzzcxh"] == cbhzhzzcxh ) &&
+                    (!yxjgModel || data["yxjgxz"] == yxjgModel ) &&
+                    (!djlx || data["djlx"] == djlx ))
                     datas.push(data);
             }
             if (datas.length == 1)
@@ -3244,774 +3244,774 @@
             return dcModelList[ dcModel ]['cbdct'];
         },
         cbdcmc: function () {
-            return dcModelList[dcModel]['cbdcmc'];
+            return dcModelList[ dcModel ]['cbdcmc'];
         },
         cbdcsl: function () {
-            return dcModelList[dcModel]['cbdcsl'];
+            return dcModelList[ dcModel ]['cbdcsl'];
         },
         cbdcdj: function () {
-            return dcModelList[dcModel]['cbdcdj'];
+            return dcModelList[ dcModel ]['cbdcdj'];
         },
         cbbtt: function () {
-            return btModelList[btModel]['cbbtt'];
+            return btModelList[ btModel ]['cbbtt'];
         },
         cbbtmc: function () {
-            return btModelList[btModel]['cbbtmc'];
+            return btModelList[ btModel ]['cbbtmc'];
         },
         cbbtsl: function () {
-            return btModelList[btModel]['cbbtsl'];
+            return btModelList[ btModel ]['cbbtsl'];
         },
         cbbtdj: function () {
-            return btModelList[btModel]['cbbtdj'];
+            return btModelList[ btModel ]['cbbtdj'];
         },
         cbssjgt: function () {
-            return ssjgModelList[ssjgModel]['cbssjgt'];
+            return ssjgModelList[ ssjgModel ]['cbssjgt'];
         },
         cbssjgmc: function () {
-            return ssjgModelList[ssjgModel]['cbssjgmc'];
+            return ssjgModelList[ ssjgModel ]['cbssjgmc'];
         },
         cbssjgdj: function () {
-            return ssjgModelList[ssjgModel]['cbssjgdj'];
+            return ssjgModelList[ ssjgModel ]['cbssjgdj'];
         },
         cbgrut: function () {
-            return gruModelList[gruModel]['cbgrut'];
+            return gruModelList[ gruModel ]['cbgrut'];
         },
         cbgrumc: function () {
-            return gruModelList[gruModel]['cbgrumc'];
+            return gruModelList[ gruModel ]['cbgrumc'];
         },
         cbgrusl: function () {
-            return gruModelList[gruModel]['cbgrusl'];
+            return gruModelList[ gruModel ]['cbgrusl'];
         },
         cbgrudj: function () {
-            return gruModelList[gruModel]['cbgrudj'];
+            return gruModelList[ gruModel ]['cbgrudj'];
         },
         cbqsjgt: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgt'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgt'];
         },
         cbqsjgmc: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgmc'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgmc'];
         },
         cbqsjgsl: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgsl'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgsl'];
         },
         cbqsjgdj: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgdj'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgdj'];
         },
         cbslqt: function () {
-            return slqModelList[slqModel]['cbslqt'];
+            return slqModelList[ slqModel ]['cbslqt'];
         },
         cbslqmc: function () {
-            return slqModelList[slqModel]['cbslqmc'];
+            return slqModelList[ slqModel ]['cbslqmc'];
         },
         cbslqsl: function () {
-            return slqModelList[slqModel]['cbslqsl'];
+            return slqModelList[ slqModel ]['cbslqsl'];
         },
         cbslqdj: function () {
-            return slqModelList[slqModel]['cbslqdj'];
+            return slqModelList[ slqModel ]['cbslqdj'];
         },
         cbhzt: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzt'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzt'];
         },
         cbhzmc: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzmc'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzmc'];
         },
         cbhzsl: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzsl'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzsl'];
         },
         cbhzdj: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzdj'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzdj'];
         },
         cbyxt: function () {
-            return yxjgModelList[yxjgModel]['cbyxt'];
+            return yxjgModelList[ yxjgModel ]['cbyxt'];
         },
         cbyxmc: function () {
-            return yxjgModelList[yxjgModel]['cbyxmc'];
+            return yxjgModelList[ yxjgModel ]['cbyxmc'];
         },
         cbyxsl: function () {
-            return yxjgModelList[yxjgModel]['cbyxsl'];
+            return yxjgModelList[ yxjgModel ]['cbyxsl'];
         },
         cbyxdj: function () {
-            return yxjgModelList[yxjgModel]['cbyxdj'];
+            return yxjgModelList[ yxjgModel ]['cbyxdj'];
         },
         cbjgqt: function () {
-            return jgqModelList[jgqModel]['cbjgqt'];
+            return jgqModelList[ jgqModel ]['cbjgqt'];
         },
         cbjgqmc: function () {
-            return jgqModelList[jgqModel]['cbjgqmc'];
+            return jgqModelList[ jgqModel ]['cbjgqmc'];
         },
         cbjgqsl: function () {
-            return jgqModelList[jgqModel]['cbjgqsl'];
+            return jgqModelList[ jgqModel ]['cbjgqsl'];
         },
         cbjgqdj: function () {
-            return jgqModelList[jgqModel]['cbjgqdj'];
+            return jgqModelList[ jgqModel ]['cbjgqdj'];
         },
 
         //3大件
         cbdbmc: function () {
-            return dbxhModelList[dbxhModel]['cbdbmc'];
+            return dbxhModelList[ dbxhModel ]['cbdbmc'];
         },
         cbdbzl: function () {
-            return m4 / 1000;
+            return m4 / 1000 ;
         },
         cbdbdj: function () {
-            return dbxhModelList[dbxhModel]['cbdbdj'];
+            return dbxhModelList[ dbxhModel ]['cbdbdj'];
         },
         cbpzkmc: function () {
-            return pzkModelList[pzkModel]['cbpzkmc'];
+            return pzkModelList[ pzkModel ]['cbpzkmc'];
         },
         cbpzkdj: function () {
-            return pzkModelList[pzkModel]['cbpzkdj'];
+            return pzkModelList[ pzkModel ]['cbpzkdj'];
         },
         cbpzxtzl: function () {
-            return pzkModelList[pzkModel]['cbpzxtzl'];
+            return pzkModelList[ pzkModel ]['cbpzxtzl'];
         },
         cbpzxtdj: function () {
-            return pzkModelList[pzkModel]['cbpzxtdj'];
+            return pzkModelList[ pzkModel ]['cbpzxtdj'];
         },
         cbpzxtlyl: function () {
-            return pzkModelList[pzkModel]['cbpzxtlyl'];
+            return pzkModelList[ pzkModel ]['cbpzxtlyl'];
         },
         cblzmc: function () {
-            return lzxhModelList[lzxhModel]['cblzmc'];
+            return lzxhModelList[ lzxhModel ]['cblzmc'];
         },
         cblzzl: function () {
-            return m12 / 1000;
+            return m12 / 1000 ;
         },
         cblzdj: function () {
-            return lzxhModelList[lzxhModel]['cblzdj'];
+            return lzxhModelList[ lzxhModel ]['cblzdj'];
         },
         cbdjzl: function () {
-            return m15 / 1000;
+            return m15 / 1000 ;
         },
         cbdjdj: function () {
-            return djxhModelList[djxhModel]['cbdjdj'];
+            return djxhModelList[ djxhModel ]['cbdjdj'];
         },
         cb3zl: function () {
             if (pzkModel == "混凝土配重块") {
-                return cbdbzl + cbpzxtzl + cblzzl + cbdjzl;
+                return cbdbzl + cbpzxtzl + cblzzl + cbdjzl ;
             }
             else if (pzkModel == "钢板配重块") {
-                return cbdbzl + cbpzkzl + cblzzl + cbdjzl;
+                return cbdbzl + cbpzkzl + cblzzl + cbdjzl ;
             }
         },
         cb3jxdj: function () {
-            return 1600;
+            return 1600 ;
         },
         cb3yqdj: function () {
-            return dbxhModelList[dbxhModel]['cb3yqdj'];
+            return dbxhModelList[ dbxhModel ]['cb3yqdj'];
         },
         cb3hszl: function () {
-            return cb3zl * 0.03;
+            return cb3zl * 0.03 ;
         },
         cb3hsdj: function () {
-            return 7500;
+            return 7500 ;
         },
         cb3qdj: function () {
-            return 500;
+            return 500 ;
         },
 
         //电机
         cbbtdjxh: function () {
-            return btModelList[btModel]['cbbtdjxh'];
+            return btModelList[ btModel ]['cbbtdjxh'];
         },
         cbbtdjsl: function () {
-            return btModelList[btModel]['cbbtdjsl'];
+            return btModelList[ btModel ]['cbbtdjsl'];
         },
         cbbtdjdj: function () {
-            return btModelList[btModel]['cbbtdjdj'];
+            return btModelList[ btModel ]['cbbtdjdj'];
         },
         cbssjgdjxh: function () {
-            return ssjgModelList[ssjgModel]['cbssjgdjxh'];
+            return ssjgModelList[ ssjgModel ]['cbssjgdjxh'];
         },
         cbssjgdjsl: function () {
-            return cbssjgsl;
+            return cbssjgsl ;
         },
         cbssjgdjdj: function () {
-            return ssjgModelList[ssjgModel]['cbssjgdjdj'];
+            return ssjgModelList[ ssjgModel ]['cbssjgdjdj'];
         },
         cbgrudjxh: function () {
-            return gruModelList[gruModel]['cbgrudjxh'];
+            return gruModelList[ gruModel ]['cbgrudjxh'];
         },
         cbgrudjsl: function () {
-            return cbgrusl;
+            return cbgrusl ;
         },
         cbgrudjdj: function () {
-            return gruModelList[gruModel]['cbgrudjdj'];
+            return gruModelList[ gruModel ]['cbgrudjdj'];
         },
         cbqsjgdj1xh: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgdj1xh'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgdj1xh'];
         },
         cbqsjgdj1sl: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgdj1sl'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgdj1sl'];
         },
         cbqsjgdj1dj: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgdj1dj'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgdj1dj'];
         },
         cbqsjgdj2xh: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgdj2xh'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgdj2xh'];
         },
         cbqsjgdj2sl: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgdj2sl'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgdj2sl'];
         },
         cbqsjgdj2dj: function () {
-            return qsjgModelList[qsjgModel]['cbqsjgdj2dj'];
+            return qsjgModelList[ qsjgModel ]['cbqsjgdj2dj'];
         },
         cbhzdjxh: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzdjxh'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzdjxh'];
         },
         cbhzdjsl: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzdjsl'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzdjsl'];
         },
         cbhzdjdj: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzdjdj'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzdjdj'];
         },
         cbyxdjxh: function () {
-            return yxjgModelList[yxjgModel]['cbyxdjxh'];
+            return yxjgModelList[ yxjgModel ]['cbyxdjxh'];
         },
         cbyxdjsl: function () {
-            return yxjgModelList[yxjgModel]['cbyxdjsl'];
+            return yxjgModelList[ yxjgModel ]['cbyxdjsl'];
         },
         cbyxdjdj: function () {
-            return yxjgModelList[yxjgModel]['cbyxdjdj'];
+            return yxjgModelList[ yxjgModel ]['cbyxdjdj'];
         },
 
         //    外购件
         cbdcgssmc: function () {
-            return dcgssModelList[dcgssModel]['cbdcgssmc'];
+            return dcgssModelList[ dcgssModel ]['cbdcgssmc'];
         },
         cbdcgsssl: function () {
-            return 4;
+            return 4 ;
         },
         cbdcgssdj: function () {
-            return dcgssModelList[dcgssModel]['cbdcgssdj'];
+            return dcgssModelList[ dcgssModel ]['cbdcgssdj'];
         },
         cbgrugssmc: function () {
-            return gruModelList[gruModel]['cbgrugssmc'];
+            return gruModelList[ gruModel ]['cbgrugssmc'];
         },
         cbgrugsssl: function () {
-            return cbgrusl;
+            return cbgrusl ;
         },
         cbgrugssdj: function () {
-            return gruModelList[gruModel]['cbgrugssdj'];
+            return gruModelList[ gruModel ]['cbgrugssdj'];
         },
         cbaqssl: function () {
-            return 1;
+            return 1 ;
         },
         cbaqsdj: function () {
-            return 5;
+            return 5 ;
         },
         cbctmc: function () {
-            return ctxhModelList[ctxhModel]['cbctmc'];
+            return ctxhModelList[ ctxhModel ]['cbctmc'];
         },
         cbctsl: function () {
-            return ctxhModelList[ctxhModel]['cbctsl'];
+            return ctxhModelList[ ctxhModel ]['cbctsl'];
         },
         cbctcd: function () {
-            return ctxhModelList[ctxhModel]['cbctcd'];
+            return ctxhModelList[ ctxhModel ]['cbctcd'];
         },
         cbctdj: function () {
-            return ctxhModelList[ctxhModel]['cbctdj'];
+            return ctxhModelList[ ctxhModel ]['cbctdj'];
         },
         cbbthzzcxh: function () {
-            return btModelList[btModel]['cbbthzzcxh'];
+            return btModelList[ btModel ]['cbbthzzcxh'];
         },
         cbbthzzcsl: function () {
-            return btModelList[btModel]['cbbthzzcsl'];
+            return btModelList[ btModel ]['cbbthzzcsl'];
         },
         cbbthzzcdj: function () {
-            return btModelList[btModel]['cbbthzzcdj'];
+            return btModelList[ btModel ]['cbbthzzcdj'];
         },
         cbhzhzzcxh: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzhzzcxh'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzhzzcxh'];
         },
         cbhzhzzcsl: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzhzzcsl'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzhzzcsl'];
         },
         cbhzhzzcdj: function () {
-            return dhzjgModelList[dhzjgModel]['cbhzhzzcdj'];
+            return dhzjgModelList[ dhzjgModel ]['cbhzhzzcdj'];
         },
 
         //外协件
         cblt1sl: function () {
-            return lt1ModelList[lt1Model]['cblt1sl'];
+            return lt1ModelList[ lt1Model ]['cblt1sl'];
         },
         cblt1cd: function () {
-            return lt1ModelList[lt1Model]['cblt1cd'];
+            return lt1ModelList[ lt1Model ]['cblt1cd'];
         },
         cblt1dj: function () {
-            return lt1ModelList[lt1Model]['cblt1dj'];
+            return lt1ModelList[ lt1Model ]['cblt1dj'];
         },
         cblt1lyl: function () {
-            return lt1ModelList[lt1Model]['cblt1lyl'];
+            return lt1ModelList[ lt1Model ]['cblt1lyl'];
         },
         cblt2sl: function () {
-            return lt2ModelList[lt2Model]['cblt2sl'];
+            return lt2ModelList[ lt2Model ]['cblt2sl'];
         },
         cblt2cd: function () {
-            return lt2ModelList[lt2Model]['cblt2cd'];
+            return lt2ModelList[ lt2Model ]['cblt2cd'];
         },
         cblt2dj: function () {
-            return lt2ModelList[lt2Model]['cblt2dj'];
+            return lt2ModelList[ lt2Model ]['cblt2dj'];
         },
         cblt2lyl: function () {
-            return lt1ModelList[lt1Model]['cblt2lyl'];
+            return lt2ModelList[ lt2Model ]['cblt2lyl'];
         },
         cblt3sl: function () {
-            return lt3ModelList[lt3Model]['cblt3sl'];
+            return lt3ModelList[ lt3Model ]['cblt3sl'];
         },
         cblt3cd: function () {
-            return lt3ModelList[lt3Model]['cblt3cd'];
+            return lt3ModelList[ lt3Model ]['cblt3cd'];
         },
         cblt3dj: function () {
-            return lt3ModelList[lt3Model]['cblt3dj'];
+            return lt3ModelList[ lt3Model ]['cblt3dj'];
         },
         cblt3lyl: function () {
-            return lt1ModelList[lt1Model]['cblt3lyl'];
+            return lt3ModelList[ lt3Model ]['cblt3lyl'];
         },
         cblt4sl: function () {
-            return lt4ModelList[lt4Model]['cblt4sl'];
+            return lt4ModelList[ lt4Model ]['cblt4sl'];
         },
         cblt4cd: function () {
-            return lt4ModelList[lt4Model]['cblt4cd'];
+            return lt4ModelList[ lt4Model ]['cblt4cd'];
         },
         cblt4dj: function () {
-            return lt4ModelList[lt4Model]['cblt4dj'];
+            return lt4ModelList[ lt4Model ]['cblt4dj'];
         },
         cblt4lyl: function () {
-            return lt1ModelList[lt1Model]['cblt4lyl'];
+            return lt4ModelList[ lt4Model ]['cblt4lyl'];
         },
         cblt5sl: function () {
-            return lt5ModelList[lt5Model]['cblt5sl'];
+            return lt5ModelList[ lt5Model ]['cblt5sl'];
         },
         cblt5cd: function () {
-            return lt5ModelList[lt5Model]['cblt5cd'];
+            return lt5ModelList[ lt5Model ]['cblt5cd'];
         },
         cblt5dj: function () {
-            return lt5ModelList[lt5Model]['cblt5dj'];
+            return lt5ModelList[ lt5Model ]['cblt5dj'];
         },
         cblt5lyl: function () {
-            return lt1ModelList[lt1Model]['cblt5lyl'];
+            return lt5ModelList[ lt5Model ]['cblt5lyl'];
         },
         cbxzdj: function () {
-            return 150;
+            return 150 ;
         },
         cbxdxh: function () {
-            return xdModelList[xdModel]['cbxdxh'];
+            return xdModelList[ xdModel ]['cbxdxh'];
         },
         cbxddj: function () {
-            return xdModelList[xdModel]['cbxddj'];
+            return xdModelList[ xdModel ]['cbxddj'];
         },
         cbssjjmc: function () {
-            return dbxhModelList[dbxhModel]['cbssjjmc'];
+            return dbxhModelList[ dbxhModel ]['cbssjjmc'];
         },
         cbssjjsl: function () {
-            return dbxhModelList[dbxhModel]['cbssjjsl'];
+            return dbxhModelList[ dbxhModel ]['cbssjjsl'];
         },
         cbssjjdj: function () {
-            return dbxhModelList[dbxhModel]['cbssjjdj'];
+            return dbxhModelList[ dbxhModel ]['cbssjjdj'];
         },
         cbdbxzmc: function () {
-            return dbxhModelList[dbxhModel]['cbdbxzmc'];
+            return dbxhModelList[ dbxhModel ]['cbdbxzmc'];
         },
         cbdbxzsl: function () {
-            return 1;
+            return 1 ;
         },
         cbdbxzdj: function () {
-            return dbxhModelList[dbxhModel]['cbdbxzdj'];
+            return dbxhModelList[ dbxhModel ]['cbdbxzdj'];
         },
 
         //电气液压
         cbdqmc: function () {
-            return dbxhModelList[dbxhModel]['cbdqmc'];
+            return dbxhModelList[ dbxhModel ]['cbdqmc'];
         },
         cbdqsl: function () {
-            return 1;
+            return 1 ;
         },
         cbdqdj: function () {
-            return dbxhModelList[dbxhModel]['cbdqdj'];
+            return dbxhModelList[ dbxhModel ]['cbdqdj'];
         },
 
         //轨道系统
         cbgdxh: function () {
-            return gdModelList[gdModel]['cbgdxh'];
+            return gdModelList[ gdModel ]['cbgdxh'];
         },
         cbgdcz: function () {
-            return gdModelList[gdModel]['cbgdcz'];
+            return gdModelList[ gdModel ]['cbgdcz'];
         },
         cbgdsl: function () {
-            return gdModelList[gdModel]['cbgdsl'];
+            return gdModelList[ gdModel ]['cbgdsl'];
         },
         cbgdzl: function () {
-            return cbgdcd * cbgdmmzl / 1000;
+            return cbgdcd * cbgdmmzl / 1000 ;
         },
         cbgddj: function () {
-            return gdModelList[gdModel]['cbgddj'];
+            return gdModelList[ gdModel ]['cbgddj'];
         },
         cbgdmmzl: function () {
-            return gdModelList[gdModel]['cbgdmmzl'];
+            return gdModelList[ gdModel ]['cbgdmmzl'];
         },
         cbgdjxsl: function () {
-            return cbgdsl;
+            return cbgdsl ;
         },
         cbgdjxdj: function () {
-            return 1500;
+            return 1500 ;
         },
         cbmbxh: function () {
-            return mbModelList[mbModel]['cbmbxh'];
+            return mbModelList[ mbModel ]['cbmbxh'];
         },
         cbmbcz: function () {
             return 'Q235B';
         },
         cbmbdj: function () {
-            return mbModelList[mbModel]['cbmbdj'];
+            return mbModelList[ mbModel ]['cbmbdj'];
         },
         cbmbdjdw: function () {
-            return mbModelList[mbModel]['cbmbdjdw'];
+            return mbModelList[ mbModel ]['cbmbdjdw'];
         },
         cbmblyl: function () {
-            return mbModelList[mbModel]['cbmblyl'];
+            return mbModelList[ mbModel ]['cbmblyl'];
         },
         cbmbjxsl: function () {
             if (cbmbsl == 0) {
                 return 0;
             } else {
-                return 1;
+                return 1 ;
             }
         },
         cbmbjxdj: function () {
-            return 1500;
+            return 1500 ;
         },
         cbdjlsxh: function () {
-            return djlsModelList[djlsModel]['cbdjlsxh'];
+            return djlsModelList[ djlsModel ]['cbdjlsxh'];
         },
         cbdjlscz: function () {
-            return djlsModelList[djlsModel]['cbdjlscz'];
+            return djlsModelList[ djlsModel ]['cbdjlscz'];
         },
         cbdjlsdj: function () {
-            return djlsModelList[djlsModel]['cbdjlsdj'];
+            return djlsModelList[ djlsModel ]['cbdjlsdj'];
         },
         cbmdcz: function () {
             return 'Q235B';
         },
         cbmddj: function () {
-            return 140;
+            return 140 ;
         },
         cbhlcz: function () {
             return 'Q235B';
         },
         cbhldj: function () {
-            return 115;
+            return 115 ;
         },
         cbptcz: function () {
             return 'Q235B';
         },
         cbptdj: function () {
-            return 150;
+            return 150 ;
         },
 
         //检修平台
         cbgrujxmc: function () {
-            return grujxModelList[grujxModel]['cbgrujxmc'];
+            return grujxModelList[ grujxModel ]['cbgrujxmc'];
         },
         cbgrujxsl: function () {
-            return grujxModelList[grujxModel]['cbgrujxsl'];
+            return grujxModelList[ grujxModel ]['cbgrujxsl'];
         },
         cbgrujxdj: function () {
-            return 23;
+            return 23 ;
         },
         cbqsjgjxmc: function () {
-            return qsjgjxModelList[qsjgjxModel]['cbqsjgjxmc'];
+            return qsjgjxModelList[ qsjgjxModel ]['cbqsjgjxmc'];
         },
         cbqsjgjxsl: function () {
-            return qsjgjxModelList[qsjgjxModel]['cbqsjgjxsl'];
+            return qsjgjxModelList[ qsjgjxModel ]['cbqsjgjxsl'];
         },
         cbqsjgjxdj: function () {
-            return 23;
+            return 23 ;
         },
         cbssjgjxmc: function () {
-            return ssjgjxModelList[ssjgjxModel]['cbssjgjxmc'];
+            return ssjgjxModelList[ ssjgjxModel ]['cbssjgjxmc'];
         },
         cbssjgjxsl: function () {
-            return ssjgjxModelList[ssjgjxModel]['cbssjgjxsl'];
+            return ssjgjxModelList[ ssjgjxModel ]['cbssjgjxsl'];
         },
         cbssjgjxdj: function () {
-            return 23;
+            return 23 ;
         },
 
         //工厂内作业
         cbsygdzl: function () {
             if (cbsygdsl == 0) {
-                return 0;
+                return 0 ;
             } else {
                 return " ";
             }
         },
         cbsygddj: function () {
             if (cbsygdsl == 0) {
-                return 0;
+                return 0 ;
             } else {
-                return cbgddj;
+                return cbgddj ;
             }
         },
         cbsyjzl: function () {
             if (cbsyjsl == 0) {
-                return 0;
+                return 0 ;
             } else {
                 return " ";
             }
         },
         cbsyjdj: function () {
             if (cbsyjsl == 0) {
-                return 0;
+                return 0 ;
             } else {
-                return 5300;
+                return 5300 ;
             }
         },
 
         //包装
         cbmfsl: function () {
-            return 1;
+            return 1 ;
         },
         cbmftj: function () {
-            return mfModelList[mfModel]['cbmftj'];
+            return mfModelList[ mfModel ]['cbmftj'];
         },
         cbmfdj: function () {
-            return mfModelList[mfModel]['cbmfdj'];
+            return mfModelList[ mfModel ]['cbmfdj'];
         },
         cbmfdjdw: function () {
-            return mfModelList[mfModel]['cbmfdjdw'];
+            return mfModelList[ mfModel ]['cbmfdjdw'];
         },
         cbbzsl: function () {
-            return 1;
+            return 1 ;
         },
         cbbzdj: function () {
-            return 200;
+            return 200 ;
         },
 
         //运输
         cbc1dj: function () {
-            return yscsModelList[yscsModel]['cbc1dj'];
+            return yscsModelList[ yscsModel ]['cbc1dj'];
         },
         cbc2dj: function () {
-            return yscsModelList[yscsModel]['cbc2dj'];
+            return yscsModelList[ yscsModel ]['cbc2dj'];
         },
         cbc3dj: function () {
-            return yscsModelList[yscsModel]['cbc3dj'];
+            return yscsModelList[ yscsModel ]['cbc3dj'];
         },
         cbc4dj: function () {
-            return yscsModelList[yscsModel]['cbc4dj'];
+            return yscsModelList[ yscsModel ]['cbc4dj'];
         },
 
         //8模块总价
         cbdczj: function () {
-            return cbdcsl * cbdcdj / 10000;
+            return cbdcsl * cbdcdj / 10000 ;
         },
         cbbtzj: function () {
-            return cbbtsl * cbbtdj / 10000;
+            return cbbtsl * cbbtdj / 10000 ;
         },
         cbssjgzj: function () {
-            return cbssjgsl * cbssjgdj / 10000;
+            return cbssjgsl * cbssjgdj / 10000 ;
         },
         cbgruzj: function () {
-            return cbgrusl * cbgrudj / 10000;
+            return cbgrusl * cbgrudj / 10000 ;
         },
         cbqsjgzj: function () {
-            return cbqsjgsl * cbqsjgdj / 10000;
+            return cbqsjgsl * cbqsjgdj / 10000 ;
         },
         cbslqzj: function () {
-            return cbslqsl * cbslqdj / 10000;
+            return cbslqsl * cbslqdj / 10000 ;
         },
         cbhzzj: function () {
-            return cbhzsl * cbhzdj / 10000;
+            return cbhzsl * cbhzdj / 10000 ;
         },
         cbyxzj: function () {
-            return cbyxsl * cbyxdj / 10000;
+            return cbyxsl * cbyxdj / 10000 ;
         },
         cbjgqzj: function () {
-            return cbjgqsl * cbjgqdj / 10000;
+            return cbjgqsl * cbjgqdj / 10000 ;
         },
 
         //3大件总价
         cbdbzj: function () {
-            return cbdbzl * cbdbdj / cbdblyl / 10000;
+            return cbdbzl * cbdbdj / cbdblyl / 10000 ;
         },
         cbpzkzj: function () {
-            return cbpzkzl * cbpzkdj / cbpzklyl / 10000;
+            return cbpzkzl * cbpzkdj / cbpzklyl / 10000 ;
         },
         cbpzxtzj: function () {
-            return cbpzxtzl * cbpzxtdj / cbpzxtlyl / 10000;
+            return cbpzxtzl * cbpzxtdj / cbpzxtlyl / 10000 ;
         },
         cblzzj: function () {
-            return cblzzl * cblzdj / cblzlyl / 10000;
+            return cblzzl * cblzdj / cblzlyl / 10000 ;
         },
         cbdjzj: function () {
-            return cbdjzl * cbdjdj / cbdjlyl / 10000;
+            return cbdjzl * cbdjdj / cbdjlyl / 10000 ;
         },
         cb3jxzj: function () {
-            return cb3zl * cb3jxdj / 10000;
+            return cb3zl * cb3jxdj / 10000 ;
         },
         cb3yqzj: function () {
-            return cb3yqdj / 10000;
+            return cb3yqdj / 10000 ;
         },
         cb3hszj: function () {
-            return cb3hszl * cb3hsdj / 10000;
+            return cb3hszl * cb3hsdj / 10000 ;
         },
         cb3qzj: function () {
-            return cb3zl * cb3qdj / 10000;
+            return cb3zl * cb3qdj / 10000 ;
         },
 
         //电机总价
         cbbtdjzj: function () {
-            return cbbtdjsl * cbbtdjdj / 10000;
+            return cbbtdjsl * cbbtdjdj / 10000 ;
         },
         cbssjgdjzj: function () {
-            return cbssjgdjsl * cbssjgdjdj / 10000;
+            return cbssjgdjsl * cbssjgdjdj / 10000 ;
         },
         cbgrudjzj: function () {
-            return cbgrudjsl * cbgrudjdj / 10000;
+            return cbgrudjsl * cbgrudjdj / 10000 ;
         },
         cbqsjgdj1zj: function () {
-            return cbqsjgdj1sl * cbqsjgdj1dj / 10000;
+            return cbqsjgdj1sl * cbqsjgdj1dj / 10000 ;
         },
         cbqsjgdj2zj: function () {
-            return cbqsjgdj2sl * cbqsjgdj2dj / 10000;
+            return cbqsjgdj2sl * cbqsjgdj2dj / 10000 ;
         },
         cbhzdjzj: function () {
-            return cbhzdjsl * cbhzdjdj / 10000;
+            return cbhzdjsl * cbhzdjdj / 10000 ;
         },
         cbyxdjzj: function () {
-            return cbyxdjsl * cbyxdjdj / 10000;
+            return cbyxdjsl * cbyxdjdj / 10000 ;
         },
 
         //外购件
         cbdcgsszj: function () {
-            return cbdcgsssl * cbdcgsscd * cbdcgssdj / 10000;
+            return cbdcgsssl * cbdcgsscd * cbdcgssdj / 10000 ;
         },
         cbgrugsszj: function () {
-            return cbgrugsssl * cbgrugsscd * cbgrugssdj / 10000;
+            return cbgrugsssl * cbgrugsscd * cbgrugssdj / 10000 ;
         },
         cbaqszj: function () {
-            return cbaqssl * cbaqscd * cbaqsdj / 10000;
+            return cbaqssl * cbaqscd * cbaqsdj / 10000 ;
         },
         cbctzj: function () {
-            return cbctsl * cbctcd * cbctdj / 10000;
+            return cbctsl * cbctcd * cbctdj / 10000 ;
         },
         cbbthzzczj: function () {
-            return cbbthzzcsl * cbbthzzcdj / 10000;
+            return cbbthzzcsl * cbbthzzcdj / 10000 ;
         },
         cbhzhzzczj: function () {
-            return cbhzhzzcsl * cbhzhzzcdj / 10000;
+            return cbhzhzzcsl * cbhzhzzcdj / 10000 ;
         },
 
         //外协件
         cblt1zj: function () {
-            return cblt1sl * cblt1cd * cblt1dj / cblt1lyl / 10000;
+            return cblt1sl * cblt1cd * cblt1dj / cblt1lyl / 10000 ;
         },
         cblt2zj: function () {
-            return cblt2sl * cblt2cd * cblt2dj / cblt2lyl / 10000;
+            return cblt2sl * cblt2cd * cblt2dj / cblt2lyl / 10000 ;
         },
         cblt3zj: function () {
-            return cblt3sl * cblt3cd * cblt3dj / cblt3lyl / 10000;
+            return cblt3sl * cblt3cd * cblt3dj / cblt3lyl / 10000 ;
         },
         cblt4zj: function () {
-            return cblt4sl * cblt4cd * cblt4dj / cblt4lyl / 10000;
+            return cblt4sl * cblt4cd * cblt4dj / cblt4lyl / 10000 ;
         },
         cblt5zj: function () {
-            return cblt5sl * cblt5cd * cblt5dj / cblt5lyl / 10000;
+            return cblt5sl * cblt5cd * cblt5dj / cblt5lyl / 10000 ;
         },
         cbxzzj: function () {
-            return cbxzsl * cbxzzl * cbxzdj / 10000;
+            return cbxzsl * cbxzzl * cbxzdj / 10000 ;
         },
         cbxdzj: function () {
-            return cbxdsl * cbxddj / 10000;
+            return cbxdsl * cbxddj / 10000 ;
         },
         cbssjjzj: function () {
-            return cbssjjsl * cbssjjdj / 10000;
+            return cbssjjsl * cbssjjdj / 10000 ;
         },
         cbdbxzzj: function () {
-            return cbdbxzsl * cbdbxzdj / 10000;
+            return cbdbxzsl * cbdbxzdj / 10000 ;
         },
 
         //电气液压
         cbdqzj: function () {
-            return cbdqsl * cbdqdj / 10000;
+            return cbdqsl * cbdqdj / 10000 ;
         },
         cbyyzj: function () {
-            return cbyysl * cbyydj / 10000;
+            return cbyysl * cbyydj / 10000 ;
         },
 
         //轨道系统
         cbgdzj: function () {
-            return cbgdsl * cbgdzl * cbgddj / cbgdlyl / 10000;
+            return cbgdsl * cbgdzl * cbgddj / cbgdlyl / 10000 ;
         },
         cbgdjxzj: function () {
-            return cbgdjxsl * cbgdzl * cbgdjxdj / 10000;
+            return cbgdjxsl * cbgdzl * cbgdjxdj / 10000 ;
         },
         cbmbzj: function () {
             if (mbModel == "其它")
-                return cbmbsl * cbmbzl * cbmbdj / 10000;
+                return cbmbsl * cbmbzl * cbmbdj / 10000 ;
             else
-                return cbmbsl * cbmbdj / 10000;
+                return cbmbsl * cbmbdj / 10000 ;
         },
         cbmbjxzj: function () {
-            return cbmbjxsl * cbmbzl * cbmbjxdj / 10000;
+            return cbmbjxsl * cbmbzl * cbmbjxdj / 10000 ;
         },
         cbdjlszj: function () {
-            return cbdjlssl * cbdjlsdj / 10000;
+            return cbdjlssl * cbdjlsdj / 10000 ;
         },
         cbmdzj: function () {
-            return cbmdsl * cbmdmj * cbmddj / 10000;
+            return cbmdsl * cbmdmj * cbmddj / 10000 ;
         },
         cbhlzj: function () {
-            return cbhlsl * cbhlcd * cbhldj / 10000;
+            return cbhlsl * cbhlcd * cbhldj / 10000 ;
         },
         cbptzj: function () {
-            return cbptsl * cbptcd * cbptdj / 10000;
+            return cbptsl * cbptcd * cbptdj / 10000 ;
         },
 
         //检修平台
         cbgrujxzj: function () {
-            return cbgrujxsl * cbgrujxzl * cbgrujxdj / cbgrujxlyl / 10000;
+            return cbgrujxsl * cbgrujxzl * cbgrujxdj / cbgrujxlyl / 10000 ;
         },
         cbqsjgjxzj: function () {
-            return cbqsjgjxsl * cbqsjgjxzl * cbqsjgjxdj / cbqsjgjxlyl / 10000;
+            return cbqsjgjxsl * cbqsjgjxzl * cbqsjgjxdj / cbqsjgjxlyl / 10000 ;
         },
         cbssjgjxzj: function () {
-            return cbssjgjxsl * cbssjgjxzl * cbssjgjxdj / cbssjgjxlyl / 10000;
+            return cbssjgjxsl * cbssjgjxzl * cbssjgjxdj / cbssjgjxlyl / 10000 ;
         },
 
         //工厂内作业
         cbsygdzj: function () {
-            return cbsygdsl * cbsygdzl * cbsygddj / 10000;
+            return cbsygdsl * cbsygdzl * cbsygddj / 10000 ;
         },
         cbsyjzj: function () {
-            return cbsyjsl * cbsyjzl * cbsyjdj / 10000;
+            return cbsyjsl * cbsyjzl * cbsyjdj / 10000 ;
         },
 
         //包装
         cbmfzj: function () {
             if (mfModel == "国内")
-                return cbmfsl * cbmfdj / 10000;
+                return cbmfsl * cbmfdj / 10000 ;
             else if (mfModel == "国外(EGS、MHE等)") {
-                return cbmfsl * cbmftj * cbmfdj / 10000;
+                return cbmfsl * cbmftj * cbmfdj / 10000 ;
             }
         },
         cbbzzj: function () {
-            return cbbzsl * cbbzdj / 10000;
+            return cbbzsl * cbbzdj / 10000 ;
         },
 
         //运输
         cbc1zj: function () {
-            return cbc1lc * cbc1zzl * cbc1sl * cbc1dj / 10000;
+            return cbc1lc * cbc1zzl * cbc1sl * cbc1dj / 10000 ;
         },
         cbc2zj: function () {
-            return cbc2lc * cbc2zzl * cbc2sl * cbc2dj / 10000;
+            return cbc2lc * cbc2zzl * cbc2sl * cbc2dj / 10000 ;
         },
         cbc3zj: function () {
-            return cbc3lc * cbc3zzl * cbc3sl * cbc3dj / 10000;
+            return cbc3lc * cbc3zzl * cbc3sl * cbc3dj / 10000 ;
         },
         cbc4zj: function () {
-            return cbc4lc * cbc4zzl * cbc4sl * cbc4dj / 10000;
+            return cbc4lc * cbc4zzl * cbc4sl * cbc4dj / 10000 ;
         },
     };
         getTable(null,"djxz");

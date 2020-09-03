@@ -446,8 +446,6 @@ public class CostEntity {
     private Double m15;
     private String djlx;
 
-
-
     //     下拉
     private String dcModel;
     private String btModel;
