@@ -637,16 +637,30 @@
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img src="/image/Tensile/dbjbtu1.png" width="400px" id="dbjbtu1" name="dbjbtu1" >
-                            <input type="hidden" value="tu_dbjbtu1.png"/>
+                            <img alt="吊臂名称简介图" id="dbjbtu1" width="400px" name="dbjbtu1">
                         </div>
                     </td>
                 </tr>
+
                 <tr>
-                    <td style="padding:10px 0">吊臂名称简介图</td>
-                    <td colspan="4"><input class="image" type="file" name="dbjbtu1" accept="image/*"
-                                           oninput="showImage(this,'dbjbtu1')"/></td>
+                    <td>吊臂名称简介图</td>
+                    <td colspan="4">
+                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbjbtu1" oninput="showImage(this,'dbjbtu1')"/>
+                    </td>
                 </tr>
+
+                <!--<tr>-->
+                    <!--<td colspan="5">-->
+                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img src="/image/Tensile/dbjbtu1.png" width="400px" id="dbjbtu1" name="dbjbtu1" >-->
+                            <!--<input type="hidden" value="tu_dbjbtu1.png"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding:10px 0">吊臂名称简介图</td>-->
+                    <!--<td colspan="4"><input class="image" type="file" name="dbjbtu1" accept="image/*" oninput="showImage(this,'dbjbtu1')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
                     <td style="width:17%;">符号</td>
@@ -710,6 +724,118 @@
                                 }
                                 $("[name=tu_dbjbtu2]")[0].value=filename;
                                 $("[name=dbjbtu2]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+                        <script>
+                            $("[name=dbjbModel]").change(function () {
+                                var dbjbxh=$("[name=dbjbModel]")[0].value;
+                                var filename="";
+                                if( dbjbxh=="DB(200*300)" || dbjbxh=="DB(250*400)" ){
+                                    filename="dbjbtu1.png";
+                                }else if ( dbjbxh=="DB(300*500)" || dbjbxh=="DB(400*600)" ){
+                                    filename="dbjbtu1-1.png";
+                                }
+                                if ($('input[name=tu_dbjbtu1]').length == 0) {
+                                    $('form').append('<input name="tu_dbjbtu1" type="hidden"/>');
+                                }
+                                $("[name=tu_dbjbtu1]")[0].value=filename;
+                                $("[name=dbjbtu1]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+                        <script>
+                            $("[name=dbjbModel]").change(function () {
+                                var dbjbxh=$("[name=dbjbModel]")[0].value;
+                                var filename="";
+                                if( dbjbxh=="DB(200*300)" || dbjbxh=="DB(250*400)" ){
+                                    filename="dbjbtu3.png";
+                                }else if ( dbjbxh=="DB(300*500)" || dbjbxh=="DB(400*600)" ){
+                                    filename="dbjbtu3-1.png";
+                                }
+                                if ($('input[name=tu_dbjbtu3]').length == 0) {
+                                    $('form').append('<input name="tu_dbjbtu3" type="hidden"/>');
+                                }
+                                $("[name=tu_dbjbtu3]")[0].value=filename;
+                                $("[name=dbjbtu3]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+                        <script>
+                            $("[name=dbjbModel]").change(function () {
+                                var dbjbxh=$("[name=dbjbModel]")[0].value;
+                                var filename="";
+                                if( dbjbxh=="DB(200*300)" || dbjbxh=="DB(250*400)" ){
+                                    filename="dbjbtu4.png";
+                                }else if ( dbjbxh=="DB(300*500)" || dbjbxh=="DB(400*600)" ){
+                                    filename="dbjbtu4-1.png";
+                                }
+                                if ($('input[name=tu_dbjbtu4]').length == 0) {
+                                    $('form').append('<input name="tu_dbjbtu4" type="hidden"/>');
+                                }
+                                $("[name=tu_dbjbtu4]")[0].value=filename;
+                                $("[name=dbjbtu4]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+                        <script>
+                            $("[name=dbjbModel]").change(function () {
+                                var dbjbxh=$("[name=dbjbModel]")[0].value;
+                                var filename="";
+                                if( dbjbxh=="DB(200*300)" || dbjbxh=="DB(250*400)" ){
+                                    filename="dbjbtu5.png";
+                                }else if ( dbjbxh=="DB(300*500)" || dbjbxh=="DB(400*600)" ){
+                                    filename="dbjbtu5-1.png";
+                                }
+                                if ($('input[name=tu_dbjbtu5]').length == 0) {
+                                    $('form').append('<input name="tu_dbjbtu5" type="hidden"/>');
+                                }
+                                $("[name=tu_dbjbtu5]")[0].value=filename;
+                                $("[name=dbjbtu5]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+                        <script>
+                            $("[name=dbjbModel]").change(function () {
+                                var dbjbxh=$("[name=dbjbModel]")[0].value;
+                                var filename="";
+                                if( dbjbxh=="DB(200*300)" || dbjbxh=="DB(250*400)" ){
+                                    filename="dbjbtu6.png";
+                                }else if ( dbjbxh=="DB(300*500)" || dbjbxh=="DB(400*600)" ){
+                                    filename="dbjbtu6-1.png";
+                                }
+                                if ($('input[name=tu_dbjbtu6]').length == 0) {
+                                    $('form').append('<input name="tu_dbjbtu6" type="hidden"/>');
+                                }
+                                $("[name=tu_dbjbtu6]")[0].value=filename;
+                                $("[name=dbjbtu6]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+                        <script>
+                            $("[name=dbjbModel]").change(function () {
+                                var dbjbxh=$("[name=dbjbModel]")[0].value;
+                                var filename="";
+                                if( dbjbxh=="DB(200*300)" || dbjbxh=="DB(250*400)" ){
+                                    filename="dbjbtu7.png";
+                                }else if ( dbjbxh=="DB(300*500)" || dbjbxh=="DB(400*600)" ){
+                                    filename="dbjbtu7-1.png";
+                                }
+                                if ($('input[name=tu_dbjbtu7]').length == 0) {
+                                    $('form').append('<input name="tu_dbjbtu7" type="hidden"/>');
+                                }
+                                $("[name=tu_dbjbtu7]")[0].value=filename;
+                                $("[name=dbjbtu7]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+                        <script>
+                            $("[name=dbjbModel]").change(function () {
+                                var dbjbxh=$("[name=dbjbModel]")[0].value;
+                                var filename="";
+                                if( dbjbxh=="DB(200*300)" || dbjbxh=="DB(250*400)" ){
+                                    filename="dbjbtu8.png";
+                                }else if ( dbjbxh=="DB(300*500)" || dbjbxh=="DB(400*600)" ){
+                                    filename="dbjbtu8-1.png";
+                                }
+                                if ($('input[name=tu_dbjbtu8]').length == 0) {
+                                    $('form').append('<input name="tu_dbjbtu8" type="hidden"/>');
+                                }
+                                $("[name=tu_dbjbtu8]")[0].value=filename;
+                                $("[name=dbjbtu8]")[0].src="/pdf/getImg?filename="+ filename+"";
                             })
                         </script>
                     </td>
@@ -839,11 +965,23 @@
                     </td>
                 </tr>
 
+                <!--<tr>-->
+                    <!--<td colspan="5">-->
+                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img src="/image/Tensile/dbjbtu3.png" width="400px" id="dbjbtu3" name="dbjbtu3" >-->
+                            <!--<input type="hidden" value="tu_dbjbtu3.png"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--<td style="padding:10px 0">吊臂上各长度示意图</td>-->
+                <!--<td colspan="4"><input class="image" type="file" name="dbjbtu3" accept="image/*"-->
+                <!--oninput="showImage(this,'dbjbtu3')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img src="/image/Tensile/dbjbtu3.png" width="400px" id="dbjbtu3" name="dbjbtu3" >
-                            <input type="hidden" value="tu_dbjbtu3.png"/>
+                            <img alt="吊臂上各长度示意图" id="dbjbtu3" width="400px" name="dbjbtu3">
                         </div>
                     </td>
                 </tr>
@@ -854,9 +992,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊臂上各长度示意图</td>
-                    <td colspan="4"><input class="image" type="file" name="dbjbtu3" accept="image/*"
-                                           oninput="showImage(this,'dbjbtu3')"/></td>
+                    <td>吊臂上各长度示意图</td>
+                    <td colspan="4">
+                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbjbtu3" oninput="showImage(this,'dbjbtu3')"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -933,20 +1072,32 @@
                     <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.吊臂前支撑点前部载荷</b></td>
                 </tr>
 
+                <!--<tr>-->
+                    <!--<td colspan="5">-->
+                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img src="/image/Tensile/dbjbtu4.png" width="400px" id="dbjbtu4" name="dbjbtu4" >-->
+                            <!--<input type="hidden" value="tu_dbjbtu4.png"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding:10px 0">吊臂前支撑点前部载荷图</td>-->
+                    <!--<td colspan="4"><input class="image" type="file" name="dbjbtu4" accept="image/*"-->
+                                           <!--oninput="showImage(this,'dbjbtu4')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img src="/image/Tensile/dbjbtu4.png" width="400px" id="dbjbtu4" name="dbjbtu4" >
-                            <input type="hidden" value="tu_dbjbtu4.png"/>
+                            <img alt="吊臂前支撑点前部载荷图" id="dbjbtu4" width="400px" name="dbjbtu4">
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊臂前支撑点前部载荷图</td>
-                    <td colspan="4"><input class="image" type="file" name="dbjbtu4" accept="image/*"
-                                           oninput="showImage(this,'dbjbtu4')"/></td>
+                    <td>吊臂前支撑点前部载荷图</td>
+                    <td colspan="4">
+                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbjbtu4" oninput="showImage(this,'dbjbtu4')"/>
+                    </td>
                 </tr>
-
                 <tr>
                     <td style="width:104px;padding:10px 0;"><b>名称</b></td>
                     <td style="width:68px;">符号</td>
@@ -1040,18 +1191,31 @@
                 <tr>
                     <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.重心至吊臂前支撑点距离</b></td>
                 </tr>
+                <!--<tr>-->
+                    <!--<td colspan="5">-->
+                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img src="/image/Tensile/dbjbtu6.png" width="400px" id="dbjbtu6" name="dbjbtu6" >-->
+                            <!--<input type="hidden" value="tu_dbjbtu6.png"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding:10px 0">吊臂重心至吊臂前支撑点距离图</td>-->
+                    <!--<td colspan="4"><input class="image" type="file" name="dbjbtu6" accept="image/*"-->
+                                           <!--oninput="showImage(this,'dbjbtu6')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img src="/image/Tensile/dbjbtu6.png" width="400px" id="dbjbtu6" name="dbjbtu6" >
-                            <input type="hidden" value="tu_dbjbtu6.png"/>
+                            <img alt="吊臂重心至吊臂前支撑点距离图" id="dbjbtu6" width="400px" name="dbjbtu6">
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊臂重心至吊臂前支撑点距离图</td>
-                    <td colspan="4"><input class="image" type="file" name="dbjbtu6" accept="image/*"
-                                           oninput="showImage(this,'dbjbtu6')"/></td>
+                    <td>吊臂重心至吊臂前支撑点距离图</td>
+                    <td colspan="4">
+                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbjbtu6" oninput="showImage(this,'dbjbtu6')"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="width:104px;padding:10px 0;"><b>名称</b></td>
@@ -1109,18 +1273,31 @@
                 <tr>
                     <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.迎风面积</b></td>
                 </tr>
+                <!--<tr>-->
+                    <!--<td colspan="5">-->
+                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img src="/image/Tensile/dbjbtu5.png" width="400px" id="dbjbtu5" name="dbjbtu5" >-->
+                            <!--<input type="hidden" value="tu_dbjbtu5.png"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding:10px 0">吊臂风载荷示意图</td>-->
+                    <!--<td colspan="4"><input class="image" type="file" name="dbjbtu5" accept="image/*"-->
+                                           <!--oninput="showImage(this,'dbjbtu5')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img src="/image/Tensile/dbjbtu5.png" width="400px" id="dbjbtu5" name="dbjbtu5" >
-                            <input type="hidden" value="tu_dbjbtu5.png"/>
+                            <img alt="吊臂风载荷示意图" id="dbjbtu5" width="400px" name="dbjbtu5">
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊臂风载荷示意图</td>
-                    <td colspan="4"><input class="image" type="file" name="dbjbtu5" accept="image/*"
-                                           oninput="showImage(this,'dbjbtu5')"/></td>
+                    <td>吊臂风载荷示意图</td>
+                    <td colspan="4">
+                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbjbtu5" oninput="showImage(this,'dbjbtu5')"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="width:104px;padding:10px 0;"><b>名称</b></td>
@@ -1178,18 +1355,31 @@
                 <tr>
                     <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.面心至吊臂前支撑点距离</b></td>
                 </tr>
+                <!--<tr>-->
+                    <!--<td colspan="5">-->
+                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img src="/image/Tensile/dbjbtu7.png" width="400px" id="dbjbtu7" name="dbjbtu7" >-->
+                            <!--<input type="hidden" value="tu_dbjbtu7.png"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding:10px 0">吊臂面心至吊臂前支撑点距离图</td>-->
+                    <!--<td colspan="4"><input class="image" type="file" name="dbjbtu7" accept="image/*"-->
+                                           <!--oninput="showImage(this,'dbjbtu7')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img src="/image/Tensile/dbjbtu7.png" width="400px" id="dbjbtu7" name="dbjbtu7" >
-                            <input type="hidden" value="tu_dbjbtu7.png"/>
+                            <img alt="吊臂面心至吊臂前支撑点距离图" id="dbjbtu7" width="400px" name="dbjbtu7">
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊臂面心至吊臂前支撑点距离图</td>
-                    <td colspan="4"><input class="image" type="file" name="dbjbtu7" accept="image/*"
-                                           oninput="showImage(this,'dbjbtu7')"/></td>
+                    <td>吊臂面心至吊臂前支撑点距离图</td>
+                    <td colspan="4">
+                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbjbtu7" oninput="showImage(this,'dbjbtu7')"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="width:104px;padding:10px 0;"><b>名称</b></td>
@@ -1247,18 +1437,31 @@
                 <tr>
                     <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.重心至吊臂前端法兰距离</b></td>
                 </tr>
+                <!--<tr>-->
+                    <!--<td colspan="5">-->
+                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                            <!--<img src="/image/Tensile/dbjbtu8.png" width="400px" id="dbjbtu8" name="dbjbtu8" >-->
+                            <!--<input type="hidden" value="tu_dbjbtu8.png"/>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td style="padding:10px 0">吊臂外部载荷重心至吊臂前端法兰距离图</td>-->
+                    <!--<td colspan="4"><input class="image" type="file" name="dbjbtu8" accept="image/*"-->
+                                           <!--oninput="showImage(this,'dbjbtu8')"/></td>-->
+                <!--</tr>-->
                 <tr>
                     <td colspan="5">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img src="/image/Tensile/dbjbtu8.png" width="400px" id="dbjbtu8" name="dbjbtu8" >
-                            <input type="hidden" value="tu_dbjbtu8.png"/>
+                            <img alt="吊臂外部载荷重心至吊臂前端法兰距离图" id="dbjbtu8" width="400px" name="dbjbtu8">
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊臂外部载荷重心至吊臂前端法兰距离图</td>
-                    <td colspan="4"><input class="image" type="file" name="dbjbtu8" accept="image/*"
-                                           oninput="showImage(this,'dbjbtu8')"/></td>
+                    <td>吊臂外部载荷重心至吊臂前端法兰距离图</td>
+                    <td colspan="4">
+                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbjbtu8" oninput="showImage(this,'dbjbtu8')"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="width:104px;padding:10px 0;"><b>名称</b></td>
@@ -1591,16 +1794,16 @@
         },
     };
     data.init(calculateFunction);
-    imgDaefultData={
-        dbjbtu1:{inputvalue:"dbjbtu1.png"},
-        dbjbtu3:{inputvalue:"dbjbtu3.png"},
-        dbjbtu4:{inputvalue:"dbjbtu4.png"},
-        dbjbtu5:{inputvalue:"dbjbtu5.png"},
-        dbjbtu6:{inputvalue:"dbjbtu6.png"},
-        dbjbtu7:{inputvalue:"dbjbtu7.png"},
-        dbjbtu8:{inputvalue:"dbjbtu8.png"},
-    }
-    getData.dataToImage(imgDaefultData);
+    // imgDaefultData={
+    //     dbjbtu1:{inputvalue:"dbjbtu1.png"},
+    //     dbjbtu3:{inputvalue:"dbjbtu3.png"},
+    //     dbjbtu4:{inputvalue:"dbjbtu4.png"},
+    //     dbjbtu5:{inputvalue:"dbjbtu5.png"},
+    //     dbjbtu6:{inputvalue:"dbjbtu6.png"},
+    //     dbjbtu7:{inputvalue:"dbjbtu7.png"},
+    //     dbjbtu8:{inputvalue:"dbjbtu8.png"},
+    // }
+    // getData.dataToImage(imgDaefultData);
 </script>
 </body>
 </html>
