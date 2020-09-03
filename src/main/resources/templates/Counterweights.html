@@ -88,6 +88,18 @@
         .navbox td{
             padding: 0.4em 0.8em;
         }
+        input::-webkit-input-placeholder { /* WebKit browsers 适配谷歌 */
+            color: #f00;
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 适配火狐 */
+            color: #f00;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
+            color: #f00;
+        }
+        input:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
+            color: #f00;
+        }
 
     </style>
     <script>
@@ -879,8 +891,8 @@
 
 
 </div>
-<div class="navbox" style="position:relative;bottom:300px;top:auto;height:100px">
-    <div style="width:460px;height:460px; font-size: 14px   ;">
+<div class="navbox" style="position:relative;bottom:300px;top:auto;height:1px">
+    <div style="width:460px;height:1px; font-size: 14px   ;">
         <table id="pdf3tb">
             <tr>
                 <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
@@ -974,7 +986,19 @@
             return ffbbModelList[ ffbbModel ]['mffbb'];
         },
         tsl:function (){
-            return swp + r1 + mwr + mffbb ;
+            var o= swp + r1 + mwr + mffbb ;
+            switch ( gruModel ) {
+                case 'GRU285':temp=600;break;
+                case 'GRU295':temp=750;break;
+                case 'GRU313':temp=1000;break;
+            }
+            if(o>temp){
+                o=data.datalist['tsl'].val='';
+                $('[name=tsl]').attr('placeholder','超过GRU额定载荷').val('')
+            }else{
+                $('[name=tsl]').attr('placeholder','')
+            }
+            return o;
         },
         hsw:function(){
             return h * grugssp ;
