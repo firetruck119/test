@@ -434,9 +434,22 @@ public class CostEntity {
     private Double cbc3zj;
     private Double cbc4zj;
 
+//    前端填写数值
+    private Double lg;
+    private Double ll;
+    private Double cbgdmmzl;
+    private Double cbgdcd;
+
+//    后台
+    private Double m4;
+    private Double m12;
+    private Double m15;
+    private String djlx;
+
+
+
     //     下拉
     private String dcModel;
-    private String dcgssModel;
     private String btModel;
     private String ssjgModel;
     private String gruModel;
@@ -448,6 +461,8 @@ public class CostEntity {
     private String dbxhModel;
     private String pzkModel;
     private String lzxhModel;
+    private String djxhModel;
+    private String dcgssModel;
     private String ctxhModel;
     private String lt1Model;
     private String lt2Model;
@@ -463,8 +478,8 @@ public class CostEntity {
     private String ssjgjxModel;
     private String mfModel;
     private String yscsModel;
-    private String djxhModel;
-    private String djModel;
+
+//    private String djModel;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -809,6 +824,18 @@ public class CostEntity {
         map.put("cbc4zzl", CommonFunc.convertDoubleToString(cbc4zzl));
         map.put("cbc4sl", CommonFunc.convertDoubleToString(cbc4sl));
         map.put("cbc4dj", CommonFunc.convertDoubleToString(cbc4dj));
+
+        //        前端填写数据
+        map.put("lg", CommonFunc.convertDoubleToString(lg));
+        map.put("ll", CommonFunc.convertDoubleToString(ll));
+        map.put("cbgdmmzl", CommonFunc.convertDoubleToString(cbgdmmzl));
+        map.put("cbgdcd", CommonFunc.convertDoubleToString(cbgdcd));
+
+//        后台
+        map.put("m4", CommonFunc.convertDoubleToString(m4));
+        map.put("m12", CommonFunc.convertDoubleToString(m12));
+        map.put("m15", CommonFunc.convertDoubleToString(m15));
+        map.put("djlx", CommonFunc.convertDoubleToString(djlx));
 
         //       8模块成本小计
         map.put("cbdczj", CommonFunc.convertDoubleToString(cbdczj));

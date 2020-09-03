@@ -75,10 +75,10 @@ public class CostController {
         cacheData.saveCacheValue(sjht, entity);
         List<byte[]> list = new ArrayList<>();
         list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/整机成本估算计算书"));
-        if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/整机成本估算计算书验证部分"));
-            return tool.getResponseEntity("整机成本估算计算书验证部分", pdf.MergePDF(list));
-        }
+//        if (null!=check&&check) {
+//              list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/整机成本估算计算书验证部分"));
+//              return tool.getResponseEntity("整机成本估算计算书验证部分", pdf.MergePDF(list));
+//        }
         return tool.getResponseEntity("整机成本估算计算书", list.get(0));
     }
 }
