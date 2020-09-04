@@ -1024,13 +1024,14 @@
         ldbm:()=>{
             return lxtm + ldjm ;
         },
-        m4:()=>{
+
+        m4:() => {
             var data;
-            if( dbModel .indexOf('DB')>-1 && lbd ) data=mdbb+mbmj*(lbd-ldbbz/1000);
-            if( dbModel .indexOf('1+1伸缩臂')>-1&& lbj ) data=mbgj+mbmj*lbj+mbg1+ldbm*mbm1 ;
-            if( dbModel .indexOf('2+1伸缩臂')>-1 && lbj ) data=mbgj+mbmj*lbj+mbg1+mbg2+ldbm*(mbm1+mbm2);
-            if( dbModel .indexOf('3+1伸缩臂')>-1 && lbj ) data=mbgj+mbmj*lbj+mbg1+mbg2+mbg3+ldbm*(mbm1+mbm2+mbm3);
-            if( dbModel .indexOf('4+1伸缩臂')>-1 && lbj ) data=mbgj+mbmj*lbj+mbg1+mbg2+mbg3+mbg4+ldbm*(mbm1+mbm2+mbm3+mbm4);
+            if ( dbModel.indexOf('DB') > -1 && lbd ) data = mdbb + mbmj * ( lbd - ldbbz / 1000 );
+            if ( dbModel.indexOf('1+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + ldbm * mbm1 ;
+            if ( dbModel.indexOf('2+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + ldbm * ( mbm1 + mbm2 );
+            if ( dbModel.indexOf('3+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + ldbm * ( mbm1 + mbm2 + mbm3 );
+            if ( dbModel.indexOf('4+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + mbg4 + ldbm * ( mbm1 + mbm2 + mbm3 + mbm4 );
             return data;
         },
         m6:()=>{
