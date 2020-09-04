@@ -986,19 +986,19 @@
             return ffbbModelList[ ffbbModel ]['mffbb'];
         },
         tsl:function (){
-            var o= swp + r1 + mwr + mffbb ;
-            switch ( gruModel ) {
-                case 'GRU285':temp=600;break;
-                case 'GRU295':temp=750;break;
-                case 'GRU313':temp=1000;break;
-            }
-            if(o>temp){
-                o=data.datalist['tsl'].val='';
-                $('[name=tsl]').attr('placeholder','超过GRU额定载荷').val('')
-            }else{
-                $('[name=tsl]').attr('placeholder','')
-            }
-            return o;
+            return swp + r1 + mwr + mffbb ;
+            // switch ( gruModel ) {
+            //     case 'GRU285':temp=600;break;
+            //     case 'GRU295':temp=750;break;
+            //     case 'GRU313':temp=1000;break;
+            // }
+            // if(o>temp){
+            //     o=data.datalist['tsl'].val='';
+            //     $('[name=tsl]').attr('placeholder','超过GRU额定载荷').val('')
+            // }else{
+            //     $('[name=tsl]').attr('placeholder','')
+            // }
+            // return o;
         },
         hsw:function(){
             return h * grugssp ;
@@ -1227,6 +1227,9 @@
                 return ' ' ;
             }
         },
+        // mz:function(){
+        //     return  m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
+        // },
     };
 
     getMultilevelTable("dbType","dbModel",["dbxzd", "dbxz1", "dbxz2", "dbxz3", "dbxz4"]);
@@ -1240,22 +1243,22 @@
     getTable("trippingModel","yxjgxz");
     getTable("dcgssModel","dcgssxz");
     data.init(calculateFunction);
-    $('[name=gruModel],[name=tsl]').change(()=>{
-        var se=$('[name=gruModel]').val();
-        var ie=$('[name=tsl]').val();
-        var temp;
-        switch (se) {
-            case 'GRU285':temp=600;break;
-            case 'GRU295':temp=750;break;
-            case 'GRU313':temp=1000;break;
-        }
-        if(ie>temp){
-            data.datalist['tsl'].val='';
-            $('[name=tsl]').attr('placeholder','超过GRU额定载荷').val('')
-        }else{
-            $('[name=tsl]').attr('placeholder','')
-        }
-    })
+    // $('[name=gruModel],[name=tsl]').change(()=>{
+    //     var se=$('[name=gruModel]').val();
+    //     var ie=$('[name=tsl]').val();
+    //     var temp;
+    //     switch (se) {
+    //         case 'GRU285':temp=600;break;
+    //         case 'GRU295':temp=750;break;
+    //         case 'GRU313':temp=1000;break;
+    //     }
+    //     if(ie>temp){
+    //         data.datalist['tsl'].val='';
+    //         $('[name=tsl]').attr('placeholder','超过GRU额定载荷').val('')
+    //     }else{
+    //         $('[name=tsl]').attr('placeholder','')
+    //     }
+    // })
 
 </script>
 </body>

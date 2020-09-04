@@ -154,6 +154,7 @@ public class CounterweightsEntity {
     private Double mq;
     private Double mkpz;
     private Double m11s;
+    private Double mz;
 
     private Double lhl1;
     private Double lhl2;
@@ -289,6 +290,7 @@ public class CounterweightsEntity {
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
         map.put("hzzcxh", CommonFunc.convertDoubleToString(hzzcxh));
+//        map.put("mz", CommonFunc.convertDoubleToString(mz));
 
         map.put("qt1", CommonFunc.convertDoubleToString(qt1));
         map.put("qt2", CommonFunc.convertDoubleToString(qt2));
@@ -354,7 +356,7 @@ public class CounterweightsEntity {
         lhl9 = ll / 2;
         if (m10 == 0) lhl10 = 0.0;
         else lhl10 = lqg10 - lg / 2 - ll / 2;
-        lhl11 = lbpx - ll / 2;
+        lhl11 = lbp - ll / 2;
         lhl12 = ll / 2;
         lhl13 = ll / 2 - lqg13 - lg / 2;
         if (m14 == 0) lhl14 = 0.0;
@@ -399,6 +401,7 @@ public class CounterweightsEntity {
         mkhl = mfhl1 + mfhl2 + mfhl3 + mfhl4 + mfhl5 + mfhl6 + mfhl7 + mfhl8 + mfhl9
                 + mfhl12 + mfhl13 + mfhl14 + mfhl15 + mfhl16 + mfhl17 + mfhl18 + mfhl19
                 + mfhl20;
+
 
         if (mqhl <= mkhl) pzyzy2 = "没有";
         else pzyzy2 = "有";
@@ -548,6 +551,7 @@ public class CounterweightsEntity {
         result.put("pzyzm2", CommonFunc.convertDoubleToString(pzyzm2));
         result.put("pzyzm", CommonFunc.convertDoubleToString(pzyzm));
 
+
         return result;
     }
 
@@ -586,7 +590,9 @@ public class CounterweightsEntity {
         mq = msla + mshla + ma1 + ma2 + ma3 + ma4 + ma6 + ma20;
         mkpz = ma5 + ma7 + ma8 + ma9 + ma10 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21;
         m11s = (npz * mq - mkpz) / (lqg11 * 10);
-
+        if( m11 != null ){
+         mz = m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21;
+        };
         map.put("msla", msla);
         map.put("mshla", mshla);
         map.put("ma1", ma1);
@@ -614,6 +620,7 @@ public class CounterweightsEntity {
         map.put("mq", mq);
         map.put("mkpz", mkpz);
         map.put("m11s", m11s);
+        map.put("mz", mz);
 
         /*
         计算公式
