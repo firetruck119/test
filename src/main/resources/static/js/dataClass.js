@@ -130,7 +130,12 @@
                     if (typeof fun == 'string')
                         eval(  'temp =' + fun)
                     else if (typeof fun == 'function'){
-                        temp=fun()
+                        try {
+                            temp=fun()
+                        }catch (e) {
+                            temp=null;
+                            console.log(e)
+                        }
                     }
                     var o = data.datalist[key];
                     if (['NaN', 'undefined', 'null'].indexOf(String(temp)) < 0 ) {
