@@ -54,8 +54,9 @@
                         <template v-for="subindex in index.children">
                             <el-menu-item :index="subindex.title">
                                 <el-link type="primary" :href="'/'+index.url+(subindex.url?'/'+subindex.url:'')"
+                                         :class="{'user':subindex.level==1,'superuser':subindex.level==2,
+                                         'admin':subindex.level==3,'owern':subindex.level==4}"
                                          style="display: block">
-                                    {{subindex.title}}
                                 </el-link>
                             </el-menu-item>
                         </template>
@@ -63,6 +64,8 @@
                     <el-menu-item v-else>
                         <span slot="title" :index="index.title">
                             <el-link type="primary" :href="'/'+e.url+(index.url?'/'+index.url:'')"
+                                     :class="{'user':index.level==1,'superuser':index.level==2,
+                                     'admin':index.level==3,'owern':index.level==4}"
                                      style="display: block">{{index.title}}</el-link>
                         </span>
                     </el-menu-item>
@@ -71,6 +74,7 @@
             <el-menu-item v-else-if="e.url">
                     <span slot="title" :index="e.title">
                             <el-link type="primary" :href="e.url?'/'+e.url:''"
+                                     :class="{'user':e.level==1,'superuser':e.level==2,'admin':e.level==3,'owern':e.level==4}"
                                      style="display: block">{{e.title}}</el-link>
                     </span>
             </el-menu-item>

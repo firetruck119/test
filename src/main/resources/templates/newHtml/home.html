@@ -26,6 +26,7 @@
                 main: {isreally: false},
                 i:10,
                 username:"",
+
             },
             computed:{
                 u(){
@@ -52,10 +53,30 @@
                             this.username=e.data;
                         }
                     )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                            if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                                var invisibleLinks = [];
+                                if(e.data<3){
+                                    invisibleLinks=invisibleLinks.concat(Array.prototype.slice.call(document.getElementsByClassName("admin")));
+                                    invisibleLinks=invisibleLinks.concat(Array.prototype.slice.call(document.getElementsByClassName("owern")));
+                                }
+                                if(e.data<2){
+                                    invisibleLinks=invisibleLinks.concat(Array.prototype.slice.call(document.getElementsByClassName("user")));
+                                }
+                                for(i=0 ; i<invisibleLinks.length; i++){
+                                    invisibleLinks[i].style.display="none";
+                                }
+                            }
+                        }
+                    )
                 }
             },
             mounted() {
                 this.getCurrentUserName();
+                this.setInvisibleLinks();
             }
         })
     </script>
