@@ -122,6 +122,25 @@ public class UserManagerController {
         return result;
     }
 
+    @GetMapping("/getNoPermitsPages")
+    @ResponseBody
+    public List<String> getNoPermitsPages(){
+        MyUserDetails user=getCurrentUser();
+        String rolename=user.getRoleList().get(0);
+        int level=RoleEntity.valueOf(rolename).getLevel();
+        List<String> result = new ArrayList<>();
+        if(level<=2) {
+            Arrays.stream(Consts.OWERN_PERMITS).forEach(x -> result.add(x));
+            Arrays.stream(Consts.ADMIN_PERMITS).forEach(x -> result.add(x));
+        }
+        if(level<=1) {
+            Arrays.stream(Consts.SUPERUSER_PERMITS).forEach(x -> result.add(x));
+        }
+        return result;
+    }
+
+
+
     @PostMapping("/getCurrentUserName")
     @ResponseBody
     public Object getCurrentUserName(){

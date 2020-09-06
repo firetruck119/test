@@ -4,6 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <script type="text/javascript">
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+
         function InitNav(type) {
             $('#hrefsub_1').css("display", "none");
             // $('#hrefsub_2').css("display", "none");
@@ -54,7 +67,27 @@
                 $('#hrefsub_8').css("display", "block");
                 $('#href_8').addClass('nav-hover');
             }
+            $.ajax({
+                url: "getNoPermitsPages",
+                type: "get",
+                async: false,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    var links = Array.prototype.slice.call(document.getElementsByClassName("o-subnav-item"));
+                    for(i=0;i < links.length;i++){
+                        for (j = 0; j < data.length; j++) {
+                            if (getUrlRelativePath(links[i].firstElementChild.href) == data[j]) {
+                                links[i].style.display = "none";
+                                break;
+                            }
+                        }
+                    }
+                }
+            })
         }
+
+
     </script>
     <style>
         .fixed-top {
@@ -98,7 +131,7 @@
                                 <!--<div class="o-subnav-item"><a href="Stability" id="Stability">稳定性校核及轮压</a></div>-->
                                 <div class="o-subnav-item"><a href="ChemicalAnchor" id="ChemicalAnchor">化学锚栓</a></div>
                                 <div class="o-subnav-item"><a href="UprightMechanism" id="UprightMechanism">仰柱机构</a></div>
-                                <div class="o-subnav-item"><a href="javascript:void(0);" id="RechargeAuditList">xxx</a>
+                                <div class="o-subnav-item"><a href="xxx" id="RechargeAuditList">xxx</a>
                                 </div>
                             </div>
                         </div>
