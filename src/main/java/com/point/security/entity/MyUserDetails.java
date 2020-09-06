@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,6 +21,8 @@ public class MyUserDetails implements UserDetails {
     private String ipaddress;
     private List<String> roleList;
     private VerificationEntity verificationCode;
+    private Integer id;
+    private Integer level;
 
     public MyUserDetails(UserEntity user, List<String> authorities,VerificationEntity entity) {
         this.username=user.getUsername();
@@ -28,15 +31,20 @@ public class MyUserDetails implements UserDetails {
         this.ipaddress=user.getIpaddress();
         this.roleList=authorities;
         this.verificationCode=entity;
+        this.id = user.getId();
+        this.level = user.getLevel();
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (roleList == null || roleList.size() < 1) {
             return AuthorityUtils.commaSeparatedStringToAuthorityList("");
         }
-        StringBuilder roles = new StringBuilder("ROLE_");
-        roles.append(roleList.get(0));
-        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList(roles.toString(),"ROLE_"+name);
+        String[] roles = new String[roleList.size()+1];
+        for(int i = 0; i < roleList.size();i++) {
+            roles[i] = "ROLE_" + roleList.get(i);
+        }
+        roles[roleList.size()] = "ROLE_"+name;
+        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList(roles);
 
         return authorityList;
     }
@@ -49,6 +57,14 @@ public class MyUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return this.username;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Integer getLevel() {
+        return level;
     }
 
     @Override

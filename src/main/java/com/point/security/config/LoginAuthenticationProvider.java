@@ -1,6 +1,10 @@
 package com.point.security.config;
 
 
+import com.point.common.Consts;
+import com.point.entity.PermissionCode;
+import com.point.entity.PermissionCodeExample;
+import com.point.mapper.PermissionCodeMapper;
 import com.point.security.entity.MyUserDetails;
 import com.point.security.error.LoginAuthenticationException;
 import com.point.security.service.LightSwordUserDetailService;
@@ -15,6 +19,8 @@ import org.thymeleaf.util.StringUtils;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import static com.point.security.error.LoginError.*;
 
@@ -22,6 +28,9 @@ import static com.point.security.error.LoginError.*;
 public class LoginAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private LightSwordUserDetailService userDetailService;
+
+    @Autowired
+    private PermissionCodeMapper permissionCodeMapper;
 
     @SneakyThrows
     @Override
@@ -58,6 +67,7 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
             throw e;
         }
+        setTempPermission(user);
         Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
         return new UsernamePasswordAuthenticationToken(user, password, authorities);
     }
@@ -65,5 +75,21 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
     @Override
     public boolean supports(Class<?> authentication) {
         return true;
+    }
+
+    private void setTempPermission(MyUserDetails user){
+        if(user.getLevel()==3) {
+            PermissionCodeExample permissionCodeExample = new PermissionCodeExample();
+            PermissionCodeExample.Criteria criteria = permissionCodeExample.createCriteria();
+            criteria.andUseridEqualTo(user.getId());
+            criteria.andCheckflagEqualTo(1);
+            permissionCodeExample.setOrderByClause(" changelasttime desc limit 1 ");
+            List<PermissionCode> list = permissionCodeMapper.selectByExample(permissionCodeExample);
+            if (list.size() > 0) {
+                if (new Date().getTime() - list.get(0).getCreatetime().getTime() < 1000 * 60 * Consts.PERMISSION_MINUTES) {
+                    user.getRoleList().add(Consts.TEMP_OWERN);
+                }
+            }
+        }
     }
 }

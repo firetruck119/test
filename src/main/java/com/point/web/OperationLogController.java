@@ -31,6 +31,11 @@ public class OperationLogController {
         return "newHtml/home";
     }
 
+    @GetMapping("/TempPermission")
+    public String tempPermission(){
+        return "login/TempPermission";
+    }
+
     @ResponseBody
     @PostMapping("/OperationLog/queryOperationLog")
     public GridDataJsonModel queryOperationLog(@RequestParam String user ,@RequestParam String operation) throws Exception{

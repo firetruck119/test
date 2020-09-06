@@ -1,5 +1,6 @@
 package com.point.newPDF.controller;
 
+import com.point.common.Consts;
 import com.point.common.CustomerException;
 import com.point.newPDF.Service.UsersInfoService;
 import com.point.newPDF.entity.RoleEntity;
@@ -14,6 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.point.security.error.UserError.ERROR_NOTENUUGHLEVEL;
 
@@ -96,6 +101,25 @@ public class UserManagerController {
     @ResponseBody
     public Integer getUserLevel(){
         return getCurrentUserLevel();
+    }
+
+    @GetMapping("/getPermitsAboveAdmin")
+    @ResponseBody
+    public List<String> getPermitsAboveAdmin(){
+        List<String> result = new ArrayList<>();
+        Arrays.stream(Consts.OWERN_PERMITS).forEach(x->result.add(x));
+        Arrays.stream(Consts.ADMIN_PERMITS).forEach(x->result.add(x));
+        return result;
+    }
+
+    @GetMapping("/getPermitsAboveSuperUser")
+    @ResponseBody
+    public List<String> getPermitsAboveSuperUser(){
+        List<String> result = new ArrayList<>();
+        Arrays.stream(Consts.OWERN_PERMITS).forEach(x->result.add(x));
+        Arrays.stream(Consts.ADMIN_PERMITS).forEach(x->result.add(x));
+        Arrays.stream(Consts.SUPERUSER_PERMITS).forEach(x->result.add(x));
+        return result;
     }
 
     @PostMapping("/getCurrentUserName")

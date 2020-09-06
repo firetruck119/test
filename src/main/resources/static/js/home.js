@@ -1,8 +1,18 @@
 asideDatas = {
     asideData: [
         {
-            title:'跳转旧模块(临时)',
-            url:"CleaningCycle"
+            title:'临时功能',
+            url:"",
+            children:[
+                {
+                    title:'跳转旧模块(临时)',
+                    url:"CleaningCycle",
+                },
+                {
+                    title:'申请临时权限',
+                    url:"TempPermission"
+                }
+            ]
         },
 
         {
@@ -302,7 +312,7 @@ asideDatas = {
         },
         {
             title:'模块编辑',
-            url:'dataTable',
+            url:'dataTable'
         }
     ]
 };

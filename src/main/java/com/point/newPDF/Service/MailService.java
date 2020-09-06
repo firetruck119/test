@@ -72,6 +72,17 @@ public class MailService implements MailMapper {
         String process = templateEngine.process("login/mail", context);
         sendHtmlMail(mailaddress,to+"请求验证码",process);
     }
+
+    public void sendPermissionMail(String from, String to,String mailaddress,String verification){
+        Context context = new Context();
+//        设置传入模板的页面的参数 参数名为:id 参数随便写一个就行
+        context.setVariable("fromname", from);
+        context.setVariable("toname", to);
+        context.setVariable("code", verification);
+        String process = templateEngine.process("login/PermissionMail", context);
+        sendHtmlMail(mailaddress,to+"请求验证码",process);
+    }
+
     /**
      * html邮件
      * @param to 收件人

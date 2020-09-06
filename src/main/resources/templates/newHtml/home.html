@@ -19,6 +19,18 @@
         function f(){
             vm.i--;
         }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
         var vm = new Vue({
             data: {
                 asideData: {},
@@ -26,6 +38,7 @@
                 main: {isreally: false},
                 i:10,
                 username:"",
+
             },
             computed:{
                 u(){
@@ -52,10 +65,61 @@
                             this.username=e.data;
                         }
                     )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                            if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                                var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                                if(e.data==1) {
+                                    axios.get("/getPermitsAboveSuperUser").then(
+                                        e1 => {
+                                            console.log(e1.data);
+                                            console.log(invisibleLinks);
+                                        for(i=0;i < invisibleLinks.length;i++){
+                                            for (j = 0; j < e1.data.length; j++) {
+                                                if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                                    invisibleLinks[i].style.display = "none";
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    });
+                                }
+                                else if(e.data==2){
+                                    axios.get("/getPermitsAboveAdmin").then(
+                                        e1 => {
+                                        for(i=0;i < invisibleLinks.length;i++){
+                                            for (j = 0; j < e1.data.length; j++) {
+                                                if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                                    invisibleLinks[i].style.display = "none";
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    });
+                                }
+                                console.log(e.data);
+                                console.log("e.data");
+                                for(i=0;i<invisibleLinks.length;i++){
+                                    if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                        if(e.data!=3) {
+                                            invisibleLinks[i].style.display = "none";
+                                        }
+                                        invisibleLinks[i].target="_blank";
+                                        break;
+                                    }
+                                }
+
+
+                            }
+                        }
+                    )
                 }
             },
             mounted() {
                 this.getCurrentUserName();
+                this.setInvisibleLinks();
             }
         })
     </script>

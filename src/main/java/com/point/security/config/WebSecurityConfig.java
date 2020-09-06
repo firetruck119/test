@@ -1,5 +1,6 @@
 package com.point.security.config;
 
+import com.point.common.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,14 +49,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/403",
                         "/getCurrentUserName"
                 ).permitAll() //默认不拦截静态资源的url pattern （2）
-                .antMatchers("/ExportProjectData", "/dataTable/downLoadExcel").hasAnyRole("ADMIN", "OWERN")
-                .antMatchers("/ImportProjectData",
-                        "/projectData/ProjectColumnDefinitionList",
-                        "/dataTable/updataTable",
-                        "/dataTable/createNewTable",
-                        "/dataTable/deleteTable",
-                        "/dataTable/upExcel"
-                        ).hasAnyRole("OWERN")
+                .antMatchers(Consts.OWERN_PERMITS).hasAnyRole("OWERN","TEMP_OWERN")
+                .antMatchers(Consts.ADMIN_PERMITS).hasAnyRole("OWERN","ADMIN")
+                .antMatchers(Consts.SUPERUSER_PERMITS).hasAnyRole("OWERN","ADMIN","SUPERUSER")
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").authenticationDetailsSource(authenticationDetailsSource)// 登录url请求路径 (3)
                 .successHandler(customAuthenticationSuccessHandler())
