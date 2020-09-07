@@ -35,6 +35,9 @@ public class Consts {
             "/dataTable/downLoadExcel",
             "/ExportProjectData",
             "/projectData/ImportExportProjectData",
+            "/ProjectColumnDefinitionList",
+            "/ProjectData",
+            "/ImportExportProjectData"
     };
 
     //管理员默认就有权限的页面
