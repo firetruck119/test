@@ -30,18 +30,22 @@ public class Consts {
             "/dataTable/updataTable",
             "/dataTable/createNewTable",
             "/dataTable/deleteTable",
-            "/dataTable/upExcel"
+            "/dataTable/upExcel",
+            "/OperationLog/List",
+            "/dataTable/downLoadExcel",
+            "/ExportProjectData",
+            "/projectData/ImportExportProjectData",
     };
 
     //管理员默认就有权限的页面
     public static final String[] ADMIN_PERMITS = new String[]{
-            "/ExportProjectData",
-            "/dataTable/downLoadExcel"
+//            "/ExportProjectData",
+//            "/dataTable/downLoadExcel"
     };
 
     //超级用户及以上有权限的页面
     public static final String[] SUPERUSER_PERMITS = new String[]{
-            "/OperationLog/List",
+//            "/OperationLog/List",
             "/WireRope"
     };
 
