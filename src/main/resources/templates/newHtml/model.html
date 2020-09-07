@@ -55,6 +55,7 @@
                             <el-menu-item :index="subindex.title">
                                 <el-link type="primary" :href="'/'+index.url+(subindex.url?'/'+subindex.url:'')"
                                          class="myNav" style="display: block">
+                                    {{subindex.title}}
                                 </el-link>
                             </el-menu-item>
                         </template>
