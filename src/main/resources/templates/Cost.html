@@ -1443,35 +1443,75 @@
         };
         //地脚螺栓
         djlsModelList={
-            "M20碳钢":{
-                cbdjlsxh:'M20',
-                cbdjlscz:'碳钢',
+            "M20碳钢HPB300地脚螺栓":{
+                cbdjlsxh:'M20地脚螺栓',
+                cbdjlscz:'HPB300',
                 cbdjlsdj:12.24,
             },
-            "M24碳钢":{
-                cbdjlsxh:'M24',
-                cbdjlscz:'碳钢',
+            "M24碳钢HPB300地脚螺栓":{
+                cbdjlsxh:'M24地脚螺栓',
+                cbdjlscz:'HPB300',
                 cbdjlsdj:23.33,
             },
-            "M30碳钢":{
-                cbdjlsxh:'M30',
-                cbdjlscz:'碳钢',
+            "M30碳钢HPB300地脚螺栓":{
+                cbdjlsxh:'M30地脚螺栓',
+                cbdjlscz:'HPB300',
                 cbdjlsdj:43.86,
             },
-            "M20不锈钢304":{
-                cbdjlsxh:'M20',
+            "M20不锈钢304地脚螺栓":{
+                cbdjlsxh:'M20地脚螺栓',
                 cbdjlscz:'304',
                 cbdjlsdj:42,
             },
-            "M20不锈钢316":{
-                cbdjlsxh:'M20',
+            "M20不锈钢316地脚螺栓":{
+                cbdjlsxh:'M20地脚螺栓',
                 cbdjlscz:'316',
                 cbdjlsdj:53,
             },
-            "M24不锈钢316":{
-                cbdjlsxh:'M24',
+            "M24不锈钢316地脚螺栓":{
+                cbdjlsxh:'M24地脚螺栓',
                 cbdjlscz:'316',
                 cbdjlsdj:98,
+            },
+            "上海汇雨(国产)M12/304化学锚栓":{
+                cbdjlsxh:'M12化学锚栓',
+                cbdjlscz:'304',
+                cbdjlsdj:5,
+            },
+            "上海汇雨(国产)M16/304化学锚栓":{
+                cbdjlsxh:'M16化学锚栓',
+                cbdjlscz:'304',
+                cbdjlsdj:11,
+            },
+            "上海汇雨(国产)M20/304化学锚栓":{
+                cbdjlsxh:'M20化学锚栓',
+                cbdjlscz:'304',
+                cbdjlsdj:21.5,
+            },
+            "上海汇雨(国产)M24/304化学锚栓":{
+                cbdjlsxh:'M24化学锚栓',
+                cbdjlscz:'304',
+                cbdjlsdj:29.5,
+            },
+            "上海汇雨(国产)M12/5.6级化学锚栓":{
+                cbdjlsxh:'M12化学锚栓',
+                cbdjlscz:'5.6级',
+                cbdjlsdj:2,
+            },
+            "上海汇雨(国产)M16/5.6级化学锚栓":{
+                cbdjlsxh:'M16化学锚栓',
+                cbdjlscz:'5.6级',
+                cbdjlsdj:5.8,
+            },
+            "上海汇雨(国产)M20/5.6级化学锚栓":{
+                cbdjlsxh:'M20化学锚栓',
+                cbdjlscz:'5.6级',
+                cbdjlsdj:7.3,
+            },
+            "上海汇雨(国产)M24/5.6级化学锚栓":{
+                cbdjlsxh:'M24化学锚栓',
+                cbdjlscz:'5.6级',
+                cbdjlsdj:10.5,
             },
             "无":{
                 cbdjlsxh:'无',
@@ -2368,7 +2408,7 @@
                     <td style="width:10%;">部件类型</td>
                     <td style="width:30%;">名称/型号</td>
                     <td style="width:7%;">数量</td>
-                    <td style="width:15%;">长度(米)</td>
+                    <td style="width:15%;">单根长度(米)</td>
                     <td style="width:15%;">单价</td>
                     <td style="width:8%;">单位</td>
                     <td style="width:10%;">总价(万元)</td>
@@ -2525,7 +2565,7 @@
                     <td style="width:10%;">部件类型</td>
                     <td style="width:15%;">名称</td>
                     <td style="width:10%;">数量</td>
-                    <td style="width:10%;">长度或重量</td>
+                    <td style="width:10%;">单根长度或单个重量</td>
                     <td style="width:10%;">单位</td>
                     <td style="width:10%;">单价</td>
                     <td style="width:10%;">单位</td>
@@ -2724,16 +2764,24 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="width:40%;">地脚螺栓选择</td>
+                    <td style="width:40%;">地脚螺栓/化学锚栓选择</td>
                     <td colspan="4">
                         <select name="djlsModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="M20碳钢">M20碳钢</option>
-                            <option value="M24碳钢">M24碳钢</option>
-                            <option value="M30碳钢">M30碳钢</option>
-                            <option value="M20不锈钢304">M20不锈钢304</option>
-                            <option value="M20不锈钢316">M20不锈钢316</option>
-                            <option value="M24不锈钢316">M24不锈钢316</option>
+                            <option value="M20碳钢HPB300地脚螺栓">M20碳钢HPB300地脚螺栓</option>
+                            <option value="M24碳钢HPB300地脚螺栓">M24碳钢HPB300地脚螺栓</option>
+                            <option value="M30碳钢HPB300地脚螺栓">M30碳钢HPB300地脚螺栓</option>
+                            <option value="M20不锈钢304地脚螺栓">M20不锈钢304地脚螺栓</option>
+                            <option value="M20不锈钢316地脚螺栓">M20不锈钢316地脚螺栓</option>
+                            <option value="M24不锈钢316地脚螺栓">M24不锈钢316地脚螺栓</option>
+                            <option value="上海汇雨(国产)M12/304化学锚栓">上海汇雨(国产)M12/304化学锚栓</option>
+                            <option value="上海汇雨(国产)M16/304化学锚栓">上海汇雨(国产)M16/304化学锚栓</option>
+                            <option value="上海汇雨(国产)M20/304化学锚栓">上海汇雨(国产)M20/304化学锚栓</option>
+                            <option value="上海汇雨(国产)M24/304化学锚栓">上海汇雨(国产)M24/304化学锚栓</option>
+                            <option value="上海汇雨(国产)M12/5.6级化学锚栓">上海汇雨(国产)M12/5.6级化学锚栓</option>
+                            <option value="上海汇雨(国产)M16/5.6级化学锚栓">上海汇雨(国产)M16/5.6级化学锚栓</option>
+                            <option value="上海汇雨(国产)M20/5.6级化学锚栓">上海汇雨(国产)M20/5.6级化学锚栓</option>
+                            <option value="上海汇雨(国产)M24/5.6级化学锚栓">上海汇雨(国产)M24/5.6级化学锚栓</option>
                             <option value="无">无</option>
                         </select>
                     </td>
@@ -2772,7 +2820,7 @@
                     <td style="width:15%;">型号</td>
                     <td style="width:8%;">材质</td>
                     <td style="width:6%;">数量</td>
-                    <td style="width:10%;">重量、面积或长度</td>
+                    <td style="width:10%;">总重量、面积或长度</td>
                     <td style="width:8%;">单位</td>
                     <td style="width:10%;">单价</td>
                     <td style="width:10%;">单位</td>
@@ -3103,16 +3151,16 @@
                 </tr>
                 <tr>
                     <td style="width:5%;padding:10px 0;;">序号</td>
-                    <td style="width:10%;">车型</td>
-                    <td style="width:20%;">运输路程(千米)</td>
-                    <td style="width:20%;">载重量(吨)</td>
+                    <td style="width:15%;">车型</td>
+                    <td style="width:15%;">运输路程(千米)</td>
+                    <td style="width:20%;">单车载重或平均载重(吨)</td>
                     <td style="width:10%;">车辆数</td>
                     <td style="width:25%;">单价(元/(吨·千米))</td>
                     <td style="width:10%;">总价(万元)</td>
                 </tr>
                 <tr>
                     <td >1</td>
-                    <td >6.8m</td>
+                    <td >6.8m(承重8吨)</td>
                     <td ><input type="text" name="cbc1lc"/></td>
                     <td ><input type="text" name="cbc1zzl"/></td>
                     <td ><input type="text" name="cbc1sl"/></td>
@@ -3121,7 +3169,7 @@
                 </tr>
                 <tr>
                     <td >2</td>
-                    <td >9.6m</td>
+                    <td >9.6m(承重18吨)</td>
                     <td ><input type="text" name="cbc2lc"/></td>
                     <td ><input type="text" name="cbc2zzl"/></td>
                     <td ><input type="text" name="cbc2sl"/></td>
@@ -3130,7 +3178,7 @@
                 </tr>
                 <tr>
                     <td >3</td>
-                    <td >13.0m</td>
+                    <td >13.0m(承重33吨)</td>
                     <td ><input type="text" name="cbc3lc"/></td>
                     <td ><input type="text" name="cbc3zzl"/></td>
                     <td ><input type="text" name="cbc3sl"/></td>
@@ -3139,7 +3187,7 @@
                 </tr>
                 <tr>
                     <td >4</td>
-                    <td >17.5m</td>
+                    <td >17.5m(承重30吨)</td>
                     <td ><input type="text" name="cbc4lc"/></td>
                     <td ><input type="text" name="cbc4zzl"/></td>
                     <td ><input type="text" name="cbc4sl"/></td>
@@ -3983,7 +4031,7 @@
             return cblt5sl * cblt5cd * cblt5dj / cblt5lyl / 10000 ;
         },
         cbxzzj: function () {
-            return cbxzzl * cbxzdj / 10000 ;
+            return cbxzsl * cbxzzl * cbxzdj / 10000 ;
         },
         cbxdzj: function () {
             return cbxdsl * cbxddj / 10000 ;
