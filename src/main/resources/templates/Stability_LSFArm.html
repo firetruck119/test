@@ -4430,7 +4430,7 @@
 
         lhl1:' lbx - ( ldcgh - lbtzh ) + ll / 2',
         lhl2:' lbx - ( ldcgh - ldslzh ) + ll / 2',
-        lhl3:' lhl1 ',
+        lhl3:' 0 ',
         lhl4:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return lhz4 + ll / 2 ;
@@ -4618,7 +4618,7 @@
 
         lmzf1:' lhl1 - ll / 2 ',
         lmzf2:' lhl2 - ll / 2 ',
-        lmzf3:' lhl3 - ll / 2 ',
+        lmzf3:' 0 ',
         lmzf5:' lhl5 - ll / 2 ',
         lmzf6:' 0 ',
         lmzf7:function () {
@@ -4654,7 +4654,7 @@
             if( m16 == 0 ){
                 return 0 ;
             }else {
-                return -ll / 2 ;
+                return - ll / 2 ;
             }
         },
         lmzf17:function(){
@@ -4668,7 +4668,7 @@
             if( m18 == 0 ){
                 return 0 ;
             }else {
-                return -ll / 2 ;
+                return - ll / 2 ;
             }
         },
         lmzf19:function(){
@@ -4696,7 +4696,7 @@
 
         afcx1:' acx1 ',
         afcx2:' acx2 ',
-        afcx3:' acx3 ',
+        afcx3:' 0 ',
         afcx4:' acx4 ',
         afcx5:' acx5 ',
         afcx6:' acx6 ',
@@ -4753,7 +4753,7 @@
 
 
         aftx2:' atx2 ',
-        aftx3:' atx3 ',
+        aftx3:' 0 ',
         aftx5:' atx5 ',
         aftx6:' 0 ',
         aftx7:function () {
