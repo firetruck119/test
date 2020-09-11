@@ -82,6 +82,12 @@ public class CostEntity {
     private Double cbpzkzl;
     private Double cbpzkdj;
     private Double cbpzklyl;
+    private Double cbpzfgzl;
+    private Double cbpzfgdj;
+    private Double cbpzfglyl;
+    private Double cbpzktzl;
+    private Double cbpzktdj;
+    private Double cbpzktlyl;
 
     //    配重箱体
     private Double cbpzxtzl;
@@ -365,6 +371,8 @@ public class CostEntity {
     //    3大件成本小计
     private Double cbdbzj;
     private Double cbpzkzj;
+    private Double cbpzfgzj;
+    private Double cbpzktzj;
     private Double cbpzxtzj;
     private Double cblzzj;
     private Double cbdjzj;
@@ -555,6 +563,12 @@ public class CostEntity {
         map.put("cbpzkzl", CommonFunc.convertDoubleToString(cbpzkzl));
         map.put("cbpzkdj", CommonFunc.convertDoubleToString(cbpzkdj));
         map.put("cbpzklyl", CommonFunc.convertDoubleToString(cbpzklyl));
+        map.put("cbpzfgzl", CommonFunc.convertDoubleToString(cbpzfgzl));
+        map.put("cbpzfgdj", CommonFunc.convertDoubleToString(cbpzfgdj));
+        map.put("cbpzfglyl", CommonFunc.convertDoubleToString(cbpzfglyl));
+        map.put("cbpzktzl", CommonFunc.convertDoubleToString(cbpzktzl));
+        map.put("cbpzktdj", CommonFunc.convertDoubleToString(cbpzktdj));
+        map.put("cbpzktlyl", CommonFunc.convertDoubleToString(cbpzktlyl));
 
         //        配重箱体
         map.put("cbpzxtzl", CommonFunc.convertDoubleToString(cbpzxtzl));
@@ -849,6 +863,8 @@ public class CostEntity {
         //       3大件成本小计
         map.put("cbdbzj", CommonFunc.convertDoubleToString(cbdbzj));
         map.put("cbpzkzj", CommonFunc.convertDoubleToString(cbpzkzj));
+        map.put("cbpzfgzj", CommonFunc.convertDoubleToString(cbpzfgzj));
+        map.put("cbpzktzj", CommonFunc.convertDoubleToString(cbpzktzj));
         map.put("cbpzxtzj", CommonFunc.convertDoubleToString(cbpzxtzj));
         map.put("cblzzj", CommonFunc.convertDoubleToString(cblzzj));
         map.put("cbdjzj", CommonFunc.convertDoubleToString(cbdjzj));
@@ -934,7 +950,7 @@ public class CostEntity {
         Map<String, Double> map = new HashMap();
 
         Double cb8mkzj = cbdczj + cbbtzj + cbssjgzj + cbgruzj + cbqsjgzj + cbslqzj + cbhzzj + cbyxzj + cbjgqzj ;
-        Double cb3djzj = cbdbzj + cbpzkzj + cbpzxtzj + cblzzj + cbdjzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj ;
+        Double cb3djzj = cbdbzj + cbpzkzj + cbpzfgzj + cbpzktzj + cbpzxtzj + cblzzj + cbdjzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj ;
         Double cbdjzjzj = cbbtdjzj + cbssjgdjzj + cbgrudjzj + cbqsjgdj1zj + cbqsjgdj2zj + cbhzdjzj + cbyxdjzj ;
         Double cbwgjzj = cbdcgsszj + cbgrugsszj + cbaqszj + cbctzj + cbbthzzczj + cbhzhzzczj ;
         Double cbwxjzj = cblt1zj + cblt2zj + cblt3zj + cblt4zj + cblt5zj + cbxzzj + cbxdzj + cbssjjzj + cbdbxzzj ;

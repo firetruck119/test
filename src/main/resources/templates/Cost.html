@@ -992,7 +992,7 @@
         //大臂类型
         dbxhModelList={
             "单臂横截面":{
-                cbdbmc:'单臂横截面',
+                cbdbmc:'方管式吊臂',
                 cbdbdj:5300,
                 cb3yqdj:3000,
                 cbssjjmc:'无',
@@ -1004,7 +1004,7 @@
                 cbdqdj:12000,
             },
             "单臂变截面":{
-                cbdbmc:'单臂变截面',
+                cbdbmc:'板拼式吊臂',
                 cbdbdj:4600,
                 cb3yqdj:3000,
                 cbssjjmc:'无',
@@ -1016,7 +1016,7 @@
                 cbdqdj:12000,
             },
             "1+1伸缩臂":{
-                cbdbmc:'1+1伸缩臂',
+                cbdbmc:'八边管式吊臂',
                 cbdbdj:6000,
                 cb3yqdj:4000,
                 cbssjjmc:'1+1伸缩臂机加件',
@@ -1028,7 +1028,7 @@
                 cbdqdj:15000,
             },
             "2+1伸缩臂":{
-                cbdbmc:'2+1伸缩臂',
+                cbdbmc:'八边管式吊臂',
                 cbdbdj:6000,
                 cb3yqdj:5000,
                 cbssjjmc:'2+1伸缩臂机加件',
@@ -1040,7 +1040,7 @@
                 cbdqdj:15000,
             },
             "3+1伸缩臂":{
-                cbdbmc:'3+1伸缩臂',
+                cbdbmc:'八边管式吊臂',
                 cbdbdj:6000,
                 cb3yqdj:6000,
                 cbssjjmc:'3+1伸缩臂机加件',
@@ -1052,7 +1052,7 @@
                 cbdqdj:18000,
             },
             "4+1伸缩臂":{
-                cbdbmc:'4+1伸缩臂',
+                cbdbmc:'八边管式吊臂',
                 cbdbdj:6000,
                 cb3yqdj:8000,
                 cbssjjmc:'4+1伸缩臂机加件',
@@ -1069,16 +1069,22 @@
             "混凝土配重块":{
                 cbpzkmc:'混凝土配重块',
                 cbpzkdj:316,
-                cbpzxtzl:" ",
-                cbpzxtdj:4400,
-                cbpzxtlyl:" ",
+                cbpzfgzl:' ',
+                cbpzfgdj:4400,
+                cbpzfglyl:1,
+                cbpzktzl:' ',
+                cbpzktdj:4400,
+                cbpzktlyl:' ',
             },
             "钢板配重块":{
                 cbpzkmc:'钢板配重块',
                 cbpzkdj:4800,
-                cbpzxtzl:0,
-                cbpzxtdj:0,
-                cbpzxtlyl:1,
+                cbpzfgzl:0,
+                cbpzfgdj:0,
+                cbpzfglyl:1,
+                cbpzktzl:0,
+                cbpzktdj:0,
+                cbpzktlyl:1,
             },
         };
         //立柱类型
@@ -2206,7 +2212,7 @@
                 </tr>
                 <tr>
                     <td >2</td>
-                    <td >配重块</td>
+                    <td rowspan="3">配重块</td>
                     <td ><input type="text" name="cbpzkmc"/></td>
                     <td ><input type="text" name="cbpzkzl"/></td>
                     <td ><input type="text" name="cbpzkdj"/></td>
@@ -2216,8 +2222,26 @@
                 </tr>
                 <tr>
                     <td >3</td>
+                    <td >废钢</td>
+                    <td ><input type="text" name="cbpzfgzl"/></td>
+                    <td ><input type="text" name="cbpzfgdj"/></td>
+                    <td >元/吨</td>
+                    <td ><input type="text" name="cbpzfglyl"/></td>
+                    <td ><input type="text" name="cbpzfgzj"/></td>
+                </tr>
+                <tr>
+                    <td >4</td>
+                    <td >壳体</td>
+                    <td ><input type="text" name="cbpzktzl"/></td>
+                    <td ><input type="text" name="cbpzktdj"/></td>
+                    <td >元/吨</td>
+                    <td ><input type="text" name="cbpzktlyl"/></td>
+                    <td ><input type="text" name="cbpzktzj"/></td>
+                </tr>
+                <tr>
+                    <td >5</td>
                     <td >配重箱体</td>
-                    <td >无</td>
+                    <td >配重箱体</td>
                     <td ><input type="text" name="cbpzxtzl"/></td>
                     <td ><input type="text" name="cbpzxtdj"/></td>
                     <td >元/吨</td>
@@ -2225,7 +2249,7 @@
                     <td ><input type="text" name="cbpzxtzj"/></td>
                 </tr>
                 <tr>
-                    <td >4</td>
+                    <td >6</td>
                     <td >立柱</td>
                     <td ><input type="text" name="cblzmc"/></td>
                     <td ><input type="text" name="cblzzl"/></td>
@@ -2235,7 +2259,7 @@
                     <td ><input type="text" name="cblzzj"/></td>
                 </tr>
                 <tr>
-                    <td >5</td>
+                    <td >7</td>
                     <td >底架</td>
                     <td ><input type="text" name="cbdjmc"/></td>
                     <td ><input type="text" name="cbdjzl"/></td>
@@ -2245,7 +2269,7 @@
                     <td ><input type="text" name="cbdjzj"/></td>
                 </tr>
                 <tr>
-                    <td >6</td>
+                    <td >8</td>
                     <td >3大件热浸锌</td>
                     <td >无</td>
                     <td ><input type="text" name="cb3zl"/></td>
@@ -2255,7 +2279,7 @@
                     <td ><input type="text" name="cb3jxzj"/></td>
                 </tr>
                 <tr>
-                    <td >7</td>
+                    <td >9</td>
                     <td >3大件油漆</td>
                     <td >无</td>
                     <td >无</td>
@@ -2265,7 +2289,7 @@
                     <td ><input type="text" name="cb3yqzj"/></td>
                 </tr>
                 <tr>
-                    <td >8</td>
+                    <td >10</td>
                     <td >3大件焊丝</td>
                     <td >无</td>
                     <td ><input type="text" name="cb3hszl"/></td>
@@ -2275,8 +2299,8 @@
                     <td ><input type="text" name="cb3hszj"/></td>
                 </tr>
                 <tr>
-                    <td >9</td>
-                    <td >3大件氧气、乙烷</td>
+                    <td >11</td>
+                    <td >3大件气体</td>
                     <td >无</td>
                     <td ><input type="text" name="cb3zl"/></td>
                     <td ><input type="text" name="cb3qdj"/></td>
@@ -3455,14 +3479,26 @@
         cbpzkdj: function () {
             return pzkModelList[ pzkModel ]['cbpzkdj'];
         },
-        cbpzxtzl: function () {
-            return pzkModelList[ pzkModel ]['cbpzxtzl'];
+        cbpzfgzl: function () {
+            return pzkModelList[ pzkModel ]['cbpzfgzl'];
+        },
+        cbpzfgdj: function () {
+            return pzkModelList[ pzkModel ]['cbpzfgdj'];
+        },
+        cbpzfglyl: function () {
+            return pzkModelList[ pzkModel ]['cbpzfglyl'];
+        },
+        cbpzktzl: function () {
+            return pzkModelList[ pzkModel ]['cbpzktzl'];
+        },
+        cbpzktdj: function () {
+            return pzkModelList[ pzkModel ]['cbpzktdj'];
+        },
+        cbpzktlyl: function () {
+            return pzkModelList[ pzkModel ]['cbpzktlyl'];
         },
         cbpzxtdj: function () {
-            return pzkModelList[ pzkModel ]['cbpzxtdj'];
-        },
-        cbpzxtlyl: function () {
-            return pzkModelList[ pzkModel ]['cbpzxtlyl'];
+            return 4400 ;
         },
         cblzmc: function () {
             return lzxhModelList[ lzxhModel ]['cblzmc'];
@@ -3481,10 +3517,10 @@
         },
         cb3zl: function () {
             if ( pzkModel == "混凝土配重块" ) {
-                return cbdbzl + cbpzxtzl + cblzzl + cbdjzl ;
+                return cbdbzl + cbpzktzl + cbpzxtzl + cblzzl + cbdjzl ;
             }
             else if ( pzkModel == "钢板配重块" ) {
-                return cbdbzl + cbpzkzl + cblzzl + cbdjzl ;
+                return cbdbzl + cbpzkzl + cbpzxtzl + cblzzl + cbdjzl ;
             }
         },
         cb3jxdj: function () {
@@ -3948,6 +3984,12 @@
         },
         cbpzkzj: function () {
             return cbpzkzl * cbpzkdj / cbpzklyl / 10000 ;
+        },
+        cbpzfgzj: function () {
+            return cbpzfgzl * cbpzfgdj / cbpzfglyl / 10000 ;
+        },
+        cbpzktzj: function () {
+            return cbpzktzl * cbpzktdj / cbpzktlyl / 10000 ;
         },
         cbpzxtzj: function () {
             return cbpzxtzl * cbpzxtdj / cbpzxtlyl / 10000 ;
