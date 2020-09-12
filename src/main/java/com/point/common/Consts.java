@@ -49,7 +49,7 @@ public class Consts {
     //超级用户及以上有权限的页面
     public static final String[] SUPERUSER_PERMITS = new String[]{
 //            "/OperationLog/List",
-            "/WireRope"
+//            "/WireRope"
     };
 
 
