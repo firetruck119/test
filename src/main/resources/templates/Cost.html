@@ -3351,61 +3351,64 @@
                 return ' ';
             }
         },
-        lt1Model: function () {
-            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-                $('[name=lt1Model]').prop('disabled', true);
-                data.datalist['lt1Model'].color = 'rgb(227, 227, 227)';
-                return lt1Model ;
-            } else {
-                $('[name=lt1Model]').prop('disabled', false)
-                data.datalist['lt1Model'].color = 'white';
-                return ' ';
-            }
-        },
-        lt2Model: function () {
-            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-                $('[name=lt2Model]').prop('disabled', true);
-                data.datalist['lt2Model'].color = 'rgb(227, 227, 227)';
-                return lt2Model ;
-            } else {
-                $('[name=lt2Model]').prop('disabled', false)
-                data.datalist['lt2Model'].color = 'white';
-                return ' ';
-            }
-        },
-        lt3Model: function () {
-            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-                $('[name=lt3Model]').prop('disabled', true);
-                data.datalist['lt3Model'].color = 'rgb(227, 227, 227)';
-                return lt3Model ;
-            } else {
-                $('[name=lt3Model]').prop('disabled', false)
-                data.datalist['lt3Model'].color = 'white';
-                return ' ';
-            }
-        },
-        lt4Model: function () {
-            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-                $('[name=lt4Model]').prop('disabled', true);
-                data.datalist['lt4Model'].color = 'rgb(227, 227, 227)';
-                return lt4Model ;
-            } else {
-                $('[name=lt4Model]').prop('disabled', false)
-                data.datalist['lt4Model'].color = 'white';
-                return ' ';
-            }
-        },
-        lt5Model: function () {
-            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-                $('[name=lt5Model]').prop('disabled', true);
-                data.datalist['lt5Model'].color = 'rgb(227, 227, 227)';
-                return lt5Model ;
-            } else {
-                $('[name=lt5Model]').prop('disabled', false)
-                data.datalist['lt5Model'].color = 'white';
-                return ' ';
-            }
-        },
+
+        // 锁死容易卡？
+
+        // lt1Model: function () {
+        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+        //         $('[name=lt1Model]').prop('disabled', true);
+        //         data.datalist['lt1Model'].color = 'rgb(227, 227, 227)';
+        //         return lt1Model ;
+        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+        //         $('[name=lt1Model]').prop('disabled', false)
+        //         data.datalist['lt1Model'].color = 'white';
+        //         return ' ';
+        //     }
+        // },
+        // lt2Model: function () {
+        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+        //         $('[name=lt2Model]').prop('disabled', true);
+        //         data.datalist['lt2Model'].color = 'rgb(227, 227, 227)';
+        //         return lt2Model ;
+        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+        //         $('[name=lt2Model]').prop('disabled', false)
+        //         data.datalist['lt2Model'].color = 'white';
+        //         return ' ';
+        //     }
+        // },
+        // lt3Model: function () {
+        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+        //         $('[name=lt3Model]').prop('disabled', true);
+        //         data.datalist['lt3Model'].color = 'rgb(227, 227, 227)';
+        //         return lt3Model ;
+        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+        //         $('[name=lt3Model]').prop('disabled', false)
+        //         data.datalist['lt3Model'].color = 'white';
+        //         return ' ';
+        //     }
+        // },
+        // lt4Model: function () {
+        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+        //         $('[name=lt4Model]').prop('disabled', true);
+        //         data.datalist['lt4Model'].color = 'rgb(227, 227, 227)';
+        //         return lt4Model ;
+        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+        //         $('[name=lt4Model]').prop('disabled', false)
+        //         data.datalist['lt4Model'].color = 'white';
+        //         return ' ';
+        //     }
+        // },
+        // lt5Model: function () {
+        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+        //         $('[name=lt5Model]').prop('disabled', true);
+        //         data.datalist['lt5Model'].color = 'rgb(227, 227, 227)';
+        //         return lt5Model ;
+        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+        //         $('[name=lt5Model]').prop('disabled', false)
+        //         data.datalist['lt5Model'].color = 'white';
+        //         return ' ';
+        //     }
+        // },
 
         //后台
         m15: () => {
@@ -3759,121 +3762,121 @@
         cblt1sl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt1ModelList[ lt1Model ]['cblt1sl'];
         },
         cblt1cd: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt1ModelList[ lt1Model ]['cblt1cd'];
         },
         cblt1dj: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt1ModelList[ lt1Model ]['cblt1dj'];
         },
         cblt1lyl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 1 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt1ModelList[ lt1Model ]['cblt1lyl'];
         },
         cblt2sl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt2ModelList[ lt2Model ]['cblt2sl'];
         },
         cblt2cd: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt2ModelList[ lt2Model ]['cblt2cd'];
         },
         cblt2dj: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt2ModelList[ lt2Model ]['cblt2dj'];
         },
         cblt2lyl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 1 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt2ModelList[ lt2Model ]['cblt2lyl'];
         },
         cblt3sl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt3ModelList[ lt3Model ]['cblt3sl'];
         },
         cblt3cd: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt3ModelList[ lt3Model ]['cblt3cd'];
         },
         cblt3dj: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt3ModelList[ lt3Model ]['cblt3dj'];
         },
         cblt3lyl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 1 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt3ModelList[ lt3Model ]['cblt3lyl'];
         },
         cblt4sl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt4ModelList[ lt4Model ]['cblt4sl'];
         },
         cblt4cd: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt4ModelList[ lt4Model ]['cblt4cd'];
         },
         cblt4dj: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt4ModelList[ lt4Model ]['cblt4dj'];
         },
         cblt4lyl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 1 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt4ModelList[ lt4Model ]['cblt4lyl'];
         },
         cblt5sl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt5ModelList[ lt5Model ]['cblt5sl'];
         },
         cblt5cd: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt5ModelList[ lt5Model ]['cblt5cd'];
         },
         cblt5dj: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 0 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt5ModelList[ lt5Model ]['cblt5dj'];
         },
         cblt5lyl: function () {
             if ( dbxhModel == "单臂横截面" || dbxhModel == "单臂变截面" ) {
                 return 1 ;
-            } else
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' )
                 return lt5ModelList[ lt5Model ]['cblt5lyl'];
         },
         cbxzdj: function () {
