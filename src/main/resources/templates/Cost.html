@@ -3352,63 +3352,61 @@
             }
         },
 
-        // 锁死容易卡？
-
-        // lt1Model: function () {
-        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-        //         $('[name=lt1Model]').prop('disabled', true);
-        //         data.datalist['lt1Model'].color = 'rgb(227, 227, 227)';
-        //         return lt1Model ;
-        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
-        //         $('[name=lt1Model]').prop('disabled', false)
-        //         data.datalist['lt1Model'].color = 'white';
-        //         return ' ';
-        //     }
-        // },
-        // lt2Model: function () {
-        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-        //         $('[name=lt2Model]').prop('disabled', true);
-        //         data.datalist['lt2Model'].color = 'rgb(227, 227, 227)';
-        //         return lt2Model ;
-        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
-        //         $('[name=lt2Model]').prop('disabled', false)
-        //         data.datalist['lt2Model'].color = 'white';
-        //         return ' ';
-        //     }
-        // },
-        // lt3Model: function () {
-        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-        //         $('[name=lt3Model]').prop('disabled', true);
-        //         data.datalist['lt3Model'].color = 'rgb(227, 227, 227)';
-        //         return lt3Model ;
-        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
-        //         $('[name=lt3Model]').prop('disabled', false)
-        //         data.datalist['lt3Model'].color = 'white';
-        //         return ' ';
-        //     }
-        // },
-        // lt4Model: function () {
-        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-        //         $('[name=lt4Model]').prop('disabled', true);
-        //         data.datalist['lt4Model'].color = 'rgb(227, 227, 227)';
-        //         return lt4Model ;
-        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
-        //         $('[name=lt4Model]').prop('disabled', false)
-        //         data.datalist['lt4Model'].color = 'white';
-        //         return ' ';
-        //     }
-        // },
-        // lt5Model: function () {
-        //     if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
-        //         $('[name=lt5Model]').prop('disabled', true);
-        //         data.datalist['lt5Model'].color = 'rgb(227, 227, 227)';
-        //         return lt5Model ;
-        //     } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
-        //         $('[name=lt5Model]').prop('disabled', false)
-        //         data.datalist['lt5Model'].color = 'white';
-        //         return ' ';
-        //     }
-        // },
+        lt1Model: function () {
+            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+                $('[name=lt1Model]').prop('disabled', true);
+                data.datalist['lt1Model'].color = 'rgb(227, 227, 227)';
+                return lt1Model;
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+                $('[name=lt1Model]').prop('disabled', false)
+                data.datalist['lt1Model'].color = 'white';
+                return ' ';
+            }
+        },
+        lt2Model: function () {
+            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+                $('[name=lt2Model]').prop('disabled', true);
+                data.datalist['lt2Model'].color = 'rgb(227, 227, 227)';
+                return lt2Model;
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+                $('[name=lt2Model]').prop('disabled', false)
+                data.datalist['lt2Model'].color = 'white';
+                return ' ';
+            }
+        },
+        lt3Model: function () {
+            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+                $('[name=lt3Model]').prop('disabled', true);
+                data.datalist['lt3Model'].color = 'rgb(227, 227, 227)';
+                return lt3Model;
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+                $('[name=lt3Model]').prop('disabled', false)
+                data.datalist['lt3Model'].color = 'white';
+                return ' ';
+            }
+        },
+        lt4Model: function () {
+            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+                $('[name=lt4Model]').prop('disabled', true);
+                data.datalist['lt4Model'].color = 'rgb(227, 227, 227)';
+                return lt4Model;
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+                $('[name=lt4Model]').prop('disabled', false)
+                data.datalist['lt4Model'].color = 'white';
+                return ' ';
+            }
+        },
+        lt5Model: function () {
+            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+                $('[name=lt5Model]').prop('disabled', true);
+                data.datalist['lt5Model'].color = 'rgb(227, 227, 227)';
+                return lt5Model;
+            } else if ( dbxhModel == '1+1伸缩臂' || dbxhModel == '2+1伸缩臂' || dbxhModel == '3+1伸缩臂' || dbxhModel == '4+1伸缩臂' ){
+                $('[name=lt5Model]').prop('disabled', false)
+                data.datalist['lt5Model'].color = 'white';
+                return ' ';
+            }
+        },
 
         //后台
         m15: () => {
