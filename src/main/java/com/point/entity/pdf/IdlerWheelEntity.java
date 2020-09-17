@@ -34,7 +34,7 @@ public class IdlerWheelEntity {
     private Double cr;
     private Double c0r;
     private Double bfb;
-    private Double zcsm;
+    private String zcsm;
     private Double fh;
 
     //非页面数据
@@ -400,13 +400,20 @@ public class IdlerWheelEntity {
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
 //
-        Double pg2 = map.get("pg2");
+//        Double pg2 = map.get("pg2");
+        Double c1 = map.get("c1");
+//        Double c0r = map.get("c0r");
 
-        Double c1 = 2.25 * pg2 ;
+//        Double c1 = 2.25 * pg2 ;
+        String lzglm5 = ( c1 < c0r ) ? "满足" : "不满足";
 
         Map<String, String> result = new HashMap<>();
-        result.put("pg2", CommonFunc.convertDoubleToString(pg2));
+//        result.put("pg2", CommonFunc.convertDoubleToString(pg2));
         result.put("c1", CommonFunc.convertDoubleToString(c1));
+        result.put("c0r", CommonFunc.convertDoubleToString(c0r));
+        result.put("lzglm5", CommonFunc.convertDoubleToString(lzglm5));
+
+
 
         return result;
     }
@@ -497,12 +504,12 @@ public class IdlerWheelEntity {
         Double mtxw11i = 250 * 1.25 * atx11i * hb11i ;
         map.put("msltxwi", msltxwi);
         map.put("mshltxwi", mshltxwi);
-        map.put("mtxw1i",mtxw1i);
+        map.put("mtxw1i", mtxw1i);
         map.put("mtxw2i", mtxw2i);
         map.put("mtxw3i", mtxw3i);
         map.put("mtxw4i", mtxw4i);
         map.put("mtxw5i", mtxw5i);
-        map.put("mtxw6i",mtxw6i);
+        map.put("mtxw6i", mtxw6i);
         map.put("mtxw7i", mtxw7i);
         map.put("mtxw12ni", mtxw12ni);
         map.put("mtxw10i", mtxw10i);
@@ -536,7 +543,7 @@ public class IdlerWheelEntity {
         Double mftxw12n = pf * aftx12n * hfb12n ;
         Double mftxw10 = pf * aftx10 * hfb10 ;
         Double mftxw11 = pf * aftx11 * hfb11 ;
-        map.put("mftxw1",mftxw1);
+        map.put("mftxw1", mftxw1);
         map.put("mftxw2", mftxw2);
         map.put("mftxw3", mftxw3);
         map.put("mftxw4", mftxw4);
@@ -638,28 +645,28 @@ public class IdlerWheelEntity {
         Map map = new HashMap();
         Map<String, Double> doubleMap = takeDoubleMapForPdf(type);
         Double bohz = doubleMap.get("bohz");
-        String lzglp1 = takeStringByCompareNumber(bohz,1.0);
+        String lzglp1 = takeSignByCompareNumber(bohz,1.0);
         String lzglm1 = takeStringByCompareNumber(bohz,1.0);
         map.put("lzglp1", CommonFunc.convertDoubleToString(lzglp1));
         map.put("lzglm1", CommonFunc.convertDoubleToString(lzglm1));
 
         Double c = doubleMap.get("c");
         Double cr = doubleMap.get("cr");
-        String lzglp2 = takeStringByCompareNumber(c,cr);
+        String lzglp2 = takeSignByCompareNumber(c,cr);
         String lzglm2 = takeStringByCompareNumber(c,cr);
         map.put("lzglp2", CommonFunc.convertDoubleToString(lzglp2));
         map.put("lzglm2", CommonFunc.convertDoubleToString(lzglm2));
 
         Double c1 = doubleMap.get("c1");
         Double c0r = doubleMap.get("c0r");
-        String lzglp4 = takeStringByCompareNumber(c1,c0r);
+        String lzglp4 = takeSignByCompareNumber(c1,c0r);
         String lzglm4 = takeStringByCompareNumber(c1,c0r);
         map.put("lzglp4", CommonFunc.convertDoubleToString(lzglp4));
         map.put("lzglm4", CommonFunc.convertDoubleToString(lzglm4));
 
         Double o = doubleMap.get("o");
-        String lzglp3 = takeStringByCompareNumber(o,206.7);
-        String lzglm3 = takeStringByCompareNumber(c,206.7);
+        String lzglp3 = takeSignByCompareNumber(o,206.7);
+        String lzglm3 = takeStringByCompareNumber(o,206.7);
         map.put("lzglp3", CommonFunc.convertDoubleToString(lzglp3));
         map.put("lzglm3", CommonFunc.convertDoubleToString(lzglm3));
 

@@ -128,6 +128,11 @@
             },
         };
         sfybxzModelList= {
+            "是": {
+                m7:' ',
+                atx7:' ',
+                hb7:' ',
+            },
             "否": {
                 m7:0,
                 atx7:0,
@@ -494,7 +499,6 @@
                             <option value="2000h">2000h</option>
                             <option value="2500h">2500h</option>
                             <option value="3000h">3000h</option>
-                            <option value="其它">其它</option>
                         </select>
                     </td>
                 </tr>
@@ -1552,7 +1556,11 @@
                         <td><b>立柱顶轮轴承受力</b></td>
                         <!--<td id="nd"></td>-->
                         <!--<td id="f"></td>-->
-                        <td><p><span id="cr"></span>N</p></td>
+            <!--问题-->
+                        <!--<td><p><span id="cr"></span>N</p></td>-->
+                        <td><p>206.7MPa</p></td>
+
+
                         <td><p><span id="c"></span>N</p></td>
                         <td id="lzglm2"></td>
                     </tr>
@@ -1671,7 +1679,16 @@
             return zcxhxzModelList[ zcxhxzModel ]['c0r'];
         },
         bfb:function(){
-            return zcxhxzModelList[ sfbdlxzModel ]['bfb'];
+            return bdlxzModelList[ bdlxzModel ]['bfb'];
+        },
+        m7:function(){
+            return sfybxzModelList[ sfybxzModel ]['m7'];
+        },
+        atx7:function(){
+            return sfybxzModelList[ sfybxzModel ]['atx7'];
+        },
+        hb7:function(){
+            return sfybxzModelList[ sfybxzModel ]['hb7'];
         },
         zcsm:function(){
             return zcsmxzModelList[ zxsmxzModel ]['zcsm'];
@@ -1704,7 +1721,7 @@
         //     return gruModelList[ gruModel ]['m2'];
         // },
         m3:function(){
-            return  h * 0.203;
+            return  h * 0.203 ;
         },
         // lxtz:()=>{
         //     return lbd - lbx ;
@@ -1767,10 +1784,16 @@
             if( m6 == 0 ){
                 return 0 ;
             }
+            else {
+                return ' ' ;
+            }
         },
         ly7:function(){
             if( m7 == 0 ){
                 return 0 ;
+            }
+            else {
+                return ' ' ;
             }
         },
         ly12n:function(){
@@ -1779,6 +1802,9 @@
         ly10:function(){
             if( m10 == 0 ){
                 return 0 ;
+            }
+            else {
+                return ' ' ;
             }
         },
 
@@ -1790,10 +1816,16 @@
             if( m6 == 0 ){
                 return 0 ;
             }
+            else {
+                return ' ' ;
+            }
         },
         atx10:function(){
             if( m10 == 0 ){
                 return 0 ;
+            }
+            else {
+                return ' ' ;
             }
         },
         // atx7:function(){
@@ -1806,6 +1838,9 @@
             if( m6 == 0 ){
                 return 0 ;
             }
+            else {
+                return ' ' ;
+            }
         },
         // hb7:function(){
         //     if( m6 == 0 ){
@@ -1815,6 +1850,9 @@
         hb10:function(){
             if( m10 == 0 ){
                 return 0 ;
+            }
+            else {
+                return ' ' ;
             }
         },
 
@@ -1847,12 +1885,13 @@
         },
         hb12ni:function(){
             return hb12n ;
-        },hb10i:function(){
+        },
+        hb10i:function(){
             return hb10 ;
-        },hb11i:function(){
+        },
+        hb11i:function(){
             return hb11 ;
         },
-
         asltxi:function(){
             return asltx ;
         },
@@ -1909,10 +1948,16 @@
             if( m6 == 0 ){
                 return 0 ;
             }
+            else {
+                return ' ' ;
+            }
         },
         lfy7i:function(){
             if( m7 == 0 ){
                 return 0 ;
+            }
+            else {
+                return ' ' ;
             }
         },
         lfy12ni:function(){
@@ -1921,6 +1966,9 @@
         lfy10i:function(){
             if( m10 == 0 ){
                 return 0 ;
+            }
+            else {
+                return ' ' ;
             }
         },
 
