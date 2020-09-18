@@ -6,6 +6,8 @@ import lombok.Data;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.sqrt;
+
 @Data
 public class IdlerWheelEntity {
     private String no;
@@ -405,7 +407,7 @@ public class IdlerWheelEntity {
 //        Double c0r = map.get("c0r");
 
 //        Double c1 = 2.25 * pg2 ;
-        String lzglm5 = ( c1 < c0r ) ? "满足" : "不满足";
+        String lzglm5 = (c1 <= c0r) ? "满足" : "不满足";
 
         Map<String, String> result = new HashMap<>();
 //        result.put("pg2", CommonFunc.convertDoubleToString(pg2));
@@ -422,14 +424,14 @@ public class IdlerWheelEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
-        Double msld = 1.25 * 10 * tsl * lsly ;
-        Double mshld = 1.25 * 10 * tshl * lshly ;
-        Double md1 = 1.25 * 10 * m1 * ly1 ;
-        Double md2 = 1.25 * 10 * m2 * ly2 ;
-        Double md3 = 1.25 * 10 * m3 * ly3 ;
-        Double md4 = 1.25 * 10 * m4 * ly4 ;
-        Double md6 = 1.25 * 10 * m6 * ly6 ;
-        Double md7 = 1.25 * 10 * m7 * ly7 ;
+        Double msld = tsl * lsly * 1.25 * 10 ;
+        Double mshld = tshl * lshly * 1.25 * 10 ;
+        Double md1 = m1 * ly1 * 1.25 * 10 ;
+        Double md2 = m2 * ly2 * 1.25 * 10 ;
+        Double md3 = m3 * ly3 * 1.25 * 10 ;
+        Double md4 = m4 * ly4 * 1.25 * 10 ;
+        Double md6 = m6 * ly6 * 1.25 * 10 ;
+        Double md7 = m7 * ly7 * 1.25 * 10 ;
         map.put("msld", msld);
         map.put("mshld", mshld);
         map.put("md1", md1);
@@ -439,48 +441,48 @@ public class IdlerWheelEntity {
         map.put("md6", md6);
         map.put("md7", md7);
 
-        Double msltxw = 250 * 1.25 * asltx * hslb ;
-        Double mshltxw = 250 * 1.25 * ashltx * hshlb ;
-        Double mtxw1 = 250 * 1.25 * atx1 * hb1 ;
-        Double mtxw2 = 250 * 1.25 * atx2 * hb2 ;
-        Double mtxw3 = 250 * 1.25 * atx3 * hb3 ;
-        Double mtxw4 = 250 * 1.25 * atx4 * hb4 ;
-        Double mtxw5 = 250 * 1.25 * atx5 * hb5 ;
-        Double mtxw6 = 250 * 1.25 * atx6 * hb6 ;
-        Double mtxw7 = 250 * 1.25 * atx7 * hb7 ;
-        Double mtxw12n = 250 * 1.25 * atx12n * hb12n ;
-        Double mtxw10 = 250 * 1.25 * atx10 * hb10 ;
-        Double mtxw11 = 250 * 1.25 * atx11 * hb11 ;
+        Double msltxw = asltx * hslb * 250 * 1.25 ;
+        Double mshltxw = ashltx * hshlb * 250 * 1.25 ;
+        Double mtxw1 = atx1 * hb1 * 250 * 1.25 ;
+        Double mtxw2 = atx2 * hb2 * 250 * 1.25 ;
+        Double mtxw3 = atx3 * hb3 * 250 * 1.25 ;
+        Double mtxw4 = atx4 * hb4 * 250 * 1.25 ;
+        Double mtxw5 = atx5 * hb5 * 250 * 1.25 ;
+        Double mtxw6 = atx6 * hb6 * 250 * 1.25 ;
+        Double mtxw7 = atx7 * hb7 * 250 * 1.25 ;
+        Double mtxw12n = atx12n * hb12n * 250 * 1.25 ;
+        Double mtxw10 = atx10 * hb10 * 250 * 1.25 ;
+        Double mtxw11 = atx11 * hb11 * 250 * 1.25 ;
         map.put("msltxw", msltxw);
         map.put("mshltxw", mshltxw);
-        map.put("mtxw1",mtxw1);
+        map.put("mtxw1", mtxw1);
         map.put("mtxw2", mtxw2);
         map.put("mtxw3", mtxw3);
         map.put("mtxw4", mtxw4);
         map.put("mtxw5", mtxw5);
-        map.put("mtxw6",mtxw6);
+        map.put("mtxw6", mtxw6);
         map.put("mtxw7", mtxw7);
         map.put("mtxw12n", mtxw12n);
         map.put("mtxw10", mtxw10);
         map.put("mtxw11", mtxw11);
 
-        Double md5 = 10 * m5 * ly5 ;
-        Double md12n = 10 * m12n * ly12n ;
-        Double md10 = 10 * m10 * ly10 ;
-        Double md11 = 10 * m11 * ly11 ;
+        Double md5 = m5 * ly5 * 10 ;
+        Double md12n = m12n * ly12n * 10 ;
+        Double md10 = m10 * ly10 * 10 ;
+        Double md11 = m11 * ly11 * 10 ;
         map.put("md5", md5);
         map.put("md12n", md12n);
         map.put("md10", md10);
         map.put("md11", md11);
 
-        Double msldi = 1.25 * 10 * tsl * lslfyi ;
-        Double mshldi = 1.25 * 10 * tshl * lshlfyi ;
-        Double md1i = 1.25 * 10 * m1 * lfy1i ;
-        Double md2i = 1.25 * 10 * m2 * lfy2i ;
-        Double md3i = 1.25 * 10 * m3 * lfy3i ;
-        Double md4i = 1.25 * 10 * m4 * lfy4i ;
-        Double md6i = 1.25 * 10 * m6 * lfy6i ;
-        Double md7i = 1.25 * 10 * m7 * lfy7i ;
+        Double msldi = tsl * lslfyi * 1.25 * 10 ;
+        Double mshldi = tshl * lshlfyi * 1.25 * 10 ;
+        Double md1i = m1 * lfy1i * 1.25 * 10 ;
+        Double md2i = m2 * lfy2i * 1.25 * 10 ;
+        Double md3i = m3 * lfy3i * 1.25 * 10 ;
+        Double md4i = m4 * lfy4i * 1.25 * 10 ;
+        Double md6i = m6 * lfy6i * 1.25 * 10 ;
+        Double md7i = m7 * lfy7i * 1.25 * 10 ;
         map.put("msldi", msldi);
         map.put("mshldi", mshldi);
         map.put("md1i", md1i);
@@ -490,18 +492,18 @@ public class IdlerWheelEntity {
         map.put("md6i", md6i);
         map.put("md7i", md7i);
 
-        Double msltxwi = 250 * 1.25 * asltxi * hslbi ;
-        Double mshltxwi = 250 * 1.25 * ashltxi * hshlbi ;
-        Double mtxw1i = 250 * 1.25 * atx1i * hb1i ;
-        Double mtxw2i = 250 * 1.25 * atx2i * hb2i ;
-        Double mtxw3i = 250 * 1.25 * atx3i * hb3i ;
-        Double mtxw4i = 250 * 1.25 * atx4i * hb4i ;
-        Double mtxw5i = 250 * 1.25 * atx5i * hb5i ;
-        Double mtxw6i = 250 * 1.25 * atx6i * hb6i ;
-        Double mtxw7i = 250 * 1.25 * atx7i * hb7i ;
-        Double mtxw12ni = 250 * 1.25 * atx12ni * hb12ni ;
-        Double mtxw10i = 250 * 1.25 * atx10i * hb10i ;
-        Double mtxw11i = 250 * 1.25 * atx11i * hb11i ;
+        Double msltxwi = asltxi * hslbi * 250 * 1.25 ;
+        Double mshltxwi = ashltxi * hshlbi * 250 * 1.25 ;
+        Double mtxw1i = atx1i * hb1i * 250 * 1.25 ;
+        Double mtxw2i = atx2i * hb2i * 250 * 1.25 ;
+        Double mtxw3i = atx3i * hb3i * 250 * 1.25 ;
+        Double mtxw4i = atx4i * hb4i * 250 * 1.25 ;
+        Double mtxw5i = atx5i * hb5i * 250 * 1.25 ;
+        Double mtxw6i = atx6i * hb6i * 250 * 1.25 ;
+        Double mtxw7i = atx7i * hb7i * 250 * 1.25 ;
+        Double mtxw12ni = atx12ni * hb12ni * 250 * 1.25 ;
+        Double mtxw10i = atx10i * hb10i * 250 * 1.25 ;
+        Double mtxw11i = atx11i * hb11i * 250 * 1.25 ;
         map.put("msltxwi", msltxwi);
         map.put("mshltxwi", mshltxwi);
         map.put("mtxw1i", mtxw1i);
@@ -515,19 +517,19 @@ public class IdlerWheelEntity {
         map.put("mtxw10i", mtxw10i);
         map.put("mtxw11i", mtxw11i);
 
-        Double md5i = 10 * m5 * lfy5i ;
-        Double md12ni = 10 * m12n * lfy12ni ;
-        Double md10i = 10 * m10 * lfy10i ;
-        Double md11i = 10 * m11 * lfy11i ;
+        Double md5i = m5 * lfy5i * 10 ;
+        Double md12ni = m12n * lfy12ni * 10 ;
+        Double md10i = m10 * lfy10i * 10 ;
+        Double md11i = m11 * lfy11i * 10 ;
         map.put("md5i", md5i);
         map.put("md12ni", md12ni);
         map.put("md10i", md10i);
         map.put("md11i", md11i);
 
-        Double mfd5 = 10 * m5 * lfy5 ;
-        Double mfd12n = 10 * m12n * lfy12n ;
-        Double mfd10 = 10 * m10 * lfy10 ;
-        Double mfd11 = 10 * m11 * lfy11 ;
+        Double mfd5 = m5 * lfy5 * 10 ;
+        Double mfd12n = m12n * lfy12n * 10 ;
+        Double mfd10 = m10 * lfy10 * 10 ;
+        Double mfd11 = m11 * lfy11 * 10 ;
         map.put("mfd5", mfd5);
         map.put("mfd12n", mfd12n);
         map.put("mfd10", mfd10);
@@ -554,12 +556,12 @@ public class IdlerWheelEntity {
         map.put("mftxw10", mftxw10);
         map.put("mftxw11", mftxw11);
 
-        Double mfd1 = 10 * m1 * lfy1 ;
-        Double mfd2 = 10 * m2 * lfy2 ;
-        Double mfd3 = 10 * m3 * lfy3 ;
-        Double mfd4 = 10 * m4 * lfy4 ;
-        Double mfd6 = 10 * m6 * lfy6 ;
-        Double mfd7 = 10 * m7 * lfy7 ;
+        Double mfd1 = m1 * lfy1 * 10 ;
+        Double mfd2 = m2 * lfy2 * 10 ;
+        Double mfd3 = m3 * lfy3 * 10 ;
+        Double mfd4 = m4 * lfy4 * 10 ;
+        Double mfd6 = m6 * lfy6 * 10 ;
+        Double mfd7 = m7 * lfy7 * 10 ;
         map.put("mfd1", mfd1);
         map.put("mfd2", mfd2);
         map.put("mfd3", mfd3);
@@ -582,7 +584,8 @@ public class IdlerWheelEntity {
         Double mfq = mfz + mfw ;
         Double mfk = mfd1 + mfd2 + mfd3 + mfd4 + mfd6 + mfd7 ;
         Double f3 = ( mfq - mfk ) / lwlzbg ;
-        Double fmax=( f1 = f1 > f2 ? f1 : f2 ) > f3 ? f1 : f3 ;
+//        Double fmax=( f1 = f1 > f2 ? f1 : f2 ) > f3 ? f1 : f3 ;
+        Double fmax =(f1 > f2 ? f1 : f2) > f3 ? ( f1 > f2  ? f1 : f2) : f3;
         map.put("mgz1", mgz1);
         map.put("mgw1", mgw1);
         map.put("mgq1", mgq1);
@@ -602,7 +605,7 @@ public class IdlerWheelEntity {
 
         Double pg1 = bfb * fmax / ndlsl ;
         Double fxbfb = bfb * fmax ;
-        Double ohz = Math.sqrt ( 0.35 * 210000 * pg1 / dcw / bcw ) ;
+        Double ohz = sqrt( 0.35 * 210000 * pg1 / dcw / bcw );
         Double bohz = ohz / 800 ;
         Double pg2 = fmax * bfb / 2 / ndlsl ;
         Double c = fh * 1.57 * pg2 ;

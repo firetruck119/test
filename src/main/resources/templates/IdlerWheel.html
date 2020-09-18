@@ -162,6 +162,10 @@
                 cr:148000,
                 c0r:155000,
             },
+            "其它": {
+                cr:' ',
+                c0r:' ',
+            },
         };
         zcsmxzModelList= {
             "1000h": {
@@ -320,7 +324,18 @@
                     <td style="width:40%;">数值</td>
                     <td style="width:17%;">单位</td>
                 </tr>
-
+                <tr>
+                    <td ><b>cr</b></td>
+                    <td ><p><i>H</i></p></td>
+                    <td ><input type="text" name="cr" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>c0r</b></td>
+                    <td ><p><i>H</i></p></td>
+                    <td ><input type="text" name="c0r" /></td>
+                    <td >m</td>
+                </tr>
                 <tr>
                     <td ><b>作业高度</b></td>
                     <td ><p><i>H</i></p></td>
@@ -1519,8 +1534,11 @@
         <div style="display: none">
             <input type="text" name="ndlsl" />
             <input type="text" name="dsglxs" />
-            <input type="text" name="cr" />
-            <input type="text" name="c0r" />
+
+            <!--有问题-->
+            <!--<input type="text" name="cr" />-->
+            <!--<input type="text" name="c0r" />-->
+
             <input type="text" name="bfb" />
             <input type="text" name="zcsm" />
             <input type="text" name="dcgssp" />
