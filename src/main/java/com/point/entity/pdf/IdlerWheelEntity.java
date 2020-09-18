@@ -654,14 +654,14 @@ public class IdlerWheelEntity {
         map.put("lzglm1", CommonFunc.convertDoubleToString(lzglm1));
 
         Double c = doubleMap.get("c");
-        Double cr = doubleMap.get("cr");
+//        Double cr = doubleMap.get("cr");
         String lzglp2 = takeSignByCompareNumber(c,cr);
         String lzglm2 = takeStringByCompareNumber(c,cr);
         map.put("lzglp2", CommonFunc.convertDoubleToString(lzglp2));
         map.put("lzglm2", CommonFunc.convertDoubleToString(lzglm2));
 
         Double c1 = doubleMap.get("c1");
-        Double c0r = doubleMap.get("c0r");
+//        Double c0r = doubleMap.get("c0r");
         String lzglp4 = takeSignByCompareNumber(c1,c0r);
         String lzglm4 = takeStringByCompareNumber(c1,c0r);
         map.put("lzglp4", CommonFunc.convertDoubleToString(lzglp4));
