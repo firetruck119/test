@@ -325,13 +325,13 @@ public class CostEntity {
 
     //    木方
     private Double cbmfsl;
-    private Double cbmftj;
+//    private Double cbmftj;
     private Double cbmfdj;
-    private String cbmfdjdw;
+//    private String cbmfdjdw;
 
     //    包装
-    private Double cbbzsl;
-    private Double cbbzdj;
+//    private Double cbbzsl;
+//    private Double cbbzdj;
 
     //    6.8m车
     private Double cbc1lc;
@@ -356,6 +356,17 @@ public class CostEntity {
     private Double cbc4zzl;
     private Double cbc4sl;
     private Double cbc4dj;
+
+    //    8模块成本小计(含税)
+    private Double cbdchszj;
+    private Double cbbthszj;
+    private Double cbssjghszj;
+    private Double cbgruhszj;
+    private Double cbqsjghszj;
+    private Double cbslqhszj;
+    private Double cbhzhszj;
+    private Double cbyxhszj;
+    private Double cbjgqhszj;
 
     //    8模块成本小计
     private Double cbdczj;
@@ -434,7 +445,7 @@ public class CostEntity {
 
     //    包装成本小计
     private Double cbmfzj;
-    private Double cbbzzj;
+//    private Double cbbzzj;
 
     //    运输成本小计
     private Double cbc1zj;
@@ -805,13 +816,13 @@ public class CostEntity {
 
         //       木方
         map.put("cbmfsl", CommonFunc.convertDoubleToString(cbmfsl));
-        map.put("cbmftj", CommonFunc.convertDoubleToString(cbmftj));
+//        map.put("cbmftj", CommonFunc.convertDoubleToString(cbmftj));
         map.put("cbmfdj", CommonFunc.convertDoubleToString(cbmfdj));
-        map.put("cbmfdjdw", CommonFunc.convertDoubleToString(cbmfdjdw));
+//        map.put("cbmfdjdw", CommonFunc.convertDoubleToString(cbmfdjdw));
 
         //       包装
-        map.put("cbbzsl", CommonFunc.convertDoubleToString(cbbzsl));
-        map.put("cbbzdj", CommonFunc.convertDoubleToString(cbbzdj));
+//        map.put("cbbzsl", CommonFunc.convertDoubleToString(cbbzsl));
+//        map.put("cbbzdj", CommonFunc.convertDoubleToString(cbbzdj));
 
         //       6.8m车
         map.put("cbc1lc", CommonFunc.convertDoubleToString(cbc1lc));
@@ -848,6 +859,17 @@ public class CostEntity {
         map.put("m12", CommonFunc.convertDoubleToString(m12));
         map.put("m15", CommonFunc.convertDoubleToString(m15));
         map.put("djlx", CommonFunc.convertDoubleToString(djlx));
+
+        //       8模块成本小计（含税）
+        map.put("cbdchszj", CommonFunc.convertDoubleToString(cbdchszj));
+        map.put("cbbthszj", CommonFunc.convertDoubleToString(cbbthszj));
+        map.put("cbssjghszj", CommonFunc.convertDoubleToString(cbssjghszj));
+        map.put("cbgruhszj", CommonFunc.convertDoubleToString(cbgruhszj));
+        map.put("cbqsjghszj", CommonFunc.convertDoubleToString(cbqsjghszj));
+        map.put("cbslqhszj", CommonFunc.convertDoubleToString(cbslqhszj));
+        map.put("cbhzhszj", CommonFunc.convertDoubleToString(cbhzhszj));
+        map.put("cbyxhszj", CommonFunc.convertDoubleToString(cbyxhszj));
+        map.put("cbjgqhszj", CommonFunc.convertDoubleToString(cbjgqhszj));
 
         //       8模块成本小计
         map.put("cbdczj", CommonFunc.convertDoubleToString(cbdczj));
@@ -926,7 +948,7 @@ public class CostEntity {
 
         //       包装成本小计
         map.put("cbmfzj", CommonFunc.convertDoubleToString(cbmfzj));
-        map.put("cbbzzj", CommonFunc.convertDoubleToString(cbbzzj));
+//        map.put("cbbzzj", CommonFunc.convertDoubleToString(cbbzzj));
 
         //       运输成本小计
         map.put("cbc1zj", CommonFunc.convertDoubleToString(cbc1zj));
@@ -958,7 +980,7 @@ public class CostEntity {
         Double cbgdxtzj = cbgdzj + cbgdjxzj + cbmbzj + cbmbjxzj + cbdjlszj + cbmdzj + cbhlzj + cbptzj ;
         Double cbjxzj = cbgrujxzj + cbqsjgjxzj + cbssjgjxzj ;
         Double cbcnzyzj = cbsygdzj + cbsyjzj ;
-        Double cbbzcbzj = cbmfzj + cbbzzj ;
+        Double cbbzcbzj = cbmfzj ;
         Double cbyszj = cbc1zj + cbc2zj + cbc3zj + cbc4zj ;
         Double cbbmuclzj = cb8mkzj + cb3djzj + cbdjzjzj + cbwgjzj + cbwxjzj + cbdqyyzj + cbgdxtzj + cbjxzj + cbcnzyzj + cbbzcbzj + cbyszj ;
 

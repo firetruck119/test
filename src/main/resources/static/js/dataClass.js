@@ -107,12 +107,23 @@
                 var o = this.datalist[temp];
                 var val = parseFloat(o.value);
                 val = (String(val) != 'NaN') ? val : undefined;
-                if ((o.value != "" && (new String(val) != o.value))) {
-                    val = o.value;
-                    eval.call(temp, 'var ' + temp + ' = "' + o.value + '"');
-                } else
-                    eval.call(temp, 'var ' + temp + ' = ' + val);
+                //     if ((o.value != "" && (new String(val) != o.value))) {
+                //         val = o.value;
+                //         eval.call(temp, 'var ' + temp + ' = "' + o.value + '"');
+                //     } else
+                //         eval.call(temp, 'var ' + temp + ' = ' + val);
+                // }
+                try {
+                    if ((o.value != "" && (new String(val) != o.value))) {
+                        val = o.value;
+                        eval.call(temp, 'var ' + temp + ' = "' + o.value + '"');
+                    } else
+                        eval.call(temp, 'var ' + temp + ' = ' + val);
+                } catch (e) {
+                    console.log(e)
+                }
             }
+
             f(calList);
             function f(calList) {
                 var list = {};
