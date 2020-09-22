@@ -387,15 +387,15 @@ public class TwoJibEntity {
         Double lhz6 = lc6 + dbll / 2000 ;
         Double lhz7 = lc7 + dbll / 2000 ;
 
-        Double mslhz = 1.25 * tsl * lslhz ;
-        Double mshlhz = 1.25 * tshl * lshlhz ;
-        Double mhz1 = 1.25 * m1 * lhz1 ;
-        Double mhz2 = 1.25 * m2 * lhz2 ;
-        Double mhz3 = 1.25 * m3 * lhz3 ;
-        Double mhz4 = 1.25 * m4jbhzq * lhzjb4 ;
-        Double mhz5 = 1.25 * m5db * lhz5 ;
-        Double mhz6 = 1.25 * m6db * lhz6 ;
-        Double mhz7 = 1.25 * m7db * lhz7 ;
+        Double mslhz = tsl * lslhz * 1.25 ;
+        Double mshlhz = tshl * lshlhz * 1.25 ;
+        Double mhz1 = m1 * lhz1 * 1.25 ;
+        Double mhz2 = m2 * lhz2 * 1.25 ;
+        Double mhz3 = m3 * lhz3 * 1.25 ;
+        Double mhz4 = m4jbhzq * lhzjb4 * 1.25 ;
+        Double mhz5 = m5db * lhz5 * 1.25 ;
+        Double mhz6 = m6db * lhz6 * 1.25 ;
+        Double mhz7 = m7db * lhz7 * 1.25 ;
         Double mjbhz = mslhz + mshlhz + mhz1 + mhz2 + mhz3 + mhz4 + mhz5 + mhz6 + mhz7 ;
         String dbwjyb;
         if ( mjbhz < dbmjb ) {
@@ -447,13 +447,11 @@ public class TwoJibEntity {
         result.put("lc5", CommonFunc.convertDoubleToString(lc5));
         result.put("lc6", CommonFunc.convertDoubleToString(lc6));
         result.put("lc7", CommonFunc.convertDoubleToString(lc7));
-
         result.put("dbmjb", CommonFunc.convertDoubleToString(dbmjb));
         result.put("dbm1b", CommonFunc.convertDoubleToString(dbm1b));
         result.put("dbm2b", CommonFunc.convertDoubleToString(dbm2b));
         result.put("mwqp", CommonFunc.convertDoubleToString(mwqp));
         result.put("mwqip", CommonFunc.convertDoubleToString(mwqip));
-
         result.put("m4jbhzq", CommonFunc.convertDoubleToString(m4jbhzq));
         result.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
         result.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));
@@ -464,7 +462,6 @@ public class TwoJibEntity {
         result.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
         result.put("lhz6", CommonFunc.convertDoubleToString(lhz6));
         result.put("lhz7", CommonFunc.convertDoubleToString(lhz7));
-
         result.put("mslhz", CommonFunc.convertDoubleToString(mslhz));
         result.put("mshlhz", CommonFunc.convertDoubleToString(mshlhz));
         result.put("mhz1", CommonFunc.convertDoubleToString(mhz1));
@@ -574,6 +571,7 @@ public class TwoJibEntity {
         map.put("nd", nd);
 
         Double mwq6p = 1.25 * 10 * m6dbxt * lwq6p ;
+        map.put("mwq6p", mwq6p);
 
         Double mslwai = 250 * 1.25 * aslcx * lslxi ;
         Double mshlwai = 250 * 1.25 * ashlcx * lshlxi ;
@@ -636,6 +634,7 @@ public class TwoJibEntity {
         map.put("ndi", ndi);
 
         Double mwq7ip = 1.25 * 10 * m7dbxt * lwq7ip ;
+        map.put("mwq7ip", mwq7ip);
 
         Double mslwaii = 250 * 1.25 * aslcx * lslxii ;
         Double mshlwaii = 250 * 1.25 * ashlcx * lshlxii ;
