@@ -402,18 +402,20 @@ public class IdlerWheelEntity {
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
 //
-//        Double pg2 = map.get("pg2");
-        Double c1 = map.get("c1");
-//        Double c0r = map.get("c0r");
+//
+        Double pg2 = map.get("pg2");
 
-//        Double c1 = 2.25 * pg2 ;
-        String lzglm5 = (c1 <= c0r) ? "满足" : "不满足";
+        Double fhp = 0.638 * cr / pg2 ;
+        String lzdlyzm5 = (fhp >= fh) ? "满足" : "不满足";
+        String lzdlyzp5 = takeSignByCompareNumber(fhp,fh);
 
         Map<String, String> result = new HashMap<>();
-//        result.put("pg2", CommonFunc.convertDoubleToString(pg2));
-        result.put("c1", CommonFunc.convertDoubleToString(c1));
-        result.put("c0r", CommonFunc.convertDoubleToString(c0r));
-        result.put("lzglm5", CommonFunc.convertDoubleToString(lzglm5));
+        result.put("pg2", CommonFunc.convertDoubleToString(pg2));
+        result.put("fh", CommonFunc.convertDoubleToString(fh));
+        result.put("fhp", CommonFunc.convertDoubleToString(fhp));
+        result.put("cr", CommonFunc.convertDoubleToString(cr));
+        result.put("lzdlyzm5", CommonFunc.convertDoubleToString(lzdlyzm5));
+        result.put("lzdlyzp5", CommonFunc.convertDoubleToString(lzdlyzp5));
 
 
 
@@ -573,18 +575,17 @@ public class IdlerWheelEntity {
         Double mgw1 = msltxw + mshltxw + mtxw1 + mtxw2 + mtxw3 + mtxw4 + mtxw5 + mtxw6 + mtxw7 + mtxw12n + mtxw10 + mtxw11 ;
         Double mgq1 = mgz1 + mgw1 ;
         Double mgk1 = md5 + md12n + md10 + md11 ;
-        Double f1 = ( mgq1 - mgk1 ) / lwlzbg ;
+        Double f1 = Math.abs( ( mgq1 - mgk1 ) / lwlzbg  );
         Double mgz2 = msldi + mshldi + md1i + md2i + md3i + md4i + md6i + md7i ;
         Double mgw2 = msltxwi + mshltxwi + mtxw1i + mtxw2i + mtxw3i + mtxw4i + mtxw5i + mtxw6i + mtxw7i + mtxw12ni + mtxw10i + mtxw11i ;
         Double mgq2 = mgz2 + mgw2 ;
         Double mgk2 = md5i + md12ni + md10i + md11i ;
-        Double f2 = ( mgq2 - mgk2 ) / lwlzbg ;
+        Double f2 = Math.abs( ( mgq2 - mgk2 ) / lwlzbg  ) ;
         Double mfz = mfd5 + mfd12n + mfd10 + mfd11 ;
         Double mfw = mftxw1 + mftxw2 + mftxw3 + mftxw4 + mftxw5 + mftxw6 + mftxw7 + mftxw12n + mftxw10 + mftxw11 ;
         Double mfq = mfz + mfw ;
         Double mfk = mfd1 + mfd2 + mfd3 + mfd4 + mfd6 + mfd7 ;
-        Double f3 = ( mfq - mfk ) / lwlzbg ;
-//        Double fmax=( f1 = f1 > f2 ? f1 : f2 ) > f3 ? f1 : f3 ;
+        Double f3 = Math.abs( ( mfq - mfk ) / lwlzbg  );
         Double fmax =(f1 > f2 ? f1 : f2) > f3 ? ( f1 > f2  ? f1 : f2) : f3;
         map.put("mgz1", mgz1);
         map.put("mgw1", mgw1);

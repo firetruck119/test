@@ -169,23 +169,23 @@
         };
         zcsmxzModelList= {
             "1000h": {
-                zcsm: "1000h",
+                zcsm:1000,
                 fh:1.23,
             },
             "1500h": {
-                zcsm: "1500h",
+                zcsm:1500,
                 fh:1.39,
             },
             "2000h": {
-                zcsm: "2000h",
+                zcsm:2000,
                 fh:1.515,
             },
             "2500h": {
-                zcsm: "2500h",
+                zcsm:2500,
                 fh:1.62,
             },
             "3000h": {
-                zcsm: "3000h",
+                zcsm:3000,
                 fh:1.71,
             },
         };
@@ -324,18 +324,18 @@
                     <td style="width:40%;">数值</td>
                     <td style="width:17%;">单位</td>
                 </tr>
-                <tr>
-                    <td ><b>cr</b></td>
-                    <td ><p><i>H</i></p></td>
-                    <td ><input type="text" name="cr" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
-                    <td ><b>c0r</b></td>
-                    <td ><p><i>H</i></p></td>
-                    <td ><input type="text" name="c0r" /></td>
-                    <td >m</td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td ><b>cr</b></td>-->
+                    <!--<td ><p><i>H</i></p></td>-->
+                    <!--<td ><input type="text" name="cr" /></td>-->
+                    <!--<td >m</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td ><b>c0r</b></td>-->
+                    <!--<td ><p><i>H</i></p></td>-->
+                    <!--<td ><input type="text" name="c0r" /></td>-->
+                    <!--<td >m</td>-->
+                <!--</tr>-->
                 <tr>
                     <td ><b>作业高度</b></td>
                     <td ><p><i>H</i></p></td>
@@ -472,6 +472,17 @@
                         </select>
                     </td>
                 </tr>
+                <!--<tr>-->
+                    <!--<td>大臂选择</td>-->
+                    <!--<td colspan="4">-->
+                        <!--<select name="dbType" style="width:49%;height:40px;text-align-last:center">-->
+                            <!--<option value="" style="display: none"></option>-->
+                            <!--<option value="其他">其他</option>-->
+                        <!--</select>-->
+                        <!--<select name="dbModel" style="width:49%;height:40px;text-align-last:center">-->
+                        <!--</select>-->
+                    <!--</td>-->
+                <!--</tr>-->
                 <tr>
                     <td>是否仰臂</td>
                     <td colspan="4">
@@ -1546,6 +1557,31 @@
             <input type="text" name="ldcgh" />
             <input type="text" name="lbtzh" />
             <input type="text" name="ldslzh" />
+            <input type="text" name="cr" />
+            <input type="text" name="c0r" />
+<!--大臂立柱质量计算-->
+            <input type="text" name="lxtz" />
+            <input type="text" name="lxtm" />
+            <input type="text" name="ldjm" />
+            <input type="text" name="ldbm" />
+            <input type="text" name="mbgj"/>
+            <input type="text" name="mbmj"/>
+            <input type="text" name="ldbbz"/>
+            <input type="text" name="mbg1"/>
+            <input type="text" name="mbm1"/>
+            <input type="text" name="mbm2"/>
+            <input type="text" name="mbm3"/>
+            <input type="text" name="mbm4"/>
+            <input type="text" name="mbg1"/>
+            <input type="text" name="mbg2"/>
+            <input type="text" name="mbg3"/>
+            <input type="text" name="mbg4"/>
+            <input type="text" name="mdbb"/>
+            <!--<input type="text" name="mlz1gd"/>-->
+            <!--<input type="text" name="lz1mmzl"/>-->
+            <!--<input type="text" name="lz2mmzl"/>-->
+            <!--<input type="text" name="myzjg"/>-->
+            <input type="text" name="lbj"/>
         </div>
         <input type="hidden" name="pdfType"/>
     </form>
@@ -1735,31 +1771,31 @@
         m3:function(){
             return  h * 0.203 ;
         },
-        // lxtz:()=>{
-        //     return lbd - lbx ;
-        // },
-        // lxtm:()=>{
-        //     if ( dbModel &&dbModel.indexOf('1+1伸缩臂')>-1) return lxtz ;
-        //     if ( dbModel &&dbModel.indexOf('2+1伸缩臂')>-1) return lxtz /2;
-        //     if ( dbModel &&dbModel.indexOf('3+1伸缩臂')>-1) return lxtz /3;
-        //     if ( dbModel &&dbModel.indexOf('4+1伸缩臂')>-1) return lxtz /4;
-        // },
-        // ldjm:()=>{
-        //     return lxtm /2;
-        // },
-        // ldbm:()=>{
-        //     return lxtm + ldjm ;
-        // },
-        //
-        // m4:() => {
-        //     var data;
-        //     if ( dbModel.indexOf('DB') > -1 && lbd ) data = mdbb + mbmj * ( lbd - ldbbz / 1000 );
-        //     if ( dbModel.indexOf('1+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + ldbm * mbm1 ;
-        //     if ( dbModel.indexOf('2+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + ldbm * ( mbm1 + mbm2 );
-        //     if ( dbModel.indexOf('3+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + ldbm * ( mbm1 + mbm2 + mbm3 );
-        //     if ( dbModel.indexOf('4+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + mbg4 + ldbm * ( mbm1 + mbm2 + mbm3 + mbm4 );
-        //     return data;
-        // },
+        lxtz:()=>{
+            return lbd - lbx ;
+        },
+        lxtm:()=>{
+            if ( dbModel &&dbModel.indexOf('1+1伸缩臂')>-1) return lxtz ;
+            if ( dbModel &&dbModel.indexOf('2+1伸缩臂')>-1) return lxtz /2;
+            if ( dbModel &&dbModel.indexOf('3+1伸缩臂')>-1) return lxtz /3;
+            if ( dbModel &&dbModel.indexOf('4+1伸缩臂')>-1) return lxtz /4;
+        },
+        ldjm:()=>{
+            return lxtm /2;
+        },
+        ldbm:()=>{
+            return lxtm + ldjm ;
+        },
+
+        m4:() => {
+            var data;
+            if ( dbModel.indexOf('DB') > -1 && lbd ) data = mdbb + mbmj * ( lbd - ldbbz / 1000 );
+            if ( dbModel.indexOf('1+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + ldbm * mbm1 ;
+            if ( dbModel.indexOf('2+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + ldbm * ( mbm1 + mbm2 );
+            if ( dbModel.indexOf('3+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + ldbm * ( mbm1 + mbm2 + mbm3 );
+            if ( dbModel.indexOf('4+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + mbg4 + ldbm * ( mbm1 + mbm2 + mbm3 + mbm4 );
+            return data;
+        },
         // m6:()=>{
         //     if ( dbType .indexOf('单臂')>-1)
         //         return 0;
@@ -2062,16 +2098,31 @@
             return hb5 - llzss ;
         },
         hfb6:function(){
-            return hb6 - llzss ;
+            if( m6 == 0 ){
+                return 0 ;
+            }
+            else {
+                return ' ' ;
+            }
         },
         hfb7:function(){
-            return hb7 - llzss ;
+            if( m7 == 0 ){
+                return 0 ;
+            }
+            else {
+                return ' ' ;
+            } ;
         },
         hfb12n:function(){
             return hb12n - llzss ;
         },
         hfb10:function(){
-            return hb10 - llzss ;
+            if( m10 == 0 ){
+                return 0 ;
+            }
+            else {
+                return ' ' ;
+            } ;
         },
         hfb11:function(){
             return hb11 - llzss ;
@@ -2083,6 +2134,8 @@
     getTable("gruModel","gruxz");
     getTable("btModel","btxz");
     getTable("dcgssModel","dcgssxz");
+    getMultilevelTable("dbType","dbModel",["dbxzd", "dbxz1", "dbxz2", "dbxz3", "dbxz4"]);
+    // getMultilevelTable("lzModel",["lzxzgd", "lzxzds", "lzxzybgd", "yzjgxz"]);
     data.init(calculateFunction);
 
 </script>
