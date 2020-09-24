@@ -4128,17 +4128,38 @@
         cbmdcz: function () {
             return 'Q235B';
         },
+        cbmdmj: function () {
+            if ( cbmdsl == 0 ) {
+                return 0;
+            } else {
+                return ' ' ;
+            }
+        },
         cbmddj: function () {
             return 200 ;
         },
         cbhlcz: function () {
             return 'Q235B';
         },
+        cbhlcd: function () {
+            if ( cbhlsl == 0 ) {
+                return 0;
+            } else {
+                return ' ' ;
+            }
+        },
         cbhldj: function () {
             return 120 ;
         },
         cbptcz: function () {
             return 'Q235B';
+        },
+        cbptcd: function () {
+            if ( cbptsl == 0 ) {
+                return 0;
+            } else {
+                return ' ' ;
+            }
         },
         cbptdj: function () {
             return 400 ;
