@@ -213,7 +213,7 @@ public class IdlerWheelEntity {
     private String dcgssModel;
     private String gruModel;
     private String ffbbModel;
-    private String bdlxzModel;
+//    private String bdlxzModel;
     private String sfybxzModel;
 //    private String dbxzModel;
 //    private String lzxzModel;
