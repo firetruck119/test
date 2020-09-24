@@ -84,6 +84,19 @@ public class IdlerWheelEntity {
     private Double m10;
     private Double m11;
 
+    private Double lslhz;
+    private Double lshlhz;
+    private Double lhz1;
+    private Double lhz2;
+    private Double lhz3;
+    private Double lhz4;
+    private Double lhz5;
+    private Double lhz6;
+    private Double lhz7;
+    private Double lhz10;
+    private Double lhz11;
+    private Double lhz12;
+
     private Double lsly;
     private Double lshly;
     private Double ly1;
@@ -205,7 +218,7 @@ public class IdlerWheelEntity {
 //    private String dbxzModel;
 //    private String lzxzModel;
     private String sfsglxzModel;
-    private String zcxhxzModel;
+    private String zcxhxz;
     private String zcsmxzModel;
 
     public Map<String, String> takeMapForPDF(String type) {
@@ -281,6 +294,19 @@ public class IdlerWheelEntity {
         map.put("m12n", CommonFunc.convertDoubleToString(m12n));
         map.put("m10", CommonFunc.convertDoubleToString(m10));
         map.put("m11", CommonFunc.convertDoubleToString(m11));
+
+        map.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
+        map.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));
+        map.put("lhz1", CommonFunc.convertDoubleToString(lhz1));
+        map.put("lhz2", CommonFunc.convertDoubleToString(lhz2));
+        map.put("lhz3", CommonFunc.convertDoubleToString(lhz3));
+        map.put("lhz4", CommonFunc.convertDoubleToString(lhz4));
+        map.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
+        map.put("lhz6", CommonFunc.convertDoubleToString(lhz6));
+        map.put("lhz7", CommonFunc.convertDoubleToString(lhz7));
+        map.put("lhz10", CommonFunc.convertDoubleToString(lhz10));
+        map.put("lhz11", CommonFunc.convertDoubleToString(lhz11));
+        map.put("lhz12", CommonFunc.convertDoubleToString(lhz12));
 
         map.put("lsly", CommonFunc.convertDoubleToString(lsly));
         map.put("lshly", CommonFunc.convertDoubleToString(lshly));
@@ -393,6 +419,7 @@ public class IdlerWheelEntity {
         map.put("hfb10", CommonFunc.convertDoubleToString(hfb10));
         map.put("hfb11", CommonFunc.convertDoubleToString(hfb11));
 
+        map.put("zcxhxz", CommonFunc.convertDoubleToString(zcxhxz));
 
         map.putAll(takeStringMapForPdf(type));
         return map;
