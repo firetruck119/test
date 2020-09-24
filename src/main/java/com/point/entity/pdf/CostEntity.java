@@ -258,6 +258,7 @@ public class CostEntity {
     private String cbmbxh;
     private String cbmbcz;
     private Double cbmbsl;
+    private Double cbmbmzl;
     private Double cbmbzl;
     private Double cbmbdj;
     private String cbmbdjdw;
@@ -750,6 +751,7 @@ public class CostEntity {
         map.put("cbmbxh", CommonFunc.convertDoubleToString(cbmbxh));
         map.put("cbmbcz", CommonFunc.convertDoubleToString(cbmbcz));
         map.put("cbmbsl", CommonFunc.convertDoubleToString(cbmbsl));
+        map.put("cbmbmzl", CommonFunc.convertDoubleToString(cbmbmzl));
         map.put("cbmbzl", CommonFunc.convertDoubleToString(cbmbzl));
         map.put("cbmbdj", CommonFunc.convertDoubleToString(cbmbdj));
         map.put("cbmbdjdw", CommonFunc.convertDoubleToString(cbmbdjdw));

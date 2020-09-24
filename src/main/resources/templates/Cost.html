@@ -1067,24 +1067,22 @@
         //配重块
         pzkModelList={
             "混凝土配重块":{
-                cbpzkmc:'混凝土配重块',
+                cbpzkmc:'混凝土',
                 cbpzkdj:316,
                 cbpzfgzl:' ',
                 cbpzfgdj:4400,
                 cbpzfglyl:1,
                 cbpzktzl:' ',
                 cbpzktdj:4400,
-                cbpzktlyl:' ',
             },
             "钢板配重块":{
-                cbpzkmc:'钢板配重块',
+                cbpzkmc:'钢板',
                 cbpzkdj:4800,
                 cbpzfgzl:0,
                 cbpzfgdj:0,
                 cbpzfglyl:1,
                 cbpzktzl:0,
                 cbpzktdj:0,
-                cbpzktlyl:1,
             },
         };
         //立柱类型
@@ -1412,36 +1410,42 @@
         mbModelList={
             "350*350*12":{
                 cbmbxh:'350*350*12',
+                cbmbmzl:10.8,
                 cbmbdj:65,
                 cbmbdjdw:'元/块',
                 cbmblyl:1,
             },
             "400*400*16":{
                 cbmbxh:'400*400*16',
+                cbmbmzl:18.3,
                 cbmbdj:110,
                 cbmbdjdw:'元/块',
                 cbmblyl:1,
             },
             "450*450*16":{
                 cbmbxh:'450*450*16',
+                cbmbmzl:23.6,
                 cbmbdj:125,
                 cbmbdjdw:'元/块',
                 cbmblyl:1,
             },
             "500*500*20":{
                 cbmbxh:'500*500*20',
+                cbmbmzl:35.8,
                 cbmbdj:150,
                 cbmbdjdw:'元/块',
                 cbmblyl:1,
             },
             "550*550*25":{
                 cbmbxh:'550*550*25',
+                cbmbmzl:51.67,
                 cbmbdj:195,
                 cbmbdjdw:'元/块',
                 cbmblyl:1,
             },
             "其它":{
                 cbmbxh:" ",
+                cbmbmzl:' ',
                 cbmbdj:5600,
                 cbmbdjdw:'元/吨',
                 cbmblyl:" ",
@@ -3307,7 +3311,7 @@
             <input type="text" name="m12" />
             <input type="text" name="m15" />
             <input type="text" name="djlx" />
-
+            <input type="text" name="cbmbmzl" />
         </div>
         <input type="hidden" name="pdfType"/>
     </form>
@@ -3671,10 +3675,19 @@
             return pzkModelList[ pzkModel ]['cbpzktdj'];
         },
         cbpzktlyl: function () {
-            return pzkModelList[ pzkModel ]['cbpzktlyl'];
+            if ( cbpzktzl == 0 )
+                return 1 ;
+            else
+                return ' ' ;
         },
         cbpzxtdj: function () {
             return 4400 ;
+        },
+        cbpzxtlyl: function () {
+            if ( cbpzxtzl == 0 )
+                return 1 ;
+            else
+                return ' ' ;
         },
         cblzmc: function () {
             return lzxhModelList[ lzxhModel ]['cblzmc'];
@@ -3995,7 +4008,18 @@
         cbdqdj: function () {
             return dbxhModelList[ dbxhModel ]['cbdqdj'];
         },
-
+        cbyymc: function () {
+            if ( cbyysl == 0 )
+                return '无' ;
+            else
+                return ' ' ;
+        },
+        cbyydj: function () {
+            if ( cbyysl == 0 )
+                return 0 ;
+            else
+                return ' ' ;
+        },
         //轨道系统
         cbgdxh: function () {
             if ( yxjgModel == "无" ) {
@@ -4060,6 +4084,12 @@
         cbmbcz: function () {
             return 'Q235B';
         },
+        cbmbmzl: function () {
+            return mbModelList[ mbModel ]['cbmbmzl'];
+        },
+        cbmbzl: function () {
+            return cbmbsl * cbmbmzl / 1000 ;
+        },
         cbmbdj: function () {
             return mbModelList[ mbModel ]['cbmbdj'];
         },
@@ -4084,6 +4114,13 @@
         },
         cbdjlscz: function () {
             return djlsModelList[ djlsModel ]['cbdjlscz'];
+        },
+        cbdjlssl: function () {
+            if ( djlsModel == '无' ) {
+                return 0;
+            } else {
+                return ' ' ;
+            }
         },
         cbdjlsdj: function () {
             return djlsModelList[ djlsModel ]['cbdjlsdj'];
@@ -4263,13 +4300,13 @@
                 return ' ';
         },
         cbc1zzl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc1lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
         },
         cbc1sl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc1lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
@@ -4284,13 +4321,13 @@
                 return ' ';
         },
         cbc2zzl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc2lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
         },
         cbc2sl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc2lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
@@ -4305,13 +4342,13 @@
                 return ' ';
         },
         cbc3zzl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc3lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
         },
         cbc3sl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc3lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
@@ -4326,13 +4363,13 @@
                 return ' ';
         },
         cbc4zzl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc4lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
         },
         cbc4sl: function () {
-            if ( yscsModel == "国外(EGS、MHE等)" ) {
+            if ( cbc4lc == 0 ) {
                 return 0 ;
             } else
                 return ' ';
@@ -4523,7 +4560,7 @@
         },
         cbmbzj: function () {
             if ( mbModel == "其它" )
-                return cbmbsl * cbmbzl * cbmbdj / 10000 ;
+                return cbmbzl * cbmbdj / 10000 ;
             else
                 return cbmbsl * cbmbdj / 10000 ;
         },
