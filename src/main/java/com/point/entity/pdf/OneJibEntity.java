@@ -387,14 +387,14 @@ public class OneJibEntity {
         Double lhz6 = lc6 + dbll / 2000 ;
 //        Double lhz7 = lc7 + dbll / 2000 ;
 
-        Double mslhz = tsl * lslhz * 1.25 ;
-        Double mshlhz = tshl * lshlhz * 1.25 ;
-        Double mhz1 = m1 * lhz1 * 1.25 ;
-        Double mhz2 = m2 * lhz2 * 1.25 ;
-        Double mhz3 = m3 * lhz3 * 1.25 ;
-        Double mhz4 = m4jbhzq * lhzjb4 * 1.25 ;
-        Double mhz5 = m5db * lhz5 * 1.25 ;
-        Double mhz6 = m6db * lhz6 * 1.25 ;
+        Double mslhz = tsl * lslhz * 1.25 * 10 ;
+        Double mshlhz = tshl * lshlhz * 1.25 * 10 ;
+        Double mhz1 = m1 * lhz1 * 1.25 * 10 ;
+        Double mhz2 = m2 * lhz2 * 1.25 * 10 ;
+        Double mhz3 = m3 * lhz3 * 1.25 * 10 ;
+        Double mhz4 = m4jbhzq * lhzjb4 * 1.25 * 10 ;
+        Double mhz5 = m5db * lhz5 * 1.25 * 10 ;
+        Double mhz6 = m6db * lhz6 * 1.25 * 10 ;
 //        Double mhz7 = m7db * lhz7 * 1.25 ;
         Double mjbhz = mslhz + mshlhz + mhz1 + mhz2 + mhz3 + mhz4 + mhz5 + mhz6 ;
         String dbwjyb;

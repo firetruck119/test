@@ -288,12 +288,6 @@
                     <td ><input type="text" name="nlski"/></td>
                     <td > </td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂危险截面处螺栓孔数</b></td>-->
-                    <!--<td ><p><i> </i></p></td>-->
-                    <!--<td ><input type="text" name="nlskii"/></td>-->
-                    <!--<td > </td>-->
-                <!--</tr>-->
                 <tr>
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">截面处每开一个螺丝孔，截面抗弯模量和惯性矩减少5%</td>
                 </tr>
@@ -342,22 +336,6 @@
                                 $("[name=db1tu6]")[0].src="/pdf/getImg?filename="+ filename+"";
                             })
                         </script>
-                        <!--<script>-->
-                            <!--$("[name=db1Model]").change(function () {-->
-                                <!--var db1Model=$("[name=db1Model]")[0].value;-->
-                                <!--var filename="";-->
-                                <!--if( db1Model=="1+1伸缩臂（3x5）" ){-->
-                                    <!--filename="2135-2.png";-->
-                                <!--}else if ( db1Model=="1+1伸缩臂（3x6.5）" ){-->
-                                    <!--filename="21365-2.png";-->
-                                <!--}-->
-                                <!--if ($('input[name=tu_db1tu10]').length == 0) {-->
-                                    <!--$('form').append('<input name="tu_db1tu10" type="hidden"/>');-->
-                                <!--}-->
-                                <!--$("[name=tu_db1tu10]")[0].value=filename;-->
-                                <!--$("[name=db1tu10]")[0].src="/pdf/getImg?filename="+ filename+"";-->
-                            <!--})-->
-                        <!--</script>-->
 
                     </td>
                 </tr>
@@ -418,106 +396,6 @@
                 </tr>
             </table>
         </div>
-
-        <!--<div style="width:400px;">-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.第二节伸缩臂相关参数</b></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="4">-->
-                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                            <!--<img alt="第二节伸缩臂危险截面图" id="db2tu10" height="200px"  name="db2tu10">-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="4">-->
-                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                            <!--<img alt="第二节伸缩臂上各长度示意图"src="/image/Tensile/db2tu11.png" width="400px" id="db2tu11" name="db2tu11" >-->
-                            <!--<input type="hidden" value="tu_db2tu11.png"/>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td><b>第二节伸缩臂危险截面图</b></td>-->
-                    <!--<td colspan="3">-->
-                        <!--<input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="db2tu10" oninput="showImage(this,'db2tu10')"/>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td style="padding:10px 0"><b>第二节伸缩臂上各长度示意图</b></td>-->
-                    <!--<td colspan="3"><input class="image" type="file" name="db2tu11" accept="image/*"-->
-                                           <!--oninput="showImage(this,'db2tu11')"/></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td style="width:26%;padding:10px 0;;"><b>名称</b></td>-->
-                    <!--<td style="width:17%;">符号</td>-->
-                    <!--<td style="width:40%;">数值</td>-->
-                    <!--<td style="width:17%;">单位</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂钢材牌号</b></td>-->
-                    <!--<td ><p><i> </i></p></td>-->
-                    <!--<td ><input type="text" name="dbgcphii"/></td>-->
-                    <!--<td > </td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂材料屈服强度</b></td>-->
-                    <!--<td ><p><i>σ<sub>sII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="dbssii"/></td>-->
-                    <!--<td >N/mm<sup>2</sup></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂截面高度</b></td>-->
-                    <!--<td ><p><i>h<sub>II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="db2h"/></td>-->
-                    <!--<td >mm</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂截面宽度</b></td>-->
-                    <!--<td ><p><i>b<sub>II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="db2b"/></td>-->
-                    <!--<td >mm</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂截面厚度</b></td>-->
-                    <!--<td ><p><i>e<sub>II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="db2e"/></td>-->
-                    <!--<td >mm</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂最危险截面X向抗弯模量(螺栓孔影响)</b></td>-->
-                    <!--<td ><p><i>W<sub>xII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="dbwxlsii"/></td>-->
-                    <!--<td >mm<sup>3</sup></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂最危险截面Y向抗弯模量(螺栓孔影响)</b></td>-->
-                    <!--<td ><p><i>W<sub>yII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="dbwylsii"/></td>-->
-                    <!--<td >mm<sup>3</sup></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂最危险截面X向惯性矩(螺栓孔影响)</b></td>-->
-                    <!--<td ><p><i>I<sub>xII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="dbixlsii"/></td>-->
-                    <!--<td >mm<sup>4</sup></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂悬挑部分长度</b></td>-->
-                    <!--<td ><p><i>L<sub>mII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="dblmii"/></td>-->
-                    <!--<td >mm</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第一节伸缩臂前滚轮与第二节伸缩臂后滚轮间距</b></td>-->
-                    <!--<td ><p><i>L<sub>lII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="dbllii"/></td>-->
-                    <!--<td >mm</td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
 
         <div style="width:400px;">
             <table>
@@ -621,7 +499,7 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.基臂相关参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.基臂相关参数</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -721,7 +599,7 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.吊臂载荷</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.吊臂载荷</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -826,24 +704,12 @@
                     <td><input type='text' name="m6db"/></td>
                     <td>kg</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td><b>第二节伸缩臂自重</b></td>-->
-                    <!--<td><p><i>m<sub>7</sub></i></p></td>-->
-                    <!--<td><input type='text' name="m7db"/></td>-->
-                    <!--<td>kg</td>-->
-                <!--</tr>-->
                 <tr>
                     <td><b>第一节伸缩臂悬挑部分自重</b></td>
                     <td><p><i>m'<sub>6</sub></i></p></td>
                     <td><input type='text' name="m6dbxt"/></td>
                     <td>kg</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td><b>第二节伸缩臂悬挑部分自重</b></td>-->
-                    <!--<td><p><i>m'<sub>7</sub></i></p></td>-->
-                    <!--<td><input type='text' name="m7dbxt"/></td>-->
-                    <!--<td>kg</td>-->
-                <!--</tr>-->
 
             </table>
         </div>
@@ -919,19 +785,14 @@
                     <td ><input type="text" name="acx6db" /></td>
                     <td >m<sup>2</sup></td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂悬挑部分迎风面积</b></td>-->
-                    <!--<td ><p><i>A<sub>7</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="acx7db" /></td>-->
-                    <!--<td >m<sup>2</sup></td>-->
-                <!--</tr>-->
+
             </table>
         </div>
 
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.重心至基臂前支撑点距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.重心至基臂前支撑点距离</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -999,19 +860,14 @@
                     <td ><input type="text" name="lc6" /></td>
                     <td >m</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂重心至基臂前支撑点距离</b></td>-->
-                    <!--<td ><p><i>L<sub>c7</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lc7" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
+
             </table>
         </div>
 
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.面心至基臂前支撑点距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.面心至基臂前支撑点距离</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -1079,19 +935,14 @@
                     <td ><input type="text" name="lx6" /></td>
                     <td >m</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂悬挑部分面心至基臂前支撑点距离</b></td>-->
-                    <!--<td ><p><i>L<sub>x7</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lx7" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
+
             </table>
         </div>
 
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.重心至基臂前滚轮距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>10.重心至基臂前滚轮距离</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -1147,12 +998,7 @@
                     <td ><input type="text" name="lwq6" /></td>
                     <td >m</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂重心至基臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>wq7</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lwq7" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
+
                 <tr>
                     <td ><b>第一节伸缩臂悬挑部分重心至基臂前滚轮距离</b></td>
                     <td ><p><i>L'<sub>wq6</sub></i></p></td>
@@ -1165,7 +1011,7 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.基臂外部部件面心至基臂前滚轮距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>11.基臂外部部件面心至基臂前滚轮距离</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -1221,19 +1067,14 @@
                     <td ><input type="text" name="lx6i" /></td>
                     <td >m</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂悬挑部分面心至基臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>x7I</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lx7i" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
+
             </table>
         </div>
 
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.第一节伸缩臂外部载荷重心至第一节伸缩臂前滚轮距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>12.第一节伸缩臂外部载荷重心至第一节伸缩臂前滚轮距离</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -1283,138 +1124,9 @@
                     <td ><input type="text" name="lwq3i" /></td>
                     <td >m</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂重心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>wq7I</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lwq7i" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂悬挑部分重心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L'<sub>wq7I</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lwq7ip" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
+
             </table>
         </div>
-
-        <!--<div style="width:600px;">-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.第一节伸缩臂外部部件面心至第一节伸缩臂前滚轮距离</b></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="4">-->
-                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                            <!--<img alt="第一节伸缩臂外部部件面心至第一节伸缩臂前滚轮距离图"src="/image/Tensile/db2tu21.png" width="600px" id="db2tu21" name="db2tu21" >-->
-                            <!--<input type="hidden" value="tu_db2tu21png"/>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--<tr>-->
-                    <!--<td style="padding:10px 0"><b>第一节伸缩臂外部部件面心至第一节伸缩臂前滚轮距离图</b></td>-->
-                    <!--<td colspan="3"><input class="image" type="file" name="db2tu21" accept="image/*"-->
-                                           <!--oninput="showImage(this,'db2tu21')"/></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td style="width:104px;padding:10px 0;"><b>名称</b></td>-->
-                    <!--<td style="width:68px;">符号</td>-->
-                    <!--<td style="width:160px;">数值</td>-->
-                    <!--<td style="width:68px;">单位</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>总悬挂载荷面心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>slxII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lslxii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>物料起升机构总悬挂载荷面心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>shlxII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lshlxii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>臂头面心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>x1II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lx1ii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>物料起升机构导绳架面心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>x2II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lx2ii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>安全绳面心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>x3II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lx3ii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>第二节伸缩臂悬挑部分面心至第一节伸缩臂前滚轮距离</b></td>-->
-                    <!--<td ><p><i>L<sub>x7II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lx7ii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
-
-        <!--<div style="width:600px;">-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.第二节伸缩臂外部载荷重心至第二节伸缩臂前端法兰距离</b></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="4">-->
-                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                            <!--<img alt="第二节伸缩臂外部载荷重心至第二节伸缩臂前端法兰距离图"src="/image/Tensile/db2tu22.png" width="600px" id="db2tu22" name="db2tu22" >-->
-                            <!--<input type="hidden" value="tu_db2tu22png"/>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--<tr>-->
-                    <!--<td style="padding:10px 0"><b>第二节伸缩臂外部载荷重心至第二节伸缩臂前端法兰距离图</b></td>-->
-                    <!--<td colspan="3"><input class="image" type="file" name="db2tu22" accept="image/*"-->
-                                           <!--oninput="showImage(this,'db2tu22')"/></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td style="width:104px;padding:10px 0;"><b>名称</b></td>-->
-                    <!--<td style="width:68px;">符号</td>-->
-                    <!--<td style="width:160px;">数值</td>-->
-                    <!--<td style="width:68px;">单位</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>总悬挂载荷重心至第二节伸缩臂前端法兰距离</b></td>-->
-                    <!--<td ><p><i>L<sub>slwqII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lslwqii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>物料起升机构总悬挂载荷重心至第二节伸缩臂前端法兰距离</b></td>-->
-                    <!--<td ><p><i>L<sub>shlwqII</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lshlwqii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>臂头重心至第二节伸缩臂前端法兰距离</b></td>-->
-                    <!--<td ><p><i>L<sub>wq1II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lwq1ii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>物料起升机构导绳架重心至第二节伸缩臂前端法兰距离</b></td>-->
-                    <!--<td ><p><i>L<sub>wq2II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lwq2ii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td ><b>安全绳重心至第二节伸缩臂前端法兰距离</b></td>-->
-                    <!--<td ><p><i>L<sub>wq3II</sub></i></p></td>-->
-                    <!--<td ><input type="text" name="lwq3ii" /></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
 
         <div style="display: none">
             <input type="text" name="dcgssp" />
@@ -1437,16 +1149,10 @@
             <input type="text" name="dbixi" />
             <input type="text" name="mbg1" />
             <input type="text" name="mbm1" />
-            <!--<input type="text" name="dbm2b" />-->
-            <!--<input type="text" name="dbwxii" />-->
-            <!--<input type="text" name="dbwyii" />-->
-            <!--<input type="text" name="dbixii" />-->
-            <!--<input type="text" name="mbg2" />-->
-            <!--<input type="text" name="mbm2" />-->
-            <!--<input type="text" name="db2xh" />-->
+
         </div>
 
-        <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>6.1+1伸缩臂其他示意图</b></div>
+        <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>13.1+1伸缩臂其他示意图</b></div>
 
         <div style="width:400px;">
             <table>
@@ -1489,49 +1195,6 @@
                 </tr>
             </table>
         </div>
-
-        <!--<div style="width:400px;">-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>第一节伸缩臂前滚轮载荷图</b></td>-->
-                <!--</tr>-->
-                <!--&lt;!&ndash;<tr>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<td colspan="2">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<img src="/image/Tensile/db1tu12.png" width="400px" id="db1tu12" name="db1tu12" >&ndash;&gt;-->
-                            <!--&lt;!&ndash;<input type="hidden" value="tu_db1tu12.png"/>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
-                <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-                <!--<tr>-->
-                    <!--<td style="width:150px;padding:10px 0"><b>第一节伸缩臂前滚轮载荷图</b></td>-->
-                    <!--<td colspan="1"><input class="image" type="file" name="db1tu12" accept="image/*"-->
-                                           <!--oninput="showImage(this,'db1tu12')"/></td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
-
-        <!--<div style="width:400px;">-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>第二节伸缩臂风载荷图</b></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="2">-->
-                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                            <!--<img src="/image/Tensile/db2tu13.png" width="400px" id="db2tu13" name="db2tu13" >-->
-                            <!--<input type="hidden" value="tu_db2tu13.png"/>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td style="width:150px;padding:10px 0"><b>第二节伸缩臂风载荷图</b></td>-->
-                    <!--<td colspan="1"><input class="image" type="file" name="db2tu13" accept="image/*"-->
-                                           <!--oninput="showImage(this,'db2tu13')"/></td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
-
         <div style="width:400px;">
             <table>
                 <tr>
@@ -1553,27 +1216,6 @@
             </table>
         </div>
 
-        <!--<div style="width:400px;">-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>第一节伸缩臂前滚轮前部载荷重心至第一节伸缩臂前滚轮距离图</b></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="2">-->
-                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                            <!--<img src="/image/Tensile/db1tu20.png" width="400px" id="db1tu20" name="db1tu20" >-->
-                            <!--<input type="hidden" value="tu_db1tu20.png"/>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td style="width:150px;padding:10px 0"><b>第一节伸缩臂前滚轮前部载荷重心至第一节伸缩臂前滚轮距离图</b></td>-->
-                    <!--<td colspan="1"><input class="image" type="file" name="db1tu20" accept="image/*"-->
-                                           <!--oninput="showImage(this,'db1tu20')"/></td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
-
         <input type="hidden" name="pdfType"/>
     </form>
 
@@ -1589,18 +1231,6 @@
                         <td style="width:25%;"><b>计算值</b></td>
                         <td style="width:25%;"><b>是否满足</b></td>
                     </tr>
-                    <!--<tr>-->
-                        <!--<td><b>第二节伸缩臂强度校核</b></td>-->
-                        <!--<td><p><span id="ssqdii"></span>N/mm<sup>2</sup></p></td>-->
-                        <!--<td><p><span id="smaxii"></span>N/mm<sup>2</sup></p></td>-->
-                        <!--<td id="dbm5"></td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td><b>第二节伸缩臂挠度校核</b></td>-->
-                        <!--<td><p><span id="ndii"></span>mm</p></td>-->
-                        <!--<td><p><span id="fii"></span>mm</p></td>-->
-                        <!--<td id="dbm6"></td>-->
-                    <!--</tr>-->
                     <tr>
                         <td><b>第一节伸缩臂强度校核</b></td>
                         <td><p><span id="ssqdi"></span>N/mm<sup>2</sup></p></td>
@@ -1650,13 +1280,19 @@
         e.val(l);
     }
     var calculateFunction={
-        // db2xh:function(){
-        //     if( db2Model =='2+1伸缩臂（3x5）')
-        //         return '2+1伸缩臂（3x5）';
-        //     else if( db2Model =='2+1伸缩臂（3x6.5）')
-        //         return '2+1伸缩臂（3x6.5）';
-        // },
 
+        grugssp:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        m5:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        acx5:function(){
+            if( gruModel =='无')
+                return 0;
+        },
         gruqhxs:function(){
             return gruazModelList[ gruazModel ]['gruqhxs'];
         },
