@@ -265,6 +265,12 @@
                     <td >m</td>
                 </tr>
                 <tr>
+                    <td ><b>工作状态风压</b></td>
+                    <td ><p><i>p</i></p></td>
+                    <td ><input type="text" name="p" /></td>
+                    <td >N/m<sup>2</sup></td>
+                </tr>
+                <tr>
                     <td ><b>最大工作臂长</b></td>
                     <td ><p><i>L<sub>bd</sub></i></p></td>
                     <td ><input type="text" name="lbd"/></td>
@@ -681,7 +687,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td><b>安全绳自重</b></td>
+                    <td><b>重锤自重</b></td>
                     <td><p><i>m<sub>3</sub></i></p></td>
                     <td><input type='text' name="m3"/></td>
                     <td>kg</td>
@@ -762,7 +768,7 @@
                     <td >m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳迎风面积</b></td>
+                    <td ><b>重锤迎风面积</b></td>
                     <td ><p><i>A<sub>3</sub></i></p></td>
                     <td ><input type="text" name="acx3" /></td>
                     <td >m<sup>2</sup></td>
@@ -837,7 +843,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳重心至基臂前支撑点距离</b></td>
+                    <td ><b>重锤重心至基臂前支撑点距离</b></td>
                     <td ><p><i>L<sub>c3</sub></i></p></td>
                     <td ><input type="text" name="lc3" /></td>
                     <td >m</td>
@@ -912,7 +918,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳面心至基臂前支撑点距离</b></td>
+                    <td ><b>重锤面心至基臂前支撑点距离</b></td>
                     <td ><p><i>L<sub>x3</sub></i></p></td>
                     <td ><input type="text" name="lx3" /></td>
                     <td >m</td>
@@ -987,7 +993,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳重心至基臂前滚轮距离</b></td>
+                    <td ><b>重锤重心至基臂前滚轮距离</b></td>
                     <td ><p><i>L<sub>wq3</sub></i></p></td>
                     <td ><input type="text" name="lwq3" /></td>
                     <td >m</td>
@@ -1056,7 +1062,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳面心至基臂前滚轮距离</b></td>
+                    <td ><b>重锤面心至基臂前滚轮距离</b></td>
                     <td ><p><i>L<sub>x3I</sub></i></p></td>
                     <td ><input type="text" name="lx3i" /></td>
                     <td >m</td>
@@ -1119,7 +1125,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳重心至第一节伸缩臂前滚轮距离</b></td>
+                    <td ><b>重锤重心至第一节伸缩臂前滚轮距离</b></td>
                     <td ><p><i>L<sub>wq3I</sub></i></p></td>
                     <td ><input type="text" name="lwq3i" /></td>
                     <td >m</td>
@@ -1347,28 +1353,6 @@
             return dblmi / 2 ;
         },
 
-        // dbgcphii:function(){
-        //     return ' Q355B ' ;
-        // },
-        // dbssii:function(){
-        //     return 355 ;
-        // },
-        // dbwxlsii:function(){
-        //     return dbwxii * ( 1 - 0.05 * nlskii ) ;
-        // },
-        // dbwylsii:function(){
-        //     return dbwyii * ( 1 - 0.05 * nlskii ) ;
-        // },
-        // dbixlsii:function(){
-        //     return dbixii * ( 1 - 0.05 * nlskii ) ;
-        // },
-        // dblmii:function(){
-        //     return (( lbd - lbx + 0.67 ) / 2 ) * 1000 ;
-        // },
-        // dbllii:function(){
-        //     return dblmii / 2 ;
-        // },
-
         swp: function(){
             if( dcModel =='其它')
                 return ' ';
@@ -1405,10 +1389,10 @@
                 return 0 ;
         },
         m3:function(){
-            return  h * 0.203;
+            return  25 ;
         },
         m4jbcq:function(){
-            return  mbgj + dblm * mbmj / 1000 ;
+            return  mbgj / 2 + dblm * mbmj / 1000 ;
         },
         m5db:function(){
             return m5 * gruqhxs ;
@@ -1416,15 +1400,9 @@
         m6db:function(){
             return  mbg1 + ( dblmi + dblli ) * mbm1 / 1000 ;
         },
-        // m7db:function(){
-        //     return  mbg2 + ( dblmii + dbllii ) * mbm2 / 1000 ;
-        // },
         m6dbxt:function(){
-            return  mbg1 + dblmi * mbm1 / 1000 ;
+            return  mbg1 / 2 + dblmi * mbm1 / 1000 ;
         },
-        // m7dbxt:function(){
-        //     return  mbg2 + dblmii * mbm2 / 1000 ;
-        // },
 
         aslcx:function(){
             return dcModelList[ dcModel ]['aslcx'];
@@ -1438,7 +1416,7 @@
                 return 0 ;
         },
         acx3:function(){
-            return h * 0.018 ;
+            return 0.05 ;
         },
         acx4cq:function(){
             return dblm * dbjh / 1000000 ;
@@ -1449,9 +1427,6 @@
         acx6db:function(){
             return dblmi * db1h / 1000000 ;
         },
-        // acx7db:function(){
-        //     return dblmii * db2h / 1000000 ;
-        // },
 
         lslc:function(){
             return lbd - dbll / 2000 ;
@@ -1483,11 +1458,8 @@
             }
         },
         lc6:function(){
-            return ( mbg1 * ( dblm + dblmi ) / 1000 + mbm1 * ( dblmi + dblli ) * (( dblmi + dblli ) / 2 - dblli + dblm ) / 1000000 ) / m6db ;
+            return ( mbg1 * ( dblm + dblmi ) / 2000 + mbg1 * ( dblm - dblli ) / 2000 + mbm1 * ( dblmi + dblli ) * (( dblmi + dblli ) / 2 - dblli + dblm ) / 1000000 ) / m6db ;
         },
-        // lc7:function(){
-        //     return ( mbg2 * ( dblm + dblmi + dblmii ) / 1000 + mbm2 * ( dblmii + dbllii ) * (( dblmii + dbllii ) / 2 - dbllii + dblmi + dblm ) / 1000000 ) / m7db ;
-        // },
 
         lslx:function(){
             return lslc ;
@@ -1513,9 +1485,6 @@
         lx6:function(){
             return ( dblm + dblmi / 2 ) / 1000 ;
         },
-        // lx7:function(){
-        //     return ( dblm + dblmi + dblmii / 2 ) / 1000 ;
-        // },
 
         lslwq:function(){
             return lslc - dblm / 1000 ;
@@ -1539,13 +1508,9 @@
         lwq6:function(){
             return lc6 - dblm / 1000 ;
         },
-        // lwq7:function(){
-        //     return lc7 - dblm / 1000 ;
-        // },
         lwq6p:function(){
-            return ( mbg1 * dblmi /1000 + mbm1 * dblmi * dblmi / 2000000 ) / m6dbxt ;
+            return ( mbg1 * dblmi / 2000 + mbm1 * dblmi * dblmi / 2000000 ) / m6dbxt ;
         },
-
 
         lslxi:function(){
             return lslwq ;
@@ -1565,9 +1530,6 @@
         lx6i:function(){
             return dblmi / 2000 ;
         },
-        // lx7i:function(){
-        //     return ( dblmi + dblmii / 2 ) / 1000 ;
-        // },
 
         lslwqi:function(){
             return lslwq - dblmi / 1000 ;
@@ -1588,51 +1550,7 @@
         lwq3i:function(){
             return lwq3 - dblmi / 1000 ;
         },
-        // lwq7i:function(){
-        //     return lwq7 - dblmi / 1000 ;
-        // },
-        // lwq7ip:function(){
-        //     return ( mbg2 * dblmii /1000 + mbm2 * dblmii * dblmii / 2000000 ) / m7dbxt ;
-        // },
 
-        // lslxii:function(){
-        //     return lslwqi ;
-        // },
-        // lshlxii:function(){
-        //     return lshlwqi ;
-        // },
-        // lx1ii:function(){
-        //     return lwq1i ;
-        // },
-        // lx2ii:function(){
-        //     return lwq2i ;
-        // },
-        // lx3ii:function(){
-        //     return lwq3i ;
-        // },
-        // lx7ii:function(){
-        //     return dblmii / 2000 ;
-        // },
-
-        // lslwqii:function(){
-        //     return lslwqi - dblmii / 1000 ;
-        // },
-        // lshlwqii:function(){
-        //     return lshlwqi - dblmii / 1000 ;
-        // },
-        // lwq1ii:function(){
-        //     return lwq1i - dblmii / 1000 ;
-        // },
-        // lwq2ii:function(){
-        //     if( m2 == 0 ){
-        //         return 0 ;
-        //     }else {
-        //         return lwq2i - dblmii / 1000 ;
-        //     }
-        // },
-        // lwq3ii:function(){
-        //     return lwq3i - dblmii / 1000 ;
-        // },
     };
 
     getTable("db1Model","dbxz1");
@@ -1643,11 +1561,9 @@
     data.init(calculateFunction);
     imgDaefultData={
         db1tu1:{inputvalue:"db1tu1.png"},
-        db1tu2:{inputvalue:"db1tu2.png"},
         db1tu3:{inputvalue:"db1tu3.png"},
         db1tu4:{inputvalue:"db1tu4.png"},
         db1tu5:{inputvalue:"db1tu5.png"},
-        db1tu6:{inputvalue:"db1tu6.png"},
         db1tu7:{inputvalue:"db1tu7.png"},
         db1tu8:{inputvalue:"db1tu8.png"},
         db1tu9:{inputvalue:"db1tu9.png"},

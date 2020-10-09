@@ -376,6 +376,12 @@
                     <td >m</td>
                 </tr>
                 <tr>
+                    <td ><b>工作时风压</b></td>
+                    <td ><p><i>p</i></p></td>
+                    <td ><input type="text" name="p" /></td>
+                    <td >N/m<sup>2</sup></td>
+                </tr>
+                <tr>
                     <td ><b>非工作时风压</b></td>
                     <td ><p><i>pf</i></p></td>
                     <td ><input type="text" name="pf" /></td>
@@ -742,7 +748,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>安全绳</td>
+                    <td>重锤</td>
                     <td>
                         <p><i>m<sub>3</sub></i></p>
                     </td>
@@ -914,7 +920,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>安全绳</td>
+                    <td>重锤</td>
                     <td>
                         <p><i>A<sub>t3</sub></i></p>
                     </td>
@@ -1081,7 +1087,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>安全绳</td>
+                    <td>重锤</td>
                     <td>
                         <p><i>L<sub>3I</sub></i></p>
                     </td>
@@ -1227,7 +1233,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>安全绳</td>
+                    <td>重锤</td>
                     <td>
                         <p><i>A<sub>t3I</sub></i></p>
                     </td>
@@ -1379,7 +1385,7 @@
 
                 </tr>
                 <tr>
-                    <td>安全绳</td>
+                    <td>重锤</td>
                     <td>
                         <p><i>L<sub>f3</sub></i></p>
                     </td>
@@ -1514,7 +1520,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>安全绳</td>
+                    <td>重锤</td>
                     <td>
                         <p><i>A<sub>f3</sub></i></p>
                     </td>
@@ -1864,7 +1870,7 @@
         //     return gruModelList[ gruModel ]['m2'];
         // },
         m3:function(){
-            return  h * 0.203 ;
+            return  25 ;
         },
         lxtz:()=>{
             return lbd - lbx ;
@@ -1990,7 +1996,7 @@
 
 
         atx3:function(){
-            return h * 0.018 ;
+            return 0.05 ;
         },
         atx6:function(){
             if( m6 == 0 ){
@@ -2242,7 +2248,7 @@
             return atx2 ;
         },
         aftx3:function(){
-            return 0 ;
+            return 0.05 ;
         },
         aftx4:function(){
             return atx4 ;

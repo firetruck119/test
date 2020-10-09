@@ -18,6 +18,7 @@ public class TwoJibEntity {
     private String date;
 
     private Double h;
+    private Double p;
     private Double lbd;
     private Double lbx;
     private Double nlsk;
@@ -198,6 +199,7 @@ public class TwoJibEntity {
         map.put("date", CommonFunc.convertDoubleToString(date));
 
         map.put("h", CommonFunc.convertDoubleToString(h));
+        map.put("p", CommonFunc.convertDoubleToString(p));
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));
         map.put("lbx", CommonFunc.convertDoubleToString(lbx));
         map.put("nlsk", CommonFunc.convertDoubleToString(nlsk));
@@ -504,15 +506,15 @@ public class TwoJibEntity {
         map.put("mza6", mza6);
         map.put("mza7", mza7);
 
-        Double mslwa = 250 * 1.25 * aslcx * lslx ;
-        Double mshlwa = 250 * 1.25 * ashlcx * lshlx ;
-        Double mwa1 = 250 * 1.25 * acx1 * lx1 ;
-        Double mwa2 = 250 * 1.25 * acx2 * lx2 ;
-        Double mwa3 = 250 * 1.25 * acx3 * lx3 ;
-        Double mwa4 = 250 * 1.25 * acx4cq * lx4 ;
-        Double mwa5 = 250 * 1.25 * acx5db * lx5 ;
-        Double mwa6 = 250 * 1.25 * acx6db * lx6 ;
-        Double mwa7 = 250 * 1.25 * acx7db * lx7 ;
+        Double mslwa = p * 1.25 * aslcx * lslx ;
+        Double mshlwa = p * 1.25 * ashlcx * lshlx ;
+        Double mwa1 = p * 1.25 * acx1 * lx1 ;
+        Double mwa2 = p * 1.25 * acx2 * lx2 ;
+        Double mwa3 = p * 1.25 * acx3 * lx3 ;
+        Double mwa4 = p * 1.25 * acx4cq * lx4 ;
+        Double mwa5 = p * 1.25 * acx5db * lx5 ;
+        Double mwa6 = p * 1.25 * acx6db * lx6 ;
+        Double mwa7 = p * 1.25 * acx7db * lx7 ;
         map.put("mslwa", mslwa);
         map.put("mshlwa", mshlwa);
         map.put("mwa1", mwa1);
@@ -573,13 +575,13 @@ public class TwoJibEntity {
         Double mwq6p = 1.25 * 10 * m6dbxt * lwq6p ;
         map.put("mwq6p", mwq6p);
 
-        Double mslwai = 250 * 1.25 * aslcx * lslxi ;
-        Double mshlwai = 250 * 1.25 * ashlcx * lshlxi ;
-        Double mwa1i = 250 * 1.25 * acx1 * lx1i ;
-        Double mwa2i = 250 * 1.25 * acx2 * lx2i ;
-        Double mwa3i = 250 * 1.25 * acx3 * lx3i ;
-        Double mwa6i = 250 * 1.25 * acx6db * lx6i ;
-        Double mwa7i = 250 * 1.25 * acx7db * lx7i ;
+        Double mslwai = p * 1.25 * aslcx * lslxi ;
+        Double mshlwai = p * 1.25 * ashlcx * lshlxi ;
+        Double mwa1i = p * 1.25 * acx1 * lx1i ;
+        Double mwa2i = p * 1.25 * acx2 * lx2i ;
+        Double mwa3i = p * 1.25 * acx3 * lx3i ;
+        Double mwa6i = p * 1.25 * acx6db * lx6i ;
+        Double mwa7i = p * 1.25 * acx7db * lx7i ;
         map.put("mslwai", mslwai);
         map.put("mshlwai", mshlwai);
         map.put("mwa1i", mwa1i);
@@ -636,12 +638,12 @@ public class TwoJibEntity {
         Double mwq7ip = 1.25 * 10 * m7dbxt * lwq7ip ;
         map.put("mwq7ip", mwq7ip);
 
-        Double mslwaii = 250 * 1.25 * aslcx * lslxii ;
-        Double mshlwaii = 250 * 1.25 * ashlcx * lshlxii ;
-        Double mwa1ii = 250 * 1.25 * acx1 * lx1ii ;
-        Double mwa2ii = 250 * 1.25 * acx2 * lx2ii ;
-        Double mwa3ii = 250 * 1.25 * acx3 * lx3ii ;
-        Double mwa7ii = 250 * 1.25 * acx7db * lx7ii ;
+        Double mslwaii = p * 1.25 * aslcx * lslxii ;
+        Double mshlwaii = p * 1.25 * ashlcx * lshlxii ;
+        Double mwa1ii = p * 1.25 * acx1 * lx1ii ;
+        Double mwa2ii = p * 1.25 * acx2 * lx2ii ;
+        Double mwa3ii = p * 1.25 * acx3 * lx3ii ;
+        Double mwa7ii = p * 1.25 * acx7db * lx7ii ;
         map.put("mslwaii", mslwaii);
         map.put("mshlwaii", mshlwaii);
         map.put("mwa1ii", mwa1ii);

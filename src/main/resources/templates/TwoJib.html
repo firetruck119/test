@@ -265,6 +265,12 @@
                     <td >m</td>
                 </tr>
                 <tr>
+                    <td ><b>工作状态风压</b></td>
+                    <td ><p><i>p</i></p></td>
+                    <td ><input type="text" name="p" /></td>
+                    <td >N/m<sup>2</sup></td>
+                </tr>
+                <tr>
                     <td ><b>最大工作臂长</b></td>
                     <td ><p><i>L<sub>bd</sub></i></p></td>
                     <td ><input type="text" name="lbd"/></td>
@@ -803,7 +809,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td><b>安全绳自重</b></td>
+                    <td><b>重锤自重</b></td>
                     <td><p><i>m<sub>3</sub></i></p></td>
                     <td><input type='text' name="m3"/></td>
                     <td>kg</td>
@@ -896,7 +902,7 @@
                     <td >m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳迎风面积</b></td>
+                    <td ><b>重锤迎风面积</b></td>
                     <td ><p><i>A<sub>3</sub></i></p></td>
                     <td ><input type="text" name="acx3" /></td>
                     <td >m<sup>2</sup></td>
@@ -976,7 +982,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳重心至基臂前支撑点距离</b></td>
+                    <td ><b>重锤重心至基臂前支撑点距离</b></td>
                     <td ><p><i>L<sub>c3</sub></i></p></td>
                     <td ><input type="text" name="lc3" /></td>
                     <td >m</td>
@@ -1056,7 +1062,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳面心至基臂前支撑点距离</b></td>
+                    <td ><b>重锤面心至基臂前支撑点距离</b></td>
                     <td ><p><i>L<sub>x3</sub></i></p></td>
                     <td ><input type="text" name="lx3" /></td>
                     <td >m</td>
@@ -1136,7 +1142,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳重心至基臂前滚轮距离</b></td>
+                    <td ><b>重锤重心至基臂前滚轮距离</b></td>
                     <td ><p><i>L<sub>wq3</sub></i></p></td>
                     <td ><input type="text" name="lwq3" /></td>
                     <td >m</td>
@@ -1210,7 +1216,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳面心至基臂前滚轮距离</b></td>
+                    <td ><b>重锤面心至基臂前滚轮距离</b></td>
                     <td ><p><i>L<sub>x3I</sub></i></p></td>
                     <td ><input type="text" name="lx3i" /></td>
                     <td >m</td>
@@ -1278,7 +1284,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳重心至第一节伸缩臂前滚轮距离</b></td>
+                    <td ><b>重锤重心至第一节伸缩臂前滚轮距离</b></td>
                     <td ><p><i>L<sub>wq3I</sub></i></p></td>
                     <td ><input type="text" name="lwq3i" /></td>
                     <td >m</td>
@@ -1346,7 +1352,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳面心至第一节伸缩臂前滚轮距离</b></td>
+                    <td ><b>重锤面心至第一节伸缩臂前滚轮距离</b></td>
                     <td ><p><i>L<sub>x3II</sub></i></p></td>
                     <td ><input type="text" name="lx3ii" /></td>
                     <td >m</td>
@@ -1408,7 +1414,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>安全绳重心至第二节伸缩臂前端法兰距离</b></td>
+                    <td ><b>重锤重心至第二节伸缩臂前端法兰距离</b></td>
                     <td ><p><i>L<sub>wq3II</sub></i></p></td>
                     <td ><input type="text" name="lwq3ii" /></td>
                     <td >m</td>
@@ -1778,10 +1784,10 @@
                 return 0 ;
         },
         m3:function(){
-            return  h * 0.203;
+            return  25 ;
         },
         m4jbcq:function(){
-            return  mbgj + dblm * mbmj / 1000 ;
+            return  mbgj / 2 + dblm * mbmj / 1000 ;
         },
         m5db:function(){
             return m5 * gruqhxs ;
@@ -1793,10 +1799,10 @@
             return  mbg2 + ( dblmii + dbllii ) * mbm2 / 1000 ;
         },
         m6dbxt:function(){
-            return  mbg1 + dblmi * mbm1 / 1000 ;
+            return  mbg1 / 2 + dblmi * mbm1 / 1000 ;
         },
         m7dbxt:function(){
-            return  mbg2 + dblmii * mbm2 / 1000 ;
+            return  mbg2 / 2 + dblmii * mbm2 / 1000 ;
         },
 
         aslcx:function(){
@@ -1812,7 +1818,7 @@
                 return 0 ;
         },
         acx3:function(){
-            return h * 0.018 ;
+            return 0.05 ;
         },
         acx4cq:function(){
             return dblm * dbjh / 1000000 ;
@@ -1847,7 +1853,7 @@
             return lshlc ;
         },
         lc4:function(){
-            return ( mbgj * dblm / 1000 + mbmj * dblm * dblm / 2000000 ) / m4jbcq ;
+            return ( mbgj * dblm / 2000 + mbmj * dblm * dblm / 2000000 ) / m4jbcq ;
         },
         lc5:function(){
             if( m5db == 0 ){
@@ -1857,10 +1863,10 @@
             }
         },
         lc6:function(){
-            return ( mbg1 * ( dblm + dblmi ) / 1000 + mbm1 * ( dblmi + dblli ) * (( dblmi + dblli ) / 2 - dblli + dblm ) / 1000000 ) / m6db ;
+            return ( mbg1 * ( dblm + dblmi ) / 2000 + mbg1 * ( dblm - dblli ) / 2000 + mbm1 * ( dblmi + dblli ) * (( dblmi + dblli ) / 2 - dblli + dblm ) / 1000000 ) / m6db ;
         },
         lc7:function(){
-            return ( mbg2 * ( dblm + dblmi + dblmii ) / 1000 + mbm2 * ( dblmii + dbllii ) * (( dblmii + dbllii ) / 2 - dbllii + dblmi + dblm ) / 1000000 ) / m7db ;
+            return ( mbg2 * ( dblm + dblmi + dblmii ) / 2000 + mbg2 * ( dblm + dblmi - dbllii ) / 2000 + mbm2 * ( dblmii + dbllii ) * (( dblmii + dbllii ) / 2 - dbllii + dblmi + dblm ) / 1000000 ) / m7db ;
         },
 
         lslx:function(){
@@ -1917,7 +1923,7 @@
             return lc7 - dblm / 1000 ;
         },
         lwq6p:function(){
-            return ( mbg1 * dblmi /1000 + mbm1 * dblmi * dblmi / 2000000 ) / m6dbxt ;
+            return ( mbg1 * dblmi / 2000 + mbm1 * dblmi * dblmi / 2000000 ) / m6dbxt ;
         },
 
 
@@ -1966,7 +1972,7 @@
             return lwq7 - dblmi / 1000 ;
         },
         lwq7ip:function(){
-            return ( mbg2 * dblmii /1000 + mbm2 * dblmii * dblmii / 2000000 ) / m7dbxt ;
+            return ( mbg2 * dblmii / 2000 + mbm2 * dblmii * dblmii / 2000000 ) / m7dbxt ;
         },
 
         lslxii:function(){

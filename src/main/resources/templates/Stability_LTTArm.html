@@ -365,12 +365,20 @@
                     <td>m</td>
                 </tr>
                 <tr>
+                    <td>工作风压</td>
+                    <td>
+                        <p><i>p</i></p>
+                    </td>
+                    <td><input name="p" type="text" th:field="*{p}"/></td>
+                    <td>N/m<sup>2</sup></td>
+                </tr>
+                <tr>
                     <td>非工作风压</td>
                     <td>
                         <p><i>p<sub>f</sub></i></p>
                     </td>
                     <td><input name="pf" type="text" th:field="*{pf}"/></td>
-                    <td>N/m2</td>
+                    <td>N/m<sup>2</sup></td>
                 </tr>
                 <tr>
                     <td colspan="4" style="padding: 10px 0 10px 0">作业高度大于150m，非工作风压根据当地条件考虑</td>
@@ -831,7 +839,7 @@
                     <td>kg</td>
                 </tr>
                 <tr>
-                    <td>安全绳</td>
+                    <td>重锤</td>
                     <td>
                         <p><i>m<sub>3</sub></i></p>
                     </td>
@@ -1043,7 +1051,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>安全绳至前轨道距离</td>
+                    <td>重锤至前轨道距离</td>
                     <td>
                         <p><i>L<sub>q3</sub></i></p>
                     </td>
@@ -1239,7 +1247,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>安全绳至后轮距离</td>
+                    <td>重锤至后轮距离</td>
                     <td>
                         <p><i>L<sub>h3</sub></i></p>
                     </td>
@@ -1480,7 +1488,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>安全绳至轨道上平面高度</td>
+                    <td>重锤至轨道上平面高度</td>
                     <td>
                         <p><i>h3</i></p>
                     </td>
@@ -1797,7 +1805,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>安全绳面心至回转中心距离</td>
+                    <td>重锤面心至回转中心距离</td>
                     <td>
                         <p><i>L<sub>mz3</sub></i></p>
                     </td>
@@ -2112,7 +2120,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>安全绳迎风面积</td>
+                    <td>重锤迎风面积</td>
                     <td>
                         <p><i>A<sub>3</sub></i></p>
                     </td>
@@ -2429,7 +2437,7 @@
                     <td>m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td>安全绳迎风面积</td>
+                    <td>重锤迎风面积</td>
                     <td>
                         <p><i>A<sub>t3</sub></i></p>
                     </td>
@@ -2717,7 +2725,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>安全绳至回转中心距离</td>
+                    <td>重锤至回转中心距离</td>
                     <td>
                         <p><i>L<sub>z3</sub></i></p>
                     </td>
@@ -2930,7 +2938,7 @@
                     <td>m</td>
                 </tr>
                 <tr>
-                    <td>安全绳至前轮距离</td>
+                    <td>重锤至前轮距离</td>
                     <td>
                         <p><i>L<sub>ql3</sub></i></p>
                     </td>
@@ -3306,7 +3314,7 @@
             return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
         },
         mzjf: function () {
-            return  m1 + m2 + m3f + m4 + m5f + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13f + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
+            return  m1 + m2 + m3 + m4 + m5f + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13f + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
         },
 
         gdlsxh:function(){
@@ -3608,7 +3616,7 @@
                 case'无':  return 0;
             }
         },
-        m3:' h * 0.203 ',
+        m3:' 25 ',
         m5:function(){
             switch ( typeOfGRU ) {
                 case'GRU285':  return 235;
@@ -4204,7 +4212,7 @@
                 case'无':  return 0;
             }
         },
-        acx3:' h * 0.018 ',
+        acx3:' 0.05 ',
         acx5:function(){
             switch ( typeOfGRU ) {
                 case'GRU285':  return 0.42;
@@ -4385,7 +4393,7 @@
                 case '其它':return ' ';
             }
         },
-        atx3:' h * 0.018 ',
+        atx3:' 0.05 ',
         atx6:function(){
             if( m6 == 0 ){
                 return 0 ;
@@ -4466,13 +4474,13 @@
             }
         },
 
-        m3f:' 0 ',
+        // m3f:' 0 ',
         m5f:' m5 + hsw ',
         m13f:' m13 + mwr ',
 
         lhl1:' lbx - ( ldcgh - lbtzh ) + ll / 2 ',
         lhl2:' lbx - ( ldcgh - ldslzh ) + ll / 2 ',
-        lhl3:' 0 ',
+        lhl3:' lhl1 ',
         lhl5:function () {
             switch( typeOfMachine ){
                 case '固定立柱' :return lhz5 + ll / 2 ;
@@ -4582,7 +4590,14 @@
                 case '顶升+仰臂': return ' ';
             }
         },
-        hgf3:' 0 ',
+        hgf3:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg3 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
         hgf4:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return hg4 ;
@@ -4674,7 +4689,7 @@
 
         lmzf1:' lhl1 - ll / 2 ',
         lmzf2:' lhl2 - ll / 2 ',
-        lmzf3:' 0 ',
+        lmzf3:' lhl3 - ll / 2 ',
         lmzf5:' lhl5 - ll / 2 ',
         lmzf6:function(){
             if( m6 == 0 ){
@@ -4757,7 +4772,7 @@
 
         afcx1:' acx1 ',
         afcx2:' acx2 ',
-        afcx3:' 0 ',
+        afcx3:' acx3 ',
         afcx5:' acx5 ',
         afcx6:function(){
             if( m6 == 0 ){
@@ -4817,7 +4832,7 @@
 
 
         aftx2:' atx2 ',
-        aftx3:' 0 ',
+        aftx3:' atx3 ',
         aftx5:' atx5 ',
         aftx6:function(){
             if( m6 == 0 ){

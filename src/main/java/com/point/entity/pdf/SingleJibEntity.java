@@ -18,6 +18,7 @@ public class SingleJibEntity {
     private String date;
 
     private Double h;
+    private Double p;
     private Double lbd;
     private Double nlsk;
 
@@ -116,6 +117,7 @@ public class SingleJibEntity {
         map.put("date", CommonFunc.convertDoubleToString(date));
 
         map.put("h", CommonFunc.convertDoubleToString(h));
+        map.put("p", CommonFunc.convertDoubleToString(p));
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));
         map.put("nlsk", CommonFunc.convertDoubleToString(nlsk));
 
@@ -297,13 +299,13 @@ public class SingleJibEntity {
         map.put("mza4", mza4);
         map.put("mza5", mza5);
 
-        Double mslwa = 250 * 1.25 * aslcx * lslx ;
-        Double mshlwa = 250 * 1.25 * ashlcx * lshlx ;
-        Double mwa1 = 250 * 1.25 * acx1 * lx1 ;
-        Double mwa2 = 250 * 1.25 * acx2 * lx2 ;
-        Double mwa3 = 250 * 1.25 * acx3 * lx3 ;
-        Double mwa4 = 250 * 1.25 * acx4cq * lx4 ;
-        Double mwa5 = 250 * 1.25 * acx5db * lx5 ;
+        Double mslwa = p * 1.25 * aslcx * lslx ;
+        Double mshlwa = p * 1.25 * ashlcx * lshlx ;
+        Double mwa1 = p * 1.25 * acx1 * lx1 ;
+        Double mwa2 = p * 1.25 * acx2 * lx2 ;
+        Double mwa3 = p * 1.25 * acx3 * lx3 ;
+        Double mwa4 = p * 1.25 * acx4cq * lx4 ;
+        Double mwa5 = p * 1.25 * acx5db * lx5 ;
         map.put("mslwa", mslwa);
         map.put("mshlwa", mshlwa);
         map.put("mwa1", mwa1);

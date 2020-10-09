@@ -19,6 +19,7 @@ public class StabilityEnity_LSFArmEntity {
     private String date;
 
     private Double h;
+    private Double p;
     private Double pf;
 
     private Double lbd;
@@ -252,7 +253,7 @@ public class StabilityEnity_LSFArmEntity {
     private Double atx20;
     private Double atx21;
 
-    private Double m3f;
+//    private Double m3f;
     private Double m5f;
     private Double m13f;
 
@@ -423,6 +424,7 @@ public class StabilityEnity_LSFArmEntity {
         result.put("date", CommonFunc.convertDoubleToString(date));
 
         result.put("h", CommonFunc.convertDoubleToString(h));
+        result.put("p", CommonFunc.convertDoubleToString(p));
         result.put("pf", CommonFunc.convertDoubleToString(pf));
 
         result.put("lbd", CommonFunc.convertDoubleToString(lbd));
@@ -671,7 +673,7 @@ public class StabilityEnity_LSFArmEntity {
 //        result.put("lhzf14", CommonFunc.convertDoubleToString(lhzf14));
 //        result.put("lhzf15", CommonFunc.convertDoubleToString(lhzf15));
 
-        result.put("m3f", CommonFunc.convertDoubleToString(m3f));
+//        result.put("m3f", CommonFunc.convertDoubleToString(m3f));
         result.put("m5f", CommonFunc.convertDoubleToString(m5f));
         result.put("m13f", CommonFunc.convertDoubleToString(m13f));
 
@@ -852,29 +854,29 @@ public class StabilityEnity_LSFArmEntity {
         result.put("ma21", ma21);
 
         //计算稳定性0°工作状态风载荷产生的倾覆力矩（大臂同向）
-        Double msltxw = 250 * asltx * hslg * 1.25;
-        Double mshltxw = 250 * ashltx * hshlg * 1.25;
-        Double mtxw1 = 250 * atx1 * hg1 * 1.25;
-        Double mtxw2 = 250 * atx2 * hg2 * 1.25;
-        Double mtxw3 = 250 * atx3 * hg3 * 1.25;
-        Double mtxw4 = 250 * atx4 * hg4 * 1.25;
-        Double mtxw5 = 250 * atx5 * hg5 * 1.25;
-        Double mtxw6 = 250 * atx6 * hg6 * 1.25;
-        Double mtxw7 = 250 * atx7 * hg7 * 1.25;
-        Double mtxw8 = 250 * atx8 * hg8 * 1.25;
-        Double mtxw9 = 250 * atx9 * hg9 * 1.25;
-        Double mtxw10 = 250 * atx10 * hg10 * 1.25;
-        Double mtxw11 = 250 * atx11 * hg11 * 1.25;
-        Double mtxw12 = 250 * atx12 * hg12 * 1.25;
-        Double mtxw13 = 250 * atx13 * hg13 * 1.25;
-        Double mtxw14 = 250 * atx14 * hg14 * 1.25;
-        Double mtxw15 = 250 * atx15 * hg15 * 1.25;
-        Double mtxw16 = 250 * atx16 * hg16 * 1.25;
-        Double mtxw17 = 250 * atx17 * hg17 * 1.25;
-        Double mtxw18 = 250 * atx18 * hg18 * 1.25;
-        Double mtxw19 = 250 * atx19 * hg19 * 1.25;
-        Double mtxw20 = 250 * atx20 * hg20 * 1.25;
-        Double mtxw21 = 250 * atx21 * hg21 * 1.25;
+        Double msltxw = p * asltx * hslg * 1.25;
+        Double mshltxw = p * ashltx * hshlg * 1.25;
+        Double mtxw1 = p * atx1 * hg1 * 1.25;
+        Double mtxw2 = p * atx2 * hg2 * 1.25;
+        Double mtxw3 = p * atx3 * hg3 * 1.25;
+        Double mtxw4 = p * atx4 * hg4 * 1.25;
+        Double mtxw5 = p * atx5 * hg5 * 1.25;
+        Double mtxw6 = p * atx6 * hg6 * 1.25;
+        Double mtxw7 = p * atx7 * hg7 * 1.25;
+        Double mtxw8 = p * atx8 * hg8 * 1.25;
+        Double mtxw9 = p * atx9 * hg9 * 1.25;
+        Double mtxw10 = p * atx10 * hg10 * 1.25;
+        Double mtxw11 = p * atx11 * hg11 * 1.25;
+        Double mtxw12 = p * atx12 * hg12 * 1.25;
+        Double mtxw13 = p * atx13 * hg13 * 1.25;
+        Double mtxw14 = p * atx14 * hg14 * 1.25;
+        Double mtxw15 = p * atx15 * hg15 * 1.25;
+        Double mtxw16 = p * atx16 * hg16 * 1.25;
+        Double mtxw17 = p * atx17 * hg17 * 1.25;
+        Double mtxw18 = p * atx18 * hg18 * 1.25;
+        Double mtxw19 = p * atx19 * hg19 * 1.25;
+        Double mtxw20 = p * atx20 * hg20 * 1.25;
+        Double mtxw21 = p * atx21 * hg21 * 1.25;
         result.put("msltxw", msltxw);
         result.put("mshltxw", mshltxw);
         result.put("mtxw1", mtxw1);
@@ -902,7 +904,7 @@ public class StabilityEnity_LSFArmEntity {
         //计算稳定性非工作状态自重产生的抗倾覆力矩
         Double mfhl1 = m1 * lhl1 * 10;
         Double mfhl2 = m2 * lhl2 * 10;
-        Double mfhl3 = m3f * lhl3 * 10;
+        Double mfhl3 = m3 * lhl3 * 10;
         Double mfhl4 = m4 * lhl4 * 10;
         Double mfhl5 = m5f * lhl5 * 10;
         Double mfhl6 = m6 * lhl6 * 10;
@@ -1068,29 +1070,29 @@ public class StabilityEnity_LSFArmEntity {
         result.put("mqg21", mqg21);
 
         //工作状态风载荷产生的水平倾覆力
-        Double mwqsl = 250 * aslcx * hslg * 1.25;
-        Double mwqshl = 250 * ashlcx * hshlg * 1.25;
-        Double mwq1 = 250 * acx1 * hg1 * 1.25;
-        Double mwq2 = 250 * acx2 * hg2 * 1.25;
-        Double mwq3 = 250 * acx3 * hg3 * 1.25;
-        Double mwq4 = 250 * acx4 * hg4 * 1.25;
-        Double mwq5 = 250 * acx5 * hg5 * 1.25;
-        Double mwq6 = 250 * acx6 * hg6 * 1.25;
-        Double mwq7 = 250 * acx7 * hg7 * 1.25;
-        Double mwq8 = 250 * acx8 * hg8 * 1.25;
-        Double mwq9 = 250 * acx9 * hg9 * 1.25;
-        Double mwq10 = 250 * acx10 * hg10 * 1.25;
-        Double mwq11 = 250 * acx11 * hg11 * 1.25;
-        Double mwq12 = 250 * acx12 * hg12 * 1.25;
-        Double mwq13 = 250 * acx13 * hg13 * 1.25;
-        Double mwq14 = 250 * acx14 * hg14 * 1.25;
-        Double mwq15 = 250 * acx15 * hg15 * 1.25;
-        Double mwq16 = 250 * acx16 * hg16 * 1.25;
-        Double mwq17 = 250 * acx17 * hg17 * 1.25;
-        Double mwq18 = 250 * acx18 * hg18 * 1.25;
-        Double mwq19 = 250 * acx19 * hg19 * 1.25;
-        Double mwq20 = 250 * acx20 * hg20 * 1.25;
-        Double mwq21 = 250 * acx21 * hg21 * 1.25;
+        Double mwqsl = p * aslcx * hslg * 1.25;
+        Double mwqshl = p * ashlcx * hshlg * 1.25;
+        Double mwq1 = p * acx1 * hg1 * 1.25;
+        Double mwq2 = p * acx2 * hg2 * 1.25;
+        Double mwq3 = p * acx3 * hg3 * 1.25;
+        Double mwq4 = p * acx4 * hg4 * 1.25;
+        Double mwq5 = p * acx5 * hg5 * 1.25;
+        Double mwq6 = p * acx6 * hg6 * 1.25;
+        Double mwq7 = p * acx7 * hg7 * 1.25;
+        Double mwq8 = p * acx8 * hg8 * 1.25;
+        Double mwq9 = p * acx9 * hg9 * 1.25;
+        Double mwq10 = p * acx10 * hg10 * 1.25;
+        Double mwq11 = p * acx11 * hg11 * 1.25;
+        Double mwq12 = p * acx12 * hg12 * 1.25;
+        Double mwq13 = p * acx13 * hg13 * 1.25;
+        Double mwq14 = p * acx14 * hg14 * 1.25;
+        Double mwq15 = p * acx15 * hg15 * 1.25;
+        Double mwq16 = p * acx16 * hg16 * 1.25;
+        Double mwq17 = p * acx17 * hg17 * 1.25;
+        Double mwq18 = p * acx18 * hg18 * 1.25;
+        Double mwq19 = p * acx19 * hg19 * 1.25;
+        Double mwq20 = p * acx20 * hg20 * 1.25;
+        Double mwq21 = p * acx21 * hg21 * 1.25;
         result.put("mwqsl", mwqsl);
         result.put("mwqshl", mwqshl);
         result.put("mwq1", mwq1);
@@ -1150,29 +1152,29 @@ public class StabilityEnity_LSFArmEntity {
         result.put("bt1", bt1);
 
         //工作状态擦窗机各部件风载荷
-        Double fslcx = 250 * aslcx * 1.25;
-        Double fshlcx = 250 * ashlcx * 1.25;
-        Double fcx1 = 250 * acx1 * 1.25;
-        Double fcx2 = 250 * acx2 * 1.25;
-        Double fcx3 = 250 * acx3 * 1.25;
-        Double fcx4 = 250 * acx4 * 1.25;
-        Double fcx5 = 250 * acx5 * 1.25;
-        Double fcx6 = 250 * acx6 * 1.25;
-        Double fcx7 = 250 * acx7 * 1.25;
-        Double fcx8 = 250 * acx8 * 1.25;
-        Double fcx9 = 250 * acx9 * 1.25;
-        Double fcx10 = 250 * acx10 * 1.25;
-        Double fcx11 = 250 * acx11 * 1.25;
-        Double fcx12 = 250 * acx12 * 1.25;
-        Double fcx13 = 250 * acx13 * 1.25;
-        Double fcx14 = 250 * acx14 * 1.25;
-        Double fcx15 = 250 * acx15 * 1.25;
-        Double fcx16 = 250 * acx16 * 1.25;
-        Double fcx17 = 250 * acx17 * 1.25;
-        Double fcx18 = 250 * acx18 * 1.25;
-        Double fcx19 = 250 * acx19 * 1.25;
-        Double fcx20 = 250 * acx20 * 1.25;
-        Double fcx21 = 250 * acx21 * 1.25;
+        Double fslcx = p * aslcx * 1.25;
+        Double fshlcx = p * ashlcx * 1.25;
+        Double fcx1 = p * acx1 * 1.25;
+        Double fcx2 = p * acx2 * 1.25;
+        Double fcx3 = p * acx3 * 1.25;
+        Double fcx4 = p * acx4 * 1.25;
+        Double fcx5 = p * acx5 * 1.25;
+        Double fcx6 = p * acx6 * 1.25;
+        Double fcx7 = p * acx7 * 1.25;
+        Double fcx8 = p * acx8 * 1.25;
+        Double fcx9 = p * acx9 * 1.25;
+        Double fcx10 = p * acx10 * 1.25;
+        Double fcx11 = p * acx11 * 1.25;
+        Double fcx12 = p * acx12 * 1.25;
+        Double fcx13 = p * acx13 * 1.25;
+        Double fcx14 = p * acx14 * 1.25;
+        Double fcx15 = p * acx15 * 1.25;
+        Double fcx16 = p * acx16 * 1.25;
+        Double fcx17 = p * acx17 * 1.25;
+        Double fcx18 = p * acx18 * 1.25;
+        Double fcx19 = p * acx19 * 1.25;
+        Double fcx20 = p * acx20 * 1.25;
+        Double fcx21 = p * acx21 * 1.25;
         result.put("fslcx", fslcx);
         result.put("fshlcx", fshlcx);
         result.put("fcx1", fcx1);
