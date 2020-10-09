@@ -12,12 +12,25 @@ var newTableDialog = Vue.component('new_table_dialog', {
                 ipaddress: "",
                 emailaddress: "",
                 level: "",
+                ipCheck:false,
                 role: "",
             },
             rolelist: [],
         }
     },
-    props:["userlevel"],
+    props: ["userlevel"],
+    computed:{
+        ipChechComputed:{
+            get:function(){
+                return this.userdata.ipCheck;
+            },
+            // setter
+            set: function (newValue){
+                if(newValue) this.userdata.ipaddress="0:0:0:0:0:0:0:1";else this.userdata.ipaddress="";
+                this.userdata.ipCheck=newValue;
+            }
+        }
+    },
     mounted() {
         axios.get("/usermanager/getRoleList").then(
             (e) => {
@@ -30,6 +43,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
     },
     methods: {
         openEditDialog(e) {
+            this.userdata.ipCheck=e.ipaddress=="0:0:0:0:0:0:0:1";
             this.title = "编辑用户" + e.username
             this.userdata.id = e.id;
             this.userdata.username = e.username;
@@ -118,14 +132,15 @@ var newTableDialog = Vue.component('new_table_dialog', {
             <el-form-item v-if="!isedit" label="邮箱">
                 <el-input type="email" v-model="userdata.emailaddress"></el-input>
             </el-form-item>
-           <el-form-item v-if="userlevel==4" label="ip地址">
-                <el-input  v-model="userdata.ipaddress"></el-input>
+           <el-form-item v-if="userlevel==4 && !userdata.ipCheck" label="ip地址">
+                <el-input v-model="userdata.ipaddress"></el-input>
             </el-form-item>
             <el-form-item label="身份">
                 <el-select v-model="userdata.role" placeholder="请选择身份">
                     <el-option v-for="i in rolelist" :label="i" :value="i"></el-option>
                 </el-select>
             </el-form-item>
+             <el-checkbox v-model="ipChechComputed">是否需要ip验证</el-checkbox>
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="visible = false">取 消</el-button>
@@ -202,10 +217,10 @@ var user_manager_table = {
     data() {
         return {
             tableData: [],
-            visible:true,
+            visible: true,
         };
     },
-    props:["userlevel"],
+    props: ["userlevel"],
     mounted() {
         this.getuseruist();
     },
@@ -233,7 +248,7 @@ var user_manager_table = {
         },
     },
     components: {
-        "delete-button":{
+        "delete-button": {
             template:
                 `
                     <el-popover
@@ -247,19 +262,19 @@ var user_manager_table = {
                         </div>
                         <el-button size="small" slot="reference">删除</el-button>
                     </el-popover>
-            ` ,
-            props:["scope"],
-            data(){
+            `,
+            props: ["scope"],
+            data() {
                 return {
-                    visible:false,
+                    visible: false,
                 }
             },
-            methods:{
+            methods: {
                 deleteData(e) {
                     console.log(e)
                     axios.post("/usermanager/deleteUser", e).then(
                         e => {
-                            this.visible=false;
+                            this.visible = false;
                             this.$emit("getuseruist");
                             this.$message.success("chenggong")
                         }).catch(
@@ -275,10 +290,10 @@ var user_manager_table = {
 
 var userManagerTable = Vue.component('user_manager_sys', {
     template: '#user_manager_sys',
-    data(){
-      return {
-          userlevel:0,
-      }
+    data() {
+        return {
+            userlevel: 0,
+        }
     },
     methods: {
         createUser() {
@@ -291,8 +306,8 @@ var userManagerTable = Vue.component('user_manager_sys', {
     mounted() {
         axios.get("/getCurrentUserLevel").then(
             (e) => {
-                if (typeof e.data === 'number' && !isNaN(e.data )  ) {
-                    this.userlevel=e.data;
+                if (typeof e.data === 'number' && !isNaN(e.data)) {
+                    this.userlevel = e.data;
                 }
             }
         )

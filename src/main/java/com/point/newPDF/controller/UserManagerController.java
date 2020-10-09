@@ -49,18 +49,19 @@ public class UserManagerController {
         MyUserDetails cuser=getCurrentUser();
         if(getRoleLevelByString(user.getRole())>=getRoleLevelByRoleString(cuser.getRoleList().get(0)))
             throw new UserException(ERROR_NOTENUUGHLEVEL);
-        user.setIpaddress(req.getRemoteAddr());
+        if(user.getIpaddress().isEmpty())user.setIpaddress(req.getRemoteAddr());
         userService.insertUser(user);
         return "";
     }
 
     @PostMapping("/usermanager/updataUser")
     @ResponseBody
-    public String updataUser( @RequestBody UserEntity user) throws Exception {
+    public String updataUser( @RequestBody UserEntity user,HttpServletRequest req) throws Exception {
         MyUserDetails currentUser=getCurrentUser();
         if(user.getLevel()>=getCurrentUserLevel()){
             throw new CustomerException("没有权限");
         }
+        if(user.getIpaddress().isEmpty())user.setIpaddress(req.getRemoteAddr());
         userService.updataUser(user);
         return "";
     }

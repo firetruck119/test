@@ -34,36 +34,37 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @SneakyThrows
     @Override
-    public Authentication authenticate(Authentication authentication){
+    public Authentication authenticate(Authentication authentication) {
         // http请求的账户密码
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
         String ipaddress = ((CustomWebAuthenticationDetails) authentication.getDetails()).getRemoteAddress();
         String verificationCode = ((CustomWebAuthenticationDetails) authentication.getDetails()).getVerificationCode();
         // 数据库根据用户名查询
-        MyUserDetails user = (MyUserDetails)userDetailService.loadUserByUsername(username);
-        try{
-            if(user==null){
-                throw new LoginAuthenticationException("用户名"+username+"未注册");
+        MyUserDetails user = (MyUserDetails) userDetailService.loadUserByUsername(username);
+        try {
+            if (user == null) {
+                throw new LoginAuthenticationException("用户名" + username + "未注册");
             }
-            if(!user.getPassword().equals(password)){
+            if (!user.getPassword().equals(password)) {
                 throw new LoginAuthenticationException(ERROR_PASSWORD);
             }
-            if(!user.getIpaddress().equals(ipaddress)){
-                if(StringUtils.isEmpty(verificationCode)){
-                    throw new LoginAuthenticationException(ERROR_IP);
-                }else if(user.getVerificationCode()==null){
-                    if(user.getRoleList().get(0).equals("OWERN"))
-                        throw new LoginAuthenticationException(ERROR_HIGHESTAUTHORITY);
-                    else
-                        throw new LoginAuthenticationException(ERROR_NOVERIFI);
-                }else if(!user.getVerificationCode().getCode().equals(verificationCode)){
-                    throw new LoginAuthenticationException(ERROR_VERIFICATION);
-                }else if(Duration.between(user.getVerificationCode().getCreatetime(),LocalDateTime.now()).toMinutes()>30){
-                    throw new LoginAuthenticationException(ERROR_VERIFICATIONTIME);
+            if (!((user.getIpaddress().equals("0:0:0:0:0:0:0:1") && user.getLevel() == 2)))
+                if (!user.getIpaddress().equals(ipaddress)) {
+                    if (StringUtils.isEmpty(verificationCode)) {
+                        throw new LoginAuthenticationException(ERROR_IP);
+                    } else if (user.getVerificationCode() == null) {
+                        if (user.getRoleList().get(0).equals("OWERN"))
+                            throw new LoginAuthenticationException(ERROR_HIGHESTAUTHORITY);
+                        else
+                            throw new LoginAuthenticationException(ERROR_NOVERIFI);
+                    } else if (!user.getVerificationCode().getCode().equals(verificationCode)) {
+                        throw new LoginAuthenticationException(ERROR_VERIFICATION);
+                    } else if (Duration.between(user.getVerificationCode().getCreatetime(), LocalDateTime.now()).toMinutes() > 30) {
+                        throw new LoginAuthenticationException(ERROR_VERIFICATIONTIME);
+                    }
                 }
-            }
-        }catch ( LoginAuthenticationException e){
+        } catch (LoginAuthenticationException e) {
 
             throw e;
         }
@@ -77,8 +78,8 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
         return true;
     }
 
-    private void setTempPermission(MyUserDetails user){
-        if(user.getLevel()==3) {
+    private void setTempPermission(MyUserDetails user) {
+        if (user.getLevel() == 3) {
             PermissionCodeExample permissionCodeExample = new PermissionCodeExample();
             PermissionCodeExample.Criteria criteria = permissionCodeExample.createCriteria();
             criteria.andUseridEqualTo(user.getId());
