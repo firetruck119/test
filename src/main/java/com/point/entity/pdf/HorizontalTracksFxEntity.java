@@ -275,40 +275,6 @@ public class HorizontalTracksFxEntity {
         map.put("vyed", vyed);
         map.put("rzed", rzed);
 
-        /*
-        表2数据,表3数据
-         */
-        if (trackModel.equals("其它")) {
-            Double gdh1 = gdh;
-            Double gdb1 = gdb;
-            Double gdtw1 = gdtw;
-            Double gdtfs1 = gdtfs;
-            Double gdtfx1 = gdtfx;
-            Double gdz1 = gdz;
-            Double gdsy1 = gdsy;
-            Double gdiiy = gdiy / 10000;
-            Double gdiiz = gdiz / 10000;
-            Double gdwys = gdwysel / 1000;
-            Double gdwyx = gdwyxel / 1000;
-            Double gdwz = gdwzel / 1000;
-            Double gdss1 = gdss;
-            Double gdshzr1 = gdshzr;
-            map.put("gdb1", gdb1);
-            map.put("gdh1", gdh1);
-            map.put("gdtw1", gdtw1);
-            map.put("gdtfs1", gdtfs1);
-            map.put("gdtfx1", gdtfx1);
-            map.put("gdz1", gdz1);
-            map.put("gdsy1", gdsy1);
-            map.put("gdiiy", gdiiy);
-            map.put("gdiiz", gdiiz);
-            map.put("gdwys", gdwys);
-            map.put("gdwyx", gdwyx);
-            map.put("gdwz", gdwz);
-            map.put("gdss1", gdss1);
-            map.put("gdshzr1", gdshzr1);
-        }
-
         Double myed = vzed * lkj / 4;//S
         Double myeds = 13 * vzed * lkj / 64;//D
         Double mzed = vyed * lkj / 4;//S
@@ -355,7 +321,7 @@ public class HorizontalTracksFxEntity {
         Double qlt1 = 0.5 * (1 + 0.34 * (klt - 0.4) + 0.75 * klt * klt);
         Double qlt2 = 0.5 * (1 + 0.49 * (klt - 0.4) + 0.75 * klt * klt);
         //String[] temp = {"H200*200+贴板", "H250*250+贴板", "拼焊H216*200", "拼焊H266*250", "其它"};
-        String[] temp = {"H200*200T-71", "H250*250T-99", "PH216*200-84.7", "PH266*250-128.1", "PH200*200-90.7", "PH220*170-82.6", "PH250*200-117.4", "PH250*250-138.8", "PH300*250-146.6", "PH300*300-168.1", "其它"};
+        String[] temp = {"H200*200T-71", "H250*250T-99", "PH216*200-84.7", "PH266*250-128.1", "PH200*200-90.7", "PH220*170-82.6", "PH250*200-117.4","PH250*250-104.2", "PH250*250-113.3", "PH250*250-138.8", "PH300*250-146.6", "PH300*300-168.1", "其它"};
         Double qlt;
         if (Arrays.binarySearch(temp, gdxh) > 0) {
             qlt = qlt2;
