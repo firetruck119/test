@@ -4484,9 +4484,9 @@
         lhl5:function () {
             switch( typeOfMachine ){
                 case '固定立柱' :return lhz5 + ll / 2 ;
-                case '仰臂'     :return lhz5 / cos(dbyj) + ll / 2 ;
+                case '仰臂'     :return lhz5 / Math.cos(dbyj / 180 * Math.PI) + ll / 2 ;
                 case '顶升'     :return lhz5 + ll / 2 ;
-                case '顶升+仰臂':return lhz5 / cos(dbyj) + ll / 2 ;
+                case '顶升+仰臂':return lhz5 / Math.cos(dbyj / 180 * Math.PI) + ll / 2 ;
             }
         },
         lhl6:function(){
