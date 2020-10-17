@@ -37,7 +37,7 @@ public class IdlerWheelEntity {
     private Double cr;
     private Double c0r;
     private Double bfb;
-    private String zcsm;
+    private Double zcsm;
     private Double fh;
 
     //非页面数据
