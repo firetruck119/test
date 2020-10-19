@@ -30,6 +30,9 @@ public class YbHydraulicCylinderEntity {
     private Double ldcgh;
     private Double lbtzh;
     private Double ldslzh;
+    private Double tslp;
+    private Double tshlp;
+    private Double m5ybp;
 
     private Double ybdd;
     private Double ybxd;
@@ -57,7 +60,6 @@ public class YbHydraulicCylinderEntity {
     private Double m3;
     private Double m4;
     private Double m5yb;
-    private Double m5ybp;
 
     private Double lsljz;
     private Double lshljz;
@@ -67,6 +69,8 @@ public class YbHydraulicCylinderEntity {
     private Double ljz4;
     private Double ljz5;
 
+    private Double lsljzf;
+    private Double lshljzf;
     private Double ljzf1;
     private Double ljzf2;
     private Double ljzf3;
@@ -80,6 +84,7 @@ public class YbHydraulicCylinderEntity {
     private String dcgssModel;
     private String gruModel;
     private String gruybModel;
+    private String ybfztModel;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -104,6 +109,9 @@ public class YbHydraulicCylinderEntity {
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
+        map.put("tslp", CommonFunc.convertDoubleToString(tslp));
+        map.put("tshlp", CommonFunc.convertDoubleToString(tshlp));
+        map.put("m5ybp", CommonFunc.convertDoubleToString(m5ybp));
 
         map.put("ybdd", CommonFunc.convertDoubleToString(ybdd));
         map.put("ybxd", CommonFunc.convertDoubleToString(ybxd));
@@ -131,7 +139,6 @@ public class YbHydraulicCylinderEntity {
         map.put("m3", CommonFunc.convertDoubleToString(m3));
         map.put("m4", CommonFunc.convertDoubleToString(m4));
         map.put("m5yb", CommonFunc.convertDoubleToString(m5yb));
-        map.put("m5ybp", CommonFunc.convertDoubleToString(m5ybp));
 
         map.put("lsljz", CommonFunc.convertDoubleToString(lsljz));
         map.put("lshljz", CommonFunc.convertDoubleToString(lshljz));
@@ -141,6 +148,8 @@ public class YbHydraulicCylinderEntity {
         map.put("ljz4", CommonFunc.convertDoubleToString(ljz4));
         map.put("ljz5", CommonFunc.convertDoubleToString(ljz5));
 
+        map.put("lsljzf", CommonFunc.convertDoubleToString(lsljzf));
+        map.put("lshljzf", CommonFunc.convertDoubleToString(lshljzf));
         map.put("ljzf1", CommonFunc.convertDoubleToString(ljzf1));
         map.put("ljzf2", CommonFunc.convertDoubleToString(ljzf2));
         map.put("ljzf3", CommonFunc.convertDoubleToString(ljzf3));
@@ -191,18 +200,22 @@ public class YbHydraulicCylinderEntity {
         map.put("fkn", fkn);
         map.put("f1", f1);
 
+        Double mslzf= 10 * tslp * lsljzf ;
+        Double mshlzf= 10 * tshlp * lshljzf ;
         Double mzf1= 10 * m1 * ljzf1 ;
         Double mzf2= 10 * m2 * ljzf2 ;
         Double mzf3= 10 * m3 * ljzf3 ;
         Double mzf4= 10 * m4 * ljzf4 ;
         Double mzf5= 10 * m5ybp * ljzf5 ;
+        map.put("mslzf", mslzf);
+        map.put("mshlzf", mshlzf);
         map.put("mzf1", mzf1);
         map.put("mzf2", mzf2);
         map.put("mzf3", mzf3);
         map.put("mzf4", mzf4);
         map.put("mzf5", mzf5);
 
-        Double mzf = mzf1 + mzf2 + mzf3 + mzf4 + mzf5 ;
+        Double mzf = mslzf + mshlzf + mzf1 + mzf2 + mzf3 + mzf4 + mzf5 ;
         Double fsf = mzf / ybljzf ;
         Double fsnf = ybn * fsf / ybn1 ;
         map.put("mzf", mzf);

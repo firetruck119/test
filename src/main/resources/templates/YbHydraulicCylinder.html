@@ -107,6 +107,14 @@
                 gruybxs:0,
             },
         };
+        ybfztModelList={
+            "是":{
+
+            },
+            "否":{
+
+            },
+        };
     </script>
     <script type="text/javascript">
         function isNumber(value) {         //验证是否为数字
@@ -323,6 +331,19 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td><b>吊臂俯下状态是否为正常工作状态</b></td>
+                    <td>
+                        <select name="ybfztModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="是">是</option>
+                            <option value="否">否</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>注：如果吊臂俯下状态是否为正常工作状态选“是”，则tsl、tshl与吊臂仰起状态的值一致；如果吊臂俯下状态是否为正常工作状态选“否”，则tsl需减去吊船钢丝绳重量、tshl为0。</b></td>
+                </tr>
             </table>
         </div>
 
@@ -410,7 +431,7 @@
                     <td > </td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">液压缸稳定性安全系数nk取值范围3.5~6</td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">注：液压缸稳定性安全系数nk取值范围3.5~6</td>
                 </tr>
             </table>
         </div>
@@ -420,18 +441,6 @@
                 <tr>
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.吊臂载荷</b></td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td colspan="4">-->
-                        <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                            <!--<img alt="吊臂载荷图"src="/image/Tensile/db1tu4.png" width="400px" id="db1tu4" name="db1tu4" >-->
-                            <!--<input type="hidden" value="tu_db1tu4.png"/>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--<tr>-->
-                    <!--<td style="padding:10px 0"><b>吊臂载荷图</b></td>-->
-                    <!--<td colspan="3"><input class="image" type="file" name="db1tu4" accept="image/*"-->
-                                           <!--oninput="showImage(this,'db1tu4')"/></td>-->
-                <!--</tr>-->
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
                     <td style="width:17%;">符号</td>
@@ -515,12 +524,6 @@
                     <td><b>工作状态物料起升机构装置自重</b></td>
                     <td><p><i>m<sub>5</sub></i></p></td>
                     <td><input type='text' name="m5yb"/></td>
-                    <td>kg</td>
-                </tr>
-                <tr>
-                    <td><b>非工作状态物料起升机构装置自重</b></td>
-                    <td><p><i>m'<sub>5</sub></i></p></td>
-                    <td><input type='text' name="m5ybp"/></td>
                     <td>kg</td>
                 </tr>
             </table>
@@ -616,6 +619,18 @@
                     <td style="width:17%;">符号</td>
                     <td style="width:40%;">数值</td>
                     <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>总悬挂载荷重心至吊臂铰轴距离</b></td>
+                    <td ><p><i>L<sub>slzf</sub></i></p></td>
+                    <td ><input type="text" name="lsljzf" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构总悬挂载荷重心至吊臂铰轴距离</b></td>
+                    <td ><p><i>L<sub>shlzf</sub></i></p></td>
+                    <td ><input type="text" name="lshljzf" /></td>
+                    <td >m</td>
                 </tr>
                 <tr>
                     <td ><b>臂头重心至吊臂铰轴距离</b></td>
@@ -723,6 +738,9 @@
             <input type="text" name="lbtzh" />
             <input type="text" name="ldslzh" />
             <input type="text" name="yblltlf" />
+            <input type="text" name="tslp" />
+            <input type="text" name="tshlp" />
+            <input type="text" name="m5ybp" />
         </div>
 
 
@@ -805,7 +823,28 @@
         gruybxs:function(){
             return gruybModelList[ gruybModel ]['gruybxs'];
         },
-
+        tslp:function(){
+            if( ybfztModel =='是')
+                return tsl ;
+            else if ( ybfztModel =='否')
+                return tsl - mwr ;
+        },
+        tshlp:function(){
+            if( ybfztModel =='是')
+                return tshl ;
+            else if ( ybfztModel =='否')
+                return 0 ;
+        },
+        m5ybp:function(){
+           if ( m5yb == 0)
+               return 0 ;
+           else {
+               if ( ybfztModel =='是')
+                   return m5yb ;
+               else if ( ybfztModel =='否')
+                   return m5yb + hsw ;
+           }
+        },
         ybi:function(){
             return 3.14 * ybxd * ybxd * ybxd * ybxd / 64  ;
         },
@@ -857,12 +896,12 @@
         m5yb:function(){
             return m5 * gruybxs ;
         },
-        m5ybp:function(){
-            if ( m5yb == 0 )
-                return 0 ;
-            else
-                return m5yb + hsw ;
-        },
+        // m5ybp:function(){
+        //     if ( m5yb == 0 )
+        //         return 0 ;
+        //     else
+        //         return m5yb + hsw ;
+        // },
 
         lshljz:function(){
             return lsljz - ( ldcgh - lbtzh ) ;
@@ -888,6 +927,15 @@
             }
         },
 
+        lsljzf:function(){
+            return lsljz / Math.cos(dbyj / 180 * Math.PI) ;
+        },
+        lshljzf:function(){
+            if ( tshlp == 0 )
+                return 0 ;
+            else
+                return lshljz / Math.cos(dbyj / 180 * Math.PI) ;
+        },
         ljzf1:function(){
             return ljz1 / Math.cos(dbyj / 180 * Math.PI) ;
         },
