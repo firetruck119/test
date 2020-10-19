@@ -33,6 +33,8 @@ public class YbHydraulicCylinderEntity {
     private Double tslp;
     private Double tshlp;
     private Double m5ybp;
+    private Double yblltlk;
+    private Double yblltlfk;
 
     private Double ybdd;
     private Double ybxd;
@@ -112,6 +114,8 @@ public class YbHydraulicCylinderEntity {
         map.put("tslp", CommonFunc.convertDoubleToString(tslp));
         map.put("tshlp", CommonFunc.convertDoubleToString(tshlp));
         map.put("m5ybp", CommonFunc.convertDoubleToString(m5ybp));
+        map.put("yblltlk", CommonFunc.convertDoubleToString(yblltlk));
+        map.put("yblltlfk", CommonFunc.convertDoubleToString(yblltlfk));
 
         map.put("ybdd", CommonFunc.convertDoubleToString(ybdd));
         map.put("ybxd", CommonFunc.convertDoubleToString(ybxd));
@@ -189,16 +193,22 @@ public class YbHydraulicCylinderEntity {
         Double mz = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5 ;
         Double fs = mz / ybljz ;
         Double fsn = ybn * fs / ybn1 ;
+        Double fsnk = fsn / 1000 ;
         map.put("mz", mz);
         map.put("fs", fs);
         map.put("fsn", fsn);
+        map.put("fsnk", fsnk);
 
         Double fk = 3.14 * 3.14 * 180000 * ybi / 1000000 / 4 / yblb / yblb ;
         Double fkn = fk / ybnk ;
         Double f1 = fs ;
+        Double fknk = fkn / 1000 ;
+        Double f1k = f1 / 1000 ;
         map.put("fk", fk);
         map.put("fkn", fkn);
         map.put("f1", f1);
+        map.put("fknk", fknk);
+        map.put("f1k", f1k);
 
         Double mslzf= 10 * tslp * lsljzf ;
         Double mshlzf= 10 * tshlp * lshljzf ;
@@ -218,16 +228,22 @@ public class YbHydraulicCylinderEntity {
         Double mzf = mslzf + mshlzf + mzf1 + mzf2 + mzf3 + mzf4 + mzf5 ;
         Double fsf = mzf / ybljzf ;
         Double fsnf = ybn * fsf / ybn1 ;
+        Double fsnfk = fsnf / 1000 ;
         map.put("mzf", mzf);
         map.put("fsf", fsf);
         map.put("fsnf", fsnf);
+        map.put("fsnfk", fsnfk);
 
         Double fkf = 3.14 * 3.14 * 180000 * ybi / 1000000 / 4 / yblbf / yblbf ;
         Double fknf = fkf / ybnk ;
         Double f2 = fsf ;
+        Double fknfk = fknf / 1000 ;
+        Double f2k = f2 / 1000 ;
         map.put("fkf", fkf);
         map.put("fknf", fknf);
         map.put("f2", f2);
+        map.put("fknfk", fknfk);
+        map.put("f2k", f2k);
 
         return map;
     }
