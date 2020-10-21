@@ -845,7 +845,7 @@ public class StabilityEnity_LSFArmEntity {
         result.put("ma11", ma11);
         result.put("ma12", ma12);
         result.put("ma13", ma13);
-        result.put("ma14", ma13);
+        result.put("ma14", ma14);
         result.put("ma15", ma15);
         result.put("ma16", ma16);
         result.put("ma17", ma17);
