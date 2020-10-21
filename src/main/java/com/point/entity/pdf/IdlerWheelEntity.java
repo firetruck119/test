@@ -28,8 +28,8 @@ public class IdlerWheelEntity {
     private Double llzss;
     private Double llzgdn;
     private Double lwlzbg;
-    private Double dcw;
-    private Double bcw;
+    private Double dldcw;
+    private Double dlbcw;
     private Double ndlsl;
     private String dsglxs;
     private Double rzcb;
@@ -242,8 +242,8 @@ public class IdlerWheelEntity {
         map.put("llzss", CommonFunc.convertDoubleToString(llzss));
         map.put("llzgdn", CommonFunc.convertDoubleToString(llzgdn));
         map.put("lwlzbg", CommonFunc.convertDoubleToString(lwlzbg));
-        map.put("dcw", CommonFunc.convertDoubleToString(dcw));
-        map.put("bcw", CommonFunc.convertDoubleToString(bcw));
+        map.put("dldcw", CommonFunc.convertDoubleToString(dldcw));
+        map.put("dlbcw", CommonFunc.convertDoubleToString(dlbcw));
         map.put("ndlsl", CommonFunc.convertDoubleToString(ndlsl));
         map.put("dsglxs", CommonFunc.convertDoubleToString(dsglxs));
         map.put("rzcb", CommonFunc.convertDoubleToString(rzcb));
@@ -635,7 +635,7 @@ public class IdlerWheelEntity {
 
         Double pg1 = bfb * fmax / ndlsl ;
         Double fxbfb = bfb * fmax ;
-        Double ohz = sqrt( 0.35 * 210000 * pg1 / dcw / bcw );
+        Double ohz = sqrt( 0.35 * 210000 * pg1 / dldcw / dlbcw );
         Double bohz = ohz / 800 ;
         Double pg2 = fmax * bfb / 2 / ndlsl ;
         Double c = fh * 1.57 * pg2 ;

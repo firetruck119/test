@@ -121,32 +121,32 @@
         };
         dlxhxzModelList={
             "LZDL160":{
-                dcw:158,
-                bcw:65,
+                dldcw:160,
+                dlbcw:65,
                 cr:135000,
                 c0r:158000,
                 zcxhxz:"30310",
                 bfb:0.75,
             },
             "LZDLS125":{
-                dcw:123,
-                bcw:70,
+                dldcw:125,
+                dlbcw:70,
                 cr:95200,
                 c0r:108000,
                 zcxhxz:"30308",
                 bfb:0.75,
             },
             "LZ-KTDL":{
-                dcw:230,
-                bcw:75,
+                dldcw:230,
+                dlbcw:75,
                 cr:95200,
                 c0r:155000,
                 zcxhxz:"NUP312",
                 bfb:0.5,
             },
             "其它":{
-                dcw:'',
-                bcw:'',
+                dldcw:'',
+                dlbcw:'',
                 cr:'',
                 c0r:'',
                 zcxhxz:' ',
@@ -576,13 +576,13 @@
                 <tr>
                     <td ><b>顶轮直径</b></td>
                     <td ><p><i>d<sub>cw</sub></i></p></td>
-                    <td ><input type="text" name="dcw"/></td>
+                    <td ><input type="text" name="dldcw"/></td>
                     <td >mm</td>
                 </tr>
                 <tr>
                     <td ><b>顶轮宽度</b></td>
                     <td ><p><i>b<sub>cw</sub></i></p></td>
-                    <td ><input type="text" name="bcw"/></td>
+                    <td ><input type="text" name="dlbcw"/></td>
                     <td >mm</td>
                 </tr>
                 <tr>
@@ -1742,68 +1742,7 @@
         e.val(l);
     }
     var calculateFunction={
-        // dbjbxh:function(){
-        //     return dbjbModelList[ dbjbModel ]['dbjbxh'];
-        // },
-        // dcgssp:function(){
-        //     return dcgssModelList[ dcgssModel ]['dcgssp'];
-        // },
-        // grugssp:function(){
-        //     return gruModelList[ gruModel ]['grugssp'];
-        // },
-        // m5:function(){
-        //     return gruModelList[ gruModel ]['m5'];
-        // },
-        // acx5:function(){
-        //     return gruModelList[ gruModel ]['acx5'];
-        // },
-        // gruqhxs:function(){
-        //     return gruazModelList[ gruazModel ]['gruqhxs'];
-        // },
-        // lbtzh:function(){
-        //     return btModelList[ btModel ]['lbtzh'];
-        // },
-        // ldcgh:function(){
-        //     return btModelList[ btModel ]['ldcgh'];
-        // },
-        // ldslzh:function(){
-        //     return btModelList[ btModel ]['ldslzh'];
-        // },
-        // mbmj:function(){
-        //     return dbjbModelList[ dbjbModel ]['mbmj'];
-        // },
-        // ldbb:function(){
-        //     return dbjbModelList[ dbjbModel ]['ldbb'];
-        // },
-        // ldbbz:function(){
-        //     return dbjbModelList[ dbjbModel ]['ldbbz'];
-        // },
-        // mdbb:function(){
-        //     return dbjbModelList[ dbjbModel ]['mdbb'];
-        // },
-        // adbb:function(){
-        //     return dbjbModelList[ dbjbModel ]['adbb'];
-        // },
-        // dbmjb:function(){
-        //     return dbjbModelList[ dbjbModel ]['dbmjb'];
-        // },
-        // dbwx:function(){
-        //     return dbjbModelList[ dbjbModel ]['dbwx'];
-        // },
-        // dbwy:function(){
-        //     return dbjbModelList[ dbjbModel ]['dbwy'];
-        // },
-        // dbix:function(){
-        //     return dbjbModelList[ dbjbModel ]['dbix'];
-        // },
 
-
-        // swp:function(){
-        //     return dcModelList[ dcModel ]['swp'];
-        // },
-        // r1:function(){
-        //     return dcModelList[ dcModel ]['r1'];
-        // },
         pf: function () {
             if (h <= 20 && h > 0) return 800;
             else if (20 < h && h <= 100) return 1100;
@@ -1846,11 +1785,11 @@
         mffbb:function(){
             return ffbbModelList[ ffbbModel ]['mffbb'];
         },
-        dcw:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['dcw'];
+        dldcw:function(){
+            return dlxhxzModelList[ dlxhxzModel ]['dldcw'];
         },
-        bcw:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['bcw'];
+        dlbcw:function(){
+            return dlxhxzModelList[ dlxhxzModel ]['dlbcw'];
         },
         cr:function(){
             return dlxhxzModelList[ dlxhxzModel ]['cr'];
