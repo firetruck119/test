@@ -35,6 +35,7 @@ public class YbHydraulicCylinderEntity {
     private Double m5ybp;
     private Double yblltlk;
     private Double yblltlfk;
+    private Double ybs;
 
     private Double ybdd;
     private Double ybxd;
@@ -116,6 +117,7 @@ public class YbHydraulicCylinderEntity {
         map.put("m5ybp", CommonFunc.convertDoubleToString(m5ybp));
         map.put("yblltlk", CommonFunc.convertDoubleToString(yblltlk));
         map.put("yblltlfk", CommonFunc.convertDoubleToString(yblltlfk));
+        map.put("ybs", CommonFunc.convertDoubleToString(ybs));
 
         map.put("ybdd", CommonFunc.convertDoubleToString(ybdd));
         map.put("ybxd", CommonFunc.convertDoubleToString(ybxd));
@@ -199,7 +201,7 @@ public class YbHydraulicCylinderEntity {
         map.put("fsn", fsn);
         map.put("fsnk", fsnk);
 
-        Double fk = 3.14 * 3.14 * 180000 * ybi / 1000000 / 4 / yblb / yblb ;
+        Double fk = 3.14 * 3.14 * 180000 * ybi / 4 / yblb / yblb ;
         Double fkn = fk / ybnk ;
         Double f1 = fs ;
         Double fknk = fkn / 1000 ;
@@ -234,7 +236,7 @@ public class YbHydraulicCylinderEntity {
         map.put("fsnf", fsnf);
         map.put("fsnfk", fsnfk);
 
-        Double fkf = 3.14 * 3.14 * 180000 * ybi / 1000000 / 4 / yblbf / yblbf ;
+        Double fkf = 3.14 * 3.14 * 180000 * ybi / 4 / yblbf / yblbf ;
         Double fknf = fkf / ybnk ;
         Double f2 = fsf ;
         Double fknfk = fknf / 1000 ;

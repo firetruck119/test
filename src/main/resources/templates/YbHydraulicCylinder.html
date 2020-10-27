@@ -383,16 +383,22 @@
                     <td >mm</td>
                 </tr>
                 <tr>
-                    <td ><b>吊臂仰起状态液压缸两耳环之间距离</b></td>
-                    <td ><p><i>L<sub>B</sub></i></p></td>
-                    <td ><input type="text" name="yblb"/></td>
-                    <td >m</td>
+                    <td ><b>液压缸行程</b></td>
+                    <td ><p><i>S</i></p></td>
+                    <td ><input type="text" name="ybs"/></td>
+                    <td >mm</td>
                 </tr>
                 <tr>
                     <td ><b>吊臂俯下状态液压缸两耳环之间距离</b></td>
                     <td ><p><i>L<sub>Bf</sub></i></p></td>
                     <td ><input type="text" name="yblbf"/></td>
-                    <td >m</td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂仰起状态液压缸两耳环之间距离</b></td>
+                    <td ><p><i>L<sub>B</sub></i></p></td>
+                    <td ><input type="text" name="yblb"/></td>
+                    <td >mm</td>
                 </tr>
                 <tr>
                     <td ><b>活塞杆横截面惯性矩</b></td>
@@ -428,10 +434,7 @@
                     <td ><b>液压缸稳定性安全系数</b></td>
                     <td ><p><i>n<sub>k</sub></i></p></td>
                     <td ><input type="text" name="ybnk"/></td>
-                    <td > </td>
-                </tr>
-                <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">注：液压缸稳定性安全系数nk取值范围3.5~6</td>
+                    <td >取值范围3.5~6</td>
                 </tr>
             </table>
         </div>
@@ -828,6 +831,14 @@
             if( gruModel =='无')
                 return 0;
         },
+        acx2:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        acx5:function(){
+            if( gruModel =='无')
+                return 0;
+        },
         gruybxs:function(){
             return gruybModelList[ gruybModel ]['gruybxs'];
         },
@@ -852,6 +863,9 @@
                else if ( ybfztModel =='否')
                    return m5yb + hsw ;
            }
+        },
+        yblb:function(){
+            return ybs + yblbf ;
         },
         ybi:function(){
             return 3.14 * ybxd * ybxd * ybxd * ybxd / 64  ;

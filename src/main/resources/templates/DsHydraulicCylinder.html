@@ -308,12 +308,6 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>立柱顶轮直径</b></td>
-                    <td ><p><i> </i></p></td>
-                    <td ><input type="text" name="dldcw"/></td>
-                    <td >m</td>
-                </tr>
-                <tr>
                     <td ><b>外立柱两抱箍间距</b></td>
                     <td ><p><i>L<sub>gl</sub></i></p></td>
                     <td ><input type="text" name="lwlzbg"/></td>
@@ -471,16 +465,22 @@
                     <td >MPa</td>
                 </tr>
                 <tr>
-                    <td ><b>顶升状态液压缸耳环至耳轴之间距离</b></td>
-                    <td ><p><i>L<sub>B</sub></i></p></td>
-                    <td ><input type="text" name="dslb"/></td>
-                    <td >m</td>
+                    <td ><b>液压缸行程</b></td>
+                    <td ><p><i>S</i></p></td>
+                    <td ><input type="text" name="dss"/></td>
+                    <td >mm</td>
                 </tr>
                 <tr>
                     <td ><b>缩回状态液压缸耳环至耳轴之间距离</b></td>
                     <td ><p><i>L<sub>Bf</sub></i></p></td>
                     <td ><input type="text" name="dslbf"/></td>
-                    <td >m</td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>顶升状态液压缸耳环至耳轴之间距离</b></td>
+                    <td ><p><i>L<sub>B</sub></i></p></td>
+                    <td ><input type="text" name="dslb"/></td>
+                    <td >mm</td>
                 </tr>
                 <tr>
                     <td ><b>液压缸个数</b></td>
@@ -498,16 +498,19 @@
                     <td ><b>液压缸稳定性安全系数</b></td>
                     <td ><p><i>n<sub>k</sub></i></p></td>
                     <td ><input type="text" name="dsnk"/></td>
-                    <td > </td>
-                </tr>
-                <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">注：液压缸稳定性安全系数nk取值范围3.5~6</td>
+                    <td >取值范围3.5~6</td>
                 </tr>
                 <tr>
                     <td ><b>液压缸安装及导向系数</b></td>
                     <td ><p><i>K</i></p></td>
                     <td ><input type="text" name="dsk"/></td>
                     <td > </td>
+                </tr>
+                <tr>
+                    <td ><b>立柱顶轮直径</b></td>
+                    <td ><p><i> </i></p></td>
+                    <td ><input type="text" name="dldcw"/></td>
+                    <td >mm</td>
                 </tr>
             </table>
         </div>
@@ -984,6 +987,10 @@
             <input type="text" name="dslltlk" />
             <input type="text" name="dslltlfk" />
             <input type="text" name="dsdlr" />
+            <input type="text" name="asltx" />
+            <input type="text" name="acx1" />
+            <input type="text" name="acx2" />
+            <input type="text" name="acx5" />
         </div>
         <input type="hidden" name="pdfType"/>
     </form>
@@ -1060,6 +1067,9 @@
         dsi:function(){
             return 3.14 * dsxd * dsxd * dsxd * dsxd / 64 ;
         },
+        dslb:function(){
+            return dss + dslbf ;
+        },
         dsn:function(){
             if( dsn1 == 1 )
                 return 1.5 ;
@@ -1074,6 +1084,14 @@
                 return 0;
         },
         m5:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        acx2:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        acx5:function(){
             if( gruModel =='无')
                 return 0;
         },
@@ -1251,6 +1269,15 @@
             return lhzf12n + llzyyg ;
         },
 
+        aslftx:function(){
+            return asltx ;
+        },
+        aftx1:function(){
+            return acx1 ;
+        },
+        aftx2:function(){
+            return acx2 ;
+        },
         aftx3:function(){
             return 0.05 ;
         },
@@ -1258,7 +1285,7 @@
             if( m5dsp == 0 )
                 return 0 ;
             else
-                return ' ' ;
+                return acx5 ;
         },
         aftx6:function(){
             if( m6 == 0 )

@@ -31,6 +31,7 @@ public class DsHydraulicCylinderEntity {
     private Double dsi;
     private Double dslltl;
     private Double dsgcyl;
+    private Double dss;
     private Double dslb;
     private Double dslbf;
     private Double dsn1;
@@ -50,6 +51,10 @@ public class DsHydraulicCylinderEntity {
     private Double dslltlk;
     private Double dslltlfk;
     private Double dsdlr;
+    private Double asltx;
+    private Double acx1;
+    private Double acx2;
+    private Double acx5;
 
     private Double swp;
     private Double r1;
@@ -162,6 +167,7 @@ public class DsHydraulicCylinderEntity {
         map.put("dsi", CommonFunc.convertDoubleToString(dsi));
         map.put("dslltl", CommonFunc.convertDoubleToString(dslltl));
         map.put("dsgcyl", CommonFunc.convertDoubleToString(dsgcyl));
+        map.put("dss", CommonFunc.convertDoubleToString(dss));
         map.put("dslb", CommonFunc.convertDoubleToString(dslb));
         map.put("dslbf", CommonFunc.convertDoubleToString(dslbf));
         map.put("dsn1", CommonFunc.convertDoubleToString(dsn1));
@@ -180,6 +186,10 @@ public class DsHydraulicCylinderEntity {
         map.put("dslltlk", CommonFunc.convertDoubleToString(dslltlk));
         map.put("dslltlfk", CommonFunc.convertDoubleToString(dslltlfk));
         map.put("dsdlr", CommonFunc.convertDoubleToString(dsdlr));
+        map.put("asltx", CommonFunc.convertDoubleToString(asltx));
+        map.put("acx1", CommonFunc.convertDoubleToString(acx1));
+        map.put("acx2", CommonFunc.convertDoubleToString(acx2));
+        map.put("acx5", CommonFunc.convertDoubleToString(acx5));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
@@ -283,7 +293,7 @@ public class DsHydraulicCylinderEntity {
         map.put("fsn", fsn);
         map.put("fsnk", fsnk);
 
-        Double fk = 3.14 * 3.14 * 180000 * dsi / 1000000 / dsk / dsk / dslb / dslb ;
+        Double fk = 3.14 * 3.14 * 180000 * dsi / dsk / dsk / dslb / dslb ;
         Double fkn = fk / dsnk ;
         Double f1 = fs ;
         Double fknk = fkn / 1000 ;
@@ -367,7 +377,7 @@ public class DsHydraulicCylinderEntity {
         map.put("fsnf", fsnf);
         map.put("fsnfk", fsnfk);
 
-        Double fkf = 3.14 * 3.14 * 180000 * dsi / 1000000 / dsk / dsk / dslbf / dslbf ;
+        Double fkf = 3.14 * 3.14 * 180000 * dsi / dsk / dsk / dslbf / dslbf ;
         Double fknf = fkf / dsnk ;
         Double f2 = fsf ;
         Double fknfk = fknf / 1000 ;
