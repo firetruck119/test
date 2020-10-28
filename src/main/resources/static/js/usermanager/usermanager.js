@@ -16,6 +16,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
                 role: "",
             },
             rolelist: [],
+            needIpChech:true
         }
     },
     props: ["userlevel"],
@@ -42,7 +43,14 @@ var newTableDialog = Vue.component('new_table_dialog', {
         )
     },
     methods: {
+        change(e){
+            if(e=="超级用户")
+                this.needIpChech=false;
+            else
+                this.needIpChech=true;
+        },
         openEditDialog(e) {
+            this.needIpChech=(!(e.role=="超级用户"));
             this.userdata.ipCheck=e.ipaddress=="0:0:0:0:0:0:0:1";
             this.title = "编辑用户" + e.username
             this.userdata.id = e.id;
@@ -136,11 +144,11 @@ var newTableDialog = Vue.component('new_table_dialog', {
                 <el-input v-model="userdata.ipaddress"></el-input>
             </el-form-item>
             <el-form-item label="身份">
-                <el-select v-model="userdata.role" placeholder="请选择身份">
+                <el-select v-model="userdata.role" @change="change" placeholder="请选择身份">
                     <el-option v-for="i in rolelist" :label="i" :value="i"></el-option>
                 </el-select>
             </el-form-item>
-             <el-checkbox v-model="ipChechComputed">是否需要ip验证</el-checkbox>
+             <el-checkbox :disabled="needIpChech" v-model="ipChechComputed">是否需要ip验证</el-checkbox>
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="visible = false">取 消</el-button>
