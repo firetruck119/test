@@ -8,10 +8,7 @@ import com.point.entity.pdf.CostEntity;
 import com.point.web.newController.Tool.ToolForPDFController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -32,9 +29,11 @@ public class DataController {
 
     @Autowired
     URLCacheData urlCacheData;
+
     @PostMapping("/saveValue")
+    @ResponseBody
     public void saveValue(HttpServletRequest request,
-                          @ModelAttribute CostEntity entity,
+                          @RequestParam  Map<String, String> entity,
                           @RequestParam(required = false) String sjht) throws IOException, DocumentException {
         Map<String, File> imageMap = new HashMap<>();
         try {

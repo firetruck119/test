@@ -160,6 +160,7 @@
                 success: function (data) {
                     Object.keys(data).forEach(function (id) {
                         $("#" + id).html(data[id]);
+                        if(data[id]=="不满足") $("#" + id).css("background-color","red");
                     })
                 }
             })

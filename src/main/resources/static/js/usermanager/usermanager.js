@@ -148,7 +148,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
                     <el-option v-for="i in rolelist" :label="i" :value="i"></el-option>
                 </el-select>
             </el-form-item>
-             <el-checkbox :disabled="needIpChech" v-model="ipChechComputed">是否需要ip验证</el-checkbox>
+<!--             <el-checkbox :disabled="needIpChech" v-model="ipChechComputed">是否需要ip验证</el-checkbox>-->
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="visible = false">取 消</el-button>

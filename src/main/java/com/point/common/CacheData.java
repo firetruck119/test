@@ -120,4 +120,17 @@ public class CacheData<T> {
             Logger.getInstance().error("ex",ex);
         }
     }
+
+    public void saveCacheValue(String batchId, Map<String,String> entities) {
+        try {
+            Map<String, String> cacheMap = new HashMap<>();
+            for (Map.Entry<String,String> entity : entities.entrySet()) {
+                if(!entity.getValue().isEmpty())
+                    cacheMap.put(entity.getKey(),entity.getValue());
+            }
+            writeCache2Db(batchId, cacheMap);
+        } catch (Exception ex) {
+            Logger.getInstance().error("ex",ex);
+        }
+    }
 }

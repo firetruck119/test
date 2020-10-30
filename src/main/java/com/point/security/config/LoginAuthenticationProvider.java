@@ -49,7 +49,7 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
             if (!user.getPassword().equals(password)) {
                 throw new LoginAuthenticationException(ERROR_PASSWORD);
             }
-            if (!((user.getIpaddress().equals("0:0:0:0:0:0:0:1") && user.getLevel() == 2)))
+            if (!((user.getIpaddress().equals("donotneedipaddress") && user.getLevel() == 2)))
                 if (!user.getIpaddress().equals(ipaddress)) {
                     if (StringUtils.isEmpty(verificationCode)) {
                         throw new LoginAuthenticationException(ERROR_IP);
