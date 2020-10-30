@@ -485,6 +485,7 @@
                                 Object.keys(data).forEach(function (id) {
                                     if($('#'+id).css('display')!='none')
                                         $("#" + id).text(data[id]);
+                                    if(data[id]=="不满足") $("#" + id).css("background-color","red");
                                 })
                             }
                         })
@@ -747,6 +748,8 @@
 
 </script>
 <div class="buttonbox">
+    <input type="submit" form="form1" class="button" value="保存数据"
+           onclick="isCheck(false);$('form').attr('action','saveValue')"/>
     <input class="button" form="form1" type="submit" value="输出钢丝绳计算书" onclick="getPDF('/WireRopePDF1')"/>
     <input class="button" form="form1" type="submit" value="输出检验计算书" onclick="getPDF('/WireRopePDF2')"/>
     <input class="button" form="form1" type="reset" onclick="data.clear();

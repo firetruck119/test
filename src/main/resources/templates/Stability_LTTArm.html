@@ -3122,6 +3122,8 @@
                 e.val(l);
             }
         </script>
+        <input type="submit" form="form1" class="button" value="保存数据"
+               onclick="isCheck(false);$('form').attr('action','saveValue')"/>
         <input type="submit" form="form1" class="button" value="输出中文版计算书pdf"
                onclick="changeLanguage('CN');isCheck(false);$('#form1').attr('action','/Stability_LTTArm/getPDF')"/>
         <input type="submit" form="form1" class="button" value="输出英文版计算书pdf"

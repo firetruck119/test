@@ -3396,6 +3396,8 @@
         </div>
     </div>
     <div class="buttonbox">
+        <input type="submit" form="form1" class="button" value="保存数据"
+               onclick="isCheck(false);$('form').attr('action','saveValue')"/>
         <input type="submit" form="form1" class="button"  value="导出成本估算pdf" onclick="$('form').attr('action','Cost/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
         <!--<input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','Cost/getPDF');-->

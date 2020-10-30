@@ -301,6 +301,7 @@ function janyan(URL) {
             console.log(data)
             Object.keys(data).forEach(function (id) {
                 $("#" + id).text(data[id]);
+                if(data[id]=="不满足") $("#" + id).css("background-color","red");
             })
         }
     })

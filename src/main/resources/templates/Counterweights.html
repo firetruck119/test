@@ -920,6 +920,8 @@
     </div>
 </div>
     <div class="buttonbox">
+        <input type="submit" form="form1" class="button" value="保存数据"
+               onclick="isCheck(false);$('form').attr('action','saveValue')"/>
         <input type="submit" form="form1" class="button"  value="导出配重计算书pdf" onclick="$('form').attr('action','Counterweights/getPDF');
                                                                                             isCheck(false);changeType('PeiZhong')"/>
         <input type="submit" form="form1" class="button"  value="导出无图版配重计算书pdf" onclick="$('form').attr('action','Counterweights/getPDF');

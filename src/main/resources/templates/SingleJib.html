@@ -534,6 +534,7 @@
                 success: function (data) {
                     Object.keys(data).forEach(function (id) {
                         $("#" + id).text(data[id]);
+                        if(data[id]=="不满足") $("#" + id).css("background-color","red");
                     })
                 }
             })
@@ -1567,6 +1568,8 @@
         </div>
     </div>
     <div class="buttonbox">
+        <input type="submit" form="form1" class="button" value="保存数据"
+               onclick="isCheck(false);$('form').attr('action','saveValue')"/>
         <input type="submit" form="form1" class="button"  value="导出单臂吊臂pdf" onclick="$('form').attr('action','SingleJib/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
         <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','SingleJib/getPDF');

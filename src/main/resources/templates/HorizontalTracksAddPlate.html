@@ -833,6 +833,7 @@
                 success: function (data) {
                     Object.keys(data).forEach(function (id) {
                         $("#" + id).text(data[id]);
+                        if(data[id]=="不满足") $("#" + id).css("background-color","red");
                     })
                 }
             })
@@ -1400,6 +1401,8 @@
 </div>
 <div class="buttonbox">
 <!--    这里的action对应后端的url -->
+    <input type="submit" form="form1" class="button" value="保存数据"
+           onclick="isCheck(false);$('form').attr('action','saveValue')"/>
     <input type="submit" form="form1" class="button"  value="导出简支梁模型pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');
                                                                                             isCheck(false);changeType('SimplySupported')"/>
     <!--<input type="submit" form="form1" class="button"  value="导出简支梁英文pdf" onclick="$('form').attr('action','/HorizontalTracksAddPlate/getPDF');-->
