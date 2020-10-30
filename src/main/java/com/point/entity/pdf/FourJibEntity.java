@@ -21,11 +21,7 @@ public class FourJibEntity {
     private Double p;
     private Double lbd;
     private Double lbx;
-    private Double nlsk;
-    private Double nlski;
-    private Double nlskii;
-    private Double nlskiii;
-    private Double nlskiv;
+    private Double dbyj;
 
     //非页面数据
     private Double dcgssp;
@@ -33,45 +29,50 @@ public class FourJibEntity {
     private Double m5;
     private Double acx5;
     private Double gruqhxs;
+    private Double gruwzxs;
     private Double ldcgh;
     private Double lbtzh;
     private Double ldslzh;
-//    private String db2xh;
 
     private Double dbmjb;
-    private Double dbwx;
-    private Double dbwy;
-    private Double dbix;
     private Double mbgj;
     private Double mbmj;
 
     private Double dbm1b;
-    private Double dbwxi;
-    private Double dbwyi;
-    private Double dbixi;
     private Double mbg1;
     private Double mbm1;
 
     private Double dbm2b;
-    private Double dbwxii;
-    private Double dbwyii;
-    private Double dbixii;
     private Double mbg2;
     private Double mbm2;
 
     private Double dbm3b;
-    private Double dbwxiii;
-    private Double dbwyiii;
-    private Double dbixiii;
     private Double mbg3;
     private Double mbm3;
 
     private Double dbm4b;
-    private Double dbwxiv;
-    private Double dbwyiv;
-    private Double dbixiv;
     private Double mbg4;
     private Double mbm4;
+
+    private Double m4jbnd;
+    private Double m5dbnd;
+
+    //    挠度
+    private Double dbld;
+    private Double dblx1;
+    private Double dblx2;
+    private Double dblx3;
+    private Double dblx4;
+    private Double dblx5;
+    private Double dbld1;
+    private Double dbld2;
+    private Double dbld3;
+    private Double dbld4;
+    private Double dbld5;
+    private Double dbhd2;
+    private Double dbhd3;
+    private Double dbhd4;
+    private Double dbhd5;
 
 //    基臂
     private String dbgcph;
@@ -79,11 +80,9 @@ public class FourJibEntity {
     private Double dbjh;
     private Double dbjb;
     private Double dbje;
-    private Double dbwxls;
-    private Double dbwyls;
-    private Double dbixls;
-    private Double dblm;
-    private Double dbll;
+    private Double dbwx;
+    private Double dbwy;
+    private Double dbix;
 
 //    一臂
     private String dbgcphi;
@@ -91,11 +90,9 @@ public class FourJibEntity {
     private Double db1h;
     private Double db1b;
     private Double db1e;
-    private Double dbwxlsi;
-    private Double dbwylsi;
-    private Double dbixlsi;
-    private Double dblmi;
-    private Double dblli;
+    private Double dbwxi;
+    private Double dbwyi;
+    private Double dbixi;
 
 //    二臂
     private String dbgcphii;
@@ -103,11 +100,9 @@ public class FourJibEntity {
     private Double db2h;
     private Double db2b;
     private Double db2e;
-    private Double dbwxlsii;
-    private Double dbwylsii;
-    private Double dbixlsii;
-    private Double dblmii;
-    private Double dbllii;
+    private Double dbwxii;
+    private Double dbwyii;
+    private Double dbixii;
 
     //   三臂
     private String dbgcphiii;
@@ -115,11 +110,9 @@ public class FourJibEntity {
     private Double db3h;
     private Double db3b;
     private Double db3e;
-    private Double dbwxlsiii;
-    private Double dbwylsiii;
-    private Double dbixlsiii;
-    private Double dblmiii;
-    private Double dblliii;
+    private Double dbwxiii;
+    private Double dbwyiii;
+    private Double dbixiii;
 
     //    四臂
     private String dbgcphiv;
@@ -127,11 +120,9 @@ public class FourJibEntity {
     private Double db4h;
     private Double db4b;
     private Double db4e;
-    private Double dbwxlsiv;
-    private Double dbwylsiv;
-    private Double dbixlsiv;
-    private Double dblmiv;
-    private Double dblliv;
+    private Double dbwxiv;
+    private Double dbwyiv;
+    private Double dbixiv;
 
     private Double swp;
     private Double r1;
@@ -155,6 +146,9 @@ public class FourJibEntity {
     private Double m7dbxt;
     private Double m8dbxt;
     private Double m9dbxt;
+
+    private Double pdbpg;
+    private Double pdbpq;
 
     private Double aslcx;
     private Double ashlcx;
@@ -192,17 +186,15 @@ public class FourJibEntity {
     private Double lx8;
     private Double lx9;
 
-    private Double lslwq;
-    private Double lshlwq;
-    private Double lwq1;
-    private Double lwq2;
-    private Double lwq3;
-    private Double lwq6;
-    private Double lwq7;
-    private Double lwq8;
-    private Double lwq9;
-
-    private Double lwq6p;
+    private Double lslci;
+    private Double lshlci;
+    private Double lc1i;
+    private Double lc2i;
+    private Double lc3i;
+    private Double lc6i;
+    private Double lc7i;
+    private Double lc8i;
+    private Double lc9i;
 
     private Double lslxi;
     private Double lshlxi;
@@ -214,16 +206,14 @@ public class FourJibEntity {
     private Double lx8i;
     private Double lx9i;
 
-    private Double lslwqi;
-    private Double lshlwqi;
-    private Double lwq1i;
-    private Double lwq2i;
-    private Double lwq3i;
-    private Double lwq7i;
-    private Double lwq8i;
-    private Double lwq9i;
-
-    private Double lwq7ip;
+    private Double lslcii;
+    private Double lshlcii;
+    private Double lc1ii;
+    private Double lc2ii;
+    private Double lc3ii;
+    private Double lc7ii;
+    private Double lc8ii;
+    private Double lc9ii;
 
     private Double lslxii;
     private Double lshlxii;
@@ -234,15 +224,13 @@ public class FourJibEntity {
     private Double lx8ii;
     private Double lx9ii;
 
-    private Double lslwqii;
-    private Double lshlwqii;
-    private Double lwq1ii;
-    private Double lwq2ii;
-    private Double lwq3ii;
-    private Double lwq8ii;
-    private Double lwq9ii;
-
-    private Double lwq8iip;
+    private Double lslciii;
+    private Double lshlciii;
+    private Double lc1iii;
+    private Double lc2iii;
+    private Double lc3iii;
+    private Double lc8iii;
+    private Double lc9iii;
 
     private Double lslxiii;
     private Double lshlxiii;
@@ -252,14 +240,12 @@ public class FourJibEntity {
     private Double lx8iii;
     private Double lx9iii;
 
-    private Double lslwqiii;
-    private Double lshlwqiii;
-    private Double lwq1iii;
-    private Double lwq2iii;
-    private Double lwq3iii;
-    private Double lwq9iii;
-
-    private Double lwq9iiip;
+    private Double lslciv;
+    private Double lshlciv;
+    private Double lc1iv;
+    private Double lc2iv;
+    private Double lc3iv;
+    private Double lc9iv;
 
     private Double lslxiv;
     private Double lshlxiv;
@@ -267,12 +253,6 @@ public class FourJibEntity {
     private Double lx2iv;
     private Double lx3iv;
     private Double lx9iv;
-
-    private Double lslwqiv;
-    private Double lshlwqiv;
-    private Double lwq1iv;
-    private Double lwq2iv;
-    private Double lwq3iv;
 
     private String db4Model;
     private String btModel;
@@ -297,111 +277,101 @@ public class FourJibEntity {
         map.put("p", CommonFunc.convertDoubleToString(p));
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));
         map.put("lbx", CommonFunc.convertDoubleToString(lbx));
-        map.put("nlsk", CommonFunc.convertDoubleToString(nlsk));
-        map.put("nlski", CommonFunc.convertDoubleToString(nlski));
-        map.put("nlskii", CommonFunc.convertDoubleToString(nlskii));
-        map.put("nlskiii", CommonFunc.convertDoubleToString(nlskiii));
-        map.put("nlskiv", CommonFunc.convertDoubleToString(nlskiv));
+        map.put("dbyj", CommonFunc.convertDoubleToString(dbyj));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
         map.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
         map.put("m5", CommonFunc.convertDoubleToString(m5));
         map.put("acx5", CommonFunc.convertDoubleToString(acx5));
         map.put("gruqhxs", CommonFunc.convertDoubleToString(gruqhxs));
+        map.put("gruwzxs", CommonFunc.convertDoubleToString(gruwzxs));
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
-//        map.put("db2xh", CommonFunc.convertDoubleToString(db2xh));
 
         map.put("dbmjb", CommonFunc.convertDoubleToString(dbmjb));
-        map.put("dbwx", CommonFunc.convertDoubleToString(dbwx));
-        map.put("dbwy", CommonFunc.convertDoubleToString(dbwy));
-        map.put("dbix", CommonFunc.convertDoubleToString(dbix));
         map.put("mbgj", CommonFunc.convertDoubleToString(mbgj));
         map.put("mbmj", CommonFunc.convertDoubleToString(mbmj));
 
         map.put("dbm1b", CommonFunc.convertDoubleToString(dbm1b));
-        map.put("dbwxi", CommonFunc.convertDoubleToString(dbwxi));
-        map.put("dbwyi", CommonFunc.convertDoubleToString(dbwyi));
-        map.put("dbixi", CommonFunc.convertDoubleToString(dbixi));
         map.put("mbg1", CommonFunc.convertDoubleToString(mbg1));
         map.put("mbm1", CommonFunc.convertDoubleToString(mbm1));
 
         map.put("dbm2b", CommonFunc.convertDoubleToString(dbm2b));
-        map.put("dbwxii", CommonFunc.convertDoubleToString(dbwxii));
-        map.put("dbwyii", CommonFunc.convertDoubleToString(dbwyii));
-        map.put("dbixii", CommonFunc.convertDoubleToString(dbixii));
         map.put("mbg2", CommonFunc.convertDoubleToString(mbg2));
         map.put("mbm2", CommonFunc.convertDoubleToString(mbm2));
 
         map.put("dbm3b", CommonFunc.convertDoubleToString(dbm3b));
-        map.put("dbwxiii", CommonFunc.convertDoubleToString(dbwxiii));
-        map.put("dbwyiii", CommonFunc.convertDoubleToString(dbwyiii));
-        map.put("dbixiii", CommonFunc.convertDoubleToString(dbixiii));
         map.put("mbg3", CommonFunc.convertDoubleToString(mbg3));
         map.put("mbm3", CommonFunc.convertDoubleToString(mbm3));
 
         map.put("dbm4b", CommonFunc.convertDoubleToString(dbm4b));
-        map.put("dbwxiv", CommonFunc.convertDoubleToString(dbwxiv));
-        map.put("dbwyiv", CommonFunc.convertDoubleToString(dbwyiv));
-        map.put("dbixiv", CommonFunc.convertDoubleToString(dbixiv));
         map.put("mbg4", CommonFunc.convertDoubleToString(mbg4));
         map.put("mbm4", CommonFunc.convertDoubleToString(mbm4));
+
+        map.put("m4jbnd", CommonFunc.convertDoubleToString(m4jbnd));
+        map.put("m5dbnd", CommonFunc.convertDoubleToString(m5dbnd));
+
+        map.put("dbld", CommonFunc.convertDoubleToString(dbld));
+        map.put("dblx1", CommonFunc.convertDoubleToString(dblx1));
+        map.put("dblx2", CommonFunc.convertDoubleToString(dblx2));
+        map.put("dblx3", CommonFunc.convertDoubleToString(dblx3));
+        map.put("dblx4", CommonFunc.convertDoubleToString(dblx4));
+        map.put("dblx5", CommonFunc.convertDoubleToString(dblx5));
+        map.put("dbld1", CommonFunc.convertDoubleToString(dbld1));
+        map.put("dbld2", CommonFunc.convertDoubleToString(dbld2));
+        map.put("dbld3", CommonFunc.convertDoubleToString(dbld3));
+        map.put("dbld4", CommonFunc.convertDoubleToString(dbld4));
+        map.put("dbld5", CommonFunc.convertDoubleToString(dbld5));
+        map.put("dbhd2", CommonFunc.convertDoubleToString(dbhd2));
+        map.put("dbhd3", CommonFunc.convertDoubleToString(dbhd3));
+        map.put("dbhd4", CommonFunc.convertDoubleToString(dbhd4));
+        map.put("dbhd5", CommonFunc.convertDoubleToString(dbhd5));
 
         map.put("dbgcph", CommonFunc.convertDoubleToString(dbgcph));
         map.put("dbss", CommonFunc.convertDoubleToString(dbss));
         map.put("dbjh", CommonFunc.convertDoubleToString(dbjh));
         map.put("dbjb", CommonFunc.convertDoubleToString(dbjb));
         map.put("dbje", CommonFunc.convertDoubleToString(dbje));
-        map.put("dbwxls", CommonFunc.convertDoubleToString(dbwxls));
-        map.put("dbwyls", CommonFunc.convertDoubleToString(dbwyls));
-        map.put("dbixls", CommonFunc.convertDoubleToString(dbixls));
-        map.put("dblm", CommonFunc.convertDoubleToString(dblm));
-        map.put("dbll", CommonFunc.convertDoubleToString(dbll));
+        map.put("dbwx", CommonFunc.convertDoubleToString(dbwx));
+        map.put("dbwy", CommonFunc.convertDoubleToString(dbwy));
+        map.put("dbix", CommonFunc.convertDoubleToString(dbix));
 
         map.put("dbgcphi", CommonFunc.convertDoubleToString(dbgcphi));
         map.put("dbssi", CommonFunc.convertDoubleToString(dbssi));
         map.put("db1h", CommonFunc.convertDoubleToString(db1h));
         map.put("db1b", CommonFunc.convertDoubleToString(db1b));
         map.put("db1e", CommonFunc.convertDoubleToString(db1e));
-        map.put("dbwxlsi", CommonFunc.convertDoubleToString(dbwxlsi));
-        map.put("dbwylsi", CommonFunc.convertDoubleToString(dbwylsi));
-        map.put("dbixlsi", CommonFunc.convertDoubleToString(dbixlsi));
-        map.put("dblmi", CommonFunc.convertDoubleToString(dblmi));
-        map.put("dblli", CommonFunc.convertDoubleToString(dblli));
+        map.put("dbwxi", CommonFunc.convertDoubleToString(dbwxi));
+        map.put("dbwyi", CommonFunc.convertDoubleToString(dbwyi));
+        map.put("dbixi", CommonFunc.convertDoubleToString(dbixi));
 
         map.put("dbgcphii", CommonFunc.convertDoubleToString(dbgcphii));
         map.put("dbssii", CommonFunc.convertDoubleToString(dbssii));
         map.put("db2h", CommonFunc.convertDoubleToString(db2h));
         map.put("db2b", CommonFunc.convertDoubleToString(db2b));
         map.put("db2e", CommonFunc.convertDoubleToString(db2e));
-        map.put("dbwxlsii", CommonFunc.convertDoubleToString(dbwxlsii));
-        map.put("dbwylsii", CommonFunc.convertDoubleToString(dbwylsii));
-        map.put("dbixlsii", CommonFunc.convertDoubleToString(dbixlsii));
-        map.put("dblmii", CommonFunc.convertDoubleToString(dblmii));
-        map.put("dbllii", CommonFunc.convertDoubleToString(dbllii));
+        map.put("dbwxii", CommonFunc.convertDoubleToString(dbwxii));
+        map.put("dbwyii", CommonFunc.convertDoubleToString(dbwyii));
+        map.put("dbixii", CommonFunc.convertDoubleToString(dbixii));
 
         map.put("dbgcphiii", CommonFunc.convertDoubleToString(dbgcphiii));
         map.put("dbssiii", CommonFunc.convertDoubleToString(dbssiii));
         map.put("db3h", CommonFunc.convertDoubleToString(db3h));
         map.put("db3b", CommonFunc.convertDoubleToString(db3b));
         map.put("db3e", CommonFunc.convertDoubleToString(db3e));
-        map.put("dbwxlsiii", CommonFunc.convertDoubleToString(dbwxlsiii));
-        map.put("dbwylsiii", CommonFunc.convertDoubleToString(dbwylsiii));
-        map.put("dbixlsiii", CommonFunc.convertDoubleToString(dbixlsiii));
-        map.put("dblmiii", CommonFunc.convertDoubleToString(dblmiii));
-        map.put("dblliii", CommonFunc.convertDoubleToString(dblliii));
+        map.put("dbwxiii", CommonFunc.convertDoubleToString(dbwxiii));
+        map.put("dbwyiii", CommonFunc.convertDoubleToString(dbwyiii));
+        map.put("dbixiii", CommonFunc.convertDoubleToString(dbixiii));
 
         map.put("dbgcphiv", CommonFunc.convertDoubleToString(dbgcphiv));
         map.put("dbssiv", CommonFunc.convertDoubleToString(dbssiv));
         map.put("db4h", CommonFunc.convertDoubleToString(db4h));
         map.put("db4b", CommonFunc.convertDoubleToString(db4b));
         map.put("db4e", CommonFunc.convertDoubleToString(db4e));
-        map.put("dbwxlsiv", CommonFunc.convertDoubleToString(dbwxlsiv));
-        map.put("dbwylsiv", CommonFunc.convertDoubleToString(dbwylsiv));
-        map.put("dbixlsiv", CommonFunc.convertDoubleToString(dbixlsiv));
-        map.put("dblmiv", CommonFunc.convertDoubleToString(dblmiv));
-        map.put("dblliv", CommonFunc.convertDoubleToString(dblliv));
+        map.put("dbwxiv", CommonFunc.convertDoubleToString(dbwxiv));
+        map.put("dbwyiv", CommonFunc.convertDoubleToString(dbwyiv));
+        map.put("dbixiv", CommonFunc.convertDoubleToString(dbixiv));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
@@ -425,6 +395,9 @@ public class FourJibEntity {
         map.put("m7dbxt", CommonFunc.convertDoubleToString(m7dbxt));
         map.put("m8dbxt", CommonFunc.convertDoubleToString(m8dbxt));
         map.put("m9dbxt", CommonFunc.convertDoubleToString(m9dbxt));
+
+        map.put("pdbpg", CommonFunc.convertDoubleToString(pdbpg));
+        map.put("pdbpq", CommonFunc.convertDoubleToString(pdbpq));
 
         map.put("aslcx", CommonFunc.convertDoubleToString(aslcx));
         map.put("ashlcx", CommonFunc.convertDoubleToString(ashlcx));
@@ -462,17 +435,15 @@ public class FourJibEntity {
         map.put("lx8", CommonFunc.convertDoubleToString(lx8));
         map.put("lx9", CommonFunc.convertDoubleToString(lx9));
 
-        map.put("lslwq", CommonFunc.convertDoubleToString(lslwq));
-        map.put("lshlwq", CommonFunc.convertDoubleToString(lshlwq));
-        map.put("lwq1", CommonFunc.convertDoubleToString(lwq1));
-        map.put("lwq2", CommonFunc.convertDoubleToString(lwq2));
-        map.put("lwq3", CommonFunc.convertDoubleToString(lwq3));
-        map.put("lwq6", CommonFunc.convertDoubleToString(lwq6));
-        map.put("lwq7", CommonFunc.convertDoubleToString(lwq7));
-        map.put("lwq8", CommonFunc.convertDoubleToString(lwq8));
-        map.put("lwq9", CommonFunc.convertDoubleToString(lwq9));
-
-        map.put("lwq6p", CommonFunc.convertDoubleToString(lwq6p));
+        map.put("lslci", CommonFunc.convertDoubleToString(lslci));
+        map.put("lshlci", CommonFunc.convertDoubleToString(lshlci));
+        map.put("lc1i", CommonFunc.convertDoubleToString(lc1i));
+        map.put("lc2i", CommonFunc.convertDoubleToString(lc2i));
+        map.put("lc3i", CommonFunc.convertDoubleToString(lc3i));
+        map.put("lc6i", CommonFunc.convertDoubleToString(lc6i));
+        map.put("lc7i", CommonFunc.convertDoubleToString(lc7i));
+        map.put("lc8i", CommonFunc.convertDoubleToString(lc8i));
+        map.put("lc9i", CommonFunc.convertDoubleToString(lc9i));
 
         map.put("lslxi", CommonFunc.convertDoubleToString(lslxi));
         map.put("lshlxi", CommonFunc.convertDoubleToString(lshlxi));
@@ -484,16 +455,14 @@ public class FourJibEntity {
         map.put("lx8i", CommonFunc.convertDoubleToString(lx8i));
         map.put("lx9i", CommonFunc.convertDoubleToString(lx9i));
 
-        map.put("lslwqi", CommonFunc.convertDoubleToString(lslwqi));
-        map.put("lshlwqi", CommonFunc.convertDoubleToString(lshlwqi));
-        map.put("lwq1i", CommonFunc.convertDoubleToString(lwq1i));
-        map.put("lwq2i", CommonFunc.convertDoubleToString(lwq2i));
-        map.put("lwq3i", CommonFunc.convertDoubleToString(lwq3i));
-        map.put("lwq7i", CommonFunc.convertDoubleToString(lwq7i));
-        map.put("lwq8i", CommonFunc.convertDoubleToString(lwq8i));
-        map.put("lwq9i", CommonFunc.convertDoubleToString(lwq9i));
-
-        map.put("lwq7ip", CommonFunc.convertDoubleToString(lwq7ip));
+        map.put("lslcii", CommonFunc.convertDoubleToString(lslcii));
+        map.put("lshlcii", CommonFunc.convertDoubleToString(lshlcii));
+        map.put("lc1ii", CommonFunc.convertDoubleToString(lc1ii));
+        map.put("lc2ii", CommonFunc.convertDoubleToString(lc2ii));
+        map.put("lc3ii", CommonFunc.convertDoubleToString(lc3ii));
+        map.put("lc7ii", CommonFunc.convertDoubleToString(lc7ii));
+        map.put("lc8ii", CommonFunc.convertDoubleToString(lc8ii));
+        map.put("lc9ii", CommonFunc.convertDoubleToString(lc9ii));
 
         map.put("lslxii", CommonFunc.convertDoubleToString(lslxii));
         map.put("lshlxii", CommonFunc.convertDoubleToString(lshlxii));
@@ -504,15 +473,13 @@ public class FourJibEntity {
         map.put("lx8ii", CommonFunc.convertDoubleToString(lx8ii));
         map.put("lx9ii", CommonFunc.convertDoubleToString(lx9ii));
 
-        map.put("lslwqii", CommonFunc.convertDoubleToString(lslwqii));
-        map.put("lshlwqii", CommonFunc.convertDoubleToString(lshlwqii));
-        map.put("lwq1ii", CommonFunc.convertDoubleToString(lwq1ii));
-        map.put("lwq2ii", CommonFunc.convertDoubleToString(lwq2ii));
-        map.put("lwq3ii", CommonFunc.convertDoubleToString(lwq3ii));
-        map.put("lwq8ii", CommonFunc.convertDoubleToString(lwq8ii));
-        map.put("lwq9ii", CommonFunc.convertDoubleToString(lwq9ii));
-
-        map.put("lwq8iip", CommonFunc.convertDoubleToString(lwq8iip));
+        map.put("lslciii", CommonFunc.convertDoubleToString(lslciii));
+        map.put("lshlciii", CommonFunc.convertDoubleToString(lshlciii));
+        map.put("lc1iii", CommonFunc.convertDoubleToString(lc1iii));
+        map.put("lc2iii", CommonFunc.convertDoubleToString(lc2iii));
+        map.put("lc3iii", CommonFunc.convertDoubleToString(lc3iii));
+        map.put("lc8iii", CommonFunc.convertDoubleToString(lc8iii));
+        map.put("lc9iii", CommonFunc.convertDoubleToString(lc9iii));
 
         map.put("lslxiii", CommonFunc.convertDoubleToString(lslxiii));
         map.put("lshlxiii", CommonFunc.convertDoubleToString(lshlxiii));
@@ -522,14 +489,12 @@ public class FourJibEntity {
         map.put("lx8iii", CommonFunc.convertDoubleToString(lx8iii));
         map.put("lx9iii", CommonFunc.convertDoubleToString(lx9iii));
 
-        map.put("lslwqiii", CommonFunc.convertDoubleToString(lslwqiii));
-        map.put("lshlwqiii", CommonFunc.convertDoubleToString(lshlwqiii));
-        map.put("lwq1iii", CommonFunc.convertDoubleToString(lwq1iii));
-        map.put("lwq2iii", CommonFunc.convertDoubleToString(lwq2iii));
-        map.put("lwq3iii", CommonFunc.convertDoubleToString(lwq3iii));
-        map.put("lwq9iii", CommonFunc.convertDoubleToString(lwq9iii));
-
-        map.put("lwq9iiip", CommonFunc.convertDoubleToString(lwq9iiip));
+        map.put("lslciv", CommonFunc.convertDoubleToString(lslciv));
+        map.put("lshlciv", CommonFunc.convertDoubleToString(lshlciv));
+        map.put("lc1iv", CommonFunc.convertDoubleToString(lc1iv));
+        map.put("lc2iv", CommonFunc.convertDoubleToString(lc2iv));
+        map.put("lc3iv", CommonFunc.convertDoubleToString(lc3iv));
+        map.put("lc9iv", CommonFunc.convertDoubleToString(lc9iv));
 
         map.put("lslxiv", CommonFunc.convertDoubleToString(lslxiv));
         map.put("lshlxiv", CommonFunc.convertDoubleToString(lshlxiv));
@@ -538,12 +503,6 @@ public class FourJibEntity {
         map.put("lx3iv", CommonFunc.convertDoubleToString(lx3iv));
         map.put("lx9iv", CommonFunc.convertDoubleToString(lx9iv));
 
-        map.put("lslwqiv", CommonFunc.convertDoubleToString(lslwqiv));
-        map.put("lshlwqiv", CommonFunc.convertDoubleToString(lshlwqiv));
-        map.put("lwq1iv", CommonFunc.convertDoubleToString(lwq1iv));
-        map.put("lwq2iv", CommonFunc.convertDoubleToString(lwq2iv));
-        map.put("lwq3iv", CommonFunc.convertDoubleToString(lwq3iv));
-
         map.putAll(takeStringMapForPdf(type));
         return map;
     }
@@ -551,11 +510,11 @@ public class FourJibEntity {
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
 
-        Double mwqp = map.get("mwqp");
-        Double mwqip = map.get("mwqip");
-        Double mwqiip = map.get("mwqiip");
-        Double mwqiiip = map.get("mwqiiip");
-        Double m4jbhzq = mbgj / 2 + ( dblm + dbll / 2 ) * mbmj / 1000 ;
+        Double mzi = map.get("mzi");
+        Double mzii = map.get("mzii");
+        Double mziii = map.get("mziii");
+        Double mziv = map.get("mziv");
+        Double m4jbhzq = mbgj / 2 + ( dbld1 - dblx1 / 2 ) * mbmj / 1000 ;
         Double lslhz = lbd;
         Double lshlhz = lbd - ( ldcgh - lbtzh ) ;
         Double lhz1 = lshlhz ;
@@ -563,20 +522,20 @@ public class FourJibEntity {
         if ( m2 == 0 ) {
             lhz2 = 0.0 ;
         } else {
-            lhz2 = lc2 + dbll / 2000 ;
+            lhz2 = lc2 + dblx1 / 2000 ;
         }
         Double lhz3 = lshlhz ;
-        Double lhzjb4 = ( mbgj * ( dblm + dbll / 2 ) / 2000 + mbmj * ( dblm + dbll / 2 ) * ( dblm + dbll / 2 ) / 2000000 ) / m4jbhzq ;
+        Double lhzjb4 = ( mbgj * ( dbld1 - dblx1 / 2 ) / 2000 + mbmj * ( dbld1 - dblx1 / 2 ) * ( dbld1 - dblx1 / 2 ) / 2000000 ) / m4jbhzq ;
         Double lhz5; 
         if ( m5db == 0 ) {
             lhz5 = 0.0 ;
         } else {
-            lhz5 = lc5 + dbll / 2000 ;
+            lhz5 = lc5 + dblx1 / 2000 ;
         }
-        Double lhz6 = lc6 + dbll / 2000 ;
-        Double lhz7 = lc7 + dbll / 2000 ;
-        Double lhz8 = lc8 + dbll / 2000 ;
-        Double lhz9 = lc9 + dbll / 2000 ;
+        Double lhz6 = lc6 + dblx1 / 2000 ;
+        Double lhz7 = lc7 + dblx1 / 2000 ;
+        Double lhz8 = lc8 + dblx1 / 2000 ;
+        Double lhz9 = lc9 + dblx1 / 2000 ;
 
         Double mslhz = tsl * lslhz * 1.25 * 10 ;
         Double mshlhz = tshl * lshlhz * 1.25 * 10 ;
@@ -601,50 +560,50 @@ public class FourJibEntity {
         String dbwjym = (mjbhz <= dbmjb) ? "符合" : "不符合";
 
         String dbwjybi;
-        if ( mwqp < dbm1b ) {
+        if ( mzi < dbm1b ) {
             dbwjybi = "<" ;
-        } else if ( mwqp == dbm1b ) {
+        } else if ( mzi == dbm1b ) {
             dbwjybi = "=";
         } else{
             dbwjybi = ">";
         }
-        String dbwjymi = (mwqp <= dbm1b) ? "符合" : "不符合";
+        String dbwjymi = (mzi <= dbm1b) ? "符合" : "不符合";
 
         String dbwjybii;
-        if ( mwqip < dbm2b ) {
+        if ( mzii < dbm2b ) {
             dbwjybii = "<" ;
-        } else if ( mwqip == dbm2b ) {
+        } else if ( mzii == dbm2b ) {
             dbwjybii = "=";
         } else{
             dbwjybii = ">";
         }
-        String dbwjymii = (mwqip <= dbm2b) ? "符合" : "不符合";
+        String dbwjymii = (mzii <= dbm2b) ? "符合" : "不符合";
 
         String dbwjybiii;
-        if ( mwqiip < dbm3b ) {
+        if ( mziii < dbm3b ) {
             dbwjybiii = "<" ;
-        } else if ( mwqiip == dbm3b ) {
+        } else if ( mziii == dbm3b ) {
             dbwjybiii = "=";
         } else{
             dbwjybiii = ">";
         }
-        String dbwjymiii = (mwqiip <= dbm3b) ? "符合" : "不符合";
+        String dbwjymiii = (mziii <= dbm3b) ? "符合" : "不符合";
 
         String dbwjybiv;
-        if ( mwqiiip < dbm4b ) {
+        if ( mziv < dbm4b ) {
             dbwjybiv = "<" ;
-        } else if ( mwqiiip == dbm4b ) {
+        } else if ( mziv == dbm4b ) {
             dbwjybiv = "=";
         } else{
             dbwjybiv = ">";
         }
-        String dbwjymiv = (mwqiiip <= dbm4b) ? "符合" : "不符合";
+        String dbwjymiv = (mziv <= dbm4b) ? "符合" : "不符合";
 
 
         Map<String, String> result = new HashMap<>();
         result.put("lbd", CommonFunc.convertDoubleToString(lbd));
-        result.put("dblm", CommonFunc.convertDoubleToString(dblm));
-        result.put("dbll", CommonFunc.convertDoubleToString(dbll));
+        result.put("dbld1", CommonFunc.convertDoubleToString(dbld1));
+        result.put("dblx1", CommonFunc.convertDoubleToString(dblx1));
         result.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         result.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         result.put("mbgj", CommonFunc.convertDoubleToString(mbgj));
@@ -670,10 +629,10 @@ public class FourJibEntity {
         result.put("dbm2b", CommonFunc.convertDoubleToString(dbm2b));
         result.put("dbm3b", CommonFunc.convertDoubleToString(dbm3b));
         result.put("dbm4b", CommonFunc.convertDoubleToString(dbm4b));
-        result.put("mwqp", CommonFunc.convertDoubleToString(mwqp));
-        result.put("mwqip", CommonFunc.convertDoubleToString(mwqip));
-        result.put("mwqiip", CommonFunc.convertDoubleToString(mwqiip));
-        result.put("mwqiiip", CommonFunc.convertDoubleToString(mwqiiip));
+        result.put("mzi", CommonFunc.convertDoubleToString(mzi));
+        result.put("mzii", CommonFunc.convertDoubleToString(mzii));
+        result.put("mziii", CommonFunc.convertDoubleToString(mziii));
+        result.put("mziv", CommonFunc.convertDoubleToString(mziv));
         result.put("m4jbhzq", CommonFunc.convertDoubleToString(m4jbhzq));
         result.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
         result.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));
@@ -762,9 +721,9 @@ public class FourJibEntity {
         map.put("mwa9", mwa9);
 
         Double mz = mslza + mshlza + mza1 + mza2 + mza3 + mza4 + mza5 + mza6 + mza7 + mza8 + mza9 ;
-        Double sz = 1000 * mz / dbwxls ;
+        Double sz = 1000 * mz / dbwx ;
         Double mw = mslwa + mshlwa + mwa1 + mwa2 + mwa3 + mwa4 + mwa5 + mwa6 + mwa7 + mwa8 + mwa9 ;
-        Double sw = 1000 * mw / dbwyls ;
+        Double sw = 1000 * mw / dbwy ;
         Double smax = sz + sw ;
         Double ssqd = dbss / 1.5 ;
         map.put("mz", mz);
@@ -774,47 +733,25 @@ public class FourJibEntity {
         map.put("smax", smax);
         map.put("ssqd", ssqd);
 
-        Double mslwq = 1.25 * 10 * tsl * lslwq ;
-        Double mshlwq = 1.25 * 10 * tshl * lshlwq ;
-        Double mwq1 = 1.25 * 10 * m1 * lwq1 ;
-        Double mwq2 = 1.25 * 10 * m2 * lwq2 ;
-        Double mwq3 = 1.25 * 10 * m3 * lwq3 ;
-        Double mwq6 = 1.25 * 10 * m6db * lwq6 ;
-        Double mwq7 = 1.25 * 10 * m7db * lwq7 ;
-        Double mwq8 = 1.25 * 10 * m8db * lwq8 ;
-        Double mwq9 = 1.25 * 10 * m9db * lwq9 ;
-        map.put("mslwq", mslwq);
-        map.put("mshlwq", mshlwq);
-        map.put("mwq1", mwq1);
-        map.put("mwq2", mwq2);
-        map.put("mwq3", mwq3);
-        map.put("mwq6", mwq6);
-        map.put("mwq7", mwq7);
-        map.put("mwq8", mwq8);
-        map.put("mwq9", mwq9);
-
-        Double kn = dblm / dbll ;
-        Double mwz = tsl + tshl + m1 + m2 + m3 + m6db + m7db + m8db + m9db ;
-        Double f1 = 1.25 * mwz * 10 * dblm * dblm * dbll * ( 1 + kn ) / 3 / 210000 / dbixls ;
-        Double mwq = mslwq + mshlwq + mwq1 + mwq2 + mwq3 + mwq6 + mwq7 + mwq8 + mwq9 ;
-        Double f2 = 1000 * mwq * dblm * dbll * ( 1 + 2 * kn ) / 4 / 210000 / dbixls ;
-        Double q = ( m4jbcq + m5db ) * 10 / dblm ;
-        Double f3 = 1.25 * q * dblm * dblm * dblm * dbll * ( 4 + 3 * kn ) / 24 / 210000 / dbixls ;
-        Double f = f1 + f2 + f3 ;
-        Double nd = dblm * dblm / 1000000 ;
-        map.put("kn", kn);
-        map.put("mwz", mwz);
-        map.put("f1", f1);
-        map.put("mwq", mwq);
-        map.put("f2", f2);
-        map.put("q", q);
-        map.put("f3", f3);
-        map.put("f", f);
-        map.put("nd", nd);
-
 //        一臂
-        Double mwq6p = 1.25 * 10 * m6dbxt * lwq6p ;
-        map.put("mwq6p", mwq6p);
+        Double mslzai= 1.25 * 10 * tsl * lslci ;
+        Double mshlzai= 1.25 * 10 * tshl * lshlci ;
+        Double mza1i= 1.25 * 10 * m1 * lc1i ;
+        Double mza2i= 1.25 * 10 * m2 * lc2i ;
+        Double mza3i= 1.25 * 10 * m3 * lc3i ;
+        Double mza6i= 1.25 * 10 * m6dbxt * lc6i ;
+        Double mza7i= 1.25 * 10 * m7db * lc7i ;
+        Double mza8i= 1.25 * 10 * m8db * lc8i ;
+        Double mza9i= 1.25 * 10 * m9db * lc9i ;
+        map.put("mslzai", mslzai);
+        map.put("mshlzai", mshlzai);
+        map.put("mza1i", mza1i);
+        map.put("mza2i", mza2i);
+        map.put("mza3i", mza3i);
+        map.put("mza6i", mza6i);
+        map.put("mza7i", mza7i);
+        map.put("mza8i", mza8i);
+        map.put("mza9i", mza9i);
 
         Double mslwai = p * 1.25 * aslcx * lslxi ;
         Double mshlwai = p * 1.25 * ashlcx * lshlxi ;
@@ -835,58 +772,36 @@ public class FourJibEntity {
         map.put("mwa8i", mwa8i);
         map.put("mwa9i", mwa9i);
 
-        Double mwqp = mslwq + mshlwq + mwq1 + mwq2 + mwq3 + mwq6p + mwq7 + mwq8 + mwq9 ;
-        Double szi = 1000 * mwqp / dbwxlsi ;
+        Double mzi = mslzai + mshlzai + mza1i + mza2i + mza3i + mza6i + mza7i + mza8i + mza9i ;
+        Double szi = 1000 * mzi / dbwxi ;
         Double mwi = mslwai + mshlwai + mwa1i + mwa2i + mwa3i + mwa6i + mwa7i + mwa8i + mwa9i ;
-        Double swi = 1000 * mwi / dbwylsi ;
+        Double swi = 1000 * mwi / dbwyi ;
         Double smaxi = szi + swi ;
         Double ssqdi = dbssi / 1.5 ;
-        map.put("mwqp", mwqp);
+        map.put("mzi", mzi);
         map.put("szi", szi);
         map.put("mwi", mwi);
         map.put("swi", swi);
         map.put("smaxi", smaxi);
         map.put("ssqdi", ssqdi);
 
-        Double mslwqi = 1.25 * 10 * tsl * lslwqi ;
-        Double mshlwqi = 1.25 * 10 * tshl * lshlwqi ;
-        Double mwq1i = 1.25 * 10 * m1 * lwq1i ;
-        Double mwq2i = 1.25 * 10 * m2 * lwq2i ;
-        Double mwq3i = 1.25 * 10 * m3 * lwq3i ;
-        Double mwq7i = 1.25 * 10 * m7db * lwq7i ;
-        Double mwq8i = 1.25 * 10 * m8db * lwq8i ;
-        Double mwq9i = 1.25 * 10 * m9db * lwq9i ;
-        map.put("mslwqi", mslwqi);
-        map.put("mshlwqi", mshlwqi);
-        map.put("mwq1i", mwq1i);
-        map.put("mwq2i", mwq2i);
-        map.put("mwq3i", mwq3i);
-        map.put("mwq7i", mwq7i);
-        map.put("mwq8i", mwq8i);
-        map.put("mwq9i", mwq9i);
-
-        Double kni = dblmi / dblli ;
-        Double mwzi = tsl + tshl + m1 + m2 + m3 + m7db + m8db + m9db ;
-        Double f1i = 1.25 * mwzi * 10 * dblmi * dblmi * dblli * ( 1 + kni ) / 3 / 210000 / dbixlsi ;
-        Double mwqi = mslwqi + mshlwqi + mwq1i + mwq2i + mwq3i + mwq7i + mwq8i + mwq9i ;
-        Double f2i = 1000 * mwqi * dblmi * dblli * ( 1 + 2 * kni ) / 4 / 210000 / dbixlsi ;
-        Double qi = m6dbxt * 10 / dblmi ;
-        Double f3i = 1.25 * qi * dblmi * dblmi * dblmi * dblli * ( 4 + 3 * kni ) / 24 / 210000 / dbixlsi ;
-        Double fi = f1i + f2i + f3i ;
-        Double ndi = dblmi * dblmi / 1000000 ;
-        map.put("kni", kni);
-        map.put("mwzi", mwzi);
-        map.put("f1i", f1i);
-        map.put("mwqi", mwqi);
-        map.put("f2i", f2i);
-        map.put("qi", qi);
-        map.put("f3i", f3i);
-        map.put("fi", fi);
-        map.put("ndi", ndi);
-
 //        二臂
-        Double mwq7ip = 1.25 * 10 * m7dbxt * lwq7ip ;
-        map.put("mwq7ip", mwq7ip);
+        Double mslzaii= 1.25 * 10 * tsl * lslcii ;
+        Double mshlzaii= 1.25 * 10 * tshl * lshlcii ;
+        Double mza1ii= 1.25 * 10 * m1 * lc1ii ;
+        Double mza2ii= 1.25 * 10 * m2 * lc2ii ;
+        Double mza3ii= 1.25 * 10 * m3 * lc3ii ;
+        Double mza7ii= 1.25 * 10 * m7dbxt * lc7ii ;
+        Double mza8ii= 1.25 * 10 * m8db * lc8ii ;
+        Double mza9ii= 1.25 * 10 * m9db * lc9ii ;
+        map.put("mslzaii", mslzaii);
+        map.put("mshlzaii", mshlzaii);
+        map.put("mza1ii", mza1ii);
+        map.put("mza2ii", mza2ii);
+        map.put("mza3ii", mza3ii);
+        map.put("mza7ii", mza7ii);
+        map.put("mza8ii", mza8ii);
+        map.put("mza9ii", mza9ii);
 
         Double mslwaii = p * 1.25 * aslcx * lslxii ;
         Double mshlwaii = p * 1.25 * ashlcx * lshlxii ;
@@ -905,56 +820,34 @@ public class FourJibEntity {
         map.put("mwa8ii", mwa8ii);
         map.put("mwa9ii", mwa9ii);
 
-        Double mwqip = mslwqi + mshlwqi + mwq1i + mwq2i + mwq3i + mwq7ip + mwq8i + mwq9i ;
-        Double szii = 1000 * mwqip / dbwxlsii ;
+        Double mzii = mslzaii + mshlzaii + mza1ii + mza2ii + mza3ii + mza7ii + mza8ii + mza9ii ;
+        Double szii = 1000 * mzii / dbwxii ;
         Double mwii = mslwaii + mshlwaii + mwa1ii + mwa2ii + mwa3ii + mwa7ii + mwa8ii + mwa9ii ;
-        Double swii = 1000 * mwii / dbwylsii ;
+        Double swii = 1000 * mwii / dbwyii ;
         Double smaxii = szii + swii ;
         Double ssqdii = dbssii / 1.5 ;
-        map.put("mwqip", mwqip);
+        map.put("mzii", mzii);
         map.put("szii", szii);
         map.put("mwii", mwii);
         map.put("swii", swii);
         map.put("smaxii", smaxii);
         map.put("ssqdii", ssqdii);
 
-        Double mslwqii = 1.25 * 10 * tsl * lslwqii ;
-        Double mshlwqii = 1.25 * 10 * tshl * lshlwqii ;
-        Double mwq1ii = 1.25 * 10 * m1 * lwq1ii ;
-        Double mwq2ii = 1.25 * 10 * m2 * lwq2ii ;
-        Double mwq3ii = 1.25 * 10 * m3 * lwq3ii ;
-        Double mwq8ii = 1.25 * 10 * m8db * lwq8ii ;
-        Double mwq9ii = 1.25 * 10 * m9db * lwq9ii ;
-        map.put("mslwqii", mslwqii);
-        map.put("mshlwqii", mshlwqii);
-        map.put("mwq1ii", mwq1ii);
-        map.put("mwq2ii", mwq2ii);
-        map.put("mwq3ii", mwq3ii);
-        map.put("mwq8ii", mwq8ii);
-        map.put("mwq9ii", mwq9ii);
-
-        Double knii = dblmii / dbllii ;
-        Double mwzii = tsl + tshl + m1 + m2 + m3 + m8db + m9db  ;
-        Double f1ii = 1.25 * mwzii * 10 * dblmii * dblmii * dbllii * ( 1 + knii ) / 3 / 210000 / dbixlsii ;
-        Double mwqii = mslwqii + mshlwqii + mwq1ii + mwq2ii + mwq3ii + mwq8ii + mwq9ii ;
-        Double f2ii = 1000 * mwqii * dblmii * dbllii * ( 1 + 2 * knii ) / 4 / 210000 / dbixlsii ;
-        Double qii = m7dbxt * 10 / dblmii ;
-        Double f3ii = 1.25 * qii * dblmii * dblmii * dblmii * dbllii * ( 4 + 3 * knii ) / 24 / 210000 / dbixlsii ;
-        Double fii = f1ii + f2ii + f3ii ;
-        Double ndii = dblmii * dblmii / 1000000 ;
-        map.put("knii", knii);
-        map.put("mwzii", mwzii);
-        map.put("f1ii", f1ii);
-        map.put("mwqii", mwqii);
-        map.put("f2ii", f2ii);
-        map.put("qii", qii);
-        map.put("f3ii", f3ii);
-        map.put("fii", fii);
-        map.put("ndii", ndii);
-
 //        三臂
-        Double mwq8iip = 1.25 * 10 * m8dbxt * lwq8iip ;
-        map.put("mwq8iip", mwq8iip);
+        Double mslzaiii= 1.25 * 10 * tsl * lslciii ;
+        Double mshlzaiii= 1.25 * 10 * tshl * lshlciii ;
+        Double mza1iii= 1.25 * 10 * m1 * lc1iii ;
+        Double mza2iii= 1.25 * 10 * m2 * lc2iii ;
+        Double mza3iii= 1.25 * 10 * m3 * lc3iii ;
+        Double mza8iii= 1.25 * 10 * m8dbxt * lc8iii ;
+        Double mza9iii= 1.25 * 10 * m9db * lc9iii ;
+        map.put("mslzaiii", mslzaiii);
+        map.put("mshlzaiii", mshlzaiii);
+        map.put("mza1iii", mza1iii);
+        map.put("mza2iii", mza2iii);
+        map.put("mza3iii", mza3iii);
+        map.put("mza8iii", mza8iii);
+        map.put("mza9iii", mza9iii);
 
         Double mslwaiii = p * 1.25 * aslcx * lslxiii ;
         Double mshlwaiii = p * 1.25 * ashlcx * lshlxiii ;
@@ -971,54 +864,32 @@ public class FourJibEntity {
         map.put("mwa8iii", mwa8iii);
         map.put("mwa9iii", mwa9iii);
 
-        Double mwqiip = mslwqii + mshlwqii + mwq1ii + mwq2ii + mwq3ii + mwq8iip + mwq9ii ;
-        Double sziii = 1000 * mwqiip / dbwxlsiii ;
+        Double mziii = mslzaiii + mshlzaiii + mza1iii + mza2iii + mza3iii + mza8iii + mza9iii ;
+        Double sziii = 1000 * mziii / dbwxiii ;
         Double mwiii = mslwaiii + mshlwaiii + mwa1iii + mwa2iii + mwa3iii + mwa8iii + mwa9iii ;
-        Double swiii = 1000 * mwiii / dbwylsiii ;
+        Double swiii = 1000 * mwiii / dbwyiii ;
         Double smaxiii = sziii + swiii ;
         Double ssqdiii = dbssiii / 1.5 ;
-        map.put("mwqiip", mwqiip);
+        map.put("mziii", mziii);
         map.put("sziii", sziii);
         map.put("mwiii", mwiii);
         map.put("swiii", swiii);
         map.put("smaxiii", smaxiii);
         map.put("ssqdiii", ssqdiii);
 
-        Double mslwqiii = 1.25 * 10 * tsl * lslwqiii ;
-        Double mshlwqiii = 1.25 * 10 * tshl * lshlwqiii ;
-        Double mwq1iii = 1.25 * 10 * m1 * lwq1iii ;
-        Double mwq2iii = 1.25 * 10 * m2 * lwq2iii ;
-        Double mwq3iii = 1.25 * 10 * m3 * lwq3iii ;
-        Double mwq9iii = 1.25 * 10 * m9db * lwq9iii ;
-        map.put("mslwqiii", mslwqiii);
-        map.put("mshlwqiii", mshlwqiii);
-        map.put("mwq1iii", mwq1iii);
-        map.put("mwq2iii", mwq2iii);
-        map.put("mwq3iii", mwq3iii);
-        map.put("mwq9iii", mwq9iii);
-
-        Double kniii = dblmiii / dblliii ;
-        Double mwziii = tsl + tshl + m1 + m2 + m3 + m9db  ;
-        Double f1iii = 1.25 * mwziii * 10 * dblmiii * dblmiii * dblliii * ( 1 + kniii ) / 3 / 210000 / dbixlsiii ;
-        Double mwqiii = mslwqiii + mshlwqiii + mwq1iii + mwq2iii + mwq3iii + mwq9iii ;
-        Double f2iii = 1000 * mwqiii * dblmiii * dblliii * ( 1 + 2 * kniii ) / 4 / 210000 / dbixlsiii ;
-        Double qiii = m8dbxt * 10 / dblmiii ;
-        Double f3iii = 1.25 * qiii * dblmiii * dblmiii * dblmiii * dblliii * ( 4 + 3 * kniii ) / 24 / 210000 / dbixlsiii ;
-        Double fiii = f1iii + f2iii + f3iii ;
-        Double ndiii = dblmiii * dblmiii / 1000000 ;
-        map.put("kniii", kniii);
-        map.put("mwziii", mwziii);
-        map.put("f1iii", f1iii);
-        map.put("mwqiii", mwqiii);
-        map.put("f2iii", f2iii);
-        map.put("qiii", qiii);
-        map.put("f3iii", f3iii);
-        map.put("fiii", fiii);
-        map.put("ndiii", ndiii);
-
         //        四臂
-        Double mwq9iiip = 1.25 * 10 * m9dbxt * lwq9iiip ;
-        map.put("mwq9iiip", mwq9iiip);
+        Double mslzaiv= 1.25 * 10 * tsl * lslciv ;
+        Double mshlzaiv= 1.25 * 10 * tshl * lshlciv ;
+        Double mza1iv= 1.25 * 10 * m1 * lc1iv ;
+        Double mza2iv= 1.25 * 10 * m2 * lc2iv ;
+        Double mza3iv= 1.25 * 10 * m3 * lc3iv ;
+        Double mza9iv= 1.25 * 10 * m9dbxt * lc9iv ;
+        map.put("mslzaiv", mslzaiv);
+        map.put("mshlzaiv", mshlzaiv);
+        map.put("mza1iv", mza1iv);
+        map.put("mza2iv", mza2iv);
+        map.put("mza3iv", mza3iv);
+        map.put("mza9iv", mza9iv);
 
         Double mslwaiv = p * 1.25 * aslcx * lslxiv ;
         Double mshlwaiv = p * 1.25 * ashlcx * lshlxiv ;
@@ -1033,49 +904,55 @@ public class FourJibEntity {
         map.put("mwa3iv", mwa3iv);
         map.put("mwa9iv", mwa9iv);
 
-        Double mwqiiip = mslwqiii + mshlwqiii + mwq1iii + mwq2iii + mwq3iii + mwq9iiip ;
-        Double sziv = 1000 * mwqiiip / dbwxlsiv ;
+        Double mziv = mslzaiv + mshlzaiv + mza1iv + mza2iv + mza3iv + mza9iv ;
+        Double sziv = 1000 * mziv / dbwxiv ;
         Double mwiv = mslwaiv + mshlwaiv + mwa1iv + mwa2iv + mwa3iv + mwa9iv ;
-        Double swiv = 1000 * mwiv / dbwylsiv ;
+        Double swiv = 1000 * mwiv / dbwyiv ;
         Double smaxiv = sziv + swiv ;
         Double ssqdiv = dbssiv / 1.5 ;
-        map.put("mwqiiip", mwqiiip);
+        map.put("mziv", mziv);
         map.put("sziv", sziv);
         map.put("mwiv", mwiv);
         map.put("swiv", swiv);
         map.put("smaxiv", smaxiv);
         map.put("ssqdiv", ssqdiv);
 
-        Double mslwqiv = 1.25 * 10 * tsl * lslwqiv ;
-        Double mshlwqiv = 1.25 * 10 * tshl * lshlwqiv ;
-        Double mwq1iv = 1.25 * 10 * m1 * lwq1iv ;
-        Double mwq2iv = 1.25 * 10 * m2 * lwq2iv ;
-        Double mwq3iv = 1.25 * 10 * m3 * lwq3iv ;
-        map.put("mslwqiv", mslwqiv);
-        map.put("mshlwqiv", mshlwqiv);
-        map.put("mwq1iv", mwq1iv);
-        map.put("mwq2iv", mwq2iv);
-        map.put("mwq3iv", mwq3iv);
-
-        Double kniv = dblmiv / dblliv ;
-        Double mwziv = tsl + tshl + m1 + m2 + m3 ;
-        Double f1iv = 1.25 * mwziv * 10 * dblmiv * dblmiv * dblliv * ( 1 + kniv ) / 3 / 210000 / dbixlsiv ;
-        Double mwqiv = mslwqiv + mshlwqiv + mwq1iv + mwq2iv + mwq3iv ;
-        Double f2iv = 1000 * mwqiv * dblmiv * dblliv * ( 1 + 2 * kniv ) / 4 / 210000 / dbixlsiv ;
-        Double qiv = m9dbxt * 10 / dblmiv ;
-        Double f3iv = 1.25 * qiv * dblmiv * dblmiv * dblmiv * dblliv * ( 4 + 3 * kniv ) / 24 / 210000 / dbixlsiv ;
-        Double fiv = f1iv + f2iv + f3iv ;
-        Double ndiv = dblmiv * dblmiv / 1000000 ;
-        map.put("kniv", kniv);
-        map.put("mwziv", mwziv);
-        map.put("f1iv", f1iv);
-        map.put("mwqiv", mwqiv);
-        map.put("f2iv", f2iv);
-        map.put("qiv", qiv);
-        map.put("f3iv", f3iv);
-        map.put("fiv", fiv);
-        map.put("ndiv", ndiv);
-
+//        挠度计算
+        Double pdbp = 1.25 * pdbpg / 3 + 1.25 * pdbpq ;
+        Double tz = pdbp / Math.cos(dbyj / 180 * Math.PI) ;
+        Double mlj1 = tz * dbhd2 ;
+        Double mlj2 = tz * dbhd3 ;
+        Double mlj3 = tz * dbhd4 ;
+        Double mlj4 = tz * dbhd5 ;
+        Double fx1 = mlj1 * ( dbld1 * dbld1 / 2 - 2 * dbld1 * dblx1 / 3 + dblx1 * dblx1 / 6 - dblx2 * dblx2 / 6 ) / 210000 / dbix + tz * dbld1 * ( dbld1 - dblx1 ) * ( dbld1 - dblx1 ) / 3 / 210000 / dbix ;
+        Double fx2 = mlj2 * ( dbld2 * dbld2 / 2 - 2 * dbld2 * dblx2 / 3 + dblx2 * dblx2 / 6 - dblx3 * dblx3 / 6 ) / 210000 / dbixi + tz * dbld2 * ( dbld2 - dblx2 ) * ( dbld2 - dblx2 ) / 3 / 210000 / dbixi ;
+        Double fx3 = mlj3 * ( dbld3 * dbld3 / 2 - 2 * dbld3 * dblx3 / 3 + dblx3 * dblx3 / 6 - dblx4 * dblx4 / 6 ) / 210000 / dbixii + tz * dbld3 * ( dbld3 - dblx3 ) * ( dbld3 - dblx3 ) / 3 / 210000 / dbixii ;
+        Double fx4 = mlj4 * ( dbld4 * dbld4 / 2 - 2 * dbld4 * dblx4 / 3 + dblx4 * dblx4 / 6 - dblx5 * dblx5 / 6 ) / 210000 / dbixiii + tz * dbld4 * ( dbld4 - dblx4 ) * ( dbld4 - dblx4 ) / 3 / 210000 / dbixiii ;
+        Double fx5 = tz * dbld5 * ( dbld5 - dblx5 ) * ( dbld5 - dblx5 ) / 3 / 210000 / dbixiv ;
+//        Double o2 = mlj1 * ( dbld1 - 2 * dblx1 / 3 - 2 * dblx2 / 3 ) / 210000 / dbixls + tz * ( dbld1 * dbld1 / 2 - 2 * dbld1 * dblx1 / 3 + dblx1 * dblx1 / 6 - dblx2 * dblx2 / 6 ) / 210000 / dbixls ;
+//        Double o3 = mlj2 * ( dbld2 - 2 * dblx2 / 3 - 2 * dblx3 / 3 ) / 210000 / dbixlsi + tz * ( dbld2 * dbld2 / 2 - 2 * dbld2 * dblx2 / 3 + dblx2 * dblx2 / 6 - dblx3 * dblx3 / 6 ) / 210000 / dbixlsi ;
+//        Double o4 = mlj3 * ( dbld3 - 2 * dblx3 / 3 - 2 * dblx4 / 3 ) / 210000 / dbixlsii + tz * ( dbld3 * dbld3 / 2 - 2 * dbld3 * dblx3 / 3 + dblx3 * dblx3 / 6 - dblx4 * dblx4 / 6 ) / 210000 / dbixlsii ;
+//        Double o5 = mlj4 * ( dbld4 - 2 * dblx4 / 3 - 2 * dblx5 / 3 ) / 210000 / dbixlsiii + tz * ( dbld4 * dbld4 / 2 - 2 * dbld4 * dblx4 / 3 + dblx4 * dblx4 / 6 - dblx5 * dblx5 / 6 ) / 210000 / dbixlsiii ;
+//        Double f = fx1 + fx2 + fx3 + fx4 + fx5 + o2 * dbhd2 + o3 * dbhd3 + o4 * dbhd4 + o5 * dbhd5 ;
+        Double nd = dbld * dbld / 1000000 ;
+        map.put("pdbp", pdbp);
+        map.put("tz", tz);
+        map.put("mlj1", mlj1);
+        map.put("mlj2", mlj2);
+        map.put("mlj3", mlj3);
+        map.put("mlj4", mlj4);
+        map.put("fx1", fx1);
+        map.put("fx2", fx2);
+        map.put("fx3", fx3);
+        map.put("fx4", fx4);
+        map.put("fx5", fx5);
+//        map.put("o2", CommonFunc.convertDoubleToString(o2));
+//        map.put("o2", o2);
+//        map.put("o3", o3);
+//        map.put("o4", o4);
+//        map.put("o5", o5);
+//        map.put("f", f);
+        map.put("nd", nd);
         return map;
     }
 
@@ -1114,68 +991,60 @@ public class FourJibEntity {
         map.put("dbb1", CommonFunc.convertDoubleToString(dbb1));
         map.put("dbm1", CommonFunc.convertDoubleToString(dbm1));
 
-        Double f = doubleMap.get("f");
-        Double nd = doubleMap.get("nd");
-        String dbb2 = takeSignByCompareNumber(f, nd);
-        String dbm2 = takeStringByCompareNumber(f, nd);
+        Double smaxi = doubleMap.get("smaxi");
+        Double ssqdi = doubleMap.get("ssqdi");
+        String dbb2 = takeSignByCompareNumber(smaxi, ssqdi);
+        String dbm2 = takeStringByCompareNumber(smaxi, ssqdi);
         map.put("dbb2", CommonFunc.convertDoubleToString(dbb2));
         map.put("dbm2", CommonFunc.convertDoubleToString(dbm2));
 
-        Double smaxi = doubleMap.get("smaxi");
-        Double ssqdi = doubleMap.get("ssqdi");
-        String dbb3 = takeSignByCompareNumber(smaxi, ssqdi);
-        String dbm3 = takeStringByCompareNumber(smaxi, ssqdi);
+        Double smaxii = doubleMap.get("smaxii");
+        Double ssqdii = doubleMap.get("ssqdii");
+        String dbb3 = takeSignByCompareNumber(smaxii, ssqdii);
+        String dbm3 = takeStringByCompareNumber(smaxii, ssqdii);
         map.put("dbb3", CommonFunc.convertDoubleToString(dbb3));
         map.put("dbm3", CommonFunc.convertDoubleToString(dbm3));
 
-        Double fi = doubleMap.get("fi");
-        Double ndi = doubleMap.get("ndi");
-        String dbb4 = takeSignByCompareNumber(fi, ndi);
-        String dbm4 = takeStringByCompareNumber(fi, ndi);
+        Double smaxiii = doubleMap.get("smaxiii");
+        Double ssqdiii = doubleMap.get("ssqdiii");
+        String dbb4 = takeSignByCompareNumber(smaxiii, ssqdiii);
+        String dbm4 = takeStringByCompareNumber(smaxiii, ssqdiii);
         map.put("dbb4", CommonFunc.convertDoubleToString(dbb4));
         map.put("dbm4", CommonFunc.convertDoubleToString(dbm4));
 
-        Double smaxii = doubleMap.get("smaxii");
-        Double ssqdii = doubleMap.get("ssqdii");
-        String dbb5 = takeSignByCompareNumber(smaxii, ssqdii);
-        String dbm5 = takeStringByCompareNumber(smaxii, ssqdii);
+        Double smaxiv = doubleMap.get("smaxiv");
+        Double ssqdiv = doubleMap.get("ssqdiv");
+        String dbb5 = takeSignByCompareNumber(smaxiv, ssqdiv);
+        String dbm5 = takeStringByCompareNumber(smaxiv, ssqdiv);
         map.put("dbb5", CommonFunc.convertDoubleToString(dbb5));
         map.put("dbm5", CommonFunc.convertDoubleToString(dbm5));
 
-        Double fii = doubleMap.get("fii");
-        Double ndii = doubleMap.get("ndii");
-        String dbb6 = takeSignByCompareNumber(fii, ndii);
-        String dbm6 = takeStringByCompareNumber(fii, ndii);
+        Double fx1 = doubleMap.get("fx1");
+        Double fx2 = doubleMap.get("fx2");
+        Double fx3 = doubleMap.get("fx3");
+        Double fx4 = doubleMap.get("fx4");
+        Double fx5 = doubleMap.get("fx5");
+        Double tz = doubleMap.get("tz");
+        Double mlj1 = doubleMap.get("mlj1");
+        Double mlj2 = doubleMap.get("mlj2");
+        Double mlj3 = doubleMap.get("mlj3");
+        Double mlj4 = doubleMap.get("mlj4");
+        Double o2 = mlj1 * ( dbld1 - 2 * dblx1 / 3 - 2 * dblx2 / 3 ) / 210000 / dbix + tz * ( dbld1 * dbld1 / 2 - 2 * dbld1 * dblx1 / 3 + dblx1 * dblx1 / 6 - dblx2 * dblx2 / 6 ) / 210000 / dbix ;
+        Double o3 = mlj2 * ( dbld2 - 2 * dblx2 / 3 - 2 * dblx3 / 3 ) / 210000 / dbixi + tz * ( dbld2 * dbld2 / 2 - 2 * dbld2 * dblx2 / 3 + dblx2 * dblx2 / 6 - dblx3 * dblx3 / 6 ) / 210000 / dbixi ;
+        Double o4 = mlj3 * ( dbld3 - 2 * dblx3 / 3 - 2 * dblx4 / 3 ) / 210000 / dbixii + tz * ( dbld3 * dbld3 / 2 - 2 * dbld3 * dblx3 / 3 + dblx3 * dblx3 / 6 - dblx4 * dblx4 / 6 ) / 210000 / dbixii ;
+        Double o5 = mlj4 * ( dbld4 - 2 * dblx4 / 3 - 2 * dblx5 / 3 ) / 210000 / dbixiii + tz * ( dbld4 * dbld4 / 2 - 2 * dbld4 * dblx4 / 3 + dblx4 * dblx4 / 6 - dblx5 * dblx5 / 6 ) / 210000 / dbixiii ;
+        Double f = fx1 + fx2 + fx3 + fx4 + fx5 + o2 * dbhd2 + o3 * dbhd3 + o4 * dbhd4 + o5 * dbhd5 ;
+        map.put("o2", CommonFunc.convertDoubleToString4(o2));
+        map.put("o3", CommonFunc.convertDoubleToString4(o3));
+        map.put("o4", CommonFunc.convertDoubleToString4(o4));
+        map.put("o5", CommonFunc.convertDoubleToString4(o5));
+        map.put("f", CommonFunc.convertDoubleToString(f));
+
+        Double nd = doubleMap.get("nd");
+        String dbb6 = takeSignByCompareNumber(f, nd);
+        String dbm6 = takeStringByCompareNumber(f, nd);
         map.put("dbb6", CommonFunc.convertDoubleToString(dbb6));
         map.put("dbm6", CommonFunc.convertDoubleToString(dbm6));
-
-        Double smaxiii = doubleMap.get("smaxiii");
-        Double ssqdiii = doubleMap.get("ssqdiii");
-        String dbb7 = takeSignByCompareNumber(smaxiii, ssqdiii);
-        String dbm7 = takeStringByCompareNumber(smaxiii, ssqdiii);
-        map.put("dbb7", CommonFunc.convertDoubleToString(dbb7));
-        map.put("dbm7", CommonFunc.convertDoubleToString(dbm7));
-
-        Double fiii = doubleMap.get("fiii");
-        Double ndiii = doubleMap.get("ndiii");
-        String dbb8 = takeSignByCompareNumber(fiii, ndiii);
-        String dbm8 = takeStringByCompareNumber(fiii, ndiii);
-        map.put("dbb8", CommonFunc.convertDoubleToString(dbb8));
-        map.put("dbm8", CommonFunc.convertDoubleToString(dbm8));
-
-        Double smaxiv = doubleMap.get("smaxiv");
-        Double ssqdiv = doubleMap.get("ssqdiv");
-        String dbb9 = takeSignByCompareNumber(smaxiv, ssqdiv);
-        String dbm9 = takeStringByCompareNumber(smaxiv, ssqdiv);
-        map.put("dbb9", CommonFunc.convertDoubleToString(dbb9));
-        map.put("dbm9", CommonFunc.convertDoubleToString(dbm9));
-
-        Double fiv = doubleMap.get("fiv");
-        Double ndiv = doubleMap.get("ndiv");
-        String dbb10 = takeSignByCompareNumber(fiv, ndiv);
-        String dbm10 = takeStringByCompareNumber(fiv, ndiv);
-        map.put("dbb10", CommonFunc.convertDoubleToString(dbb10));
-        map.put("dbm10", CommonFunc.convertDoubleToString(dbm10));
 
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));

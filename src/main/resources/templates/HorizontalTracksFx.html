@@ -77,7 +77,7 @@
             border-radius:25px;
         }
         .navbox{
-            top: 30%;;
+            top: 35%;;
             left:10px;
             display: block;
             position: fixed;
@@ -1287,68 +1287,105 @@
             <div style="width:460px;height:520px; font-size: 14px   ;">
                 <table id="pdf3tb">
                     <tr>
-                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+                        <td colspan="6" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
                     </tr>
                     <tr>
-                        <td style="width:40%;"><b>名称</b></td>
-                        <td style="width:30%;"><b>简支梁结果显示</b></td>
-                        <td style="width:30%;"><b>双跨梁结果显示</b></td>
-
+                        <td style="width:20%;"><b>名称</b></td>
+                        <td style="width:10%;"><b>标准值</b></td>
+                        <td colspan="2" style="width:35%;"><b>简支梁</b></td>
+                        <td colspan="2" style="width:35%;"><b>双跨梁</b></td>
                     </tr>
                     <tr>
-                        <td><b>轨道截面强度</b></td>
+                        <td><b>强度</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a2"></td>
                         <td id="u3"></td>
+                        <td id="b2"></td>
                         <td id="v3"></td>
                     </tr>
                     <tr>
-                        <td><b>侧向弯扭屈曲失稳</b></td>
+                        <td><b>侧向屈曲</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a3"></td>
                         <td id="u5"></td>
+                        <td id="b3"></td>
                         <td id="v5"></td>
                     </tr>
                     <tr>
-                        <td><b>轨道腹板屈曲失稳</b></td>
+                        <td><b>腹板屈曲</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a4"></td>
                         <td id="u7"></td>
+                        <td id="b4"></td>
                         <td id="v7"></td>
                     </tr>
                     <tr>
-                        <td><b>竖向轮载的复合应力</b></td>
+                        <td><b>复合应力</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a5"></td>
                         <td id="u9"></td>
+                        <td id="b5"></td>
                         <td id="v9"></td>
                     </tr>
                     <tr>
                         <td><b>竖向轮载</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a6"></td>
                         <td id="u11"></td>
+                        <td id="b6"></td>
                         <td id="v11"></td>
                     </tr>
                     <tr>
-                        <td><b>竖向轮载引起的腹板屈曲失稳</b></td>
+                        <td><b>轮载腹板屈曲</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a7"></td>
                         <td id="u13"></td>
+                        <td id="b7"></td>
                         <td id="v13"></td>
                     </tr>
                     <tr>
                         <td><b>腹板受压</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a8"></td>
                         <td id="u15"></td>
+                        <td id="b8"></td>
                         <td id="v15"></td>
                     </tr>
                     <tr>
                         <td><b>支承反力</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a9"></td>
                         <td id="u17"></td>
+                        <td id="b9"></td>
                         <td id="v17"></td>
                     </tr>
                     <tr>
-                        <td><b>支承反力引起的腹板屈曲失稳</b></td>
+                        <td><b>反力腹板屈曲</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a10"></td>
                         <td id="u19"></td>
+                        <td id="b10"></td>
                         <td id="v19"></td>
                     </tr>
                     <tr>
                         <td><b>接触应力</b></td>
+                        <td><b>≤1</b></td>
+                        <td id="a11"></td>
                         <td id="u21"></td>
+                        <td id="b11"></td>
                         <td id="v21"></td>
                     </tr>
                     <tr>
-                        <td><b>轨道挠度</b></td>
-                        <td id="u26"></td>
-                        <td id="v26"></td>
+                        <td rowspan="2"><b>轨道挠度</b></td>
+                        <td rowspan="2"><p>≤<span id="gdnd"></span>mm</p></td>
+                        <td><p><span id="fz"></span>mm</p></td>
+                        <td rowspan="2" id="u26"></td>
+                        <td><p><span id="fzs"></span>mm</p></td>
+                        <td rowspan="2" id="v26"></td>
+                    </tr>
+                    <tr>
+                        <td><p><span id="fy"></span>mm</p></td>
+                        <td><p><span id="fys"></span>mm</p></td>
                     </tr>
                 </table>
                 <div style="margin: 0 150px 0;">
