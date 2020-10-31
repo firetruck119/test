@@ -176,6 +176,7 @@
                     Object.keys(data).forEach(function (id) {
                         $("#" + id).text(data[id]);
                         if(data[id]=="不满足") $("#" + id).css("background-color","red");
+                        if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
                     })
                 }
             })
@@ -1047,7 +1048,7 @@
                                                                                             isCheck(false);changeType('Calculation')"/>
         <!--<input type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','IdlerWheel/getPDF');-->
                                                                                             <!--isCheck(true);changeType('Check')"/>-->
-        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','#aaa')"/>
     </div>
 
 <script>

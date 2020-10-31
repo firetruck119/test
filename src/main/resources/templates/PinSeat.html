@@ -595,7 +595,7 @@
                onclick="isCheck(false);$('form').attr('action','pinseatpdf1')"/>
         <input type="submit" form="form1" class="button" value="输出验证部分pdf"
                onclick="isCheck(true);$('form').attr('action','pinseatpdf1')"/>
-        <input type="reset" form="form1" value="重置"/>
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[class],#pdf3tb p[class]').text('').css('background-color','#aaa')"/>
     </div>
     <div class="navbox" style="text-align: left">
         <div style="width:550px;height:520px; font-size: 14px;">
@@ -685,6 +685,7 @@
                                 Object.keys(data).forEach(function (id) {
                                     $("." + id).text(data[id]);
                                     if(data[id]=="不满足") $("." + id).css("background-color","red");
+                                    if(data[id]=="满足") $("." + id).css("background-color","#aaa");
                                 })
                             }
                         })

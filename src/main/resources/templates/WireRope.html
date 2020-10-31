@@ -486,6 +486,7 @@
                                     if($('#'+id).css('display')!='none')
                                         $("#" + id).text(data[id]);
                                     if(data[id]=="不满足") $("#" + id).css("background-color","red");
+                                    if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
                                 })
                             }
                         })
@@ -755,7 +756,7 @@
     <input class="button" form="form1" type="reset" onclick="data.clear();
                                                             $('.diaochuan p[id]').text(' ');
                                                             $('.wuliaoqishengjigou p[id]').text(' ')
-    $('.diaochuan').css('display','table-row');  $('.wuliaoqishengjigou').css('display','table-row')" value="重置"/>
+    $('.diaochuan').css('display','table-row');  $('.wuliaoqishengjigou').css('display','table-row')" value="重置" />
 </div>
 </body>
 </html>
