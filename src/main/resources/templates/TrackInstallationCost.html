@@ -1156,10 +1156,6 @@
                         </select>
                     </td>
                 </tr>
-            </table>
-        </div>
-        <div style="width:600px;">
-            <table>
                 <tr>
                     <td style="width:40%;">埋件安装是否镂空作业</td>
                     <td>
@@ -1169,6 +1165,28 @@
                             <option value="非镂空作业">非镂空作业</option>
                         </select>
                     </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:600px;">
+            <table>
+                <tr>
+                    <td style="width:35%;padding:10px 0;;">名称</td>
+                    <td style="width:50%;">数值</td>
+                    <td style="width:15%;">单位</td>
+                </tr>
+                <tr>
+                    <td >轨道支墩跨距</td>
+                    <td ><input type="text" name="lkjk"/></td>
+                    <td >米</td>
+                </tr>
+                <tr>
+                    <td >估算埋件数量</td>
+                    <td ><input type="text" name="gdcbmjjssl"/></td>
+                    <td >件</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><b>注：实际埋件数量不得少于“估算埋件数量”</b></td>
                 </tr>
             </table>
         </div>
@@ -1330,6 +1348,8 @@
             <input type="text" name="gdcbgdsg" />
             <input type="text" name="gdcbmjsg" />
             <input type="text" name="gdcbhlsg" />
+
+            <input type="text" name="lkj" />
         </div>
         <input type="hidden" name="pdfType"/>
     </form>
@@ -1575,12 +1595,12 @@
                 return '无';
             }
             else {
-                if (cbgdcd >= 50) {
+                if ( cbgdcd >= 50 ) {
                     return '轨道≥50米';
-                } else if (cbgdcd < 50) {
-                    if (gdcbsgdq == "上海")
+                } else if ( cbgdcd < 50 ) {
+                    if ( gdcbsgdq == "上海" )
                         return '上海';
-                    else if (gdcbsgdq == "外地")
+                    else if ( gdcbsgdq == "外地" )
                         return '外地';
                 }
             }
@@ -1706,6 +1726,12 @@
         },
 
         //埋件安装成本
+        lkjk:function(){
+            return lkj / 1000 ;
+        },
+        gdcbmjjssl:function(){
+            return cbgdcd / lkjk ;
+        },
         gdcbmjdj:function(){
             return 20 ;
         },

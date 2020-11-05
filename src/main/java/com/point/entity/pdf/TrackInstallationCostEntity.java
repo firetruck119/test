@@ -44,6 +44,10 @@ public class TrackInstallationCostEntity {
     private Double gdcbgdtbxs;
     private Double gdcbgdjqgxs;
 
+    private Double lkj;
+    private Double lkjk;
+    private Double gdcbmjjssl;
+
     //    轨道安装单价
     private Double gdcbgdwbcbdj;
 
@@ -171,6 +175,10 @@ public class TrackInstallationCostEntity {
         map.put("gdcbgdjqgdjb", CommonFunc.convertDoubleToString(gdcbgdjqgdjb));
         map.put("gdcbgdtbxs", CommonFunc.convertDoubleToString(gdcbgdtbxs));
         map.put("gdcbgdjqgxs", CommonFunc.convertDoubleToString(gdcbgdjqgxs));
+
+        map.put("lkj", CommonFunc.convertDoubleToString(lkj));
+        map.put("lkjk", CommonFunc.convertDoubleToString(lkjk));
+        map.put("gdcbmjjssl", CommonFunc.convertDoubleToString(gdcbmjjssl));
 
         //       轨道安装单价
         map.put("gdcbgdwbcbdj", CommonFunc.convertDoubleToString(gdcbgdwbcbdj));
