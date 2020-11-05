@@ -439,12 +439,6 @@
                     <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
-                    <td ><b>吊臂后支撑点至臂端的距离</b></td>
-                    <td ><p><i>L</i></p></td>
-                    <td ><input type="text" name="dbld"/></td>
-                    <td >mm</td>
-                </tr>
-                <tr>
                     <td ><b>第1节臂搭接长度</b></td>
                     <td ><p><i>l<sub>1</sub></i></p></td>
                     <td ><input type="text" name="dblx1"/></td>
@@ -490,6 +484,12 @@
                     <td ><b>第2节臂端部到臂端距离</b></td>
                     <td ><p><i>H<sub>3</sub></i></p></td>
                     <td ><input type="text" name="dbhd3"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂后支撑点至臂端的距离</b></td>
+                    <td ><p><i>L</i></p></td>
+                    <td ><input type="text" name="dbld"/></td>
                     <td >mm</td>
                 </tr>
             </table>
@@ -1579,23 +1579,28 @@
 
         //挠度
         dbld:function(){
-            return ( lbd - ldcgh + dblx1 / 2000 ) * 1000 ;
+            return (( lbd - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) + dblx1 / 2000 ) * 1000 ;
         },
         dblx1:function(){
-            if( lbd > 30 ){
-                return 1400 ;
-            }else if ( lbd >= 0 && lbd <= 30 ) {
-                return 1200 ;
+            if ( dbyj != 0){
+                return ' ';
+            }
+            else if ( dbyj == 0) {
+                if (lbd > 30) {
+                    return 1400;
+                } else if (lbd >= 0 && lbd <= 30) {
+                    return 1200;
+                }
             }
         },
         dblx2:function(){
-            return ( lbd - lbx + 0.67 ) * 1000 / 4 ;
+            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
         },
         dblx3:function(){
             return dblx2 ;
         },
         dbld1:function(){
-            return ( lbx - ldcgh - 0.67 + dblx1 / 2000 ) * 1000 ;
+            return (( lbx - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) - 0.67 + dblx1 / 2000 ) * 1000 ;
         },
         dbld2:function(){
             return 3 * dblx2 ;
@@ -1743,7 +1748,7 @@
             return lshlc ;
         },
         lc4:function(){
-            return ( mbgj * ( dbld1 - dblx1 ) / 2000 + mbmj * ( dbld1 - dblx1 ) * ( dbld1 - dblx1 ) / 2000000 ) / m4jbcq ;
+            return ( mbgj * ( dbld1 - dblx1 ) / 2000 + mbmj * ( dbld1 - dblx1 ) * ( dbld1 - dblx1 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m4jbcq ;
         },
         lc5:function(){
             if( m5db == 0 ){
@@ -1753,10 +1758,10 @@
             }
         },
         lc6:function(){
-            return ( mbg1 * ( dbld1 - dblx1 + dbld2 - dblx2 ) / 2000 + mbg1 * ( dbld1 - dblx1 - dblx2 ) / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) / m6db ;
+            return ( mbg1 * ( dbld1 - dblx1 + dbld2 - dblx2 ) / 2000 + mbg1 * ( dbld1 - dblx1 - dblx2 ) / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6db ;
         },
         lc7:function(){
-            return ( mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) / m7db ;
+            return ( mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m7db ;
         },
 
         lslx:function(){
@@ -1775,43 +1780,43 @@
             return lc3 ;
         },
         lx4:function(){
-            return ( dbld1 - dblx1 ) / 2000 ;
+            return ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
         },
         lx5:function(){
             return lc5 ;
         },
         lx6:function(){
-            return ( dbld1 - dblx1 + ( dbld2 - dblx2 ) / 2 ) / 1000 ;
+            return ( dbld1 - dblx1 + ( dbld2 - dblx2 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lx7:function(){
-            return ( dbld1 - dblx1 + dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) / 1000 ;
+            return ( dbld1 - dblx1 + dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
 
         //一臂
         lslci:function(){
-            return lslc - ( dbld1 - dblx1 ) / 1000 ;
+            return lslc - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lshlci:function(){
-            return lshlc - ( dbld1 - dblx1 ) / 1000 ;
+            return lshlc - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc1i:function(){
-            return lc1 - ( dbld1 - dblx1 ) / 1000 ;
+            return lc1 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc2i:function(){
             if( m2 == 0 ){
                 return 0 ;
             }else {
-                return lc2 - ( dbld1 - dblx1 ) / 1000 ;
+                return lc2 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
             }
         },
         lc3i:function(){
-            return lc3 - ( dbld1 - dblx1 ) / 1000 ;
+            return lc3 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc6i:function(){
-            return ( mbg1 * ( dbld2 - dblx2 ) / 2000 + mbm1 * ( dbld2 - dblx2 ) * ( dbld2 - dblx2 ) / 2000000 ) / m6dbxt  ;
+            return ( mbg1 * ( dbld2 - dblx2 ) / 2000 + mbm1 * ( dbld2 - dblx2 ) * ( dbld2 - dblx2 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6dbxt  ;
         },
         lc7i:function(){
-            return lc7 - ( dbld1 - dblx1 ) / 1000 ;
+            return lc7 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
 
         lslxi:function(){
@@ -1830,34 +1835,34 @@
             return lc3i ;
         },
         lx6i:function(){
-            return ( dbld2 - dblx2 ) / 2000 ;
+            return ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
         },
         lx7i:function(){
-            return ( dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) / 1000 ;
+            return ( dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
 
         //二臂
         lslcii:function(){
-            return lslci - ( dbld2 - dblx2 ) / 1000 ;
+            return lslci - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lshlcii:function(){
-            return lshlci - ( dbld2 - dblx2 ) / 1000 ;
+            return lshlci - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc1ii:function(){
-            return lc1i - ( dbld2 - dblx2 ) / 1000 ;
+            return lc1i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc2ii:function(){
             if( m2 == 0 ){
                 return 0 ;
             }else {
-                return lc2i - ( dbld2 - dblx2 ) / 1000 ;
+                return lc2i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
             }
         },
         lc3ii:function(){
-            return lc3i - ( dbld2 - dblx2 ) / 1000 ;
+            return lc3i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc7ii:function(){
-            return ( mbg2 * ( dbld3 - dblx3 ) / 2000 + mbm2 * ( dbld3 - dblx3 ) * ( dbld3 - dblx3 ) / 2000000 ) / m7dbxt  ;
+            return ( mbg2 * ( dbld3 - dblx3 ) / 2000 + mbm2 * ( dbld3 - dblx3 ) * ( dbld3 - dblx3 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m7dbxt  ;
         },
 
         lslxii:function(){
@@ -1876,7 +1881,7 @@
             return lc3ii ;
         },
         lx7ii:function(){
-            return ( dbld3 - dblx3 ) / 2000 ;
+            return ( dbld3 - dblx3 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
         },
     };
 
