@@ -38,6 +38,9 @@ public class OneJibWheelEntity {
     private Double dbjbxglr;
     private Double db1bshdlr;
 
+    //    提示提醒
+    private String grutstx;
+
     //    平行吊臂方向距离
     private Double dblx1;
     private Double dblx2;
@@ -134,6 +137,8 @@ public class OneJibWheelEntity {
         map.put("mbm1", CommonFunc.convertDoubleToString(mbm1));
         map.put("dbjbxglr", CommonFunc.convertDoubleToString(dbjbxglr));
         map.put("db1bshdlr", CommonFunc.convertDoubleToString(db1bshdlr));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("dblx1", CommonFunc.convertDoubleToString(dblx1));
         map.put("dblx2", CommonFunc.convertDoubleToString(dblx2));

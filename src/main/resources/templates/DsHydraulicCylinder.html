@@ -523,7 +523,7 @@
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.擦窗机各部件载荷参数</b></td>
                 </tr>
                 <tr>
-                    <td colspan="7">
+                    <td colspan="4">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
                             <img alt="擦窗机各部件载荷示意图"src="/image/Tensile/dsyygtu2.png" height="200px" id="dsyygtu2" name="dsyygtu2" >
                             <input type="hidden" value="tu_dsyygtu2.png"/>
@@ -532,7 +532,7 @@
                 </tr>
                 <tr>
                     <td style="padding:10px 0"><b>擦窗机各部件载荷示意图</b></td>
-                    <td colspan="6"><input class="image" type="file" name="dsyygtu2" accept="image/*"
+                    <td colspan="4"><input class="image" type="file" name="dsyygtu2" accept="image/*"
                                            oninput="showImage(this,'dsyygtu2')"/></td>
                 </tr>
                 <tr>
@@ -578,6 +578,9 @@
                     <td><p><i>H<sub>wll</sub></i></p></td>
                     <td><input type='text' name="hwll"/></td>
                     <td>kg</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><input type='text' name="grutstx"/></td>
                 </tr>
                 <tr>
                     <td><b>物料起升机构钢丝绳自重</b></td>
@@ -1114,6 +1117,27 @@
         dsdlr:function(){
             return dldcw / 20 ;
         },
+
+        grutstx: function () {
+            if ( gruModel == "GRU285" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为600kg';
+            } else if ( gruModel == "GRU295" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为750kg';
+            } else if ( gruModel == "GRU313" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为1000kg';
+            } else if ( gruModel == "无" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '无';
+            }
+        },
+
 
         swp: function(){
             if( dcModel =='其它')

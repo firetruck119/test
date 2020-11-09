@@ -56,6 +56,9 @@ public class DsHydraulicCylinderEntity {
     private Double acx2;
     private Double acx5;
 
+//    提示提醒
+    private String grutstx;
+
     private Double swp;
     private Double r1;
     private Double mwr;
@@ -190,6 +193,8 @@ public class DsHydraulicCylinderEntity {
         map.put("acx1", CommonFunc.convertDoubleToString(acx1));
         map.put("acx2", CommonFunc.convertDoubleToString(acx2));
         map.put("acx5", CommonFunc.convertDoubleToString(acx5));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
