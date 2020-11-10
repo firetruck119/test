@@ -254,7 +254,7 @@ public class OneJibWheelEntity {
         //        伸缩机构机构推力
         Double f1 = 2 * ngl11 * 0.05 / dbjbxglr ;
         Double f2 = 2 * ngl21 * 0.05 / db1bshdlr ;
-        Double tjs = ( tsl + tshl + ( m1 + m2 + m3 + m6db ) * Math.sin( dbyj / 180 * Math.PI ) ) * 10 + f1 +f2 ;
+        Double tjs = ( tsl + tshl + mlz * Math.sin( dbyj / 180 * Math.PI ) ) * 10 + f1 +f2 ;
         Double tn = nssjg * fssjg ;
         Double glbz5 = tjs / tn ;
         map.put("f1", f1);
