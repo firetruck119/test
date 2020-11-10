@@ -73,22 +73,38 @@ public class PdfCreater {
             }
         }
     }
-
-    public byte[] reFileToByteArray() {
-        // TODO Auto-generated method stub
-        return null;
-    }
     /**
      * 根据pdf模板填充相应的值： 1，如果是根据excel填充的话，在用Acrobat生成PDF模板前，
      * Excel单元格格式最好设置成文本，否则pdf填充值时可能中文无法显示
      */
     public byte[] fromPDFTempletToPdfWithValue_New(Map<String, String> textMap, Map<String, File> imageMap, String fileName) {
+        PdfReader reader=readFile(fileName);
+        return setValue(textMap,imageMap,reader);
+    }
+    public byte[] fromPDFTempletToPdfWithValue_Drawing(Map<String, String> textMap, Map<String, File> imageMap, String fileName) throws IOException {
+        PdfReader reader;
+        operationLog.writeOperateLog(fileName);
+        if (MyEnv.isLocal()) {
+            try {
+                reader = new PdfReader("C://resource/drawing/" + fileName + ".pdf");
+            } catch (Exception ex) {
+                reader = new PdfReader("/root/drawing/" + fileName + ".pdf");
+            }
+        } else {
+            try {
+                reader = new PdfReader("/root/drawing/" + fileName + ".pdf");
+            } catch (Exception ex) {
+                reader = new PdfReader("C://resource/drawing/" + fileName + ".pdf");
+            }
+        }
+        return setValue(textMap,imageMap,reader);
+    }
+    private byte[] setValue(Map<String, String> textMap, Map<String, File> imageMap, PdfReader reader) {
         ByteArrayOutputStream bos = null;
         PdfStamper ps = null;
         Document document = null;
         byte[] result = null;
         try {
-            PdfReader reader = getReaderByFileName(fileName);
             bos = new ByteArrayOutputStream();
             ps = new PdfStamper(reader, bos);
             /**
@@ -133,6 +149,18 @@ public class PdfCreater {
         }
         return result;//返回一个直接数组
     }
+
+    private PdfReader readFile(String fileName) {
+        PdfReader reader=null;
+        try {
+            reader=  getReaderByFileName(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            return reader;
+        }
+    }
+
     public byte[] fromPDFTempletToPdfWithValue(Map<String, String> textMap, Map<String, Image> imageMap, String fileName) {
         ByteArrayOutputStream bos = null;
         PdfStamper ps = null;

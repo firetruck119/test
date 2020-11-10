@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.point.mapper.DrawingtableColumnnameDao">
+  <resultMap id="BaseResultMap" type="com.point.entity.DrawingtableColumnname">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="drawingName" jdbcType="CHAR" property="drawingname" />
+    <result column="columnNo" jdbcType="CHAR" property="columnno" />
+    <result column="columnName" jdbcType="CHAR" property="columnname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, drawingName, columnNo, columnName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from drawingtable_columnname
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from drawingtable_columnname
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.point.entity.DrawingtableColumnname" useGeneratedKeys="true">
+    insert into drawingtable_columnname (drawingName, columnNo, columnName
+      )
+    values (#{drawingname,jdbcType=CHAR}, #{columnno,jdbcType=OTHER}, #{columnname,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.point.entity.DrawingtableColumnname" useGeneratedKeys="true">
+    insert into drawingtable_columnname
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="drawingname != null">
+        drawingName,
+      </if>
+      <if test="columnno != null">
+        columnNo,
+      </if>
+      <if test="columnname != null">
+        columnName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="drawingname != null">
+        #{drawingname,jdbcType=CHAR},
+      </if>
+      <if test="columnno != null">
+        #{columnno,jdbcType=OTHER},
+      </if>
+      <if test="columnname != null">
+        #{columnname,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.DrawingtableColumnname">
+    update drawingtable_columnname
+    <set>
+      <if test="drawingname != null">
+        drawingName = #{drawingname,jdbcType=CHAR},
+      </if>
+      <if test="columnno != null">
+        columnNo = #{columnno,jdbcType=OTHER},
+      </if>
+      <if test="columnname != null">
+        columnName = #{columnname,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.point.entity.DrawingtableColumnname">
+    update drawingtable_columnname
+    set drawingName = #{drawingname,jdbcType=CHAR},
+      columnNo = #{columnno,jdbcType=OTHER},
+      columnName = #{columnname,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <delete id="deleteByDrawingNane" parameterType="java.lang.String">
+    delete from drawingtable_columnname
+    where drawingname = #{name,jdbcType=CHAR}
+  </delete>
+
+  <select id="selectColumnsByDrawingName" resultType="com.point.entity.DrawingtableColumnname">
+    select * from drawingtable_columnname where drawingname = #{name,jdbcType=CHAR}
+  </select>
+</mapper>

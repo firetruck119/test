@@ -97,36 +97,6 @@ public class PDFController {
     }
 
 
-    @GetMapping("/pdf/getImg")
-    public void getImg2(HttpServletRequest request, HttpServletResponse response, String filename)
-            throws IOException {
-        FileInputStream fis = null;
-        OutputStream os = null;
-        try {
-            try {
-                fis = new FileInputStream("/root/image/" + filename);
-            } catch (Exception e) {
-                fis = new FileInputStream("D:/image/" + filename);
-            }
-            os = response.getOutputStream();
-            int count = 0;
-            byte[] buffer = new byte[1024 * 8];
-            while ((count = fis.read(buffer)) != -1) {
-                os.write(buffer, 0, count);
-                os.flush();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                fis.close();
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private String getRandomName() {
         String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random=new Random();

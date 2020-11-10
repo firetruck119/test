@@ -9,25 +9,19 @@ import java.util.Map;
 @Data
 public class DijiaDrawingEntity {
 
-    private Double lg;
-    private Double ll;
-    private Double lzpxj;
+    private String lg;
+    private String ll;
+    private String lzpxj;
 
-    private String djth;
-    private String djhzxsModel;
-    private String hzzcModel;
-    private String yxjgxzModel;
-    private String djbdbModel;
-    private String djlxModel;
-    private String qsjgModel;
+    private String djhzxs;
+    private String hzzc;
+    private String yxjgxz;
+    private String djbdb;
+    private String djlx;
+    private String djqsjg;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
-        map.put("lg", CommonFunc.convertDoubleToString(lg));
-        map.put("ll", CommonFunc.convertDoubleToString(ll));
-        map.put("lzpxj", CommonFunc.convertDoubleToString(lzpxj));
-        map.put("djth", CommonFunc.convertDoubleToString(djth));
-
         map.putAll(takeStringMapForPdf(type));
         return map;
     }

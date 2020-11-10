@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.point.mapper.DrawingtableDao">
+    <resultMap id="BaseResultMap" type="com.point.entity.Drawingtable">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="drawingType" jdbcType="CHAR" property="drawingtype"/>
+        <result column="drawingName" jdbcType="CHAR" property="drawingname"/>
+        <result column="column_1" jdbcType="OTHER" property="column1"/>
+        <result column="column_2" jdbcType="OTHER" property="column2"/>
+        <result column="column_3" jdbcType="OTHER" property="column3"/>
+        <result column="column_4" jdbcType="OTHER" property="column4"/>
+        <result column="column_5" jdbcType="OTHER" property="column5"/>
+        <result column="column_6" jdbcType="OTHER" property="column6"/>
+        <result column="column_7" jdbcType="OTHER" property="column7"/>
+        <result column="column_8" jdbcType="OTHER" property="column8"/>
+        <result column="column_9" jdbcType="OTHER" property="column9"/>
+        <result column="column_10" jdbcType="OTHER" property="column10"/>
+        <result column="column_11" jdbcType="OTHER" property="column11"/>
+        <result column="column_12" jdbcType="OTHER" property="column12"/>
+        <result column="column_13" jdbcType="OTHER" property="column13"/>
+        <result column="column_14" jdbcType="OTHER" property="column14"/>
+        <result column="column_15" jdbcType="OTHER" property="column15"/>
+        <result column="column_16" jdbcType="OTHER" property="column16"/>
+        <result column="column_17" jdbcType="OTHER" property="column17"/>
+        <result column="column_18" jdbcType="OTHER" property="column18"/>
+        <result column="column_19" jdbcType="OTHER" property="column19"/>
+        <result column="column_20" jdbcType="OTHER" property="column20"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, drawingType, drawingName, column_1, column_2, column_3, column_4, column_5, column_6,
+    column_7, column_8, column_9, column_10, column_11, column_12, column_13, column_14, 
+    column_15, column_16, column_17, column_18, column_19, column_20
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from drawingtable
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="selectTableByDrawingName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from drawingtable
+        where drawingname = #{name,jdbcType=CHAR}
+    </select>
+    <select id="selectByTable" parameterType="com.point.entity.Drawingtable" resultType="java.lang.String">
+        select drawingtype
+        from drawingtable
+        where 1=1
+        <if test="drawingname != null">
+            and drawingName = #{drawingname,jdbcType=CHAR}
+        </if>
+        <if test="column1 != null">
+            and column_1 = #{column1,jdbcType=OTHER}
+        </if>
+        <if test="column2 != null">
+            and column_2 = #{column2,jdbcType=OTHER}
+        </if>
+        <if test="column3 != null">
+            and column_3 = #{column3,jdbcType=OTHER}
+        </if>
+        <if test="column4 != null">
+            and column_4 = #{column4,jdbcType=OTHER}
+        </if>
+        <if test="column5 != null">
+            and column_5 = #{column5,jdbcType=OTHER}
+        </if>
+        <if test="column6 != null">
+            and column_6 = #{column6,jdbcType=OTHER}
+        </if>
+        <if test="column7 != null">
+            and column_7 = #{column7,jdbcType=OTHER}
+        </if>
+        <if test="column8 != null">
+            and column_8 = #{column8,jdbcType=OTHER}
+        </if>
+        <if test="column9 != null">
+            and column_9 = #{column9,jdbcType=OTHER}
+        </if>
+        <if test="column10 != null">
+            and column_10 = #{column10,jdbcType=OTHER}
+        </if>
+        <if test="column11 != null">
+            and column_11 = #{column11,jdbcType=OTHER}
+        </if>
+        <if test="column12 != null">
+            and column_12 = #{column12,jdbcType=OTHER}
+        </if>
+        <if test="column13 != null">
+            and column_13 = #{column13,jdbcType=OTHER}
+        </if>
+        <if test="column14 != null">
+            and column_14 = #{column14,jdbcType=OTHER}
+        </if>
+        <if test="column15 != null">
+            and column_15 = #{column15,jdbcType=OTHER}
+        </if>
+        <if test="column16 != null">
+            and column_16 = #{column16,jdbcType=OTHER}
+        </if>
+        <if test="column17 != null">
+            and column_17 = #{column17,jdbcType=OTHER}
+        </if>
+        <if test="column18 != null">
+            and column_18 = #{column18,jdbcType=OTHER}
+        </if>
+        <if test="column19 != null">
+            and column_19 = #{column19,jdbcType=OTHER}
+        </if>
+        <if test="column20 != null">
+            and column_20 = #{column20,jdbcType=OTHER}
+        </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from drawingtable
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.point.entity.Drawingtable"
+            useGeneratedKeys="true">
+    insert into drawingtable (drawingType, drawingName, column_1, 
+      column_2, column_3, column_4, 
+      column_5, column_6, column_7, 
+      column_8, column_9, column_10, 
+      column_11, column_12, column_13, 
+      column_14, column_15, column_16, 
+      column_17, column_18, column_19, 
+      column_20)
+    values (#{drawingtype,jdbcType=CHAR}, #{drawingname,jdbcType=CHAR}, #{column1,jdbcType=OTHER}, 
+      #{column2,jdbcType=OTHER}, #{column3,jdbcType=OTHER}, #{column4,jdbcType=OTHER}, 
+      #{column5,jdbcType=OTHER}, #{column6,jdbcType=OTHER}, #{column7,jdbcType=OTHER}, 
+      #{column8,jdbcType=OTHER}, #{column9,jdbcType=OTHER}, #{column10,jdbcType=OTHER}, 
+      #{column11,jdbcType=OTHER}, #{column12,jdbcType=OTHER}, #{column13,jdbcType=OTHER}, 
+      #{column14,jdbcType=OTHER}, #{column15,jdbcType=OTHER}, #{column16,jdbcType=OTHER}, 
+      #{column17,jdbcType=OTHER}, #{column18,jdbcType=OTHER}, #{column19,jdbcType=OTHER}, 
+      #{column20,jdbcType=OTHER})
+  </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.point.entity.Drawingtable"
+            useGeneratedKeys="true">
+        insert into drawingtable
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="drawingtype != null">
+                drawingType,
+            </if>
+            <if test="drawingname != null">
+                drawingName,
+            </if>
+            <if test="column1 != null">
+                column_1,
+            </if>
+            <if test="column2 != null">
+                column_2,
+            </if>
+            <if test="column3 != null">
+                column_3,
+            </if>
+            <if test="column4 != null">
+                column_4,
+            </if>
+            <if test="column5 != null">
+                column_5,
+            </if>
+            <if test="column6 != null">
+                column_6,
+            </if>
+            <if test="column7 != null">
+                column_7,
+            </if>
+            <if test="column8 != null">
+                column_8,
+            </if>
+            <if test="column9 != null">
+                column_9,
+            </if>
+            <if test="column10 != null">
+                column_10,
+            </if>
+            <if test="column11 != null">
+                column_11,
+            </if>
+            <if test="column12 != null">
+                column_12,
+            </if>
+            <if test="column13 != null">
+                column_13,
+            </if>
+            <if test="column14 != null">
+                column_14,
+            </if>
+            <if test="column15 != null">
+                column_15,
+            </if>
+            <if test="column16 != null">
+                column_16,
+            </if>
+            <if test="column17 != null">
+                column_17,
+            </if>
+            <if test="column18 != null">
+                column_18,
+            </if>
+            <if test="column19 != null">
+                column_19,
+            </if>
+            <if test="column20 != null">
+                column_20,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="drawingtype != null">
+                #{drawingtype,jdbcType=CHAR},
+            </if>
+            <if test="drawingname != null">
+                #{drawingname,jdbcType=CHAR},
+            </if>
+            <if test="column1 != null">
+                #{column1,jdbcType=OTHER},
+            </if>
+            <if test="column2 != null">
+                #{column2,jdbcType=OTHER},
+            </if>
+            <if test="column3 != null">
+                #{column3,jdbcType=OTHER},
+            </if>
+            <if test="column4 != null">
+                #{column4,jdbcType=OTHER},
+            </if>
+            <if test="column5 != null">
+                #{column5,jdbcType=OTHER},
+            </if>
+            <if test="column6 != null">
+                #{column6,jdbcType=OTHER},
+            </if>
+            <if test="column7 != null">
+                #{column7,jdbcType=OTHER},
+            </if>
+            <if test="column8 != null">
+                #{column8,jdbcType=OTHER},
+            </if>
+            <if test="column9 != null">
+                #{column9,jdbcType=OTHER},
+            </if>
+            <if test="column10 != null">
+                #{column10,jdbcType=OTHER},
+            </if>
+            <if test="column11 != null">
+                #{column11,jdbcType=OTHER},
+            </if>
+            <if test="column12 != null">
+                #{column12,jdbcType=OTHER},
+            </if>
+            <if test="column13 != null">
+                #{column13,jdbcType=OTHER},
+            </if>
+            <if test="column14 != null">
+                #{column14,jdbcType=OTHER},
+            </if>
+            <if test="column15 != null">
+                #{column15,jdbcType=OTHER},
+            </if>
+            <if test="column16 != null">
+                #{column16,jdbcType=OTHER},
+            </if>
+            <if test="column17 != null">
+                #{column17,jdbcType=OTHER},
+            </if>
+            <if test="column18 != null">
+                #{column18,jdbcType=OTHER},
+            </if>
+            <if test="column19 != null">
+                #{column19,jdbcType=OTHER},
+            </if>
+            <if test="column20 != null">
+                #{column20,jdbcType=OTHER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.point.entity.Drawingtable">
+        update drawingtable
+        <set>
+            <if test="drawingtype != null">
+                drawingType = #{drawingtype,jdbcType=CHAR},
+            </if>
+            <if test="drawingname != null">
+                drawingName = #{drawingname,jdbcType=CHAR},
+            </if>
+            <if test="column1 != null">
+                column_1 = #{column1,jdbcType=OTHER},
+            </if>
+            <if test="column2 != null">
+                column_2 = #{column2,jdbcType=OTHER},
+            </if>
+            <if test="column3 != null">
+                column_3 = #{column3,jdbcType=OTHER},
+            </if>
+            <if test="column4 != null">
+                column_4 = #{column4,jdbcType=OTHER},
+            </if>
+            <if test="column5 != null">
+                column_5 = #{column5,jdbcType=OTHER},
+            </if>
+            <if test="column6 != null">
+                column_6 = #{column6,jdbcType=OTHER},
+            </if>
+            <if test="column7 != null">
+                column_7 = #{column7,jdbcType=OTHER},
+            </if>
+            <if test="column8 != null">
+                column_8 = #{column8,jdbcType=OTHER},
+            </if>
+            <if test="column9 != null">
+                column_9 = #{column9,jdbcType=OTHER},
+            </if>
+            <if test="column10 != null">
+                column_10 = #{column10,jdbcType=OTHER},
+            </if>
+            <if test="column11 != null">
+                column_11 = #{column11,jdbcType=OTHER},
+            </if>
+            <if test="column12 != null">
+                column_12 = #{column12,jdbcType=OTHER},
+            </if>
+            <if test="column13 != null">
+                column_13 = #{column13,jdbcType=OTHER},
+            </if>
+            <if test="column14 != null">
+                column_14 = #{column14,jdbcType=OTHER},
+            </if>
+            <if test="column15 != null">
+                column_15 = #{column15,jdbcType=OTHER},
+            </if>
+            <if test="column16 != null">
+                column_16 = #{column16,jdbcType=OTHER},
+            </if>
+            <if test="column17 != null">
+                column_17 = #{column17,jdbcType=OTHER},
+            </if>
+            <if test="column18 != null">
+                column_18 = #{column18,jdbcType=OTHER},
+            </if>
+            <if test="column19 != null">
+                column_19 = #{column19,jdbcType=OTHER},
+            </if>
+            <if test="column20 != null">
+                column_20 = #{column20,jdbcType=OTHER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.point.entity.Drawingtable">
+    update drawingtable
+    set drawingType = #{drawingtype,jdbcType=CHAR},
+      drawingName = #{drawingname,jdbcType=CHAR},
+      column_1 = #{column1,jdbcType=OTHER},
+      column_2 = #{column2,jdbcType=OTHER},
+      column_3 = #{column3,jdbcType=OTHER},
+      column_4 = #{column4,jdbcType=OTHER},
+      column_5 = #{column5,jdbcType=OTHER},
+      column_6 = #{column6,jdbcType=OTHER},
+      column_7 = #{column7,jdbcType=OTHER},
+      column_8 = #{column8,jdbcType=OTHER},
+      column_9 = #{column9,jdbcType=OTHER},
+      column_10 = #{column10,jdbcType=OTHER},
+      column_11 = #{column11,jdbcType=OTHER},
+      column_12 = #{column12,jdbcType=OTHER},
+      column_13 = #{column13,jdbcType=OTHER},
+      column_14 = #{column14,jdbcType=OTHER},
+      column_15 = #{column15,jdbcType=OTHER},
+      column_16 = #{column16,jdbcType=OTHER},
+      column_17 = #{column17,jdbcType=OTHER},
+      column_18 = #{column18,jdbcType=OTHER},
+      column_19 = #{column19,jdbcType=OTHER},
+      column_20 = #{column20,jdbcType=OTHER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <delete id="deleteByDrawingNane" parameterType="java.lang.String">
+    delete  from drawingtable
+    where drawingname = #{name,jdbcType=CHAR}
+  </delete>
+
+</mapper>

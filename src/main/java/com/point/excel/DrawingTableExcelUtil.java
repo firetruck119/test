@@ -1,35 +1,27 @@
 package com.point.excel;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONPObject;
-import com.alibaba.fastjson.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.point.common.Consts;
 import com.point.common.CustomerException;
-import com.point.common.Logger;
-import com.point.entity.ProjectColumnDefinition;
-import com.point.entity.ProjectData;
+import com.point.entity.Drawing;
+import com.point.entity.Drawingtable;
+import com.point.entity.DrawingtableColumnname;
 import com.point.newPDF.entity.select.DataTableEntity;
 import com.point.newPDF.entity.select.TableColumnEntity;
-import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import org.thymeleaf.util.StringUtils;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
-public class DataTableExcelUtil {
+public class DrawingTableExcelUtil {
     /**
      * 检验文件是否有效
      *
@@ -77,15 +69,63 @@ public class DataTableExcelUtil {
         }
         return workbook;
     }
-    public DataTableEntity readExcel(MultipartFile file,DataTableEntity entity) throws Exception {
+
+    public List<Drawingtable> readExcel(MultipartFile file, String drawingName) throws Exception {
         // 获得Workbook工作薄对象
         Workbook workbook = getWorkBook(file);
         //检查是否是excel文件
         checkFile(file);
         // 获取第一个张表
         Sheet sheet = workbook.getSheetAt(0);
+        //判断后续表行是否已经没有数据了
         Row rowS, rowN; // 获取行
-        Map<String, TableColumnEntity> columnMap = new HashMap<>();
+        List<Drawingtable> columnMap = new ArrayList<>();
+        Iterator<Row> ir = sheet.rowIterator();
+        Iterator<Cell> ic;
+        if (ir.hasNext())
+            rowS = ir.next();
+        if (ir.hasNext())
+            rowS = ir.next();
+        try{
+            while (ir.hasNext()) {
+                rowS = ir.next();
+                ic = rowS.cellIterator();
+                Cell colname = ic.next();
+                if (colname.getCellType() == Cell.CELL_TYPE_BLANK)
+                    continue;
+                colname.setCellType(Cell.CELL_TYPE_STRING);
+                Drawingtable table =new Drawingtable();
+                table.setDrawingname(drawingName);
+                table.setDrawingtype(colname.toString());
+                Class clazz = table.getClass();
+                int i=0;
+                while (ic.hasNext()) {
+                    Cell col = ic.next();
+                    if (col.getCellType() == Cell.CELL_TYPE_BLANK)
+                        continue;
+                    Field field=clazz.getDeclaredField("column"+ ++i);
+                    field.setAccessible(true);
+                    col.setCellType(Cell.CELL_TYPE_STRING);
+                    field.set(table,col.toString());
+                }
+                columnMap.add(table);
+            }
+        }catch (NoSuchElementException e){
+
+        }
+        return columnMap;
+    }
+
+    public List<DrawingtableColumnname> readHead(MultipartFile file,String drawingName) throws Exception {
+        // 获得Workbook工作薄对象
+        Workbook workbook = getWorkBook(file);
+        //检查是否是excel文件
+        checkFile(file);
+        // 获取第一个张表
+        Sheet sheet = workbook.getSheetAt(0);
+        //判断后续表行是否已经没有数据了
+        Row rowS, rowN; // 获取行
+        List<DrawingtableColumnname> columnMap = new ArrayList<>();
         Iterator<Row> ir = sheet.rowIterator();
         Iterator<Cell> ic;
         if (ir.hasNext())
@@ -100,63 +140,40 @@ public class DataTableExcelUtil {
                 continue;
             else if (col.getColumnIndex() < 1)
                 continue;
-            TableColumnEntity newCol = new TableColumnEntity();
+            DrawingtableColumnname newCol = new DrawingtableColumnname();
             col.setCellType(Cell.CELL_TYPE_STRING);
-            newCol.setColumnsymbol(col.toString());
-            columnMap.put(col.getColumnIndex() + "", newCol);
+            newCol.setDrawingname(drawingName);
+            newCol.setColumnno(col.toString());
+            columnMap.add(newCol);
         }
         if (ir.hasNext())
             rowS = ir.next();
         else
             throw new CustomerException("缺失数据");
         ic = rowS.cellIterator();
-        while (ic.hasNext()) {
+        ic.next();
+        Iterator<DrawingtableColumnname> it=columnMap.iterator();
+        while (ic.hasNext()&&it.hasNext()) {
             Cell col = ic.next();
+            DrawingtableColumnname i=it.next();
             if (col.getCellType() == Cell.CELL_TYPE_BLANK)
                 continue;
             else if (col.getColumnIndex() < 1)
                 continue;
             col.setCellType(Cell.CELL_TYPE_STRING);
-            columnMap.get(col.getColumnIndex() + "").setColumnname(col.toString());
+            i.setColumnname(col.toString());
         }
-        Map<String, Map<String, String>> dataMap = new LinkedHashMap<>();
-        try{
-            while (ir.hasNext()) {
-                rowS = ir.next();
-                ic = rowS.cellIterator();
-                Cell colname = ic.next();
-                if (colname.getCellType() == Cell.CELL_TYPE_BLANK)
-                    continue;
-                colname.setCellType(Cell.CELL_TYPE_STRING);
-                String rowname = colname.toString();
-                Map<String, String> rowmap = new LinkedHashMap<>();
-                rowmap.put("key",rowname);
-                while (ic.hasNext()) {
-                    Cell col = ic.next();
-                    if (col.getCellType() == Cell.CELL_TYPE_BLANK)
-                        continue;
-                    col.setCellType(Cell.CELL_TYPE_STRING);
-                    rowmap.put(columnMap.get(col.getColumnIndex() + "").getColumnsymbol(), col.toString());
-                }
-                dataMap.put(rowS.getRowNum()+"", rowmap);
-            }
-        }catch (NoSuchElementException e){
-
-        }
-        String cs=JSON.toJSONString(columnMap);
-        String ds=JSON.toJSONString(dataMap);
-        entity.setColumnsJSON(cs);
-        entity.setRowsJSON(ds);
-        return entity;
+        return columnMap;
     }
-    public Workbook getHSSFWorkbook(Map<String, TableColumnEntity> columnMap,Map<String, Map<String,String>> dataMap) {
+
+    public Workbook getHSSFWorkbook( List<Drawingtable> table,List<DrawingtableColumnname> columns) {
         // 第一步，创建一个HSSFWorkbook，对应一个Excel文件
         Workbook wb = new HSSFWorkbook();
         try {
             // 第二步，在workbook中添加一个sheet,对应Excel文件中的sheet
             Sheet sheet = wb.createSheet();
             // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制
-            int columnn = 0,rown=0;
+            int columnn = 0,rown=0,count=1;
             sheet.setColumnWidth(rown, cellWidth);
             Row row1 = sheet.createRow(rown++);
             sheet.setColumnWidth(rown, cellWidth);
@@ -170,33 +187,36 @@ public class DataTableExcelUtil {
             cell1.setCellStyle(style);
             cell2.setCellValue("");
             cell2.setCellStyle(style);
-            Iterator<Map.Entry<String, TableColumnEntity>> ic=columnMap.entrySet().iterator();
+            Iterator<DrawingtableColumnname> ic=columns.iterator();
             List <String> sortLis=new ArrayList<>();
             while (ic.hasNext()) {
-                TableColumnEntity entity=ic.next().getValue();
+                count++;
+                DrawingtableColumnname entity=ic.next();
                 cell1 = row1.createCell(columnn);
-                cell1.setCellValue(entity.getColumnsymbol());
+                cell1.setCellValue(entity.getColumnno());
                 cell1.setCellStyle(style);
                 cell2 = row2.createCell(columnn++);
                 cell2.setCellValue(entity.getColumnname());
                 cell2.setCellStyle(style);
-                sortLis.add(entity.getColumnsymbol());
             }
-            Iterator<Map.Entry<String, Map<String,String>>> di=dataMap.entrySet().iterator();
+            Iterator<Drawingtable> di=table.iterator();
             while (di.hasNext()){
                 sheet.setColumnWidth(rown, cellWidth);
                 Row row = sheet.createRow(rown++);
-                Map.Entry<String, Map<String,String>> temp=di.next();
+                Drawingtable col=di.next();
                 columnn=0;
+                int temp=0;
                 Cell cell= row.createCell(columnn++);
                 cell.setCellStyle(style);
-                Map<String,String> rowData=temp.getValue();
                 Iterator<String> i=sortLis.iterator();
-                cell.setCellValue(rowData.get("key"));
-                while (i.hasNext()){
+                cell.setCellValue(col.getDrawingtype());
+                Class clazz=col.getClass();
+                while (count-temp++!=0){
                     cell = row.createCell(columnn++);
                     cell.setCellStyle(style);
-                    cell.setCellValue(rowData.get(i.next()));
+                    Field field=clazz.getDeclaredField("column"+temp);
+                    field.setAccessible(true);
+                    cell.setCellValue((String)field.get(col));
                 }
             }
         } catch (Exception ex) {

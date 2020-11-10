@@ -309,6 +309,9 @@ asideDatas = {
                     url:'List'
                 }
             ]
+        },{
+            title:'图纸查询',
+            url:'drawingTable',
         },
         {
             title:'模块编辑',

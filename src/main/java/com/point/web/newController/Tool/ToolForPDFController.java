@@ -40,7 +40,6 @@ public class ToolForPDFController {
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
         return new ResponseEntity<byte[]>(bytes, headers, HttpStatus.OK);
     }
-
     public Map<String, File> getImageMap(String sjht,HttpServletRequest request) throws IOException, BadElementException {
         Map<String, MultipartFile> files = ((MultipartHttpServletRequest) request).getFileMap();
 
