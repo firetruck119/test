@@ -286,6 +286,9 @@
                     <td>kg</td>
                 </tr>
                 <tr>
+                    <td colspan="4"><input style="color: white;" type='text' name="grutstx"/></td>
+                </tr>
+                <tr>
                     <td>物料起升机构钢丝绳自重</td>
                     <td><p><i>H<sub>sw</sub></i></td>
                     <td><input id="hsw" name="hsw" type="text" th:field="*{hsw}"/></td>
@@ -507,6 +510,27 @@
     };
 
     calculateFunction = {
+
+        grutstx: function () {
+            if ( gruSelect == "GRU 285" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为600kg';
+            } else if ( gruSelect == "GRU 295" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为750kg';
+            } else if ( gruSelect == "GRU 313" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为1000kg';
+            } else if ( gruSelect == "无" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '无';
+            }
+        },
+
         swp:function(){
             switch( gondolaSelect ){
                 case'2.0米铝吊船':return 96 ;

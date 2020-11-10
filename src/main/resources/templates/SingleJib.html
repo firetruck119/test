@@ -1150,6 +1150,9 @@
                     <td>kg</td>
                 </tr>
                 <tr>
+                    <td colspan="4"><input style="color: white;" type='text' name="grutstx"/></td>
+                </tr>
+                <tr>
                     <td>物料起升机构钢丝绳自重</td>
                     <td><p><i>H<sub>sw</sub></i></p></td>
                     <td><input type='text' name="hsw"/></td>
@@ -1588,6 +1591,28 @@
         e.val(l);
     }
     var calculateFunction={
+
+
+        grutstx: function () {
+            if ( gruModel == "GRU285" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为600kg';
+            } else if ( gruModel == "GRU295" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为750kg';
+            } else if ( gruModel == "GRU313" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为1000kg';
+            } else if ( gruModel == "无" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '无';
+            }
+        },
+
         dbjbxh:function(){
             return dbjbModelList[ dbjbModel ]['dbjbxh'];
         },

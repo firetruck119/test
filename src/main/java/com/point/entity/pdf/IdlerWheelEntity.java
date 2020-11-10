@@ -46,6 +46,10 @@ public class IdlerWheelEntity {
     private Double ldcgh;
     private Double lbtzh;
     private Double ldslzh;
+
+    //    提示提醒
+    private String grutstx;
+
 //    private Double mlz1gd;
 //    private Double lz1mmzz;
 
@@ -260,6 +264,9 @@ public class IdlerWheelEntity {
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
+
 //        map.put("lz1mmzz", CommonFunc.convertDoubleToString(lz1mmzz));
 //        map.put("lxtz", CommonFunc.convertDoubleToString(lxtz));
 //        map.put("lxtm", CommonFunc.convertDoubleToString(lxtm));

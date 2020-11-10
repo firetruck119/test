@@ -34,6 +34,9 @@ public class ThreeJibEntity {
     private Double lbtzh;
     private Double ldslzh;
 
+    //    提示提醒
+    private String grutstx;
+
     private Double dbmjb;
     private Double mbgj;
     private Double mbmj;
@@ -246,6 +249,8 @@ public class ThreeJibEntity {
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("dbmjb", CommonFunc.convertDoubleToString(dbmjb));
         map.put("mbgj", CommonFunc.convertDoubleToString(mbgj));

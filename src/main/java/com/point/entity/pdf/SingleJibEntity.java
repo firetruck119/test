@@ -42,6 +42,9 @@ public class SingleJibEntity {
     private Double dbix;
     private String dbjbxh;
 
+    //    提示提醒
+    private String grutstx;
+
     private String dbgcph;
     private Double dbss;
     private Double dbjh;
@@ -139,6 +142,8 @@ public class SingleJibEntity {
         map.put("dbwy", CommonFunc.convertDoubleToString(dbwy));
         map.put("dbix", CommonFunc.convertDoubleToString(dbix));
         map.put("dbjbxh", CommonFunc.convertDoubleToString(dbjbxh));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("dbgcph", CommonFunc.convertDoubleToString(dbgcph));
         map.put("dbss", CommonFunc.convertDoubleToString(dbss));

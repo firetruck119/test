@@ -37,6 +37,9 @@ public class YbHydraulicCylinderEntity {
     private Double yblltlfk;
     private Double ybs;
 
+    //    提示提醒
+    private String grutstx;
+
     private Double ybdd;
     private Double ybxd;
     private Double yblb;
@@ -118,6 +121,8 @@ public class YbHydraulicCylinderEntity {
         map.put("yblltlk", CommonFunc.convertDoubleToString(yblltlk));
         map.put("yblltlfk", CommonFunc.convertDoubleToString(yblltlfk));
         map.put("ybs", CommonFunc.convertDoubleToString(ybs));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("ybdd", CommonFunc.convertDoubleToString(ybdd));
         map.put("ybxd", CommonFunc.convertDoubleToString(ybxd));

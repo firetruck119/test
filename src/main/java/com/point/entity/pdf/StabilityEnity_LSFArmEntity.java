@@ -43,6 +43,9 @@ public class StabilityEnity_LSFArmEntity {
 //    private Double ftxxjq;
 //    private Double nwdt;
 
+    //    提示提醒
+    private String grutstx;
+
     private String djlsxh;
     private Double lsgca;
     private Double fdjlsfb;
@@ -446,6 +449,8 @@ public class StabilityEnity_LSFArmEntity {
 //        result.put("txxdj", CommonFunc.convertDoubleToString(txxdj));
 //        result.put("ftxxjq", CommonFunc.convertDoubleToString(ftxxjq));
 //        result.put("nwdt", CommonFunc.convertDoubleToString(nwdt));
+
+        result.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         result.put("djlsxh", CommonFunc.convertDoubleToString(djlsxh));
         result.put("lsgca", CommonFunc.convertDoubleToString(lsgca));

@@ -27,6 +27,9 @@ public class CounterweightsEntity {
     private Double ll;
     private Double npz;
 
+    //    提示提醒
+    private String grutstx;
+
     private Double swp;
     private Double r1;
     private Double mwr;
@@ -218,6 +221,8 @@ public class CounterweightsEntity {
         map.put("shr", CommonFunc.convertDoubleToString(shr));
         map.put("pzr", CommonFunc.convertDoubleToString(pzr));
         map.put("date", CommonFunc.convertDoubleToString(date));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("h", CommonFunc.convertDoubleToString(h));
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));

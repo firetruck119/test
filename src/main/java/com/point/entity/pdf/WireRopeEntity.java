@@ -27,6 +27,9 @@ public class WireRopeEntity {
     private Double tshl;
     private Double mffbb;
 
+    //    提示提醒
+    private String grutstx;
+
     private String dcgssxh;
     private Double dcgssd;
     private Double dcgssn;
@@ -83,6 +86,7 @@ public class WireRopeEntity {
         result.put("grugssf", CommonFunc.convertDoubleToString(grugssf));
         result.put("grugssp", CommonFunc.convertDoubleToString3(grugssp));
         result.put("mffbb", CommonFunc.convertDoubleToString3(mffbb));
+        result.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         if (!gondolaSelect.equals("无")) {
             Double gsss1 = tsl / 100 / dcgssn;

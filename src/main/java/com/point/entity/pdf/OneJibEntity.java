@@ -34,6 +34,9 @@ public class OneJibEntity {
     private Double lbtzh;
     private Double ldslzh;
 
+    //    提示提醒
+    private String grutstx;
+
     private Double dbmjb;
     private Double mbgj;
     private Double mbmj;
@@ -179,6 +182,8 @@ public class OneJibEntity {
 
         map.put("m4jbnd", CommonFunc.convertDoubleToString(m4jbnd));
         map.put("m5dbnd", CommonFunc.convertDoubleToString(m5dbnd));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("dbld", CommonFunc.convertDoubleToString(dbld));
         map.put("dblx1", CommonFunc.convertDoubleToString(dblx1));

@@ -38,6 +38,9 @@ public class UprightMechanismEntity {
     private Double ldcgh;
     private Double ldslzh;
 
+    //    提示提醒
+    private String grutstx;
+
     private Double swp;
     private Double r1;
     private Double mwr;
@@ -137,6 +140,8 @@ public class UprightMechanismEntity {
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
+
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
