@@ -22,7 +22,10 @@ public class DijiaDrawingEntity {
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
-        map.putAll(takeStringMapForPdf(type));
+//        map.put("lg", CommonFunc.convertDoubleToString(lg));
+//        map.put("ll", CommonFunc.convertDoubleToString(ll));
+//        map.put("lzpxj", CommonFunc.convertDoubleToString(lzpxj));
+//        map.putAll(takeStringMapForPdf(type));
         return map;
     }
 
