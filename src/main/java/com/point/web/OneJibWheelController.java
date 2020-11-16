@@ -78,7 +78,6 @@ public class OneJibWheelController {
         List<byte[]> list = new ArrayList<>();
 
         String name = "";
-        cacheData.saveCacheValue(sjht,OneJibWheelEntity);
         if ( OneJibWheelEntity.ssjgxsModel().equals("齿轮齿条式伸缩机构") ) {
             name = "1+1吊臂滚轮及齿轮齿条式伸缩机构校核计算书";
         } else if ( OneJibWheelEntity.ssjgxsModel().equals("液压式伸缩机构") ) {
