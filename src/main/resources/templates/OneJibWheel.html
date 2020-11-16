@@ -612,6 +612,7 @@
                     <td >mm</td>
                 </tr>
                 <tr>
+
                     <td ><b>液压式伸缩机构安全系数</b></td>
                     <td ><p><i>n<sbu>s</sbu></i></p></td>
                     <td ><input type="text" name="ssns"/></td>
@@ -1482,6 +1483,20 @@
     }
     getData.dataToImage(imgDaefultData);
 
+
+
+    $("[name=ssjgxsModel]").change(e=>{
+        var temp=$("[name=ssjgxsModel]").val();
+        $("#tjs").parent().parent().parent().css("display","");
+        $("#tyys").parent().parent().parent().css("display","");
+        $("#tjsyy").parent().parent().parent().css("display","");
+        if(temp=="齿轮齿条式伸缩机构"){
+            $("#tjs").parent().parent().parent().css("display","none");
+        }else if(temp=="液压式伸缩机构"){
+            $("#tyys").parent().parent().parent().css("display","none");
+            $("#tjsyy").parent().parent().parent().css("display","none");
+        }
+    })
 </script>
 </body>
 </html>
