@@ -46,19 +46,21 @@ public class OneJibWheelController {
     @GetMapping("/OneJibWheel/getData")
     @ResponseBody
     public Object getData(String batchId) {
-        Map<String,Object> result=new HashMap<>();
+        Map<String, Object> result = new HashMap<>();
         OneJibWheelEntity entity = new OneJibWheelEntity();
         cacheData.readCacheValue(batchId, entity);
-        result.put("datalist",entity);
-        Map<String, InputURLCache> imagemap=urlCacheData.readCacheValue(batchId);
-        result.put("imagelist",imagemap);
+        result.put("datalist", entity);
+        Map<String, InputURLCache> imagemap = urlCacheData.readCacheValue(batchId);
+        result.put("imagelist", imagemap);
         return result;
     }
 
     @PostMapping("OneJibWheel/jy")
     @ResponseBody
-    public Object janyan (@ModelAttribute OneJibWheelEntity entity){return entity.takeMapForPDF("");
+    public Object janyan(@ModelAttribute OneJibWheelEntity entity) {
+        return entity.takeMapForPDF("");
     }
+
     @PostMapping("OneJibWheel/getPDF")
     public Object getPDF(HttpServletRequest request,
                          @ModelAttribute OneJibWheelEntity entity,
@@ -74,12 +76,36 @@ public class OneJibWheelController {
         urlCacheData.saveCacheValue(sjht, imageMap);
         cacheData.saveCacheValue(sjht, entity);
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1吊臂滚轮及伸缩机构校核计算书"));
-        if (null!=check&&check) {
-//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/1+1伸缩臂机吊臂校核计算书验证部分"));
-//            return tool.getResponseEntity("1+1伸缩臂机吊臂校核计算书验证部分", pdf.MergePDF(list));
+
+        String name = "";
+        cacheData.saveCacheValue(sjht,OneJibWheelEntity);
+        if ( OneJibWheelEntity.ssjgxsModel().equals("齿轮齿条式伸缩机构") ) {
+            name = "1+1吊臂滚轮及齿轮齿条式伸缩机构校核计算书";
+        } else if ( OneJibWheelEntity.ssjgxsModel().equals("液压式伸缩机构") ) {
+            name = "1+1吊臂滚轮及液压式伸缩机构校核计算书";
         }
-        return tool.getResponseEntity("1+1吊臂滚轮及伸缩机构校核计算书", list.get(0));
+
+//        if (!name.equals(""))
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/" + name));
+        if (null != check && check) {
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1吊臂滚轮及齿轮齿条式伸缩机构校核计算书"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1吊臂滚轮及液压式伸缩机构校核计算书"));
+        }
+        return tool.getResponseEntity(name, list.get(0));
     }
 }
+
+
+
+
+
+
+//        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1吊臂滚轮及伸缩机构校核计算书"));
+//        if (null!=check&&check) {
+////            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/1+1伸缩臂机吊臂校核计算书验证部分"));
+////            return tool.getResponseEntity("1+1伸缩臂机吊臂校核计算书验证部分", pdf.MergePDF(list));
+//        }
+//        return tool.getResponseEntity("1+1吊臂滚轮及伸缩机构校核计算书", list.get(0));
+
+
 
