@@ -74,12 +74,18 @@ public class ThreeJibWheelController {
         urlCacheData.saveCacheValue(sjht, imageMap);
         cacheData.saveCacheValue(sjht, entity);
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/3+1吊臂滚轮、链条及伸缩机构校核计算书"));
-        if (null!=check&&check) {
-//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/1+1伸缩臂机吊臂校核计算书验证部分"));
-//            return tool.getResponseEntity("1+1伸缩臂机吊臂校核计算书验证部分", pdf.MergePDF(list));
+
+        String name = "";
+        if ( entity.getSsjgxsModel().equals("齿轮齿条式伸缩机构") ) {
+            name = "3+1吊臂滚轮、链条及齿轮齿条式伸缩机构校核计算书";
+        } else if ( entity.getSsjgxsModel().equals("液压式伸缩机构") ) {
+            name = "3+1吊臂滚轮、链条及液压式伸缩机构校核计算书";
         }
-        return tool.getResponseEntity("3+1吊臂滚轮、链条及伸缩机构校核计算书", list.get(0));
+        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/" + name));
+        if (null != check && check) {
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/3+1吊臂滚轮、链条及齿轮齿条式伸缩机构校核计算书"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/3+1吊臂滚轮、链条及液压式伸缩机构校核计算书"));
+        }
+        return tool.getResponseEntity(name, list.get(0));
     }
 }
-
