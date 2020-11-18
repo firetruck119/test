@@ -332,7 +332,7 @@ public class UprightMechanismEntity {
         Double mjdq =msljd + mshljd + mjd1 + mjd2 + mjd3 + mjd4 + mjd5 + mjd6 + mjd20;
         Double mjdk =mjd11 + mjd21;
         Double mjd =mjdq - mjdk;
-        Double f1 =mjd / lyhq;
+        Double f1 =mjd / lyhq / 2 ;
         Double k =1000 * 1 * lyg / iiminyg;
         Double o;
         if (k >= 0 && k < 5) {
@@ -392,7 +392,7 @@ public class UprightMechanismEntity {
         Double mjdqf =mjdf1 + mjdf2 + mjdf3 + mjdf4 + mjdf5 + mjdf6 + mjdf20;
         Double mjdkf =mjdf11 + mjdf21;
         Double mjdf =mjdkf - mjdqf;
-        Double ff1 =mjdf / lyhqf;
+        Double ff1 =mjdf / lyhqf / 2 ;
         Double sf1 = ff1 / ayg;
         map.put("mjdqf", mjdqf);
         map.put("mjdkf", mjdkf);

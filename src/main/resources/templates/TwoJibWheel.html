@@ -227,19 +227,35 @@
         db2bltModelList={
             "LH1246":{
                 db2bltxh:'LH1246',
-                tlt1k:97.9,
+                tlt1:97.9,
             },
             "LH1266":{
                 db2bltxh:'LH1266',
-                tlt1k:146.8,
+                tlt1:146.8,
             },
             "LH1666":{
                 db2bltxh:'LH1666',
-                tlt1k:253.6,
+                tlt1:253.6,
             },
             "LH2466":{
                 db2bltxh:'LH2466',
-                tlt1k:453.7,
+                tlt1:453.7,
+            },
+        };
+        ssjgxsModelList= {
+            "齿轮齿条式伸缩机构":{
+
+            },
+            "液压式伸缩机构":{
+
+            },
+        };
+        ssyygezModelList= {
+            "前端耳轴":{
+                ssk:1,
+            },
+            "中间耳轴":{
+                ssk:1.5,
             },
         };
 
@@ -489,14 +505,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><b>伸缩机构型号选择</b></td>
-                    <td>
-                        <select name="ssjgModel" style="width:100%;height:40px;text-align-last:center">
-                            <option value="" style="display: none"></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
                     <td><b>基臂斜滚轮型号选择</b></td>
                     <td>
                         <select name="dbjbxglModel" style="color: black;width:100%;height:40px;text-align-last:center">
@@ -556,6 +564,42 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td><b>伸缩机构形式选择</b></td>
+                    <td>
+                        <select name="ssjgxsModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="齿轮齿条式伸缩机构">齿轮齿条式伸缩机构</option>
+                            <option value="液压式伸缩机构">液压式伸缩机构</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>齿轮齿条式伸缩机构型号选择</b></td>
+                    <td>
+                        <select name="ssjgModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>液压式伸缩机构型号选择</b></td>
+                    <td>
+                        <select name="ssyygModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>液压式伸缩机构耳轴位置</b></td>
+                    <td>
+                        <select name="ssyygezModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="前端耳轴">前端耳轴</option>
+                            <option value="中间耳轴">中间耳轴</option>
+                        </select>
+                    </td>
+                </tr>
             </table>
         </div>
 
@@ -611,11 +655,6 @@
                     <td ><input type="text" name="dbld3"/></td>
                     <td >mm</td>
                 </tr>
-            </table>
-        </div>
-
-        <div style="width:600px;">
-            <table>
                 <tr>
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.链条参数</b></td>
                 </tr>
@@ -634,11 +673,25 @@
                 <tr>
                     <td ><b>第二节伸缩臂链条最小许用抗拉强度</b></td>
                     <td ><p><i>T<sub>lt1</sub></i></p></td>
-                    <td ><input type="text" name="tlt1k"/></td>
+                    <td ><input type="text" name="tlt1"/></td>
                     <td >kN</td>
                 </tr>
                 <tr>
+                    <td ><b>第二节伸缩臂链条最小许用抗拉强度</b></td>
+                    <td ><p><i>n<sub>lt1</sub></i></p></td>
+                    <td ><input type="text" name="nlt1"/></td>
+                    <td >个</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width:600px;">
+            <table>
+                <tr>
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.伸缩机构参数</b></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>齿轮齿条式伸缩机构参数</b></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -647,28 +700,91 @@
                     <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
-                    <td ><b>伸缩机构型号</b></td>
+                    <td ><b>齿轮齿条式伸缩机构型号</b></td>
                     <td ><p><i> </i></p></td>
                     <td ><input type="text" name="ssjgxh"/></td>
                     <td > </td>
                 </tr>
                 <tr>
-                    <td ><b>伸缩机构数量</b></td>
+                    <td ><b>齿轮齿条式伸缩机构数量</b></td>
                     <td ><p><i>n</i></p></td>
                     <td ><input type="text" name="nssjg"/></td>
                     <td >个</td>
                 </tr>
                 <tr>
-                    <td ><b>单个伸缩机构最大推力</b></td>
+                    <td ><b>单个齿轮齿条式伸缩机构最大推力</b></td>
                     <td ><p><i>T</i></p></td>
-                    <td ><input type="text" name="fssjg"/></td>
-                    <td >N</td>
+                    <td ><input type="text" name="fssjgk"/></td>
+                    <td >kN</td>
                 </tr>
                 <tr>
-                    <td ><b>单个伸缩机构功率</b></td>
+                    <td ><b>单个齿轮齿条式伸缩机构功率</b></td>
                     <td ><p><i>P</i></p></td>
                     <td ><input type="text" name="pssjg"/></td>
                     <td >kW</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>液压式伸缩机构参数</b></td>
+                </tr>
+                <tr>
+                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:40%;">数值</td>
+                    <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>液压式伸缩机构缸径</b></td>
+                    <td ><p><i>D</i></p></td>
+                    <td ><input type="text" name="ssdd"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>液压式伸缩机构杆径</b></td>
+                    <td ><p><i>d</i></p></td>
+                    <td ><input type="text" name="ssxd"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>活塞杆横截面惯性矩</b></td>
+                    <td ><p><i>I</i></p></td>
+                    <td ><input type="text" name="ssi"/></td>
+                    <td >mm<sup>4</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>单个液压式伸缩机构最大推力</b></td>
+                    <td ><p><i>T</i></p></td>
+                    <td ><input type="text" name="sslltlk"/></td>
+                    <td >kN</td>
+                </tr>
+                <tr>
+                    <td ><b>液压式伸缩机构数量</b></td>
+                    <td ><p><i>n</i></p></td>
+                    <td ><input type="text" name="ssnsl"/></td>
+                    <td >个</td>
+                </tr>
+                <tr>
+                    <td ><b>工作状态液压式伸缩机构耳环至耳轴之间距离</b></td>
+                    <td ><p><i>L<sub>B</sub></i></p></td>
+                    <td ><input type="text" name="sslb"/></td>
+                    <td >mm</td>
+                </tr>
+                <tr>
+                    <td ><b>液压式伸缩机构安全系数</b></td>
+                    <td ><p><i>n<sbu>s</sbu></i></p></td>
+                    <td ><input type="text" name="ssns"/></td>
+                    <td > </td>
+                </tr>
+                <tr>
+                    <td ><b>液压式伸缩机构稳定性安全系数</b></td>
+                    <td ><p><i>n<sub>k</sub></i></p></td>
+                    <td ><input type="text" name="ssnk"/></td>
+                    <td >取值范围3.5~6</td>
+                </tr>
+                <tr>
+                    <td ><b>液压式伸缩机构安装及导向系数</b></td>
+                    <td ><p><i>K</i></p></td>
+                    <td ><input type="text" name="ssk"/></td>
+                    <td > </td>
                 </tr>
             </table>
         </div>
@@ -707,7 +823,7 @@
                     <td ><b>第一节伸缩臂斜滚轮最大许用承压</b></td>
                     <td ><p><i>F<sub>3</sub></i></p></td>
                     <td ><input type="text" name="db1bxglfk"/></td>
-                    <td >N</td>
+                    <td >kN</td>
                 </tr>
                 <tr>
                     <td ><b>第一节伸缩臂斜滚轮处单边滚轮数量</b></td>
@@ -737,7 +853,7 @@
                     <td ><b>第二节伸缩臂上后顶轮最大许用承压</b></td>
                     <td ><p><i>F<sub>4</sub></i></p></td>
                     <td ><input type="text" name="db2bshdlfk"/></td>
-                    <td >N</td>
+                    <td >kN</td>
                 </tr>
                 <tr>
                     <td ><b>第二节伸缩臂上后顶轮处单边顶轮数量</b></td>
@@ -800,7 +916,7 @@
                     <td ><b>基臂斜滚轮最大许用承压</b></td>
                     <td ><p><i>F<sub>1</sub></i></p></td>
                     <td ><input type="text" name="dbjbxglfk"/></td>
-                    <td >N</td>
+                    <td >kN</td>
                 </tr>
                 <tr>
                     <td ><b>基臂斜滚轮处单边滚轮数量</b></td>
@@ -830,7 +946,7 @@
                     <td ><b>第一节伸缩臂上后顶轮最大许用承压</b></td>
                     <td ><p><i>F<sub>2</sub></i></p></td>
                     <td ><input type="text" name="db1bshdlfk"/></td>
-                    <td >N</td>
+                    <td >kN</td>
                 </tr>
                 <tr>
                     <td ><b>第一节伸缩臂上后顶轮处单边顶轮数量</b></td>
@@ -1167,6 +1283,9 @@
             <input type="text" name="mbg2" />
             <input type="text" name="mbm2" />
 
+            <input type="text" name="fssjg" />
+            <input type="text" name="sslltl" />
+
             <input type="text" name="dbgcshzr1" />
             <input type="text" name="dbgcshzr2" />
             <input type="text" name="dbgcshzr3" />
@@ -1181,7 +1300,6 @@
             <input type="text" name="db1bxglf" />
             <input type="text" name="db2bshdlf" />
 
-            <input type="text" name="tlt1" />
         </div>
 
         <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>13.2+1伸缩臂其它示意图</b></div>
@@ -1246,7 +1364,7 @@
                     </tr>
                     <tr>
                         <td><b>第一节臂斜滚轮承压</b></td>
-                        <td><p><span id="ngl31k"></span>kN</p></td>
+                        <td><p><span id="ngl31"></span>kN</p></td>
                         <td><p><span id="db1bxglfk"></span>kN</p></td>
                         <td id="glbz6"></td>
                         <td id="glm6"></td>
@@ -1260,7 +1378,7 @@
                     </tr>
                     <tr>
                         <td><b>第二节臂上后顶轮承压</b></td>
-                        <td><p><span id="ngl41k"></span>kN</p></td>
+                        <td><p><span id="ngl41"></span>kN</p></td>
                         <td><p><span id="db2bshdlfk"></span>kN</p></td>
                         <td id="glbz7"></td>
                         <td id="glm7"></td>
@@ -1275,7 +1393,7 @@
                     </tr>
                     <tr>
                         <td><b>基臂斜滚轮承压</b></td>
-                        <td><p><span id="ngl11k"></span>kN</p></td>
+                        <td><p><span id="ngl11"></span>kN</p></td>
                         <td><p><span id="dbjbxglfk"></span>kN</p></td>
                         <td id="glbz1"></td>
                         <td id="glm1"></td>
@@ -1289,7 +1407,7 @@
                     </tr>
                     <tr>
                         <td><b>第一节臂上后顶轮承压</b></td>
-                        <td><p><span id="ngl21k"></span>kN</p></td>
+                        <td><p><span id="ngl21"></span>kN</p></td>
                         <td><p><span id="db1bshdlfk"></span>kN</p></td>
                         <td id="glbz2"></td>
                         <td id="glm2"></td>
@@ -1304,17 +1422,31 @@
                     </tr>
                     <tr>
                         <td><b>第二节臂链条抗拉</b></td>
-                        <td><p><span id="tlts1k"></span>kN</p></td>
-                        <td><p><span id="tlt1k"></span>kN</p></td>
+                        <td><p><span id="tlts1"></span>kN</p></td>
+                        <td><p><span id="tltbz1"></span>kN</p></td>
                         <td id="glbz10"></td>
                         <td id="glm10"></td>
                     </tr>
                     <tr>
-                        <td><b>伸缩机构推力</b></td>
-                        <td><p><span id="tjs"></span>N</p></td>
-                        <td><p><span id="tn"></span>N</p></td>
+                        <td><b>齿轮齿条式伸缩机构推力</b></td>
+                        <td><p><span id="tjs"></span>kN</p></td>
+                        <td><p><span id="tn"></span>kN</p></td>
                         <td id="glbz5"></td>
                         <td id="glm5"></td>
+                    </tr>
+                    <tr>
+                        <td><b>液压式伸缩机构推力</b></td>
+                        <td><p><span id="tyys"></span>kN</p></td>
+                        <td><p><span id="sslltlk"></span>kN</p></td>
+                        <td id="yyssbz1"></td>
+                        <td id="yyssm1"></td>
+                    </tr>
+                    <tr>
+                        <td><b>液压式伸缩机构稳定性</b></td>
+                        <td><p><span id="tjsyy"></span>kN</p></td>
+                        <td><p><span id="fknk"></span>kN</p></td>
+                        <td id="yyssbz2"></td>
+                        <td id="yyssm2"></td>
                     </tr>
                  </table>
                 <div style="margin: 0 150px 0;">
@@ -1400,9 +1532,59 @@
             }
         },
 
+        ssjgModel: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssjgModel]').prop('disabled', false)
+                data.datalist['ssjgModel'].color = 'white';
+                return ' ';
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssjgModel]').prop('disabled', true)
+                data.datalist['ssjgModel'].color = 'rgb(227, 227, 227)';
+                return ssjgModel;
+            }
+        },
+        ssyygModel: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssyygModel]').prop('disabled', true)
+                data.datalist['ssyygModel'].color = 'rgb(227, 227, 227)';
+                return ssyygModel;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssyygModel]').prop('disabled', false)
+                data.datalist['ssyygModel'].color = 'white';
+                return ' ';
+            }
+        },
+        ssyygezModel: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssyygezModel]').prop('disabled', true)
+                data.datalist['ssyygezModel'].color = 'rgb(227, 227, 227)';
+                return ssyygezModel;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssyygezModel]').prop('disabled', false)
+                data.datalist['ssyygezModel'].color = 'white';
+                return ' ';
+            }
+        },
+
+        dbgcph:function(){
+            return 'Q355B' ;
+        },
+        dbgcshzr:function(){
+            return 800 ;
+        },
+
         grugssp:function(){
             if( gruModel =='无')
                 return 0;
+        },
+        dbgcshzr1:function(){
+            return dbgcshzr ;
+        },
+        dbgcshzr2:function(){
+            return dbgcshzr ;
+        },
+        dbgcshzr3:function(){
+            return dbgcshzr ;
         },
         dbjbxglr:function(){
             return dbjbxgld / 20 ;
@@ -1437,35 +1619,19 @@
             }
         },
 
-        dbgcph:function(){
-            return 'Q355B' ;
-        },
-        dbgcshzr:function(){
-            return 800 ;
-        },
-        dbgcshzr1:function(){
-            return dbgcshzr ;
-        },
-        dbgcshzr2:function(){
-            return dbgcshzr ;
-        },
-        dbgcshzr3:function(){
-            return dbgcshzr ;
-        },
-
         //平行吊臂方向距离
-        dblx1:function(){
-            if ( dbyj != 0){
-                return ' ';
-            }
-            else if ( dbyj == 0) {
-                if (lbd > 30) {
-                    return 1400 ;
-                } else if (lbd <= 30) {
-                    return 1200 ;
+            dblx1:function(){
+                if ( dbyj != 0){
+                    return ' ';
                 }
-            }
-        },
+                else if ( dbyj == 0) {
+                    if (lbd > 30) {
+                        return 1400;
+                    } else if (lbd >= 0 && lbd <= 30) {
+                        return 1200;
+                    }
+                }
+            },
         dblx2:function(){
             return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
         },
@@ -1489,9 +1655,6 @@
         dbjbxglfk:function(){
             return dbjbxglModelList[ dbjbxglModel ]['dbjbxglfk'];
         },
-        dbjbxglf:function(){
-            return dbjbxglfk * 1000 ;
-        },
         dbjbxgln:function(){
             return dbjbxglModelList[ dbjbxglModel ]['dbjbxgln'];
         },
@@ -1507,9 +1670,6 @@
         },
         db1bshdlfk:function(){
             return db1bshdlModelList[ db1bshdlModel ]['db1bshdlfk'];
-        },
-        db1bshdlf:function(){
-            return db1bshdlfk * 1000 ;
         },
         db1bshdln:function(){
             return db1bshdlModelList[ db1bshdlModel ]['db1bshdln'];
@@ -1531,9 +1691,6 @@
         db1bxglfk:function(){
             return db1bxglModelList[ db1bxglModel ]['db1bxglfk'];
         },
-        db1bxglf:function(){
-            return db1bxglfk * 1000 ;
-        },
         db1bxgln:function(){
             return db1bxglModelList[ db1bxglModel ]['db1bxgln'];
         },
@@ -1549,9 +1706,6 @@
         },
         db2bshdlfk:function(){
             return db2bshdlModelList[ db2bshdlModel ]['db2bshdlfk'];
-        },
-        db2bshdlf:function(){
-            return db2bshdlfk * 1000 ;
         },
         db2bshdln:function(){
             return db2bshdlModelList[ db2bshdlModel ]['db2bshdln'];
@@ -1570,11 +1724,158 @@
         db2bltxh:function(){
             return db2bltModelList[ db2bltModel ]['db2bltxh'];
         },
-        tlt1k:function(){
-            return db2bltModelList[ db2bltModel ]['tlt1k'];
-        },
         tlt1:function(){
-            return tlt1k * 1000 ;
+            return db2bltModelList[ db2bltModel ]['tlt1'];
+        },
+        nlt1:function(){
+            return 2 ;
+        },
+
+        //齿轮齿条式伸缩机构
+        ssjgxh: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssjgxh]').prop('disabled', false)
+                data.datalist['ssjgxh'].color = 'white';
+                return ' ';
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssjgxh]').prop('disabled', true)
+                data.datalist['ssjgxh'].color = 'rgb(227, 227, 227)';
+                return null;
+            }
+        },
+        nssjg: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=nssjg]').prop('disabled', false)
+                data.datalist['nssjg'].color = 'white';
+                return ' ';
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=nssjg]').prop('disabled', true)
+                data.datalist['nssjg'].color = 'rgb(227, 227, 227)';
+                return null;
+            }
+        },
+        fssjgk: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=fssjgk]').prop('disabled', false)
+                data.datalist['fssjgk'].color = 'white';
+                return fssjg / 1000 ;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=fssjgk]').prop('disabled', true)
+                data.datalist['fssjgk'].color = 'rgb(227, 227, 227)';
+                return null;
+            }
+        },
+        pssjg: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=pssjg]').prop('disabled', false)
+                data.datalist['pssjg'].color = 'white';
+                return ' ';
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=pssjg]').prop('disabled', true)
+                data.datalist['pssjg'].color = 'rgb(227, 227, 227)';
+                return null;
+            }
+        },
+
+        //液压式伸缩机构
+        ssdd: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssdd]').prop('disabled', true)
+                data.datalist['ssdd'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssdd]').prop('disabled', false)
+                data.datalist['ssdd'].color = 'white';
+                return ' ';
+            }
+        },
+        ssxd: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssxd]').prop('disabled', true)
+                data.datalist['ssxd'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssxd]').prop('disabled', false)
+                data.datalist['ssxd'].color = 'white';
+                return ' ';
+            }
+        },
+        ssi: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssi]').prop('disabled', true)
+                data.datalist['ssi'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssi]').prop('disabled', false)
+                data.datalist['ssi'].color = 'white';
+                return 3.14 * ssxd * ssxd * ssxd * ssxd / 64;
+            }
+        },
+        sslltlk: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=sslltlk]').prop('disabled', true)
+                data.datalist['sslltlk'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=sslltlk]').prop('disabled', false)
+                data.datalist['sslltlk'].color = 'white';
+                return sslltl / 1000;
+            }
+        },
+        ssnsl: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssnsl]').prop('disabled', true)
+                data.datalist['ssnsl'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssnsl]').prop('disabled', false)
+                data.datalist['ssnsl'].color = 'white';
+                return 1;
+            }
+        },
+        sslb: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=sslb]').prop('disabled', true)
+                data.datalist['sslb'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=sslb]').prop('disabled', false)
+                data.datalist['sslb'].color = 'white';
+                return ' ';
+            }
+        },
+        ssns: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssns]').prop('disabled', true)
+                data.datalist['ssns'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssns]').prop('disabled', false)
+                data.datalist['ssns'].color = 'white';
+                return 2;
+            }
+        },
+        ssnk: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssnk]').prop('disabled', true)
+                data.datalist['ssnk'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssnk]').prop('disabled', false)
+                data.datalist['ssnk'].color = 'white';
+                return ' ';
+            }
+        },
+        ssk: function () {
+            if ( ssjgxsModel == "齿轮齿条式伸缩机构" ) {
+                $('[name=ssk]').prop('disabled', true)
+                data.datalist['ssk'].color = 'rgb(227, 227, 227)';
+                return null;
+            } else if ( ssjgxsModel == "液压式伸缩机构" ) {
+                $('[name=ssk]').prop('disabled', false)
+                data.datalist['ssk'].color = 'white';
+                return ssyygezModelList[ ssyygezModel ]['ssk'];
+            }
         },
 
         swp: function(){
@@ -1651,10 +1952,10 @@
         },
 
         lslp:function(){
-            return lbd - ( dbld1 - dblx1 / 2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+            return lbd / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
         },
         lshlp:function(){
-            return lbd - ( ldcgh - lbtzh ) - ( dbld1 - dblx1 / 2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+            return ( lbd - ( ldcgh - lbtzh ) ) / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
         },
         lp1:function(){
             return lshlp ;
@@ -1663,50 +1964,51 @@
             if( m2 == 0 ){
                 return 0 ;
             }else {
-                return lbd - ( ldcgh - ldslzh ) - ( dbld1 - dblx1 / 2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+                return ( lbd - ( ldcgh - ldslzh ) ) / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
             }
         },
         lp3:function(){
             return lshlp ;
         },
         lp6gl:function(){
-            return ( mbg1 * ( dbld2 - dblx2 ) / 2000 - mbg1 * dblx2 / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6db ;
+            return ( mbg1 * ( dbld2 - dblx2 ) / 2000 - mbg1 * dblx2 / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 ) / 1000000 ) / m6db ;
         },
         lp7gl:function(){
-            return ( mbg2 * ( dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m7db ;
+            return ( mbg2 * ( dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 ) / 1000000 ) / m7db ;
         },
 
         lslpi:function(){
-            return lslp - ( dbld2 - dblx2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+            return lslp - ( dbld2 - dblx2 ) / 1000 ;
         },
         lshlpi:function(){
-            return lshlp - ( dbld2 - dblx2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+            return lshlp - ( dbld2 - dblx2 ) / 1000 ;
         },
         lp1i:function(){
-            return lp1 - ( dbld2 - dblx2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+            return lp1 - ( dbld2 - dblx2 ) / 1000 ;
         },
         lp2i:function(){
             if( m2 == 0 ){
                 return 0 ;
             }else {
-                return lp2 - ( dbld2 - dblx2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+                return lp2 - ( dbld2 - dblx2 ) / 1000 ;
             }
         },
         lp3i:function(){
-            return lp3 - ( dbld2 - dblx2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+            return lp3 - ( dbld2 - dblx2 ) / 1000 ;
         },
         lp7gli:function(){
-            return lp7gl - ( dbld2 - dblx2 ) * Math.cos( dbyj / 180 * Math.PI ) / 1000 ;
+            return lp7gl - ( dbld2 - dblx2 ) / 1000 ;
         },
 
     };
-
     getTable("db2Model","dbxz2");
     getTable("btModel","btxz");
     getTable("dcModel","dcxz");
     getTable("dcgssModel","dcgssxz");
     getTable("gruModel","gruxz");
     getTable("ssjgModel","ssjgxz");
+    getTable("ssyygModel","ssyygxz");
+
     data.init(calculateFunction);
     imgDaefultData={
         db2gltu1:{inputvalue:"db2gltu1.png"},
@@ -1719,6 +2021,18 @@
     }
     getData.dataToImage(imgDaefultData);
 
+    $("[name=ssjgxsModel]").change(e=>{
+        var temp=$("[name=ssjgxsModel]").val();
+        $("#tjs").parent().parent().parent().css("display","");
+        $("#tyys").parent().parent().parent().css("display","");
+        $("#tjsyy").parent().parent().parent().css("display","");
+        if(temp=="液压式伸缩机构"){
+            $("#tjs").parent().parent().parent().css("display","none");
+        }else if(temp=="齿轮齿条式伸缩机构"){
+            $("#tyys").parent().parent().parent().css("display","none");
+            $("#tjsyy").parent().parent().parent().css("display","none");
+        }
+    })
 </script>
 </body>
 </html>

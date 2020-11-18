@@ -91,5 +91,3 @@ public class OneJibWheelController {
         return tool.getResponseEntity(name, list.get(0));
     }
 }
-
-
