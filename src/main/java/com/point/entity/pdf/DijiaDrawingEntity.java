@@ -19,10 +19,12 @@ public class DijiaDrawingEntity {
     private String djbdb;
     private String djlx;
     private String djqsjg;
+    private String djth;
+
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
-//        map.put("lg", CommonFunc.convertDoubleToString(lg));
+//        map.put("dijia", CommonFunc.convertDoubleToString(dijia));
 //        map.put("ll", CommonFunc.convertDoubleToString(ll));
 //        map.put("lzpxj", CommonFunc.convertDoubleToString(lzpxj));
 //        map.putAll(takeStringMapForPdf(type));

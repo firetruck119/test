@@ -324,6 +324,17 @@
                             <td><select name="djqsjg"></select></td>
                             <td></td>
                         </tr>
+                        <!--<tr>-->
+                            <!--<td><b>底架图号</b></td>-->
+                            <!--&lt;!&ndash;<td><p><i>djqsjg</i></p></td>&ndash;&gt;-->
+                            <!--<td><select name="imageid"></select></td>-->
+                            <!--<td></td>-->
+                        <!--</tr>-->
+                        <tr>
+                            <td ><b>底架图号</b></td>
+                            <td ><input type="text" name="imageid"/></td>
+                            <td ></td>
+                        </tr>
                     </table>
                 </div>
                 <div style="width:600px;">
@@ -367,9 +378,27 @@
                 return ' ';
             }
         },
+        // djth:()=>{
+        //     var dijia=model['dijia'];
+        //     var datas=[];
+        //     for(var key in dijia){
+        //         var data=dijia[key];
+        //         if((!djhzxs||data["djhzxs"]== djhzxs )&&
+        //             (!ll||data["ll"]== ll )&&
+        //             (!lg||data["lg"]== lg )&&
+        //             (!hzzc||data["hzzc"]== hzzc )&&
+        //             (!yxjgxz||data["yxjgxz"]== yxjgxz )&&
+        //             (!djbdb||data["djbdb"]== djbdb )&&
+        //             (!lzpxj||data["lzpxj"]== lzpxj )&&
+        //             (!djlx||data["djlx"]== djlx )&&
+        //             (!djqsjg||data["djqsjg"]== djqsjg ))
+        //             datas.push(data);
+        //     }
+        //     if(datas.length==1)
+        //         return datas[0]['djth']
+        // },
     };
 
-;
     data.init(calculateFunction);
 
 </script>

@@ -83,6 +83,7 @@ public class SpringbootHandlingFormSubmissionApplicationTests {
 		entity.setLzpxj("0.25");
 		entity.setDjlx("管材式");
 		entity.setDjqsjg("175");
+//		entity.setDjth("DJS1.5(7.1)160B");
 
 		Class clazz = entity.getClass();
 		Field[] fields=clazz.getDeclaredFields();
