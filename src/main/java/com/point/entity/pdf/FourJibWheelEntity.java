@@ -9,7 +9,7 @@ import java.util.Map;
 import static java.lang.Math.sqrt;
 
 @Data
-public class ThreeJibWheelEntity {
+public class FourJibWheelEntity {
     private String no;
     private String ver;
     private String xmmc;
@@ -38,6 +38,8 @@ public class ThreeJibWheelEntity {
     private Double mbm2;
     private Double mbg3;
     private Double mbm3;
+    private Double mbg4;
+    private Double mbm4;
 
     private Double fssjg;
     private Double sslltl;
@@ -47,6 +49,8 @@ public class ThreeJibWheelEntity {
     private Double dbgcshzr3;
     private Double dbgcshzr4;
     private Double dbgcshzr5;
+    private Double dbgcshzr6;
+    private Double dbgcshzr7;
 
     private Double dbjbxglr;
     private Double db1bshdlr;
@@ -54,6 +58,8 @@ public class ThreeJibWheelEntity {
     private Double db2bshdlr;
     private Double db2bxglr;
     private Double db3bshdlr;
+    private Double db3bxglr;
+    private Double db4bshdlr;
 
     //    提示提醒
     private String grutstx;
@@ -63,10 +69,12 @@ public class ThreeJibWheelEntity {
     private Double dblx2;
     private Double dblx3;
     private Double dblx4;
+    private Double dblx5;
     private Double dbld1;
     private Double dbld2;
     private Double dbld3;
     private Double dbld4;
+    private Double dbld5;
 
     //    第一段搭接处滚轮
     private String dbjbxglxh;
@@ -113,6 +121,21 @@ public class ThreeJibWheelEntity {
 
     private Double dbdjl3;
 
+    //    第四段搭接处滚轮
+    private String db3bxglxh;
+    private Double db3bxglfk;
+    private Double db3bxgln;
+    private Double db3bxgld;
+    private Double db3bxglb;
+
+    private String db4bshdlxh;
+    private Double db4bshdlfk;
+    private Double db4bshdln;
+    private Double db4bshdld;
+    private Double db4bshdlb;
+
+    private Double dbdjl4;
+
     //   链条
     private String db2bltxh;
     private Double tlt1;
@@ -121,6 +144,10 @@ public class ThreeJibWheelEntity {
     private String db3bltxh;
     private Double tlt2;
     private Double nlt2;
+
+    private String db4bltxh;
+    private Double tlt3;
+    private Double nlt3;
 
     //   齿轮齿条式伸缩机构
     private String ssjgxh;
@@ -153,6 +180,7 @@ public class ThreeJibWheelEntity {
     private Double m6db;
     private Double m7db;
     private Double m8db;
+    private Double m9db;
     private Double mlz;
 
     private Double fslf;
@@ -163,6 +191,7 @@ public class ThreeJibWheelEntity {
     private Double ff6gl;
     private Double ff7gl;
     private Double ff8gl;
+    private Double ff9gl;
     private Double flz;
 
     private Double lslp;
@@ -173,6 +202,7 @@ public class ThreeJibWheelEntity {
     private Double lp6gl;
     private Double lp7gl;
     private Double lp8gl;
+    private Double lp9gl;
 
     private Double lslpi;
     private Double lshlpi;
@@ -181,6 +211,7 @@ public class ThreeJibWheelEntity {
     private Double lp3i;
     private Double lp7gli;
     private Double lp8gli;
+    private Double lp9gli;
 
     private Double lslpii;
     private Double lshlpii;
@@ -188,9 +219,17 @@ public class ThreeJibWheelEntity {
     private Double lp2ii;
     private Double lp3ii;
     private Double lp8glii;
+    private Double lp9glii;
+
+    private Double lslpiii;
+    private Double lshlpiii;
+    private Double lp1iii;
+    private Double lp2iii;
+    private Double lp3iii;
+    private Double lp9gliii;
 
 //    下拉
-    private String db3Model;
+    private String db4Model;
     private String btModel;
     private String dcModel;
     private String ffbbModel;
@@ -203,9 +242,12 @@ public class ThreeJibWheelEntity {
     private String db2bshdlModel;
     private String db2bxglModel;
     private String db3bshdlModel;
+    private String db3bxglModel;
+    private String db4bshdlModel;
 
     private String db2bltModel;
     private String db3bltModel;
+    private String db4bltModel;
     private String ssjgxsModel;
     private String ssjgModel;
     private String ssyygModel;
@@ -240,6 +282,8 @@ public class ThreeJibWheelEntity {
         map.put("mbm2", CommonFunc.convertDoubleToString(mbm2));
         map.put("mbg3", CommonFunc.convertDoubleToString(mbg3));
         map.put("mbm3", CommonFunc.convertDoubleToString(mbm3));
+        map.put("mbg4", CommonFunc.convertDoubleToString(mbg4));
+        map.put("mbm4", CommonFunc.convertDoubleToString(mbm4));
 
         map.put("fssjg", CommonFunc.convertDoubleToString(fssjg));
         map.put("sslltl", CommonFunc.convertDoubleToString(sslltl));
@@ -249,6 +293,8 @@ public class ThreeJibWheelEntity {
         map.put("dbgcshzr3", CommonFunc.convertDoubleToString(dbgcshzr3));
         map.put("dbgcshzr4", CommonFunc.convertDoubleToString(dbgcshzr4));
         map.put("dbgcshzr5", CommonFunc.convertDoubleToString(dbgcshzr5));
+        map.put("dbgcshzr6", CommonFunc.convertDoubleToString(dbgcshzr6));
+        map.put("dbgcshzr7", CommonFunc.convertDoubleToString(dbgcshzr7));
 
         map.put("dbjbxglr", CommonFunc.convertDoubleToString(dbjbxglr));
         map.put("db1bshdlr", CommonFunc.convertDoubleToString(db1bshdlr));
@@ -256,6 +302,8 @@ public class ThreeJibWheelEntity {
         map.put("db2bshdlr", CommonFunc.convertDoubleToString(db2bshdlr));
         map.put("db2bxglr", CommonFunc.convertDoubleToString(db2bxglr));
         map.put("db3bshdlr", CommonFunc.convertDoubleToString(db3bshdlr));
+        map.put("db3bxglr", CommonFunc.convertDoubleToString(db3bxglr));
+        map.put("db4bshdlr", CommonFunc.convertDoubleToString(db4bshdlr));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
@@ -263,10 +311,12 @@ public class ThreeJibWheelEntity {
         map.put("dblx2", CommonFunc.convertDoubleToString(dblx2));
         map.put("dblx3", CommonFunc.convertDoubleToString(dblx3));
         map.put("dblx4", CommonFunc.convertDoubleToString(dblx4));
+        map.put("dblx5", CommonFunc.convertDoubleToString(dblx5));
         map.put("dbld1", CommonFunc.convertDoubleToString(dbld1));
         map.put("dbld2", CommonFunc.convertDoubleToString(dbld2));
         map.put("dbld3", CommonFunc.convertDoubleToString(dbld3));
         map.put("dbld4", CommonFunc.convertDoubleToString(dbld4));
+        map.put("dbld5", CommonFunc.convertDoubleToString(dbld5));
 
 //        第一段搭接
         map.put("dbjbxglxh", CommonFunc.convertDoubleToString(dbjbxglxh));
@@ -298,7 +348,7 @@ public class ThreeJibWheelEntity {
 
         map.put("dbdjl2", CommonFunc.convertDoubleToString(dbdjl2));
 
-        //        第三段搭接
+               //        第三段搭接
         map.put("db2bxglxh", CommonFunc.convertDoubleToString(db2bxglxh));
         map.put("db2bxglfk", CommonFunc.convertDoubleToString(db2bxglfk));
         map.put("db2bxgln", CommonFunc.convertDoubleToString(db2bxgln));
@@ -313,6 +363,21 @@ public class ThreeJibWheelEntity {
 
         map.put("dbdjl3", CommonFunc.convertDoubleToString(dbdjl3));
 
+        //        第四段搭接
+        map.put("db3bxglxh", CommonFunc.convertDoubleToString(db3bxglxh));
+        map.put("db3bxglfk", CommonFunc.convertDoubleToString(db3bxglfk));
+        map.put("db3bxgln", CommonFunc.convertDoubleToString(db3bxgln));
+        map.put("db3bxgld", CommonFunc.convertDoubleToString(db3bxgld));
+        map.put("db3bxglb", CommonFunc.convertDoubleToString(db3bxglb));
+
+        map.put("db4bshdlxh", CommonFunc.convertDoubleToString(db4bshdlxh));
+        map.put("db4bshdlfk", CommonFunc.convertDoubleToString(db4bshdlfk));
+        map.put("db4bshdln", CommonFunc.convertDoubleToString(db4bshdln));
+        map.put("db4bshdld", CommonFunc.convertDoubleToString(db4bshdld));
+        map.put("db4bshdlb", CommonFunc.convertDoubleToString(db4bshdlb));
+
+        map.put("dbdjl4", CommonFunc.convertDoubleToString(dbdjl4));
+
         //        链条
         map.put("db2bltxh", CommonFunc.convertDoubleToString(db2bltxh));
         map.put("tlt1", CommonFunc.convertDoubleToString(tlt1));
@@ -321,6 +386,10 @@ public class ThreeJibWheelEntity {
         map.put("db3bltxh", CommonFunc.convertDoubleToString(db3bltxh));
         map.put("tlt2", CommonFunc.convertDoubleToString(tlt2));
         map.put("nlt2", CommonFunc.convertDoubleToString(nlt2));
+
+        map.put("db4bltxh", CommonFunc.convertDoubleToString(db4bltxh));
+        map.put("tlt3", CommonFunc.convertDoubleToString(tlt3));
+        map.put("nlt3", CommonFunc.convertDoubleToString(nlt3));
 
 //        齿轮齿条式伸缩机构
         map.put("ssjgxh", CommonFunc.convertDoubleToString(ssjgxh));
@@ -353,6 +422,7 @@ public class ThreeJibWheelEntity {
         map.put("m6db", CommonFunc.convertDoubleToString(m6db));
         map.put("m7db", CommonFunc.convertDoubleToString(m7db));
         map.put("m8db", CommonFunc.convertDoubleToString(m8db));
+        map.put("m9db", CommonFunc.convertDoubleToString(m9db));
         map.put("mlz", CommonFunc.convertDoubleToString(mlz));
 
         map.put("fslf", CommonFunc.convertDoubleToString(fslf));
@@ -363,6 +433,7 @@ public class ThreeJibWheelEntity {
         map.put("ff6gl", CommonFunc.convertDoubleToString(ff6gl));
         map.put("ff7gl", CommonFunc.convertDoubleToString(ff7gl));
         map.put("ff8gl", CommonFunc.convertDoubleToString(ff8gl));
+        map.put("ff9gl", CommonFunc.convertDoubleToString(ff9gl));
         map.put("flz", CommonFunc.convertDoubleToString(flz));
 
         map.put("lslp", CommonFunc.convertDoubleToString(lslp));
@@ -373,6 +444,7 @@ public class ThreeJibWheelEntity {
         map.put("lp6gl", CommonFunc.convertDoubleToString(lp6gl));
         map.put("lp7gl", CommonFunc.convertDoubleToString(lp7gl));
         map.put("lp8gl", CommonFunc.convertDoubleToString(lp8gl));
+        map.put("lp9gl", CommonFunc.convertDoubleToString(lp9gl));
 
         map.put("lslpi", CommonFunc.convertDoubleToString(lslpi));
         map.put("lshlpi", CommonFunc.convertDoubleToString(lshlpi));
@@ -381,6 +453,7 @@ public class ThreeJibWheelEntity {
         map.put("lp3i", CommonFunc.convertDoubleToString(lp3i));
         map.put("lp7gli", CommonFunc.convertDoubleToString(lp7gli));
         map.put("lp8gli", CommonFunc.convertDoubleToString(lp8gli));
+        map.put("lp9gli", CommonFunc.convertDoubleToString(lp9gli));
 
         map.put("lslpii", CommonFunc.convertDoubleToString(lslpii));
         map.put("lshlpii", CommonFunc.convertDoubleToString(lshlpii));
@@ -388,6 +461,14 @@ public class ThreeJibWheelEntity {
         map.put("lp2ii", CommonFunc.convertDoubleToString(lp2ii));
         map.put("lp3ii", CommonFunc.convertDoubleToString(lp3ii));
         map.put("lp8glii", CommonFunc.convertDoubleToString(lp8glii));
+        map.put("lp9glii", CommonFunc.convertDoubleToString(lp9glii));
+
+        map.put("lslpiii", CommonFunc.convertDoubleToString(lslpiii));
+        map.put("lshlpiii", CommonFunc.convertDoubleToString(lshlpiii));
+        map.put("lp1iii", CommonFunc.convertDoubleToString(lp1iii));
+        map.put("lp2iii", CommonFunc.convertDoubleToString(lp2iii));
+        map.put("lp3iii", CommonFunc.convertDoubleToString(lp3iii));
+        map.put("lp9gliii", CommonFunc.convertDoubleToString(lp9gliii));
 
         map.putAll(takeStringMapForPdf(type));
         return map;
@@ -404,6 +485,44 @@ public class ThreeJibWheelEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
+        //第四段搭接处滚轮
+        Double mslliii= fslf * lslpiii ;
+        Double mshlliii= fshlf * lshlpiii ;
+        Double ml1iii= ff1 * lp1iii ;
+        Double ml2iii= ff2 * lp2iii ;
+        Double ml3iii= ff3 * lp3iii ;
+        Double ml9iii= ff9gl * lp9gliii ;
+        map.put("mslliii", mslliii);
+        map.put("mshlliii", mshlliii);
+        map.put("ml1iii", ml1iii);
+        map.put("ml2iii", ml2iii);
+        map.put("ml3iii", ml3iii);
+        map.put("ml9iii", ml9iii);
+
+        Double mliii = mslliii + mshlliii + ml1iii + ml2iii + ml3iii + ml9iii ;
+        Double ngl8 = mliii / dbdjl4 / 1000 ;
+        Double ngl7 = ( flz - ff6gl - ff7gl - ff8gl ) / 1000 + ngl8 ;
+        Double ngl81 = ngl8 * Math.cos( Math.PI / 4 ) ;
+        Double ngl71 = ngl7 * Math.cos( Math.PI / 4 ) ;
+        Double glbz16 = ngl71 / db3bxglfk ;
+        Double glbz17 = ngl81 / db4bshdlfk ;
+        map.put("mliii", mliii);
+        map.put("ngl8", ngl8);
+        map.put("ngl7", ngl7);
+        map.put("ngl81", ngl81);
+        map.put("ngl71", ngl71);
+        map.put("glbz16", glbz16);
+        map.put("glbz17", glbz17);
+
+        Double shz7 = sqrt( 0.35 * 210000 * 1000 * ngl71 / db3bxgld / db3bxglb / db3bxgln ) ;
+        Double shz8 = sqrt( 0.35 * 210000 * 1000 * ngl81 / db4bshdld / db4bshdlb / db4bshdln ) ;
+        Double glbz18 = shz7 / dbgcshzr ;
+        Double glbz19 = shz8 / dbgcshzr ;
+        map.put("shz7", shz7);
+        map.put("shz8", shz8);
+        map.put("glbz18", glbz18);
+        map.put("glbz19", glbz19);
+
         //第三段搭接处滚轮
         Double msllii= fslf * lslpii ;
         Double mshllii= fshlf * lshlpii ;
@@ -411,14 +530,16 @@ public class ThreeJibWheelEntity {
         Double ml2ii= ff2 * lp2ii ;
         Double ml3ii= ff3 * lp3ii ;
         Double ml8ii= ff8gl * lp8glii ;
+        Double ml9ii= ff9gl * lp9glii ;
         map.put("msllii", msllii);
         map.put("mshllii", mshllii);
         map.put("ml1ii", ml1ii);
         map.put("ml2ii", ml2ii);
         map.put("ml3ii", ml3ii);
         map.put("ml8ii", ml8ii);
+        map.put("ml9ii", ml9ii);
 
-        Double mlii = msllii + mshllii + ml1ii + ml2ii + ml3ii + ml8ii ;
+        Double mlii = msllii + mshllii + ml1ii + ml2ii + ml3ii + ml8ii + ml9ii ;
         Double ngl6 = mlii / dbdjl3 / 1000 ;
         Double ngl5 = ( flz - ff6gl - ff7gl ) / 1000 + ngl6 ;
         Double ngl61 = ngl6 * Math.cos( Math.PI / 4 ) ;
@@ -450,6 +571,7 @@ public class ThreeJibWheelEntity {
         Double ml3i= ff3 * lp3i ;
         Double ml7i= ff7gl * lp7gli ;
         Double ml8i= ff8gl * lp8gli ;
+        Double ml9i= ff9gl * lp9gli ;
         map.put("mslli", mslli);
         map.put("mshlli", mshlli);
         map.put("ml1i", ml1i);
@@ -457,8 +579,9 @@ public class ThreeJibWheelEntity {
         map.put("ml3i", ml3i);
         map.put("ml7i", ml7i);
         map.put("ml8i", ml8i);
+        map.put("ml9i", ml9i);
 
-        Double mli = mslli + mshlli + ml1i + ml2i + ml3i + ml7i + ml8i ;
+        Double mli = mslli + mshlli + ml1i + ml2i + ml3i + ml7i + ml8i + ml9i ;
         Double ngl4 = mli / dbdjl2 / 1000 ;
         Double ngl3 = ( flz - ff6gl ) / 1000 + ngl4 ;
         Double ngl41 = ngl4 * Math.cos( Math.PI / 4 ) ;
@@ -491,6 +614,7 @@ public class ThreeJibWheelEntity {
         Double ml6= ff6gl * lp6gl ;
         Double ml7= ff7gl * lp7gl ;
         Double ml8= ff8gl * lp8gl ;
+        Double ml9= ff9gl * lp9gl ;
         map.put("msll", msll);
         map.put("mshll", mshll);
         map.put("ml1", ml1);
@@ -499,8 +623,9 @@ public class ThreeJibWheelEntity {
         map.put("ml6", ml6);
         map.put("ml7", ml7);
         map.put("ml8", ml8);
+        map.put("ml9", ml9);
 
-        Double ml = msll + mshll + ml1 + ml2 + ml3 + ml6 + ml7 + ml8 ;
+        Double ml = msll + mshll + ml1 + ml2 + ml3 + ml6 + ml7 + ml8 + ml9 ;
         Double ngl2 = ml / dbdjl1 / 1000 ;
         Double ngl1 = flz / 1000 + ngl2 ;
         Double ngl21 = ngl2 * Math.cos( Math.PI / 4 ) ;
@@ -525,9 +650,20 @@ public class ThreeJibWheelEntity {
         map.put("glbz4", glbz4);
 
         //        链条校核
+        Double f7 = 2 * ngl71 * 0.05 / db3bxglr ;
+        Double f8 = 2 * ngl81 * 0.05 / db4bshdlr ;
+        Double tlts3 = ( tsl + tshl + ( mlz - m6db - m7db - m8db ) * Math.sin( dbyj / 180 * Math.PI ) ) * 10 / 1000 + f7 +f8 ;
+        Double tltbz3 = nlt3 * tlt3 ;
+        Double glbz20 = nlt3 * tlt3 / tlts3 ;
+        map.put("f7", f7);
+        map.put("f8", f8);
+        map.put("tlts3", tlts3);
+        map.put("tltbz3", tltbz3);
+        map.put("glbz20", glbz20);
+
         Double f5 = 2 * ngl51 * 0.05 / db2bxglr ;
         Double f6 = 2 * ngl61 * 0.05 / db3bshdlr ;
-        Double tlts2 = ( tsl + tshl + ( mlz - m6db - m7db ) * Math.sin( dbyj / 180 * Math.PI ) ) * 10 / 1000 + f5 +f6 ;
+        Double tlts2 = 2 * tlts3 + m8db * 10 * Math.sin( dbyj / 180 * Math.PI ) / 1000 + f5 +f6 ;
         Double tltbz2 = nlt2 * tlt2 ;
         Double glbz15 = nlt2 * tlt2 / tlts2 ;
         map.put("f5", f5);
@@ -538,7 +674,7 @@ public class ThreeJibWheelEntity {
 
         Double f3 = 2 * ngl31 * 0.05 / db1bxglr ;
         Double f4 = 2 * ngl41 * 0.05 / db2bshdlr ;
-        Double tlts1 = 2 * tlts2 + m7db * 10 * Math.sin( dbyj / 180 * Math.PI ) / 1000 + f3 +f4 ;
+        Double tlts1 = 2 * tlts2 - tlts3 + m7db * 10 * Math.sin( dbyj / 180 * Math.PI ) / 1000 + f3 +f4 ;
         Double tltbz1 = nlt1 * tlt1 ;
         Double glbz10 = nlt1 * tlt1 / tlts1 ;
         map.put("f3", f3);
@@ -618,6 +754,28 @@ public class ThreeJibWheelEntity {
         Map map = new HashMap();
         Map<String, Double> doubleMap = takeDoubleMapForPdf(type);
 
+        Double ngl71 = doubleMap.get("ngl71");
+        Double ngl81 = doubleMap.get("ngl81");
+        String glb16 = takeSignByCompareNumber(ngl71, db3bxglfk);
+        String glb17 = takeSignByCompareNumber(ngl81, db4bshdlfk);
+        String glm16 = takeStringByCompareNumber(ngl71, db3bxglfk);
+        String glm17 = takeStringByCompareNumber(ngl81, db4bshdlfk);
+        map.put("glb16", CommonFunc.convertDoubleToString(glb16));
+        map.put("glb17", CommonFunc.convertDoubleToString(glb17));
+        map.put("glm16", CommonFunc.convertDoubleToString(glm16));
+        map.put("glm17", CommonFunc.convertDoubleToString(glm17));
+
+        Double shz7 = doubleMap.get("shz7");
+        Double shz8 = doubleMap.get("shz8");
+        String glb18 = takeSignByCompareNumber(shz7, dbgcshzr);
+        String glb19 = takeSignByCompareNumber(shz8, dbgcshzr);
+        String glm18 = takeStringByCompareNumber(shz7, dbgcshzr);
+        String glm19 = takeStringByCompareNumber(shz8, dbgcshzr);
+        map.put("glb18", CommonFunc.convertDoubleToString(glb18));
+        map.put("glb19", CommonFunc.convertDoubleToString(glb19));
+        map.put("glm18", CommonFunc.convertDoubleToString(glm18));
+        map.put("glm19", CommonFunc.convertDoubleToString(glm19));
+
         Double ngl51 = doubleMap.get("ngl51");
         Double ngl61 = doubleMap.get("ngl61");
         String glb11 = takeSignByCompareNumber(ngl51, db2bxglfk);
@@ -683,6 +841,12 @@ public class ThreeJibWheelEntity {
         map.put("glb4", CommonFunc.convertDoubleToString(glb4));
         map.put("glm3", CommonFunc.convertDoubleToString(glm3));
         map.put("glm4", CommonFunc.convertDoubleToString(glm4));
+
+        Double glbz20 = doubleMap.get("glbz20");
+        String glb20 = takeSignByCompareNumber(glbz20, 8.0);
+        String glm20 = (glbz20 < 8) ? "不满足" : "满足";
+        map.put("glb20", CommonFunc.convertDoubleToString(glb20));
+        map.put("glm20", CommonFunc.convertDoubleToString(glm20));
 
         Double glbz15 = doubleMap.get("glbz15");
         String glb15 = takeSignByCompareNumber(glbz15, 8.0);
