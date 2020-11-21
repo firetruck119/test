@@ -1,4 +1,4 @@
-package com.point.entity.pdf;
+package com.point.entity.drawing;
 
 import com.point.common.CommonFunc;
 import lombok.Data;
@@ -9,9 +9,9 @@ import java.util.Map;
 @Data
 public class DijiaDrawingEntity {
 
-    private String lg;
-    private String ll;
-    private String lzpxj;
+    private Double lg;
+    private Double ll;
+    private Double lzpxj;
 
     private String djhzxs;
     private String hzzc;
@@ -21,6 +21,7 @@ public class DijiaDrawingEntity {
     private String djqsjg;
     private String djth;
 
+    private String djzl;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();

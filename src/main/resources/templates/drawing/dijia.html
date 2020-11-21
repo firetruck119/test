@@ -12,7 +12,7 @@
     <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
     <link th:href="@{css/base.min.css}" rel="stylesheet"/>
     <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
-    <script th:src="@{js/dataClass.js}" ></script>
+    <!--    <script th:src="@{js/dataClass.js}" ></script>-->
     <script th:src="@{js/axios.js}"></script>
     <style type="text/css">
         p {
@@ -79,7 +79,7 @@
             margin-bottom: 5px;
         }
 
-        .buttonbox input, .navbox input,.buttonbox button {
+        .buttonbox input, .navbox input, .buttonbox button {
             background-color: #ccc;
             display: block;
             width: 140px;
@@ -218,15 +218,29 @@
                 $('#' + element).attr('src', fileReader.result).attr('display', 'inline-block')
             }
         }
+
         function ajaxForImage(imageid) {
             var data = new FormData();
-            var els=$("input[type=text],select");
-            for(var index=0;index < els.length;index++){
-                var e=els[index];
-                data.append(e.name,e.value);
+            var els = $("input[type=text],select");
+            for (var index = 0; index < els.length; index++) {
+                var e = els[index];
+                data.append(e.name, e.value);
             }
-            axios.post("/DijiaDrawing/showDrawing",data).then(function (e) {
-                $("img[id=image]")[0].src = '/drawing/getImg?filename='+e.data+'&drawingname=dijia&tempid='+Math.random();
+            axios.post("/DijiaDrawing/showDrawing", data).then(function (e) {
+                $("img[id=image]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=dijia&tempid=' + Math.random();
+            })
+        }
+
+        function ajaxForDrawing(imageid) {
+            var data = new FormData();
+            var els = $("input[type=text],select");
+            for (var index = 0; index < els.length; index++) {
+                var e = els[index];
+                data.append(e.name, e.value);
+            }
+            axios.post("/DijiaDrawing/getDrawingName", data).then(function (e) {
+                $("[name=mdj]").val(e.data["mdj"]);
+                $("[name=th]").val(e.data["th"]);
             })
         }
     </script>
@@ -266,74 +280,63 @@
                         </tr>
                         <tr>
                             <td style="width:40%;padding:10px 0;;"><b>名称</b></td>
-                            <!--<td style="width:17%;">符号</td>-->
                             <td style="width:40%;">数值</td>
                             <td style="width:20%;">单位</td>
                         </tr>
                         <tr>
                             <td><b>回转形式</b></td>
-                            <!--<td><p><i>djhzxs</i></p></td>-->
                             <td><select name="djhzxs"></select></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><b>轨距</b></td>
-                            <!--<td><p><i>lg</i></p></td>-->
                             <td><select name="lg"></select></td>
                             <td>m</td>
                         </tr>
                         <tr>
                             <td><b>轮距</b></td>
-                            <!--<td><p><i>ll</i></p></td>-->
                             <td><select name="ll"></select></td>
                             <td>m</td>
                         </tr>
                         <tr>
                             <td><b>回转支撑型号</b></td>
-                            <!--<td><p><i>hzzc</i></p></td>-->
                             <td><select name="hzzc"></select></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><b>运行机构</b></td>
-                            <!--<td><p><i>yxjgxz</i></p></td>-->
                             <td><select name="yxjgxz"></select></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><b>有无摆动臂</b></td>
-                            <!--<td><p><i>djbdb</i></p></td>-->
                             <td><select name="djbdb"></select></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><b>立柱偏心距</b></td>
-                            <!--<td><p><i>lzpxj</i></p></td>-->
                             <td><select name="lzpxj"></select></td>
                             <td>m</td>
                         </tr>
                         <tr>
                             <td><b>底架类型</b></td>
-                            <!--<td><p><i>djlx</i></p></td>-->
                             <td><select name="djlx"></select></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><b>起升机构</b></td>
-                            <!--<td><p><i>djqsjg</i></p></td>-->
                             <td><select name="djqsjg"></select></td>
                             <td></td>
                         </tr>
-                        <!--<tr>-->
-                            <!--<td><b>底架图号</b></td>-->
-                            <!--&lt;!&ndash;<td><p><i>djqsjg</i></p></td>&ndash;&gt;-->
-                            <!--<td><select name="imageid"></select></td>-->
-                            <!--<td></td>-->
-                        <!--</tr>-->
                         <tr>
-                            <td ><b>底架图号</b></td>
-                            <td ><input type="text" name="imageid"/></td>
-                            <td ></td>
+                            <td><b>底架图号</b></td>
+                            <td><input type="text" name="th"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>底架质量</b></td>
+                            <td><input type="text" name="mdj"/></td>
+                            <td></td>
                         </tr>
                     </table>
                 </div>
@@ -342,19 +345,20 @@
                 </div>
                 <div class="buttonbox">
                     <input type="submit" form="form1" class="button" value="保存数据"
-                           onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
-                    <button class="button" type="button" value="显示图片"  onclick="ajaxForImage('dijia')">显示图片</button>
+                           onclick="$('form').attr('action','/saveValue')"/>
+                    <button class="button" type="button" value="显示图片" onclick="ajaxForImage('dijia')">显示图片</button>
+                    <button class="button" type="button" value="显示图片" onclick="ajaxForDrawing('dijia')">获取图号</button>
                     <input type="submit" form="form1" class="button" value="获取图纸" onclick="$('form').attr('action','DijiaDrawing/getPDF');
-                                                                                            isCheck(true);changeType('Check')" />
+                                                                                            isCheck(true);changeType('Check')"/>
                     <input type="reset" form="form1" value="重置"
-                           onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
+                           onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa');$('img').prop('src','')"/>
                 </div>
             </table>
         </div>
     </form>
 </div>
 <script>
-    function changeType(l){
+    function changeType(l) {
         var e = $('input[name=pdfType]');
         if (e.length == 0) {
             $('form').append('<input name="pdfType" type="hidden"/>');
@@ -362,44 +366,18 @@
         e = $('input[name=pdfType]');
         e.val(l);
     }
-    var calculateFunction={
 
-        djqsjg: function () {
-             if ( djhzxs == "下回转" ) {
-                 return '无限制';
-             } else if ( djhzxs == "上回转" ) {
-                  return ' ';
-                }
-            },
-        lzpxj: function () {
-            if ( djhzxs == "下回转" ) {
-                return '0';
-            } else if ( djhzxs == "上回转" ) {
-                return ' ';
-            }
-        },
-        // djth:()=>{
-        //     var dijia=model['dijia'];
-        //     var datas=[];
-        //     for(var key in dijia){
-        //         var data=dijia[key];
-        //         if((!djhzxs||data["djhzxs"]== djhzxs )&&
-        //             (!ll||data["ll"]== ll )&&
-        //             (!lg||data["lg"]== lg )&&
-        //             (!hzzc||data["hzzc"]== hzzc )&&
-        //             (!yxjgxz||data["yxjgxz"]== yxjgxz )&&
-        //             (!djbdb||data["djbdb"]== djbdb )&&
-        //             (!lzpxj||data["lzpxj"]== lzpxj )&&
-        //             (!djlx||data["djlx"]== djlx )&&
-        //             (!djqsjg||data["djqsjg"]== djqsjg ))
-        //             datas.push(data);
-        //     }
-        //     if(datas.length==1)
-        //         return datas[0]['djth']
-        // },
-    };
 
-    data.init(calculateFunction);
+    $("[name=djhzxs]").change(() => {
+        var v = $("[name=djhzxs]").val();
+        if (v == "下回转") {
+            $("[name=djqsjg]").val('无限制')
+            $("[name=lzpxj]").val(0)
+        } else if (v == "上回转") {
+            $("[name=djqsjg]").val("")
+            $("[name=lzpxj]").val("")
+        }
+    })
 
 </script>
 

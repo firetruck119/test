@@ -7,6 +7,7 @@ import com.point.excel.DrawingTableExcelUtil;
 import com.point.mapper.DrawingDao;
 import com.point.mapper.DrawingtableColumnnameDao;
 import com.point.mapper.DrawingtableDao;
+import com.point.security.error.UserException;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class DrawingTableController {
@@ -116,6 +115,7 @@ public class DrawingTableController {
     public List<Drawingtable> selectTableByDrawingNo(String name) {
         return drawingtable.selectTableByDrawingName(drawing.getByNo(name).getId().toString());
     }
+
     @PostMapping("/drawingTable/getExcel")
     @ResponseBody
     public void getExcel(@RequestBody Drawing d, HttpServletResponse response) throws IOException {
@@ -132,10 +132,10 @@ public class DrawingTableController {
         OutputStream os = null;
         try {
             try {
-                fis = new FileInputStream("/root/drawing/" +drawingname+"/image/" + filename);
+                fis = new FileInputStream("/root/drawing/" + drawingname + "/image/" + filename);
             } catch (Exception e) {
                 System.out.println(e);
-                fis = new FileInputStream("C:\\resource\\drawing\\"+drawingname+"\\image\\" + filename);
+                fis = new FileInputStream("C:\\resource\\drawing\\" + drawingname + "\\image\\" + filename);
             }
             os = response.getOutputStream();
             int count = 0;
@@ -155,10 +155,10 @@ public class DrawingTableController {
             }
         }
     }
+
     public List<String> getPDFName(String drawingname, Map<String, String> map) throws NoSuchFieldException, IllegalAccessException {
         Drawing d = drawing.getByNo(drawingname);
         List<DrawingtableColumnname> columns = Columnn.selectColumnsByDrawingName(d.getId().toString());
-
         Drawingtable table = new Drawingtable();
         table.setDrawingname(d.getId().toString());
         Class clazz = table.getClass();
@@ -172,5 +172,37 @@ public class DrawingTableController {
             }
         }
         return drawingtable.selectByTable(table);
+    }
+
+    public Map<String, String> getPDF(String drawingname, Map<String, String> map) throws NoSuchFieldException, IllegalAccessException, UserException {
+        Drawing d = drawing.getByNo(drawingname);
+        List<DrawingtableColumnname> columns = Columnn.selectColumnsByDrawingName(d.getId().toString());
+        Drawingtable table = new Drawingtable();
+        table.setDrawingname(d.getId().toString());
+        Class clazz = table.getClass();
+        for (int i = 0; i < columns.size(); i++) {
+            DrawingtableColumnname column = columns.get(i);
+            Field field = clazz.getDeclaredField("column" + (i + 1));
+            field.setAccessible(true);
+            if (map.containsKey(column.getColumnno())) {
+                String data = map.get(column.getColumnno());
+                field.set(table, data);
+            }
+        }
+        List<Drawingtable> tables = drawingtable.selectMapByTable(table);
+        if (tables.size() > 1)
+            throw new UserException("结果不唯一");
+        Map<String, String> datas = new HashMap<>();
+        table = tables.get(0);
+        clazz = table.getClass();
+        for (int i = 0; i < columns.size(); i++) {
+            DrawingtableColumnname column = columns.get(i);
+            Field field = clazz.getDeclaredField("column" + (i + 1));
+            field.setAccessible(true);
+            String s = field.get(table).toString();
+            datas.put(columns.get(i).getColumnno(), s);
+        }
+        datas.put("th",table.getDrawingtype());
+        return datas;
     }
 }

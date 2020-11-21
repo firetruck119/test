@@ -111,6 +111,76 @@
             and column_20 = #{column20,jdbcType=OTHER}
         </if>
     </select>
+
+    <select id="selectMapByTable" parameterType="com.point.entity.Drawingtable" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from drawingtable
+        where 1=1
+        <if test="drawingname != null">
+            and drawingName = #{drawingname,jdbcType=CHAR}
+        </if>
+        <if test="column1 != null">
+            and column_1 = #{column1,jdbcType=OTHER}
+        </if>
+        <if test="column2 != null">
+            and column_2 = #{column2,jdbcType=OTHER}
+        </if>
+        <if test="column3 != null">
+            and column_3 = #{column3,jdbcType=OTHER}
+        </if>
+        <if test="column4 != null">
+            and column_4 = #{column4,jdbcType=OTHER}
+        </if>
+        <if test="column5 != null">
+            and column_5 = #{column5,jdbcType=OTHER}
+        </if>
+        <if test="column6 != null">
+            and column_6 = #{column6,jdbcType=OTHER}
+        </if>
+        <if test="column7 != null">
+            and column_7 = #{column7,jdbcType=OTHER}
+        </if>
+        <if test="column8 != null">
+            and column_8 = #{column8,jdbcType=OTHER}
+        </if>
+        <if test="column9 != null">
+            and column_9 = #{column9,jdbcType=OTHER}
+        </if>
+        <if test="column10 != null">
+            and column_10 = #{column10,jdbcType=OTHER}
+        </if>
+        <if test="column11 != null">
+            and column_11 = #{column11,jdbcType=OTHER}
+        </if>
+        <if test="column12 != null">
+            and column_12 = #{column12,jdbcType=OTHER}
+        </if>
+        <if test="column13 != null">
+            and column_13 = #{column13,jdbcType=OTHER}
+        </if>
+        <if test="column14 != null">
+            and column_14 = #{column14,jdbcType=OTHER}
+        </if>
+        <if test="column15 != null">
+            and column_15 = #{column15,jdbcType=OTHER}
+        </if>
+        <if test="column16 != null">
+            and column_16 = #{column16,jdbcType=OTHER}
+        </if>
+        <if test="column17 != null">
+            and column_17 = #{column17,jdbcType=OTHER}
+        </if>
+        <if test="column18 != null">
+            and column_18 = #{column18,jdbcType=OTHER}
+        </if>
+        <if test="column19 != null">
+            and column_19 = #{column19,jdbcType=OTHER}
+        </if>
+        <if test="column20 != null">
+            and column_20 = #{column20,jdbcType=OTHER}
+        </if>
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from drawingtable
     where id = #{id,jdbcType=BIGINT}

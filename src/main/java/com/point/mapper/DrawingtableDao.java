@@ -24,4 +24,5 @@ public interface DrawingtableDao {
 
     List<String> selectByTable(Drawingtable record);
 
+    List<Drawingtable> selectMapByTable(Drawingtable table);
 }
