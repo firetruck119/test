@@ -408,15 +408,15 @@
                 <tr>
                     <td colspan="4">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="吊臂挠度计算尺寸示意图"src="/image/Tensile/db2tu8.png" width="600px" id="db2tu8" name="db2tu8" >
-                            <input type="hidden" value="tu_db2tu8.png"/>
+                            <img alt="吊臂挠度计算尺寸示意图"src="/image/Tensile/db1tu8.png" width="600px" id="db1tu8" name="db1tu8" >
+                            <input type="hidden" value="tu_db1tu8.png"/>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding:10px 0"><b>吊臂挠度计算尺寸示意图</b></td>
-                    <td colspan="3"><input class="image" type="file" name="db2tu8" accept="image/*"
-                                           oninput="showImage(this,'db2tu8')"/></td>
+                    <td colspan="3"><input class="image" type="file" name="db1tu8" accept="image/*"
+                                           oninput="showImage(this,'db1tu8')"/></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -1236,7 +1236,7 @@
             if ( gruModel == "GRU285" ) {
                 $('[name=grutstx]').prop('disabled', true)
                 data.datalist['grutstx'].color = 'white';
-                return '物料起升机构额定载重量为600kg';
+                return '物料起升机构额定载重量为500kg';
             } else if ( gruModel == "GRU295" ) {
                 $('[name=grutstx]').prop('disabled', true)
                 data.datalist['grutstx'].color = 'white';
