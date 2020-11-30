@@ -259,7 +259,7 @@
                     <td colspan="4">
                         <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="其它">其它</option>
+                            <!--<option value="其它">其它</option>-->
                         </select>
                     </td>
                 </tr>
@@ -268,7 +268,7 @@
                     <td colspan="4">
                         <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="其它">其它</option>
+                            <!--<option value="其它">其它</option>-->
                         </select>
                     </td>
                 </tr>
@@ -287,7 +287,7 @@
                     <td colspan="4">
                         <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="其它">其它</option>
+                            <!--<option value="其它">其它</option>-->
                         </select>
                     </td>
                 </tr>
@@ -697,6 +697,29 @@
             <input type="text" name="lz2mmzl"/>
             <input type="text" name="myzjg"/>
             <input type="text" name="lbj"/>
+            <input type="text" name="lslhz"/>
+            <input type="text" name="lshlhz"/>
+            <input type="text" name="lhz1"/>
+            <input type="text" name="lhz2"/>
+            <input type="text" name="lhz3"/>
+            <input type="text" name="lhz4"/>
+            <input type="text" name="lhz5"/>
+            <input type="text" name="lhz6"/>
+            <input type="text" name="lhz7"/>
+            <input type="text" name="lhz8"/>
+            <input type="text" name="lhz9"/>
+            <input type="text" name="lhz10"/>
+            <input type="text" name="lhz11"/>
+            <input type="text" name="lhz12"/>
+            <input type="text" name="lhz13"/>
+            <input type="text" name="lhz14"/>
+            <input type="text" name="lhz15"/>
+            <input type="text" name="lhz16"/>
+            <input type="text" name="lhz17"/>
+            <input type="text" name="lhz18"/>
+            <input type="text" name="lhz19"/>
+            <input type="text" name="lhz20"/>
+            <input type="text" name="lhz21"/>
         </div>
 
         <div style="width:600px;">
@@ -1032,7 +1055,7 @@
             return hwll + hsw ;
         },
         m3:function(){
-            return  h * 0.203 ;
+            return  25 ;
         },
         lxtz:()=>{
             return lbd - lbx ;
@@ -1253,6 +1276,121 @@
                 return ' ' ;
             }
         },
+
+    lslhz:function(){
+        return lslqg + lg / 2 ;
+    },
+    lshlhz:function(){
+        return lshlqg + lg / 2 ;
+    },
+    lhz1:function(){
+        return lqg1 + lg / 2 ;
+    },
+    lhz2:function(){
+        return lqg2 + lg / 2 ;
+    },
+    lhz3:function(){
+        return lqg3 + lg / 2 ;
+    },
+    lhz4:function(){
+        return lqg4 + lg / 2 ;
+    },
+    lhz5:function(){
+        return lg / 2 - lqg5 ;
+    },
+    lhz6:function(){
+        if( m6 == 0 ){
+            return 0 ;
+        }else {
+            return lqg6 + lg / 2 ;
+        }
+    },
+    lhz7:function(){
+        if( m7 == 0 ){
+            return 0 ;
+        }else {
+            return lg / 2 - lqg7 ;
+        }
+    },
+    lhz8:function(){
+        if( m8 == 0 ){
+            return 0 ;
+        }else {
+            return lg / 2 - lqg8 ;
+        }
+    },
+    lhz9:function(){
+        return 0 ;
+    },
+    lhz10:function(){
+        if( m10 == 0 ){
+            return 0 ;
+        }else {
+            return lqg10 - lg / 2 ;
+        }
+    },
+    lhz11:function(){
+        return lbp ;
+    },
+    lhz12:function(){
+        return 0 ;
+    },
+    lhz13:function(){
+        return lqg13 - lg / 2 ;
+    },
+    lhz14:function(){
+        if( m14 == 0 ){
+            return 0 ;
+        }else {
+            return lqg14 - lg / 2 ;
+        }
+    },
+    lhz15:function(){
+        return 0 ;
+    },
+    lhz16:function(){
+        if( m16 == 0 ){
+            return 0 ;
+        }else {
+            return lqg16 - lg / 2 ;
+        }
+    },
+    lhz17:function(){
+        if( m17 == 0 ){
+            return 0 ;
+        }else {
+            return lqg17 - lg / 2 ;
+        }
+    },
+    lhz18:function(){
+        if( m18 == 0 ){
+            return 0 ;
+        }else {
+            return lqg18 - lg / 2 ;
+        }
+    },
+    lhz19:function(){
+        if( m19 == 0 ){
+            return 0 ;
+        }else {
+            return lqg19 - lg / 2 ;
+        }
+    },
+    lhz20:function(){
+        if( m20 == 0 ){
+            return 0 ;
+        }else {
+            return lqg20 + lg / 2 ;
+        }
+    },
+    lhz21:function(){
+        if( m21 == 0 ){
+            return 0 ;
+        }else {
+            return lqg21 - lg / 2 ;
+        }
+    },
+
         // mz:function(){
         //     return  m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
         // },

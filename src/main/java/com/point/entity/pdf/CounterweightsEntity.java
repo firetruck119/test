@@ -97,6 +97,31 @@ public class CounterweightsEntity {
     private String yxjgaz;
     private String hzzcxh;
 
+//    非界面--重心至回转中心
+    private Double lslhz;
+    private Double lshlhz;
+    private Double lhz1;
+    private Double lhz2;
+    private Double lhz3;
+    private Double lhz4;
+    private Double lhz5;
+    private Double lhz6;
+    private Double lhz7;
+    private Double lhz8;
+    private Double lhz9;
+    private Double lhz10;
+    private Double lhz11;
+    private Double lhz12;
+    private Double lhz13;
+    private Double lhz14;
+    private Double lhz15;
+    private Double lhz16;
+    private Double lhz17;
+    private Double lhz18;
+    private Double lhz19;
+    private Double lhz20;
+    private Double lhz21;
+
     private String qt1;
     private String qt2;
 
@@ -287,6 +312,30 @@ public class CounterweightsEntity {
         map.put("lqg21", CommonFunc.convertDoubleToString(lqg21));
         map.put("ltjbpz", CommonFunc.convertDoubleToString(ltjbpz));
         map.put("lbp", CommonFunc.convertDoubleToString(lbp));
+
+        map.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
+        map.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));
+        map.put("lhz1", CommonFunc.convertDoubleToString(lhz1));
+        map.put("lhz2", CommonFunc.convertDoubleToString(lhz2));
+        map.put("lhz3", CommonFunc.convertDoubleToString(lhz3));
+        map.put("lhz4", CommonFunc.convertDoubleToString(lhz4));
+        map.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
+        map.put("lhz6", CommonFunc.convertDoubleToString(lhz6));
+        map.put("lhz7", CommonFunc.convertDoubleToString(lhz7));
+        map.put("lhz8", CommonFunc.convertDoubleToString(lhz8));
+        map.put("lhz9", CommonFunc.convertDoubleToString(lhz9));
+        map.put("lhz10", CommonFunc.convertDoubleToString(lhz10));
+        map.put("lhz11", CommonFunc.convertDoubleToString(lhz11));
+        map.put("lhz12", CommonFunc.convertDoubleToString(lhz12));
+        map.put("lhz13", CommonFunc.convertDoubleToString(lhz13));
+        map.put("lhz14", CommonFunc.convertDoubleToString(lhz14));
+        map.put("lhz15", CommonFunc.convertDoubleToString(lhz15));
+        map.put("lhz16", CommonFunc.convertDoubleToString(lhz16));
+        map.put("lhz17", CommonFunc.convertDoubleToString(lhz17));
+        map.put("lhz18", CommonFunc.convertDoubleToString(lhz18));
+        map.put("lhz19", CommonFunc.convertDoubleToString(lhz19));
+        map.put("lhz20", CommonFunc.convertDoubleToString(lhz20));
+        map.put("lhz21", CommonFunc.convertDoubleToString(lhz21));
 
         map.put("yxjgaz", CommonFunc.convertDoubleToString(yxjgaz));
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
