@@ -324,7 +324,7 @@ public class SingleJibEntity {
         Double mw = mslwa + mshlwa + mwa1 + mwa2 + mwa3 + mwa4 + mwa5 ;
         Double sw = 1000 * mw / dbwyls ;
         Double smax = sz + sw ;
-        Double ssqd = dbss / 1.5 ;
+        Double ssqd = dbss / 1.5 / 1.1 ;
         map.put("mz", mz);
         map.put("sz", sz);
         map.put("mw", mw);
