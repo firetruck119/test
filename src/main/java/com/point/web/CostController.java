@@ -40,12 +40,12 @@ public class CostController {
 
     @GetMapping("/pdf/Cost")
     public String getMap2() {
-        return "/pdf/Cost";
+        return "pdf/Cost";
     }
 
     @GetMapping("/Cost")
     public String getMap() {
-        return "/Cost";
+        return "Cost";
     }
     @GetMapping("/Cost/getData")
     @ResponseBody
