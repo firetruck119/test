@@ -229,7 +229,7 @@ asideDatas = {
             children: [
                 {
                     title: '整机材料成本',
-                    url:'Cost',
+                    url: 'Cost'
                 },
                 {
                     title: '伸缩臂机',
@@ -328,7 +328,7 @@ asideMethods = {
     }
 };
 headerData = {
-    headerTitle: 'this is home'
+    headerTitle: 'POINT 计算书'
 };
 
 (function () {

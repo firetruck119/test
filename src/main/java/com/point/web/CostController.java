@@ -39,11 +39,12 @@ public class CostController {
     URLCacheData urlCacheData;
 
     @GetMapping("/pdf/Cost")
-    public String getMap() {
+    public String getMap2() {
         return "/pdf/Cost";
     }
+
     @GetMapping("/Cost")
-    public String getMap2() {
+    public String getMap() {
         return "/Cost";
     }
     @GetMapping("/Cost/getData")
