@@ -46,7 +46,7 @@ asideDatas = {
                     ]
                 },
                 {
-                    title: '清洗周期',
+                    title: '钢丝绳',
                     url:'WireRope'
                 },
                 {
@@ -228,8 +228,8 @@ asideDatas = {
             url: "pdf",
             children: [
                 {
-                    title: '固定臂机',
-                    url:'Cost'
+                    title: '整机材料成本',
+                    url:'Cost',
                 },
                 {
                     title: '伸缩臂机',
