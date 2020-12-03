@@ -76,6 +76,11 @@ public class WireRopeController {
         model.addAttribute("WireRopeEntity", new WireRopeEntity());
         return "pdf/WireRope";
     }
+    @GetMapping("/WireRope")
+    public String wireropeForm2(Model model, @ModelAttribute WireRopeEntity wireRopeEntity) {
+        model.addAttribute("WireRopeEntity", new WireRopeEntity());
+        return "WireRope";
+    }
     @PostMapping("/WireRopePDF1")
     public Object pdfTest(@ModelAttribute WireRopeEntity wireRopeEntity,String sjht) {
         Map<String, String> map = wireRopeEntity.createMapForPdf();
