@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                            console.log(e.data)
+                            this.username=e.data;
+                        }
+                    )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                            if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                                var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                                if(e.data==1) {
+                                    axios.get("/getPermitsAboveSuperUser").then(
+                                        e1 => {
+                                            console.log(e1.data);
+                                            console.log(invisibleLinks);
+                                            for(i=0;i < invisibleLinks.length;i++){
+                                                for (j = 0; j < e1.data.length; j++) {
+                                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                                        invisibleLinks[i].style.display = "none";
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        });
+                                }
+                                else if(e.data==2){
+                                    axios.get("/getPermitsAboveAdmin").then(
+                                        e1 => {
+                                            for(i=0;i < invisibleLinks.length;i++){
+                                                for (j = 0; j < e1.data.length; j++) {
+                                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                                        invisibleLinks[i].style.display = "none";
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        });
+                                }
+                                console.log(e.data);
+                                console.log("e.data");
+                                for(i=0;i<invisibleLinks.length;i++){
+                                    if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                        if(e.data!=3) {
+                                            invisibleLinks[i].style.display = "none";
+                                        }
+                                        invisibleLinks[i].target="_blank";
+                                        break;
+                                    }
+                                }
+
+
+                            }
+                        }
+                    )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>钢丝绳计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form opType="#" target="stop" method="post" id="form1" class="boxform">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">钢丝绳安全系数校核计算书</div>
+
+                            <!--封面内容-->
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">1.封面内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">项目批令号/方案编号</td>
+                                        <td style="width:40%;">
+                                            <input name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:50%;">名称</td>
+                                        <td style="width:50%;" colspan="2">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td>本机计算书编号</td>
+                                        <td  colspan="2"><input name="no" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>本机版本</td>
+                                        <td  colspan="2"><input name="ver" type="text" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>项目名称</td>
+                                        <td  colspan="2"><input name="xmmc" type="text" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>主机型号</td>
+                                        <td  colspan="2"><input name="zjxh" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>计算人</td>
+                                        <td  colspan="2"><input name="jsr" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>审核人</td>
+                                        <td  colspan="2"><input name="shr" type="text" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>批准人</td>
+                                        <td  colspan="2"><input name="pzr" type="text" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>计算日期</td>
+                                        <td colspan="2"> <input name="date" type="text" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td colspan="6" class="tabletitle" style="background-color: #aaa;padding: 10px 0 10px 0">3.计算钢丝绳安全系数相关参数</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="47%">起升高度</td>
+                                        <td width="10%"><p><i>h</i></p></td>
+                                        <td width="35%"><input id="h" name="h" type="text" /></td>
+                                        <td width="8%">m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船自重</td>
+                                        <td><p><i>S<sub>wp</sub></i></p></td>
+                                        <td><input id="swp" name="swp" type="text" ></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船额定载荷</td>
+                                        <td><p><i>R<sub>1</sub></i></p></td>
+                                        <td><input id="r1" name="r1" type="text"value="250"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船钢丝绳自重</td>
+                                        <td><p><i>M<sub>wr</sub></i></p></td>
+                                        <td><input id="mwr" name="mwr" type="text" /></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>防风背包自重</td>
+                                        <td><p><i>m<sub>ffbb</sub></i></p></td>
+                                        <td><input id="mffbb" name="mffbb" type="text" /></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>总悬挂载荷</td>
+                                        <td><p><i>T<sub>sl</sub></i></p></td>
+                                        <td><input id="tsl" name="tsl" type="text" /></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构额定载重量</td>
+                                        <td><p><i>H<sub>wll</sub></i></p></td>
+                                        <td><input id="hwll" name="hwll" type="text"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"><input style="color: white;" type='text' name="grutstx"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构钢丝绳自重</td>
+                                        <td><p><i>H<sub>sw</sub></i></td>
+                                        <td><input id="hsw" name="hsw" type="text"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构总悬挂载荷</td>
+                                        <td><p><i>T<sub>shl</sub></i></td>
+                                        <td><input id="tshl" name="tshl" type="text" /></td>
+                                        <td>kg</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">2.所选钢丝绳相关参数</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船选择</td>
+                                        <td colspan="3" style="font-size: 14px">
+                                            <select  name="gondolaSelect"
+                                                     style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="2.0米铝吊船">2.0米铝吊船</option>
+                                                <option value="2.5米铝吊船">2.5米铝吊船</option>
+                                                <option value="3.0米铝吊船">3.0米铝吊船</option>
+                                                <option value="4.0米铝吊船">4.0米铝吊船</option>
+                                                <option value="1.5米卫星吊船">1.5米卫星吊船</option>
+                                                <option value="2.0米卫星吊船">2.0米卫星吊船</option>
+                                                <option value="1.5米手动丝杠伸展吊船">1.5米手动丝杠伸展吊船</option>
+                                                <option value="2.0米手动丝杠伸展吊船">2.0米手动丝杠伸展吊船</option>
+                                                <option value="2.5米手动丝杠伸展吊船">2.5米手动丝杠伸展吊船</option>
+                                                <option value="3.0米手动丝杠伸展吊船">3.0米手动丝杠伸展吊船</option>
+                                                <option value="2.0米液压伸展吊船">2.0米液压伸展吊船</option>
+                                                <option value="2.0米液压伸展吊船(2.0-2.3)">2.0米液压伸展吊船(2.0-2.3)</option>
+                                                <option value="2.5米液压伸展吊船">2.5米液压伸展吊船</option>
+                                                <option value="3.0米液压伸展吊船">3.0米液压伸展吊船</option>
+                                                <option value="3.5米液压伸展吊船">3.5米液压伸展吊船</option>
+                                                <option value="2.0米折叠吊船">2.0米折叠吊船</option>
+                                                <option value="2.5米折叠吊船">2.5米折叠吊船</option>
+                                                <option value="2.0米折弯吊船">2.0米折弯吊船</option>
+                                                <option value="2.5米折弯吊船">2.5米折弯吊船</option>
+                                                <option value="3.0米折弯吊船">3.0米折弯吊船</option>
+                                                <option value="2.5米伸缩子吊船">2.5米伸缩子吊船</option>
+                                                <option value="2.0米CDD吊船">2.0米CDD吊船</option>
+                                                <option value="2.5米CDD吊船">2.5米CDD吊船</option>
+                                                <option value="3.0米CDD吊船">3.0米CDD吊船</option>
+                                                <option value="4.0米CDD吊船">4.0米CDD吊船</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>是否有防风背包</td>
+                                        <td colspan="3" style="font-size: 14px">
+                                            <select name="windbreakBackpackSelect"
+                                                    style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="有">有</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1" >吊船钢丝绳型号选择</td>
+                                        <td colspan="3" style="font-size: 14px">
+                                            <select id="select1" name="typeOfShipWireRope"
+                                                    style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="Ф7">Ф7</option>
+                                                <option value="Ф8">Ф8</option>
+                                                <option value="Ф8.3">Ф8.3</option>
+                                                <option value="Ф10">Ф10</option>
+                                                <option value="Ф13">Ф13</option>
+                                                <option value="布鲁格Ф7">布鲁格Ф7</option>
+                                                <option value="布鲁格Ф8">布鲁格Ф8</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1" >GRU选择</td>
+                                        <td colspan="3" style="font-size: 14px">
+                                            <select id="select2" name="gruSelect"
+                                                    style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="GRU 285">GRU 285</option>
+                                                <option value="GRU 295">GRU 295</option>
+                                                <option value="GRU 313">GRU 313</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="47%">吊船钢丝绳型号</td>
+                                        <td width="10%"><p><i></i></p></td>
+                                        <td width="35%"><input id="dcgssxh" name="dcgssxh" type="text"/></td>
+                                        <td width="8%"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船钢丝绳直径</td>
+                                        <td><p><i>d1</i></p></td>
+                                        <td><input id="dcgssd" name="dcgssd" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船钢丝绳数量</td>
+                                        <td><p><i>N<sub>1</sub></i></p></td>
+                                        <td><input id="dcgssn" name="dcgssn" type="text"/></td>
+                                        <td>根</td>
+                                    </tr>
+                                    <tr>
+                                        <td>单根吊船钢丝绳最小破断拉力</td>
+                                        <td><p><i>F<sub>1</sub></i></p></td>
+                                        <td><input id="dcgssf" name="dcgssf" type="text"/></td>
+                                        <td>kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td>单根吊船钢丝绳每米重量</td>
+                                        <td><p><i>p<sub>1</sub></i></p></td>
+                                        <td><input id="dcgssp" name="dcgssp" type="text"/></td>
+                                        <td>kg/m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构钢丝绳型号</td>
+                                        <td><p><i></i></p></td>
+                                        <td><input id="grugssxh" name="grugssxh" type="text"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构钢丝绳直径</td>
+                                        <td><p><i>d2</i></p></td>
+                                        <td><input id="grugssd" name="grugssd" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构钢丝绳数量</td>
+                                        <td><p><i>N<sub>2</sub></i></p></td>
+                                        <td><input id="grugssn" name="grugssn" type="text"/></td>
+                                        <td>根</td>
+                                    </tr>
+                                    <tr>
+                                        <td>单根物料起升机构钢丝绳最小破断拉力</td>
+                                        <td><p><i>F<sub>2</sub></i></p></td>
+                                        <td><input id="grugssf" name="grugssf" type="text"/></td>
+                                        <td>kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td>单根物料起升机构钢丝绳每米重量</td>
+                                        <td><p><i>p<sub>2</sub></i></p></td>
+                                        <td><input id="grugssp" name="grugssp" type="text"/></td>
+                                        <td>kg/m</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable" style="width:550px">
+                                <table class="tb" style="width:550px">
+                                    <tr>
+                                        <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">4.校验</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="35%" style="height:50px">名称</td>
+                                        <td width="23%">实际安全系数</td>
+                                        <td width="18%">规定安全系数</td>
+                                        <td width="23%">是否满足要求</td>
+                                    </tr>
+                                    <tr class="diaochuan">
+                                        <td style="height:50px">吊船钢丝绳安全系数校核</td>
+                                        <td><p id="zp1p"></p></td>
+                                        <td>12</td>
+                                        <td><p id="gssm1"></p></td>
+                                    </tr>
+                                    <tr class="wuliaoqishengjigou" >
+                                        <td style="height:50px">物料起升机构钢丝绳安全系数校核</td>
+                                        <td><p id="zp2p"></p></td>
+                                        <td>6</td>
+                                        <td><p id="gssm2"></p></td>
+                                    </tr>
+                                </table>
+                                <div class="buttonbox" style="position: relative;width: 550px">
+                                    <input type="submit" class="button" type="submit" value="校验" style="width:250px;margin: 30px auto 0;"
+                                           onclick="return jianyan('/WireRope/jy')"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="buttonbox">
+                        <input type="submit" form="form1" class="button" value="保存数据"
+                               onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
+                        <input class="button" form="form1" type="submit" value="输出钢丝绳计算书" onclick="getPDF('/WireRopePDF1')"/>
+                        <input class="button" form="form1" type="submit" value="输出检验计算书" onclick="getPDF('/WireRopePDF2')"/>
+                        <input class="button" form="form1" type="reset" onclick="data.clear();
+                                                            $('.diaochuan p[id]').text(' ');
+                                                            $('.wuliaoqishengjigou p[id]').text(' ')
+    $('.diaochuan').css('display','table-row');  $('.wuliaoqishengjigou').css('display','table-row')" value="重置" />
+                    </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+<script>
+    function getPDF(URL) {
+        if ($("[name=gondolaSelect]").val() == "无" && $("[name=gruSelect]").val() == "无") {
+            alert("请选择吊船或者GRU");
+            return false;
+        }
+        $('#form1').attr('action', URL);
+    };
+
+    calculateFunction = {
+
+        grutstx: function () {
+            if ( gruSelect == "GRU 285" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为500kg';
+            } else if ( gruSelect == "GRU 295" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为750kg';
+            } else if ( gruSelect == "GRU 313" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构额定载重量为1000kg';
+            } else if ( gruSelect == "无" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '无';
+            }
+        },
+
+        swp:function(){
+            switch( gondolaSelect ){
+                case'2.0米铝吊船':return 96 ;
+                case'2.5米铝吊船':return 105;
+                case'3.0米铝吊船':return 115;
+                case'4.0米铝吊船':return 135;
+                case'1.5米卫星吊船':return 577;
+                case'2.0米卫星吊船':return 650;
+                case'1.5米手动丝杠伸展吊船':return 585;
+                case'2.0米手动丝杠伸展吊船':return 619;
+                case'2.5米手动丝杠伸展吊船':return 634;
+                case'3.0米手动丝杠伸展吊船':return 683;
+                case'2.0米液压伸展吊船':return 624;
+                case'2.0米液压伸展吊船(2.0-2.3)':return 651;
+                case'2.5米液压伸展吊船':return 675;
+                case'3.0米液压伸展吊船':return 696;
+                case'3.5米液压伸展吊船':return 720;
+                case'2.0米折叠吊船':return 116;
+                case'2.5米折叠吊船':return 124;
+                case'2.0米折弯吊船':return 120;
+                case'2.5米折弯吊船':return 133;
+                case'3.0米折弯吊船':return 155;
+                case'2.5米伸缩子吊船':return 1140;
+                case'2.0米CDD吊船':return 350;
+                case'2.5米CDD吊船':return 375;
+                case'3.0米CDD吊船':return 400;
+                case'4.0米CDD吊船':return 450;
+            }
+        },
+        windbreakBackpackSelect:function(){
+            if( String( gondolaSelect ) =='无' ){
+                $('[name=windbreakBackpackSelect]').prop('readonly',true);
+                return '无';
+            }
+            $('[name=windbreakBackpackSelect]').prop('readonly',false);
+            return windbreakBackpackSelect;
+        },
+        mwr: function () {
+            if ($('[name=mwr]').prop('readonly'))
+                return null;
+            return h * dcgssp * dcgssn ;
+        },
+        r1:function(){
+            if( gondolaSelect != '无')
+                return 250;
+        },
+        mffbb:function(){
+            if( windbreakBackpackSelect =='有')
+                return 100;
+            return 0;
+        },
+        tsl: function () {
+            if ($('[name=tsl]').prop('readonly'))
+                return null;
+            return swp + r1 + mwr + mffbb ;
+        },
+        hsw: function () {
+            if ($('[name=hsw]').prop('readonly'))
+                return null;
+            return h * grugssp * grugssn ;
+        },
+        tshl: function () {
+            if ($('[name=tshl]').prop('readonly'))
+                return null;
+            return hwll + hsw ;
+        },
+        dcgssxh: function () {
+            if ($('[name=dcgssxh]').prop('readonly'))
+                return null;
+            return typeOfShipWireRope ;
+        },
+        dcgssd: function () {
+            switch ( typeOfShipWireRope ) {
+                case 'Ф7'    :
+                    return 7;
+                case 'Ф8'    :
+                    return 8;
+                case 'Ф8.3'    :
+                    return 8.3;
+                case 'Ф10'   :
+                    return 10;
+                case 'Ф13'   :
+                    return 13;
+                case '布鲁格Ф7':
+                    return 7;
+                case '布鲁格Ф8':
+                    return 8;
+            }
+        },
+        dcgssn:function(){
+            switch( gondolaSelect ){
+                case'2.0米CDD吊船':
+                case'2.5米CDD吊船':
+                case'3.0米CDD吊船':
+                case'4.0米CDD吊船':return 2;
+                default :return 4;
+            }
+        },
+        dcgssf: function () {
+            switch ( typeOfShipWireRope ) {
+                case 'Ф7'    :
+                    return 26;
+                case 'Ф8'    :
+                    return 37;
+                case 'Ф8.3'  :
+                    return 58;
+                case 'Ф10'   :
+                    return 61;
+                case 'Ф13'   :
+                    return 83;
+                case '布鲁格Ф7':
+                    return 28.1;
+                case '布鲁格Ф8':
+                    return 36.8;
+            }
+        },
+        dcgssp: function () {
+            switch ( typeOfShipWireRope ) {
+                case 'Ф7'    :
+                    return 0.179;
+                case 'Ф8'    :
+                    return 0.244;
+                case 'Ф8.3'    :
+                    return 0.255;
+                case 'Ф10'   :
+                    return 0.391;
+                case 'Ф13'   :
+                    return 0.65;
+                case '布鲁格Ф7':
+                    return 0.179;
+                case '布鲁格Ф8':
+                    return 0.217;
+            }
+        },
+        grugssxh: function () {
+            switch ( gruSelect ) {
+                case 'GRU 285'    :
+                    return 'Ф8';
+                case 'GRU 295'   :
+                    return 'Ф10';
+                case 'GRU 313'   :
+                    return 'Ф13';
+            }
+        },
+        grugssd: function () {
+            switch ( gruSelect ) {
+                case 'GRU 285'  :
+                    return 8;
+                case 'GRU 295' :
+                    return 10;
+                case 'GRU 313' :
+                    return 13;
+            }
+        },
+        grugssf: function () {
+            switch ( gruSelect ) {
+                case 'GRU 285'  :
+                    return 39;
+                case 'GRU 295' :
+                    return 61;
+                case 'GRU 313' :
+                    return 83;
+            }
+        },
+        grugssn:function(){
+            if( gruSelect !='无')
+                return 1;
+        },
+        grugssp: function () {
+            switch ( gruSelect ) {
+                case 'GRU 285'  :
+                    return 0.252;
+                case 'GRU 295' :
+                    return 0.391;
+                case 'GRU 313' :
+                    return 0.65;
+            }
+        },
+    };
+    (function () {
+        $('[name=gondolaSelect]').change(gondolaSelectChange);
+        $('[name=gruSelect]').change(gruSelectCDhange)
+    })();
+    data.init(calculateFunction);
+    function gondolaSelectChange() {
+        console.log(1);
+        var t = ['swp','windbreakBackpackSelect','typeOfShipWireRope', 'mffbb','r1', 'mwr', 'tsl', 'dcgssxh', 'dcgssd', 'dcgssn', 'dcgssf', 'dcgssp',]
+        var gondolaSelect = $('[name=gondolaSelect]').val();
+        for (var i in t) {
+            var e=$('select[name='+t[i]+']');
+
+            if (gondolaSelect == '无') {
+                $('[name=' + t[i] + ']').prop('disabled', true);
+                data.datalist[t[i]].color = 'rgb(227, 227, 227)';
+                $('[name='+t[i]+']').css('background-color','rgb(227, 227, 227)');
+            } else if($('[name=' + t[i] + ']').prop('disabled')){
+                $('[name=' + t[i] + ']').prop('disabled', false);
+                if(data.datalist[t[i]].color!='white' && data.datalist[t[i]].color!='yellow') {
+                    data.datalist[t[i]].color = 'white';
+                    $('[name=' + t[i] + ']').css('background-color', 'white');
+                }
+            }
+        }
+        if (gondolaSelect == '无') {
+            $('#zp1p').css('display','none');
+            $('#gssm1').css('display','none');
+        } else {
+            $('#zp1p').css('display','block');
+            $('#gssm1').css('display','block');
+        }
+    }
+    function gruSelectCDhange() {
+        var t = ['hwll', 'hsw', 'tshl','grugssxh', 'grugssd', 'grugssn', 'grugssf', 'grugssp'];
+        var gruSelect = $('[name=gruSelect]').val();
+        for (var i in t) {
+            if (gruSelect == '无') {
+                $('[name=' + t[i] + ']').prop('disabled', true);
+                data.datalist[t[i]].color = 'rgb(227, 227, 227)';
+                $('[name='+t[i]+']').css('background-color','rgb(227, 227, 227)');
+            } else if($('[name=' + t[i] + ']').prop('disabled')) {
+                $('[name=' + t[i] + ']').prop('disabled', false);
+                if(data.datalist[t[i]].color!='white' && data.datalist[t[i]].color!='yellow'){
+                    data.datalist[t[i]].color = 'white';
+                    $('[name='+t[i]+']').css('background-color','white');
+                }
+            }
+        }
+        if (gruSelect == '无') {
+            $('#zp2p').css('display','none');
+            $('#gssm2').css('display','none');
+        } else {
+            $('#zp2p').css('display','block');
+            $('#gssm2').css('display','block');
+        }
+    }
+
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+        var url = '/WireRope/getData';
+        var id = $('input[name="sjht"]').val();
+        // $('[type=reset]').click();
+        $.ajax({
+            url: url,
+            type: "get",
+            async: false,
+            data: {'batchId': id},
+            dataType: "json",
+            cache: false,
+            success: function (e) {
+                console.log(e)
+                getData.dataToDataList(e['datalist']);
+                getData.dataToImage(e['imagelist']);
+                var list = {};
+                var dataObj = e['datalist'];
+                for (var temp in dataObj) {
+                    if (isTrue(dataObj[temp])) {
+                        var funlist = data.datalist[temp].calList;
+                        for (var key in funlist) {
+                            if (dataObj[key] == null) {
+                                list[key] = funlist[key]
+                            }
+                        }
+                    }
+                }
+                data.datacalculate({calList: list}, true)
+                data.listtoform();
+
+                gondolaSelectChange();
+                gruSelectCDhange();
+            }
+        })
+    })
+</script>
+<script>
+    function jianyan(URL) {
+        var dataJson = $("form").serialize();
+        dataJson["check"] = true;
+        $.ajax({
+            url: URL,
+            type: "post",
+            data: dataJson,
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                console.log(data)
+                Object.keys(data).forEach(function (id) {
+                    if($('#'+id).css('display')!='none')
+                        $("#" + id).text(data[id]);
+                    if(data[id]=="不满足") $("#" + id).css("background-color","red");
+                    if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
+                })
+            }
+        })
+        return false;
+    }
+</script>
+</body>
+</html>

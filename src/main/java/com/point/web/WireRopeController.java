@@ -71,10 +71,10 @@ public class WireRopeController {
         result.put("imagelist",imagemap);
         return result;
     }
-    @GetMapping("/WireRope")
+    @GetMapping("/pdf/WireRope")
     public String wireropeForm(Model model, @ModelAttribute WireRopeEntity wireRopeEntity) {
         model.addAttribute("WireRopeEntity", new WireRopeEntity());
-        return "WireRope";
+        return "pdf/WireRope";
     }
     @PostMapping("/WireRopePDF1")
     public Object pdfTest(@ModelAttribute WireRopeEntity wireRopeEntity,String sjht) {

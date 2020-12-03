@@ -1,3 +1,7 @@
+
+function showjy() {
+    $(".navbox").css("display", $(".navbox").css("display") == "block" ? "none" : "block")
+}
 (function () {
     var getData = window["getData"] = {
         data: window["data"],

@@ -36,9 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.headers().frameOptions().sameOrigin();
         http.csrf().disable();
         http.exceptionHandling().accessDeniedHandler(accessDeniedServletHandler());
-        http.headers().frameOptions().disable();
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers(
