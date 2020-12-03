@@ -260,6 +260,7 @@ public class RotaryStructureEntity {
     private String hzzcm1;
     private String hzzcm2;
     private String hzzcm3;
+    private String hzzcmzj;
 
     private String ccjjxModel;
     private String dcModel;
@@ -344,16 +345,16 @@ public class RotaryStructureEntity {
         map.put("hzlsss", CommonFunc.convertDoubleToString(hzlsss));
         map.put("nlsyjlxs", CommonFunc.convertDoubleToString(nlsyjlxs));
 
-        map.put("hzlslhz1", CommonFunc.convertDoubleToString(hzlslhz1));
-        map.put("hzlslhz2", CommonFunc.convertDoubleToString(hzlslhz2));
-        map.put("hzlslhz3", CommonFunc.convertDoubleToString(hzlslhz3));
-        map.put("hzlslhz4", CommonFunc.convertDoubleToString(hzlslhz4));
-        map.put("hzlslhz5", CommonFunc.convertDoubleToString(hzlslhz5));
-        map.put("hzlslhz6", CommonFunc.convertDoubleToString(hzlslhz6));
-        map.put("hzlslhz7", CommonFunc.convertDoubleToString(hzlslhz7));
-        map.put("hzlslhz8", CommonFunc.convertDoubleToString(hzlslhz8));
-        map.put("hzlslhz9", CommonFunc.convertDoubleToString(hzlslhz9));
-        map.put("hzlslhz10", CommonFunc.convertDoubleToString(hzlslhz10));
+        map.put("hzlslhz1", CommonFunc.convertDoubleToString3(hzlslhz1));
+        map.put("hzlslhz2", CommonFunc.convertDoubleToString3(hzlslhz2));
+        map.put("hzlslhz3", CommonFunc.convertDoubleToString3(hzlslhz3));
+        map.put("hzlslhz4", CommonFunc.convertDoubleToString3(hzlslhz4));
+        map.put("hzlslhz5", CommonFunc.convertDoubleToString3(hzlslhz5));
+        map.put("hzlslhz6", CommonFunc.convertDoubleToString3(hzlslhz6));
+        map.put("hzlslhz7", CommonFunc.convertDoubleToString3(hzlslhz7));
+        map.put("hzlslhz8", CommonFunc.convertDoubleToString3(hzlslhz8));
+        map.put("hzlslhz9", CommonFunc.convertDoubleToString3(hzlslhz9));
+        map.put("hzlslhz10", CommonFunc.convertDoubleToString3(hzlslhz10));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
@@ -370,13 +371,13 @@ public class RotaryStructureEntity {
         map.put("m5", CommonFunc.convertDoubleToString(m5));
         map.put("m6", CommonFunc.convertDoubleToString(m6));
         map.put("m7", CommonFunc.convertDoubleToString(m7));
-        map.put("m8", CommonFunc.convertDoubleToString(m6));
-        map.put("m9", CommonFunc.convertDoubleToString(m7));
+        map.put("m8", CommonFunc.convertDoubleToString(m8));
+        map.put("m9", CommonFunc.convertDoubleToString(m9));
         map.put("m10", CommonFunc.convertDoubleToString(m10));
         map.put("m11", CommonFunc.convertDoubleToString(m11));
         map.put("m12hz", CommonFunc.convertDoubleToString(m12hz));
-        map.put("m13hz", CommonFunc.convertDoubleToString(m12hz));
-        map.put("m14hz", CommonFunc.convertDoubleToString(m12hz));
+        map.put("m13hz", CommonFunc.convertDoubleToString(m13hz));
+        map.put("m14hz", CommonFunc.convertDoubleToString(m14hz));
         map.put("mhz", CommonFunc.convertDoubleToString(mhz));
         map.put("mhzf", CommonFunc.convertDoubleToString(mhzf));
 
@@ -514,6 +515,7 @@ public class RotaryStructureEntity {
         map.put("hzzcm1", CommonFunc.convertDoubleToString(hzzcm1));
         map.put("hzzcm2", CommonFunc.convertDoubleToString(hzzcm2));
         map.put("hzzcm3", CommonFunc.convertDoubleToString(hzzcm3));
+        map.put("hzzcmzj", CommonFunc.convertDoubleToString(hzzcmzj));
 
         map.putAll(takeStringMapForPdf(type));
         return map;
@@ -702,7 +704,7 @@ public class RotaryStructureEntity {
         Double ja1 = tsl * lslhz * lslhz ;
         Double ja2 = tshl * lshlhz * lshlhz ;
         Double mhzp = mhz - tsl - tshl ;
-        Double ma = mqz - mslz - mshlz - mkz ;
+        Double ma = Math.abs( mqz - mslz - mshlz - mkz );
         Double lp = ma / mhzp /10 ;
         Double ja3 = 4 * mhzp * lp * lp / 3 ;
         Double tg = ( ja1 + ja2 + ja3 ) * ndbhz / 9.55 / hzdjta ;
@@ -965,8 +967,8 @@ public class RotaryStructureEntity {
         map.put("hzb4", CommonFunc.convertDoubleToString(hzb4));
         map.put("hzm4", CommonFunc.convertDoubleToString(hzm4));
 
-        String hzzcmzj = (hzzcm1 == "满足" && hzzcm2 == "满足" && hzzcm3 == "满足") ? "满足" : "不满足";;
-        map.put("hzzcmzj", CommonFunc.convertDoubleToString(hzzcmzj));
+//        String hzzcmzj = (hzzcm1=="满足" && hzzcm2=="满足" && hzzcm3=="满足") ? "满足" : "不满足";
+//        map.put("hzzcmzj", CommonFunc.convertDoubleToString(hzzcmzj));
 
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));

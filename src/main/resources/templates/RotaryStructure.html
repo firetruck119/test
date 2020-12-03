@@ -226,10 +226,10 @@
         };
         hzlsljgkModelList={
             "一般连接":{
-                nlsyjlxs:'满足',
+                nlsyjlxs:1.4,
             },
             "重要连接":{
-                nlsyjlxs:'不满足',
+                nlsyjlxs:2.65,
             },
         };
         hzlsxndjModelList={
@@ -485,7 +485,7 @@
                     <td>
                         <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="其它">其它</option>
+                            <!--<option value="其它">其它</option>-->
                         </select>
                     </td>
                 </tr>
@@ -527,43 +527,35 @@
                                 var dhzjgModel=$("[name=dhzjgModel]")[0].value;
                                 var filename="";
                                 if( dhzjgModel=="HZX5.0RF57" ){
-                                    filename="HZX5.0RF57.png";
+                                    filename="QWD500.20.png";
                                 }else if ( dhzjgModel=="HZX5.6RF77" ){
-                                    filename="HZX5.6RF77.png";
+                                    filename="QWD560.20A.png";
                                 }else if ( dhzjgModel=="HZX6.3RF77" ){
-                                    filename="HZX6.3RF77.png";
+                                    filename="QWD630.20A.png";
                                 }else if ( dhzjgModel=="HZX7.1RF87" ){
-                                    filename="HZX7.1RF87.png";
+                                    filename="QWD710.20A.png";
                                 }else if ( dhzjgModel=="HZX8.0RF87" ){
-                                    filename="HZX8.0RF87.png";
+                                    filename="QWD800.20.png";
                                 }else if ( dhzjgModel=="HZX9.0RF97" ){
-                                    filename="HZX9.0RF97.png";
+                                    filename="QWD900.25.png";
                                 }else if ( dhzjgModel=="HZX10.0RF97" ){
-                                    filename="HZX10.0RF97.png";
+                                    filename="QWD1000.32A.png";
                                 }else if ( dhzjgModel=="HZX11.2RF107" ){
-                                    filename="HZX11.2RF107.png";
+                                    filename="QWD1120.32.png";
                                 }else if ( dhzjgModel=="HZX12.5RF107" ){
-                                    filename="HZX12.5RF107.png";
-                                }else if ( dhzjgModel=="HZX12.5RF137" ){
-                                    filename="HZX12.5RF137.png";
-                                }else if ( dhzjgModel=="HZX14.0RF137" ){
-                                    filename="HZX14.0RF137.png";
-                                }else if ( dhzjgModel=="HZX14.0RF147" ){
-                                    filename="HZX14.0RF147.png";
-                                }else if ( dhzjgModel=="HZX16.0RF147" ){
-                                    filename="HZX16.0RF147.png";
-                                }else if ( dhzjgModel=="HZX12.5X307" ){
-                                    filename="HZX12.5X307.png";
-                                }else if ( dhzjgModel=="HZX14.0X307" ){
-                                    filename="HZX14.0X307.png";
-                                }else if ( dhzjgModel=="HZX16.0X309" ){
-                                    filename="HZX16.0X309.png";
+                                    filename="QWD1250.32A-107.png";
+                                }else if ( dhzjgModel=="HZX12.5RF137" || dhzjgModel=="HZX12.5X307" ){
+                                    filename="QWD1250.32A-137.png";
+                                }else if ( dhzjgModel=="HZX14.0RF137" || dhzjgModel=="HZX14.0RF147" || dhzjgModel=="HZX14.0X307" ){
+                                    filename="QWD1400.32.png";
+                                }else if ( dhzjgModel=="HZX16.0RF147" || dhzjgModel=="HZX16.0X309" ){
+                                    filename="QWD1600.40.png";
                                 }else if ( dhzjgModel=="HZS-7.1RF77" ){
-                                    filename="HZS-7.1RF77.png";
+                                    filename="QND710.20.png";
                                 }else if ( dhzjgModel=="HZS-8.0RF87" ){
-                                    filename="HZS-8.0RF87.png";
+                                    filename="QND800.20.png";
                                 }else if ( dhzjgModel=="HZS-9.0RF97" ){
-                                    filename="HZS-9.0RF97.png";
+                                    filename="QND900.25.png";
                                 }
                                 if ($('input[name=tu_hzjgtu8]').length == 0) {
                                     $('form').append('<input name="tu_hzjgtu8" type="hidden"/>');
@@ -577,43 +569,27 @@
                                 var dhzjgModel=$("[name=dhzjgModel]")[0].value;
                                 var filename="";
                                 if( dhzjgModel=="HZX5.0RF57" ){
-                                    filename="HZX5.0RF57-Q.png";
+                                    filename="500.20.png";
                                 }else if ( dhzjgModel=="HZX5.6RF77" ){
-                                    filename="HZX5.6RF77-Q.png";
+                                    filename="560.20.png";
                                 }else if ( dhzjgModel=="HZX6.3RF77" ){
-                                    filename="HZX6.3RF77-Q.png";
-                                }else if ( dhzjgModel=="HZX7.1RF87" ){
-                                    filename="HZX7.1RF87-Q.png";
-                                }else if ( dhzjgModel=="HZX8.0RF87" ){
-                                    filename="HZX8.0RF87-Q.png";
-                                }else if ( dhzjgModel=="HZX9.0RF97" ){
-                                    filename="HZX9.0RF97-Q.png";
+                                    filename="630.20.png";
+                                }else if ( dhzjgModel=="HZX7.1RF87" || dhzjgModel=="HZS-7.1RF77" ){
+                                    filename="710.20.png";
+                                }else if ( dhzjgModel=="HZX8.0RF87" || dhzjgModel=="HZS-8.0RF87" ){
+                                    filename="800.20.png";
+                                }else if ( dhzjgModel=="HZX9.0RF97" || dhzjgModel=="HZS-9.0RF97" ){
+                                    filename="900.25.png";
                                 }else if ( dhzjgModel=="HZX10.0RF97" ){
-                                    filename="HZX10.0RF97-Q.png";
+                                    filename="1000.32.png";
                                 }else if ( dhzjgModel=="HZX11.2RF107" ){
-                                    filename="HZX11.2RF107-Q.png";
-                                }else if ( dhzjgModel=="HZX12.5RF107" ){
-                                    filename="HZX12.5RF107-Q.png";
-                                }else if ( dhzjgModel=="HZX12.5RF137" ){
-                                    filename="HZX12.5RF137-Q.png";
-                                }else if ( dhzjgModel=="HZX14.0RF137" ){
-                                    filename="HZX14.0RF137-Q.png";
-                                }else if ( dhzjgModel=="HZX14.0RF147" ){
-                                    filename="HZX14.0RF147-Q.png";
-                                }else if ( dhzjgModel=="HZX16.0RF147" ){
-                                    filename="HZX16.0RF147-Q.png";
-                                }else if ( dhzjgModel=="HZX12.5X307" ){
-                                    filename="HZX12.5X307-Q.png";
-                                }else if ( dhzjgModel=="HZX14.0X307" ){
-                                    filename="HZX14.0X307-Q.png";
-                                }else if ( dhzjgModel=="HZX16.0X309" ){
-                                    filename="HZX16.0X309-Q.png";
-                                }else if ( dhzjgModel=="HZS-7.1RF77" ){
-                                    filename="HZS-7.1RF77-Q.png";
-                                }else if ( dhzjgModel=="HZS-8.0RF87" ){
-                                    filename="HZS-8.0RF87-Q.png";
-                                }else if ( dhzjgModel=="HZS-9.0RF97" ){
-                                    filename="HZS-9.0RF97-Q.png";
+                                    filename="1120.32.png";
+                                }else if ( dhzjgModel=="HZX12.5RF107" || dhzjgModel=="HZX12.5RF137" || dhzjgModel=="HZX12.5X307" ){
+                                    filename="1250.32.png";
+                                }else if ( dhzjgModel=="HZX14.0RF137" || dhzjgModel=="HZX14.0RF147" || dhzjgModel=="HZX14.0X307" ){
+                                    filename="1400.32.png";
+                                }else if ( dhzjgModel=="HZX16.0RF147" || dhzjgModel=="HZX16.0X309" ){
+                                    filename="1600.40.png";
                                 }
                                 if ($('input[name=tu_hzjgtu11]').length == 0) {
                                     $('form').append('<input name="tu_hzjgtu11" type="hidden"/>');
@@ -745,6 +721,16 @@
                             <option value="" style="display: none"></option>
                             <option value="8.8级">8.8级</option>
                             <option value="10.9级">10.9级</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>螺栓连接工作情况</b></td>
+                    <td colspan="3">
+                        <select name="hzlsljgkModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="一般连接">一般连接</option>
+                            <option value="重要连接">重要连接</option>
                         </select>
                     </td>
                 </tr>
@@ -982,7 +968,7 @@
                 <tr>
                     <td><b>物料起升机构装置自重</b></td>
                     <td><p><i>m<sub>5</sub></i></p></td>
-                    <td><input type='text' name="m5ds"/></td>
+                    <td><input type='text' name="m5"/></td>
                     <td>kg</td>
                 </tr>
                 <tr>
@@ -1903,6 +1889,10 @@
             <input type="text" name="hzzcm1" />
             <input type="text" name="hzzcm2" />
             <input type="text" name="hzzcm3" />
+            <input type="text" name="hzzcmzj" />
+
+            <input type="text" name="m5f" />
+            <input type="text" name="m13hzf" />
 
         </div>
         <input type="hidden" name="pdfType"/>
@@ -1921,27 +1911,27 @@
                         <td style="width:25%;"><b>是否满足</b></td>
                     </tr>
                     <tr>
-                        <td><b>回转减速电机输出扭矩(N·m)</b></td>
-                        <td id="hzdjtn"></td>
-                        <td id="t"></td>
+                        <td><b>回转减速电机输出扭矩</b></td>
+                        <td><p><span id="hzdjtn"></span>N·m</p></td>
+                        <td><p><span id="t"></span>N·m</p></td>
                         <td id="hzm1"></td>
                     </tr>
                     <tr>
-                        <td><b>回转减速电机额定驱动功率(kW)</b></td>
-                        <td id="hzdjp"></td>
-                        <td id="pa"></td>
+                        <td><b>回转减速电机额定驱动功率</b></td>
+                        <td><p><span id="hzdjp"></span>kW</p></td>
+                        <td><p><span id="pa"></span>kW</p></td>
                         <td id="hzm2"></td>
                     </tr>
                     <tr>
-                        <td><b>回转电机制动力矩(N·m)</b></td>
-                        <td id="hzdjzd"></td>
-                        <td id="tz"></td>
+                        <td><b>回转电机制动力矩</b></td>
+                        <td><p><span id="hzdjzd"></span>N·m</p></td>
+                        <td><p><span id="tz"></span>N·m</p></td>
                         <td id="hzm3"></td>
                     </tr>
                     <tr>
-                        <td><b>回转机构螺栓拧紧力矩(N·m)</b></td>
-                        <td id="tls"></td>
-                        <td id="tlss"></td>
+                        <td><b>回转机构螺栓拧紧力矩</b></td>
+                        <td><p><span id="tls"></span>N·m</p></td>
+                        <td><p><span id="tlss"></span>N·m</p></td>
                         <td id="hzm4"></td>
                     </tr>
                     <tr>
@@ -1977,7 +1967,7 @@
                                                                                             isCheck(false);changeType('Calculation')"/>
         <!--<input type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','IdlerWheel/getPDF');-->
                                                                                             <!--isCheck(true);changeType('Check')"/>-->
-        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','#aaa')"/>
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
     </div>
 
 <script>
@@ -1994,678 +1984,688 @@
         p:function () {
             return 250 ;
         },
-        // pf: function () {
-        //     if (h <= 20 && h > 0) return 800;
-        //     else if (20 < h && h <= 100) return 1100;
-        //     else if (100 < h && h <= 150) return 1300;
-        //     else if (h > 150) return ' ';
-        // },
-        // lbx:function(){
-        //     if( ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '上回转单臂机' )
-        //         return lbd;
-        //     else
-        //         return ' ';
-        // },
-        // lbpx:function(){
-        //     if( haveOfMobileCounterweight == '无' )
-        //         return lbp;
-        //     else
-        //         return ' ';
-        // },
-        // dbyj: function () {
-        //     if ( ccjjxModel == "下回转仰臂单臂机" || ccjjxModel == "下回转顶升仰臂单臂机" || ccjjxModel == "下回转仰臂伸缩臂机" || ccjjxModel == "下回转顶升仰臂伸缩臂机" ) {
-        //         $('[name=dbyj]').prop('disabled', false)
-        //         data.datalist['dbyj'].color = 'white';
-        //         return ' ';
-        //     } else if ( ccjjxModel == "下回转固定立柱单臂机" || ccjjxModel == "下回转顶升单臂机" || ccjjxModel == "下回转固定立柱伸缩臂机" || ccjjxModel == "下回转顶升伸缩臂机" || ccjjxModel == "上回转单臂机" || ccjjxModel == "上回转伸缩臂机" ) {
-        //         $('[name=dbyj]').prop('disabled', true)
-        //         data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
-        //         return null;
-        //     }
-        // },
-        //
-        // //后台
-        // grugssp:function(){
-        //     if( gruModel =='无')
-        //         return 0;
-        // },
-        // m13:function(){
-        //     if( qsjgModel =='无')
-        //         return 0;
-        // },
-        // m14:function(){
-        //     if( m6 == 0 && m7 == 0 && m8 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // lhz13:function(){
-        //     if( qsjgModel =='无')
-        //         return 0;
-        // },
-        // lhz14:function(){
-        //     if( m14 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // acx13:function(){
-        //     if( qsjgModel =='无')
-        //         return 0;
-        // },
-        // acx14:function(){
-        //     if( m14 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // i12x:function () {
-        //     return ( hzzccs + hzxclcs ) / hzxclcs ;
-        // },
-        // ndbhz:function () {
-        //     return hzdjna / i12x ;
-        // },
-        // flsp:function () {
-        //     return 0.7 * hzlsss * hzlsgca ;
-        // },
-        // tls:function () {
-        //     return 0.18 * flsp * hzlsgczj / 1000 ;
-        // },
-        //
-        // unction () {
-        //     if ( gruModel == "GRU285" ) {
-        //         $('[name=grutstx]').prop('disabled', true)
-        //         data.datalist['grutstx'].color = 'white';
-        //         return '物料起升机构极限额定载重量为500kg';
-        //     } else if ( gruModel == "GRU295" ) {
-        //         $('[name=grutstx]').prop('disabled', true)
-        //         data.datalist['grutstx'].color = 'white';
-        //         return '物料起升机构极限额定载重量为750kg';
-        //     } else if ( gruModel == "GRU313" ) {
-        //         $('[name=grutstx]').prop('disabled', true)
-        //         data.datalist['grutstx'].color = 'white';
-        //         return '物料起升机构极限额定载重量为1000kg';
-        //     } else if ( gruModel == "无" ) {
-        //         $('[name=grutstx]').prop('disabled', true)
-        //         data.datalist['grutstx'].color = 'white';
-        //         return '无';
-        //     }
-        // },
-        //
-        // hzzchzgddk:function () {
-        //     return hzzchzgdd / 1000 ;
-        // },
-        // hzlsxndj:function(){
-        //     return hzlsxndjModelList[ hzlsxndjModel ]['hzlsxndj'];
-        // },
-        // hzlsss:function(){
-        //     return hzlsxndjModelList[ hzlsxndjModel ]['hzlsss'];
-        // },
-        // nlsyjlxs:function(){
-        //     return hzlsljgkModelList[ hzlsljgkModel ]['nlsyjlxs'];
-        // },
-        //
-        // swp: function(){
-        //     if( dcModel =='其它')
-        //         return ' ' ;
-        // },
-        // r1:function(){
-        //     if( dcModel =='其它')
-        //         return ' ' ;
-        // },
-        // mwr:function(){
-        //     return h * dcgssp * 4 ;
-        // },
-        // mffbb:function(){
-        //     return ffbbModelList[ ffbbModel ]['mffbb'];
-        // },
-        // tsl:function (){
-        //     return swp + r1 + mwr + mffbb ;
-        // },
-        // hwll:function(){
-        //     if( gruModel =='无')
-        //         return 0 ;
-        // },
-        // hsw:function(){
-        //     return h * grugssp ;
-        // },
-        // tshl:function(){
-        //     return hwll + hsw ;
-        // },
-        // m1:function(){
-        //     if( btModel =='其它')
-        //         return ' ' ;
-        // },
-        // m2:function(){
-        //     if( gruModel =='无')
-        //         return 0 ;
-        // },
-        // m3:function(){
-        //     return 25 ;
-        // },
-        // m5:function(){
-        //     if( gruModel =='无')
-        //         return 0 ;
-        // },
-        // m6:function(){
-        //     return ccjjxModelList[ ccjjxModel ]['m6'];
-        // },
-        // m7:function(){
-        //     return ccjjxModelList[ ccjjxModel ]['m7'];
-        // },
-        // m8:function(){
-        //     return ccjjxModelList[ ccjjxModel ]['m8'];
-        // },
-        // m10:function(){
-        //     return ccjjxModelList[ ccjjxModel ]['m10'];
-        // },
-        // m12hz:function(){
-        //     if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return 0 ;
-        //     else
-        //         return m12 ;
-        // },
-        // m13hz:function(){
-        //     if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return 0 ;
-        //     else
-        //         return m13 ;
-        // },
-        // m14hz:function(){
-        //     if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return 0 ;
-        //     else
-        //         return m14 ;
-        // },
-        // mhz:function(){
-        //     return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12hz + m13hz + m14hz ;
-        // },
-        // mhzf:function(){
-        //     return m1 + m2 + m3 + m4 + m5f + m6 + m7 + m8 + m9 + m10 + m11 + m12hz + m13hzf + m14hz ;
-        // },
-        //
-        // lslhz:function(){
-        //     return lbd ;
-        // },
-        // lshlhz:function(){
-        //     return lbd - ( ldcgh - lbtzh ) ;
-        // },
-        // lhz1:function(){
-        //     return lshlhz ;
-        // },
-        // lhz2:function(){
-        //     return lbd - ( ldcgh - ldslzh ) ;
-        // },
-        // lhz3:function(){
-        //     return lshlhz ;
-        // },
-        // lhz6:function(){
-        //     if( m6 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // lhz7:function(){
-        //     if( m7 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // lhz8:function(){
-        //     if( m8 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        //
-        // lhz9:function(){
-        //     return 0 ;
-        // },
-        // lhz10:function(){
-        //     if( m10 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // lhz11:function(){
-        //     return lbp ;
-        // },
-        // lhz12hz:function(){
-        //     return 0 ;
-        // },
-        // lhz13hz:function(){
-        //     if( m13hz == 0 )
-        //         return 0;
-        //     else
-        //         return lhz13 ;
-        // },
-        // lhz14hz:function(){
-        //     if( m14hz == 0 )
-        //         return 0;
-        //     else
-        //         return lhz14 ;
-        // },
-        //
-        // lslmz:function(){
-        //     return lslhz ;
-        // },
-        // lshlmz:function(){
-        //     return lshlhz ;
-        // },
-        // lmz1:function(){
-        //     return lhz1 ;
-        // },
-        // lmz2:function(){
-        //     return lhz2 ;
-        // },
-        // lmz3:function(){
-        //     return lhz3 ;
-        // },
-        // lmz5:function(){
-        //     return lhz5 ;
-        // },
-        // lmz6:function(){
-        //     return lhz6 ;
-        // },
-        // lmz7:function(){
-        //     return lhz7 ;
-        // },
-        // lmz8:function(){
-        //     return lhz8 ;
-        // },
-        // lmz9:function(){
-        //     return lhz9 ;
-        // },
-        // lmz10:function(){
-        //     if( m10 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // lmz11:function(){
-        //     return lhz11 ;
-        // },
-        // lmz12hz:function(){
-        //     return lhz12hz ;
-        // },
-        // lmz13hz:function(){
-        //     return lhz13hz ;
-        // },
-        // lmz14hz:function(){
-        //     return lhz14hz ;
-        // },
-        //
-        // aslcx: function(){
-        //     if( dcModel =='其它')
-        //         return ' ' ;
-        // },
-        //
-        // acx1:function(){
-        //     if( btModel =='其它')
-        //         return ' ' ;
-        // },
-        // acx2:function(){
-        //     if( gruModel =='无')
-        //         return 0 ;
-        // },
-        // acx3:function(){
-        //     return 0.05 ;
-        // },
-        // acx5:function(){
-        //     if( gruModel =='无')
-        //         return 0 ;
-        // },
-        // acx6:function(){
-        //     if( m6 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // acx7:function(){
-        //     if( m7 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // acx8:function(){
-        //     if( m8 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // acx10:function(){
-        //     if( m10 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // acx12hz:function(){
-        //     if( m12hz == 0 )
-        //         return 0;
-        //     else
-        //         return acx12;
-        // },
-        // acx13hz:function(){
-        //     if( m13hz == 0 )
-        //         return 0;
-        //     else
-        //         return acx13;
-        // },
-        // acx14hz:function(){
-        //     if( m14hz == 0 )
-        //         return 0;
-        //     else
-        //         return acx14;
-        // },
-        //
-        // hm6:function(){
-        //     if( m6 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // hm7:function(){
-        //     if( m7 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // hm8:function(){
-        //     if( m8 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // hm9:function(){
-        //     return 0 ;
-        // },
-        // hm10:function(){
-        //     if( m10 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // hm12:function(){
-        //     if( m12hz == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // hm13:function(){
-        //     if( m13hz == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // hm14:function(){
-        //     if( m14hz == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        //
-        // m5f:function(){
-        //     return m5 + hsw ;
-        // },
-        // m13hzf:function(){
-        //     if( m13hz == 0 )
-        //         return 0;
-        //     else
-        //         return m13hz + mwr;
-        // },
-        //
-        // lhzf1:function(){
-        //     return lbx - ( ldcgh - lbtzh ) ;
-        // },
-        // lhzf2:function(){
-        //     return lbx - ( ldcgh - ldslzh ) ;
-        // },
-        // lhzf3:function(){
-        //     return lhzf1 ;
-        // },
-        // lhzf4:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='上回转单臂机' )
-        //         return lhz4 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' )
-        //         return lhz4 / Math.cos(dbyj / 180 * Math.PI) ;
-        //     else if ( ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return ' ';
-        // },
-        // lhzf6:function(){
-        //     if( m6 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // lhzf7:function(){
-        //     if( m7 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // lhzf8:function(){
-        //     return lhz8 ;
-        // },
-        // lhzf9:function(){
-        //     return 0 ;
-        // },
-        // lhzf10:function(){
-        //     return lhz10 ;
-        // },
-        // lhzf11:function(){
-        //     return lbpx ;
-        // },
-        // lhzf12hz:function(){
-        //     return lhz12hz ;
-        // },
-        // lhzf13hz:function(){
-        //     return lhz13hz ;
-        // },
-        // lhzf14hz:function(){
-        //     return lhz14hz ;
-        // },
-        //
-        // lmzf1:function(){
-        //     return lhzf1 ;
-        // },
-        // lmzf2:function(){
-        //     return lhzf2 ;
-        // },
-        // lmzf3:function(){
-        //     return lhzf3 ;
-        // },
-        // lmzf4:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='上回转单臂机' )
-        //         return lmz4 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' )
-        //         return lmz4 / Math.cos(dbyj / 180 * Math.PI) ;
-        //     else if ( ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return ' ';
-        // },
-        // lmzf5:function(){
-        //     return lhzf5 ;
-        // },
-        // lmzf6:function(){
-        //     return lhzf6 ;
-        // },
-        // lmzf7:function(){
-        //     return lhzf7 ;
-        // },
-        // lmzf8:function(){
-        //     return lhzf8 ;
-        // },
-        // lmzf9:function(){
-        //     return 0 ;
-        // },
-        // lmzf10:function(){
-        //     return lmz10 ;
-        // },
-        // lmzf11:function(){
-        //     return lhzf11 ;
-        // },
-        // lmzf12hz:function(){
-        //     return lhzf12hz ;
-        // },
-        // lmzf13hz:function(){
-        //     return lhzf13hz ;
-        // },
-        // lmzf14hz:function(){
-        //     return lhzf14hz ;
-        // },
-        //
-        // afcx1:function(){
-        //     return acx1 ;
-        // },
-        // afcx2:function(){
-        //     return acx2 ;
-        // },
-        // afcx3:function(){
-        //     return acx3 ;
-        // },
-        // afcx4:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='上回转单臂机' )
-        //         return acx4 ;
-        //     else if ( ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return ' ';
-        // },
-        // afcx5:function(){
-        //     return acx5 ;
-        // },
-        // afcx6:function(){
-        //     if( m6 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // afcx7:function(){
-        //     if( m7 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // afcx8:function(){
-        //     if( m8 == 0 )
-        //         return 0;
-        //     else
-        //         return ' ';
-        // },
-        // afcx9:function(){
-        //     return acx9 ;
-        // },
-        // afcx10:function(){
-        //     return acx10 ;
-        // },
-        // afcx11:function(){
-        //     return acx11 ;
-        // },
-        // afcx12hz:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return acx12hz ;
-        //     else if ( ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // afcx13hz:function(){
-        //     return acx13hz ;
-        // },
-        // afcx14hz:function(){
-        //     return acx14hz ;
-        // },
-        //
-        // hmf1:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return hm1 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf2:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return hm2 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf3:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return hm3 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf4:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return hm4 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf5:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return hm5 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf6:function(){
-        //     if ( m6 == 0 ){
-        //         return 0 ;
-        //     }
-        //     else {
-        //         if(  ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //             return hm6 ;
-        //         else if ( ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //             return ' ';
-        //     }
-        // },
-        // hmf7:function(){
-        //     if( m7 == 0 )
-        //         return 0 ;
-        //     else
-        //         return ' ';
-        // },
-        // hmf8:function(){
-        //     if( m8 == 0 )
-        //         return 0 ;
-        //     else
-        //         return ' ';
-        // },
-        // hmf9:function(){
-        //     return hm9 ;
-        // },
-        // hmf10:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return 0 ;
-        //     else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' )
-        //         return hm10 ;
-        //     else if ( ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf11:function(){
-        //     if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return hm11 ;
-        //     else if (  ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf12:function(){
-        //     if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-        //         return 0 ;
-        //     else if ( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' )
-        //         return hm12 ;
-        //     else if ( ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-        //         return ' ';
-        // },
-        // hmf13:function(){
-        //     return hm13 ;
-        // },
-        // hmf14:function(){
-        //     return hm14 ;
-        // },
-        //
-        // hzzcm1:function(){
-        //     return hzzcjtgkmzModelList[ hzzcjtgkmzModel ]['hzzcm1'];
-        // },
-        // hzzcm2:function(){
-        //     return hzzcdtgkmzModelList[ hzzcdtgkmzModel ]['hzzcm2'];
-        // },
-        // hzzcm3:function(){
-        //     return hzzclsqdmzModelList[ hzzclsqdmzModel ]['hzzcm3'];
-        // },
+        pf: function () {
+            if (h <= 20 && h > 0) return 800;
+            else if (20 < h && h <= 100) return 1100;
+            else if (100 < h && h <= 150) return 1300;
+            else if (h > 150) return ' ';
+        },
+        lbx:function(){
+            if( ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '上回转单臂机' )
+                return lbd ;
+            else
+                return ' ';
+        },
+        lbpx:function(){
+            if( haveOfMobileCounterweight == '无' )
+                return lbp ;
+            else
+                return ' ';
+        },
+        dbyj: function () {
+            if ( ccjjxModel == "下回转仰臂单臂机" || ccjjxModel == "下回转顶升仰臂单臂机" || ccjjxModel == "下回转仰臂伸缩臂机" || ccjjxModel == "下回转顶升仰臂伸缩臂机" ) {
+                $('[name=dbyj]').prop('disabled', false)
+                data.datalist['dbyj'].color = 'white';
+                return ' ';
+            } else if ( ccjjxModel == "下回转固定立柱单臂机" || ccjjxModel == "下回转顶升单臂机" || ccjjxModel == "下回转固定立柱伸缩臂机" || ccjjxModel == "下回转顶升伸缩臂机" || ccjjxModel == "上回转单臂机" || ccjjxModel == "上回转伸缩臂机" ) {
+                $('[name=dbyj]').prop('disabled', true)
+                data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
+                return null;
+            }
+        },
 
+        // 后台
+        grugssp:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        m13:function(){
+            if( qsjgModel =='无')
+                return 0 ;
+        },
+        m14:function(){
+            if( m6 == 0 && m7 == 0 && m8 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        lhz13:function(){
+            if( qsjgModel =='无')
+                return 0 ;
+        },
+        lhz14:function(){
+            if( m14 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        acx13:function(){
+            if( qsjgModel =='无')
+                return 0 ;
+        },
+        acx14:function(){
+            if( m14 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        i12x:function () {
+            return ( hzzccs + hzxclcs ) / hzxclcs ;
+        },
+        ndbhz:function () {
+            return hzdjna / i12x ;
+        },
+        flsp:function () {
+            return 0.7 * hzlsss * hzlsgca ;
+        },
+        tls:function () {
+            return 0.18 * flsp * hzlsgczj / 1000 ;
+        },
+        hzzcmzj:function(){
+            if( hzzcm1 =='满足' && hzzcm2 =='满足' && hzzcm3 =='满足' )
+                return '满足';
+            else
+                return '不满足';
+        },
+        grutstx:function () {
+            if ( gruModel == "GRU285" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构极限额定载重量为500kg';
+            } else if ( gruModel == "GRU295" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构极限额定载重量为750kg';
+            } else if ( gruModel == "GRU313" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构极限额定载重量为1000kg';
+            } else if ( gruModel == "无" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '无';
+            }
+        },
+
+        hzzchzgddk:function () {
+            return hzzchzgdd / 1000 ;
+        },
+        hzlsxndj:function(){
+            return hzlsxndjModelList[ hzlsxndjModel ]['hzlsxndj'];
+        },
+        hzlsss:function(){
+            return hzlsxndjModelList[ hzlsxndjModel ]['hzlsss'];
+        },
+        nlsyjlxs:function(){
+            return hzlsljgkModelList[ hzlsljgkModel ]['nlsyjlxs'];
+        },
+
+        swp:function(){
+            if( dcModel =='其它')
+                return ' ' ;
+        },
+        r1:function(){
+            if( dcModel =='其它')
+                return ' ' ;
+        },
+        mwr:function(){
+            return h * dcgssp * 4 ;
+        },
+        mffbb:function(){
+            return ffbbModelList[ ffbbModel ]['mffbb'];
+        },
+        tsl:function (){
+            return swp + r1 + mwr + mffbb ;
+        },
+        hwll:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        hsw:function(){
+            return h * grugssp ;
+        },
+        tshl:function(){
+            return hwll + hsw ;
+        },
+        m1:function(){
+            if( btModel =='其它')
+                return ' ' ;
+        },
+        m2:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        m3:function(){
+            return 25 ;
+        },
+        m5:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        m6:function(){
+            return ccjjxModelList[ ccjjxModel ]['m6'];
+        },
+        m7:function(){
+            return ccjjxModelList[ ccjjxModel ]['m7'];
+        },
+        m8:function(){
+            return ccjjxModelList[ ccjjxModel ]['m8'];
+        },
+        m10:function(){
+            return ccjjxModelList[ ccjjxModel ]['m10'];
+        },
+        m12hz:function(){
+            if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return 0 ;
+            else if ( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return m12 ;
+        },
+        m13hz:function(){
+            if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return 0 ;
+            else if ( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return m13 ;
+        },
+        m14hz:function(){
+            if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return 0 ;
+            else if ( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return m14 ;
+        },
+        m5f:function(){
+            return m5 + hsw ;
+        },
+        m13hzf:function(){
+            if( m13hz == 0 )
+                return 0;
+            else
+                return m13hz + mwr;
+        },
+        mhz:function(){
+            return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12hz + m13hz + m14hz ;
+        },
+        mhzf:function(){
+            return m1 + m2 + m3 + m4 + m5f + m6 + m7 + m8 + m9 + m10 + m11 + m12hz + m13hzf + m14hz ;
+        },
+
+        lslhz:function(){
+            return lbd ;
+        },
+        lshlhz:function(){
+            return lbd - ( ldcgh - lbtzh ) ;
+        },
+        lhz1:function(){
+            return lshlhz ;
+        },
+        lhz2:function(){
+            return lbd - ( ldcgh - ldslzh ) ;
+        },
+        lhz3:function(){
+            return lshlhz ;
+        },
+        lhz6:function(){
+            if( m6 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        lhz7:function(){
+            if( m7 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        lhz8:function(){
+            if( m8 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+
+        lhz9:function(){
+            return 0 ;
+        },
+        lhz10:function(){
+            if( m10 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        lhz11:function(){
+            return lbp ;
+        },
+        lhz12hz:function(){
+            return 0 ;
+        },
+        lhz13hz:function(){
+            if( m13hz == 0 )
+                return 0;
+            else
+                return lhz13 ;
+        },
+        lhz14hz:function(){
+            if( m14hz == 0 )
+                return 0;
+            else
+                return lhz14 ;
+        },
+
+        lslmz:function(){
+            return lslhz ;
+        },
+        lshlmz:function(){
+            return lshlhz ;
+        },
+        lmz1:function(){
+            return lhz1 ;
+        },
+        lmz2:function(){
+            return lhz2 ;
+        },
+        lmz3:function(){
+            return lhz3 ;
+        },
+        lmz5:function(){
+            return lhz5 ;
+        },
+        lmz6:function(){
+            return lhz6 ;
+        },
+        lmz7:function(){
+            return lhz7 ;
+        },
+        lmz8:function(){
+            return lhz8 ;
+        },
+        lmz9:function(){
+            return lhz9 ;
+        },
+        lmz10:function(){
+            if( m10 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        lmz11:function(){
+            return lhz11 ;
+        },
+        lmz12hz:function(){
+            return lhz12hz ;
+        },
+        lmz13hz:function(){
+            return lhz13hz ;
+        },
+        lmz14hz:function(){
+            return lhz14hz ;
+        },
+
+        aslcx: function(){
+            if( dcModel =='其它')
+                return ' ' ;
+        },
+
+        acx1:function(){
+            if( btModel =='其它')
+                return ' ' ;
+        },
+        acx2:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        acx3:function(){
+            return 0.05 ;
+        },
+        acx5:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        acx6:function(){
+            if( m6 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        acx7:function(){
+            if( m7 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        acx8:function(){
+            if( m8 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        acx10:function(){
+            if( m10 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        acx12hz:function(){
+            if( m12hz == 0 )
+                return 0;
+            else
+                return acx12;
+        },
+        acx13hz:function(){
+            if( m13hz == 0 )
+                return 0;
+            else
+                return acx13;
+        },
+        acx14hz:function(){
+            if( m14hz == 0 )
+                return 0;
+            else
+                return acx14;
+        },
+
+        hm6:function(){
+            if( m6 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        hm7:function(){
+            if( m7 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        hm8:function(){
+            if( m8 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        hm9:function(){
+            return 0 ;
+        },
+        hm10:function(){
+            if( m10 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        hm12:function(){
+            if( m12hz == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        hm13:function(){
+            if( m13hz == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        hm14:function(){
+            if( m14hz == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+
+
+        lhzf1:function(){
+            return lbx - ( ldcgh - lbtzh ) ;
+        },
+        lhzf2:function(){
+            return lbx - ( ldcgh - ldslzh ) ;
+        },
+        lhzf3:function(){
+            return lhzf1 ;
+        },
+        lhzf4:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='上回转单臂机' )
+                return lhz4 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' )
+                return lhz4 / Math.cos(dbyj / 180 * Math.PI) ;
+            else if ( ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return ' ';
+        },
+        lhzf5:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return lhz5 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        lhzf6:function(){
+            if( m6 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        lhzf7:function(){
+            if( m7 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        lhzf8:function(){
+            return lhz8 ;
+        },
+        lhzf9:function(){
+            return 0 ;
+        },
+        lhzf10:function(){
+            return lhz10 ;
+        },
+        lhzf11:function(){
+            return lbpx ;
+        },
+        lhzf12hz:function(){
+            return lhz12hz ;
+        },
+        lhzf13hz:function(){
+            return lhz13hz ;
+        },
+        lhzf14hz:function(){
+            return lhz14hz ;
+        },
+
+        lmzf1:function(){
+            return lhzf1 ;
+        },
+        lmzf2:function(){
+            return lhzf2 ;
+        },
+        lmzf3:function(){
+            return lhzf3 ;
+        },
+        lmzf4:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='上回转单臂机' )
+                return lmz4 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' )
+                return lmz4 / Math.cos(dbyj / 180 * Math.PI) ;
+            else if ( ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return ' ';
+        },
+        lmzf5:function(){
+            return lhzf5 ;
+        },
+        lmzf6:function(){
+            return lhzf6 ;
+        },
+        lmzf7:function(){
+            return lhzf7 ;
+        },
+        lmzf8:function(){
+            return lhzf8 ;
+        },
+        lmzf9:function(){
+            return 0 ;
+        },
+        lmzf10:function(){
+            return lmz10 ;
+        },
+        lmzf11:function(){
+            return lhzf11 ;
+        },
+        lmzf12hz:function(){
+            return lhzf12hz ;
+        },
+        lmzf13hz:function(){
+            return lhzf13hz ;
+        },
+        lmzf14hz:function(){
+            return lhzf14hz ;
+        },
+
+        afcx1:function(){
+            return acx1 ;
+        },
+        afcx2:function(){
+            return acx2 ;
+        },
+        afcx3:function(){
+            return acx3 ;
+        },
+        afcx4:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='上回转单臂机' )
+                return acx4 ;
+            else if ( ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return ' ';
+        },
+        afcx5:function(){
+            return acx5 ;
+        },
+        afcx6:function(){
+            if( m6 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        afcx7:function(){
+            if( m7 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        afcx8:function(){
+            if( m8 == 0 )
+                return 0;
+            else
+                return ' ';
+        },
+        afcx9:function(){
+            return acx9 ;
+        },
+        afcx10:function(){
+            return acx10 ;
+        },
+        afcx11:function(){
+            return acx11 ;
+        },
+        afcx12hz:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return acx12hz ;
+            else if ( ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        afcx13hz:function(){
+            return acx13hz ;
+        },
+        afcx14hz:function(){
+            return acx14hz ;
+        },
+
+        hmf1:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return hm1 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf2:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return hm2 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf3:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return hm3 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf4:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return hm4 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf5:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return hm5 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf6:function(){
+            if ( m6 == 0 ){
+                return 0 ;
+            }
+            else {
+                if(  ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
+                    return hm6 ;
+                else if ( ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                    return ' ';
+            }
+        },
+        hmf7:function(){
+            if( m7 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        hmf8:function(){
+            if( m8 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        hmf9:function(){
+            return hm9 ;
+        },
+        hmf10:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return 0 ;
+            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' )
+                return hm10 ;
+            else if ( ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf11:function(){
+            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return hm11 ;
+            else if (  ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf12:function(){
+            if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+                return 0 ;
+            else if ( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' )
+                return hm12 ;
+            else if ( ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
+                return ' ';
+        },
+        hmf13:function(){
+            return hm13 ;
+        },
+        hmf14:function(){
+            return hm14 ;
+        },
+
+        hzzcm1:function(){
+            return hzzcjtgkmzModelList[ hzzcjtgkmzModel ]['hzzcm1'];
+        },
+        hzzcm2:function(){
+            return hzzcdtgkmzModelList[ hzzcdtgkmzModel ]['hzzcm2'];
+        },
+        hzzcm3:function(){
+            return hzzclsqdmzModelList[ hzzclsqdmzModel ]['hzzcm3'];
+        },
 
     };
     getTable("dcModel","dcxz");
