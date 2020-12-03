@@ -38,11 +38,14 @@ public class CostController {
     @Autowired
     URLCacheData urlCacheData;
 
-    @GetMapping("/Cost")
+    @GetMapping("/pdf/Cost")
     public String getMap() {
-        return "Cost";
+        return "/pdf/Cost";
     }
-
+    @GetMapping("/Cost")
+    public String getMap2() {
+        return "/Cost";
+    }
     @GetMapping("/Cost/getData")
     @ResponseBody
     public Object getData(String batchId) {

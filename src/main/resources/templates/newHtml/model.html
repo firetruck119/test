@@ -51,18 +51,18 @@
                 <template v-for="index in e.children">
                     <el-submenu :index="index.title" v-if="index.children">
                         <template slot="title" type="primary">{{index.title}}</template>
-                        <template v-for="subindex in index.children">
-                            <el-menu-item :index="subindex.title">
-                                <el-link type="primary" :href="'/'+index.url+(subindex.url?'/'+subindex.url:'')"
+                        <template  v-for="subindex in index.children" v-if="subindex.url">
+                            <el-menu-item  :index="subindex.title">
+                                <el-link v-if="subindex.url" type="primary" :href="'/'+index.url+(subindex.url?'/'+subindex.url:'')"
                                          class="myNav" style="display: block">
                                     {{subindex.title}}
                                 </el-link>
                             </el-menu-item>
                         </template>
                     </el-submenu>
-                    <el-menu-item v-else>
+                    <el-menu-item  v-else-if="index.url">
                         <span slot="title" :index="index.title">
-                            <el-link type="primary" :href="(e.url?'/'+e.url:'')+(index.url?'/'+index.url:'')"
+                            <el-link  type="primary" :href="(e.url?'/'+e.url:'')+(index.url?'/'+index.url:'')"
                                      class="myNav" style="display: block">{{index.title}}</el-link>
                         </span>
                     </el-menu-item>
