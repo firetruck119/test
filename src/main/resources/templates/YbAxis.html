@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>仰臂液压缸校核计算书</title>
+    <title>仰臂大轴校核计算书</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{js/jquery-1.7.1.min.js}"></script>
     <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
@@ -91,6 +91,43 @@
 
     </style>
     <script>
+        ybdzxhModelList={
+            "YB-XZ(Φ60)":{
+                ybdzd1:60,
+                ybdzd2:57,
+                ybdzc:40,
+            },
+            "YB-XZ(Φ70)":{
+                ybdzd1:70,
+                ybdzd2:67,
+                ybdzc:50,
+            },
+            "YB-XZ(Φ80)":{
+                ybdzd1:80,
+                ybdzd2:77,
+                ybdzc:60,
+            },
+            "YB-XZ(Φ90)":{
+                ybdzd1:90,
+                ybdzd2:87,
+                ybdzc:60,
+            },
+            "YB-XZ(Φ110)":{
+                ybdzd1:110,
+                ybdzd2:107,
+                ybdzc:80,
+            },
+            "YB-XZ(Φ120)":{
+                ybdzd1:120,
+                ybdzd2:117,
+                ybdzc:80,
+            },
+            "其它":{
+                ybdzd1:' ',
+                ybdzd2:' ',
+                ybdzc:' ',
+            },
+        };
         ffbbModelList={
             "有":{
                 mffbb:100,
@@ -107,14 +144,7 @@
                 gruybxs:0,
             },
         };
-        ybfztModelList={
-            "是":{
 
-            },
-            "否":{
-
-            },
-        };
     </script>
     <script type="text/javascript">
         function isNumber(value) {         //验证是否为数字
@@ -126,13 +156,13 @@
             }
         }
         $(document).ready(function () {
-            InitNav(9)
-            $('#YbHydraulicCylinder').addClass('o-sub-cur');
+            InitNav(7)
+            $('#YbAxis').addClass('o-sub-cur');
         })
 
         function janyan() {
             $.ajax({
-                url: "YbHydraulicCylinder/jy",
+                url: "YbAxis/jy",
                 type: "post",
                 data: $("form").serialize(),
                 async: false,
@@ -176,7 +206,7 @@
 <div class="main">
     <iframe style="display: none" name="stop" src="about:blank"></iframe>
     <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
-        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">仰臂液压缸校核计算书</div>
+        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">仰臂大轴校核计算书</div>
         <!- 封面内容 ->
         <div style="width:400px;">
             <table>
@@ -190,7 +220,7 @@
                     <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
-                                var url = '/YbHydraulicCylinder/getData';
+                                var url = '/YbAxis/getData';
                                 var id = $('input[name="sjht"]').val();
                                 getData.geteDataFromDB(url, id)
                             }
@@ -257,9 +287,27 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>吊臂仰起状态吊臂仰角</b></td>
-                    <td ><p><i> </i></p></td>
-                    <td ><input type="text" name="dbyj" /></td>
+                    <td ><b>最大臂长</b></td>
+                    <td ><p><i>l<sub>bd</sub></i></p></td>
+                    <td ><input type="text" name="lbd" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>仰臂大轴至吊臂液压缸支点的水平距离</b></td>
+                    <td ><p><i>L<sub>y</sub></i></p></td>
+                    <td ><input type="text" name="ybdzly" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>仰臂大轴至吊臂液压缸的垂直距离</b></td>
+                    <td ><p><i>L<sub>z</sub></i></p></td>
+                    <td ><input type="text" name="ybljz" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>工作状态液压缸与水平方向的夹角</b></td>
+                    <td ><p><i>α</i></p></td>
+                    <td ><input type="text" name="yygjd" /></td>
                     <td >°</td>
                 </tr>
              </table>
@@ -271,10 +319,17 @@
                     <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.下拉参数选择</b></td>
                 </tr>
                 <tr>
-                    <td style="width:35%;padding:10px 0;;"><b>仰臂液压缸选择</b></td>
+                    <td style="width:35%;padding:10px 0;;"><b>仰臂大轴型号选择</b></td>
                     <td>
-                        <select name="ybyygModel" style="width:100%;height:40px;text-align-last:center">
+                        <select name="ybdzxhModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
+                            <option value="YB-XZ(Φ60)">YB-XZ(Φ60)</option>
+                            <option value="YB-XZ(Φ70)">YB-XZ(Φ70)</option>
+                            <option value="YB-XZ(Φ80)">YB-XZ(Φ80)</option>
+                            <option value="YB-XZ(Φ90)">YB-XZ(Φ90)</option>
+                            <option value="YB-XZ(Φ110)">YB-XZ(Φ110)</option>
+                            <option value="YB-XZ(Φ120)">YB-XZ(Φ120)</option>
+                            <option value="其它">其它</option>
                         </select>
                     </td>
                 </tr>
@@ -333,38 +388,18 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td><b>吊臂俯下状态是否为正常工作状态</b></td>
-                    <td>
-                        <select name="ybfztModel" style="width:100%;height:40px;text-align-last:center">
-                            <option value="" style="display: none"></option>
-                            <option value="是">是</option>
-                            <option value="否">否</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>注：如果吊臂俯下状态是否为正常工作状态选“是”，则tsl、tshl与吊臂仰起状态的值一致；如果选“否”，则tsl需减去吊船钢丝绳重量、tshl为0。</b></td>
-                </tr>
             </table>
         </div>
 
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.仰臂液压缸基础参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.仰臂大轴相关参数</b></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
-                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="仰臂液压缸示意图"src="/image/Tensile/ybyygtu1.png" width="600px" id="ybyygtu1" name="ybyygtu1" >
-                            <input type="hidden" value="tu_ybyygtu1.png"/>
-                        </div>
+                    <td  colspan="4" style="background-color: #aaa;">
+                        <img style="width:600px" th:src="@{ybdztu0.png}"/>
                     </td>
-                <tr>
-                    <td style="padding:10px 0"><b>仰臂液压缸示意图</b></td>
-                    <td colspan="3"><input class="image" type="file" name="ybyygtu1" accept="image/*"
-                                           oninput="showImage(this,'ybyygtu1')"/></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -373,70 +408,46 @@
                     <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
-                    <td ><b>仰臂液压缸缸径</b></td>
-                    <td ><p><i>D</i></p></td>
-                    <td ><input type="text" name="ybdd"/></td>
+                    <td ><b>仰臂大轴与配重臂侧板接触处轴直径</b></td>
+                    <td ><p><i>d<sub>1</sub></i></p></td>
+                    <td ><input type="text" name="ybdzd1"/></td>
                     <td >mm</td>
                 </tr>
                 <tr>
-                    <td ><b>仰臂液压缸杆径</b></td>
-                    <td ><p><i>d</i></p></td>
-                    <td ><input type="text" name="ybxd"/></td>
+                    <td ><b>仰臂大轴与配重臂侧板接触处轴截面积</b></td>
+                    <td ><p><i>A</i></p></td>
+                    <td ><input type="text" name="ybdza"/></td>
+                    <td >mm<sup>2</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>仰臂大轴中心处轴直径</b></td>
+                    <td ><p><i>d<sub>2</sub></i></p></td>
+                    <td ><input type="text" name="ybdzd2"/></td>
                     <td >mm</td>
                 </tr>
                 <tr>
-                    <td ><b>液压缸行程</b></td>
-                    <td ><p><i>S</i></p></td>
-                    <td ><input type="text" name="ybs"/></td>
+                    <td ><b>仰臂大轴中心处抗弯模量</b></td>
+                    <td ><p><i>W<sub>x</sub></i></p></td>
+                    <td ><input type="text" name="ybdzwx"/></td>
+                    <td >mm<sup>3</sup></td>
+                </tr>
+                <tr>
+                    <td ><b>轴承套中心到配重臂侧板中心的距离</b></td>
+                    <td ><p><i>b</i></p></td>
+                    <td ><input type="text" name="ybdzb"/></td>
                     <td >mm</td>
                 </tr>
                 <tr>
-                    <td ><b>吊臂俯下状态液压缸两耳环之间距离</b></td>
-                    <td ><p><i>L<sub>Bf</sub></i></p></td>
-                    <td ><input type="text" name="yblbf"/></td>
+                    <td ><b>仰臂大轴单个轴承套的长度</b></td>
+                    <td ><p><i>c</i></p></td>
+                    <td ><input type="text" name="ybdzc"/></td>
                     <td >mm</td>
                 </tr>
                 <tr>
-                    <td ><b>吊臂仰起状态液压缸两耳环之间距离</b></td>
-                    <td ><p><i>L<sub>B</sub></i></p></td>
-                    <td ><input type="text" name="yblb"/></td>
+                    <td ><b>配重臂侧板及介子厚度之和</b></td>
+                    <td ><p><i>t</i></p></td>
+                    <td ><input type="text" name="ybdzt"/></td>
                     <td >mm</td>
-                </tr>
-                <tr>
-                    <td ><b>活塞杆横截面惯性矩</b></td>
-                    <td ><p><i>I</i></p></td>
-                    <td ><input type="text" name="ybi"/></td>
-                    <td >mm<sup>4</sup></td>
-                </tr>
-                <tr>
-                    <td ><b>液压缸单缸理论推力</b></td>
-                    <td ><p><i>F<sub>yb</sub></i></p></td>
-                    <td ><input type="text" name="yblltl"/></td>
-                    <td >N</td>
-                </tr>
-                <tr>
-                    <td ><b>液压缸额定工作压力</b></td>
-                    <td ><p><i>P<sub>yb</sub></i></p></td>
-                    <td ><input type="text" name="ybgcyl"/></td>
-                    <td >MPa</td>
-                </tr>
-                <tr>
-                    <td ><b>液压缸个数</b></td>
-                    <td ><p><i>n<sub>1</sub></i></p></td>
-                    <td ><input type="text" name="ybn1"/></td>
-                    <td >个</td>
-                </tr>
-                <tr>
-                    <td ><b>液压缸安全系数</b></td>
-                    <td ><p><i>n</i></p></td>
-                    <td ><input type="text" name="ybn"/></td>
-                    <td > </td>
-                </tr>
-                <tr>
-                    <td ><b>液压缸稳定性安全系数</b></td>
-                    <td ><p><i>n<sub>k</sub></i></p></td>
-                    <td ><input type="text" name="ybnk"/></td>
-                    <td >取值范围3.5~6</td>
                 </tr>
             </table>
         </div>
@@ -444,7 +455,20 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.吊臂载荷</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.工作状态吊臂载荷</b></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div style="height:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="工作状态吊臂载荷示意图"src="/image/Tensile/ybdztu1.png" height="300px" id="ybdztu1" name="ybdztu1" >
+                            <input type="hidden" value="tu_ybdztu1.png"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0"><b>工作状态吊臂载荷示意图</b></td>
+                    <td colspan="3"><input class="image" type="file" name="ybdztu1" accept="image/*"
+                                           oninput="showImage(this,'ybdztu1')"/></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -534,25 +558,32 @@
                     <td><input type='text' name="m5yb"/></td>
                     <td>kg</td>
                 </tr>
+                <tr>
+                    <td><b>伸缩液压缸自重</b></td>
+                    <td><p><i>m<sub>6</sub></i></p></td>
+                    <td><input type='text' name="m6"/></td>
+                    <td>kg</td>
+                </tr>
             </table>
         </div>
 
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.吊臂仰起状态载荷重心至吊臂铰轴距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.工作状态载荷重心至吊臂液压缸支点距离</b></td>
                 </tr>
                 <tr>
                     <td colspan="4">
                         <div style="height:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="吊臂仰起状态载荷重心至吊臂铰轴距离示意图"src="/image/Tensile/ybyygtu2.png" height="300px" id="ybyygtu2" name="ybyygtu2" >
-                            <input type="hidden" value="tu_ybyygtu2.png"/>
+                            <img alt="工作状态载荷重心至吊臂液压缸支点距离示意图"src="/image/Tensile/ybdztu2.png" height="300px" id="ybdztu2" name="ybdztu2" >
+                            <input type="hidden" value="tu_ybdztu2.png"/>
                         </div>
                     </td>
+                </tr>
                 <tr>
-                    <td style="padding:10px 0"><b>吊臂仰起状态载荷重心至吊臂铰轴距离示意图</b></td>
-                    <td colspan="3"><input class="image" type="file" name="ybyygtu2" accept="image/*"
-                                           oninput="showImage(this,'ybyygtu2')"/></td>
+                    <td style="padding:10px 0"><b>工作状态载荷重心至吊臂液压缸支点距离示意图</b></td>
+                    <td colspan="3"><input class="image" type="file" name="ybdztu2" accept="image/*"
+                                           oninput="showImage(this,'ybdztu2')"/></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -561,37 +592,112 @@
                     <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
-                    <td ><b>总悬挂载荷重心至吊臂铰轴距离</b></td>
+                    <td ><b>总悬挂载荷重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>sl</sub></i></p></td>
+                    <td ><input type="text" name="lslyz" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构总悬挂载荷重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>shl</sub></i></p></td>
+                    <td ><input type="text" name="lshlyz" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>臂头重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>1</sub></i></p></td>
+                    <td ><input type="text" name="lyz1" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构导绳架重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>2</sub></i></p></td>
+                    <td ><input type="text" name="lyz2" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>重锤重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>3</sub></i></p></td>
+                    <td ><input type="text" name="lyz3" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>吊臂重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>4</sub></i></p></td>
+                    <td ><input type="text" name="lyz4" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>物料起升机构装置重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>5</sub></i></p></td>
+                    <td ><input type="text" name="lyz5" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>伸缩液压缸重心至吊臂液压缸支点距离</b></td>
+                    <td ><p><i>L<sub>6</sub></i></p></td>
+                    <td ><input type="text" name="lyz6" /></td>
+                    <td >m</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="width:600px;">
+            <table>
+                <tr>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.工作状态载荷重心至仰臂大轴距离</b></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div style="height:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="工作状态载荷重心至仰臂大轴距离示意图"src="/image/Tensile/ybdztu3.png" height="300px" id="ybdztu3" name="ybdztu3" >
+                            <input type="hidden" value="tu_ybdztu3.png"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0"><b>工作状态载荷重心至仰臂大轴距离示意图</b></td>
+                    <td colspan="3"><input class="image" type="file" name="ybdztu3" accept="image/*"
+                                           oninput="showImage(this,'ybdztu3')"/></td>
+                </tr>
+                <tr>
+                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:40%;">数值</td>
+                    <td style="width:17%;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>总悬挂载荷重心至仰臂大轴距离</b></td>
                     <td ><p><i>L<sub>slz</sub></i></p></td>
                     <td ><input type="text" name="lsljz" /></td>
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>物料起升机构总悬挂载荷重心至吊臂铰轴距离</b></td>
+                    <td ><b>物料起升机构总悬挂载荷重心至仰臂大轴距离</b></td>
                     <td ><p><i>L<sub>shlz</sub></i></p></td>
                     <td ><input type="text" name="lshljz" /></td>
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>臂头重心至吊臂铰轴距离</b></td>
+                    <td ><b>臂头重心至仰臂大轴距离</b></td>
                     <td ><p><i>L<sub>z1</sub></i></p></td>
                     <td ><input type="text" name="ljz1" /></td>
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>物料起升机构导绳架重心至吊臂铰轴距离</b></td>
+                    <td ><b>物料起升机构导绳架重心至仰臂大轴距离</b></td>
                     <td ><p><i>L<sub>z2</sub></i></p></td>
                     <td ><input type="text" name="ljz2" /></td>
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>重锤重心至吊臂铰轴距离</b></td>
+                    <td ><b>重锤重心至仰臂大轴距离</b></td>
                     <td ><p><i>L<sub>z3</sub></i></p></td>
                     <td ><input type="text" name="ljz3" /></td>
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>吊臂重心至吊臂铰轴距离</b></td>
+                    <td ><b>吊臂重心至仰臂大轴距离</b></td>
                     <td ><p><i>L<sub>z4</sub></i></p></td>
                     <td ><input type="text" name="ljz4" /></td>
                     <td >m</td>
@@ -602,73 +708,34 @@
                     <td ><input type="text" name="ljz5" /></td>
                     <td >m</td>
                 </tr>
+                <tr>
+                    <td ><b>伸缩液压缸重心至吊臂铰轴距离</b></td>
+                    <td ><p><i>L<sub>z6</sub></i></p></td>
+                    <td ><input type="text" name="ljz6" /></td>
+                    <td >m</td>
+                </tr>
             </table>
         </div>
+
+        <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>8.仰臂大轴其它示意图</b></div>
 
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.吊臂俯下状态载荷重心至吊臂铰轴距离</b></td>
+                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>工作状态载荷对吊臂液压缸支点产生的弯矩示意图</b></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
-                        <div style="height:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="吊臂俯下状态载荷重心至吊臂铰轴距离示意图"src="/image/Tensile/ybyygtu3.png" width="600px" id="ybyygtu3" name="ybyygtu3" >
-                            <input type="hidden" value="tu_ybyygtu3.png"/>
+                    <td colspan="2">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img src="/image/Tensile/ybdztu6.png" width="600px" id="ybdztu6" name="ybdztu6" >
+                            <input type="hidden" value="tu_ybdztu6.png"/>
                         </div>
                     </td>
-                <tr>
-                    <td style="padding:10px 0"><b>吊臂俯下状态载荷重心至吊臂铰轴距离示意图</b></td>
-                    <td colspan="3"><input class="image" type="file" name="ybyygtu3" accept="image/*"
-                                           oninput="showImage(this,'ybyygtu3')"/></td>
                 </tr>
                 <tr>
-                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:17%;">符号</td>
-                    <td style="width:40%;">数值</td>
-                    <td style="width:17%;">单位</td>
-                </tr>
-                <tr>
-                    <td ><b>总悬挂载荷重心至吊臂铰轴距离</b></td>
-                    <td ><p><i>L<sub>slzf</sub></i></p></td>
-                    <td ><input type="text" name="lsljzf" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
-                    <td ><b>物料起升机构总悬挂载荷重心至吊臂铰轴距离</b></td>
-                    <td ><p><i>L<sub>shlzf</sub></i></p></td>
-                    <td ><input type="text" name="lshljzf" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
-                    <td ><b>臂头重心至吊臂铰轴距离</b></td>
-                    <td ><p><i>L<sub>zf1</sub></i></p></td>
-                    <td ><input type="text" name="ljzf1" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
-                    <td ><b>物料起升机构导绳架重心至吊臂铰轴距离</b></td>
-                    <td ><p><i>L<sub>zf2</sub></i></p></td>
-                    <td ><input type="text" name="ljzf2" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
-                    <td ><b>重锤重心至吊臂铰轴距离</b></td>
-                    <td ><p><i>L<sub>zf3</sub></i></p></td>
-                    <td ><input type="text" name="ljzf3" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
-                    <td ><b>吊臂重心至吊臂铰轴距离</b></td>
-                    <td ><p><i>L<sub>zf4</sub></i></p></td>
-                    <td ><input type="text" name="ljzf4" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
-                    <td ><b>物料起升机构装置重心至吊臂铰轴距离</b></td>
-                    <td ><p><i>L<sub>zf5</sub></i></p></td>
-                    <td ><input type="text" name="ljzf5" /></td>
-                    <td >m</td>
+                    <td style="width:150px;padding:10px 0"><b>工作状态载荷对吊臂液压缸支点产生的弯矩示意图</b></td>
+                    <td colspan="1"><input class="image" type="file" name="ybdztu6" accept="image/*"
+                                           oninput="showImage(this,'ybdztu6')"/></td>
                 </tr>
             </table>
         </div>
@@ -676,63 +743,20 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.吊臂铰轴至吊臂仰起状态液压缸的垂直距离</b></td>
+                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>工作状态仰臂液压缸推力示意图</b></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
-                        <div style="height:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="吊臂仰起状态载荷仰臂液压缸推力示意图"src="/image/Tensile/ybyygtu4.png" height="300px" id="ybyygtu4" name="ybyygtu4" >
-                            <input type="hidden" value="tu_ybyygtu4.png"/>
+                    <td colspan="2">
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img src="/image/Tensile/ybdztu7.png" width="600px" id="ybdztu7" name="ybdztu7" >
+                            <input type="hidden" value="tu_ybdztu7.png"/>
                         </div>
                     </td>
-                <tr>
-                    <td style="padding:10px 0"><b>吊臂仰起状态载荷仰臂液压缸推力示意图</b></td>
-                    <td colspan="3"><input class="image" type="file" name="ybyygtu4" accept="image/*"
-                                           oninput="showImage(this,'ybyygtu4')"/></td>
                 </tr>
                 <tr>
-                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:17%;">符号</td>
-                    <td style="width:40%;">数值</td>
-                    <td style="width:17%;">单位</td>
-                </tr>
-                <tr>
-                    <td ><b>吊臂铰轴至吊臂仰起状态液压缸的垂直距离</b></td>
-                    <td ><p><i>L</i></p></td>
-                    <td ><input type="text" name="ybljz" /></td>
-                    <td >m</td>
-                </tr>
-            </table>
-        </div>
-
-        <div style="width:600px;">
-            <table>
-                <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.吊臂铰轴至吊臂俯下状态液压缸的垂直距离</b></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <div style="height:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                            <img alt="吊臂俯下状态载荷仰臂液压缸推力示意图"src="/image/Tensile/ybyygtu5.png" width="600px" id="ybyygtu5" name="ybyygtu5" >
-                            <input type="hidden" value="tu_ybyygtu5.png"/>
-                        </div>
-                    </td>
-                <tr>
-                    <td style="padding:10px 0"><b>吊臂俯下状态载荷仰臂液压缸推力示意图</b></td>
-                    <td colspan="3"><input class="image" type="file" name="ybyygtu5" accept="image/*"
-                                           oninput="showImage(this,'ybyygtu5)"/></td>
-                </tr>
-                <tr>
-                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:17%;">符号</td>
-                    <td style="width:40%;">数值</td>
-                    <td style="width:17%;">单位</td>
-                </tr>
-                <tr>
-                    <td ><b>吊臂铰轴至吊臂俯下状态液压缸的垂直距离</b></td>
-                    <td ><p><i>L<sub>f</sub></i></p></td>
-                    <td ><input type="text" name="ybljzf" /></td>
-                    <td >m</td>
+                    <td style="width:150px;padding:10px 0"><b>工作状态仰臂液压缸推力示意图</b></td>
+                    <td colspan="1"><input class="image" type="file" name="ybdztu7" accept="image/*"
+                                           oninput="showImage(this,'ybdztu7')"/></td>
                 </tr>
             </table>
         </div>
@@ -745,14 +769,7 @@
             <input type="text" name="ldcgh" />
             <input type="text" name="lbtzh" />
             <input type="text" name="ldslzh" />
-            <input type="text" name="yblltlf" />
-            <input type="text" name="tslp" />
-            <input type="text" name="tshlp" />
-            <input type="text" name="m5ybp" />
-            <input type="text" name="yblltlk" />
-            <input type="text" name="yblltlfk" />
         </div>
-
 
         <input type="hidden" name="pdfType"/>
     </form>
@@ -765,33 +782,33 @@
                     </tr>
                     <tr>
                         <td style="width:25%;"><b>名称</b></td>
-                        <td style="width:25%;"><b>标准值(kN)</b></td>
-                        <td style="width:25%;"><b>计算值(kN)</b></td>
+                        <td style="width:25%;"><b>标准值(N/mm<sup>2</sup>)</b></td>
+                        <td style="width:25%;"><b>计算值(N/mm<sup>2</sup>)</b></td>
                         <td style="width:25%;"><b>是否满足</b></td>
                     </tr>
                     <tr>
-                        <td><b>吊臂仰起状态液压缸推力校核</b></td>
-                        <td id="yblltlk"></td>
-                        <td id="fsnk"></td>
-                        <td id="ybm1"></td>
+                        <td><b>仰臂大轴弯曲应力校核</b></td>
+                        <td><b>246.67</b></td>
+                        <td id="ybdzs"></td>
+                        <td id="ybdzm1"></td>
                     </tr>
                     <tr>
-                        <td><b>吊臂仰起状态液压缸稳定性校核</b></td>
-                        <td id="fknk"></td>
-                        <td id="f1k"></td>
-                        <td id="ybm2"></td>
+                        <td><b>仰臂大轴剪切应力校核</b></td>
+                        <td><b>142.41</b></td>
+                        <td id="ybdzts"></td>
+                        <td id="ybdzm2"></td>
                     </tr>
                     <tr>
-                        <td><b>吊臂俯下状态液压缸推力校核</b></td>
-                        <td id="yblltlfk"></td>
-                        <td id="fsnfk"></td>
-                        <td id="ybm3"></td>
+                        <td><b>仰臂大轴合成应力校核</b></td>
+                        <td><b>246.67</b></td>
+                        <td id="siv"></td>
+                        <td id="ybdzm3"></td>
                     </tr>
                     <tr>
-                        <td><b>吊臂俯下状态液压缸稳定性校核</b></td>
-                        <td id="fknfk"></td>
-                        <td id="f2k"></td>
-                        <td id="ybm4"></td>
+                        <td><b>仰臂大轴与配重臂侧板挤压应力校核</b></td>
+                        <td><b>230</b></td>
+                        <td id="jyyl"></td>
+                        <td id="ybdzm4"></td>
                     </tr>
                  </table>
                 <div style="margin: 0 150px 0;">
@@ -803,7 +820,7 @@
     <div class="buttonbox">
         <input type="submit" form="form1" class="button" value="保存数据"
                onclick="isCheck(false);$('form').attr('action','saveValue')"/>
-        <input type="submit" form="form1" class="button"  value="导出pdf" onclick="$('form').attr('action','YbHydraulicCylinder/getPDF');
+        <input type="submit" form="form1" class="button"  value="导出pdf" onclick="$('form').attr('action','YbAxis/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
         <!--<input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','YbHydraulicCylinder/getPDF');-->
                                                                                             <!--isCheck(true);changeType('Check')"/>-->
@@ -841,15 +858,6 @@
             }
         },
 
-        yblltlf:function(){
-            return yblltl ;
-        },
-        yblltlk:function(){
-            return yblltl / 1000 ;
-        },
-        yblltlfk:function(){
-            return yblltlf / 1000 ;
-        },
         grugssp:function(){
             if( gruModel =='无')
                 return 0;
@@ -861,39 +869,21 @@
         gruybxs:function(){
             return gruybModelList[ gruybModel ]['gruybxs'];
         },
-        tslp:function(){
-            if( ybfztModel =='是')
-                return tsl ;
-            else if ( ybfztModel =='否')
-                return tsl - mwr ;
+
+        ybdzd1:function(){
+            return ybdzxhModelList[ ybdzxhModel ]['ybdzd1'];
         },
-        tshlp:function(){
-            if( ybfztModel =='是')
-                return tshl ;
-            else if ( ybfztModel =='否')
-                return 0 ;
+        ybdza:function(){
+            return 0.758 * ybdzd1 * ybdzd1 ;
         },
-        m5ybp:function(){
-           if ( m5yb == 0)
-               return 0 ;
-           else {
-               if ( ybfztModel =='是')
-                   return m5yb ;
-               else if ( ybfztModel =='否')
-                   return m5yb + hsw ;
-           }
+        ybdzd2:function(){
+            return ybdzxhModelList[ ybdzxhModel ]['ybdzd2'];
         },
-        yblb:function(){
-            return ybs + yblbf ;
+        ybdzwx:function(){
+            return 0.0982 * ybdzd2 * ybdzd2 * ybdzd2 ;
         },
-        ybi:function(){
-            return 3.14 * ybxd * ybxd * ybxd * ybxd / 64  ;
-        },
-        ybn:function(){
-            if( ybn1 == 1 )
-                return 1.5 ;
-            else if ( ybn1 == 2 )
-                return 2 ;
+        ybdzc:function(){
+            return ybdzxhModelList[ ybdzxhModel ]['ybdzc'];
         },
 
         swp: function(){
@@ -937,83 +927,87 @@
         m5yb:function(){
             return m5 * gruybxs ;
         },
-        // m5ybp:function(){
-        //     if ( m5yb == 0 )
-        //         return 0 ;
-        //     else
-        //         return m5yb + hsw ;
-        // },
 
-        lshljz:function(){
-            return lsljz - ( ldcgh - lbtzh ) ;
+        lshlyz:function(){
+            return lslyz - ( ldcgh - lbtzh ) ;
         },
-        ljz1:function(){
-            return lshljz ;
+        lyz1:function(){
+            return lshlyz ;
         },
-        ljz2:function(){
+        lyz2:function(){
             if( m2 == 0 ){
-               return 0 ;
+                return 0 ;
             }else {
-                return lsljz - ( ldcgh - ldslzh ) ;
+                return lslyz - ( ldcgh - ldslzh ) ;
             }
         },
-        ljz3:function(){
-            return lshljz ;
+        lyz3:function(){
+            return lshlyz ;
         },
-        ljz5:function(){
+        lyz5:function(){
             if( m5yb == 0 ){
                 return 0 ;
             }else {
                 return ' ' ;
             }
         },
-
-        lsljzf:function(){
-            return lsljz / Math.cos(dbyj / 180 * Math.PI) ;
-        },
-        lshljzf:function(){
-            if ( tshlp == 0 )
-                return 0 ;
-            else
-                return lshljz / Math.cos(dbyj / 180 * Math.PI) ;
-        },
-        ljzf1:function(){
-            return ljz1 / Math.cos(dbyj / 180 * Math.PI) ;
-        },
-        ljzf2:function(){
-            if( m2 == 0 ){
+        lyz6:function(){
+            if( m6 == 0 ){
                 return 0 ;
             }else {
-                return ljz2 / Math.cos(dbyj / 180 * Math.PI) ;
+                return ' ' ;
             }
         },
-        ljzf3:function(){
-            return ljz3 / Math.cos(dbyj / 180 * Math.PI) ;
+
+        lsljz:function(){
+            return lslyz + ybdzly ;
         },
-        ljzf4:function(){
-            return ljz4 / Math.cos(dbyj / 180 * Math.PI) ;
+        lshljz:function(){
+            return lshlyz + ybdzly ;
         },
-        ljzf5:function(){
+        ljz1:function(){
+            return lyz1 + ybdzly ;
+        },
+        ljz2:function(){
+            if( m2 == 0 ){
+               return 0 ;
+            }else {
+                return lyz2 + ybdzly ;
+            }
+        },
+        ljz3:function(){
+            return lyz3 + ybdzly ;
+        },
+        ljz4:function(){
+            return lyz4 + ybdzly ;
+        },
+        ljz5:function(){
             if( m5yb == 0 ){
                 return 0 ;
             }else {
-                return ljz5 / Math.cos(dbyj / 180 * Math.PI) ;
+                return lyz5 + ybdzly ;
+            }
+        },
+        ljz6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return lyz6 + ybdzly ;
             }
         },
     };
 
-    getTable("ybyygModel","ybyygxz");
-    getTable("btModel","btxz");
     getTable("dcModel","dcxz");
     getTable("dcgssModel","dcgssxz");
+    getTable("btModel","btxz");
     getTable("gruModel","gruxz");
     data.init(calculateFunction);
     imgDaefultData={
-        ybyygtu1:{inputvalue:"ybyygtu1.png"},
-        ybyygtu2:{inputvalue:"ybyygtu2.png"},
-        ybyygtu3:{inputvalue:"ybyygtu3.png"},
-        ybyygtu4:{inputvalue:"ybyygtu4.png"},
-        ybyygtu5:{inputvalue:"ybyygtu5.png"},
+        ybdztu1:{inputvalue:"ybdztu1.png"},
+        ybdztu2:{inputvalue:"ybdztu2.png"},
+        ybdztu3:{inputvalue:"ybdztu3.png"},
+        ybdztu6:{inputvalue:"ybdztu6.png"},
+        ybdztu7:{inputvalue:"ybdztu7.png"},
     }
     getData.dataToImage(imgDaefultData);
 
