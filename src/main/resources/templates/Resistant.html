@@ -64,7 +64,7 @@
         }
         input {
             height: 20px;
-            width:92%;
+            width:90%;
             border: 0;
             text-align: center;
         }
@@ -165,13 +165,13 @@
         <div style="width:500px;">
             <table class="tb">
                 <tr>
-                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
-                    <td style="width:40%;">
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:55%;">
                         <input name="sjht" type="text" list="txtBatchId"/>
                         <datalist id="txtBatchId">
                         </datalist>
                     </td>
-                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                    <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
                                 var url = '/Resistant/getData';
@@ -182,51 +182,49 @@
                     </script>
                 </tr>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px "><b>1.封面内容</b>
-                    </td>
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px "><b>1.封面内容</b></td>
                 </tr>
                 <tr>
-                    <td style="width:50%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:50%;">内容</td>
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                    <td colspan="2" style="width:70%;">内容</td>
                 </tr>
                 <tr>
                     <td><b>本机计算书编号</b></td>
-                    <td><input name="no" type="text"/></td>
+                    <td colspan="2" ><input name="no" type="text"/></td>
                 </tr>
                 <tr>
                     <td><b>本机版本</b></td>
-                    <td><input name="ver" type="text"/></td>
+                    <td colspan="2" ><input name="ver" type="text"/></td>
                 </tr>
                 <tr>
                     <td><b>项目名称</b></td>
-                    <td><input name="xmmc" type="text"/></td>
+                    <td colspan="2" ><input name="xmmc" type="text"/></td>
                 </tr>
                 <tr>
                     <td><b>主机型号</b></td>
-                    <td><input name="zjxh" type="text"/></td>
+                    <td colspan="2" ><input name="zjxh" type="text"/></td>
                 </tr>
                 <tr>
                     <td><b>计算人</b></td>
-                    <td><input name="jsr" type="text"/></td>
+                    <td colspan="2" ><input name="jsr" type="text"/></td>
                 </tr>
                 <tr>
                     <td><b>审核人</b></td>
-                    <td><input name="shr" type="text"/></td>
+                    <td colspan="2" ><input name="shr" type="text"/></td>
                 </tr>
                 <tr>
                     <td><b>批准人</b></td>
-                    <td><input name="pzr" type="text"/></td>
+                    <td colspan="2" ><input name="pzr" type="text"/></td>
                 </tr>
                 <tr>
                     <td><b>计算日期</b></td>
-                    <td><input name="date" type="text"/></td>
+                    <td colspan="2" ><input name="date" type="text"/></td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图1.埋件基本尺寸及相关参数示意图</b>
-                    </td>
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图1.埋件基本尺寸及相关参数示意图</b></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="3">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
                             <img src="/image/Tensile/tu1.png" name="kymjtu1">
                             <input type="hidden" value="tu_tu1.png"/>
@@ -235,15 +233,15 @@
                 </tr>
                 <tr>
                     <td style="padding:10px 0">选择图片</td>
-                    <td colspan="3"><input class="image" type="file" name="kymjtu1" accept="image/*"
+                    <td colspan="2"><input class="image" type="file" name="kymjtu1" accept="image/*"
                                            oninput="showImage(this,'kymjtu1')"/></td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图2.锚筋中心至锚板边缘距离a校核的相关尺寸示意图</b>
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图2.锚筋中心至锚板边缘距离a校核的相关尺寸示意图</b>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="3">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
                             <img src="/image/Tensile/tu2.png" name="kymjtu2" >
                             <input type="hidden" value="tu_tu2.png"/>
@@ -252,15 +250,15 @@
                 </tr>
                 <tr>
                     <td style="padding:10px 0">选择图片</td>
-                    <td colspan="3"><input class="image" type="file" name="kymjtu2" accept="image/*"
+                    <td colspan="2"><input class="image" type="file" name="kymjtu2" accept="image/*"
                                            oninput="showImage(this,'kymjtu2')"/></td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图3.锚筋间距b、b1校核的相
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图3.锚筋间距b、b1校核的相
                         关尺寸示意图</b></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="3">
                         <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
                             <img src="tu3.png" name="kymjtu3">
                             <input type="hidden" value="tu_tu3.png"/>
@@ -270,7 +268,7 @@
                 </tr>
                 <tr>
                     <td style="padding:10px 0">选择图片</td>
-                    <td colspan="3"><input class="image" type="file" name="kymjtu3" accept="image/*"
+                    <td colspan="2"><input class="image" type="file" name="kymjtu3" accept="image/*"
                                            oninput="showImage(this,'kymjtu3')"/></td>
                 </tr>
 
@@ -279,8 +277,7 @@
         <div style="width:500px;">
             <table class="tb">
                 <tr>
-                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>2.埋件及混凝土的基本尺寸及相关参数</b>
-                    </td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>2.埋件及混凝土的基本尺寸及相关参数</b></td>
                 </tr>
                 <tr>
                     <td>混凝土强度等级</td>
@@ -295,10 +292,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="width:40%;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:15%;">符号</td>
-                    <td style="width:30%;">数值</td>
-                    <td style="width:15%;">单位</td>
+                    <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:17%;">符号</td>
+                    <td style="width:40%;">数值</td>
+                    <td style="width:17%;">单位</td>
                 </tr>
                 <tr>
                     <td><b>压力设计值</b></td>

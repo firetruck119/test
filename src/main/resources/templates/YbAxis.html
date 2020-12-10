@@ -58,7 +58,7 @@
         }
         input {
             height: 20px;
-            width:95%;
+            width:90%;
             border: 0;
             text-align: center;
         }
@@ -211,13 +211,13 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
-                    <td style="width:40%;">
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:55%;">
                         <input type='text' name="sjht" type="text" list="txtBatchId"/>
                         <datalist id="txtBatchId">
                         </datalist>
                     </td>
-                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                    <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
                                 var url = '/YbAxis/getData';
@@ -228,43 +228,43 @@
                     </script>
                 </tr>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
                 </tr>
                 <tr>
-                    <td style="width:26%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:50%;">内容</td>
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                    <td colspan="2" style="width:70%;">内容</td>
                 </tr>
                 <tr>
                     <td ><b>本机计算书编号</b></td>
-                    <td ><input type="text" name="no"/></td>
+                    <td colspan="2" ><input type="text" name="no"/></td>
                 </tr>
                 <tr>
                     <td ><b>本机版本</b></td>
-                    <td ><input type="text" name="ver" /></td>
+                    <td colspan="2" ><input type="text" name="ver" /></td>
                 </tr>
                 <tr>
                     <td ><b>项目名称</b></td>
-                    <td ><input type="text" name="xmmc" /></td>
+                    <td colspan="2" ><input type="text" name="xmmc" /></td>
                 </tr>
                 <tr>
                     <td ><b>主机型号</b></td>
-                    <td ><input type="text" name="zjxh" /></td>
+                    <td colspan="2" ><input type="text" name="zjxh" /></td>
                 </tr>
                 <tr>
                     <td ><b>计算人</b></td>
-                    <td ><input type="text" name="jsr" /></td>
+                    <td colspan="2" ><input type="text" name="jsr" /></td>
                 </tr>
                 <tr>
                     <td ><b>审核人</b></td>
-                    <td ><input type="text" name="shr" /></td>
+                    <td colspan="2" ><input type="text" name="shr" /></td>
                 </tr>
                 <tr>
                     <td ><b>批准人</b></td>
-                    <td ><input type="text" name="pzr" /></td>
+                    <td colspan="2" ><input type="text" name="pzr" /></td>
                 </tr>
                 <tr>
                     <td ><b>计算日期</b></td>
-                    <td ><input type="text" name="date" /></td>
+                    <td colspan="2" ><input type="text" name="date" /></td>
                 </tr>
             </table>
         </div>
@@ -293,12 +293,6 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td ><b>仰臂大轴至吊臂液压缸支点的水平距离</b></td>
-                    <td ><p><i>L<sub>y</sub></i></p></td>
-                    <td ><input type="text" name="ybdzly" /></td>
-                    <td >m</td>
-                </tr>
-                <tr>
                     <td ><b>仰臂大轴至吊臂液压缸的垂直距离</b></td>
                     <td ><p><i>L<sub>z</sub></i></p></td>
                     <td ><input type="text" name="ybljz" /></td>
@@ -309,6 +303,24 @@
                     <td ><p><i>α</i></p></td>
                     <td ><input type="text" name="yygjd" /></td>
                     <td >°</td>
+                </tr>
+                <tr>
+                    <td ><b>工作状态液压缸支点到立柱中心的水平距离</b></td>
+                    <td ><p><i></i></p></td>
+                    <td ><input type="text" name="lyyglz" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>工作状态立柱中心到仰臂大轴的水平距离</b></td>
+                    <td ><p><i></i></p></td>
+                    <td ><input type="text" name="ldzlz" /></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td ><b>仰臂大轴至吊臂液压缸支点的水平距离</b></td>
+                    <td ><p><i>L<sub>y</sub></i></p></td>
+                    <td ><input type="text" name="ybdzly" /></td>
+                    <td >m</td>
                 </tr>
              </table>
         </div>
@@ -768,6 +780,10 @@
             <input type="text" name="ldcgh" />
             <input type="text" name="lbtzh" />
             <input type="text" name="ldslzh" />
+            <input type="text" name="lslhz" />
+            <input type="text" name="lhz4" />
+            <input type="text" name="lhz5" />
+            <input type="text" name="lhz6" />
         </div>
 
         <input type="hidden" name="pdfType"/>
@@ -857,6 +873,9 @@
             }
         },
 
+        ybdzly:function(){
+                return lyyglz + ldzlz ;
+        },
         grugssp:function(){
             if( gruModel =='无')
                 return 0;
@@ -927,6 +946,10 @@
             return m5 * gruybxs ;
         },
 
+
+        lshlyz:function(){
+            return lslhz - lyyglz ;
+        },
         lshlyz:function(){
             return lslyz - ( ldcgh - lbtzh ) ;
         },
@@ -943,18 +966,21 @@
         lyz3:function(){
             return lshlyz ;
         },
+        lyz4:function(){
+            return lhz4 - lyyglz ;
+        },
         lyz5:function(){
             if( m5yb == 0 ){
                 return 0 ;
             }else {
-                return ' ' ;
+                return lhz5 - lyyglz ;
             }
         },
         lyz6:function(){
             if( m6 == 0 ){
                 return 0 ;
             }else {
-                return ' ' ;
+                return lhz6 - lyyglz ;
             }
         },
 

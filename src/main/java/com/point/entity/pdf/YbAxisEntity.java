@@ -19,9 +19,11 @@ public class YbAxisEntity {
 
     private Double h;
     private Double lbd;
-    private Double ybdzly;
     private Double ybljz;
     private Double yygjd;
+    private Double lyyglz;
+    private Double ldzlz;
+    private Double ybdzly;
 
     //非页面数据
     private Double dcgssp;
@@ -31,6 +33,10 @@ public class YbAxisEntity {
     private Double ldcgh;
     private Double lbtzh;
     private Double ldslzh;
+    private Double lslhz;
+    private Double lhz4;
+    private Double lhz5;
+    private Double lhz6;
 
     //    提示提醒
     private String grutstx;
@@ -97,9 +103,11 @@ public class YbAxisEntity {
 
         map.put("h", CommonFunc.convertDoubleToString(h));
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));
-        map.put("ybdzly", CommonFunc.convertDoubleToString(ybdzly));
         map.put("ybljz", CommonFunc.convertDoubleToString(ybljz));
         map.put("yygjd", CommonFunc.convertDoubleToString(yygjd));
+        map.put("lyyglz", CommonFunc.convertDoubleToString(lyyglz));
+        map.put("ldzlz", CommonFunc.convertDoubleToString(ldzlz));
+        map.put("ybdzly", CommonFunc.convertDoubleToString(ybdzly));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
         map.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
@@ -108,6 +116,10 @@ public class YbAxisEntity {
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
+        map.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
+        map.put("lhz4", CommonFunc.convertDoubleToString(lhz4));
+        map.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
+        map.put("lhz6", CommonFunc.convertDoubleToString(lhz6));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 

@@ -57,7 +57,7 @@
         }
         input {
             height: 20px;
-            width:95%;
+            width:90%;
             border: 0;
             text-align: center;
         }
@@ -574,13 +574,13 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
-                    <td style="width:40%;">
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:55%;">
                         <input type='text' name="sjht" type="text" list="txtBatchId"/>
                         <datalist id="txtBatchId">
                         </datalist>
                     </td>
-                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                    <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
                                 var url = '/SingleJib/getData';
@@ -591,43 +591,43 @@
                     </script>
                 </tr>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
                 </tr>
                 <tr>
-                    <td style="width:26%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:50%;">内容</td>
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                    <td colspan="2" style="width:70%;">内容</td>
                 </tr>
                 <tr>
                     <td ><b>本机计算书编号</b></td>
-                    <td ><input type="text" name="no"/></td>
+                    <td colspan="2" ><input type="text" name="no"/></td>
                 </tr>
                 <tr>
                     <td ><b>本机版本</b></td>
-                    <td ><input type="text" name="ver" /></td>
+                    <td colspan="2" ><input type="text" name="ver" /></td>
                 </tr>
                 <tr>
                     <td ><b>项目名称</b></td>
-                    <td ><input type="text" name="xmmc" /></td>
+                    <td colspan="2" ><input type="text" name="xmmc" /></td>
                 </tr>
                 <tr>
                     <td ><b>主机型号</b></td>
-                    <td ><input type="text" name="zjxh" /></td>
+                    <td colspan="2" ><input type="text" name="zjxh" /></td>
                 </tr>
                 <tr>
                     <td ><b>计算人</b></td>
-                    <td ><input type="text" name="jsr" /></td>
+                    <td colspan="2" ><input type="text" name="jsr" /></td>
                 </tr>
                 <tr>
                     <td ><b>审核人</b></td>
-                    <td ><input type="text" name="shr" /></td>
+                    <td colspan="2" ><input type="text" name="shr" /></td>
                 </tr>
                 <tr>
                     <td ><b>批准人</b></td>
-                    <td ><input type="text" name="pzr" /></td>
+                    <td colspan="2" ><input type="text" name="pzr" /></td>
                 </tr>
                 <tr>
                     <td ><b>计算日期</b></td>
-                    <td ><input type="text" name="date" /></td>
+                    <td colspan="2" ><input type="text" name="date" /></td>
                 </tr>
             </table>
         </div>

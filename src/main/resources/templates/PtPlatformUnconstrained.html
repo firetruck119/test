@@ -57,7 +57,7 @@
         }
         input {
             height: 20px;
-            width:95%;
+            width:90%;
             border: 0;
             text-align: center;
         }
@@ -273,13 +273,13 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
-                    <td style="width:40%;">
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:55%;">
                         <input type='text' name="sjht" type="text" list="txtBatchId"/>
                         <datalist id="txtBatchId">
                         </datalist>
                     </td>
-                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                    <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
                     <script>
                         $('input[name="getData"]').click(function () {
                                 var url = '/PtPlatformUnconstrained/getData';
@@ -290,43 +290,43 @@
                     </script>
                 </tr>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
                 </tr>
                 <tr>
-                    <td style="width:26%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
-                    <td style="width:50%;">内容</td>
+                    <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                    <td colspan="2" style="width:70%;">内容</td>
                 </tr>
                 <tr>
                     <td ><b>本机计算书编号</b></td>
-                    <td ><input type="text" name="no"/></td>
+                    <td colspan="2" ><input type="text" name="no"/></td>
                 </tr>
                 <tr>
                     <td ><b>本机版本</b></td>
-                    <td ><input type="text" name="ver" /></td>
+                    <td colspan="2" ><input type="text" name="ver" /></td>
                 </tr>
                 <tr>
                     <td ><b>项目名称</b></td>
-                    <td ><input type="text" name="xmmc" /></td>
+                    <td colspan="2" ><input type="text" name="xmmc" /></td>
                 </tr>
                 <tr>
                     <td ><b>主机型号</b></td>
-                    <td ><input type="text" name="zjxh" /></td>
+                    <td colspan="2" ><input type="text" name="zjxh" /></td>
                 </tr>
                 <tr>
                     <td ><b>计算人</b></td>
-                    <td ><input type="text" name="jsr" /></td>
+                    <td colspan="2" ><input type="text" name="jsr" /></td>
                 </tr>
                 <tr>
                     <td ><b>审核人</b></td>
-                    <td ><input type="text" name="shr" /></td>
+                    <td colspan="2" ><input type="text" name="shr" /></td>
                 </tr>
                 <tr>
                     <td ><b>批准人</b></td>
-                    <td ><input type="text" name="pzr" /></td>
+                    <td colspan="2" ><input type="text" name="pzr" /></td>
                 </tr>
                 <tr>
                     <td ><b>计算日期</b></td>
-                    <td ><input type="text" name="date" /></td>
+                    <td colspan="2" ><input type="text" name="date" /></td>
                 </tr>
             </table>
         </div>
@@ -334,14 +334,14 @@
             <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.各部件型号选择</b></td>
+                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.各部件型号选择</b></td>
                 </tr>
                 <div style="width:600px;height:300px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
                     <img alt="吊船示意图" id="dcwystu1" height="300px"  name="dcwystu1">
                 </div>
                 <tr>
                     <td>吊船型号选择</td>
-                    <td colspan="4">
+                    <td style="width:60%;" >
                         <select name="ptdcModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
                             <option value="2.0米铝吊船(PT(250_2))">2.0米铝吊船(PT(250_2))</option>
@@ -375,7 +375,7 @@
                 </tr>
                 <tr>
                     <td>吊船钢丝绳型号选择</td>
-                    <td colspan="4">
+                    <td>
                         <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
                             <option value="Φ7">Φ7</option>
@@ -390,7 +390,7 @@
                 </tr>
                 <tr>
                     <td>是否有防风背包</td>
-                    <td colspan="4">
+                    <td>
                         <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
                             <option value="有">有</option>
@@ -400,7 +400,7 @@
                 </tr>
                 <tr>
                     <td>普通吊船尺寸示意图</td>
-                    <td colspan="4">
+                    <td>
                         <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dcwystu1" oninput="showImage(this,'dcwystu1')"/>
                     </td>
                 </tr>
@@ -409,7 +409,7 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.基本参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.基本参数</b></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -470,7 +470,7 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.吊船部分重量参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.吊船部分重量参数</b></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -521,10 +521,10 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.风力系数C</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.风力系数C</b></td>
                 </tr>
                 <tr>
-                    <td  colspan="5" style="background-color: #aaa;">
+                    <td  colspan="4" style="background-color: #aaa;">
                         <img style="width:600px" th:src="@{flxs.png}"/>
                     </td>
                 </tr>
@@ -561,10 +561,10 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>吊船横向位移（相对立面）示意图</b></td>
+                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>吊船横向位移（相对立面）示意图</b></td>
                 </tr>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="2">
                         <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
                             <img src="/image/Tensile/dcwystu2.png" width="200px" height="400px" id="dcwystu2" name="dcwystu2" >
                             <input type="hidden" value="tu_dcwystu2.png"/>
@@ -572,8 +572,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊船横向位移（相对立面）示意图</td>
-                    <td colspan="4"><input class="image" type="file" name="dcwystu2" accept="image/*"
+                    <td style="width: 40%">吊船横向位移（相对立面）示意图</td>
+                    <td><input class="image" type="file" name="dcwystu2" accept="image/*"
                                            oninput="showImage(this,'dcwystu2')"/></td>
                 </tr>
             </table>
@@ -582,10 +582,10 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>吊船纵向位移（平行立面）示意图</b></td>
+                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>吊船纵向位移（平行立面）示意图</b></td>
                 </tr>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="2">
                         <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
                             <img src="/image/Tensile/dcwystu3.png" width="200px" height="400px" id="dcwystu3" name="dcwystu3" >
                             <input type="hidden" value="tu_dcwystu3.png"/>
@@ -593,8 +593,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 0">吊船纵向位移（相对立面）示意图</td>
-                    <td colspan="4"><input class="image" type="file" name="dcwystu3" accept="image/*"
+                    <td style="width:40%">吊船纵向位移（相对立面）示意图</td>
+                    <td><input class="image" type="file" name="dcwystu3" accept="image/*"
                                            oninput="showImage(this,'dcwystu3')"/></td>
                 </tr>
             </table>
