@@ -466,7 +466,8 @@
                     <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.各部件重量</b></td>
                 </tr>
                 <div style="width:600px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                     <img alt="工作状态擦窗机各部件重量示意图" id="wdlytu2" height="300px"  name="wdlytu2">
+                    <img alt="工作状态擦窗机各部件重量示意图" src="/image/Tensile/wdlytu2.png" width="590px" id="wdlytu2" name="wdlytu2">
+                    <input type="hidden" value="tu_wdlytu2.png"/>
                 </div>
                 <tr>
                      <td>工作状态载荷示意图</td>
@@ -728,7 +729,8 @@
                      <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.工作状态各部件重心至前轨距离</b></td>
                  </tr>
                  <div style="width:600px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                     <img alt="工作状态擦窗机各部件重心至前轨距离" id="wdlytu3" height="300px"  name="wdlytu3">
+                     <img alt="工作状态擦窗机各部件重心至前轨距离" src="/image/Tensile/wdlytu3.png" width="590px" id="wdlytu3" name="wdlytu3">
+                     <input type="hidden" value="tu_wdlytu3.png"/>
                  </div>
                  <tr>
                      <td>工作状态部件重心至前轨距离示意图</td>
@@ -1423,6 +1425,11 @@
     //         $('[name=tsl]').attr('placeholder','')
     //     }
     // })
+    imgDaefultData={
+        wdlytu2:{inputvalue:"wdlytu2.png"},
+        wdlytu3:{inputvalue:"wdlytu3.png"},
+    }
+    getData.dataToImage(imgDaefultData);
 
 </script>
 </body>
