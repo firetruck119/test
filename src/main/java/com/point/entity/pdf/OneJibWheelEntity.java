@@ -43,6 +43,8 @@ public class OneJibWheelEntity {
     private Double dbjbxglr;
     private Double db1bshdlr;
 
+    private Double m5;
+
     //    提示提醒
     private String grutstx;
 
@@ -163,6 +165,8 @@ public class OneJibWheelEntity {
 
         map.put("dbjbxglr", CommonFunc.convertDoubleToString(dbjbxglr));
         map.put("db1bshdlr", CommonFunc.convertDoubleToString(db1bshdlr));
+
+        map.put("m5", CommonFunc.convertDoubleToString(m5));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 

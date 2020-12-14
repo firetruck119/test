@@ -972,6 +972,7 @@
             <input type="text" name="dbjbxglr" />
             <input type="text" name="db1bshdlr" />
 
+            <input type="text" name="m5" />
         </div>
 
         <input type="hidden" name="pdfType"/>
@@ -1132,6 +1133,10 @@
         },
 
         grugssp:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        m5:function(){
             if( gruModel =='无')
                 return 0;
         },

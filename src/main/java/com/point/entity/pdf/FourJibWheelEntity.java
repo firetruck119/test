@@ -61,6 +61,8 @@ public class FourJibWheelEntity {
     private Double db3bxglr;
     private Double db4bshdlr;
 
+    private Double m5;
+
     //    提示提醒
     private String grutstx;
 
@@ -304,6 +306,8 @@ public class FourJibWheelEntity {
         map.put("db3bshdlr", CommonFunc.convertDoubleToString(db3bshdlr));
         map.put("db3bxglr", CommonFunc.convertDoubleToString(db3bxglr));
         map.put("db4bshdlr", CommonFunc.convertDoubleToString(db4bshdlr));
+
+        map.put("m5", CommonFunc.convertDoubleToString(m5));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 

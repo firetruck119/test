@@ -1629,6 +1629,8 @@
             <input type="text" name="db2bxglr" />
             <input type="text" name="db3bshdlr" />
 
+            <input type="text" name="m5" />
+
         </div>
 
         <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>15.3+1伸缩臂其它示意图</b></div>
@@ -1994,12 +1996,11 @@
             return 800 ;
         },
 
-
-
-
-
-
         grugssp:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        m5:function(){
             if( gruModel =='无')
                 return 0;
         },
