@@ -143,11 +143,11 @@ asideDatas = {
                         },
                         {
                             title: '3+1伸缩臂',
-
+                            url:'ThreeJib'
                         },
                         {
                             title: '4+1伸缩臂',
-
+                            url:'FourJib'
                         },
                     ]
                 },

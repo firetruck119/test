@@ -38,6 +38,11 @@ public class ThreeJibController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/ThreeJib")
+    public String getMap2() {
+        return "pdf/ThreeJib";
+    }
+
     @GetMapping("/ThreeJib")
     public String getMap() {
         return "ThreeJib";

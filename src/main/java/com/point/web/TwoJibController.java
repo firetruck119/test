@@ -39,7 +39,7 @@ public class TwoJibController {
     URLCacheData urlCacheData;
 
     @GetMapping("/pdf/TwoJib")
-    public Object getMap2() {
+    public String getMap2() {
         return "pdf/TwoJib";
     }
 

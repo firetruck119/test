@@ -252,7 +252,7 @@
                 </tr>
                 <tr>
                      <td style="padding:10px 0">吊臂名称简介图</td>
-                     <td colspan="4"><input class="image" type="file" name="db3tu1" accept="image/*"
+                     <td colspan="3"><input class="image" type="file" name="db3tu1" accept="image/*"
                                                    oninput="showImage(this,'db3tu1')"/></td>
                 </tr>
 
@@ -297,7 +297,7 @@
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.下拉参数选择</b></td>
+                    <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.下拉参数选择</b></td>
                 </tr>
                 <tr>
                     <td style="width:30%;"><b>3+1伸缩臂吊臂型号选择</b></td>
@@ -1916,6 +1916,9 @@
             }
         },
 
+        p:function(){
+            return 250 ;
+        },
         grugssp:function(){
             if( gruModel =='无')
                 return 0;
