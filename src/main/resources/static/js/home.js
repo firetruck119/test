@@ -122,37 +122,48 @@ asideDatas = {
             ]
         },
         {
-            title: '结构强度计算',
+            title: '3大件相关计算书',
             url: "pdf",
             children: [
                 {
-                    title: '大臂强度校核计算书',
+                    title: '吊臂强度及挠度',
                     url: "pdf",
                     children: [
                         {
                             title: '固定臂',
-
+                            url:'SingleJib'
                         },
                         {
-                            title: '伸缩臂1+1',
+                            title: '1+1伸缩臂',
                             url:'OneJib'
                         },
                         {
-                            title: '伸缩臂2+1',
+                            title: '2+1伸缩臂',
 
                         },
                         {
-                            title: '伸缩臂3+1',
+                            title: '3+1伸缩臂',
 
                         },
                         {
-                            title: '伸缩臂4+1',
+                            title: '4+1伸缩臂',
 
                         },
                     ]
                 },
                 {
-                    title: '立柱强度校核计算书',
+                    title: '吊臂滚轮、链条及伸缩机构',
+                    url: "pdf",
+                    children: [
+                        {
+                            title: '1+1伸缩臂',
+
+                        },
+
+                    ]
+                },
+                {
+                    title: '立柱强度及稳定性',
                     url: "pdf",
                     children: [
                         {
@@ -160,11 +171,21 @@ asideDatas = {
 
                         },
                         {
-                            title: '顶升立柱1+1',
+                            title: '1+1顶升立柱',
 
                         },
                         {
-                            title: '顶升立柱2+1',
+                            title: '2+1顶升立柱',
+
+                        },
+                    ]
+                },
+                {
+                    title: '立柱顶轮',
+                    url: "pdf",
+                    children: [
+                        {
+                            title: '固定立柱',
 
                         },
                     ]

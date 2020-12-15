@@ -20,7 +20,6 @@ public class SingleJibEntity {
     private Double h;
     private Double p;
     private Double lbd;
-    private Double nlsk;
 
     //非页面数据
     private Double dcgssp;
@@ -37,10 +36,6 @@ public class SingleJibEntity {
     private Double mdbb;
     private Double adbb;
     private Double dbmjb;
-    private Double dbwx;
-    private Double dbwy;
-    private Double dbix;
-    private String dbjbxh;
 
     //    提示提醒
     private String grutstx;
@@ -50,9 +45,9 @@ public class SingleJibEntity {
     private Double dbjh;
     private Double dbjb;
     private Double dbje;
-    private Double dbwxls;
-    private Double dbwyls;
-    private Double dbixls;
+    private Double dbwx;
+    private Double dbwy;
+    private Double dbix;
     private Double dblm;
     private Double dbll;
 
@@ -122,7 +117,6 @@ public class SingleJibEntity {
         map.put("h", CommonFunc.convertDoubleToString(h));
         map.put("p", CommonFunc.convertDoubleToString(p));
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));
-        map.put("nlsk", CommonFunc.convertDoubleToString(nlsk));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
         map.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
@@ -138,10 +132,6 @@ public class SingleJibEntity {
         map.put("mdbb", CommonFunc.convertDoubleToString(mdbb));
         map.put("adbb", CommonFunc.convertDoubleToString(adbb));
         map.put("dbmjb", CommonFunc.convertDoubleToString(dbmjb));
-        map.put("dbwx", CommonFunc.convertDoubleToString(dbwx));
-        map.put("dbwy", CommonFunc.convertDoubleToString(dbwy));
-        map.put("dbix", CommonFunc.convertDoubleToString(dbix));
-        map.put("dbjbxh", CommonFunc.convertDoubleToString(dbjbxh));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
@@ -150,10 +140,9 @@ public class SingleJibEntity {
         map.put("dbjh", CommonFunc.convertDoubleToString(dbjh));
         map.put("dbjb", CommonFunc.convertDoubleToString(dbjb));
         map.put("dbje", CommonFunc.convertDoubleToString(dbje));
-
-        map.put("dbwxls", CommonFunc.convertDoubleToString(dbwxls));
-        map.put("dbwyls", CommonFunc.convertDoubleToString(dbwyls));
-        map.put("dbixls", CommonFunc.convertDoubleToString(dbixls));
+        map.put("dbwx", CommonFunc.convertDoubleToString(dbwx));
+        map.put("dbwy", CommonFunc.convertDoubleToString(dbwy));
+        map.put("dbix", CommonFunc.convertDoubleToString(dbix));
         map.put("dblm", CommonFunc.convertDoubleToString(dblm));
         map.put("dbll", CommonFunc.convertDoubleToString(dbll));
 
@@ -320,9 +309,9 @@ public class SingleJibEntity {
         map.put("mwa5", mwa5);
 
         Double mz = mslza + mshlza + mza1 + mza2 + mza3 + mza4 + mza5 ;
-        Double sz = 1000 * mz / dbwxls ;
+        Double sz = 1000 * mz / dbwx ;
         Double mw = mslwa + mshlwa + mwa1 + mwa2 + mwa3 + mwa4 + mwa5 ;
-        Double sw = 1000 * mw / dbwyls ;
+        Double sw = 1000 * mw / dbwy ;
         Double smax = sz + sw ;
         Double ssqd = dbss / 1.5 / 1.1 ;
         map.put("mz", mz);
@@ -345,11 +334,11 @@ public class SingleJibEntity {
 
         Double kn = dblm / dbll ;
         Double mwz = tsl + tshl + m1 + m2 + m3 ;
-        Double f1 = 1.25 * mwz * 10 * dblm * dblm * dbll * ( 1 + kn ) / 3 / 210000 / dbixls ;
+        Double f1 = 1.25 * mwz * 10 * dblm * dblm * dbll * ( 1 + kn ) / 3 / 210000 / dbix ;
         Double mwq = mslwq + mshlwq + mwq1 + mwq2 + mwq3 ;
-        Double f2 = 1000 * mwq * dblm * dbll * ( 1 + 2 * kn ) / 4 / 210000 / dbixls ;
+        Double f2 = 1000 * mwq * dblm * dbll * ( 1 + 2 * kn ) / 4 / 210000 / dbix ;
         Double q = ( m4jbcq + m5db ) * 10 / dblm ;
-        Double f3 = 1.25 * q * dblm * dblm * dblm * dbll * ( 4 + 3 * kn ) / 24 / 210000 / dbixls ;
+        Double f3 = 1.25 * q * dblm * dblm * dblm * dbll * ( 4 + 3 * kn ) / 24 / 210000 / dbix ;
         Double f = f1 + f2 + f3 ;
         Double nd = dblm * dblm / 1000000 ;
         map.put("kn", kn);

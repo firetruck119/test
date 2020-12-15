@@ -38,6 +38,11 @@ public class SingleJibController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/SingleJib")
+    public String getMap2() {
+        return "pdf/SingleJib";
+    }
+
     @GetMapping("/SingleJib")
     public String getMap() {
         return "SingleJib";
