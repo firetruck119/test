@@ -900,13 +900,13 @@
             return true
         }
     }
-    $(document).ready(function () {
-        $('#SingleJib').addClass('o-sub-cur');
-    })
+    // $(document).ready(function () {
+    //     $('#SingleJib').addClass('o-sub-cur');
+    // })
 
     function janyan() {
         $.ajax({
-            url: "SingleJib/jy",
+            url: "/SingleJib/jy",
             type: "post",
             data: $("form").serialize(),
             async: false,
