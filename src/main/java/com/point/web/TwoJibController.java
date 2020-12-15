@@ -38,6 +38,11 @@ public class TwoJibController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/TwoJib")
+    public Object getMap2() {
+        return "pdf/TwoJib";
+    }
+
     @GetMapping("/TwoJib")
     public String getMap() {
         return "TwoJib";

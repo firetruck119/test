@@ -139,7 +139,7 @@ asideDatas = {
                         },
                         {
                             title: '2+1伸缩臂',
-
+                            url:'TwoJib'
                         },
                         {
                             title: '3+1伸缩臂',

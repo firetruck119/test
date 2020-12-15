@@ -1734,12 +1734,12 @@
                         </div>
                     </div>
                     <div class="buttonbox">
-                        <input type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
-                        <input type="submit" form="form1" class="button" value="保存数据"
+                        <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
+                        <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
                                onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
-                        <input type="submit" form="form1" class="button"  value="导出成本估算pdf" onclick="$('form').attr('action','/Cost/getPDF');
+                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出成本估算pdf" onclick="$('form').attr('action','/Cost/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
-                        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+                        <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
                     </div>
                 </el-row>
             </el-main>

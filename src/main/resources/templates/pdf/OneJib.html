@@ -5,6 +5,7 @@
     <script type="text/javascript" th:src="@{/js/vue.js}"></script>
     <!--     引入样式 -->
     <link rel="stylesheet" th:href="@{/css/element.css}">
+
     <!-- 引入组件库 -->
     <script type="text/javascript" th:src="@{/js/element.js}"></script>
     <script type="text/javascript" th:src="@{/js/model.js}"></script>
@@ -1152,15 +1153,15 @@
                         </div>
                     </div>
                     <div class="buttonbox">
-                        <input type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan();"/>
+                        <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan();"/>
 
-                        <input type="submit" form="form1" class="button" value="保存数据"
+                        <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
                                onclick="isCheck(false);$('form').attr('action','saveValue')"/>
-                        <input type="submit" form="form1" class="button"  value="导出吊臂pdf" onclick="$('form').attr('action','OneJib/getPDF');
+                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出吊臂pdf" onclick="$('form').attr('action','/OneJib/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
-                        <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','OneJib/getPDF');
+                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/OneJib/getPDF');
                                                                                             isCheck(true);changeType('Check')"/>
-                        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
+                        <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
                     </div>
                 </el-row>
             </el-main>

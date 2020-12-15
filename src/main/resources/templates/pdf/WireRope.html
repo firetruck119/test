@@ -457,18 +457,18 @@
                                     </tr>
                                 </table>
                                 <div class="buttonbox" style="position: relative;width: 550px">
-                                    <input type="submit" class="button" type="submit" value="校验" style="width:250px;margin: 30px auto 0;"
+                                    <input type="submit" class="button" type="submit" value="校验" style="width:250px;margin: 30px 200px;cursor: pointer;"
                                            onclick="return jianyan('/WireRope/jy')"/>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="buttonbox">
-                        <input type="submit" form="form1" class="button" value="保存数据"
+                        <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
                                onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
-                        <input class="button" form="form1" type="submit" value="输出钢丝绳计算书" onclick="getPDF('/WireRopePDF1')"/>
-                        <input class="button" form="form1" type="submit" value="输出检验计算书" onclick="getPDF('/WireRopePDF2')"/>
-                        <input class="button" form="form1" type="reset" onclick="data.clear();
+                        <input style="cursor: pointer" class="button" form="form1" type="submit" value="输出钢丝绳计算书" onclick="getPDF('/WireRopePDF1')"/>
+                        <input style="cursor: pointer" class="button" form="form1" type="submit" value="输出检验计算书" onclick="getPDF('/WireRopePDF2')"/>
+                        <input style="cursor: pointer" class="button" form="form1" type="reset" onclick="data.clear();
                                                             $('.diaochuan p[id]').text(' ');
                                                             $('.wuliaoqishengjigou p[id]').text(' ')
     $('.diaochuan').css('display','table-row');  $('.wuliaoqishengjigou').css('display','table-row')" value="重置" />
