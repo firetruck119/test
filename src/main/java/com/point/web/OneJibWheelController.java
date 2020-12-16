@@ -38,6 +38,11 @@ public class OneJibWheelController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/OneJibWheel")
+    public String getMap2() {
+        return "pdf/OneJibWheel";
+    }
+
     @GetMapping("/OneJibWheel")
     public String getMap() {
         return "OneJibWheel";

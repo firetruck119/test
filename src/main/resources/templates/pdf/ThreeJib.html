@@ -1732,48 +1732,48 @@
                         </form>
 
                             <div class="navbox">
-                                <div style="width:460px;height:520px; font-size: 14px   ;">
-                                    <table id="pdf3tb">
+                                <div style="width:600px;height:520px; font-size: 14px   ;">
+                                    <table id="pdf3tb" style="background-color: rgb(220,220,220)">
                                         <tr>
-                                            <td colspan="4" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+                                            <td colspan="4" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td style="width:25%;"><b>名称</b></td>
                                             <td style="width:25%;"><b>标准值</b></td>
                                             <td style="width:25%;"><b>计算值</b></td>
                                             <td style="width:25%;"><b>是否满足</b></td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td><b>第三节伸缩臂强度校核</b></td>
                                             <td><p><span id="ssqdiii"></span>N/mm<sup>2</sup></p></td>
                                             <td><p><span id="smaxiii"></span>N/mm<sup>2</sup></p></td>
                                             <td id="dbm4"></td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td><b>第二节伸缩臂强度校核</b></td>
                                             <td><p><span id="ssqdii"></span>N/mm<sup>2</sup></p></td>
                                             <td><p><span id="smaxii"></span>N/mm<sup>2</sup></p></td>
                                             <td id="dbm3"></td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td><b>第一节伸缩臂强度校核</b></td>
                                             <td><p><span id="ssqdi"></span>N/mm<sup>2</sup></p></td>
                                             <td><p><span id="smaxi"></span>N/mm<sup>2</sup></p></td>
                                             <td id="dbm2"></td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td><b>基臂强度校核</b></td>
                                             <td><p><span id="ssqd"></span>N/mm<sup>2</sup></p></td>
                                             <td><p><span id="smax"></span>N/mm<sup>2</sup></p></td>
                                             <td id="dbm1"></td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td><b>吊臂挠度校核</b></td>
                                             <td><p><span id="nd"></span>mm</p></td>
                                             <td><p><span id="f"></span>mm</p></td>
                                             <td id="dbm6"></td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td colspan="4"><b>注：基臂强度计算值小于142N/mm<sup>2</sup>，则基臂贴板可以只贴下贴板！</b></td>
                                         </tr>
                                      </table>
@@ -1850,8 +1850,8 @@
             success: function (data) {
                 Object.keys(data).forEach(function (id) {
                     $("#" + id).text(data[id]);
-                    if(data[id]=="不满足") $("#" + id).css("background-color","red");
-                    if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
+                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
+                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
                 })
             }
         })

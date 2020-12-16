@@ -122,48 +122,53 @@ asideDatas = {
             ]
         },
         {
-            title: '3大件相关计算书',
+            title: '3大件计算书',
             url: "pdf",
             children: [
                 {
-                    title: '吊臂强度及挠度',
+                    title: '吊臂',
                     url: "pdf",
                     children: [
                         {
-                            title: '固定臂',
+                            title: '单臂机吊臂',
                             url:'SingleJib'
                         },
                         {
-                            title: '1+1伸缩臂',
+                            title: '1+1伸缩臂吊臂',
                             url:'OneJib'
                         },
                         {
-                            title: '2+1伸缩臂',
+                            title: '2+1伸缩臂吊臂',
                             url:'TwoJib'
                         },
                         {
-                            title: '3+1伸缩臂',
+                            title: '3+1伸缩臂吊臂',
                             url:'ThreeJib'
                         },
                         {
-                            title: '4+1伸缩臂',
+                            title: '4+1伸缩臂吊臂',
                             url:'FourJib'
                         },
-                    ]
-                },
-                {
-                    title: '吊臂滚轮、链条及伸缩机构',
-                    url: "pdf",
-                    children: [
                         {
-                            title: '1+1伸缩臂',
-
+                            title: '1+1滚轮及伸缩机构',
+                            url:'OneJibWheel'
                         },
-
+                        {
+                            title: '2+1滚轮、链条及伸缩机构',
+                            url:'TwoJibWheel'
+                        },
+                        {
+                            title: '3+1滚轮、链条及伸缩机构',
+                            url:'ThreeJibWheel'
+                        },
+                        {
+                            title: '4+1滚轮、链条及伸缩机构',
+                            url:'FourJibWheel'
+                        },
                     ]
                 },
                 {
-                    title: '立柱强度及稳定性',
+                    title: '立柱',
                     url: "pdf",
                     children: [
                         {
@@ -178,14 +183,12 @@ asideDatas = {
                             title: '2+1顶升立柱',
 
                         },
-                    ]
-                },
-                {
-                    title: '立柱顶轮',
-                    url: "pdf",
-                    children: [
                         {
-                            title: '固定立柱',
+                            title: '1+1顶升立柱顶轮',
+
+                        },
+                        {
+                            title: '2+1顶升立柱顶轮',
 
                         },
                     ]

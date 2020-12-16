@@ -808,9 +808,9 @@
                 Object.keys(data).forEach(function (id) {
                     if($('#'+id).css('display')!='none')
                         $("#" + id).text(data[id]);
-                    if(data[id]=="不满足") $("#" + id).css("background-color","red");
-                    if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
-                })
+                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
+                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
+            })
             }
         })
         return false;

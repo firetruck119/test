@@ -38,6 +38,11 @@ public class OneJibController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/OneJib")
+    public String getMap2() {
+        return "pdf/OneJib";
+    }
+
     @GetMapping("/OneJib")
     public String getMap() {
         return "OneJib";
@@ -54,10 +59,7 @@ public class OneJibController {
         result.put("imagelist",imagemap);
         return result;
     }
-    @GetMapping("/pdf/OneJib")
-    public Object getMap2() {
-        return "pdf/OneJib";
-    }
+
     @PostMapping("OneJib/jy")
     @ResponseBody
     public Object janyan (@ModelAttribute OneJibEntity entity){return entity.takeMapForPDF("");
