@@ -1,0 +1,491 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CDD图纸</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{js/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{js/jquery-ui-1.8.16.custom.min.js}"></script>
+<!--    <script th:src="@{js/vue.js}"></script>-->
+    <script th:src="@{js/xyz/jquery.Ajax.Form.js}"></script>
+    <link th:href="@{css/page.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/base.min.css}" rel="stylesheet"/>
+    <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
+    <script th:src="@{js/dataClass.js}" ></script>
+    <script th:src="@{js/axios.js}"></script>
+    <style type="text/css">
+        p{
+            font-size: 17px;
+        }
+        b{
+            letter-spacing:1px;
+            line-height: normal;
+        }
+        .main {
+            margin:20px 480px 100px;
+            width:1250px;
+            background-color:white;
+            font-size: 0;
+            border:1px solid black;
+        }
+        .boxform{
+            margin:auto;
+            width:1230px;
+            display: block;
+            font-size: 0;
+            padding: 10px 0 0 10px;
+        }
+        .main .boxform div{
+            display: inline-block;
+            font-size: 14px;
+            margin: 0 10px 10px 0;
+            vertical-align: top;
+        }
+        td{
+            border:1px solid #000;
+            text-align: center;
+            line-height: 14px;
+            height:20px;
+        }
+        tr{
+            height: 20px;
+        }
+        table{
+            border-radius: 5px;
+            width:100%;
+            background-color: #aaa;
+        }
+        input {
+            height: 20px;
+            width:90%;
+            border: 0;
+            text-align: center;
+        }
+        .buttonbox{
+            bottom: 5px;
+            right:5px;
+            display: block;
+            position: fixed;
+            margin-bottom: 5px;
+        }
+        .subtable {
+            display: inline-block;
+            font-size: 14px;
+            margin: 5px;
+            vertical-align: top;
+            width: 605px;
+        }
+        .buttonbox input,.navbox input{
+            background-color: #ccc;
+            display: block;
+            width:140px;
+            height: 50px;
+            margin: 5px;
+            border-radius:25px;
+        }
+        .navbox{
+            top: 35%;;
+            left:10px;
+            display: block;
+            position: fixed;
+            margin-top: -160px;
+            font-size: 16px;
+        }
+        .navbox td{
+            padding: 0.4em 0.8em;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers 适配谷歌 */
+            color: #f00;
+        }
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 适配火狐 */
+            color: #f00;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
+            color: #f00;
+        }
+        input:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
+            color: #f00;
+        }
+    </style>
+    <script>
+
+        cddxhModelList= {
+            "CDD240(2A)":{
+            },
+            "CDD240(3A)":{
+            },
+            "CDD240(4A)":{
+            },
+        };
+        gjdqModelList= {
+            "国内":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"国内",
+            },
+            "香港":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"香港",
+            },
+            "澳门":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"澳门",
+            },
+            "新加坡":{
+                cdddy:400,
+                cddpl:50,
+                gjdq:"新加坡",
+            },
+            "马来西亚":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"马来西亚",
+            },
+            "泰国":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"泰国",
+            },
+            "越南":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"越南",
+            },
+            "柬埔寨":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"柬埔寨",
+            },
+            "印尼":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"印尼",
+            },
+            "斯里兰卡":{
+                cdddy:400,
+                cddpl:50,
+                gjdq:"斯里兰卡",
+            },
+            "菲律宾":{
+                cdddy:400,
+                cddpl:60,
+                gjdq:"菲律宾",
+            },
+            "土耳其":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"土耳其",
+            },
+            "阿联酋":{
+                cdddy:415,
+                cddpl:50,
+                gjdq:"阿联酋",
+            },
+            "沙特阿拉伯":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"沙特阿拉伯",
+            },
+            "巴林":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"巴林",
+            },
+            "科威特":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"科威特",
+            },
+            "卡塔尔":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"卡塔尔",
+            },
+            "安哥拉":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"安哥拉",
+            },
+            "尼日利亚":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"尼日利亚",
+            },
+            "美国":{
+                cdddy:240,
+                cddpl:50,
+                gjdq:"美国",
+            },
+            "巴基斯坦":{
+                cdddy:380,
+                cddpl:50,
+                gjdq:"巴基斯坦",
+            },
+            "其它":{
+                cdddy:'',
+                cddpl:'',
+                gjdq:'',
+            },
+        };
+
+    </script>
+    <script type="text/javascript">
+        function isNumber(value) {         //验证是否为数字
+            var patrn = /^(-)?\d+(\.\d+)?$/;
+            if (patrn.exec(value) == null || value == "") {
+                return false
+            } else {
+                return true
+            }
+        }
+        $(document).ready(function () {
+            InitNav(10)
+            $('#CDDDrawing').addClass('o-sub-cur');
+        })
+
+        function janyan() {
+            $.ajax({
+                url: "CDDDrawing/jy",
+                type: "post",
+                data: $("form").serialize(),
+                async: false,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    Object.keys(data).forEach(function (id) {
+                        $("#" + id).text(data[id]);
+                        // if(data[id]=="不满足") $("#" + id).css("background-color","red");
+                        // if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
+                    })
+                }
+            })
+            return false;
+        }
+
+        function showImage(form,element) {
+            // 先获取用户上传的文件对象
+            var fileObj = form.files[0];
+            if(fileObj.size>1048576){
+                alert("上传文件大于1M，请重新选择");
+                form.value="";
+                return false;
+            }
+            // 生成一个文件读取的内置对象
+            var fileReader = new FileReader();
+            // 将文件对象传递给内置对象
+            fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+            // 将读取出文件对象替换到img标签
+            fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+                $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-default" role="head" th:replace="head"></nav>
+<br/><br/>
+<div class="main">
+    <iframe style="display: none" name="stop" src="about:blank"></iframe>
+    <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+        <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">CDD软件图纸</div>
+        <!- 封面内容 ->
+        <div class="subtable">
+            <table>
+                <tr>
+                    <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                    <td style="width:40%;">
+                        <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                        <datalist id="txtBatchId">
+                        </datalist>
+                    </td>
+                    <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                    <script>
+                        $('input[name="getData"]').click(function () {
+                                var url = '/CDDDrawing/getData';
+                                var id = $('input[name="sjht"]').val();
+                                getData.geteDataFromDB(url, id)
+                            }
+                        )
+                    </script>
+                </tr>
+                <tr>
+                    <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>基本参数</b></td>
+                </tr>
+                <tr>
+                    <td style="width:40%;padding:10px 0;;"><b>名称</b></td>
+                    <td style="width:40%;">数值</td>
+                    <td style="width:20%;">单位</td>
+                </tr>
+                <tr>
+                    <td ><b>项目名称</b></td>
+                    <td ><input type="text" name="xmmc"/></td>
+                    <td colspan="3">
+                    </td>
+                    <!--<td></td>-->
+
+                </tr>
+                <tr>
+                    <td><b>CDD型号选择</b></td>
+                    <td colspan="2">
+                        <select name="cddxhModel" style="color:black;width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="CDD240(2A)">CDD240(2A)</option>
+                            <option value="CDD240(3A)">CDD240(3A)</option>
+                            <option value="CDD240(4A)">CDD240(4A)</option>
+                        </select>
+                        <script>
+                            $("[name=cddxhModel]").change(function () {
+                                var cddxhModel=$("[name=cddxhModel]")[0].value;
+                                var filename="";
+                                if( cddxhModel=="CDD240(2A)" ){
+                                    filename="CDD240（2A）.png";
+                                }else if ( cddxhModel=="CDD240(3A)" ){
+                                    filename="CDD240（3A）.png";
+                                }else if ( cddxhModel=="CDD240(4A)" ){
+                                    filename="CDD240（4A）.png";
+                                }
+                                if ($('input[name=tu_cddtu]').length == 0) {
+                                    $('form').append('<input name="tu_cddtu" type="hidden"/>');
+                                }
+                                $("[name=tu_cddtu]")[0].value=filename;
+                                $("[name=cddtu]")[0].src="/pdf/getImg?filename="+ filename+"";
+                            })
+                        </script>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>国家地区选择</b></td>
+                    <td colspan="2">
+                        <select name="gjdqModel" style="color:black;width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="国内">国内</option>
+                            <option value="香港">香港</option>
+                            <option value="澳门">澳门</option>
+                            <option value="新加坡">新加坡</option>
+                            <option value="马来西亚">马来西亚</option>
+                            <option value="泰国">泰国</option>
+                            <option value="越南">越南</option>
+                            <option value="柬埔寨">柬埔寨</option>
+                            <option value="印尼">印尼</option>
+                            <option value="斯里兰卡">斯里兰卡</option>
+                            <option value="菲律宾">菲律宾</option>
+                            <option value="土耳其">土耳其</option>
+                            <option value="阿联酋">阿联酋</option>
+                            <option value="沙特阿拉伯">沙特阿拉伯</option>
+                            <option value="巴林">巴林</option>
+                            <option value="科威特">科威特</option>
+                            <option value="卡塔尔">卡塔尔</option>
+                            <option value="安哥拉">安哥拉</option>
+                            <option value="尼日利亚">尼日利亚</option>
+                            <option value="美国">美国</option>
+                            <option value="巴基斯坦">巴基斯坦</option>
+                            <option value="其它">其它</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td ><b>国家地区名称</b></td>
+                    <td ><input type="text" name="gjdq"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td ><b>电压</b></td>
+                    <td ><input type="text" name="cdddy"/></td>
+                    <td >V</td>
+                </tr>
+                <tr>
+                    <td ><b>频率</b></td>
+                    <td ><input type="text" name="cddpl"/></td>
+                    <td >Hz</td>
+                </tr>
+                <tr>
+                    <td ><b>爬升高度</b></td>
+                    <td ><input type="text" name="psgd"/></td>
+                    <td >m</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><input style="color: white;" type='text' name="psgdtstx"/></td>
+                </tr>
+                <tr>
+                    <td ><b>钢丝绳长度</b></td>
+                    <td ><input type="text" name="gsscd"/></td>
+                    <td >m</td>
+                </tr>
+            </table>
+        </div>
+        <div class="subtable">
+            <table>
+                <tr>
+                    <td>
+                        <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img id="cddtu" height="400px"  name="cddtu">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="hidden" name="pdfType"/>
+    </form>
+
+        <div class="navbox">
+            <div style="width:460px;height:520px; font-size: 14px   ;">
+                <table id="pdf3tb">
+
+                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="buttonbox">
+        <input type="submit" form="form1" class="button" value="保存数据"
+               onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+        <input type="submit" form="form1" class="button"  value="获取图纸pdf" onclick="$('form').attr('action','CDDDrawing/getPDF');
+                                                                                            isCheck(false);changeType('Calculation')"/>
+        <!--<input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','OneJibWheel/getPDF');-->
+                                                                                            <!--isCheck(true);changeType('Check')"/>-->
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
+    </div>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+
+        cdddy:function(){
+            return gjdqModelList[ gjdqModel ]['cdddy'];
+        },
+        cddpl:function(){
+            return gjdqModelList[ gjdqModel ]['cddpl'];
+        },
+        gjdq:function(){
+            return gjdqModelList[ gjdqModel ]['gjdq'];
+        },
+        psgdtstx: function () {
+            if ( psgd > 150 ) {
+                $('[name=psgdtstx]').prop('disabled', true)
+                data.datalist['psgdtstx'].color = 'white ';
+                return '超过最大爬升高度150m';
+            }
+            else if ( psgd <= 150 ) {
+                    $('[name=psgdtstx]').prop('disabled', true)
+                    data.datalist['psgdtstx'].color = 'white';
+                    return '未超过最大爬升高度150m ';
+            }
+        },
+    };
+    data.init(calculateFunction);
+</script>
+</body>
+</html>
