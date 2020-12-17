@@ -38,6 +38,11 @@ public class TrackInstallationCostController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/TrackInstallationCost")
+    public String getMap2() {
+        return "pdf/TrackInstallationCost";
+    }
+
     @GetMapping("/TrackInstallationCost")
     public String getMap() {
         return "TrackInstallationCost";

@@ -130,6 +130,10 @@ asideDatas = {
                     url: "pdf",
                     children: [
                         {
+                            title: '仰臂大轴',
+                            url:'YbAxis'
+                        },
+                        {
                             title: '单臂机吊臂',
                             url:'SingleJib'
                         },
@@ -185,7 +189,7 @@ asideDatas = {
                         },
                         {
                             title: '1+1顶升立柱顶轮',
-
+                            url:'IdlerWheel'
                         },
                         {
                             title: '2+1顶升立柱顶轮',
@@ -212,20 +216,16 @@ asideDatas = {
             url: "pdf",
             children: [
                 {
-                    title: '顶升立柱液压系统计算及顶轮接触应力计算书',
-
+                    title: '液压系统电机功率及油箱容积',
+                    url: 'YygglYxrj'
                 },
                 {
-                    title: '液压系统电机功率、油箱容积等计算',
-
+                    title: '仰臂液压缸',
+                    url: 'YbHydraulicCylinder'
                 },
                 {
-                    title: '仰臂液压缸计算书',
-
-                },
-                {
-                    title: '仰柱液压缸计算书',
-
+                    title: '顶升液压缸',
+                    url: 'DsHydraulicCylinder'
                 },
             ]
         },
@@ -256,16 +256,8 @@ asideDatas = {
                     url: 'Cost'
                 },
                 {
-                    title: '伸缩臂机',
-
-                },
-                {
-                    title: '双臂机',
-
-                },
-                {
-                    title: '附墙机',
-
+                    title: '轨道工程安装成本',
+                    url: 'TrackInstallationCost'
                 },
             ]
         },

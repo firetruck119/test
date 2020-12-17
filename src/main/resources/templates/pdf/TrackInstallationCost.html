@@ -1,0 +1,1860 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>轨道工程安装成本估算计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">轨道工程安装成本估算计算书</div>
+                            <!- 封面内容 ->
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                        <td colspan="2" style="width:50%;">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机计算书编号</b></td>
+                                        <td colspan="2" ><input type="text" name="no"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机版本</b></td>
+                                        <td colspan="2" ><input type="text" name="ver" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2" ><input type="text" name="xmmc" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>主机型号</b></td>
+                                        <td colspan="2" ><input type="text" name="zjxh" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算人</b></td>
+                                        <td colspan="2" ><input type="text" name="jsr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>审核人</b></td>
+                                        <td colspan="2" ><input type="text" name="shr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>批准人</b></td>
+                                        <td colspan="2" ><input type="text" name="pzr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算日期</b></td>
+                                        <td colspan="2" ><input type="text" name="date" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.轨道安装相关选择</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">轨道型号选择</td>
+                                        <td colspan="2">
+                                            <select name="gdcbgdModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="I20b-31">I20b-31</option>
+                                                <option value="I22b-36.5">I22b-36.5</option>
+                                                <option value="I25b-42">I25b-42</option>
+                                                <option value="I28b-47.8">I28b-47.8</option>
+                                                <option value="I32b-57.7">I32b-57.7</option>
+                                                <option value="H150*150-31.1">H150*150-31.1</option>
+                                                <option value="H175*175-40.4">H175*175-40.4</option>
+                                                <option value="H200*200-49.9">H200*200-49.9</option>
+                                                <option value="H200*204-56.2">H200*204-56.2</option>
+                                                <option value="H250*250-71.8">H250*250-71.8</option>
+                                                <option value="H250*255-81.6">H250*255-81.6</option>
+                                                <option value="H300*300-93">H300*300-93</option>
+                                                <option value="H300*305-105">H300*305-105</option>
+                                                <option value="H200*200T-71">H200*200T-71</option>
+                                                <option value="H250*250T-99">H250*250T-99</option>
+                                                <option value="PH216*200-84.7">PH216*200-84.7</option>
+                                                <option value="PH266*250-128.1">PH266*250-128.1</option>
+                                                <option value="PH200*200-90.7">PH200*200-90.7</option>
+                                                <option value="PH220*170-82.6">PH220*170-82.6</option>
+                                                <option value="PH250*200-117.4">PH250*200-117.4</option>
+                                                <option value="PH250*250-104.2">PH250*250-104.2</option>
+                                                <option value="PH250*250-113.3">PH250*250-113.3</option>
+                                                <option value="PH250*250-138.8">PH250*250-138.8</option>
+                                                <option value="PH300*250-146.6">PH300*250-146.6</option>
+                                                <option value="PH300*300-168.1">PH300*300-168.1</option>
+                                                <option value="悬挂C型轨">悬挂C型轨</option>
+                                                <option value="悬挂工字钢">悬挂工字钢</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">轨道安装是否镂空作业</td>
+                                        <td colspan="2">
+                                            <select name="gdcbgdlkModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="镂空作业">镂空作业</option>
+                                                <option value="非镂空作业">非镂空作业</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">轨道安装是否加减震垫</td>
+                                        <td colspan="2">
+                                            <select name="gdcbgdjzdModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="是">是</option>
+                                                <option value="否">否</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">轨道安装是否贴板</td>
+                                        <td colspan="2">
+                                            <select name="gdcbgdtbModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="是">是</option>
+                                                <option value="否">否</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">轨道安装是否加加强管</td>
+                                        <td colspan="2">
+                                            <select name="gdcbgdjqgModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="是">是</option>
+                                                <option value="否">否</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">施工地区</td>
+                                        <td colspan="2">
+                                            <select name="gdcbdqModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="上海">上海</option>
+                                                <option value="外地">外地</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">轨道安装长度</td>
+                                        <td style="width:40%;"><input type="text" name="cbgdcd"/></td>
+                                        <td style="width:20%;">米</td>
+                                    </tr>
+                                 </table>
+                            </div>
+
+                            <div style="width:97%;" class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.轨道安装单价表</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:15%;padding:10px 0;;">序号</td>
+                                        <td style="width:25%;">类型</td>
+                                        <td style="width:35%;">单价(元/米)</td>
+                                        <td style="width:25%;">备注</td>
+                                    </tr>
+                                    <tr>
+                                        <td >1</td>
+                                        <td >轨道型号</td>
+                                        <td colspan="2"><input type="text" name="cbgdxh"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >2</td>
+                                        <td >外部承包价</td>
+                                        <td ><input type="text" name="gdcbgdwbcbdj"/></td>
+                                        <td > </td>
+                                    </tr>
+                                    <tr>
+                                        <td >3</td>
+                                        <td >镂空作业</td>
+                                        <td ><input type="text" name="gdcbgdlkdj"/></td>
+                                        <td ><input type="text" name="gdcbgdlkbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >4</td>
+                                        <td >减震垫</td>
+                                        <td ><input type="text" name="gdcbgdjzddj"/></td>
+                                        <td ><input type="text" name="gdcbgdjzdbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >5</td>
+                                        <td >餐补</td>
+                                        <td ><input type="text" name="gdcbgdcbdj"/></td>
+                                        <td ><input type="text" name="gdcbgdcbbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >6</td>
+                                        <td >住宿</td>
+                                        <td ><input type="text" name="gdcbgdzsdj"/></td>
+                                        <td ><input type="text" name="gdcbgdzsbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >7</td>
+                                        <td >轨道小于50米额外费用</td>
+                                        <td ><input type="text" name="gdcbgdewdj"/></td>
+                                        <td ><input type="text" name="gdcbgdewbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >8</td>
+                                        <td >焊条</td>
+                                        <td ><input type="text" name="gdcbgdhtdj"/></td>
+                                        <td ><input type="text" name="gdcbgdhtbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >9</td>
+                                        <td >氧气、乙炔</td>
+                                        <td ><input type="text" name="gdcbgdqtdj"/></td>
+                                        <td ><input type="text" name="gdcbgdqtbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >10</td>
+                                        <td >油漆</td>
+                                        <td ><input type="text" name="gdcbgdyqdj"/></td>
+                                        <td ><input type="text" name="gdcbgdyqbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >11</td>
+                                        <td >辅材</td>
+                                        <td ><input type="text" name="gdcbgdfcdj"/></td>
+                                        <td ><input type="text" name="gdcbgdfcbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >12</td>
+                                        <td >吊篮施工</td>
+                                        <td ><input type="text" name="gdcbgddlsgdj"/></td>
+                                        <td ><input type="text" name="gdcbgddlsgbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >13</td>
+                                        <td >轨道上面贴板</td>
+                                        <td ><input type="text" name="gdcbgdtbdj"/></td>
+                                        <td ><input type="text" name="gdcbgdtbbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >14</td>
+                                        <td >轨道下加强管</td>
+                                        <td ><input type="text" name="gdcbgdjqgdj"/></td>
+                                        <td ><input type="text" name="gdcbgdjqgbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">轨道安装单价</td>
+                                        <td ><input type="text" name="gdcbgdazdj"/></td>
+                                        <td > </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;" class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="8" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.轨道安装成本</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">序号</td>
+                                        <td style="width:15%;">类型</td>
+                                        <td style="width:15%;">数量</td>
+                                        <td style="width:10%;">单位</td>
+                                        <td style="width:15%;">单价</td>
+                                        <td style="width:10%;">单位</td>
+                                        <td style="width:15%;">总价</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td >1</td>
+                                        <td >轨道安装</td>
+                                        <td ><input type="text" name="cbgdcd"/></td>
+                                        <td >米</td>
+                                        <td ><input type="text" name="gdcbgdazdj"/></td>
+                                        <td >元/米</td>
+                                        <td ><input type="text" name="gdcbgdazzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >2</td>
+                                        <td >轨道侧加筋板</td>
+                                        <td ><input type="text" name="gdcbgdcjbsl"/></td>
+                                        <td >件</td>
+                                        <td ><input type="text" name="gdcbgdcjbdj"/></td>
+                                        <td >元/件</td>
+                                        <td ><input type="text" name="gdcbgdcjbzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >3</td>
+                                        <td >轨道下加支墩</td>
+                                        <td ><input type="text" name="gdcbgdxzdsl"/></td>
+                                        <td >件</td>
+                                        <td ><input type="text" name="gdcbgdxzddj"/></td>
+                                        <td >元/件</td>
+                                        <td ><input type="text" name="gdcbgdxzdzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>5.埋件安装相关选择</b></div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:40%;">埋件类型</td>
+                                        <td>
+                                            <select name="gdcbmjlxModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="常规擦窗机埋件">常规擦窗机埋件</option>
+                                                <option value="屋面插杆埋件">屋面插杆埋件</option>
+                                                <option value="附墙插杆埋件">附墙插杆埋件</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">埋件安装是否镂空作业</td>
+                                        <td>
+                                            <select name="gdcbmjlkModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="镂空作业">镂空作业</option>
+                                                <option value="非镂空作业">非镂空作业</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:35%;padding:10px 0;;">名称</td>
+                                        <td style="width:50%;">数值</td>
+                                        <td style="width:15%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td >轨道支墩跨距</td>
+                                        <td ><input type="text" name="lkjk"/></td>
+                                        <td >米</td>
+                                    </tr>
+                                    <tr>
+                                        <td >估算埋件数量</td>
+                                        <td ><input type="text" name="gdcbmjjssl"/></td>
+                                        <td >件</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><b>注：实际埋件数量不得少于“估算埋件数量”</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;" class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="8" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.埋件安装成本</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">序号</td>
+                                        <td style="width:15%;">类型</td>
+                                        <td style="width:15%;">数量</td>
+                                        <td style="width:10%;">单位</td>
+                                        <td style="width:15%;">单价</td>
+                                        <td style="width:10%;">单位</td>
+                                        <td style="width:15%;">总价</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td >1</td>
+                                        <td >常规擦窗机埋件</td>
+                                        <td ><input type="text" name="gdcbmjsl"/></td>
+                                        <td >件</td>
+                                        <td ><input type="text" name="gdcbmjdj"/></td>
+                                        <td >元/件</td>
+                                        <td ><input type="text" name="gdcbmjzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >2</td>
+                                        <td >镂空作业</td>
+                                        <td ><input type="text" name="gdcbmjlksl"/></td>
+                                        <td >件</td>
+                                        <td ><input type="text" name="gdcbmjlkdj"/></td>
+                                        <td >元/件</td>
+                                        <td ><input type="text" name="gdcbmjlkzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >3</td>
+                                        <td >屋面插杆埋件</td>
+                                        <td ><input type="text" name="gdcbwmcgmjsl"/></td>
+                                        <td >件</td>
+                                        <td ><input type="text" name="gdcbwmcgmjdj"/></td>
+                                        <td >元/件</td>
+                                        <td ><input type="text" name="gdcbwmcgmjzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >4</td>
+                                        <td >附墙插杆埋件</td>
+                                        <td ><input type="text" name="gdcbfqcgmjsl"/></td>
+                                        <td >件</td>
+                                        <td ><input type="text" name="gdcbfqcgmjdj"/></td>
+                                        <td >元/件</td>
+                                        <td ><input type="text" name="gdcbfqcgmjzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>7.轨道附件安装相关选择</b></div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:40%;">护栏安装是否镂空作业</td>
+                                        <td>
+                                            <select name="gdcbhllkModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="镂空作业">镂空作业</option>
+                                                <option value="非镂空作业">非镂空作业</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;" class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="8" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.轨道附件安装成本</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">序号</td>
+                                        <td style="width:15%;">类型</td>
+                                        <td style="width:15%;">数量</td>
+                                        <td style="width:10%;">单位</td>
+                                        <td style="width:15%;">单价</td>
+                                        <td style="width:10%;">单位</td>
+                                        <td style="width:15%;">总价</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td >1</td>
+                                        <td >标准蜘蛛人挂点</td>
+                                        <td ><input type="text" name="gdcbzzrsl"/></td>
+                                        <td >个</td>
+                                        <td ><input type="text" name="gdcbzzrdj"/></td>
+                                        <td >元/个</td>
+                                        <td ><input type="text" name="gdcbzzrzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >2</td>
+                                        <td >叉轨</td>
+                                        <td ><input type="text" name="gdcbcgsl"/></td>
+                                        <td >套</td>
+                                        <td ><input type="text" name="gdcbcgdj"/></td>
+                                        <td >元/套</td>
+                                        <td ><input type="text" name="gdcbcgzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >3</td>
+                                        <td >护栏</td>
+                                        <td ><input type="text" name="gdcbhlsl"/></td>
+                                        <td >米</td>
+                                        <td ><input type="text" name="gdcbhldj"/></td>
+                                        <td >元/米</td>
+                                        <td ><input type="text" name="gdcbhlzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >4</td>
+                                        <td >护栏安装镂空作业</td>
+                                        <td ><input type="text" name="gdcbhllksl"/></td>
+                                        <td >米</td>
+                                        <td ><input type="text" name="gdcbhllkdj"/></td>
+                                        <td >元/米</td>
+                                        <td ><input type="text" name="gdcbhllkzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                    <tr>
+                                        <td >5</td>
+                                        <td >走道板</td>
+                                        <td ><input type="text" name="gdcbzdsl"/></td>
+                                        <td >平方米</td>
+                                        <td ><input type="text" name="gdcbzddj"/></td>
+                                        <td >元/平方米</td>
+                                        <td ><input type="text" name="gdcbzdzj"/></td>
+                                        <td >元</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                    <!--后台-->
+                            <div style="display: none">
+                                <input type="text" name="gdcbgdlkdjb" />
+                                <input type="text" name="gdcbgdjzddjb" />
+                                <input type="text" name="gdcbgdew1dj" />
+                                <input type="text" name="gdcbgdew2dj" />
+                                <input type="text" name="gdcbgdtbdjb" />
+                                <input type="text" name="gdcbgdjqgdjb" />
+                                <input type="text" name="gdcbgdtbxs" />
+                                <input type="text" name="gdcbgdjqgxs" />
+
+                                <input type="text" name="gdcbsgdq" />
+                                <input type="text" name="gdcbgdsg" />
+                                <input type="text" name="gdcbmjsg" />
+                                <input type="text" name="gdcbhlsg" />
+
+                                <input type="text" name="lkj" />
+                            </div>
+                            <input type="hidden" name="pdfType"/>
+                        </form>
+
+                            <div class="navbox">
+                                <div style="width:600px;height:520px; font-size: 14px   ;">
+                                    <table id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                        <tr>
+                                            <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220)"><b>核算结果</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td style="width:15%;">序号</td>
+                                            <td style="width:55%;">类型</td>
+                                            <td style="width:30%;">总计(万元)</td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td>1</td>
+                                            <td>轨道安装成本总计</td>
+                                            <td id="gdcbgdzj"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td>2</td>
+                                            <td>埋件安装成本总计</td>
+                                            <td id="gdcbmjazzj"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td>3</td>
+                                            <td>轨道附件安装成本总计</td>
+                                            <td id="gdcbfjzj"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td colspan="2">轨道工程安装成本总计</td>
+                                            <td id="gdcbgcazzj"></td>
+                                        </tr>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出pdf" onclick="$('form').attr('action','/TrackInstallationCost/getPDF');
+                                                                                                                isCheck(false);changeType('Calculation')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+                        </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+
+<script>
+    //轨道
+    gdcbgdModelList={
+        'I20b-31':{
+            cbgdxh:"I20b-31",
+            gdcbgdwbcbdj:51,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:3,
+            gdcbgdew2dj:8,
+            gdcbgdhtdj:1.5,
+            gdcbgdqtdj:1.2,
+            gdcbgdyqdj:0.1,
+            gdcbgdfcdj:0.2,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:25.5,
+            gdcbgdjqgdjb:51,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:51,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'I22b-36.5':{
+            cbgdxh:"I22b-36.5",
+            gdcbgdwbcbdj:51,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:3,
+            gdcbgdew2dj:8,
+            gdcbgdhtdj:1.5,
+            gdcbgdqtdj:1.2,
+            gdcbgdyqdj:0.1,
+            gdcbgdfcdj:0.2,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:25.5,
+            gdcbgdjqgdjb:51,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:51,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'I25b-42':{
+            cbgdxh:"I25b-42",
+            gdcbgdwbcbdj:53,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:3,
+            gdcbgdew2dj:8,
+            gdcbgdhtdj:2.2,
+            gdcbgdqtdj:1.8,
+            gdcbgdyqdj:0.2,
+            gdcbgdfcdj:0.3,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:26.5,
+            gdcbgdjqgdjb:53,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:53,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'I28b-47.8':{
+            cbgdxh:"I28b-47.8",
+            gdcbgdwbcbdj:55,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:3,
+            gdcbgdew2dj:8,
+            gdcbgdhtdj:2.5,
+            gdcbgdqtdj:1.9,
+            gdcbgdyqdj:0.3,
+            gdcbgdfcdj:0.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:27.5,
+            gdcbgdjqgdjb:55,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:55,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'I32b-57.7':{
+            cbgdxh:"I32b-57.7",
+            gdcbgdwbcbdj:58,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:3.4,
+            gdcbgdqtdj:2.2,
+            gdcbgdyqdj:0.6,
+            gdcbgdfcdj:0.8,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:29,
+            gdcbgdjqgdjb:58,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:58,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H150*150-31.1':{
+            cbgdxh:"H150*150-31.1",
+            gdcbgdwbcbdj:60,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:3.4,
+            gdcbgdqtdj:2.2,
+            gdcbgdyqdj:0.6,
+            gdcbgdfcdj:0.8,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:60,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:60,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H175*175-40.4':{
+            cbgdxh:"H175*175-40.4",
+            gdcbgdwbcbdj:60,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:3.4,
+            gdcbgdqtdj:2.2,
+            gdcbgdyqdj:0.6,
+            gdcbgdfcdj:0.8,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:60,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:60,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H200*200-49.9':{
+            cbgdxh:"H200*200-49.9",
+            gdcbgdwbcbdj:65,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:3.6,
+            gdcbgdqtdj:2.4,
+            gdcbgdyqdj:0.7,
+            gdcbgdfcdj:0.8,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:65,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:65,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H200*204-56.2':{
+            cbgdxh:"H200*204-56.2",
+            gdcbgdwbcbdj:65,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:3.6,
+            gdcbgdqtdj:2.4,
+            gdcbgdyqdj:0.7,
+            gdcbgdfcdj:0.8,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:65,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:65,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H250*250-71.8':{
+            cbgdxh:"H250*250-71.8",
+            gdcbgdwbcbdj:65,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:4,
+            gdcbgdqtdj:3,
+            gdcbgdyqdj:1,
+            gdcbgdfcdj:1.2,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:65,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:65,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H250*255-81.6':{
+            cbgdxh:"H250*255-81.6",
+            gdcbgdwbcbdj:65,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:4,
+            gdcbgdqtdj:3,
+            gdcbgdyqdj:1,
+            gdcbgdfcdj:1.2,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:65,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:65,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H300*300-93':{
+            cbgdxh:"H300*300-93",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H300*305-105':{
+            cbgdxh:"H300*305-105",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H200*200T-71':{
+            cbgdxh:"H200*200T-71",
+            gdcbgdwbcbdj:65,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:3.6,
+            gdcbgdqtdj:2.4,
+            gdcbgdyqdj:0.7,
+            gdcbgdfcdj:0.8,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:65,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:65,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'H250*250T-99':{
+            cbgdxh:"H250*250T-99",
+            gdcbgdwbcbdj:65,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:4,
+            gdcbgdqtdj:3,
+            gdcbgdyqdj:1,
+            gdcbgdfcdj:1.2,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:30,
+            gdcbgdjqgdjb:65,
+            gdcbgdcjbdj:15,
+            gdcbgdxzddj:65,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH216*200-84.7':{
+            cbgdxh:"PH216*200-84.7",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH266*250-128.1':{
+            cbgdxh:"PH266*250-128.1",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH200*200-90.7':{
+            cbgdxh:"PH200*200-90.7",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH220*170-82.6':{
+            cbgdxh:"PH220*170-82.6",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH250*200-117.4':{
+            cbgdxh:"PH250*200-117.4",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH250*250-104.2':{
+            cbgdxh:"PH250*250-104.2",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH250*250-113.3':{
+            cbgdxh:"PH250*250-113.3",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH250*250-138.8':{
+            cbgdxh:"PH250*250-138.8",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH300*250-146.6':{
+            cbgdxh:"PH300*250-146.6",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        'PH300*300-168.1':{
+            cbgdxh:"PH300*300-168.1",
+            gdcbgdwbcbdj:70,
+            gdcbgdlkdjb:5,
+            gdcbgdjzddjb:10,
+            gdcbgdcbdj:9,
+            gdcbgdzsdj:8,
+            gdcbgdew1dj:5,
+            gdcbgdew2dj:10,
+            gdcbgdhtdj:6,
+            gdcbgdqtdj:4,
+            gdcbgdyqdj:1.5,
+            gdcbgdfcdj:1.5,
+            gdcbgddlsgdj:0,
+            gdcbgdtbdjb:35,
+            gdcbgdjqgdjb:70,
+            gdcbgdcjbdj:20,
+            gdcbgdxzddj:70,
+            gdcbgdcjbsl:' ',
+            gdcbgdxzdsl:' ',
+        },
+        "悬挂C型轨":{
+            cbgdxh:"悬挂C型轨",
+            gdcbgdwbcbdj:100,
+            gdcbgdlkdjb:0,
+            gdcbgdjzddjb:0,
+            gdcbgdcbdj:0,
+            gdcbgdzsdj:0,
+            gdcbgdew1dj:0,
+            gdcbgdew2dj:0,
+            gdcbgdhtdj:0,
+            gdcbgdqtdj:0,
+            gdcbgdyqdj:0,
+            gdcbgdfcdj:0,
+            gdcbgddlsgdj:200,
+            gdcbgdtbdjb:0,
+            gdcbgdjqgdjb:0,
+            gdcbgdcjbdj:0,
+            gdcbgdxzddj:0,
+            gdcbgdcjbsl:0,
+            gdcbgdxzdsl:0,
+        },
+        "悬挂工字钢":{
+            cbgdxh:"悬挂工字钢",
+            gdcbgdwbcbdj:150,
+            gdcbgdlkdjb:0,
+            gdcbgdjzddjb:0,
+            gdcbgdcbdj:0,
+            gdcbgdzsdj:0,
+            gdcbgdew1dj:0,
+            gdcbgdew2dj:0,
+            gdcbgdhtdj:0,
+            gdcbgdqtdj:0,
+            gdcbgdyqdj:0,
+            gdcbgdfcdj:0,
+            gdcbgddlsgdj:200,
+            gdcbgdtbdjb:0,
+            gdcbgdjqgdjb:0,
+            gdcbgdcjbdj:0,
+            gdcbgdxzddj:0,
+            gdcbgdcjbsl:0,
+            gdcbgdxzdsl:0,
+        },
+    };
+    //埋件类型
+    gdcbmjlxModelList={
+        "常规擦窗机埋件":{
+            gdcbmjsl:' ',
+            gdcbwmcgmjsl:0,
+            gdcbfqcgmjsl:0,
+        },
+        "屋面插杆埋件":{
+            gdcbmjsl:0,
+            gdcbwmcgmjsl:' ',
+            gdcbfqcgmjsl:0,
+        },
+        "附墙插杆埋件":{
+            gdcbmjsl:0,
+            gdcbwmcgmjsl:0,
+            gdcbfqcgmjsl:' ',
+        },
+    };
+
+    //轨道安装是否镂空作业
+    gdcbgdlkModelList={
+        "镂空作业":{
+            gdcbgdsg:'镂空作业',
+        },
+        "非镂空作业":{
+            gdcbgdsg:'非镂空作业',
+        },
+    };
+
+    //轨道安装是否加减震垫
+    gdcbgdjzdModelList={
+        "是":{
+        },
+        "否":{
+        },
+    };
+
+    //埋件安装是否镂空作业
+    gdcbmjlkModelList={
+        "镂空作业":{
+            gdcbmjsg:'镂空作业',
+        },
+        "非镂空作业":{
+            gdcbmjsg:'非镂空作业',
+        },
+    };
+    //护栏安装是否镂空作业
+    gdcbhllkModelList={
+        "镂空作业":{
+            gdcbhlsg:'镂空作业',
+        },
+        "非镂空作业":{
+            gdcbhlsg:'非镂空作业',
+        },
+    };
+    //施工地区
+    gdcbdqModelList={
+        "上海":{
+            gdcbsgdq:'上海',
+        },
+        "外地":{
+            gdcbsgdq:'外地',
+        },
+    };
+
+    //轨道是否贴板
+    gdcbgdtbModelList={
+        "是":{
+            gdcbgdtbxs:1,
+        },
+        "否":{
+            gdcbgdtbxs:0,
+        },
+    };
+    //轨道是否加加强管
+    gdcbgdjqgModelList={
+        "是":{
+            gdcbgdjqgxs:1,
+        },
+        "否":{
+            gdcbgdjqgxs:0,
+        },
+    };
+
+</script>
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function janyan() {
+        $.ajax({
+            url: "/TrackInstallationCost/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction= {
+
+        gdcbgdlkModel: function () {
+            if ( gdcbgdModel == "悬挂C型轨" || gdcbgdModel == "悬挂工字钢" ) {
+                $('[name=gdcbgdlkModel]').prop('disabled', false)
+                data.datalist['gdcbgdlkModel'].color = 'white';
+                return '非镂空作业';
+            } else {
+                $('[name=gdcbgdlkModel]').prop('disabled', false)
+                data.datalist['gdcbgdlkModel'].color = 'white';
+                return ' ';
+            }
+        },
+        gdcbgdjzdModel: function () {
+            if ( gdcbgdModel == "悬挂C型轨" || gdcbgdModel == "悬挂工字钢" ) {
+                $('[name=gdcbgdjzdModel]').prop('disabled', false)
+                data.datalist['gdcbgdjzdModel'].color = 'white';
+                return '否';
+            } else {
+                $('[name=gdcbgdjzdModel]').prop('disabled', false)
+                data.datalist['gdcbgdjzdModel'].color = 'white';
+                return ' ';
+            }
+        },
+        gdcbgdtbModel: function () {
+            if ( gdcbgdModel == "悬挂C型轨" || gdcbgdModel == "悬挂工字钢" ) {
+                $('[name=gdcbgdtbModel]').prop('disabled', false)
+                data.datalist['gdcbgdtbModel'].color = 'white';
+                return '否';
+            } else {
+                $('[name=gdcbgdtbModel]').prop('disabled', false)
+                data.datalist['gdcbgdtbModel'].color = 'white';
+                return ' ';
+            }
+        },
+        gdcbgdjqgModel: function () {
+            if ( gdcbgdModel == "悬挂C型轨" || gdcbgdModel == "悬挂工字钢" ) {
+                $('[name=gdcbgdjqgModel]').prop('disabled', false)
+                data.datalist['gdcbgdjqgModel'].color = 'white';
+                return '否';
+            } else {
+                $('[name=gdcbgdjqgModel]').prop('disabled', false)
+                data.datalist['gdcbgdjqgModel'].color = 'white';
+                return ' ';
+            }
+        },
+
+        //后台
+        gdcbgdlkdjb: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdlkdjb'];
+        },
+        gdcbgdjzddjb: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdjzddjb'];
+        },
+        gdcbgdew1dj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdew1dj'];
+        },
+        gdcbgdew2dj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdew2dj'];
+        },
+        gdcbgdtbdjb: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdtbdjb'];
+        },
+        gdcbgdjqgdjb: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdjqgdjb'];
+        },
+        gdcbgdtbxs: function () {
+            return gdcbgdtbModelList[ gdcbgdtbModel ]['gdcbgdtbxs'];
+        },
+        gdcbgdjqgxs: function () {
+            return gdcbgdjqgModelList[ gdcbgdjqgModel ]['gdcbgdjqgxs'];
+        },
+
+        //轨道安装清单
+        cbgdxh: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['cbgdxh'];
+        },
+        gdcbmjsl: function () {
+            return gdcbmjlxModelList[ gdcbmjlxModel ]['gdcbmjsl'];
+        },
+        gdcbwmcgmjsl: function () {
+            return gdcbmjlxModelList[ gdcbmjlxModel ]['gdcbwmcgmjsl'];
+        },
+        gdcbfqcgmjsl: function () {
+            return gdcbmjlxModelList[ gdcbmjlxModel ]['gdcbfqcgmjsl'];
+        },
+
+        //轨道施工环境
+        gdcbsgdq: function () {
+            return gdcbdqModelList[ gdcbdqModel ]['gdcbsgdq'];
+        },
+        gdcbgdsg: function () {
+            return gdcbgdlkModelList[ gdcbgdlkModel ]['gdcbgdsg'];
+        },
+        gdcbmjsg: function () {
+            return gdcbmjlkModelList[ gdcbmjlkModel ]['gdcbmjsg'];
+        },
+        gdcbhlsg: function () {
+            return gdcbhllkModelList[ gdcbhllkModel ]['gdcbhlsg'];
+        },
+
+        //轨道安装单价
+        gdcbgdwbcbdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdwbcbdj'];
+        },
+        gdcbgdlkdj: function () {
+            if ( gdcbgdlkModel == "镂空作业" ) {
+                return gdcbgdlkdjb ;
+            } else if ( gdcbgdlkModel == "非镂空作业" ) 
+                return 0 ;
+        },
+        gdcbgdlkbz: function () {
+            if ( gdcbgdlkdj == 0 ) {
+                $('[name=gdcbgdlkbz]').prop('disabled', false)
+                data.datalist['gdcbgdlkbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdlkbz]').prop('disabled', true);
+                data.datalist['gdcbgdlkbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdlkbz;
+            }
+        },
+        gdcbgdjzddj: function () {
+            if ( gdcbgdjzdModel == "是" ) {
+                return gdcbgdjzddjb ;
+            } else if ( gdcbgdjzdModel == "否" ) 
+                return 0 ;
+        },
+        gdcbgdjzdbz: function () {
+            if ( gdcbgdjzddj == 0 ) {
+                $('[name=gdcbgdjzdbz]').prop('disabled', false)
+                data.datalist['gdcbgdjzdbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdjzdbz]').prop('disabled', true);
+                data.datalist['gdcbgdjzdbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdjzdbz;
+            }
+        },
+        gdcbgdcbdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdcbdj'];
+        },
+        gdcbgdcbbz: function () {
+            if ( gdcbgdcbdj == 0 ) {
+                $('[name=gdcbgdcbbz]').prop('disabled', false)
+                data.datalist['gdcbgdcbbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdcbbz]').prop('disabled', true);
+                data.datalist['gdcbgdcbbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdcbbz;
+            }
+        },
+
+        gdcbgdzsdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdzsdj'];
+        },
+        gdcbgdzsbz: function () {
+            if ( gdcbgdzsdj == 0 ) {
+                $('[name=gdcbgdzsbz]').prop('disabled', false)
+                data.datalist['gdcbgdzsbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdzsbz]').prop('disabled', true);
+                data.datalist['gdcbgdzsbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdzsbz;
+            }
+        },
+
+        gdcbgdewdj: function () {
+            if ( cbgdcd >= 50 ) {
+                return 0 ;
+            } else if ( cbgdcd < 50 ) {
+                if ( gdcbsgdq == "上海" )
+                    return gdcbgdew1dj;
+                else if ( gdcbsgdq == "外地" )
+                    return gdcbgdew2dj;
+            }
+        },
+        gdcbgdewbz: function () {
+            if ( gdcbgdModel == "悬挂C型轨" || gdcbgdModel == "悬挂工字钢" ) {
+                return '无';
+            }
+            else {
+                if ( cbgdcd >= 50 ) {
+                    return '轨道≥50米';
+                } else if ( cbgdcd < 50 ) {
+                    if ( gdcbsgdq == "上海" )
+                        return '上海';
+                    else if ( gdcbsgdq == "外地" )
+                        return '外地';
+                }
+            }
+        },
+
+        gdcbgdhtdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdhtdj'];
+        },
+        gdcbgdhtbz: function () {
+            if ( gdcbgdhtdj == 0 ) {
+                $('[name=gdcbgdhtbz]').prop('disabled', false)
+                data.datalist['gdcbgdhtbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdhtbz]').prop('disabled', true);
+                data.datalist['gdcbgdhtbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdhtbz;
+            }
+        },
+
+        gdcbgdqtdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdqtdj'];
+        },
+        gdcbgdqtbz: function () {
+            if ( gdcbgdqtdj == 0 ) {
+                $('[name=gdcbgdqtbz]').prop('disabled', false)
+                data.datalist['gdcbgdqtbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdqtbz]').prop('disabled', true);
+                data.datalist['gdcbgdqtbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdqtbz;
+            }
+        },
+
+        gdcbgdyqdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdyqdj'];
+        },
+        gdcbgdyqbz: function () {
+            if ( gdcbgdyqdj == 0 ) {
+                $('[name=gdcbgdyqbz]').prop('disabled', false)
+                data.datalist['gdcbgdyqbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdyqbz]').prop('disabled', true);
+                data.datalist['gdcbgdyqbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdyqbz;
+            }
+        },
+
+        gdcbgdfcdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdfcdj'];
+        },
+        gdcbgdfcbz: function () {
+            if ( gdcbgdfcdj == 0 ) {
+                $('[name=gdcbgdfcbz]').prop('disabled', false)
+                data.datalist['gdcbgdfcbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdfcbz]').prop('disabled', true);
+                data.datalist['gdcbgdfcbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdfcbz;
+            }
+        },
+
+        gdcbgddlsgdj: function () {
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgddlsgdj'];
+        },
+        gdcbgddlsgbz: function () {
+            if ( gdcbgddlsgdj == 0 ) {
+                $('[name=gdcbgddlsgbz]').prop('disabled', false)
+                data.datalist['gdcbgddlsgbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgddlsgbz]').prop('disabled', true);
+                data.datalist['gdcbgddlsgbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgddlsgbz;
+            }
+        },
+
+        gdcbgdtbdj: function () {
+            return gdcbgdtbdjb * gdcbgdtbxs ;
+        },
+        gdcbgdtbbz: function () {
+            if ( gdcbgdtbdj == 0 ) {
+                $('[name=gdcbgdtbbz]').prop('disabled', false)
+                data.datalist['gdcbgdtbbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdtbbz]').prop('disabled', true);
+                data.datalist['gdcbgdtbbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdtbbz;
+            }
+        },
+
+        gdcbgdjqgdj: function () {
+            return gdcbgdjqgdjb * gdcbgdjqgxs ;
+        },
+        gdcbgdjqgbz: function () {
+            if ( gdcbgdjqgdj == 0 ) {
+                $('[name=gdcbgdjqgbz]').prop('disabled', false)
+                data.datalist['gdcbgdjqgbz'].color = 'white';
+                return '无';
+            } else {
+                $('[name=gdcbgdjqgbz]').prop('disabled', true);
+                data.datalist['gdcbgdjqgbz'].color = 'rgb(227, 227, 227)';
+                return gdcbgdjqgbz;
+            }
+        },
+
+        //轨道安装成本
+        gdcbgdcjbsl:function(){
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdcjbsl'];
+        },
+        gdcbgdcjbdj:function(){
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdcjbdj'];
+        },
+        gdcbgdxzdsl:function(){
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdxzdsl'];
+        },
+        gdcbgdxzddj:function(){
+            return gdcbgdModelList[ gdcbgdModel ]['gdcbgdxzddj'];
+        },
+
+        //埋件安装成本
+        lkjk:function(){
+            return lkj / 1000 ;
+        },
+        gdcbmjjssl:function(){
+            return cbgdcd / lkjk ;
+        },
+        gdcbmjdj:function(){
+            return 20 ;
+        },
+        gdcbmjlksl:function(){
+            if ( gdcbmjlkModel == "镂空作业" ) {
+                return gdcbmjsl ;
+            } else if ( gdcbmjlkModel == "非镂空作业" ) 
+                return 0 ;
+        },
+        gdcbmjlkdj: function () {
+            return 5 ;
+        },
+        gdcbwmcgmjdj: function () {
+            return 60 ;
+        },
+        gdcbfqcgmjdj: function () {
+            return 350 ;
+        },
+
+        //附件安装成本
+        gdcbzzrdj: function () {
+            return 20 ;
+        },
+        gdcbcgdj: function () {
+            return 1000 ;
+        },
+        gdcbhldj: function () {
+            return 20 ;
+        },
+        gdcbhllksl: function () {
+            if ( gdcbhllkModel == "镂空作业" ) {
+                return gdcbhlsl ;
+            } else if ( gdcbhllkModel == "非镂空作业" ) 
+                return 0 ;
+        },
+        gdcbhllkdj: function () {
+            return 5 ;
+        },
+        gdcbzddj: function () {
+            return 20 ;
+        },
+
+        //轨道安装成本小计
+        gdcbgdazdj: function () {
+            return gdcbgdwbcbdj + gdcbgdlkdj + gdcbgdjzddj + gdcbgdcbdj + gdcbgdzsdj + gdcbgdewdj + gdcbgdhtdj + gdcbgdqtdj + gdcbgdyqdj + gdcbgdfcdj + gdcbgddlsgdj + gdcbgdtbdj + gdcbgdjqgdj ;
+        },
+        gdcbgdazzj: function () {
+            return cbgdcd * gdcbgdazdj ;
+        },
+        gdcbgdcjbzj: function () {
+            return gdcbgdcjbsl * gdcbgdcjbdj ;
+        },
+        gdcbgdxzdzj: function () {
+            return gdcbgdxzdsl * gdcbgdxzddj ;
+        },
+
+        //埋件安装成本小计
+        gdcbmjzj: function () {
+            return gdcbmjsl * gdcbmjdj ;
+        },
+        gdcbmjlkzj: function () {
+            return gdcbmjlksl * gdcbmjlkdj ;
+        },
+        gdcbwmcgmjzj: function () {
+            return gdcbwmcgmjsl * gdcbwmcgmjdj ;
+        },
+        gdcbfqcgmjzj: function () {
+            return gdcbfqcgmjsl * gdcbfqcgmjdj ;
+        },
+
+        //附件安装成本小计
+        gdcbzzrzj: function () {
+            return gdcbzzrsl * gdcbzzrdj ;
+        },
+        gdcbcgzj: function () {
+            return gdcbcgsl * gdcbcgdj ;
+        },
+        gdcbhlzj: function () {
+            return gdcbhlsl * gdcbhldj ;
+        },
+        gdcbhllkzj: function () {
+            return gdcbhllksl * gdcbhllkdj ;
+        },
+        gdcbzdzj: function () {
+            return gdcbzdsl * gdcbzddj ;
+        },
+    };
+    data.init(calculateFunction);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/TrackInstallationCost/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+
+</body>
+</html>

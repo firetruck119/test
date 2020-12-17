@@ -38,6 +38,11 @@ public class YbHydraulicCylinderController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/YbHydraulicCylinder")
+    public String getMap2() {
+        return "pdf/YbHydraulicCylinder";
+    }
+
     @GetMapping("/YbHydraulicCylinder")
     public String getMap() {
         return "YbHydraulicCylinder";

@@ -38,6 +38,11 @@ public class DsHydraulicCylinderController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/DsHydraulicCylinder")
+    public String getMap2() {
+        return "pdf/DsHydraulicCylinder";
+    }
+
     @GetMapping("/DsHydraulicCylinder")
     public String getMap() {
         return "DsHydraulicCylinder";

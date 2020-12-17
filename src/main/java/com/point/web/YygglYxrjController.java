@@ -38,6 +38,11 @@ public class YygglYxrjController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/YygglYxrj")
+    public String getMap2() {
+        return "pdf/YygglYxrj";
+    }
+
     @GetMapping("/YygglYxrj")
     public String getMap() {
         return "YygglYxrj";

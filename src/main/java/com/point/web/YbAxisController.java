@@ -38,6 +38,11 @@ public class YbAxisController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/YbAxis")
+    public String getMap2() {
+        return "pdf/YbAxis";
+    }
+
     @GetMapping("/YbAxis")
     public String getMap() {
         return "YbAxis";

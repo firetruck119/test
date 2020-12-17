@@ -38,6 +38,11 @@ public class IdlerWheelController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/IdlerWheel")
+    public String getMap2() {
+        return "pdf/IdlerWheel";
+    }
+
     @GetMapping("/IdlerWheel")
     public String getMap() {
         return "IdlerWheel";
