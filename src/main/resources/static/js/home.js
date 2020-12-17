@@ -46,8 +46,8 @@ asideDatas = {
                     ]
                 },
                 {
-                    title: '钢丝绳',
-                    url:'WireRope'
+                    title: '清洗周期',
+
                 },
                 {
                     title: '操作说明书',
@@ -68,37 +68,38 @@ asideDatas = {
                     url: "pdf",
                     children: [
                         {
-                            title: '水平轨道校核计算书',
-
+                            title: '水平轨道I/H',
+                            url: "HorizontalTracksFx",
                         },
                         {
-                            title: '悬挂H/工字钢轨道校核计算书',
-
+                            title: '水平轨道I/H(加筋)',
+                            url: "HorizontalTracksAddPlate",
                         },
                         {
-                            title: '菱形轨道校核计算书',
-
+                            title: '悬挂C型轨',
+                            url: "SuspensionCtrack",
                         },
                         {
-                            title: '铝合金、钢制C型轨道计算书',
+                            title: '菱形轨道校核',
 
                         },
+
                     ]
                 },
                 {
-                    title: '抗拉埋件计算书',
+                    title: '抗拉埋件',
 
                 },
                 {
-                    title: '抗压埋件计算书',
+                    title: '抗压埋件',
 
                 },
                 {
-                    title: '膨胀螺栓校核计算书',
+                    title: '膨胀螺栓',
 
                 },
                 {
-                    title: '化学锚栓校核计算书',
+                    title: '化学锚栓',
 
                 },
             ]
@@ -234,8 +235,8 @@ asideDatas = {
             url: "pdf",
             children: [
                 {
-                    title: '钢丝绳安全系数校核计算书',
-
+                    title: '钢丝绳',
+                    url:'WireRope'
                 },
                 {
                     title: '回转电机校核计算书',

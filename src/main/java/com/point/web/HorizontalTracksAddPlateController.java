@@ -38,6 +38,11 @@ public class HorizontalTracksAddPlateController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/HorizontalTracksAddPlate")
+    public String getMap2() {
+        return "pdf/HorizontalTracksAddPlate";
+    }
+
     @GetMapping("/HorizontalTracksAddPlate")
     public String getMap() {
         return "HorizontalTracksAddPlate";

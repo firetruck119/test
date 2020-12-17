@@ -38,6 +38,11 @@ public class HorizontalTracksFxController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/HorizontalTracksFx")
+    public String getMap2() {
+        return "pdf/HorizontalTracksFx";
+    }
+
     @GetMapping("/HorizontalTracksFx")
     public String getMap() {
         return "HorizontalTracksFx";

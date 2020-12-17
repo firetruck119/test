@@ -1,0 +1,603 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>悬挂C型轨强度及挠度校核计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">悬挂C型轨强度及挠度校核计算书</div>
+                            <!- 封面内容 ->
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                        <td colspan="2" style="width:70%;">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机计算书编号</b></td>
+                                        <td colspan="2" ><input type="text" name="no"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机版本</b></td>
+                                        <td colspan="2" ><input type="text" name="ver" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2" ><input type="text" name="xmmc" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>主机型号</b></td>
+                                        <td colspan="2" ><input type="text" name="zjxh" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算人</b></td>
+                                        <td colspan="2" ><input type="text" name="jsr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>审核人</b></td>
+                                        <td colspan="2" ><input type="text" name="shr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>批准人</b></td>
+                                        <td colspan="2" ><input type="text" name="pzr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算日期</b></td>
+                                        <td colspan="2" ><input type="text" name="date" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.基本参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>悬挂C型轨型号选择</td>
+                                        <td colspan="3">
+                                            <select name="xgcxhModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="01-CXGD-110*65*14">01-CXGD-110*65*14</option>
+                                                <option value="01-CXGD-110*70*22">01-CXGD-110*70*22</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>悬挂C型轨材料选择</td>
+                                        <td colspan="3">
+                                            <select name="xgcclModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="6005-T5">6005-T5</option>
+                                                <option value="6005-T6">6005-T6</option>
+                                                <option value="6005A-T5">6005A-T5</option>
+                                                <option value="6005A-T6">6005A-T6</option>
+                                                <option value="6063-T5">6063-T5</option>
+                                                <option value="6063-T6">6063-T6</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>悬挂C型轨型号</b></td>
+                                        <td ><p><i></i></p></td>
+                                        <td ><input type="text" name="xgcxh" /></td>
+                                        <td ></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>悬挂C型轨材料</b></td>
+                                        <td ><p><i></i></p></td>
+                                        <td ><input type="text" name="xgccl" /></td>
+                                        <td ></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>小车最大工作载荷</b></td>
+                                        <td ><p><i>G</i></p></td>
+                                        <td ><input type="text" name="xgg" /></td>
+                                        <td >N</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>两个支墩之间最大轨道长度</b></td>
+                                        <td ><p><i>L</i></p></td>
+                                        <td ><input type="text" name="xgcl"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>小车滚轮与轨道接触点到轨道内侧的距离</b></td>
+                                        <td ><p><i>l</i></p></td>
+                                        <td ><input type="text" name="xgcxl"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>C型轨下边缘厚度</b></td>
+                                        <td ><p><i>l<sub>2</sub></i></p></td>
+                                        <td ><input type="text" name="xgcl2"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道截面抗弯模量</b></td>
+                                        <td ><p><i>W<sub>x1</sub></i></p></td>
+                                        <td ><input type="text" name="xgcwx1" /></td>
+                                        <td >mm<sup>3</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道截面惯性矩</b></td>
+                                        <td ><p><i>I</i></p></td>
+                                        <td ><input type="text" name="xgci"  /></td>
+                                        <td >mm<sup>4</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道弹性模量</b></td>
+                                        <td ><p><i>E</i></p></td>
+                                        <td ><input type="text" name="xgce" /></td>
+                                        <td >MPa</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>C型轨壁厚</b></td>
+                                        <td ><p><i>h</sub></i></p></td>
+                                        <td ><input type="text" name="xgcbh" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>规定非比例延伸强度</b></td>
+                                        <td ><p><i>R<sub>p0.2</sub></i></p></td>
+                                        <td ><input type="text" name="xgrp" /></td>
+                                        <td >MPa</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>3.悬挂C型轨相关参数示意图</b></div>
+                                   <div class="subtable">
+                                       <table>
+                                           <tr>
+                                               <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>C型轨相关参数示意图</b></td>
+                                           </tr>
+                                           <tr>
+                                               <td style="background-color: #aaa;">
+                                                   <img style="width:400px;height:400px" th:src="@{xgctu1.png}"/>
+                                               </td>
+                                           </tr>
+                                       </table>
+                                   </div>
+                                   <div class="subtable">
+                                       <table>
+                                           <tr>
+                                               <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>轨道局部等效截面相关参数示意图</b></td>
+                                           </tr>
+                                            <tr>
+                                               <td style="background-color: #aaa;">
+                                                   <img style="width:600px;height:250px" th:src="@{xgctu4.png}"/>
+                                               </td>
+                                           </tr>
+                                       </table>
+                                   </div>
+                        </form>
+
+                            <div class="navbox">
+                                <div style="width:600px;height:520px; font-size: 14px   ;">
+                                    <table id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                        <tr>
+                                            <td colspan="6" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td style="width:20%;"><b>名称</b></td>
+                                            <td style="width:20%;"><b>简支梁结果显示</b></td>
+                                            <td style="width:15%;"><b>是否满足</b></td>
+                                            <td style="width:20%;"><b>双跨梁结果显示</b></td>
+                                            <td style="width:15%;"><b>是否满足</b></td>
+                                            <td style="width:10%;"><b>许用值</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>整体弯曲应力（MPa）</b></td>
+                                            <td id="xgco1"></td>
+                                            <td id="xgcm1"></td>
+                                            <td id="xgcko1"></td>
+                                            <td id="xgckm1"></td>
+                                            <td id="xgcxy"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>局部弯曲应力（MPa）</b></td>
+                                            <td id="xgco2"></td>
+                                            <td id="xgcm2"></td>
+                                            <td id="xgcko2"></td>
+                                            <td id="xgckm2"></td>
+                                            <td id="xgcxy1"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>组合弯曲应力（MPa）</b></td>
+                                            <td id="xgco3"></td>
+                                            <td id="xgcm3"></td>
+                                            <td id="xgcko3"></td>
+                                            <td id="xgckm3"></td>
+                                            <td id="xgcxy2"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>轨道挠度（mm）</b></td>
+                                            <td id="xgcuy"></td>
+                                            <td id="xgcm4"></td>
+                                            <td id="xgckuy"></td>
+                                            <td id="xgckm4"></td>
+                                            <td id="xgnd"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出简支梁pdf" onclick="$('form').attr('action','/SuspensionCtrack/getPDF');
+                                                                                                                isCheck(false);changeType('SimplySupported')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出双跨梁pdf" onclick="$('form').attr('action','/SuspensionCtrack/getPDF');
+                                                                                                                 isCheck(false);changeType('DoubleSpanbeam')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','/SuspensionCtrack/getPDF');
+                                                                                                                isCheck(true);changeType('Check')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+                        </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+<script>
+    xgcclModelList={
+        '6005-T5':{
+            xgccl:"6005-T5",
+        },
+        '6005-T6':{
+            xgccl:"6005-T6",
+        },
+        '6005A-T5':{
+            xgccl:"6005A-T5",
+        },
+        '6005A-T6':{
+            xgccl:"6005A-T6",
+        },
+        '6063-T5':{
+            xgccl:"6063-T5",
+        },
+        '6063-T6':{
+            xgccl:"6063-T6",
+        },
+    };
+    xgcxhModelList={
+        '01-CXGD-110*65*14':{
+            xgcxh:"01-CXGD-110*65*14",
+            xgcxl:14,
+            xgcl2:12,
+            xgcwx1:64849,
+            xgci:1483590,
+            xgce:70000,
+            xgcbh:7,
+        },
+        '01-CXGD-110*70*22':{
+            xgcxh:"01-CXGD-110*70*22",
+            xgcxl:12,
+            xgcl2:12,
+            xgcwx1:66138,
+            xgci:1761426,
+            xgce:70000,
+            xgcbh:7,
+        },
+    };
+</script>
+
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function janyan() {
+        $.ajax({
+            url: "/SuspensionCtrack/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
+                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+
+
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+        xgccl:function(){
+            return xgcclModelList[ xgcclModel ]['xgccl'];
+        },
+
+        xgrp:function(){
+            if( xgccl == "6005-T5" && xgcbh <= 6.3 ){
+                return 200 ;
+            }
+            else if ( xgccl == "6005-T5" &&  xgcbh > 6.3&& xgcbh < 25  ){
+                    return 200 ;
+            }
+            else if ( xgccl == "6005-T6" && xgcbh <= 5 ){
+                return 215 ;
+            }
+            else if ( xgccl == "6005-T6" && xgcbh > 5 && xgcbh < 15 ){
+                return 200 ;
+            }
+            else if ( xgccl == "6005A-T5" && xgcbh <= 6.3  ){
+                return 200 ;
+            }
+            else if ( xgccl == "6005A-T5" &&  xgcbh > 6.3&& xgcbh < 25  ){
+                return 200 ;
+            }
+            else if ( xgccl == "6005A-T6" && xgcbh <= 5  ){
+                return 215 ;
+            }
+            else if ( xgccl == "6005A-T6" && xgcbh > 5 && xgcbh < 15 ){
+                return 200 ;
+            }
+            else if ( xgccl == "6063-T5" && xgcbh <= 3  ){
+                return 130 ;
+            }
+            else if ( xgccl == "6063-T5" && xgcbh > 3 && xgcbh < 25 ){
+                return 110 ;
+            }
+            else if ( xgccl == "6063-T6" && xgcbh <= 10 ){
+                return 170 ;
+            }
+            else if ( xgccl == "6063-T6" && xgcbh > 10 && xgcbh < 25 ){
+                return 160 ;
+            }
+            else{
+                return " " ;
+            }
+        },
+        xgcxh:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcxh'];
+        },
+        xgcxl:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcxl'];
+        },
+        xgcl2:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcl2'];
+        },
+        xgcwx1:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcwx1'];
+        },
+        xgci:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgci'];
+        },
+        xgce:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgce'];
+        },
+        xgcbh:function(){
+            return xgcxhModelList[ xgcxhModel ]['xgcbh'];
+        },
+    };
+    data.init(calculateFunction);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/SuspensionCtrack/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+</body>
+</html>

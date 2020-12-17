@@ -13,6 +13,7 @@
     <link th:href="@{css/base.min.css}" rel="stylesheet"/>
     <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
     <script th:src="@{js/dataClass.js}" ></script>
+    <script th:src="@{js/axios.js}"></script>
     <style type="text/css">
         p{
             font-size: 17px;
@@ -90,680 +91,680 @@
 
     </style>
     <script>
-        trackModelList={
-            'I20b-31':{
-                gdxh:"I20b-31",
-                gdh:200,
-                gdb:102,
-                gdtw:9,
-                gdtfs:11.4,
-                gdtfx:11.4,
-                gdhw:154.2,
-                gdhy:22.9,
-                gdsy:146148,
-                gdiy:25000000,
-                gdiz:1690000,
-                gdwysel:250000,
-                gdwyxel:250000,
-                gdwzel:33100,
-            },
-            'I22b-36.5':{
-                gdxh:"I22b-36.5",
-                gdh:220,
-                gdb:112,
-                gdtw:9.5,
-                gdtfs:12.3,
-                gdtfx:12.3,
-                gdhw:170.8,
-                gdhy:24.6,
-                gdsy:189805,
-                gdiy:35700000,
-                gdiz:2390000,
-                gdwysel:325000,
-                gdwyxel:325000,
-                gdwzel:42700,
-            },
-            'I25b-42':{
-                gdxh:"I25b-42",
-                gdh:250,
-                gdb:118,
-                gdtw:10,
-                gdtfs:13,
-                gdtfx:13,
-                gdhw:198,
-                gdhy:26,
-                gdsy:246346,
-                gdiy:52800000,
-                gdiz:3090000,
-                gdwysel:423000,
-                gdwyxel:423000,
-                gdwzel:52400,
-            },
-            'I28b-47.8':{
-                gdxh:"I28b-47.8",
-                gdh:280,
-                gdb:124,
-                gdtw:10.5,
-                gdtfs:13.7,
-                gdtfx:13.7,
-                gdhw:225.4,
-                gdhy:27.3,
-                gdsy:312266,
-                gdiy:74800000,
-                gdiz:3790000,
-                gdwysel:534000,
-                gdwyxel:534000,
-                gdwzel:61200,
-            },
-            'I32b-57.7':{
-                gdxh:"I32b-57.7",
-                gdh:320,
-                gdb:132,
-                gdtw:11.5,
-                gdtfs:15,
-                gdtfx:15,
-                gdhw:260.4,
-                gdhy:29.8,
-                gdsy:426147,
-                gdiy:115000000,
-                gdiz:5020000,
-                gdwysel:726000,
-                gdwyxel:726000,
-                gdwzel:76000,
-            },
-            'H150*150-31.1':{
-                gdxh:"H150*150-31.1",
-                gdh:150,
-                gdb:150,
-                gdtw:7,
-                gdtfs:10,
-                gdtfx:10,
-                gdhw:114,
-                gdhy:18,
-                gdsy:121524,
-                gdiy:16200000,
-                gdiz:5630000,
-                gdwysel:216000,
-                gdwyxel:216000,
-                gdwzel:75100,
-            },
-            'H175*175-40.4':{
-                gdxh:"H175*175-40.4",
-                gdh:175,
-                gdb:175,
-                gdtw:7.5,
-                gdtfs:11,
-                gdtfx:11,
-                gdhw:127,
-                gdhy:24,
-                gdsy:185134,
-                gdiy:29180000,
-                gdiz:9830000,
-                gdwysel:334000,
-                gdwyxel:334000,
-                gdwzel:112000,
-            },
-            'H200*200-49.9':{
-                gdxh:"H200*200-49.9",
-                gdh:200,
-                gdb:200,
-                gdtw:8,
-                gdtfs:12,
-                gdtfx:12,
-                gdhw:150,
-                gdhy:25,
-                gdsy:262748,
-                gdiy:47170000,
-                gdiz:16010000,
-                gdwysel:472000,
-                gdwyxel:472000,
-                gdwzel:160000,
-            },
-            'H200*204-56.2':{
-                gdxh:"H200*204-56.2",
-                gdh:200,
-                gdb:204,
-                gdtw:12,
-                gdtfs:12,
-                gdtfx:12,
-                gdhw:150,
-                gdhy:25,
-                gdsy:282748,
-                gdiy:49800000,
-                gdiz:17000000,
-                gdwysel:498000,
-                gdwyxel:498000,
-                gdwzel:167000,
-            },
-            'H250*250-71.8':{
-                gdxh:"H250*250-71.8",
-                gdh:250,
-                gdb:250,
-                gdtw:9,
-                gdtfs:14,
-                gdtfx:14,
-                gdhw:196,
-                gdhy:27,
-                gdsy:476285,
-                gdiy:106890000,
-                gdiz:36480000,
-                gdwysel:855000,
-                gdwyxel:855000,
-                gdwzel:292000,
-            },
-            'H250*255-81.6':{
-                gdxh:"H250*255-81.6",
-                gdh:250,
-                gdb:255,
-                gdtw:14,
-                gdtfs:14,
-                gdtfx:14,
-                gdhw:196,
-                gdhy:27,
-                gdsy:515348,
-                gdiy:114000000,
-                gdiz:38800000,
-                gdwysel:912000,
-                gdwyxel:912000,
-                gdwzel:304000,
-            },
-            'H300*300-93':{
-                gdxh:"H300*300-93",
-                gdh:300,
-                gdb:300,
-                gdtw:10,
-                gdtfs:15,
-                gdtfx:15,
-                gdhw:244,
-                gdhy:28,
-                gdsy:741957,
-                gdiy:202000000,
-                gdiz:67500000,
-                gdwysel:1350000,
-                gdwyxel:1350000,
-                gdwzel:450000,
-            },
-            'H300*305-105':{
-                gdxh:"H300*305-105",
-                gdh:300,
-                gdb:305,
-                gdtw:15,
-                gdtfs:15,
-                gdtfx:15,
-                gdhw:244,
-                gdhy:28,
-                gdsy:798207,
-                gdiy:213000000,
-                gdiz:71000000,
-                gdwysel:1420000,
-                gdwyxel:1420000,
-                gdwzel:466000,
-            },
-            'H152*152-30(ISO)': {
-                gdxh: "H152*152-30(ISO)",
-                gdh:157.6,
-                gdb:152.9,
-                gdtw:6.5,
-                gdtfs:9.4,
-                gdtfx:9.4,
-                gdhw:123.6,
-                gdhy:17,
-                gdsy:123833,
-                gdiy:17480000,
-                gdiz:5600000,
-                gdwysel:222000,
-                gdwyxel:222000,
-                gdwzel:73300,
-            },
-            'H152*152-37(ISO)': {
-                gdxh: "H152*152-37(ISO)",
-                gdh:161.8,
-                gdb:154.4,
-                gdtw:8,
-                gdtfs:11.5,
-                gdtfx:11.5,
-                gdhw:123.6,
-                gdhy:19.1,
-                gdsy:154380,
-                gdiy:22100000,
-                gdiz:7060000,
-                gdwysel:273000,
-                gdwyxel:273000,
-                gdwzel:91500,
-            },
-            'H203*203-46(ISO)':{
-                gdxh:"H203*203-46(ISO)",
-                gdh:203.2,
-                gdb:203.6,
-                gdtw:7.2,
-                gdtfs:11,
-                gdtfx:11,
-                gdhw:160.8,
-                gdhy:21.2,
-                gdsy:248720,
-                gdiy:45680000,
-                gdiz:15480000,
-                gdwysel:450000,
-                gdwyxel:450000,
-                gdwzel:152000,
-            },
-            'H203*203-52(ISO)':{
-                gdxh:"H203*203-52(ISO)",
-                gdh:206.2,
-                gdb:204.3,
-                gdtw:7.9,
-                gdtfs:12.5,
-                gdtfx:12.5,
-                gdhw:160.8,
-                gdhy:22.7,
-                gdsy:283698,
-                gdiy:52590000,
-                gdiz:17780000,
-                gdwysel:510000,
-                gdwyxel:510000,
-                gdwzel:174000,
-            },
-            'H203*203-60(ISO)':{
-                gdxh:"H203*203-60(ISO)",
-                gdh:209.6,
-                gdb:205.8,
-                gdtw:9.4,
-                gdtfs:14.2,
-                gdtfx:14.2,
-                gdhw:160.8,
-                gdhy:24.4,
-                gdsy:328038,
-                gdiy:61250000,
-                gdiz:20650000,
-                gdwysel:584000,
-                gdwyxel:584000,
-                gdwzel:201000,
-            },
-            'H203*203-71(ISO)':{
-                gdxh:"H203*203-71(ISO)",
-                gdh:215.8,
-                gdb:206.4,
-                gdtw:10,
-                gdtfs:17.3,
-                gdtfx:17.3,
-                gdhw:160.8,
-                gdhy:27.5,
-                gdsy:399380,
-                gdiy:76180000,
-                gdiz:25370000,
-                gdwysel:706000,
-                gdwyxel:706000,
-                gdwzel:246000,
-            },
-            'H203*203-86(ISO)':{
-                gdxh:"H203*203-86(ISO)",
-                gdh:222.2,
-                gdb:209.1,
-                gdtw:12.7,
-                gdtfs:20.5,
-                gdtfx:20.5,
-                gdhw:160.8,
-                gdhy:30.7,
-                gdsy:488366,
-                gdiy:94490000,
-                gdiz:31270000,
-                gdwysel:850000,
-                gdwyxel:850000,
-                gdwzel:299000,
-            },
-            'H254*254-73(ISO)':{
-                gdxh:"H254*254-73(ISO)",
-                gdh:254.1,
-                gdb:254.6,
-                gdtw:8.6,
-                gdtfs:14.2,
-                gdtfx:14.2,
-                gdhw:200.3,
-                gdhy:26.9,
-                gdsy:496034,
-                gdiy:114100000,
-                gdiz:39080000,
-                gdwysel:898000,
-                gdwyxel:898000,
-                gdwzel:307000,
-            },
-            'H254*254-89(ISO)':{
-                gdxh:"H254*254-89(ISO)",
-                gdh:260.3,
-                gdb:256.3,
-                gdtw:10.3,
-                gdtfs:17.3,
-                gdtfx:17.3,
-                gdhw:200.3,
-                gdhy:30,
-                gdsy:611931,
-                gdiy:142700000,
-                gdiz:48570000,
-                gdwysel:1096000,
-                gdwyxel:1096000,
-                gdwzel:379000,
-            },
-            'H254*254-107(ISO)':{
-                gdxh:"H254*254-107(ISO)",
-                gdh:266.7,
-                gdb:258.8,
-                gdtw:12.8,
-                gdtfs:20.5,
-                gdtfx:20.5,
-                gdhw:200.3,
-                gdhy:33.2,
-                gdsy:742215,
-                gdiy:175100000,
-                gdiz:59280000,
-                gdwysel:1313000,
-                gdwyxel:1313000,
-                gdwzel:458000,
-            },
-            'H254*254-132(ISO)':{
-                gdxh:"H254*254-132(ISO)",
-                gdh:276.3,
-                gdb:261.3,
-                gdtw:15.3,
-                gdtfs:25.3,
-                gdtfx:25.3,
-                gdhw:200.3,
-                gdhy:38,
-                gdsy:934706,
-                gdiy:225300000,
-                gdiz:75310000,
-                gdwysel:1631000,
-                gdwyxel:1631000,
-                gdwzel:576000,
-            },
-            'H254*254-167(ISO)':{
-                gdxh:"H254*254-167(ISO)",
-                gdh:289.1,
-                gdb:265.2,
-                gdtw:19.2,
-                gdtfs:31.7,
-                gdtfx:31.7,
-                gdhw:200.3,
-                gdhy:44.4,
-                gdsy:1211833,
-                gdiy:300000000,
-                gdiz:98700000,
-                gdwysel:2075000,
-                gdwyxel:2075000,
-                gdwzel:744000,
-            },
-            'H305*305-97(ISO)':{
-                gdxh:"H305*305-97(ISO)",
-                gdh:307.9,
-                gdb:305.3,
-                gdtw:9.9,
-                gdtfs:15.4,
-                gdtfx:15.4,
-                gdhw:246.7,
-                gdhy:30.6,
-                gdsy:796035,
-                gdiy:222500000,
-                gdiz:73080000,
-                gdwysel:1445000,
-                gdwyxel:1445000,
-                gdwzel:479000,
-            },
-            'H305*305-118(ISO)':{
-                gdxh:"H305*305-118(ISO)",
-                gdh:314.5,
-                gdb:307.4,
-                gdtw:12,
-                gdtfs:18.7,
-                gdtfx:18.7,
-                gdhw:246.7,
-                gdhy:33.9,
-                gdsy:978764,
-                gdiy:276700000,
-                gdiz:90590000,
-                gdwysel:1760000,
-                gdwyxel:1760000,
-                gdwzel:589000,
-            },
-            'H305*305-137(ISO)':{
-                gdxh:"H305*305-137(ISO)",
-                gdh:320.5,
-                gdb:309.2,
-                gdtw:13.8,
-                gdtfs:21.7,
-                gdtfx:21.7,
-                gdhw:246.7,
-                gdhy:36.9,
-                gdsy:1148276,
-                gdiy:328100000,
-                gdiz:107000000,
-                gdwysel:2048000,
-                gdwyxel:2048000,
-                gdwzel:692000,
-            },
-            'H305*305-158(ISO)':{
-                gdxh:"H305*305-158(ISO)",
-                gdh:327.1,
-                gdb:311.2,
-                gdtw:15.8,
-                gdtfs:25,
-                gdtfx:25,
-                gdhw:246.7,
-                gdhy:40.2,
-                gdsy:1340221,
-                gdiy:387500000,
-                gdiz:125700000,
-                gdwysel:2369000,
-                gdwyxel:2369000,
-                gdwzel:808000,
-            },
-            'H200*200T-71':{
-                gdxh:"H200*200T-71",
-                gdh:216,
-                gdb:200,
-                gdtw:8,
-                gdtfs:28,
-                gdtfx:12,
-                gdhw:150,
-                gdhy:41,
-                gdsy:369789,
-                gdiy:69430000,
-                gdiz:22570000,
-                gdwysel:830000,
-                gdwyxel:524000,
-                gdwzel:226000,
-            },
-            'H250*250T-99':{
-                gdxh:"H250*250T-99",
-                gdh:266,
-                gdb:250,
-                gdtw:9,
-                gdtfs:30,
-                gdtfx:14,
-                gdhw:196,
-                gdhy:43,
-                gdsy:651448,
-                gdiy:152520000,
-                gdiz:50680000,
-                gdwysel:1466000,
-                gdwyxel:942000,
-                gdwzel:405000,
-            },
-            'PH216*200-84.7':{
-                gdxh:"PH216*200-84.7",
-                gdh:216,
-                gdb:200,
-                gdtw:10,
-                gdtfs:25,
-                gdtfx:20,
-                gdhw:171,
-                gdhy:25,
-                gdsy:474063,
-                gdiy:88980000,
-                gdiz:30030000,
-                gdwysel:855000,
-                gdwyxel:771000,
-                gdwzel:300000,
-            },
-            'PH266*250-128.1':{
-                gdxh:"PH266*250-128.1",
-                gdh:266,
-                gdb:250,
-                gdtw:12,
-                gdtfs:30,
-                gdtfx:25,
-                gdhw:211,
-                gdhy:30,
-                gdsy:889138,
-                gdiy:206050000,
-                gdiz:71660000,
-                gdwysel:1643000,
-                gdwyxel:1465000,
-                gdwzel:573000,
-            },
-            'PH200*200-90.7':{
-                gdxh:"PH200*200-90.7",
-                gdh:200,
-                gdb:200,
-                gdtw:16,
-                gdtfs:25,
-                gdtfx:20,
-                gdhw:155,
-                gdhy:25,
-                gdsy:508460,
-                gdiy:95590000,
-                gdiz:30080000,
-                gdwysel:925000,
-                gdwyxel:819000,
-                gdwzel:301000,
-            },
-            'PH220*170-82.6':{
-                gdxh:"PH220*170-82.6",
-                gdh:220,
-                gdb:170,
-                gdtw:16,
-                gdtfs:25,
-                gdtfx:20,
-                gdhw:175,
-                gdhy:25,
-                gdsy:442509,
-                gdiy:82520000,
-                gdiz:18500000,
-                gdwysel:796000,
-                gdwyxel:709000,
-                gdwzel:218000,
-            },
-            'PH250*200-117.4':{
-                gdxh:"PH250*200-117.4",
-                gdh:250,
-                gdb:200,
-                gdtw:20,
-                gdtfs:30,
-                gdtfx:25,
-                gdhw:195,
-                gdhy:30,
-                gdsy:710960,
-                gdiy:149770000,
-                gdiz:36820000,
-                gdwysel:1257000,
-                gdwyxel:1145000,
-                gdwzel:368000,
-            },
-            'PH250*250-104.2':{
-                gdxh:"PH250*250-104.2",
-                gdh:250,
-                gdb:250,
-                gdtw:16,
-                gdtfs:20,
-                gdtfx:20,
-                gdhw:210,
-                gdhy:20,
-                gdsy:663200,
-                gdiy:144930000,
-                gdiz:52160000,
-                gdwysel:1160000,
-                gdwyxel:1160000,
-                gdwzel:417000,
-            },
-            'PH250*250-113.3':{
-                gdxh:"PH250*250-113.3",
-                gdh:250,
-                gdb:250,
-                gdtw:16,
-                gdtfs:25,
-                gdtfx:20,
-                gdhw:205,
-                gdhy:25,
-                gdsy:718879,
-                gdiy:156240000,
-                gdiz:58660000,
-                gdwysel:1338000,
-                gdwyxel:1173000,
-                gdwzel:469000,
-            },
-            'PH250*250-138.8':{
-                gdxh:"PH250*250-138.8",
-                gdh:250,
-                gdb:250,
-                gdtw:20,
-                gdtfs:30,
-                gdtfx:25,
-                gdhw:195,
-                gdhy:30,
-                gdsy:862832,
-                gdiy:183720000,
-                gdiz:71770000,
-                gdwysel:1548000,
-                gdwyxel:1399000,
-                gdwzel:574000,
-            },
-            'PH300*250-146.6':{
-                gdxh:"PH300*250-146.6",
-                gdh:300,
-                gdb:250,
-                gdtw:20,
-                gdtfs:30,
-                gdtfx:25,
-                gdhw:245,
-                gdhy:30,
-                gdsy:1090998,
-                gdiy:281310000,
-                gdiz:71800000,
-                gdwysel:1974000,
-                gdwyxel:1786000,
-                gdwzel:574000,
-            },
-            'PH300*300-168.1':{
-                gdxh:"PH300*300-168.1",
-                gdh:300,
-                gdb:300,
-                gdtw:20,
-                gdtfs:30,
-                gdtfx:25,
-                gdhw:245,
-                gdhy:30,
-                gdsy:1276996,
-                gdiy:332150000,
-                gdiz:123940000,
-                gdwysel:2338000,
-                gdwyxel:2103000,
-                gdwzel:826000,
-            },
-            "其它":{
-                gdxh:" ",
-                gdh:" ",
-                gdb:" ",
-                gdtw:" ",
-                gdtfs:" ",
-                gdtfx:" ",
-                gdhw:" ",
-                gdhy:" ",
-                gdsy:" ",
-                gdiy:" ",
-                gdiz:" ",
-                gdwysel:" ",
-                gdwyxel:" ",
-                gdwzel:" ",
-            }
-        };
+        // trackModelList={
+        //     'I20b-31':{
+        //         gdxh:"I20b-31",
+        //         gdh:200,
+        //         gdb:102,
+        //         gdtw:9,
+        //         gdtfs:11.4,
+        //         gdtfx:11.4,
+        //         gdhw:154.2,
+        //         gdhy:22.9,
+        //         gdsy:146148,
+        //         gdiy:25000000,
+        //         gdiz:1690000,
+        //         gdwysel:250000,
+        //         gdwyxel:250000,
+        //         gdwzel:33100,
+        //     },
+        //     'I22b-36.5':{
+        //         gdxh:"I22b-36.5",
+        //         gdh:220,
+        //         gdb:112,
+        //         gdtw:9.5,
+        //         gdtfs:12.3,
+        //         gdtfx:12.3,
+        //         gdhw:170.8,
+        //         gdhy:24.6,
+        //         gdsy:189805,
+        //         gdiy:35700000,
+        //         gdiz:2390000,
+        //         gdwysel:325000,
+        //         gdwyxel:325000,
+        //         gdwzel:42700,
+        //     },
+        //     'I25b-42':{
+        //         gdxh:"I25b-42",
+        //         gdh:250,
+        //         gdb:118,
+        //         gdtw:10,
+        //         gdtfs:13,
+        //         gdtfx:13,
+        //         gdhw:198,
+        //         gdhy:26,
+        //         gdsy:246346,
+        //         gdiy:52800000,
+        //         gdiz:3090000,
+        //         gdwysel:423000,
+        //         gdwyxel:423000,
+        //         gdwzel:52400,
+        //     },
+        //     'I28b-47.8':{
+        //         gdxh:"I28b-47.8",
+        //         gdh:280,
+        //         gdb:124,
+        //         gdtw:10.5,
+        //         gdtfs:13.7,
+        //         gdtfx:13.7,
+        //         gdhw:225.4,
+        //         gdhy:27.3,
+        //         gdsy:312266,
+        //         gdiy:74800000,
+        //         gdiz:3790000,
+        //         gdwysel:534000,
+        //         gdwyxel:534000,
+        //         gdwzel:61200,
+        //     },
+        //     'I32b-57.7':{
+        //         gdxh:"I32b-57.7",
+        //         gdh:320,
+        //         gdb:132,
+        //         gdtw:11.5,
+        //         gdtfs:15,
+        //         gdtfx:15,
+        //         gdhw:260.4,
+        //         gdhy:29.8,
+        //         gdsy:426147,
+        //         gdiy:115000000,
+        //         gdiz:5020000,
+        //         gdwysel:726000,
+        //         gdwyxel:726000,
+        //         gdwzel:76000,
+        //     },
+        //     'H150*150-31.1':{
+        //         gdxh:"H150*150-31.1",
+        //         gdh:150,
+        //         gdb:150,
+        //         gdtw:7,
+        //         gdtfs:10,
+        //         gdtfx:10,
+        //         gdhw:114,
+        //         gdhy:18,
+        //         gdsy:121524,
+        //         gdiy:16200000,
+        //         gdiz:5630000,
+        //         gdwysel:216000,
+        //         gdwyxel:216000,
+        //         gdwzel:75100,
+        //     },
+        //     'H175*175-40.4':{
+        //         gdxh:"H175*175-40.4",
+        //         gdh:175,
+        //         gdb:175,
+        //         gdtw:7.5,
+        //         gdtfs:11,
+        //         gdtfx:11,
+        //         gdhw:127,
+        //         gdhy:24,
+        //         gdsy:185134,
+        //         gdiy:29180000,
+        //         gdiz:9830000,
+        //         gdwysel:334000,
+        //         gdwyxel:334000,
+        //         gdwzel:112000,
+        //     },
+        //     'H200*200-49.9':{
+        //         gdxh:"H200*200-49.9",
+        //         gdh:200,
+        //         gdb:200,
+        //         gdtw:8,
+        //         gdtfs:12,
+        //         gdtfx:12,
+        //         gdhw:150,
+        //         gdhy:25,
+        //         gdsy:262748,
+        //         gdiy:47170000,
+        //         gdiz:16010000,
+        //         gdwysel:472000,
+        //         gdwyxel:472000,
+        //         gdwzel:160000,
+        //     },
+        //     'H200*204-56.2':{
+        //         gdxh:"H200*204-56.2",
+        //         gdh:200,
+        //         gdb:204,
+        //         gdtw:12,
+        //         gdtfs:12,
+        //         gdtfx:12,
+        //         gdhw:150,
+        //         gdhy:25,
+        //         gdsy:282748,
+        //         gdiy:49800000,
+        //         gdiz:17000000,
+        //         gdwysel:498000,
+        //         gdwyxel:498000,
+        //         gdwzel:167000,
+        //     },
+        //     'H250*250-71.8':{
+        //         gdxh:"H250*250-71.8",
+        //         gdh:250,
+        //         gdb:250,
+        //         gdtw:9,
+        //         gdtfs:14,
+        //         gdtfx:14,
+        //         gdhw:196,
+        //         gdhy:27,
+        //         gdsy:476285,
+        //         gdiy:106890000,
+        //         gdiz:36480000,
+        //         gdwysel:855000,
+        //         gdwyxel:855000,
+        //         gdwzel:292000,
+        //     },
+        //     'H250*255-81.6':{
+        //         gdxh:"H250*255-81.6",
+        //         gdh:250,
+        //         gdb:255,
+        //         gdtw:14,
+        //         gdtfs:14,
+        //         gdtfx:14,
+        //         gdhw:196,
+        //         gdhy:27,
+        //         gdsy:515348,
+        //         gdiy:114000000,
+        //         gdiz:38800000,
+        //         gdwysel:912000,
+        //         gdwyxel:912000,
+        //         gdwzel:304000,
+        //     },
+        //     'H300*300-93':{
+        //         gdxh:"H300*300-93",
+        //         gdh:300,
+        //         gdb:300,
+        //         gdtw:10,
+        //         gdtfs:15,
+        //         gdtfx:15,
+        //         gdhw:244,
+        //         gdhy:28,
+        //         gdsy:741957,
+        //         gdiy:202000000,
+        //         gdiz:67500000,
+        //         gdwysel:1350000,
+        //         gdwyxel:1350000,
+        //         gdwzel:450000,
+        //     },
+        //     'H300*305-105':{
+        //         gdxh:"H300*305-105",
+        //         gdh:300,
+        //         gdb:305,
+        //         gdtw:15,
+        //         gdtfs:15,
+        //         gdtfx:15,
+        //         gdhw:244,
+        //         gdhy:28,
+        //         gdsy:798207,
+        //         gdiy:213000000,
+        //         gdiz:71000000,
+        //         gdwysel:1420000,
+        //         gdwyxel:1420000,
+        //         gdwzel:466000,
+        //     },
+        //     'H152*152-30(ISO)': {
+        //         gdxh: "H152*152-30(ISO)",
+        //         gdh:157.6,
+        //         gdb:152.9,
+        //         gdtw:6.5,
+        //         gdtfs:9.4,
+        //         gdtfx:9.4,
+        //         gdhw:123.6,
+        //         gdhy:17,
+        //         gdsy:123833,
+        //         gdiy:17480000,
+        //         gdiz:5600000,
+        //         gdwysel:222000,
+        //         gdwyxel:222000,
+        //         gdwzel:73300,
+        //     },
+        //     'H152*152-37(ISO)': {
+        //         gdxh: "H152*152-37(ISO)",
+        //         gdh:161.8,
+        //         gdb:154.4,
+        //         gdtw:8,
+        //         gdtfs:11.5,
+        //         gdtfx:11.5,
+        //         gdhw:123.6,
+        //         gdhy:19.1,
+        //         gdsy:154380,
+        //         gdiy:22100000,
+        //         gdiz:7060000,
+        //         gdwysel:273000,
+        //         gdwyxel:273000,
+        //         gdwzel:91500,
+        //     },
+        //     'H203*203-46(ISO)':{
+        //         gdxh:"H203*203-46(ISO)",
+        //         gdh:203.2,
+        //         gdb:203.6,
+        //         gdtw:7.2,
+        //         gdtfs:11,
+        //         gdtfx:11,
+        //         gdhw:160.8,
+        //         gdhy:21.2,
+        //         gdsy:248720,
+        //         gdiy:45680000,
+        //         gdiz:15480000,
+        //         gdwysel:450000,
+        //         gdwyxel:450000,
+        //         gdwzel:152000,
+        //     },
+        //     'H203*203-52(ISO)':{
+        //         gdxh:"H203*203-52(ISO)",
+        //         gdh:206.2,
+        //         gdb:204.3,
+        //         gdtw:7.9,
+        //         gdtfs:12.5,
+        //         gdtfx:12.5,
+        //         gdhw:160.8,
+        //         gdhy:22.7,
+        //         gdsy:283698,
+        //         gdiy:52590000,
+        //         gdiz:17780000,
+        //         gdwysel:510000,
+        //         gdwyxel:510000,
+        //         gdwzel:174000,
+        //     },
+        //     'H203*203-60(ISO)':{
+        //         gdxh:"H203*203-60(ISO)",
+        //         gdh:209.6,
+        //         gdb:205.8,
+        //         gdtw:9.4,
+        //         gdtfs:14.2,
+        //         gdtfx:14.2,
+        //         gdhw:160.8,
+        //         gdhy:24.4,
+        //         gdsy:328038,
+        //         gdiy:61250000,
+        //         gdiz:20650000,
+        //         gdwysel:584000,
+        //         gdwyxel:584000,
+        //         gdwzel:201000,
+        //     },
+        //     'H203*203-71(ISO)':{
+        //         gdxh:"H203*203-71(ISO)",
+        //         gdh:215.8,
+        //         gdb:206.4,
+        //         gdtw:10,
+        //         gdtfs:17.3,
+        //         gdtfx:17.3,
+        //         gdhw:160.8,
+        //         gdhy:27.5,
+        //         gdsy:399380,
+        //         gdiy:76180000,
+        //         gdiz:25370000,
+        //         gdwysel:706000,
+        //         gdwyxel:706000,
+        //         gdwzel:246000,
+        //     },
+        //     'H203*203-86(ISO)':{
+        //         gdxh:"H203*203-86(ISO)",
+        //         gdh:222.2,
+        //         gdb:209.1,
+        //         gdtw:12.7,
+        //         gdtfs:20.5,
+        //         gdtfx:20.5,
+        //         gdhw:160.8,
+        //         gdhy:30.7,
+        //         gdsy:488366,
+        //         gdiy:94490000,
+        //         gdiz:31270000,
+        //         gdwysel:850000,
+        //         gdwyxel:850000,
+        //         gdwzel:299000,
+        //     },
+        //     'H254*254-73(ISO)':{
+        //         gdxh:"H254*254-73(ISO)",
+        //         gdh:254.1,
+        //         gdb:254.6,
+        //         gdtw:8.6,
+        //         gdtfs:14.2,
+        //         gdtfx:14.2,
+        //         gdhw:200.3,
+        //         gdhy:26.9,
+        //         gdsy:496034,
+        //         gdiy:114100000,
+        //         gdiz:39080000,
+        //         gdwysel:898000,
+        //         gdwyxel:898000,
+        //         gdwzel:307000,
+        //     },
+        //     'H254*254-89(ISO)':{
+        //         gdxh:"H254*254-89(ISO)",
+        //         gdh:260.3,
+        //         gdb:256.3,
+        //         gdtw:10.3,
+        //         gdtfs:17.3,
+        //         gdtfx:17.3,
+        //         gdhw:200.3,
+        //         gdhy:30,
+        //         gdsy:611931,
+        //         gdiy:142700000,
+        //         gdiz:48570000,
+        //         gdwysel:1096000,
+        //         gdwyxel:1096000,
+        //         gdwzel:379000,
+        //     },
+        //     'H254*254-107(ISO)':{
+        //         gdxh:"H254*254-107(ISO)",
+        //         gdh:266.7,
+        //         gdb:258.8,
+        //         gdtw:12.8,
+        //         gdtfs:20.5,
+        //         gdtfx:20.5,
+        //         gdhw:200.3,
+        //         gdhy:33.2,
+        //         gdsy:742215,
+        //         gdiy:175100000,
+        //         gdiz:59280000,
+        //         gdwysel:1313000,
+        //         gdwyxel:1313000,
+        //         gdwzel:458000,
+        //     },
+        //     'H254*254-132(ISO)':{
+        //         gdxh:"H254*254-132(ISO)",
+        //         gdh:276.3,
+        //         gdb:261.3,
+        //         gdtw:15.3,
+        //         gdtfs:25.3,
+        //         gdtfx:25.3,
+        //         gdhw:200.3,
+        //         gdhy:38,
+        //         gdsy:934706,
+        //         gdiy:225300000,
+        //         gdiz:75310000,
+        //         gdwysel:1631000,
+        //         gdwyxel:1631000,
+        //         gdwzel:576000,
+        //     },
+        //     'H254*254-167(ISO)':{
+        //         gdxh:"H254*254-167(ISO)",
+        //         gdh:289.1,
+        //         gdb:265.2,
+        //         gdtw:19.2,
+        //         gdtfs:31.7,
+        //         gdtfx:31.7,
+        //         gdhw:200.3,
+        //         gdhy:44.4,
+        //         gdsy:1211833,
+        //         gdiy:300000000,
+        //         gdiz:98700000,
+        //         gdwysel:2075000,
+        //         gdwyxel:2075000,
+        //         gdwzel:744000,
+        //     },
+        //     'H305*305-97(ISO)':{
+        //         gdxh:"H305*305-97(ISO)",
+        //         gdh:307.9,
+        //         gdb:305.3,
+        //         gdtw:9.9,
+        //         gdtfs:15.4,
+        //         gdtfx:15.4,
+        //         gdhw:246.7,
+        //         gdhy:30.6,
+        //         gdsy:796035,
+        //         gdiy:222500000,
+        //         gdiz:73080000,
+        //         gdwysel:1445000,
+        //         gdwyxel:1445000,
+        //         gdwzel:479000,
+        //     },
+        //     'H305*305-118(ISO)':{
+        //         gdxh:"H305*305-118(ISO)",
+        //         gdh:314.5,
+        //         gdb:307.4,
+        //         gdtw:12,
+        //         gdtfs:18.7,
+        //         gdtfx:18.7,
+        //         gdhw:246.7,
+        //         gdhy:33.9,
+        //         gdsy:978764,
+        //         gdiy:276700000,
+        //         gdiz:90590000,
+        //         gdwysel:1760000,
+        //         gdwyxel:1760000,
+        //         gdwzel:589000,
+        //     },
+        //     'H305*305-137(ISO)':{
+        //         gdxh:"H305*305-137(ISO)",
+        //         gdh:320.5,
+        //         gdb:309.2,
+        //         gdtw:13.8,
+        //         gdtfs:21.7,
+        //         gdtfx:21.7,
+        //         gdhw:246.7,
+        //         gdhy:36.9,
+        //         gdsy:1148276,
+        //         gdiy:328100000,
+        //         gdiz:107000000,
+        //         gdwysel:2048000,
+        //         gdwyxel:2048000,
+        //         gdwzel:692000,
+        //     },
+        //     'H305*305-158(ISO)':{
+        //         gdxh:"H305*305-158(ISO)",
+        //         gdh:327.1,
+        //         gdb:311.2,
+        //         gdtw:15.8,
+        //         gdtfs:25,
+        //         gdtfx:25,
+        //         gdhw:246.7,
+        //         gdhy:40.2,
+        //         gdsy:1340221,
+        //         gdiy:387500000,
+        //         gdiz:125700000,
+        //         gdwysel:2369000,
+        //         gdwyxel:2369000,
+        //         gdwzel:808000,
+        //     },
+        //     'H200*200T-71':{
+        //         gdxh:"H200*200T-71",
+        //         gdh:216,
+        //         gdb:200,
+        //         gdtw:8,
+        //         gdtfs:28,
+        //         gdtfx:12,
+        //         gdhw:150,
+        //         gdhy:41,
+        //         gdsy:369789,
+        //         gdiy:69430000,
+        //         gdiz:22570000,
+        //         gdwysel:830000,
+        //         gdwyxel:524000,
+        //         gdwzel:226000,
+        //     },
+        //     'H250*250T-99':{
+        //         gdxh:"H250*250T-99",
+        //         gdh:266,
+        //         gdb:250,
+        //         gdtw:9,
+        //         gdtfs:30,
+        //         gdtfx:14,
+        //         gdhw:196,
+        //         gdhy:43,
+        //         gdsy:651448,
+        //         gdiy:152520000,
+        //         gdiz:50680000,
+        //         gdwysel:1466000,
+        //         gdwyxel:942000,
+        //         gdwzel:405000,
+        //     },
+        //     'PH216*200-84.7':{
+        //         gdxh:"PH216*200-84.7",
+        //         gdh:216,
+        //         gdb:200,
+        //         gdtw:10,
+        //         gdtfs:25,
+        //         gdtfx:20,
+        //         gdhw:171,
+        //         gdhy:25,
+        //         gdsy:474063,
+        //         gdiy:88980000,
+        //         gdiz:30030000,
+        //         gdwysel:855000,
+        //         gdwyxel:771000,
+        //         gdwzel:300000,
+        //     },
+        //     'PH266*250-128.1':{
+        //         gdxh:"PH266*250-128.1",
+        //         gdh:266,
+        //         gdb:250,
+        //         gdtw:12,
+        //         gdtfs:30,
+        //         gdtfx:25,
+        //         gdhw:211,
+        //         gdhy:30,
+        //         gdsy:889138,
+        //         gdiy:206050000,
+        //         gdiz:71660000,
+        //         gdwysel:1643000,
+        //         gdwyxel:1465000,
+        //         gdwzel:573000,
+        //     },
+        //     'PH200*200-90.7':{
+        //         gdxh:"PH200*200-90.7",
+        //         gdh:200,
+        //         gdb:200,
+        //         gdtw:16,
+        //         gdtfs:25,
+        //         gdtfx:20,
+        //         gdhw:155,
+        //         gdhy:25,
+        //         gdsy:508460,
+        //         gdiy:95590000,
+        //         gdiz:30080000,
+        //         gdwysel:925000,
+        //         gdwyxel:819000,
+        //         gdwzel:301000,
+        //     },
+        //     'PH220*170-82.6':{
+        //         gdxh:"PH220*170-82.6",
+        //         gdh:220,
+        //         gdb:170,
+        //         gdtw:16,
+        //         gdtfs:25,
+        //         gdtfx:20,
+        //         gdhw:175,
+        //         gdhy:25,
+        //         gdsy:442509,
+        //         gdiy:82520000,
+        //         gdiz:18500000,
+        //         gdwysel:796000,
+        //         gdwyxel:709000,
+        //         gdwzel:218000,
+        //     },
+        //     'PH250*200-117.4':{
+        //         gdxh:"PH250*200-117.4",
+        //         gdh:250,
+        //         gdb:200,
+        //         gdtw:20,
+        //         gdtfs:30,
+        //         gdtfx:25,
+        //         gdhw:195,
+        //         gdhy:30,
+        //         gdsy:710960,
+        //         gdiy:149770000,
+        //         gdiz:36820000,
+        //         gdwysel:1257000,
+        //         gdwyxel:1145000,
+        //         gdwzel:368000,
+        //     },
+        //     'PH250*250-104.2':{
+        //         gdxh:"PH250*250-104.2",
+        //         gdh:250,
+        //         gdb:250,
+        //         gdtw:16,
+        //         gdtfs:20,
+        //         gdtfx:20,
+        //         gdhw:210,
+        //         gdhy:20,
+        //         gdsy:663200,
+        //         gdiy:144930000,
+        //         gdiz:52160000,
+        //         gdwysel:1160000,
+        //         gdwyxel:1160000,
+        //         gdwzel:417000,
+        //     },
+        //     'PH250*250-113.3':{
+        //         gdxh:"PH250*250-113.3",
+        //         gdh:250,
+        //         gdb:250,
+        //         gdtw:16,
+        //         gdtfs:25,
+        //         gdtfx:20,
+        //         gdhw:205,
+        //         gdhy:25,
+        //         gdsy:718879,
+        //         gdiy:156240000,
+        //         gdiz:58660000,
+        //         gdwysel:1338000,
+        //         gdwyxel:1173000,
+        //         gdwzel:469000,
+        //     },
+        //     'PH250*250-138.8':{
+        //         gdxh:"PH250*250-138.8",
+        //         gdh:250,
+        //         gdb:250,
+        //         gdtw:20,
+        //         gdtfs:30,
+        //         gdtfx:25,
+        //         gdhw:195,
+        //         gdhy:30,
+        //         gdsy:862832,
+        //         gdiy:183720000,
+        //         gdiz:71770000,
+        //         gdwysel:1548000,
+        //         gdwyxel:1399000,
+        //         gdwzel:574000,
+        //     },
+        //     'PH300*250-146.6':{
+        //         gdxh:"PH300*250-146.6",
+        //         gdh:300,
+        //         gdb:250,
+        //         gdtw:20,
+        //         gdtfs:30,
+        //         gdtfx:25,
+        //         gdhw:245,
+        //         gdhy:30,
+        //         gdsy:1090998,
+        //         gdiy:281310000,
+        //         gdiz:71800000,
+        //         gdwysel:1974000,
+        //         gdwyxel:1786000,
+        //         gdwzel:574000,
+        //     },
+        //     'PH300*300-168.1':{
+        //         gdxh:"PH300*300-168.1",
+        //         gdh:300,
+        //         gdb:300,
+        //         gdtw:20,
+        //         gdtfs:30,
+        //         gdtfx:25,
+        //         gdhw:245,
+        //         gdhy:30,
+        //         gdsy:1276996,
+        //         gdiy:332150000,
+        //         gdiz:123940000,
+        //         gdwysel:2338000,
+        //         gdwyxel:2103000,
+        //         gdwzel:826000,
+        //     },
+        //     "其它":{
+        //         gdxh:" ",
+        //         gdh:" ",
+        //         gdb:" ",
+        //         gdtw:" ",
+        //         gdtfs:" ",
+        //         gdtfx:" ",
+        //         gdhw:" ",
+        //         gdhy:" ",
+        //         gdsy:" ",
+        //         gdiy:" ",
+        //         gdiz:" ",
+        //         gdwysel:" ",
+        //         gdwyxel:" ",
+        //         gdwzel:" ",
+        //     }
+        // };
         steelModelList={
             "Q235B":{
                 gcph:"Q235B",
@@ -776,36 +777,36 @@
                 gdshzr:800,
             }
         };
-        trippingModelList={
-            "160LZ":{
-                dcw:160,
-                bcw:50,
-            },
-            "170LZ":{
-                dcw:170,
-                bcw:60,
-            },
-            "200LZ":{
-                dcw:220,
-                bcw:65,
-            },
-            "230LZ":{
-                dcw:230,
-                bcw:65,
-            },
-            "260LZ":{
-                dcw:260,
-                bcw:75,
-            },
-            "350":{
-                dcw:350,
-                bcw:85,
-            },
-            "450":{
-                dcw:450,
-                bcw:120,
-            },
-        };
+        // trippingModelList={
+        //     "160LZ":{
+        //         dcw:160,
+        //         bcw:50,
+        //     },
+        //     "170LZ":{
+        //         dcw:170,
+        //         bcw:60,
+        //     },
+        //     "200LZ":{
+        //         dcw:220,
+        //         bcw:65,
+        //     },
+        //     "230LZ":{
+        //         dcw:230,
+        //         bcw:65,
+        //     },
+        //     "260LZ":{
+        //         dcw:260,
+        //         bcw:75,
+        //     },
+        //     "350":{
+        //         dcw:350,
+        //         bcw:85,
+        //     },
+        //     "450":{
+        //         dcw:450,
+        //         bcw:120,
+        //     },
+        // };
     </script>
     <script type="text/javascript">
         function isNumber(value) {         //验证是否为数字
@@ -945,13 +946,13 @@
                     <td colspan="3">
                         <select name="trippingModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="160LZ">160LZ</option>
-                            <option value="170LZ">170LZ</option>
-                            <option value="200LZ">200LZ</option>
-                            <option value="230LZ">230LZ</option>
-                            <option value="260LZ">260LZ</option>
-                            <option value="350">350</option>
-                            <option value="450">450</option>
+                            <!--<option value="160LZ">160LZ</option>-->
+                            <!--<option value="170LZ">170LZ</option>-->
+                            <!--<option value="200LZ">200LZ</option>-->
+                            <!--<option value="230LZ">230LZ</option>-->
+                            <!--<option value="260LZ">260LZ</option>-->
+                            <!--<option value="350">350</option>-->
+                            <!--<option value="450">450</option>-->
                         </select>
                     </td>
                 </tr>
@@ -1060,47 +1061,47 @@
                     <td colspan="3">
                         <select name="trackModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="I20b-31">I20b-31</option>
-                            <option value="I22b-36.5">I22b-36.5</option>
-                            <option value="I25b-42">I25b-42</option>
-                            <option value="I28b-47.8">I28b-47.8</option>
-                            <option value="I32b-57.7">I32b-57.7</option>
-                            <option value="H150*150-31.1">H150*150-31.1</option>
-                            <option value="H175*175-40.4">H175*175-40.4</option>
-                            <option value="H200*200-49.9">H200*200-49.9</option>
-                            <option value="H200*204-56.2">H200*204-56.2</option>
-                            <option value="H250*250-71.8">H250*250-71.8</option>
-                            <option value="H250*255-81.6">H250*255-81.6</option>
-                            <option value="H300*300-93">H300*300-93</option>
-                            <option value="H300*305-105">H300*305-105</option>
-                            <option value="H152*152-30(ISO)">H152*152-30(ISO)</option>
-                            <option value="H152*152-37(ISO)">H152*152-37(ISO)</option>
-                            <option value="H203*203-46(ISO)">H203*203-46(ISO)</option>
-                            <option value="H203*203-52(ISO)">H203*203-52(ISO)</option>
-                            <option value="H203*203-60(ISO)">H203*203-60(ISO)</option>
-                            <option value="H203*203-71(ISO)">H203*203-71(ISO)</option>
-                            <option value="H203*203-86(ISO)">H203*203-86(ISO)</option>
-                            <option value="H254*254-73(ISO)">H254*254-73(ISO)</option>
-                            <option value="H254*254-89(ISO)">H254*254-89(ISO)</option>
-                            <option value="H254*254-107(ISO)">H254*254-107(ISO)</option>
-                            <option value="H254*254-132(ISO)">H254*254-132(ISO)</option>
-                            <option value="H254*254-167(ISO)">H254*254-167(ISO)</option>
-                            <option value="H305*305-97(ISO)">H305*305-97(ISO)</option>
-                            <option value="H305*305-118(ISO)">H305*305-118(ISO)</option>
-                            <option value="H305*305-137(ISO)">H305*305-137(ISO)</option>
-                            <option value="H305*305-158(ISO)">H305*305-158(ISO)</option>
-                            <option value="H200*200T-71">H200*200T-71</option>
-                            <option value="H250*250T-99">H250*250T-99</option>
-                            <option value="PH216*200-84.7">PH216*200-84.7</option>
-                            <option value="PH266*250-128.1">PH266*250-128.1</option>
-                            <option value="PH200*200-90.7">PH200*200-90.7</option>
-                            <option value="PH220*170-82.6">PH220*170-82.6</option>
-                            <option value="PH250*200-117.4">PH250*200-117.4</option>
-                            <option value="PH250*250-104.2">PH250*250-104.2</option>
-                            <option value="PH250*250-113.3">PH250*250-113.3</option>
-                            <option value="PH250*250-138.8">PH250*250-138.8</option>
-                            <option value="PH300*250-146.6">PH300*250-146.6</option>
-                            <option value="PH300*300-168.1">PH300*300-168.1</option>
+                            <!--<option value="I20b-31">I20b-31</option>-->
+                            <!--<option value="I22b-36.5">I22b-36.5</option>-->
+                            <!--<option value="I25b-42">I25b-42</option>-->
+                            <!--<option value="I28b-47.8">I28b-47.8</option>-->
+                            <!--<option value="I32b-57.7">I32b-57.7</option>-->
+                            <!--<option value="H150*150-31.1">H150*150-31.1</option>-->
+                            <!--<option value="H175*175-40.4">H175*175-40.4</option>-->
+                            <!--<option value="H200*200-49.9">H200*200-49.9</option>-->
+                            <!--<option value="H200*204-56.2">H200*204-56.2</option>-->
+                            <!--<option value="H250*250-71.8">H250*250-71.8</option>-->
+                            <!--<option value="H250*255-81.6">H250*255-81.6</option>-->
+                            <!--<option value="H300*300-93">H300*300-93</option>-->
+                            <!--<option value="H300*305-105">H300*305-105</option>-->
+                            <!--<option value="H152*152-30(ISO)">H152*152-30(ISO)</option>-->
+                            <!--<option value="H152*152-37(ISO)">H152*152-37(ISO)</option>-->
+                            <!--<option value="H203*203-46(ISO)">H203*203-46(ISO)</option>-->
+                            <!--<option value="H203*203-52(ISO)">H203*203-52(ISO)</option>-->
+                            <!--<option value="H203*203-60(ISO)">H203*203-60(ISO)</option>-->
+                            <!--<option value="H203*203-71(ISO)">H203*203-71(ISO)</option>-->
+                            <!--<option value="H203*203-86(ISO)">H203*203-86(ISO)</option>-->
+                            <!--<option value="H254*254-73(ISO)">H254*254-73(ISO)</option>-->
+                            <!--<option value="H254*254-89(ISO)">H254*254-89(ISO)</option>-->
+                            <!--<option value="H254*254-107(ISO)">H254*254-107(ISO)</option>-->
+                            <!--<option value="H254*254-132(ISO)">H254*254-132(ISO)</option>-->
+                            <!--<option value="H254*254-167(ISO)">H254*254-167(ISO)</option>-->
+                            <!--<option value="H305*305-97(ISO)">H305*305-97(ISO)</option>-->
+                            <!--<option value="H305*305-118(ISO)">H305*305-118(ISO)</option>-->
+                            <!--<option value="H305*305-137(ISO)">H305*305-137(ISO)</option>-->
+                            <!--<option value="H305*305-158(ISO)">H305*305-158(ISO)</option>-->
+                            <!--<option value="H200*200T-71">H200*200T-71</option>-->
+                            <!--<option value="H250*250T-99">H250*250T-99</option>-->
+                            <!--<option value="PH216*200-84.7">PH216*200-84.7</option>-->
+                            <!--<option value="PH266*250-128.1">PH266*250-128.1</option>-->
+                            <!--<option value="PH200*200-90.7">PH200*200-90.7</option>-->
+                            <!--<option value="PH220*170-82.6">PH220*170-82.6</option>-->
+                            <!--<option value="PH250*200-117.4">PH250*200-117.4</option>-->
+                            <!--<option value="PH250*250-104.2">PH250*250-104.2</option>-->
+                            <!--<option value="PH250*250-113.3">PH250*250-113.3</option>-->
+                            <!--<option value="PH250*250-138.8">PH250*250-138.8</option>-->
+                            <!--<option value="PH300*250-146.6">PH300*250-146.6</option>-->
+                            <!--<option value="PH300*300-168.1">PH300*300-168.1</option>-->
                             <option value="其它">其它</option>
                         </select>
                         <script>
@@ -1287,6 +1288,15 @@
                 </tr>
             </table>
         </div>
+
+        <div style="display: none">
+            <input type="text" name="gdiyc" />
+            <input type="text" name="gdizc" />
+            <input type="text" name="gdwyselc" />
+            <input type="text" name="gdwyxelc" />
+            <input type="text" name="gdwzelc" />
+        </div>
+
         <input type="hidden" name="pdfType"/>
     </form>
     <div class="navbox">
@@ -1441,77 +1451,94 @@
         vyedk:function(){
             return 1.5 * vyk ;
         },
-        dcw:function(){
-            return trippingModelList[ trippingModel ]['dcw'];
-        },
-        bcw:function(){
-            return trippingModelList[ trippingModel ]['bcw'];
-        },
-        gdxh:function(){
-            return trackModelList[ trackModel ]['gdxh'];
-        },
-        gcph:function(){
-            return steelModelList[ steelModel ]['gcph'];
-        },
-        gdh:function(){
-            return trackModelList[ trackModel ]['gdh'];
-        },
-        gdb:function(){
-            return trackModelList[ trackModel ]['gdb'];
-        },
-        gdtw:function(){
-            return trackModelList[ trackModel ]['gdtw'];
-        },
-        gdtfs:function(){
-            return trackModelList[ trackModel ]['gdtfs'];
-        },
-        gdtfx:function(){
-            return trackModelList[ trackModel ]['gdtfx'];
-        },
-        gdhw:function(){
-            return trackModelList[ trackModel ]['gdhw'];
-        },
-        gdhy:function(){
-            return trackModelList[ trackModel ]['gdhy'];
-        },
-        gdsy:function(){
-            return trackModelList[ trackModel ]['gdsy'];
-        },
+
         gdiy:function(){
-            return trackModelList[ trackModel ]['gdiy'];
+            return gdiyc * 10000 ;
         },
         gdiz:function(){
-            return trackModelList[ trackModel ]['gdiz'];
+            return gdizc * 10000 ;
         },
         gdwysel:function(){
-            return trackModelList[ trackModel ]['gdwysel'];
+            return gdwyselc * 1000 ;
         },
         gdwyxel:function(){
-            return trackModelList[ trackModel ]['gdwyxel'];
+            return gdwyxelc * 1000 ;
         },
         gdwzel:function(){
-            return trackModelList[ trackModel ]['gdwzel'];
+            return gdwzelc * 1000 ;
         },
-        gdz:function(){
-            switch( trackModel ){
-                case 'H200*200T-71':return 132.38;
-                case 'H250*250T-99':return 161.97;
-                case 'PH216*200-84.7' :return 115.45;
-                case 'PH266*250-128.1' :return 140.62;
-                case 'PH200*200-90.7' :return 116.71;
-                case 'PH220*170-82.6' :return 116.32;
-                case 'PH250*200-117.4' :return 130.8;
-                case 'PH250*250-104.2' :return 125;
-                case 'PH250*250-113.3' :return 133.25;
-                case 'PH250*250-138.8' :return 131.28;
-                case 'PH300*250-146.6' :return 157.48;
-                case 'PH300*300-168.1' :return 157.94;
-                case '其它':return ' ';
-                default :return gdh / 2 ;
-            }
-        },
-        gdy:function(){
-            return gdb /2;
+
+        // dcw:function(){
+        //     return trippingModelList[ trippingModel ]['dcw'];
+        // },
+        // bcw:function(){
+        //     return trippingModelList[ trippingModel ]['bcw'];
+        // },
+        // gdxh:function(){
+        //     return trackModelList[ trackModel ]['gdxh'];
+        // },
+        // gdh:function(){
+        //     return trackModelList[ trackModel ]['gdh'];
+        // },
+        // gdb:function(){
+        //     return trackModelList[ trackModel ]['gdb'];
+        // },
+        // gdtw:function(){
+        //     return trackModelList[ trackModel ]['gdtw'];
+        // },
+        // gdtfs:function(){
+        //     return trackModelList[ trackModel ]['gdtfs'];
+        // },
+        // gdtfx:function(){
+        //     return trackModelList[ trackModel ]['gdtfx'];
+        // },
+        // gdhw:function(){
+        //     return trackModelList[ trackModel ]['gdhw'];
+        // },
+        // gdhy:function(){
+        //     return trackModelList[ trackModel ]['gdhy'];
+        // },
+        // gdsy:function(){
+        //     return trackModelList[ trackModel ]['gdsy'];
+        // },
+        // gdiy:function(){
+        //     return trackModelList[ trackModel ]['gdiy'];
+        // },
+        // gdiz:function(){
+        //     return trackModelList[ trackModel ]['gdiz'];
+        // },
+        // gdwysel:function(){
+        //     return trackModelList[ trackModel ]['gdwysel'];
+        // },
+        // gdwyxel:function(){
+        //     return trackModelList[ trackModel ]['gdwyxel'];
+        // },
+        // gdwzel:function(){
+        //     return trackModelList[ trackModel ]['gdwzel'];
+        // },
+        // gdz:function(){
+        //     switch( trackModel ){
+        //         case 'H200*200T-71':return 132.38;
+        //         case 'H250*250T-99':return 161.97;
+        //         case 'PH216*200-84.7' :return 115.45;
+        //         case 'PH266*250-128.1' :return 140.62;
+        //         case 'PH200*200-90.7' :return 116.71;
+        //         case 'PH220*170-82.6' :return 116.32;
+        //         case 'PH250*200-117.4' :return 130.8;
+        //         case 'PH250*250-104.2' :return 125;
+        //         case 'PH250*250-113.3' :return 133.25;
+        //         case 'PH250*250-138.8' :return 131.28;
+        //         case 'PH300*250-146.6' :return 157.48;
+        //         case 'PH300*300-168.1' :return 157.94;
+        //         case '其它':return ' ';
+        //         default :return gdh / 2 ;
+        //     }
+        // },
+        // gdy:function(){
+        //     return gdb /2;
+        // },
+        gcph:function(){
+            return steelModelList[ steelModel ]['gcph'];
         },
         gdss:function(){
             return steelModelList[ steelModel ]['gdss'];
@@ -1520,7 +1547,10 @@
             return steelModelList[ steelModel ]['gdshzr'];
         },
     };
+    getTable("trackModel","gdxz");
+    getTable("trippingModel","yxjgxz");
     data.init(calculateFunction);
 </script>
+
 </body>
 </html>

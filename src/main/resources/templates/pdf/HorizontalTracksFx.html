@@ -1,0 +1,794 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>水平轨道(I／H)校核计算书(1.5倍)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">水平轨道(I／H)校核计算书(1.5倍)</div>
+                            <!- 封面内容 ->
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>封面内容</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                        <td colspan="2" style="width:70%;">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机计算书编号</b></td>
+                                        <td colspan="2" ><input type="text" name="no"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机版本</b></td>
+                                        <td colspan="2" ><input type="text" name="ver" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2" ><input type="text" name="xmmc" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>主机型号</b></td>
+                                        <td colspan="2" ><input type="text" name="zjxh" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算人</b></td>
+                                        <td colspan="2" ><input type="text" name="jsr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>审核人</b></td>
+                                        <td colspan="2" ><input type="text" name="shr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>批准人</b></td>
+                                        <td colspan="2" ><input type="text" name="pzr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算日期</b></td>
+                                        <td colspan="2" ><input type="text" name="date" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>轨道计算基本参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>运行机构选择</td>
+                                        <td colspan="3">
+                                            <select name="trippingModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道支撑跨距</b></td>
+                                        <td ><p><i>L</i></p></td>
+                                        <td ><input type="text" name="lkj" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>滚轮直径</b></td>
+                                        <td ><p><i>d<sub>cw</sub></i></p></td>
+                                        <td ><input type="text" name="dcw"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>滚轮宽度</b></td>
+                                        <td ><p><i>b<sub>cw</sub></i></p></td>
+                                        <td ><input type="text" name="bcw"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道承受的最大垂直轮压</b></td>
+                                        <td ><p><i>V<sub>z</sub></i></p></td>
+                                        <td ><input type="text" name="vzk"/></td>
+                                        <td >kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道承受的最大水平力</b></td>
+                                        <td ><p><i>V<sub>z</sub></i></p></td>
+                                        <td ><input type="text" name="vyk"/></td>
+                                        <td >kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>最大轮载</b></td>
+                                        <td ><p><i>F<sub>Z,E</sub></i></p></td>
+                                        <td ><input type="text" name="fzek" /></td>
+                                        <td >kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>最大竖向轮载(1.5)</b></td>
+                                        <td ><p><i>F<sub>z,Ed</sub></i></p></td>
+                                        <td ><input type="text" name="fzedk"/></td>
+                                        <td >kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道承受的竖向剪力(1.5)</b></td>
+                                        <td ><p><i>V<sub>z,Ed</sub></i></p></td>
+                                        <td ><input type="text" name="vzedk"  /></td>
+                                        <td >kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>最大支承反力(1.5)</b></td>
+                                        <td ><p><i>R<sub>z,Ed</sub></i></p></td>
+                                        <td ><input type="text" name="rzedk" /></td>
+                                        <td >kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>轨道承受的水平力(1.5)</b></td>
+                                        <td ><p><i>V<sub>y,Ed</sub></i></p></td>
+                                        <td ><input type="text" name="vyedk" /></td>
+                                        <td >kN</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>bef1的计算参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="4" style="background-color: #aaa;">
+                                            <img style="width:600px" th:src="@{bef1.jpg}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td ><b>边距</b></td>
+                                        <td ><p><i>x</i></p></td>
+                                        <td ><input type="text" name="bef1x" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>支撑长度(埋板宽度)</b></td>
+                                        <td ><p><i>c</i></p></td>
+                                        <td ><input type="text" name="bef1c" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>初选轨道型号及钢材牌号参数</b></div>
+                            <div style="width:97%;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                <img alt="所选轨道钢型截面示意图" id="gdtu" height="300px"  name="gdtu">
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td>轨道型号选择</td>
+                                        <td colspan="3">
+                                        <select name="trackModel" style="width:100%;height:40px;text-align-last:center">
+                                            <option value="" style="display: none"></option>
+                                            <option value="其它">其它</option>
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>钢材型号选择</td>
+                                        <td colspan="3">
+                                            <select name="steelModel" style="width:100%;height:40px;text-align-last:center" >
+                                                <option style="display: none"></option>
+                                                <option value="Q235B">Q235B</option>
+                                                <option value="Q355B">Q355B</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>示意图</td>
+                                        <td colspan="3">
+                                            <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="gdtu" oninput="showImage(this,'gdtu')"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道型号</td>
+                                        <td><p><i></i></p></td>
+                                        <td><input type='text' name="gdxh"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道钢材牌号</td>
+                                        <td><p><i></i></p></td>
+                                        <td><input type='text' name="gcph"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道高度</td>
+                                        <td><p><i>h</i></p></td>
+                                        <td><input type='text' name="gdh"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道宽度</td>
+                                        <td><p><i>b</i></p></td>
+                                        <td><input type='text' name="gdb"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道腹板厚度</td>
+                                        <td><p><i>tw</i></p></td>
+                                        <td><input type='text' name="gdtw"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道上翼缘厚度</td>
+                                        <td><p><i>tfs</i></p></td>
+                                        <td><input type='text' name="gdtfs"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道下翼缘厚度</td>
+                                        <td><p><i>tfx</i></p></td>
+                                        <td><input type='text' name="gdtfx"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道腹板净高</td>
+                                        <td><p><i>hw</i></p></td>
+                                        <td><input type='text' name="gdhw"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道顶面(或垫板)到腹板上边缘的距离</td>
+                                        <td><p><i>hy</i></p></td>
+                                        <td><input type='text' name="gdhy"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>截面静矩</td>
+                                        <td><p><i>Sy</i></p></td>
+                                        <td><input type='text' name="gdsy"/></td>
+                                        <td>mm<sup>3</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>截面y向惯性矩</td>
+                                        <td><p><i>Iy</i></p></td>
+                                        <td><input type='text' name="gdiy"/></td>
+                                        <td>mm<sup>4</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>截面z向惯性矩</td>
+                                        <td><p><i>Iz</i></p></td>
+                                        <td><input type='text' name="gdiz"/></td>
+                                        <td>mm<sup>4</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>y向上截面抗弯模量</td>
+                                        <td><p><i>Wys,el</i></p></td>
+                                        <td><input type='text' name="gdwysel"/></td>
+                                        <td>mm<sup>3</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>y向下截面抗弯模量</td>
+                                        <td><p><i>Wyx,el</i></p></td>
+                                        <td><input type='text' name="gdwyxel"/></td>
+                                        <td>mm<sup>3</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>z向截面抗弯模量</td>
+                                        <td><p><i>Wz,el</i></p></td>
+                                        <td><input type='text' name="gdwzel"/></td>
+                                        <td>mm<sup>3</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>计算点至形心轴的z向距离</td>
+                                        <td><p><i>z</i></p></td>
+                                        <td><input type='text' name="gdz"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>计算点至形心轴的y向距离</td>
+                                        <td><p><i>y</i></p></td>
+                                        <td><input type='text' name="gdy"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>材料屈服强度</td>
+                                        <td><p><i>σs</i></p></td>
+                                        <td><input type='text' name="gdss"/></td>
+                                        <td>N/mm<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>轨道最大接触应力</td>
+                                        <td><p><i>σHZ,R</i></p></td>
+                                        <td><input type='text' name="gdshzr"/></td>
+                                        <td>N/mm<sup>2</sup></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="display: none">
+                                <input type="text" name="gdiyc" />
+                                <input type="text" name="gdizc" />
+                                <input type="text" name="gdwyselc" />
+                                <input type="text" name="gdwyxelc" />
+                                <input type="text" name="gdwzelc" />
+                            </div>
+
+                            <input type="hidden" name="pdfType"/>
+                        </form>
+                            <div class="navbox">
+                                <div style="width:600px;height:520px; font-size: 14px   ;">
+                                    <table id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                        <tr>
+                                            <td colspan="6" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td style="width:20%;"><b>名称</b></td>
+                                            <td style="width:10%;"><b>标准值</b></td>
+                                            <td colspan="2" style="width:35%;"><b>简支梁</b></td>
+                                            <td colspan="2" style="width:35%;"><b>双跨梁</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>强度</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a2"></td>
+                                            <td id="u3"></td>
+                                            <td id="b2"></td>
+                                            <td id="v3"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>侧向屈曲</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a3"></td>
+                                            <td id="u5"></td>
+                                            <td id="b3"></td>
+                                            <td id="v5"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>腹板屈曲</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a4"></td>
+                                            <td id="u7"></td>
+                                            <td id="b4"></td>
+                                            <td id="v7"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>复合应力</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a5"></td>
+                                            <td id="u9"></td>
+                                            <td id="b5"></td>
+                                            <td id="v9"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>竖向轮载</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a6"></td>
+                                            <td id="u11"></td>
+                                            <td id="b6"></td>
+                                            <td id="v11"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>轮载腹板屈曲</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a7"></td>
+                                            <td id="u13"></td>
+                                            <td id="b7"></td>
+                                            <td id="v13"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>腹板受压</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a8"></td>
+                                            <td id="u15"></td>
+                                            <td id="b8"></td>
+                                            <td id="v15"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>支承反力</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a9"></td>
+                                            <td id="u17"></td>
+                                            <td id="b9"></td>
+                                            <td id="v17"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>反力腹板屈曲</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a10"></td>
+                                            <td id="u19"></td>
+                                            <td id="b10"></td>
+                                            <td id="v19"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>接触应力</b></td>
+                                            <td><b>≤1</b></td>
+                                            <td id="a11"></td>
+                                            <td id="u21"></td>
+                                            <td id="b11"></td>
+                                            <td id="v21"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td rowspan="2"><b>轨道挠度</b></td>
+                                            <td rowspan="2"><p>≤<span id="gdnd"></span>mm</p></td>
+                                            <td><p><span id="fz"></span>mm</p></td>
+                                            <td rowspan="2" id="u26"></td>
+                                            <td><p><span id="fzs"></span>mm</p></td>
+                                            <td rowspan="2" id="v26"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><p><span id="fy"></span>mm</p></td>
+                                            <td><p><span id="fys"></span>mm</p></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出简支梁模型pdf" onclick="$('form').attr('action','/HorizontalTracksFx/getPDF');
+                                                                                                                isCheck(false);changeType('SimplySupported')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出简支梁英文pdf" onclick="$('form').attr('action','/HorizontalTracksFx/getPDF');
+                                                                                                                 isCheck(false);changeType('SimplySupportedEn')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出双跨梁模型pdf" onclick="$('form').attr('action','/HorizontalTracksFx/getPDF');
+                                                                                                                isCheck(false);changeType('DoubleSpanbeam')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出双跨梁英文pdf" onclick="$('form').attr('action','/HorizontalTracksFx/getPDF');
+                                                                                                                isCheck(false);changeType('DoubleSpanbeamEn')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/HorizontalTracksFx/getPDF');
+                                                                                                                isCheck(true);changeType('Check')"/>
+                            <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','transparent')"/>
+                        </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+<script>
+    steelModelList={
+        "Q235B":{
+            gcph:"Q235B",
+            gdss:235,
+            gdshzr:650,
+        },
+        "Q355B":{
+            gcph:"Q355B",
+            gdss:355,
+            gdshzr:800,
+        }
+    };
+</script>
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function janyan() {
+        $.ajax({
+            url: "/HorizontalTracksFx/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
+                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+        fzek:function(){
+            return vzk ;
+        },
+        fzedk:function (){
+            return 1.5 * vzk ;
+        },
+        vzedk:function (){
+            return 1.5 * vzk ;
+        },
+        rzedk:function(){
+            return 1.5 * vzk ;
+        },
+        vyedk:function(){
+            return 1.5 * vyk ;
+        },
+        bef1x:function(){
+            return 0 ;
+        },
+
+        gdiy:function(){
+            return gdiyc * 10000 ;
+        },
+        gdiz:function(){
+            return gdizc * 10000 ;
+        },
+        gdwysel:function(){
+            return gdwyselc * 1000 ;
+        },
+        gdwyxel:function(){
+            return gdwyxelc * 1000 ;
+        },
+        gdwzel:function(){
+            return gdwzelc * 1000 ;
+        },
+        gcph:function(){
+            return steelModelList[ steelModel ]['gcph'];
+        },
+        gdss:function(){
+            return steelModelList[ steelModel ]['gdss'];
+        },
+        gdshzr:function(){
+            return steelModelList[ steelModel ]['gdshzr'];
+        },
+    };
+    getTable("trackModel","gdxz");
+    getTable("trippingModel","yxjgxz");
+    data.init(calculateFunction);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/HorizontalTracksFx/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+<script>
+    $("[name=trackModel]").change(function () {
+        var gdxh=$("[name=trackModel]")[0].value;
+        var filename="";
+        if(gdxh=="I20b-31" || gdxh=="I22b-36.5" || gdxh=="I25b-42" || gdxh=="I28b-47.8" || gdxh=="I32b-57.7" ){
+            filename="工字钢.jpg";
+        }else if (gdxh=="H150*150-31.1" || gdxh=="H175*175-40.4"|| gdxh=="H200*200-49.9"|| gdxh=="H200*204-56.2"|| gdxh=="H250*250-71.8"|| gdxh=="H250*255-81.6"|| gdxh=="H300*300-93"|| gdxh=="H300*305-105"|| gdxh=="H152*152-30(ISO)"|| gdxh=="H152*152-37(ISO)"|| gdxh=="H203*203-46(ISO)"|| gdxh=="H203*203-52(ISO)"|| gdxh=="H203*203-60(ISO)"|| gdxh=="H203*203-71(ISO)"|| gdxh=="H203*203-86(ISO)" || gdxh=="H254*254-73(ISO)" || gdxh=="H254*254-89(ISO)" || gdxh=="H254*254-107(ISO)" || gdxh=="H254*254-132(ISO)" || gdxh=="H254*254-167(ISO)" || gdxh=="H305*305-97(ISO)" || gdxh=="H305*305-118(ISO)" || gdxh=="H305*305-137(ISO)" || gdxh=="H305*305-158(ISO)"){
+            filename="H型钢.jpg";
+        }else if (gdxh=="H200*200T-71" || gdxh=="H250*250T-99"){
+            filename="H型钢贴板.jpg";
+        }else if (gdxh=="PH216*200-84.7" || gdxh=="PH266*250-128.1"){
+            filename="拼焊配合.jpg";
+        }else if (gdxh=="PH200*200-90.7" || gdxh=="PH250*250-104.2" || gdxh=="PH250*250-113.3" || gdxh=="PH250*250-138.8" || gdxh=="PH300*300-168.1"){
+            filename="拼焊方.jpg";
+        }else if (gdxh=="PH220*170-82.6" || gdxh=="PH250*200-117.4" || gdxh=="PH300*250-146.6"){
+            filename="拼焊长.jpg";
+        }else {
+            filename="";
+        }
+        if ($('input[name=tu_gdtu]').length == 0) {
+            $('form').append('<input name="tu_gdtu" type="hidden"/>');
+        }
+        $("[name=tu_gdtu]")[0].value=filename;
+        $("[name=gdtu]")[0].src="/pdf/getImg?filename="+ filename+"";
+    })
+</script>
+</body>
+</html>

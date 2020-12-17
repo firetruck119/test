@@ -30,6 +30,13 @@ public class HorizontalTracksAddPlateEntity {
 //    private Double vyed;
 //    private Double rzed;
 
+    //    后台数据
+    private Double gdiyc;
+    private Double gdizc;
+    private Double gdwyselc;
+    private Double gdwyxelc;
+    private Double gdwzelc;
+
     //新加轨道计算参数输入
     private Double vzk;
     private Double vyk;
@@ -102,13 +109,19 @@ public class HorizontalTracksAddPlateEntity {
         map.put("vzedk", CommonFunc.convertDoubleToString(vzedk));
         map.put("vyedk", CommonFunc.convertDoubleToString(vyedk));
 //        map.put("rzedk", CommonFunc.convertDoubleToString(rzedk));
-       /*
-        map.put("fzed", CommonFunc.convertDoubleToString(fzed));
-        map.put("fze", CommonFunc.convertDoubleToString(fze));
-        map.put("vzed", CommonFunc.convertDoubleToString(vzed));
-        map.put("vyed", CommonFunc.convertDoubleToString(vyed));
-        map.put("rzed", CommonFunc.convertDoubleToString(rzed));
-        */
+
+//        map.put("fzed", CommonFunc.convertDoubleToString(fzed));
+//        map.put("fze", CommonFunc.convertDoubleToString(fze));
+//        map.put("vzed", CommonFunc.convertDoubleToString(vzed));
+//        map.put("vyed", CommonFunc.convertDoubleToString(vyed));
+//        map.put("rzed", CommonFunc.convertDoubleToString(rzed));
+
+        //后台
+        map.put("gdiyc", CommonFunc.convertDoubleToString(gdiyc));
+        map.put("gdizc", CommonFunc.convertDoubleToString(gdizc));
+        map.put("gdwyselc", CommonFunc.convertDoubleToString(gdwyselc));
+        map.put("gdwyxelc", CommonFunc.convertDoubleToString(gdwyxelc));
+        map.put("gdwzelc", CommonFunc.convertDoubleToString(gdwzelc));
 //        map.put("bef1x", CommonFunc.convertDoubleToString(bef1x));
 //        map.put("bef1c", CommonFunc.convertDoubleToString(bef1c));
         map.put("gdxh", CommonFunc.convertDoubleToString(gdxh));

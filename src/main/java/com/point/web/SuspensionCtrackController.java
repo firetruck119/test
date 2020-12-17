@@ -38,6 +38,11 @@ public class SuspensionCtrackController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/SuspensionCtrack")
+    public String getMap2() {
+        return "pdf/SuspensionCtrack";
+    }
+
     @GetMapping("/SuspensionCtrack")
     public String getMap() {
         return "SuspensionCtrack";
