@@ -1,0 +1,648 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>抗压埋件计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">抗压埋件计算书</div>
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px "><b>1.封面内容</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                        <td colspan="2" style="width:70%;">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>本机计算书编号</b></td>
+                                        <td colspan="2" ><input name="no" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>本机版本</b></td>
+                                        <td colspan="2" ><input name="ver" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>项目名称</b></td>
+                                        <td colspan="2" ><input name="xmmc" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>主机型号</b></td>
+                                        <td colspan="2" ><input name="zjxh" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>计算人</b></td>
+                                        <td colspan="2" ><input name="jsr" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>审核人</b></td>
+                                        <td colspan="2" ><input name="shr" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>批准人</b></td>
+                                        <td colspan="2" ><input name="pzr" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>计算日期</b></td>
+                                        <td colspan="2" ><input name="date" type="text"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图1.埋件基本尺寸及相关参数示意图</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="/image/Tensile/tu1.png" name="kymjtu1">
+                                                <input type="hidden" value="tu_tu1.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0">选择图片</td>
+                                        <td colspan="2"><input class="image" type="file" name="kymjtu1" accept="image/*"
+                                                               oninput="showImage(this,'kymjtu1')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图2.锚筋中心至锚板边缘距离a校核的相关尺寸示意图</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="/image/Tensile/tu2.png" name="kymjtu2" >
+                                                <input type="hidden" value="tu_tu2.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0">选择图片</td>
+                                        <td colspan="2"><input class="image" type="file" name="kymjtu2" accept="image/*"
+                                                               oninput="showImage(this,'kymjtu2')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图3.锚筋间距b、b1校核的相关尺寸示意图</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="tu3.png" name="kymjtu3">
+                                                <input type="hidden" value="tu_tu3.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0">选择图片</td>
+                                        <td colspan="2"><input class="image" type="file" name="kymjtu3" accept="image/*"
+                                                               oninput="showImage(this,'kymjtu3')"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>2.埋件及混凝土的基本尺寸及相关参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>混凝土强度等级</td>
+                                        <td colspan="3">
+                                            <select name="concreteStrength" id="select1" style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="C30">C30</option>
+                                                <option value="C35">C35</option>
+                                                <option value="C40">C40</option>
+                                                <option value="C45">C45</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>压力设计值</b></td>
+                                        <td><p><i>N</i></p></td>
+                                        <td><input name="mjky" type="text" /></td>
+                                        <td>kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>剪力设计值</b></td>
+                                        <td><p><i>V</i></p></td>
+                                        <td><input name="mjkv" type="text" /></td>
+                                        <td>kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>水平导向轮至轨道底面距离</b></td>
+                                        <td><p><i>jl</i></p></td>
+                                        <td><input name="mjkjl" type="text"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>弯矩设计值</b></td>
+                                        <td><p><i>M</i></p></td>
+                                        <td><input name="mjkm" type="text" id="mk"/></td>
+                                        <td>kN*m</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>沿剪力作用方向最外层锚筋中心线之间的距离</b></td>
+                                        <td><p><i>z</i></p></td>
+                                        <td><input name="mjz" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋直径</b></td>
+                                        <td><p><i>d</i></p></td>
+                                        <td><input name="mjd" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚板厚度</b></td>
+                                        <td><p><i>t</i></p></td>
+                                        <td><input name="mjt" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚板长度</b></td>
+                                        <td></td>
+                                        <td><input name="mjcd" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚板宽度</b></td>
+                                        <td></td>
+                                        <td><input name="mjkd" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚板面积</b></td>
+                                        <td><p><i>A</i></p></td>
+                                        <td><input name="mjmj" type="text"/></td>
+                                        <td>mm<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋中心至锚板边缘的距离 </b></td>
+                                        <td><p><i>a</i></p></td>
+                                        <td><input name="mja" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋行距</b></td>
+                                        <td><p><i>b</i></p></td>
+                                        <td><input name="mjb" type="text" /></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋列距</b></td>
+                                        <td><p><i>b<sub>1</sub></i></p></td>
+                                        <td><input name="mjb1" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋中心至构件边缘的距离（垂直剪力方向）</b></td>
+                                        <td><p><i>c</i></p></td>
+                                        <td><input name="mjc" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋中心至构件边缘的距离（平行剪力方向）</b></td>
+                                        <td><p><i>c<sub>1</sub></i></p></td>
+                                        <td><input name="mjc1" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚固长度</b></td>
+                                        <td><p><i>l</i></p></td>
+                                        <td><input name="mjl" type="text"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>混凝土强度等级</b></td>
+                                        <td></td>
+                                        <td><input name="mjhdj" type="text" /></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>混凝土轴心抗压强度设计值</b></td>
+                                        <td><p><i>f<sub>c</sub></i></p></td>
+                                        <td><input name="mjfc" type="text"/></td>
+                                        <td>MPa</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>混凝土轴心抗拉强度设计值</b></td>
+                                        <td><p><i>f<sub>t</sub></i></p></td>
+                                        <td><input name="mjft" type="text"/></td>
+                                        <td>MPa</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>沿剪力作用方向锚筋层数</b></td>
+                                        <td><p><i>r</i></p></td>
+                                        <td><input name="mjr" type="text"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋层数影响系数</b></td>
+                                        <td><p><i>a<sub>r</sub></i></p></td>
+                                        <td><input name="mjar" type="text"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋数量</b></td>
+                                        <td><p><i>n</i></p></td>
+                                        <td><input name="mjns" type="text"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚筋总截面面积</b></td>
+                                        <td><p><i>A<sub>s</sub></i></p></td>
+                                        <td><input name="mjas" type="text"/></td>
+                                        <td>mm2</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>图4.锚筋中心至构件边缘距离c、c1校核的相关尺寸示意图</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="/image/Tensile/tu4.png" name="kymjtu4" >
+                                                <input type="hidden" value="tu_tu4.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0">选择图片</td>
+                                        <td colspan="3"><input class="image" type="file" name="kymjtu4" accept="image/*"
+                                                               oninput="showImage(this,'kymjtu4')"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </form>
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit" class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="输出抗压埋件计算书pdf"
+                                   onclick="isCheck(false);$('form').attr('action','/resistantpdf1')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="输出验证部分pdf"
+                                   onclick="isCheck(true);$('form').attr('action','/resistantpdf1')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','transparent')"/>
+                        </div>
+                        <div class="navbox">
+                            <div style="width:600px;height:520px; font-size: 14px;">
+                                <table class="tb" id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                    <tr>
+                                        <td colspan="4" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);font-size: 17px"><b>核算结果</b>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td style="width:34%;"><b>名称</b></td>
+                                        <td style="width:22%;"><b>实际值</b></td>
+                                        <td style="width:22%;"><b>极限值</b></td>
+                                        <td style="width:22%;"><b>是否满足</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚筋中心至锚板边缘距离</b></td>
+                                        <td><p>a=<span id="sja"></span></p></td>
+                                        <td id="jya"></td>
+                                        <td id="kymjm1"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚筋行距</b></td>
+                                        <td ><p>b=<span id="sjb"></span></p></td>
+                                        <td id="jyb"></td>
+                                        <td id="kymjm2"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚筋列矩</b></td>
+                                        <td ><p>b<sub>1</sub>=<span id="sjb1"></span></p></td>
+                                        <td id="jyb1"></td>
+                                        <td id="kymjm3"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚筋中心至构件边缘距离(垂直于剪力方向)</b></td>
+                                        <td ><p>c=<span id="sjc"></span></p></td>
+                                        <td id="jyc"></td>
+                                        <td id="kymjm5"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚筋中心至构件边缘距离(平行于剪力方向)</b></td>
+                                        <td ><p>c<SUB>1</SUB>=<span id="sjc1"></span></p></td>
+                                        <td id="jyc1"></td>
+                                        <td id="kymjm6"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚筋截面面积</b></td>
+                                        <td ><p>
+                                            <p>A<SUB>s</SUB>=<span id="sjas"></span></p></td>
+                                        <td id="jyas"></td>
+                                        <td id="kymjm9"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚固长度</b></td>
+                                        <td ><p>l=<span id="sjl"></span></p></td>
+                                        <td id="jyl"></td>
+                                        <td id="kymjm10"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>锚板面积</b></td>
+                                        <td ><p>N=<span id="mjmj"></span></p></td>
+                                        <td id="jyn"></td>
+                                        <td id="kymjm8"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+
+<script>
+    $(document).ready(function () {
+        // InitNav(1)
+        $('#Resistant').addClass('o-sub-cur');
+        $("input[type=reset]").click(function(){
+            window.getData.dataToImage(imgDaefultData);
+        })
+    })
+
+    function showImage(form, element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if (fileObj.size > 1048576) {
+            alert("上传文件大于1M，请重新选择");
+            form.value = "";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function () {  // 等待文件阅读器读取完毕再渲染图片
+            $('img[name=' + element+']').attr('src', fileReader.result).attr('display', 'inline-block')
+        }
+    };
+
+    function janyan() {
+        $.ajax({
+            url: "/resistant/jy",
+            type: "post",
+            data: $("#form1").serialize(),
+            async: true,
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).html(data[id]);
+                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
+                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
+                })
+            }
+        })
+        return false;
+    }
+</script>
+
+<script>
+    ConcreteStrengthList = {
+        "C30": {
+            mjhdj: "C30",
+            mjfc: 14.3,
+            mjft: 1.43,
+        },
+        "C35": {
+            mjhdj: "C35",
+            mjfc: 16.7,
+            mjft: 1.57,
+        },
+        "C40": {
+            mjhdj: "C40",
+            mjfc: 19.1,
+            mjft: 1.71,
+        },
+        "C45": {
+            mjhdj: "C45",
+            mjfc: 21.1,
+            mjft: 1.80,
+        },
+    }
+    calculateFunction={
+        mjhdj:function(){
+            return ConcreteStrengthList[ concreteStrength ]['mjhdj'];
+        },
+        mjfc:function(){
+            return ConcreteStrengthList[ concreteStrength ]['mjfc'];
+        },
+        mjft:function(){
+            return ConcreteStrengthList[ concreteStrength ]['mjft'];
+        },
+        mjkm:function(){
+            return mjkv * mjkjl ;
+        },
+        mjar:function () {
+            switch( mjr ){
+                case 2:return 1;
+                case 3:return 0.9;
+                case 4:return 0.85;
+                default:return " ";
+            }
+        },
+        mjas:function(){return mjns *3.14* mjd * mjd /4;},
+        mjmj(){
+            return mjcd * mjkd ;
+        }
+    }
+</script>
+<script>
+    data.init(calculateFunction);
+    imgDaefultData={
+        kymjtu1:{inputvalue:"Rtu1.png"},
+        kymjtu2:{inputvalue:"Rtu2.png"},
+        kymjtu3:{inputvalue:"Rtu3.png"},
+        kymjtu4:{inputvalue:"Rtu4.png"},
+    }
+    getData.dataToImage(imgDaefultData);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/Resistant/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+</body>
+</html>

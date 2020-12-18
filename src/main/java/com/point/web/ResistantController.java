@@ -47,6 +47,12 @@ public class ResistantController {
 
     @Autowired
     URLCacheData urlCacheData;
+
+    @GetMapping("/pdf/Resistant")
+    public String greetingForm2(Model model) {
+        return "pdf/Resistant";
+    }
+
     @GetMapping("/Resistant")
     public String greetingForm(Model model) {
         return "Resistant";

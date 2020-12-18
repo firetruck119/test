@@ -49,6 +49,12 @@ public class TensileController {
 
     @Autowired
     URLCacheData urlCacheData;
+
+    @GetMapping("/pdf/Tensile")
+    public String greetingForm2(Model model) {
+        return "pdf/Tensile";
+    }
+
     @GetMapping("/Tensile")
     public String greetingForm(Model model) {
         return "Tensile";

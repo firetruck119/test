@@ -96,11 +96,11 @@ asideDatas = {
                 },
                 {
                     title: '抗拉埋件',
-
+                    url: "Tensile",
                 },
                 {
                     title: '抗压埋件',
-
+                    url: "Resistant",
                 },
                 {
                     title: '膨胀螺栓',
@@ -118,7 +118,7 @@ asideDatas = {
             children: [
                 {
                     title: 'T型防风销座',
-
+                    url: "PinSeat",
                 },
                 {
                     title: '平板型防风销座',

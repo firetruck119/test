@@ -37,6 +37,12 @@ public class PinSeatController {
 
     @Autowired
     URLCacheData urlCacheData;
+
+    @GetMapping("/pdf/PinSeat")
+    public String greetingForm2(Model model) {
+        return "pdf/PinSeat";
+    }
+
     @GetMapping("/PinSeat")
     public String greetingForm(Model model) {
         return "PinSeat";
