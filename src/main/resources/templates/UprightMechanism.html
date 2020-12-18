@@ -13,6 +13,7 @@
     <link th:href="@{css/base.min.css}" rel="stylesheet"/>
     <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
     <script th:src="@{js/dataClass.js}" ></script>
+    <script th:src="@{js/axios.js}"></script>
     <style type="text/css">
         p{
             font-size: 17px;
@@ -77,7 +78,7 @@
             border-radius:25px;
         }
         .navbox{
-            top: 50%;;
+            top: 28%;;
             left:10px;
             display: block;
             position: fixed;
@@ -87,418 +88,15 @@
         .navbox td{
             padding: 0.4em 0.8em;
         }
-        /*.bxs{*/
-            /*display: none;*/
-        /*}*/
 
     </style>
     <script>
-        yzjgModelList= {
-            'YZ(1.8)':{
-                yzdd:160,
-                yzxd:110,
-                yzlltl:321700,
-                yzgcyl:16,
-                ljdc:0.8,
-                ljcyy:0.61,
-                lyhq:1.48,
-                ljdcf:1.97,
-                ljcyyf:0.71,
-                lyhqf:0.5,
-                lyg:1.97,
-                hyg:140,
-                byg:140,
-                eyg:8,
-                ayg:4059,
-                iiminyg:53.32,
-                dd1:65,
-                dd2:65.2,
-                ljat:50,
-                ljab:24,
-                ljdhzf:1.12,
-            },
-            'YZ(2.5)':{
-                yzdd:180,
-                yzxd:125,
-                yzlltl:407150,
-                yzgcyl:16,
-                ljdc:0.85,
-                ljcyy:0.6,
-                lyhq:1.52,
-                ljdcf:2.63,
-                ljcyyf:0.67,
-                lyhqf:0.6,
-                lyg:2.63,
-                hyg:150,
-                byg:150,
-                eyg:8,
-                ayg:4379,
-                iiminyg:57.4,
-                dd1:70,
-                dd2:70.2,
-                ljat:50,
-                ljab:28,
-                ljdhzf:1.78,
-            },
-            'YZ(1.8)(3+1)':{
-                yzdd:220,
-                yzxd:160,
-                yzlltl:608210,
-                yzgcyl:16,
-                ljdc:0.9,
-                ljcyy:0.59,
-                lyhq:1.7,
-                ljdcf:2.02,
-                ljcyyf:0.91,
-                lyhqf:0.8,
-                lyg:2.02,
-                hyg:180,
-                byg:180,
-                eyg:8,
-                ayg:5339,
-                iiminyg:69.66,
-                dd1:80,
-                dd2:80.2,
-                ljat:60,
-                ljab:24,
-                ljdhzf:1.12,
-            },
-            'YZ(3.5)':{
-                yzdd:250,
-                yzxd:180,
-                yzlltl:785400,
-                yzgcyl:16,
-                ljdc:1.16,
-                ljcyy:0.84,
-                lyhq:2.15,
-                ljdcf:3.6,
-                ljcyyf:1.04,
-                lyhqf:0.8,
-                lyg:3.6,
-                hyg:200,
-                byg:190,
-                eyg:20,
-                ayg:13200,
-                iiminyg:71.9,
-                dd1:80,
-                dd2:80.2,
-                ljat:60,
-                ljab:36,
-                ljdhzf:2.63,
-            },
-        };
-
-        dcModelList={
-            "2.0米铝吊船(PT(250_2))":{
-                swp:96,
-                r1:250,
-            },
-            "2.5米铝吊船(PT(250_2.5))":{
-                swp:105,
-                r1:250,
-            },
-            "3.0米铝吊船(PT(250_3))":{
-                swp:115,
-                r1:250,
-            },
-            "4.0米铝吊船(PT(250_4.0))":{
-                swp:135,
-                r1:250,
-            },
-            "1.5米卫星吊船(PT(800_2.0)W(100-1.5))":{
-                swp:577,
-                r1:250,
-            },
-            "2.0米卫星吊船(PT(800_2.0)W(100-2.0))":{
-                swp:650,
-                r1:250,
-            },
-            "1.5米手动丝杠伸展吊船(SDPT250G(1.5))":{
-                swp:585,
-                r1:250,
-            },
-            "2.0米手动丝杠伸展吊船(SDPT250G(2.0))":{
-                swp:619,
-                r1:250,
-            },
-            "2.5米手动丝杠伸展吊船(SDPT250G(2.5))":{
-                swp:634,
-                r1:250,
-            },
-            "3.0米手动丝杠伸展吊船(SDPT250G(3.0))":{
-                swp:683,
-                r1:250,
-            },
-            "2.0米液压伸展吊船(YYPT200G(2.0))":{
-                swp:624,
-                r1:250,
-            },
-            "2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))":{
-                swp:651,
-                r1:250,
-            },
-            "2.5米液压伸展吊船(YYPT200G(2.5))":{
-                swp:675,
-                r1:250,
-            },
-            "3.0米液压伸展吊船(YYPT200G(3.0))":{
-                swp:696,
-                r1:250,
-            },
-            "3.5米液压伸展吊船(YYPT200G(3.5))":{
-                swp:720,
-                r1:250,
-            },
-            "2.0米折叠吊船(SSPT(250_2.0))":{
-                swp:116,
-                r1:250,
-            },
-            "2.5米折叠吊船(SSPT(250_2.5))":{
-                swp:124,
-                r1:250,
-            },
-            "2.0米折弯吊船(ZWDC(250_2))":{
-                swp:120,
-                r1:250,
-            },
-            "2.5米折弯吊船(ZWDC(250_2.5))":{
-                swp:133,
-                r1:250,
-            },
-            "3.0米折弯吊船(ZWDC(250_3))":{
-                swp:155,
-                r1:250,
-            },
-            "2.5米伸缩子吊船":{
-                swp:1140,
-                r1:250,
-            },
-            "2.0米CDD吊船(CDD240(2A).0)":{
-                swp:350,
-                r1:250,
-            },
-            "2.5米CDD吊船(CDD240(2.5))":{
-                swp:375,
-                r1:250,
-            },
-            "3.0米CDD吊船(CDD240(3))":{
-                swp:400,
-                r1:250,
-            },
-            "4.0米CDD吊船(CDD240(4))":{
-                swp:450,
-                r1:250,
-            },
-            "其它":{
-                swp:" ",
-                r1:" ",
-            }
-        };
-        dcgssModelList={
-            "Φ7":{
-                dcgssp:0.179,
-             },
-            "Φ8":{
-                dcgssp:0.244,
-            },
-            "Φ8.3":{
-                dcgssp:0.255,
-            },
-            "Φ10":{
-                dcgssp:0.391,
-            },
-            "Φ13":{
-                dcgssp:0.65,
-            },
-            "布鲁格Φ7":{
-                dcgssp:0.179,
-            },
-            "布鲁格Φ8":{
-                dcgssp:0.217,
-            },
-          };
-
         ffbbModelList={
             "有":{
                 mffbb:100,
             },
             "无":{
                 mffbb:0,
-            },
-        };
-
-        btModelList={
-            "YJBT1800G(1.8米羊角臂头-高臂头)":{
-                m1:330,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT1800Z(1.8米羊角臂头-中臂头)":{
-                m1:305,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT1800D(1.8米羊角臂头-低臂头)":{
-                m1:297,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT2300G(2.3米羊角臂头-高臂头)":{
-                m1:339,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT2300Z(2.3米羊角臂头-中臂头)":{
-                m1:312,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT2300D(2.3米羊角臂头-低臂头)":{
-                m1:302,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT2800G(2.8米羊角臂头-高臂头)":{
-                m1:344,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT2800Z(2.8米羊角臂头-中臂头)":{
-                m1:317,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "YJBT2800D(2.8米羊角臂头-低臂头)":{
-                m1:309,
-                lbtzh:0.55,
-                ldcgh:1.35,
-                ldslzh:0.35,
-            },
-            "HDBT2300(2.3米蝴蝶臂头)":{
-                m1:554,
-                lbtzh:0.8,
-                ldcgh:1.8,
-                ldslzh:0.8,
-            },
-            "XDBT2300(2.3米下挂臂头)":{
-                m1:208,
-                lbtzh:0,
-                ldcgh:0,
-                ldslzh:0,
-            },
-            "XDBT2500Φ13(2.5米下挂臂头)":{
-                m1:312,
-                lbtzh:0,
-                ldcgh:0,
-                ldslzh:0,
-            },
-            "XDBT3000Φ13(3.0米下挂臂头)":{
-                m1:346,
-                lbtzh:0,
-                ldcgh:0,
-                ldslzh:0,
-            },
-            "DJBT1800(1.8米单角臂头)":{
-                m1:280,
-                lbtzh:0.8,
-                ldcgh:2,
-                ldslzh:1,
-            },
-            "DJBT2300(2.3米单角臂头)":{
-                m1:308,
-                lbtzh:0.9,
-                ldcgh:2,
-                ldslzh:1,
-            },
-            "DJBT2500Φ13(2.5米单角臂头)":{
-                m1:403,
-                lbtzh:1.6,
-                ldcgh:2.2,
-                ldslzh:1.2
-            },
-            "DJBT3300(3.3米单角臂头)":{
-                m1:359,
-                lbtzh:1.2,
-                ldcgh:2.5,
-                ldslzh:1.5,
-            },
-            "PBT800(0.8米一字臂头)":{
-                m1:207,
-                lbtzh:0.4,
-                ldcgh:0.4,
-                ldslzh:0,
-            },
-            "MHEBT1944(MHE1944臂头)":{
-                m1:235,
-                lbtzh:0.4,
-                ldcgh:0.4,
-                ldslzh:0,
-            },
-            "其它":{
-                m1:" ",
-                lbtzh:" ",
-                ldcgh:" ",
-                ldslzh:" ",
-            },
-        };
-        gruModelList={
-            "GRU285":{
-                m2:50,
-                m5:235,
-                grugssp:0.252,
-            },
-            "GRU295":{
-                m2:50,
-                m5:285,
-                grugssp:0.391,
-            },
-            "GRU313":{
-                m2:50,
-                m5:385,
-                grugssp:0.65,
-            },
-            "无":{
-                m2:0,
-                m5:0,
-                grugssp:0,
-            },
-        };
-        trippingModelList={
-            "160LZ":{
-                dcw:160,
-                bcw:50,
-            },
-            "170LZ":{
-                dcw:170,
-                bcw:60,
-            },
-            "200LZ":{
-                dcw:220,
-                bcw:65,
-            },
-            "230LZ":{
-                dcw:230,
-                bcw:65,
-            },
-            "260LZ":{
-                dcw:260,
-                bcw:75,
-            },
-            "350":{
-                dcw:350,
-                bcw:85,
-            },
-            "450":{
-                dcw:450,
-                bcw:120,
             },
         };
     </script>
@@ -659,76 +257,34 @@
                     <td ><input type="text" name="lbp"/></td>
                     <td >m</td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td ><b>非工作状态配重臂长</b></td>-->
-                    <!--<td ><p><i> </i></p></td>-->
-                    <!--<td ><input type="text" name="lbpf"/></td>-->
-                    <!--<td >m</td>-->
-                <!--</tr>-->
                 <tr>
                     <td>仰柱机构型号选择</td>
-                    <td colspan="4">
+                    <td colspan="3">
                         <select name="yzjgModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="YZ(1.8)">YZ(1.8)</option>
-                            <option value="YZ(2.5)">YZ(2.5)</option>
-                            <option value="YZ(1.8)(3+1)">YZ(1.8)(3+1)</option>
-                            <option value="YZ(3.5)">YZ(3.5)</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>吊船型号选择</td>
-                    <td colspan="4">
+                    <td colspan="3">
                         <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="2.0米铝吊船(PT(250_2))">2.0米铝吊船(PT(250_2))</option>
-                            <option value="2.5米铝吊船(PT(250_2.5))">2.5米铝吊船(PT(250_2.5))</option>
-                            <option value="3.0米铝吊船(PT(250_3))">3.0米铝吊船(PT(250_3))</option>
-                            <option value="4.0米铝吊船(PT(250_4.0))">4.0米铝吊船(PT(250_4.0))</option>
-                            <option value="1.5米卫星吊船(PT(800_2.0)W(100-1.5))">1.5米卫星吊船(PT(800_2.0)W(100-1.5))</option>
-                            <option value="2.0米卫星吊船(PT(800_2.0)W(100-2.0))">2.0米卫星吊船(PT(800_2.0)W(100-2.0))</option>
-                            <option value="1.5米手动丝杠伸展吊船(SDPT250G(1.5))">1.5米手动丝杠伸展吊船(SDPT250G(1.5))</option>
-                            <option value="2.0米手动丝杠伸展吊船(SDPT250G(2.0))">2.0米手动丝杠伸展吊船(SDPT250G(2.0))</option>
-                            <option value="2.5米手动丝杠伸展吊船(SDPT250G(2.5))">2.5米手动丝杠伸展吊船(SDPT250G(2.5))</option>
-                            <option value="3.0米手动丝杠伸展吊船(SDPT250G(3.0))">3.0米手动丝杠伸展吊船(SDPT250G(3.0))</option>
-                            <option value="2.0米液压伸展吊船(YYPT200G(2.0))">2.0米液压伸展吊船(YYPT200G(2.0))</option>
-                            <option value="2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))">2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))</option>
-                            <option value="2.5米液压伸展吊船(YYPT200G(2.5))">2.5米液压伸展吊船(YYPT200G(2.5))</option>
-                            <option value="3.0米液压伸展吊船(YYPT200G(3.0))">3.0米液压伸展吊船(YYPT200G(3.0))</option>
-                            <option value="3.5米液压伸展吊船(YYPT200G(3.5))">3.5米液压伸展吊船(YYPT200G(3.5))</option>
-                            <option value="2.0米折叠吊船(SSPT(250_2.0))">2.0米折叠吊船(SSPT(250_2.0))</option>
-                            <option value="2.5米折叠吊船(SSPT(250_2.5))">2.5米折叠吊船(SSPT(250_2.5))</option>
-                            <option value="2.0米折弯吊船(ZWDC(250_2))">2.0米折弯吊船(ZWDC(250_2))</option>
-                            <option value="2.5米折弯吊船(ZWDC(250_2.5))">2.5米折弯吊船(ZWDC(250_2.5))</option>
-                            <option value="3.0米折弯吊船(ZWDC(250_3))">3.0米折弯吊船(ZWDC(250_3))</option>
-                            <option value="2.5米伸缩子吊船">2.5米伸缩子吊船</option>
-                            <option value="2.0米CDD吊船(CDD240(2A).0)">2.0米CDD吊船(CDD240(2A).0)</option>
-                            <option value="2.5米CDD吊船(CDD240(2.5))">2.5米CDD吊船(CDD240(2.5))</option>
-                            <option value="3.0米CDD吊船(CDD240(3))">3.0米CDD吊船(CDD240(3))</option>
-                            <option value="4.0米CDD吊船(CDD240(4))">4.0米CDD吊船(CDD240(4))</option>
                             <option value="其它">其它</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>吊船钢丝绳型号选择</td>
-                    <td colspan="4">
+                    <td colspan="3">
                         <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="Φ7">Φ7</option>
-                            <option value="Φ8">Φ8</option>
-                            <option value="Φ8.3">Φ8.3</option>
-                            <option value="Φ10">Φ10</option>
-                            <option value="Φ13">Φ13</option>
-                            <option value="布鲁格Φ7">布鲁格Φ7</option>
-                            <option value="布鲁格Φ8">布鲁格Φ8</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>是否有防风背包</td>
-                    <td colspan="4">
+                    <td colspan="3">
                         <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
                             <option value="有">有</option>
@@ -738,40 +294,18 @@
                 </tr>
                 <tr>
                     <td>臂头型号选择</td>
-                    <td colspan="4">
+                    <td colspan="3">
                         <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>
-                            <option value="YJBT1800Z(1.8米羊角臂头-中臂头)">YJBT1800Z(1.8米羊角臂头-中臂头)</option>
-                            <option value="YJBT1800D(1.8米羊角臂头-低臂头)">YJBT1800D(1.8米羊角臂头-低臂头)</option>
-                            <option value="YJBT2300G(2.3米羊角臂头-高臂头)">YJBT2300G(2.3米羊角臂头-高臂头)</option>
-                            <option value="YJBT2300Z(2.3米羊角臂头-中臂头)">YJBT2300Z(2.3米羊角臂头-中臂头)</option>
-                            <option value="YJBT2300D(2.3米羊角臂头-低臂头)">YJBT2300D(2.3米羊角臂头-低臂头)</option>
-                            <option value="YJBT2800G(2.8米羊角臂头-高臂头)">YJBT2800G(2.8米羊角臂头-高臂头)</option>
-                            <option value="YJBT2800Z(2.8米羊角臂头-中臂头)">YJBT2800Z(2.8米羊角臂头-中臂头)</option>
-                            <option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>
-                            <option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>
-                            <option value="XDBT2300(2.3米下挂臂头)">XDBT2300(2.3米下挂臂头)</option>
-                            <option value="XDBT2500Φ13(2.5米下挂臂头)">XDBT2500Φ13(2.5米下挂臂头)</option>
-                            <option value="XDBT3000Φ13(3.0米下挂臂头)">XDBT3000Φ13(3.0米下挂臂头)</option>
-                            <option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>
-                            <option value="DJBT2300(2.3米单角臂头)">DJBT2300(2.3米单角臂头)</option>
-                            <option value="DJBT2500Φ13(2.5米单角臂头)">DJBT2500Φ13(2.5米单角臂头)</option>
-                            <option value="DJBT3300(3.3米单角臂头)">DJBT3300(3.3米单角臂头)</option>
-                            <option value="PBT800(0.8米一字臂头)">PBT800(0.8米一字臂头)</option>
-                            <option value="MHEBT1944(MHE1944臂头)">MHEBT1944(MHE1944臂头)</option>
                             <option value="其它">其它</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>GRU型号选择</td>
-                    <td colspan="4">
+                    <td colspan="3">
                         <select name="gruModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="GRU285">GRU285</option>
-                            <option value="GRU295">GRU295</option>
-                            <option value="GRU313">GRU313</option>
                             <option value="无">无</option>
                         </select>
                     </td>
@@ -781,7 +315,7 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.仰柱液压缸参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.仰柱液压缸参数</b></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -817,7 +351,7 @@
             <div style="width:400px;">
                 <table>
                     <tr>
-                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.前撑杆相关参数</b></td>
+                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.前撑杆相关参数</b></td>
                     </tr>
                     <tr>
                         <td style="width:26%;padding:10px 0;"><b>名称</b></td>
@@ -867,11 +401,11 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.工作状态仰柱机构相关参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.工作状态仰柱机构相关参数</b></td>
                 </tr>
                 <!--放工作状态仰柱机构图-->
                 <tr>
-                    <td  colspan="5" style="background-color: #aaa;">
+                    <td  colspan="4" style="background-color: #aaa;">
                         <img style="width:400px;height: 350px" th:src="@{工作状态仰柱机构距离参数.png}"/>
                     </td>
                 </tr>
@@ -904,11 +438,11 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.非工作状态仰柱机构相关参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.非工作状态仰柱机构相关参数</b></td>
                 </tr>
                 <!--放非工作状态仰柱机构图-->
                 <tr>
-                    <td  colspan="5" style="background-color: #aaa;">
+                    <td  colspan="4" style="background-color: #aaa;">
                         <img style="width:400px;height: 350px" th:src="@{非工作状态仰柱机构距离参数.png}"/>
                     </td>
                 </tr>
@@ -941,7 +475,7 @@
         <div style="width:400px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.前撑杆连接轴校核相关参数</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.前撑杆连接轴校核相关参数</b></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;"><b>名称</b></td>
@@ -996,23 +530,23 @@
             <input type="text" name="ldslzh" />
         </div>
         <div style="width:1220px;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b> </b></div>
-        <!--<div style="width:1220px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-            <!--<img alt="所选轨道钢型截面示意图" id="gdtu" height="300px"  name="gdtu">-->
-
-        <!--</div>-->
         <div style="width:600px;">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.工作状态擦窗机各部件载荷</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.工作状态擦窗机各部件载荷</b></td>
                 </tr>
-                <div style="width:600px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                    <img alt="工作状态擦窗机各部件载荷示意图" id="yzjgtu1" height="300px"  name="yzjgtu1">
-                </div>
                 <tr>
-                    <td>工作状态载荷示意图</td>
                     <td colspan="4">
-                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="yzjgtu1" oninput="showImage(this,'yzjgtu1')"/>
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="工作状态擦窗机各部件载荷示意图"src="/image/Tensile/yzjgtu1.png" width="600px" id="yzjgtu1" name="yzjgtu1" >
+                            <input type="hidden" value="tu_yzjgtu1.png"/>
+                        </div>
                     </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0"><b>工作状态擦窗机各部件载荷示意图</b></td>
+                    <td colspan="3"><input class="image" type="file" name="yzjgtu1" accept="image/*"
+                                           oninput="showImage(this,'yzjgtu1')"/></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -1144,16 +678,20 @@
         <div style="width:600px;margin-left: 10px">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.工作状态各部件重心至铰支点D的距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.工作状态各部件重心至铰支点D的距离</b></td>
                 </tr>
-                <div style="width:600px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                    <img alt="工作状态各部件重心至铰支点D的距离示意图" id="yzjgtu2" height="300px"  name="yzjgtu2">
-                </div>
-                 <tr>
-                    <td>工作状态距离意图</td>
+                <tr>
                     <td colspan="4">
-                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="yzjgtu2" oninput="showImage(this,'yzjgtu2')"/>
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="工作状态各部件重心至铰支点D的距离示意图"src="/image/Tensile/yzjgtu2.png" width="600px" id="yzjgtu2" name="yzjgtu2" >
+                            <input type="hidden" value="tu_yzjgtu2.png"/>
+                        </div>
                     </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0"><b>工作状态各部件重心至铰支点D的距离示意图</b></td>
+                    <td colspan="3"><input class="image" type="file" name="yzjgtu2" accept="image/*"
+                                           oninput="showImage(this,'yzjgtu2')"/></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -1230,19 +768,23 @@
                 </tr>
             </table>
         </div>
-        <div style="width:600px;margin-left: 10px">
+        <div style="width:600px">
             <table>
                 <tr>
-                    <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>10.非工作状态各部件重心至铰支点D的距离</b></td>
+                    <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>10.非工作状态各部件重心至铰支点D的距离</b></td>
                 </tr>
-                <div style="width:600px;height:350px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                    <img alt="非工作状态各部件重心至铰支点D的距离示意图" id="yzjgtu3" height="300px"  name="yzjgtu3">
-                </div>
                 <tr>
-                    <td>非工作状态距离意图</td>
                     <td colspan="4">
-                        <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="yzjgtu3" oninput="showImage(this,'yzjgtu3')"/>
+                        <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                            <img alt="非工作状态各部件重心至铰支点D的距离示意图"src="/image/Tensile/yzjgtu3.png" width="600px" id="yzjgtu3" name="yzjgtu3" >
+                            <input type="hidden" value="tu_yzjgtu3.png"/>
+                        </div>
                     </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0"><b>非工作状态各部件重心至铰支点D的距离示意图</b></td>
+                    <td colspan="3"><input class="image" type="file" name="yzjgtu3" accept="image/*"
+                                           oninput="showImage(this,'yzjgtu3')"/></td>
                 </tr>
                 <tr>
                     <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -1313,42 +855,60 @@
             <div style="width:460px;height:520px; font-size: 14px   ;">
                 <table id="pdf3tb">
                     <tr>
-                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
+                        <td colspan="4" style="padding: 10px 0 10px 0;background-color: #aaa;"><b>核算结果</b></td>
                     </tr>
                     <tr>
-                        <td style="width:40%;"><b>名称</b></td>
-                        <td style="width:30%;"><b>是否满足要求</b></td>
+                        <td style="width:25%;"><b>名称</b></td>
+                        <td style="width:25%;"><b>标准值</b></td>
+                        <td style="width:25%;"><b>计算值</b></td>
+                        <td style="width:25%;"><b>是否满足</b></td>
                     </tr>
                     <tr>
                         <td><b>工作状态液压缸推力校核</b></td>
+                        <td><p><span id="yzlltlk"></span>kN</p></td>
+                        <td><p><span id="a1k"></span>kN</p></td>
                         <td id="u1"></td>
                     </tr>
                     <tr>
                         <td><b>非工作状态液压缸推力校核</b></td>
+                        <td><p><span id="yzlltl1k"></span>kN</p></td>
+                        <td><p><span id="a2k"></span>kN</p></td>
                         <td id="u2"></td>
                     </tr>
                     <tr>
                         <td><b>工作状态仰柱机构前撑杆稳定性校核</b></td>
+                        <td><b>230N/mm<sup>2</sup></b></td>
+                        <td><p><span id="s1"></span>N/mm<sup>2</sup></p></td>
                         <td id="u3"></td>
                     </tr>
                     <tr>
                         <td><b>非工作状态仰柱机构前撑杆稳定性校核</b></td>
+                        <td><b>313.33N/mm<sup>2</sup></b></td>
+                        <td><p><span id="sf1"></span>N/mm<sup>2</sup></p></td>
                         <td id="u4"></td>
                      </tr>
                     <tr>
                         <td><b>前撑杆连接轴弯曲应力校核</b></td>
+                        <td><b>246.67N/mm<sup>2</sup></b></td>
+                        <td><p><span id="sja"></span>N/mm<sup>2</sup></p></td>
                         <td id="u5"></td>
                      </tr>
                     <tr>
                         <td><b>前撑杆连接轴剪切应力校核</b></td>
+                        <td><b>142.41N/mm<sup>2</sup></b></td>
+                        <td><p><span id="tja"></span>N/mm<sup>2</sup></p></td>
                         <td id="u6"></td>
                     </tr>
                     <tr>
                         <td><b>前撑杆连接轴合成应力校核</b></td>
+                        <td><b>246.67N/mm<sup>2</sup></b></td>
+                        <td><p><span id="sivja"></span>N/mm<sup>2</sup></p></td>
                         <td id="u7"></td>
                       </tr>
                     <tr>
                         <td><b>前撑杆连接轴与前撑杆接触应力校核</b></td>
+                        <td><b>533.33N/mm<sup>2</sup></b></td>
+                        <td><p><span id="shzja"></span>N/mm<sup>2</sup></p></td>
                         <td id="u8"></td>
                      </tr>
                  </table>
@@ -1365,7 +925,7 @@
                                                                                             isCheck(false);changeType('Calculation')"/>
         <input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','UprightMechanism/getPDF');
                                                                                             isCheck(true);changeType('Check')"/>
-        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','#aaa')"/>
+        <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
     </div>
 
 <script>
@@ -1399,95 +959,23 @@
             }
         },
 
-        yzdd:function(){
-            return yzjgModelList[ yzjgModel ]['yzdd'];
-        },
-        yzxd:function(){
-            return yzjgModelList[ yzjgModel ]['yzxd'];
-        },
-        yzlltl:function(){
-            return yzjgModelList[ yzjgModel ]['yzlltl'];
-        },
-        yzgcyl:function(){
-            return yzjgModelList[ yzjgModel ]['yzgcyl'];
-        },
-        ljdhzf:function(){
-            return yzjgModelList[ yzjgModel ]['ljdhzf'];
-        },
-        ljdc:function(){
-            return yzjgModelList[ yzjgModel ]['ljdc'];
-        },
-        ljcyy:function(){
-            return yzjgModelList[ yzjgModel ]['ljcyy'];
-        },
-        lyhq:function(){
-            return yzjgModelList[ yzjgModel ]['lyhq'];
-        },
-        ljdcf:function(){
-            return yzjgModelList[ yzjgModel ]['ljdcf'];
-        },
-        ljcyyf:function(){
-            return yzjgModelList[ yzjgModel ]['ljcyyf'];
-        },
-        lyhqf:function(){
-            return yzjgModelList[ yzjgModel ]['lyhqf'];
-        },
-        lyg:function(){
-            return yzjgModelList[ yzjgModel ]['lyg'];
-        },
-        hyg:function(){
-            return yzjgModelList[ yzjgModel ]['hyg'];
-        },
-        byg:function(){
-            return yzjgModelList[ yzjgModel ]['byg'];
-        },
-        eyg:function(){
-            return yzjgModelList[ yzjgModel ]['eyg'];
-        },
-        ayg:function(){
-            return yzjgModelList[ yzjgModel ]['ayg'];
-        },
-        iiminyg:function(){
-            return yzjgModelList[ yzjgModel ]['iiminyg'];
-        },
-        dd1:function(){
-            return yzjgModelList[ yzjgModel ]['dd1'];
-        },
-        ljat:function(){
-            return yzjgModelList[ yzjgModel ]['ljat'];
-        },
-        ljab:function(){
-            return yzjgModelList[ yzjgModel ]['ljab'];
-        },
-        dd2:function(){
-            return yzjgModelList[ yzjgModel ]['dd2'];
-        },
         aja:function(){
             return 3.14 * dd1 * dd1 / 4 ;
         },
         wjax:function(){
             return 3.14 * dd1 * dd1 * dd1 / 32 ;
         },
-        dcgssp:function(){
-            return dcgssModelList[ dcgssModel ]['dcgssp'];
-        },
         grugssp:function(){
-            return gruModelList[ gruModel ]['grugssp'];
+            if( gruModel =='无')
+                return 0;
         },
-        lbtzh:function(){
-            return btModelList[ btModel ]['lbtzh'];
-        },
-        ldcgh:function(){
-            return btModelList[ btModel ]['ldcgh'];
-        },
-        ldslzh:function(){
-            return btModelList[ btModel ]['ldslzh'];
-        },
-        swp:function(){
-            return dcModelList[ dcModel ]['swp'];
+        swp: function(){
+            if( dcModel =='其它')
+                return ' ';
         },
         r1:function(){
-            return dcModelList[ dcModel ]['r1'];
+            if( dcModel =='其它')
+                return ' ';
         },
         mwr:function(){
             return h * dcgssp * 4 ;
@@ -1498,6 +986,10 @@
         tsl:function (){
             return swp + r1 + mwr + mffbb ;
         },
+        hwll:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
         hsw:function(){
             return h * grugssp ;
         },
@@ -1505,22 +997,25 @@
             return hwll + hsw ;
         },
         m1:function(){
-            return btModelList[ btModel ]['m1'];
+            if( btModel =='其它')
+                return ' ' ;
         },
         m2:function(){
-            return gruModelList[ gruModel ]['m2'];
+            if( gruModel =='无')
+                return 0 ;
         },
         m3:function(){
             return  25  ;
         },
         m5:function(){
-            return gruModelList[ gruModel ]['m5'];
+            if( gruModel =='无')
+                return 0;
         },
         myzs:function(){
-            return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m11 + m20 + m21;
+            return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m11 + m20 + m21 ;
         },
         myzsf:function(){
-            return m1 + m2 + m3 + m4 + m5 + m6 + m11 + m20 + m21;
+            return m1 + m2 + m3 + m4 + m5 + m6 + m11 + m20 + m21 ;
         },
         lsljd:function(){
             return lbd ;
@@ -1613,7 +1108,18 @@
             }
         }
     };
+    getTable("yzjgModel","yzjgxz");
+    getTable("btModel","btxz");
+    getTable("dcModel","dcxz");
+    getTable("dcgssModel","dcgssxz");
+    getTable("gruModel","gruxz");
     data.init(calculateFunction);
+    imgDaefultData={
+        yzjgtu1:{inputvalue:"yzjgtu1.png"},
+        yzjgtu2:{inputvalue:"yzjgtu2.png"},
+        yzjgtu3:{inputvalue:"yzjgtu3.png"},
+    }
+    getData.dataToImage(imgDaefultData);
 </script>
 </body>
 </html>

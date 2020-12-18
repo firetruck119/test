@@ -123,7 +123,7 @@
 
     <link rel="stylesheet" th:href="@{/css/home.css}">
 
-    <title>悬挂C型轨强度及挠度校核计算书</title>
+    <title>清洗周期计算书</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
     <link rel="stylesheet" th:href="@{/css/pdf.css}">
@@ -156,7 +156,7 @@
                     <div class="main">
                         <iframe style="display: none" name="stop" src="about:blank"></iframe>
                         <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
-                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">悬挂C型轨强度及挠度校核计算书</div>
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">清洗周期计算书</div>
                             <!- 封面内容 ->
                             <div class="subtable">
                                 <table>
@@ -209,12 +209,56 @@
                                         <td colspan="2" ><input type="text" name="date" /></td>
                                     </tr>
                                 </table>
+
+                                <div style="width: 100%">
+                                    <table>
+                                        <tr>
+                                            <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.城市信息</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                            <td style="width:17%;">符号</td>
+                                            <td style="width:40%;">数值</td>
+                                            <td style="width:17%;">单位</td>
+                                        </tr>
+                                        <tr>
+                                            <td>城市类型选择</td>
+                                            <td colspan="3">
+                                                <select name="cslxModel" style="width:100%;height:40px;text-align-last:center">
+                                                    <option value="" style="display: none"></option>
+                                                    <option value="沿海城市">沿海城市</option>
+                                                    <option value="海岛城市">海岛城市</option>
+                                                    <option value="内陆城市">内陆城市</option>
+                                                    <option value="严寒城市">严寒城市</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b>城市名称</b></td>
+                                            <td ><p><i> </i></p></td>
+                                            <td ><input type="text" name="csmc"/></td>
+                                            <td > </td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b>城市类型</b></td>
+                                            <td ><p><i> </i></p></td>
+                                            <td ><input type="text" name="cslx"/></td>
+                                            <td > </td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b>雨雪天气天数占全年的百分比</b></td>
+                                            <td ><p><i>η</i></p></td>
+                                            <td ><input type="text" name="oyx"/></td>
+                                            <td >%</td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
 
                             <div class="subtable">
                                 <table>
                                     <tr>
-                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.基本参数</b></td>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.建筑及设备参数</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
@@ -223,185 +267,116 @@
                                         <td style="width:17%;">单位</td>
                                     </tr>
                                     <tr>
-                                        <td>悬挂C型轨型号选择</td>
-                                        <td colspan="3">
-                                            <select name="xgcxhModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="01-CXGD-110*65*14">01-CXGD-110*65*14</option>
-                                                <option value="01-CXGD-110*70*22">01-CXGD-110*70*22</option>
-                                            </select>
-                                        </td>
+                                        <td ><b>作业高度</b></td>
+                                        <td ><p><i>h</i></p></td>
+                                        <td ><input type="text" name="h"/></td>
+                                        <td >m</td>
                                     </tr>
                                     <tr>
-                                        <td>悬挂C型轨材料选择</td>
-                                        <td colspan="3">
-                                            <select name="xgcclModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="6005-T5">6005-T5</option>
-                                                <option value="6005-T6">6005-T6</option>
-                                                <option value="6005A-T5">6005A-T5</option>
-                                                <option value="6005A-T6">6005A-T6</option>
-                                                <option value="6063-T5">6063-T5</option>
-                                                <option value="6063-T6">6063-T6</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>悬挂C型轨型号</b></td>
-                                        <td ><p><i></i></p></td>
-                                        <td ><input type="text" name="xgcxh" /></td>
-                                        <td ></td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>悬挂C型轨材料</b></td>
-                                        <td ><p><i></i></p></td>
-                                        <td ><input type="text" name="xgccl" /></td>
-                                        <td ></td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>小车最大工作载荷</b></td>
-                                        <td ><p><i>G</i></p></td>
-                                        <td ><input type="text" name="xgg" /></td>
-                                        <td >N</td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>两个支墩之间最大轨道长度</b></td>
-                                        <td ><p><i>L</i></p></td>
-                                        <td ><input type="text" name="xgcl"/></td>
-                                        <td >mm</td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>小车滚轮与轨道接触点到轨道内侧的距离</b></td>
+                                        <td ><b>清洗面外圈周长</b></td>
                                         <td ><p><i>l</i></p></td>
-                                        <td ><input type="text" name="xgcxl"/></td>
-                                        <td >mm</td>
+                                        <td ><input type="text" name="lc"/></td>
+                                        <td >m</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>C型轨下边缘厚度</b></td>
-                                        <td ><p><i>l<sub>2</sub></i></p></td>
-                                        <td ><input type="text" name="xgcl2"/></td>
-                                        <td >mm</td>
+                                        <td ><b>销座安装层数</b></td>
+                                        <td ><p><i>n<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="nxz"/></td>
+                                        <td >层</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>轨道截面抗弯模量</b></td>
-                                        <td ><p><i>W<sub>x1</sub></i></p></td>
-                                        <td ><input type="text" name="xgcwx1" /></td>
-                                        <td >mm<sup>3</sup></td>
+                                        <td ><b>设备台数</b></td>
+                                        <td ><p><i>n<sub>2</sub></i></p></td>
+                                        <td ><input type="text" name="nsb"/></td>
+                                        <td >台</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>轨道截面惯性矩</b></td>
-                                        <td ><p><i>I</i></p></td>
-                                        <td ><input type="text" name="xgci"  /></td>
-                                        <td >mm<sup>4</sup></td>
+                                        <td ><b>吊船长度</b></td>
+                                        <td ><p><i>l<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="ldc"/></td>
+                                        <td >m</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>轨道弹性模量</b></td>
-                                        <td ><p><i>E</i></p></td>
-                                        <td ><input type="text" name="xgce" /></td>
-                                        <td >MPa</td>
+                                        <td ><b>有效工作长度</b></td>
+                                        <td ><p><i>w</i></p></td>
+                                        <td ><input type="text" name="wcd"/></td>
+                                        <td >m</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>C型轨壁厚</b></td>
-                                        <td ><p><i>h</sub></i></p></td>
-                                        <td ><input type="text" name="xgcbh" /></td>
-                                        <td >mm</td>
+                                        <td ><b>吊船升降速度</b></td>
+                                        <td ><p><i>v<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="vdc"/></td>
+                                        <td >m/min</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>规定非比例延伸强度</b></td>
-                                        <td ><p><i>R<sub>p0.2</sub></i></p></td>
-                                        <td ><input type="text" name="xgrp" /></td>
-                                        <td >MPa</td>
+                                        <td ><b>清洗速度（2人）</b></td>
+                                        <td ><p><i>v<sub>2</sub></i></p></td>
+                                        <td ><input type="text" name="vqx"/></td>
+                                        <td >m<sup>2</sup>/min</td>
                                     </tr>
-                                </table>
+                                    <tr>
+                                        <td ><b>相邻工位转换时间</b></td>
+                                        <td ><p><i>t<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="tzh"/></td>
+                                        <td >min</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>单个销钉收放时间（2人）</b></td>
+                                        <td ><p><i>t<sub>xd</sub></i></p></td>
+                                        <td ><input type="text" name="txd"/></td>
+                                        <td >min</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>工作时间</b></td>
+                                        <td ><p><i>t</i></p></td>
+                                        <td ><input type="text" name="tmr"/></td>
+                                        <td >h/day</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>工位转换间隔系数</b></td>
+                                        <td ><p><i>η<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="ozh"/></td>
+                                        <td > </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>单个工位升降间隔系数</b></td>
+                                        <td ><p><i>η<sub>2</sub></i></p></td>
+                                        <td ><input type="text" name="osj"/></td>
+                                        <td > </td>
+                                    </tr>
+                                    </table>
                             </div>
-
-                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>3.悬挂C型轨相关参数示意图</b></div>
-                                   <div class="subtable">
-                                       <table>
-                                           <tr>
-                                               <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>C型轨相关参数示意图</b></td>
-                                           </tr>
-                                           <tr>
-                                               <td style="background-color: #aaa;height: auto">
-                                                   <img style="width:400px;height:400px" src="\xgctu1.png"/>
-                                               </td>
-                                           </tr>
-                                       </table>
-                                   </div>
-                                   <div class="subtable">
-                                       <table>
-                                           <tr>
-                                               <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>轨道局部等效截面相关参数示意图</b></td>
-                                           </tr>
-                                            <tr>
-                                               <td style="background-color: #aaa;height: auto">
-                                                   <img style="width:600px;height:250px" src="\xgctu4.png"/>
-                                               </td>
-                                           </tr>
-                                       </table>
-                                   </div>
+                            <input type="hidden" name="pdfType"/>
                         </form>
 
                             <div class="navbox">
                                 <div style="width:600px;height:520px; font-size: 14px   ;">
                                     <table id="pdf3tb" style="background-color: rgb(220,220,220)">
                                         <tr>
-                                            <td colspan="6" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
+                                            <td colspan="2" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>计算结果</b></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
-                                            <td style="width:20%;"><b>名称</b></td>
-                                            <td style="width:20%;"><b>简支梁结果显示</b></td>
-                                            <td style="width:15%;"><b>是否满足</b></td>
-                                            <td style="width:20%;"><b>双跨梁结果显示</b></td>
-                                            <td style="width:15%;"><b>是否满足</b></td>
-                                            <td style="width:10%;"><b>许用值</b></td>
+                                            <td style="width:50%;"><b>名称</b></td>
+                                            <td style="width:50%;"><b>清洗周期（天）</b></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
-                                            <td><b>整体弯曲应力（MPa）</b></td>
-                                            <td id="xgco1"></td>
-                                            <td id="xgcm1"></td>
-                                            <td id="xgcko1"></td>
-                                            <td id="xgckm1"></td>
-                                            <td id="xgcxy"></td>
+                                            <td><b>理论清洗周期</b></td>
+                                            <td id="tll"></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
-                                            <td><b>局部弯曲应力（MPa）</b></td>
-                                            <td id="xgco2"></td>
-                                            <td id="xgcm2"></td>
-                                            <td id="xgcko2"></td>
-                                            <td id="xgckm2"></td>
-                                            <td id="xgcxy1"></td>
-                                        </tr>
-                                        <tr style="background-color: rgb(220,220,220)">
-                                            <td><b>组合弯曲应力（MPa）</b></td>
-                                            <td id="xgco3"></td>
-                                            <td id="xgcm3"></td>
-                                            <td id="xgcko3"></td>
-                                            <td id="xgckm3"></td>
-                                            <td id="xgcxy2"></td>
-                                        </tr>
-                                        <tr style="background-color: rgb(220,220,220)">
-                                            <td><b>轨道挠度（mm）</b></td>
-                                            <td id="xgcuy"></td>
-                                            <td id="xgcm4"></td>
-                                            <td id="xgckuy"></td>
-                                            <td id="xgckm4"></td>
-                                            <td id="xgnd"></td>
+                                            <td><b>考虑天气因素后，清洗周期</b></td>
+                                            <td id="ttq"></td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                         </div>
-
                         <div class="buttonbox">
                             <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
-                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
-                                   onclick="isCheck(false);$('form').attr('action','saveValue')"/>
-                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出简支梁pdf" onclick="$('form').attr('action','/SuspensionCtrack/getPDF');
-                                                                                                                isCheck(false);changeType('SimplySupported')"/>
-                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出双跨梁pdf" onclick="$('form').attr('action','/SuspensionCtrack/getPDF');
-                                                                                                                 isCheck(false);changeType('DoubleSpanbeam')"/>
-                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','/SuspensionCtrack/getPDF');
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据" onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出计算pdf" onclick="$('form').attr('action','/CleaningCycle/getPDF');
+                                                                                                                isCheck(false);changeType('Calculation')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/CleaningCycle/getPDF');
                                                                                                                 isCheck(true);changeType('Check')"/>
                             <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                         </div>
@@ -419,49 +394,28 @@
 <script>
     vm.$mount('#app')
 </script>
-<script>
-    xgcclModelList={
-        '6005-T5':{
-            xgccl:"6005-T5",
-        },
-        '6005-T6':{
-            xgccl:"6005-T6",
-        },
-        '6005A-T5':{
-            xgccl:"6005A-T5",
-        },
-        '6005A-T6':{
-            xgccl:"6005A-T6",
-        },
-        '6063-T5':{
-            xgccl:"6063-T5",
-        },
-        '6063-T6':{
-            xgccl:"6063-T6",
-        },
-    };
-    xgcxhModelList={
-        '01-CXGD-110*65*14':{
-            xgcxh:"01-CXGD-110*65*14",
-            xgcxl:14,
-            xgcl2:12,
-            xgcwx1:64849,
-            xgci:1483590,
-            xgce:70000,
-            xgcbh:7,
-        },
-        '01-CXGD-110*70*22':{
-            xgcxh:"01-CXGD-110*70*22",
-            xgcxl:12,
-            xgcl2:12,
-            xgcwx1:66138,
-            xgci:1761426,
-            xgce:70000,
-            xgcbh:7,
-        },
-    };
-</script>
 
+<script>
+    cslxModelList={
+        "沿海城市":{
+            cslx:"沿海城市",
+            oyx:70,
+        },
+        "海岛城市":{
+            cslx:"海岛城市",
+            oyx:65,
+        },
+        "内陆城市":{
+            cslx:"内陆城市",
+            oyx:75,
+        },
+        "严寒城市":{
+            cslx:"严寒城市",
+            oyx:80,
+        },
+    };
+
+</script>
 <script type="text/javascript">
     function isNumber(value) {         //验证是否为数字
         var patrn = /^(-)?\d+(\.\d+)?$/;
@@ -474,7 +428,7 @@
 
     function janyan() {
         $.ajax({
-            url: "/SuspensionCtrack/jy",
+            url: "/CleaningCycle/jy",
             type: "post",
             data: $("form").serialize(),
             async: false,
@@ -483,8 +437,6 @@
             success: function (data) {
                 Object.keys(data).forEach(function (id) {
                     $("#" + id).text(data[id]);
-                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
-                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
                 })
             }
         })
@@ -510,8 +462,6 @@
     }
 </script>
 
-
-
 <script>
     function changeType(l){
         var e = $('input[name=pdfType]');
@@ -522,78 +472,40 @@
         e.val(l);
     }
     var calculateFunction={
-        xgccl:function(){
-            return xgcclModelList[ xgcclModel ]['xgccl'];
+        cslx:function(){
+            return cslxModelList[ cslxModel ]['cslx'];
+        },
+        oyx:function(){
+            return cslxModelList[ cslxModel ]['oyx'];
         },
 
-        xgrp:function(){
-            if( xgccl == "6005-T5" && xgcbh <= 6.3 ){
-                return 200 ;
-            }
-            else if ( xgccl == "6005-T5" &&  xgcbh > 6.3&& xgcbh < 25  ){
-                    return 200 ;
-            }
-            else if ( xgccl == "6005-T6" && xgcbh <= 5 ){
-                return 215 ;
-            }
-            else if ( xgccl == "6005-T6" && xgcbh > 5 && xgcbh < 15 ){
-                return 200 ;
-            }
-            else if ( xgccl == "6005A-T5" && xgcbh <= 6.3  ){
-                return 200 ;
-            }
-            else if ( xgccl == "6005A-T5" &&  xgcbh > 6.3&& xgcbh < 25  ){
-                return 200 ;
-            }
-            else if ( xgccl == "6005A-T6" && xgcbh <= 5  ){
-                return 215 ;
-            }
-            else if ( xgccl == "6005A-T6" && xgcbh > 5 && xgcbh < 15 ){
-                return 200 ;
-            }
-            else if ( xgccl == "6063-T5" && xgcbh <= 3  ){
-                return 130 ;
-            }
-            else if ( xgccl == "6063-T5" && xgcbh > 3 && xgcbh < 25 ){
-                return 110 ;
-            }
-            else if ( xgccl == "6063-T6" && xgcbh <= 10 ){
-                return 170 ;
-            }
-            else if ( xgccl == "6063-T6" && xgcbh > 10 && xgcbh < 25 ){
-                return 160 ;
-            }
-            else{
-                return " " ;
-            }
+        vdc:function(){
+            return 9 ;
         },
-        xgcxh:function(){
-            return xgcxhModelList[ xgcxhModel ]['xgcxh'];
+        vqx:function(){
+            return 2 ;
         },
-        xgcxl:function(){
-            return xgcxhModelList[ xgcxhModel ]['xgcxl'];
+        tzh:function(){
+            return 2 ;
         },
-        xgcl2:function(){
-            return xgcxhModelList[ xgcxhModel ]['xgcl2'];
+        txd:function(){
+            return 2 ;
         },
-        xgcwx1:function(){
-            return xgcxhModelList[ xgcxhModel ]['xgcwx1'];
+        tmr:function(){
+            return 8 ;
         },
-        xgci:function(){
-            return xgcxhModelList[ xgcxhModel ]['xgci'];
+        ozh:function(){
+            return 1.15 ;
         },
-        xgce:function(){
-            return xgcxhModelList[ xgcxhModel ]['xgce'];
-        },
-        xgcbh:function(){
-            return xgcxhModelList[ xgcxhModel ]['xgcbh'];
+        osj:function(){
+            return 1.25 ;
         },
     };
     data.init(calculateFunction);
 </script>
 <script>
     $('input[name="getData"]').click(function () {
-            var url = '/SuspensionCtrack/getData';
+            var url = '/CleaningCycle/getData';
             var id = $('input[name="sjht"]').val();
             getData.geteDataFromDB(url, id)
         }

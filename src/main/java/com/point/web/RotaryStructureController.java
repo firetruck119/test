@@ -38,6 +38,11 @@ public class RotaryStructureController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/RotaryStructure")
+    public String getMap2() {
+        return "pdf/RotaryStructure";
+    }
+
     @GetMapping("/RotaryStructure")
     public String getMap() {
         return "RotaryStructure";

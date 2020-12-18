@@ -38,6 +38,11 @@ public class UprightMechanismController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/UprightMechanism")
+    public String getMap2() {
+        return "pdf/UprightMechanism";
+    }
+
     @GetMapping("/UprightMechanism")
     public String getMap() {
         return "UprightMechanism";

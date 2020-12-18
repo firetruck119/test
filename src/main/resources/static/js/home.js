@@ -55,7 +55,7 @@ asideDatas = {
                 },
                 {
                     title: '清洗周期',
-
+                    url: "CleaningCycle",
                 },
                 {
                     title: '操作说明书',
@@ -178,6 +178,14 @@ asideDatas = {
                             title: '4+1滚轮、链条及伸缩机构',
                             url:'FourJibWheel'
                         },
+                        {
+                            title: '吊臂前对接法兰',
+                            url:'JibFrontButtFlange'
+                        },
+                        {
+                            title: '吊臂后对接法兰',
+
+                        },
                     ]
                 },
                 {
@@ -247,12 +255,12 @@ asideDatas = {
                     url:'WireRope'
                 },
                 {
-                    title: '回转电机校核计算书',
-
+                    title: '大回转机构',
+                    url:'RotaryStructure'
                 },
                 {
-                    title: '回转支承校核计算书',
-
+                    title: '仰柱机构',
+                    url:'UprightMechanism'
                 },
             ]
         },

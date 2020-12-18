@@ -291,17 +291,25 @@ public class UprightMechanismEntity {
         Double f2= 1.25 * myzs * 10;
         Double fyyg= f2 * ljdc / ljcyy;
         Double a1= fyyg * 2 / 2;
+        Double a1k= a1 / 1000 ;
+        Double yzlltlk= yzlltl / 1000 ;
         map.put("f2", f2);
         map.put("fyyg", fyyg);
         map.put("a1", a1);
+        map.put("a1k", a1k);
+        map.put("yzlltlk", yzlltlk);
 
 //      非工作状态仰柱液压缸校核
         Double ff2 = myzsf * 10;
         Double fyygf = ff2 * ljdcf / ljcyyf;
         Double a2 = fyygf * 2 / 2;
+        Double a2k= a2 / 1000 ;
+        Double yzlltl1k= yzlltl / 1000 ;
         map.put("ff2", ff2);
         map.put("fyygf", fyygf);
         map.put("a2", a2);
+        map.put("a2k", a2k);
+        map.put("yzlltl1k", yzlltl1k);
 
 //      工作状态擦窗机各部件对铰支点D产生的倾覆力矩
         Double msljd =1.25 * 10 * tsl * lsljd;

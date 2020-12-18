@@ -1727,7 +1727,7 @@
                                onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
                         <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出成本估算pdf" onclick="$('form').attr('action','/Cost/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
-                        <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+                        <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                     </div>
                 </el-row>
             </el-main>

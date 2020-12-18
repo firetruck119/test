@@ -38,6 +38,11 @@ public class CleaningCycleController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/CleaningCycle")
+    public String getMap2() {
+        return "pdf/CleaningCycle";
+    }
+
     @GetMapping("/CleaningCycle")
     public String getMap() {
         return "CleaningCycle";

@@ -462,7 +462,7 @@
                                                                                                                 isCheck(false);changeType('Calculation')"/>
                             <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/PlatformUnconstrained/getPDF');
                                                                                                                 isCheck(true);changeType('Check')"/>
-                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                         </div>
                 </el-row>
             </el-main>

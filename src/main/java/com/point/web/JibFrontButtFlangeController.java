@@ -38,6 +38,11 @@ public class JibFrontButtFlangeController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/JibFrontButtFlange")
+    public String getMap2() {
+        return "pdf/JibFrontButtFlange";
+    }
+
     @GetMapping("/JibFrontButtFlange")
     public String getMap() {
         return "JibFrontButtFlange";

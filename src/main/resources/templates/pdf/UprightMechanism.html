@@ -1,0 +1,1194 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>仰柱机构校核计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">仰柱机构校核计算书</div>
+                            <!- 封面内容 ->
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                        <td colspan="2" style="width:70%;">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机计算书编号</b></td>
+                                        <td colspan="2" ><input type="text" name="no"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机版本</b></td>
+                                        <td colspan="2" ><input type="text" name="ver" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2" ><input type="text" name="xmmc" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>主机型号</b></td>
+                                        <td colspan="2" ><input type="text" name="zjxh" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算人</b></td>
+                                        <td colspan="2" ><input type="text" name="jsr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>审核人</b></td>
+                                        <td colspan="2" ><input type="text" name="shr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>批准人</b></td>
+                                        <td colspan="2" ><input type="text" name="pzr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算日期</b></td>
+                                        <td colspan="2" ><input type="text" name="date" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.基本参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>起升高度</b></td>
+                                        <td ><p><i>h</i></p></td>
+                                        <td ><input type="text" name="h" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>最大臂长</b></td>
+                                        <td ><p><i>L<sub>bd</sub></i></p></td>
+                                        <td ><input type="text" name="lbd"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>最小臂长</b></td>
+                                        <td ><p><i>L<sub>bx</sub></i></p></td>
+                                        <td ><input type="text" name="lbx"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>工作状态配重臂长</b></td>
+                                        <td ><p><i>L<sub>bp</sub></i></p></td>
+                                        <td ><input type="text" name="lbp"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>仰柱机构型号选择</td>
+                                        <td colspan="3">
+                                            <select name="yzjgModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船型号选择</td>
+                                        <td colspan="3">
+                                            <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="其它">其它</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船钢丝绳型号选择</td>
+                                        <td colspan="3">
+                                            <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>是否有防风背包</td>
+                                        <td colspan="3">
+                                            <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="有">有</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>臂头型号选择</td>
+                                        <td colspan="3">
+                                            <select name="btModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="其它">其它</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>GRU型号选择</td>
+                                        <td colspan="3">
+                                            <select name="gruModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                 </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.仰柱液压缸参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>液压缸缸径</b></td>
+                                        <td ><p><i>D<sub>yzyy</sub></i></p></td>
+                                        <td ><input type="text" name="yzdd"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>液压缸杆径</b></td>
+                                        <td ><p><i>d<sub>yzyy</sub></i></p></td>
+                                        <td ><input type="text" name="yzxd"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>液压缸单杠最大推力</b></td>
+                                        <td ><p><i>F<sub>yzyy</sub></i></p></td>
+                                        <td ><input type="text" name="yzlltl"/></td>
+                                        <td >N</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>液压缸额定工作压力</b></td>
+                                        <td ><p><i>P</i></p></td>
+                                        <td ><input type="text" name="yzgcyl"/></td>
+                                        <td >MPa</td>
+                                    </tr>
+                                 </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.前撑杆相关参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆长度</b></td>
+                                        <td ><p><i>l<sub>yg</sub></i></p></td>
+                                        <td ><input type="text" name="lyg" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆断面高度</b></td>
+                                        <td ><p><i>h<sub>yg</sub></i></p></td>
+                                        <td ><input type="text" name="hyg" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆断面宽度</b></td>
+                                        <td ><p><i>b<sub>yg</sub></i></p></td>
+                                        <td ><input type="text" name="byg" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆断面厚度</b></td>
+                                        <td ><p><i>e<sub>yg</sub></i></p></td>
+                                        <td ><input type="text" name="eyg" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆断面的毛面积</b></td>
+                                        <td ><p><i>A<sub>yg</sub></i></p></td>
+                                        <td ><input type="text" name="ayg" /></td>
+                                        <td >mm<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆惯性半径</b></td>
+                                        <td ><p><i>i<sub>minyg</sub></i></p></td>
+                                        <td ><input type="text" name="iiminyg" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.工作状态仰柱机构相关参数</b></td>
+                                    </tr>
+                                    <!--放工作状态仰柱机构图-->
+                                    <tr>
+                                        <td  colspan="4" style="background-color: #aaa;height: auto">
+                                            <img style="width:400px;height: 350px" src="\工作状态仰柱机构距离参数.png"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:104px;padding:10px 0;"><b>名称</b></td>
+                                        <td style="width:68px;">符号</td>
+                                        <td style="width:160px;">数值</td>
+                                        <td style="width:68px;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>工作状态铰支点D至铰支点C水平距离</b></td>
+                                        <td ><p><i>L<sub>jdc</sub></i></p></td>
+                                        <td ><input type="text" name="ljdc" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>工作状态铰支点C至仰柱液压缸垂直距离</b></td>
+                                        <td ><p><i>L<sub>jcyy</sub></i></p></td>
+                                        <td ><input type="text" name="ljcyy" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>工作状态后支撑杆至前撑杆垂直距离</b></td>
+                                        <td ><p><i>L<sub>yhq</sub></i></p></td>
+                                        <td ><input type="text" name="lyhq" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.非工作状态仰柱机构相关参数</b></td>
+                                    </tr>
+                                    <!--放非工作状态仰柱机构图-->
+                                    <tr>
+                                        <td  colspan="4" style="background-color: #aaa;height: auto">
+                                            <img style="width:400px;height: 350px" src="\非工作状态仰柱机构距离参数.png"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:104px;padding:10px 0;"><b>名称</b></td>
+                                        <td style="width:68px;">符号</td>
+                                        <td style="width:160px;">数值</td>
+                                        <td style="width:68px;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>非工作状态铰支点D至铰支点C水平距离</b></td>
+                                        <td ><p><i>L<sub>jdcf</sub></i></p></td>
+                                        <td ><input type="text" name="ljdcf" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>非工作状态铰支点C至仰柱液压缸垂直距离</b></td>
+                                        <td ><p><i>L<sub>jcyyf</sub></i></p></td>
+                                        <td ><input type="text" name="ljcyyf" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>非工作状态后支撑杆至前撑杆垂直距离</b></td>
+                                        <td ><p><i>L<sub>yhqf</sub></i></p></td>
+                                        <td ><input type="text" name="lyhqf" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.前撑杆连接轴校核相关参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆连接轴的直径</b></td>
+                                        <td ><p><i>D<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="dd1" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆连接轴的截面积</b></td>
+                                        <td ><p><i>A<sub>ja</sub></i></p></td>
+                                        <td ><input type="text" name="aja" /></td>
+                                        <td >mm<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆连接轴的抗弯模量</b></td>
+                                        <td ><p><i>W<sub>jax</sub></i></p></td>
+                                        <td ><input type="text" name="wjax" /></td>
+                                        <td >mm<sup>3</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆连接轴单个铜套的长度</b></td>
+                                        <td ><p><i>l<sub>jat</sub></i></p></td>
+                                        <td ><input type="text" name="ljat" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆连接轴孔处板的宽度</b></td>
+                                        <td ><p><i>l<sub>jab</sub></i></p></td>
+                                        <td ><input type="text" name="ljab" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前撑杆连接轴孔的直径</b></td>
+                                        <td ><p><i>D<sub>2</sub></i></p></td>
+                                        <td ><input type="text" name="dd2" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="display: none">
+                                <input type="text" name="ljdhzf" />
+                                <input type="text" name="dcgssp" />
+                                <input type="text" name="grugssp" />
+                                <input type="text" name="lbtzh" />
+                                <input type="text" name="ldcgh" />
+                                <input type="text" name="ldslzh" />
+                            </div>
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b> </b></div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.工作状态擦窗机各部件载荷</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="工作状态擦窗机各部件载荷示意图"src="/image/Tensile/yzjgtu1.png" width="600px" id="yzjgtu1" name="yzjgtu1" >
+                                                <input type="hidden" value="tu_yzjgtu1.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0"><b>工作状态擦窗机各部件载荷示意图</b></td>
+                                        <td colspan="3"><input class="image" type="file" name="yzjgtu1" accept="image/*"
+                                                               oninput="showImage(this,'yzjgtu1')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船自重</td>
+                                        <td><p><i>S<sub>wp</sub></i></p></td>
+                                        <td><input type='text' name="swp"/></td>
+                                        <td>kg</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>吊船额定载重量</td>
+                                        <td><p><i>R<sub>1</sub></i></p></td>
+                                        <td><input type='text' name="r1"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船钢丝绳自重</td>
+                                        <td><p><i>M<sub>wr</sub></i></p></td>
+                                        <td><input type='text' name="mwr"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>防风背包自重</td>
+                                        <td><p><i>m<sub>ffbb</sub></i></p></td>
+                                        <td><input type='text' name="mffbb"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>总悬挂载荷</td>
+                                        <td><p><i>T<sub>sl</sub></i></p></td>
+                                        <td><input type='text' name="tsl"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构额定载重量</td>
+                                            <td><p><i>H<sub>wll</sub></i></p></td>
+                                        <td><input type='text' name="hwll"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"><input style="color: white;" type='text' name="grutstx"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构钢丝绳自重</td>
+                                        <td><p><i>H<sub>sw</sub></i></p></td>
+                                        <td><input type='text' name="hsw"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构总悬挂载荷</td>
+                                        <td><p><i>T<sub>shl</sub></i></p></td>
+                                        <td><input type='text' name="tshl"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>臂头自重</td>
+                                        <td><p><i>m<sub>1</sub></i></p></td>
+                                        <td><input type='text' name="m1"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构导绳架自重</td>
+                                        <td><p><i>m<sub>2</sub></i></p></td>
+                                        <td><input type='text' name="m2"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>重锤自重</td>
+                                        <td><p><i>m<sub>3</sub></i></p></td>
+                                        <td><input type='text' name="m3"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>大臂自重</td>
+                                        <td><p><i>m<sub>4</sub></i></p></td>
+                                        <td><input type='text' name="m4"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构装置自重</td>
+                                        <td><p><i>m<sub>5</sub></i></p></td>
+                                        <td><input type='text' name="m5"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>伸缩液压缸自重</td>
+                                        <td><p><i>m<sub>6</sub></i></p></td>
+                                        <td><input type='text' name="m6"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>配重自重</td>
+                                        <td><p><i>m<sub>7</sub></i></p></td>
+                                        <td><input type='text' name="m11"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>其它I</td>
+                                        <td><p><i>m<sub>8</sub></i></p></td>
+                                        <td><input type='text' name="m20"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>其它II</td>
+                                        <td><p><i>m<sub>9</sub></i></p></td>
+                                        <td><input type='text' name="m21"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>工作状态仰柱机构上方重量之和</td>
+                                        <td><p><i>m<sub>yzs</sub></i></p></td>
+                                        <td><input type='text' name="myzs"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>非工作状态仰柱机构上方重量之和</td>
+                                        <td><p><i>m<sub>yzsf</sub></i></p></td>
+                                        <td><input type='text' name="myzsf"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                  </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.工作状态各部件重心至铰支点D的距离</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="工作状态各部件重心至铰支点D的距离示意图"src="/image/Tensile/yzjgtu2.png" width="600px" id="yzjgtu2" name="yzjgtu2" >
+                                                <input type="hidden" value="tu_yzjgtu2.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0"><b>工作状态各部件重心至铰支点D的距离示意图</b></td>
+                                        <td colspan="3"><input class="image" type="file" name="yzjgtu2" accept="image/*"
+                                                               oninput="showImage(this,'yzjgtu2')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>总悬挂载荷至铰支点D的距离</td>
+                                        <td><p><i>L<sub>sljd</sub></i></p></td>
+                                        <td><input type='text' name="lsljd"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构总悬挂载荷至铰支点D的距离</td>
+                                        <td><p><i>L<sub>shljd</sub></i></p></td>
+                                        <td><input type='text' name="lshljd"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>臂头至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd1</sub></i></p></td>
+                                        <td><input type='text' name="ljd1"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构导绳架至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd2</sub></i></p></td>
+                                        <td><input type='text' name="ljd2"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>重锤至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd3</sub></i></p></td>
+                                        <td><input type='text' name="ljd3"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>大臂至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd4</sub></i></p></td>
+                                        <td><input type='text' name="ljd4"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构装置至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd5</sub></i></p></td>
+                                        <td><input type='text' name="ljd5"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>伸缩液压缸至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd6</sub></i></p></td>
+                                        <td><input type='text' name="ljd6"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>配重至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd7</sub></i></p></td>
+                                        <td><input type='text' name="ljd11"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>其它I至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd8</sub></i></p></td>
+                                        <td><input type='text' name="ljd20"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>其它II至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jd9</sub></i></p></td>
+                                        <td><input type='text' name="ljd21"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>10.非工作状态各部件重心至铰支点D的距离</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="非工作状态各部件重心至铰支点D的距离示意图"src="/image/Tensile/yzjgtu3.png" width="600px" id="yzjgtu3" name="yzjgtu3" >
+                                                <input type="hidden" value="tu_yzjgtu3.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px 0"><b>非工作状态各部件重心至铰支点D的距离示意图</b></td>
+                                        <td colspan="3"><input class="image" type="file" name="yzjgtu3" accept="image/*"
+                                                               oninput="showImage(this,'yzjgtu3')"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>臂头至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf1</sub></i></p></td>
+                                        <td><input type='text' name="ljdf1"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构导绳架至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf2</sub></i></p></td>
+                                        <td><input type='text' name="ljdf2"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>重锤至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf3</sub></i></p></td>
+                                        <td><input type='text' name="ljdf3"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>大臂至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf4</sub></i></p></td>
+                                        <td><input type='text' name="ljdf4"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>物料起升机构装置至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf5</sub></i></p></td>
+                                        <td><input type='text' name="ljdf5"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>伸缩液压缸至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf6</sub></i></p></td>
+                                        <td><input type='text' name="ljdf6"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>配重至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf7</sub></i></p></td>
+                                        <td><input type='text' name="ljdf11"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>其它I至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf8</sub></i></p></td>
+                                        <td><input type='text' name="ljdf20"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>其它II至铰支点D的距离</td>
+                                        <td><p><i>L<sub>jdf9</sub></i></p></td>
+                                        <td><input type='text' name="ljdf21"/></td>
+                                        <td>m</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <input type="hidden" name="pdfType"/>
+                        </form>
+
+                            <div class="navbox">
+                                <div style="width:600px;height:520px; font-size: 14px   ;">
+                                    <table id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                        <tr>
+                                            <td colspan="4" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td style="width:25%;"><b>名称</b></td>
+                                            <td style="width:25%;"><b>标准值</b></td>
+                                            <td style="width:25%;"><b>计算值</b></td>
+                                            <td style="width:25%;"><b>是否满足</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>工作状态液压缸推力校核</b></td>
+                                            <td><p><span id="yzlltlk"></span>kN</p></td>
+                                            <td><p><span id="a1k"></span>kN</p></td>
+                                            <td id="u1"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>非工作状态液压缸推力校核</b></td>
+                                            <td><p><span id="yzlltl1k"></span>kN</p></td>
+                                            <td><p><span id="a2k"></span>kN</p></td>
+                                            <td id="u2"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>工作状态仰柱机构前撑杆稳定性校核</b></td>
+                                            <td><b>230N/mm<sup>2</sup></b></td>
+                                            <td><p><span id="s1"></span>N/mm<sup>2</sup></p></td>
+                                            <td id="u3"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>非工作状态仰柱机构前撑杆稳定性校核</b></td>
+                                            <td><b>313.33N/mm<sup>2</sup></b></td>
+                                            <td><p><span id="sf1"></span>N/mm<sup>2</sup></p></td>
+                                            <td id="u4"></td>
+                                         </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>前撑杆连接轴弯曲应力校核</b></td>
+                                            <td><b>246.67N/mm<sup>2</sup></b></td>
+                                            <td><p><span id="sja"></span>N/mm<sup>2</sup></p></td>
+                                            <td id="u5"></td>
+                                         </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>前撑杆连接轴剪切应力校核</b></td>
+                                            <td><b>142.41N/mm<sup>2</sup></b></td>
+                                            <td><p><span id="tja"></span>N/mm<sup>2</sup></p></td>
+                                            <td id="u6"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>前撑杆连接轴合成应力校核</b></td>
+                                            <td><b>246.67N/mm<sup>2</sup></b></td>
+                                            <td><p><span id="sivja"></span>N/mm<sup>2</sup></p></td>
+                                            <td id="u7"></td>
+                                          </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>前撑杆连接轴与前撑杆接触应力校核</b></td>
+                                            <td><b>533.33N/mm<sup>2</sup></b></td>
+                                            <td><p><span id="shzja"></span>N/mm<sup>2</sup></p></td>
+                                            <td id="u8"></td>
+                                         </tr>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出仰柱机构pdf" onclick="$('form').attr('action','/UprightMechanism/getPDF');
+                                                                                                                isCheck(false);changeType('Calculation')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/UprightMechanism/getPDF');
+                                                                                                                isCheck(true);changeType('Check')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','transparent')"/>
+                        </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+
+<script>
+    ffbbModelList={
+        "有":{
+            mffbb:100,
+        },
+        "无":{
+            mffbb:0,
+        },
+    };
+</script>
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function janyan() {
+        $.ajax({
+            url: "/UprightMechanism/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
+                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+
+        grutstx: function () {
+            if ( gruModel == "GRU285" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构极限额定载重量为500kg';
+            } else if ( gruModel == "GRU295" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构极限额定载重量为750kg';
+            } else if ( gruModel == "GRU313" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构极限额定载重量为1000kg';
+            } else if ( gruModel == "无" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '无';
+            }
+        },
+
+        aja:function(){
+            return 3.14 * dd1 * dd1 / 4 ;
+        },
+        wjax:function(){
+            return 3.14 * dd1 * dd1 * dd1 / 32 ;
+        },
+        grugssp:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        swp: function(){
+            if( dcModel =='其它')
+                return ' ';
+        },
+        r1:function(){
+            if( dcModel =='其它')
+                return ' ';
+        },
+        mwr:function(){
+            return h * dcgssp * 4 ;
+        },
+        mffbb:function(){
+            return ffbbModelList[ ffbbModel ]['mffbb'];
+        },
+        tsl:function (){
+            return swp + r1 + mwr + mffbb ;
+        },
+        hwll:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        hsw:function(){
+            return h * grugssp ;
+        },
+        tshl:function(){
+            return hwll + hsw ;
+        },
+        m1:function(){
+            if( btModel =='其它')
+                return ' ' ;
+        },
+        m2:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+        m3:function(){
+            return  25  ;
+        },
+        m5:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        myzs:function(){
+            return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m11 + m20 + m21 ;
+        },
+        myzsf:function(){
+            return m1 + m2 + m3 + m4 + m5 + m6 + m11 + m20 + m21 ;
+        },
+        lsljd:function(){
+            return lbd ;
+        },
+        lshljd:function(){
+            return lbd - ( ldcgh - lbtzh ) ;
+        },
+        ljd1:function(){
+            return lshljd ;
+        },
+        ljd2:function(){
+            if( m2 === 0 ){
+               return 0 ;
+            }else {
+                return lbd - ( ldcgh - ldslzh ) ;
+            }
+        },
+        ljd3:function(){
+            return lshljd ;
+        },
+        ljd5:function(){
+            if( m5 === 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        ljd6:function(){
+            if( m6 === 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        ljd11:function(){
+            return lbp ;
+        },
+        ljd20:function(){
+            if( m20 === 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        ljd21:function(){
+            if( m21 === 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        ljdf1:function(){
+            return lbx - ( ldcgh - lbtzh ) - ljdhzf ;
+        },
+        ljdf2:function(){
+            if( m2 === 0 ){
+                return 0 ;
+            }else {
+                return lbx - ( ldcgh - ldslzh ) - ljdhzf ;
+            }
+        },
+        ljdf3:function(){
+            return ljdf1 ;
+        },
+        ljdf5:function(){
+            return ljd5 ;
+        },
+        ljdf6:function(){
+            if( m6 === 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        ljdf11:function(){
+            return ljd11 ;
+        },
+        ljdf20:function(){
+            if( m20 === 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
+        ljdf21:function(){
+            if( m21 === 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        }
+    };
+    getTable("yzjgModel","yzjgxz");
+    getTable("btModel","btxz");
+    getTable("dcModel","dcxz");
+    getTable("dcgssModel","dcgssxz");
+    getTable("gruModel","gruxz");
+    data.init(calculateFunction);
+    imgDaefultData={
+        yzjgtu1:{inputvalue:"yzjgtu1.png"},
+        yzjgtu2:{inputvalue:"yzjgtu2.png"},
+        yzjgtu3:{inputvalue:"yzjgtu3.png"},
+    }
+    getData.dataToImage(imgDaefultData);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/UprightMechanism/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+
+</body>
+</html>
