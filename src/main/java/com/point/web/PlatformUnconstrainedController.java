@@ -38,6 +38,11 @@ public class PlatformUnconstrainedController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/PlatformUnconstrained")
+    public String getMap2() {
+        return "pdf/PlatformUnconstrained";
+    }
+
     @GetMapping("/PlatformUnconstrained")
     public String getMap() {
         return "PlatformUnconstrained";

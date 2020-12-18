@@ -31,7 +31,7 @@ public class PtPlatformUnconstrainedEntity {
     private Double chb;
     private Double clh;
     private Double cc;
-    private String ptdcmc;
+//    private String ptdcmc;
 
     //非页面数据
     private Double dcgssp;
@@ -72,7 +72,7 @@ public class PtPlatformUnconstrainedEntity {
         map.put("chb", CommonFunc.convertDoubleToString(chb));
         map.put("clh", CommonFunc.convertDoubleToString(clh));
         map.put("cc", CommonFunc.convertDoubleToString(cc));
-        map.put("ptdcmc", CommonFunc.convertDoubleToString(ptdcmc));
+//        map.put("ptdcmc", CommonFunc.convertDoubleToString(ptdcmc));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
 //        map.put("dcgssn", CommonFunc.convertDoubleToString(dcgssn));

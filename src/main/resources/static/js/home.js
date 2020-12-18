@@ -46,6 +46,14 @@ asideDatas = {
                     ]
                 },
                 {
+                    title: '非普通吊船无约束系统',
+                    url: "PlatformUnconstrained",
+                },
+                {
+                    title: '普通吊船无约束系统',
+                    url: "PtPlatformUnconstrained",
+                },
+                {
                     title: '清洗周期',
 
                 },

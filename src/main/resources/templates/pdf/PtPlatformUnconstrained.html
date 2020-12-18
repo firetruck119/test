@@ -1,0 +1,730 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>普通吊船无约束系统风速计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">普通吊船无约束系统风速计算书</div>
+                            <!- 封面内容 ->
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                        <td colspan="2" style="width:70%;">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机计算书编号</b></td>
+                                        <td colspan="2" ><input type="text" name="no"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机版本</b></td>
+                                        <td colspan="2" ><input type="text" name="ver" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2" ><input type="text" name="xmmc" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>主机型号</b></td>
+                                        <td colspan="2" ><input type="text" name="zjxh" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算人</b></td>
+                                        <td colspan="2" ><input type="text" name="jsr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>审核人</b></td>
+                                        <td colspan="2" ><input type="text" name="shr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>批准人</b></td>
+                                        <td colspan="2" ><input type="text" name="pzr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算日期</b></td>
+                                        <td colspan="2" ><input type="text" name="date" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                                <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.各部件型号选择</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div style="height:300px;text-align: center;font-size: 14px;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="吊船示意图" id="dcwystu1" height="300px"  name="dcwystu1">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船型号选择</td>
+                                        <td style="width:60%;" >
+                                            <select name="ptdcModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="2.0米铝吊船(PT(250_2))">2.0米铝吊船(PT(250_2))</option>
+                                                <option value="2.5米铝吊船(PT(250_2.5))">2.5米铝吊船(PT(250_2.5))</option>
+                                                <option value="3.0米铝吊船(PT(250_3))">3.0米铝吊船(PT(250_3))</option>
+                                                <option value="4.0米铝吊船(PT(250_4.0))">4.0米铝吊船(PT(250_4.0))</option>
+                                                <option value="2.0米折弯吊船(ZWDC(250_2))">2.0米折弯吊船(ZWDC(250_2))</option>
+                                                <option value="2.5米折弯吊船(ZWDC(250_2.5))">2.5米折弯吊船(ZWDC(250_2.5))</option>
+                                                <option value="3.0米折弯吊船(ZWDC(250_3))">3.0米折弯吊船(ZWDC(250_3))</option>
+                                                <option value="其它">其它</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船钢丝绳型号选择</td>
+                                        <td>
+                                            <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>是否有防风背包</td>
+                                        <td>
+                                            <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="有">有</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>普通吊船尺寸示意图</td>
+                                        <td>
+                                            <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dcwystu1" oninput="showImage(this,'dcwystu1')"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.基本参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>最大工作高度</b></td>
+                                        <td ><p><i>H</i></p></td>
+                                        <td ><input type="text" name="h" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船长度</b></td>
+                                        <td ><p><i>l</i></p></td>
+                                        <td ><input type="text" name="ldc"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船宽度</b></td>
+                                        <td ><p><i>b</i></p></td>
+                                        <td ><input type="text" name="bdc"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船高度</b></td>
+                                        <td ><p><i>h</i></p></td>
+                                        <td ><input type="text" name="hdc"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船横向迎风面积</b></td>
+                                        <td ><p><i>A<sub>dch</sub></i></p></td>
+                                        <td ><input type="text" name="adch"/></td>
+                                        <td >m<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船纵向迎风面积</b></td>
+                                        <td ><p><i>A<sub>dcz</sub></i></p></td>
+                                        <td ><input type="text" name="adcz"/></td>
+                                        <td >m<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>物料横向迎风面积</b></td>
+                                        <td ><p><i>A<sub>b</sub></i></p></td>
+                                        <td ><input type="text" name="ab"/></td>
+                                        <td >m<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>物料纵向迎风面积</b></td>
+                                        <td ><p><i>A<sub>bz</sub></i></p></td>
+                                        <td ><input type="text" name="abz"/></td>
+                                        <td >m<sup>2</sup></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.吊船部分重量参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船自重</td>
+                                        <td><p><i>S<sub>wp</sub></i></p></td>
+                                        <td><input type='text' name="swp"/></td>
+                                        <td>kg</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>吊船额定载重量</td>
+                                        <td><p><i>R<sub>1</sub></i></p></td>
+                                        <td><input type='text' name="r1"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>吊船钢丝绳自重</td>
+                                        <td><p><i>M<sub>wr</sub></i></p></td>
+                                        <td><input type='text' name="mwr"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>防风背包自重</td>
+                                        <td><p><i>m<sub>ffbb</sub></i></p></td>
+                                        <td><input type='text' name="mffbb"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>总悬挂载荷</td>
+                                        <td><p><i>T<sub>sl</sub></i></p></td>
+                                        <td><input type='text' name="tsl"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                 </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.风力系数C</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;height: auto">
+                                            <img style="width:600px" src="\flxs.png"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>h/b</td>
+                                        <td><p><i> </i></p></td>
+                                        <td><input type='text' name="chb"/></td>
+                                        <td> </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>l/h</td>
+                                        <td><p><i> </i></p></td>
+                                        <td><input type='text' name="clh"/></td>
+                                        <td> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>风力系数</td>
+                                        <td><p><i>C</i></p></td>
+                                        <td><input type='text' name="cc"/></td>
+                                        <td> </td>
+                                    </tr>
+                                 </table>
+                            </div>
+
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>6.吊船无约束系统位移示意图</b></div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>吊船横向位移（相对立面）示意图</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="/image/Tensile/dcwystu2.png" width="200px" height="400px" id="dcwystu2" name="dcwystu2" >
+                                                <input type="hidden" value="tu_dcwystu2.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 40%">吊船横向位移（相对立面）示意图</td>
+                                        <td><input class="image" type="file" name="dcwystu2" accept="image/*"
+                                                               oninput="showImage(this,'dcwystu2')"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>吊船纵向位移（平行立面）示意图</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="/image/Tensile/dcwystu3.png" width="200px" height="400px" id="dcwystu3" name="dcwystu3" >
+                                                <input type="hidden" value="tu_dcwystu3.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%">吊船纵向位移（相对立面）示意图</td>
+                                        <td><input class="image" type="file" name="dcwystu3" accept="image/*"
+                                                               oninput="showImage(this,'dcwystu3')"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="display: none">
+                                <input type="text" name="dcgssp" />
+                            </div>
+
+                            <input type="hidden" name="pdfType"/>
+                        </form>
+
+                            <div class="navbox">
+                                <div style="width:600px;height:520px; font-size: 14px   ;">
+                                    <table id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                        <tr>
+                                            <td colspan="2" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>计算结果</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td style="width:40%;"><b>内容</b></td>
+                                            <td style="width:30%;"><b>风速m/s</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>擦窗机工作处允许最大阵风风速</b></td>
+                                            <td><b>8.3</b></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>无约束系统的吊船，最大横向摆动时(相对立面)，最大允许风速</b></td>
+                                            <td id="v1"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>无约束系统的吊船，最大纵向摆动时(平行立面)，最大允许风速</b></td>
+                                            <td id="v2"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>风速声讯报警器报警值</b></td>
+                                            <td id="vb"></td>
+                                         </tr>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出计算风速pdf" onclick="$('form').attr('action','/PtPlatformUnconstrained/getPDF');
+                                                                                                                isCheck(false);changeType('Calculation')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/PtPlatformUnconstrained/getPDF');
+                                                                                                                isCheck(true);changeType('Check')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('')"/>
+                        </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+<script>
+    ptdcModelList={
+        "2.0米铝吊船(PT(250_2))":{
+            swp:96,
+            r1:250,
+            adch:2.32,
+            adcz:0.76,
+            ldc:2,
+            bdc:0.65,
+            hdc:1.1
+        },
+        "2.5米铝吊船(PT(250_2.5))":{
+            swp:105,
+            r1:250,
+            adch:2.9,
+            adcz:0.76,
+            ldc:2.5,
+            bdc:0.65,
+            hdc:1.1
+        },
+        "3.0米铝吊船(PT(250_3))":{
+            swp:115,
+            r1:250,
+            adch:3.48,
+            adcz:0.76,
+            ldc:3,
+            bdc:0.65,
+            hdc:1.1
+        },
+        "4.0米铝吊船(PT(250_4.0))":{
+            swp:135,
+            r1:250,
+            adch:4.64,
+            adcz:0.76,
+            ldc:4,
+            bdc:0.65,
+            hdc:1.1
+        },
+        "2.0米折弯吊船(ZWDC(250_2))":{
+            swp:120,
+            r1:250,
+            adch:2.32,
+            adcz:0.76,
+            ldc:2,
+            bdc:0.65,
+            hdc:1.1
+        },
+        "2.5米折弯吊船(ZWDC(250_2.5))":{
+            swp:133,
+            r1:250,
+            adch:2.9,
+            adcz:0.76,
+            ldc:2.5,
+            bdc:0.65,
+            hdc:1.1
+        },
+        "3.0米折弯吊船(ZWDC(250_3))":{
+            swp:155,
+            r1:250,
+            adch:3.48,
+            adcz:0.76,
+            ldc:3,
+            bdc:0.65,
+            hdc:1.1
+        },
+        "其它":{
+            swp:" ",
+            r1:" ",
+            adch:" ",
+            adcz:" ",
+            ldc:" ",
+            bdc:" ",
+            hdc:" "
+        }
+    };
+    ffbbModelList={
+        "有":{
+            mffbb:100,
+        },
+        "无":{
+            mffbb:0,
+        },
+    };
+</script>
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function janyan() {
+        $.ajax({
+            url: "/PtPlatformUnconstrained/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+        ldc:function(){
+            return ptdcModelList[ ptdcModel ]['ldc'];
+        },
+        bdc:function(){
+            return ptdcModelList[ ptdcModel ]['bdc'];
+        },
+        hdc:function(){
+            return ptdcModelList[ ptdcModel ]['hdc'];
+        },
+        adch:function(){
+            return ptdcModelList[ ptdcModel ]['adch'];
+        },
+        adcz:function(){
+            return ptdcModelList[ ptdcModel ]['adcz'];
+        },
+        swp:function(){
+            return ptdcModelList[ ptdcModel ]['swp'];
+        },
+        r1:function(){
+            return ptdcModelList[ ptdcModel ]['r1'];
+        },
+        mwr:function(){
+            return h * dcgssp * 4 ;
+        },
+        mffbb:function(){
+            return ffbbModelList[ ffbbModel ]['mffbb'];
+        },
+        tsl:function (){
+            return swp + r1 + mwr + mffbb ;
+        },
+        chb:function (){
+            return hdc / bdc ;
+        },
+        clh:function (){
+            return ldc / hdc ;
+        },
+    };
+    getTable("dcgssModel","dcgssxz");
+    data.init(calculateFunction);
+    imgDaefultData={
+        dcwystu2:{inputvalue:"dcwystu2.png"},
+        dcwystu3:{inputvalue:"dcwystu3.png"},
+    }
+    getData.dataToImage(imgDaefultData);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/PtPlatformUnconstrained/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+<script>
+    $("[name=ptdcModel]").change(function () {
+        var ptdcModel=$("[name=ptdcModel]")[0].value;
+        var filename="";
+        if(ptdcModel=="2.0米铝吊船(PT(250_2))" || ptdcModel=="2.5米铝吊船(PT(250_2.5))" || ptdcModel=="3.0米铝吊船(PT(250_3))" || ptdcModel=="4.0米铝吊船(PT(250_4.0))"){
+            filename="普通铝吊船.png";
+        }else if (ptdcModel=="2.0米折弯吊船(ZWDC(250_2))" || ptdcModel=="2.5米折弯吊船(ZWDC(250_2.5))" || ptdcModel=="3.0米折弯吊船(ZWDC(250_3))"){
+            filename="普通折弯吊船.png";
+        }else {
+            filename="";
+        }
+        if ($('input[name=tu_dcwystu1]').length == 0) {
+            $('form').append('<input name="tu_dcwystu1" type="hidden"/>');
+        }
+        $("[name=tu_dcwystu1]")[0].value=filename;
+        $("[name=dcwystu1]")[0].src="/pdf/getImg?filename="+ filename+"";
+    })
+</script>
+
+</body>
+</html>
