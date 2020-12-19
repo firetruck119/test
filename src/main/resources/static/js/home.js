@@ -25,11 +25,11 @@ asideDatas = {
                     children: [
                         {
                             title: '下回转固定臂',
-
+                            url: "Stability_LSFArm",
                         },
                         {
                             title: '下回转伸缩臂',
-
+                            url: "Stability_LTTArm",
                         },
                         {
                             title: '上回转固定臂',
@@ -44,6 +44,10 @@ asideDatas = {
 
                         }
                     ]
+                },
+                {
+                    title: '配重',
+                    url: "Counterweights",
                 },
                 {
                     title: '非普通吊船无约束系统',

@@ -38,6 +38,11 @@ public class CounterweightsController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/Counterweights")
+    public String getMap2() {
+        return "pdf/Counterweights";
+    }
+
     @GetMapping("/Counterweights")
     public String getMap() {
         return "Counterweights";

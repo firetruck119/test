@@ -45,6 +45,12 @@ public class Stability_LSFArmController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/Stability_LSFArm")
+    public String getMap2(Model model) {
+        model.addAttribute("entity", new StabilityEnity_LSFArmEntity());
+        return "pdf/Stability_LSFArm";
+    }
+
     @GetMapping("/Stability_LSFArm")
     public String getMap(Model model) {
         model.addAttribute("entity", new StabilityEnity_LSFArmEntity());

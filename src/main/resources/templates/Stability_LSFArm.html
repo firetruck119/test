@@ -13,7 +13,7 @@
     <link th:href="@{css/kolibre2.min.css}" rel="stylesheet"/>
     <link th:href="@{css/base.min.css}" rel="stylesheet"/>
     <link th:href="@{css/public_offline.css}" rel="stylesheet"/>
-
+    <script th:src="@{js/axios.js}"></script>
     <style type="text/css">
         p {
             font-size: 17px;
@@ -628,31 +628,31 @@
                     <td colspan="3">
                         <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
-                            <option value="2.0米铝吊船(PT(250_2))">2.0米铝吊船(PT(250_2))</option>
-                            <option value="2.5米铝吊船(PT(250_2.5))">2.5米铝吊船(PT(250_2.5))</option>
-                            <option value="3.0米铝吊船(PT(250_3))">3.0米铝吊船(PT(250_3))</option>
-                            <option value="4.0米铝吊船(PT(250_4.0))">4.0米铝吊船(PT(250_4.0))</option>
-                            <option value="1.5米卫星吊船(PT(800_2.0)W(100-1.5))">1.5米卫星吊船(PT(800_2.0)W(100-1.5))</option>
-                            <option value="2.0米卫星吊船(PT(800_2.0)W(100-2.0))">2.0米卫星吊船(PT(800_2.0)W(100-2.0))</option>
-                            <option value="1.5米手动丝杠伸展吊船(SDPT250G(1.5))">1.5米手动丝杠伸展吊船(SDPT250G(1.5))</option>
-                            <option value="2.0米手动丝杠伸展吊船(SDPT250G(2.0))">2.0米手动丝杠伸展吊船(SDPT250G(2.0))</option>
-                            <option value="2.5米手动丝杠伸展吊船(SDPT250G(2.5))">2.5米手动丝杠伸展吊船(SDPT250G(2.5))</option>
-                            <option value="3.0米手动丝杠伸展吊船(SDPT250G(3.0))">3.0米手动丝杠伸展吊船(SDPT250G(3.0))</option>
-                            <option value="2.0米液压伸展吊船(YYPT200G(2.0))">2.0米液压伸展吊船(YYPT200G(2.0))</option>
-                            <option value="2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))">2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))</option>
-                            <option value="2.5米液压伸展吊船(YYPT200G(2.5))">2.5米液压伸展吊船(YYPT200G(2.5))</option>
-                            <option value="3.0米液压伸展吊船(YYPT200G(3.0))">3.0米液压伸展吊船(YYPT200G(3.0))</option>
-                            <option value="3.5米液压伸展吊船(YYPT200G(3.5))">3.5米液压伸展吊船(YYPT200G(3.5))</option>
-                            <option value="2.0米折叠吊船(SSPT(250_2.0))">2.0米折叠吊船(SSPT(250_2.0))</option>
-                            <option value="2.5米折叠吊船(SSPT(250_2.5))">2.5米折叠吊船(SSPT(250_2.5))</option>
-                            <option value="2.0米折弯吊船(ZWDC(250_2))">2.0米折弯吊船(ZWDC(250_2))</option>
-                            <option value="2.5米折弯吊船(ZWDC(250_2.5))">2.5米折弯吊船(ZWDC(250_2.5))</option>
-                            <option value="3.0米折弯吊船(ZWDC(250_3))">3.0米折弯吊船(ZWDC(250_3))</option>
-                            <option value="2.5米伸缩子吊船">2.5米伸缩子吊船</option>
-                            <option value="2.0米CDD吊船(CDD240(2A).0)">2.0米CDD吊船(CDD240(2A).0)</option>
-                            <option value="2.5米CDD吊船(CDD240(2.5))">2.5米CDD吊船(CDD240(2.5))</option>
-                            <option value="3.0米CDD吊船(CDD240(3))">3.0米CDD吊船(CDD240(3))</option>
-                            <option value="4.0米CDD吊船(CDD240(4))">4.0米CDD吊船(CDD240(4))</option>
+                            <!--<option value="2.0米铝吊船(PT(250_2))">2.0米铝吊船(PT(250_2))</option>-->
+                            <!--<option value="2.5米铝吊船(PT(250_2.5))">2.5米铝吊船(PT(250_2.5))</option>-->
+                            <!--<option value="3.0米铝吊船(PT(250_3))">3.0米铝吊船(PT(250_3))</option>-->
+                            <!--<option value="4.0米铝吊船(PT(250_4.0))">4.0米铝吊船(PT(250_4.0))</option>-->
+                            <!--<option value="1.5米卫星吊船(PT(800_2.0)W(100-1.5))">1.5米卫星吊船(PT(800_2.0)W(100-1.5))</option>-->
+                            <!--<option value="2.0米卫星吊船(PT(800_2.0)W(100-2.0))">2.0米卫星吊船(PT(800_2.0)W(100-2.0))</option>-->
+                            <!--<option value="1.5米手动丝杠伸展吊船(SDPT250G(1.5))">1.5米手动丝杠伸展吊船(SDPT250G(1.5))</option>-->
+                            <!--<option value="2.0米手动丝杠伸展吊船(SDPT250G(2.0))">2.0米手动丝杠伸展吊船(SDPT250G(2.0))</option>-->
+                            <!--<option value="2.5米手动丝杠伸展吊船(SDPT250G(2.5))">2.5米手动丝杠伸展吊船(SDPT250G(2.5))</option>-->
+                            <!--<option value="3.0米手动丝杠伸展吊船(SDPT250G(3.0))">3.0米手动丝杠伸展吊船(SDPT250G(3.0))</option>-->
+                            <!--<option value="2.0米液压伸展吊船(YYPT200G(2.0))">2.0米液压伸展吊船(YYPT200G(2.0))</option>-->
+                            <!--<option value="2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))">2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))</option>-->
+                            <!--<option value="2.5米液压伸展吊船(YYPT200G(2.5))">2.5米液压伸展吊船(YYPT200G(2.5))</option>-->
+                            <!--<option value="3.0米液压伸展吊船(YYPT200G(3.0))">3.0米液压伸展吊船(YYPT200G(3.0))</option>-->
+                            <!--<option value="3.5米液压伸展吊船(YYPT200G(3.5))">3.5米液压伸展吊船(YYPT200G(3.5))</option>-->
+                            <!--<option value="2.0米折叠吊船(SSPT(250_2.0))">2.0米折叠吊船(SSPT(250_2.0))</option>-->
+                            <!--<option value="2.5米折叠吊船(SSPT(250_2.5))">2.5米折叠吊船(SSPT(250_2.5))</option>-->
+                            <!--<option value="2.0米折弯吊船(ZWDC(250_2))">2.0米折弯吊船(ZWDC(250_2))</option>-->
+                            <!--<option value="2.5米折弯吊船(ZWDC(250_2.5))">2.5米折弯吊船(ZWDC(250_2.5))</option>-->
+                            <!--<option value="3.0米折弯吊船(ZWDC(250_3))">3.0米折弯吊船(ZWDC(250_3))</option>-->
+                            <!--<option value="2.5米伸缩子吊船">2.5米伸缩子吊船</option>-->
+                            <!--<option value="2.0米CDD吊船(CDD240(2A).0)">2.0米CDD吊船(CDD240(2A).0)</option>-->
+                            <!--<option value="2.5米CDD吊船(CDD240(2.5))">2.5米CDD吊船(CDD240(2.5))</option>-->
+                            <!--<option value="3.0米CDD吊船(CDD240(3))">3.0米CDD吊船(CDD240(3))</option>-->
+                            <!--<option value="4.0米CDD吊船(CDD240(4))">4.0米CDD吊船(CDD240(4))</option>-->
                             <option value="其它">其它</option>
                         </select>
                     </td>
@@ -662,13 +662,13 @@
                     <td colspan="3">
                         <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="Φ7">Φ7</option>
-                            <option value="Φ8">Φ8</option>
-                            <option value="Φ8.3">Φ8.3</option>
-                            <option value="Φ10">Φ10</option>
-                            <option value="Φ13">Φ13</option>
-                            <option value="布鲁格Φ7">布鲁格Φ7</option>
-                            <option value="布鲁格Φ8">布鲁格Φ8</option>
+                            <!--<option value="Φ7">Φ7</option>-->
+                            <!--<option value="Φ8">Φ8</option>-->
+                            <!--<option value="Φ8.3">Φ8.3</option>-->
+                            <!--<option value="Φ10">Φ10</option>-->
+                            <!--<option value="Φ13">Φ13</option>-->
+                            <!--<option value="布鲁格Φ7">布鲁格Φ7</option>-->
+                            <!--<option value="布鲁格Φ8">布鲁格Φ8</option>-->
                         </select>
                     </td>
                 </tr>
@@ -687,25 +687,25 @@
                     <td colspan="3">
                         <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                             <option value="" style="display: none"></option>
-                            <option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>
-                            <option value="YJBT1800Z(1.8米羊角臂头-中臂头)">YJBT1800Z(1.8米羊角臂头-中臂头)</option>
-                            <option value="YJBT1800D(1.8米羊角臂头-低臂头)">YJBT1800D(1.8米羊角臂头-低臂头)</option>
-                            <option value="YJBT2300G(2.3米羊角臂头-高臂头)">YJBT2300G(2.3米羊角臂头-高臂头)</option>
-                            <option value="YJBT2300Z(2.3米羊角臂头-中臂头)">YJBT2300Z(2.3米羊角臂头-中臂头)</option>
-                            <option value="YJBT2300D(2.3米羊角臂头-低臂头)">YJBT2300D(2.3米羊角臂头-低臂头)</option>
-                            <option value="YJBT2800G(2.8米羊角臂头-高臂头)">YJBT2800G(2.8米羊角臂头-高臂头)</option>
-                            <option value="YJBT2800Z(2.8米羊角臂头-中臂头)">YJBT2800Z(2.8米羊角臂头-中臂头)</option>
-                            <option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>
-                            <option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>
-                            <option value="XDBT2300(2.3米下挂臂头)">XDBT2300(2.3米下挂臂头)</option>
-                            <option value="XDBT2500Φ13(2.5米下挂臂头)">XDBT2500Φ13(2.5米下挂臂头)</option>
-                            <option value="XDBT3000Φ13(3.0米下挂臂头)">XDBT3000Φ13(3.0米下挂臂头)</option>
-                            <option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>
-                            <option value="DJBT2300(2.3米单角臂头)">DJBT2300(2.3米单角臂头)</option>
-                            <option value="DJBT2500Φ13(2.5米单角臂头)">DJBT2500Φ13(2.5米单角臂头)</option>
-                            <option value="DJBT3300(3.3米单角臂头)">DJBT3300(3.3米单角臂头)</option>
-                            <option value="PBT800(0.8米一字臂头)">PBT800(0.8米一字臂头)</option>
-                            <option value="MHEBT1944(MHE1944臂头)">MHEBT1944(MHE1944臂头)</option>
+                            <!--<option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>-->
+                            <!--<option value="YJBT1800Z(1.8米羊角臂头-中臂头)">YJBT1800Z(1.8米羊角臂头-中臂头)</option>-->
+                            <!--<option value="YJBT1800D(1.8米羊角臂头-低臂头)">YJBT1800D(1.8米羊角臂头-低臂头)</option>-->
+                            <!--<option value="YJBT2300G(2.3米羊角臂头-高臂头)">YJBT2300G(2.3米羊角臂头-高臂头)</option>-->
+                            <!--<option value="YJBT2300Z(2.3米羊角臂头-中臂头)">YJBT2300Z(2.3米羊角臂头-中臂头)</option>-->
+                            <!--<option value="YJBT2300D(2.3米羊角臂头-低臂头)">YJBT2300D(2.3米羊角臂头-低臂头)</option>-->
+                            <!--<option value="YJBT2800G(2.8米羊角臂头-高臂头)">YJBT2800G(2.8米羊角臂头-高臂头)</option>-->
+                            <!--<option value="YJBT2800Z(2.8米羊角臂头-中臂头)">YJBT2800Z(2.8米羊角臂头-中臂头)</option>-->
+                            <!--<option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>-->
+                            <!--<option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>-->
+                            <!--<option value="XDBT2300(2.3米下挂臂头)">XDBT2300(2.3米下挂臂头)</option>-->
+                            <!--<option value="XDBT2500Φ13(2.5米下挂臂头)">XDBT2500Φ13(2.5米下挂臂头)</option>-->
+                            <!--<option value="XDBT3000Φ13(3.0米下挂臂头)">XDBT3000Φ13(3.0米下挂臂头)</option>-->
+                            <!--<option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>-->
+                            <!--<option value="DJBT2300(2.3米单角臂头)">DJBT2300(2.3米单角臂头)</option>-->
+                            <!--<option value="DJBT2500Φ13(2.5米单角臂头)">DJBT2500Φ13(2.5米单角臂头)</option>-->
+                            <!--<option value="DJBT3300(3.3米单角臂头)">DJBT3300(3.3米单角臂头)</option>-->
+                            <!--<option value="PBT800(0.8米一字臂头)">PBT800(0.8米一字臂头)</option>-->
+                            <!--<option value="MHEBT1944(MHE1944臂头)">MHEBT1944(MHE1944臂头)</option>-->
                             <option value="其它">其它</option>
                         </select>
                     </td>
@@ -715,9 +715,9 @@
                     <td colspan="3">
                         <select name="typeOfGRU" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
-                            <option value="GRU285">GRU285</option>
-                            <option value="GRU295">GRU295</option>
-                            <option value="GRU313">GRU313</option>
+                            <!--<option value="GRU285">GRU285</option>-->
+                            <!--<option value="GRU295">GRU295</option>-->
+                            <!--<option value="GRU313">GRU313</option>-->
                             <option value="无">无</option>
                         </select>
                     </td>
@@ -727,16 +727,16 @@
                     <td colspan="3">
                         <select name="typeOfLifting" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
-                            <option value="105起升机构">105起升机构</option>
-                            <option value="145起升机构">145起升机构</option>
-                            <option value="175起升机构">175起升机构</option>
-                            <option value="275起升机构">275起升机构</option>
-                            <option value="185起升机构">185起升机构</option>
-                            <option value="285起升机构">285起升机构</option>
-                            <option value="385起升机构">385起升机构</option>
-                            <option value="295起升机构">295起升机构</option>
-                            <option value="495起升机构">495起升机构</option>
-                            <option value="313起升机构">313起升机构</option>
+                            <!--<option value="105起升机构">105起升机构</option>-->
+                            <!--<option value="145起升机构">145起升机构</option>-->
+                            <!--<option value="175起升机构">175起升机构</option>-->
+                            <!--<option value="275起升机构">275起升机构</option>-->
+                            <!--<option value="185起升机构">185起升机构</option>-->
+                            <!--<option value="285起升机构">285起升机构</option>-->
+                            <!--<option value="385起升机构">385起升机构</option>-->
+                            <!--<option value="295起升机构">295起升机构</option>-->
+                            <!--<option value="495起升机构">495起升机构</option>-->
+                            <!--<option value="313起升机构">313起升机构</option>-->
                         </select>
                     </td>
                 </tr>
@@ -745,25 +745,25 @@
                     <td colspan="3">
                         <select name="dhzjgModel" style="width:100%;height:40px;text-align-last:center">
                             <option style="display: none"></option>
-                            <option value="HZX5.0RF57">HZX5.0RF57</option>
-                            <option value="HZX5.6RF77">HZX5.6RF77</option>
-                            <option value="HZX6.3RF77">HZX6.3RF77</option>
-                            <option value="HZX7.1RF87">HZX7.1RF87</option>
-                            <option value="HZX8.0RF87">HZX8.0RF87</option>
-                            <option value="HZX9.0RF97">HZX9.0RF97</option>
-                            <option value="HZX10.0RF97">HZX10.0RF97</option>
-                            <option value="HZX11.2RF107">HZX11.2RF107</option>
-                            <option value="HZX12.5RF107">HZX12.5RF107</option>
-                            <option value="HZX12.5RF137">HZX12.5RF137</option>
-                            <option value="HZX14.0RF137">HZX14.0RF137</option>
-                            <option value="HZX14.0RF147">HZX14.0RF147</option>
-                            <option value="HZX16.0RF147">HZX16.0RF147</option>
-                            <option value="HZX12.5X307">HZX12.5X307</option>
-                            <option value="HZX14.0X307">HZX14.0X307</option>
-                            <option value="HZX16.0X309">HZX16.0X309</option>
-                            <option value="HZS-7.1RF77">HZS-7.1RF77</option>
-                            <option value="HZS-8.0RF87">HZS-8.0RF87</option>
-                            <option value="HZS-9.0RF97">HZS-9.0RF97</option>
+                            <!--<option value="HZX5.0RF57">HZX5.0RF57</option>-->
+                            <!--<option value="HZX5.6RF77">HZX5.6RF77</option>-->
+                            <!--<option value="HZX6.3RF77">HZX6.3RF77</option>-->
+                            <!--<option value="HZX7.1RF87">HZX7.1RF87</option>-->
+                            <!--<option value="HZX8.0RF87">HZX8.0RF87</option>-->
+                            <!--<option value="HZX9.0RF97">HZX9.0RF97</option>-->
+                            <!--<option value="HZX10.0RF97">HZX10.0RF97</option>-->
+                            <!--<option value="HZX11.2RF107">HZX11.2RF107</option>-->
+                            <!--<option value="HZX12.5RF107">HZX12.5RF107</option>-->
+                            <!--<option value="HZX12.5RF137">HZX12.5RF137</option>-->
+                            <!--<option value="HZX14.0RF137">HZX14.0RF137</option>-->
+                            <!--<option value="HZX14.0RF147">HZX14.0RF147</option>-->
+                            <!--<option value="HZX16.0RF147">HZX16.0RF147</option>-->
+                            <!--<option value="HZX12.5X307">HZX12.5X307</option>-->
+                            <!--<option value="HZX14.0X307">HZX14.0X307</option>-->
+                            <!--<option value="HZX16.0X309">HZX16.0X309</option>-->
+                            <!--<option value="HZS-7.1RF77">HZS-7.1RF77</option>-->
+                            <!--<option value="HZS-8.0RF87">HZS-8.0RF87</option>-->
+                            <!--<option value="HZS-9.0RF97">HZS-9.0RF97</option>-->
                         </select>
                     </td>
                 </tr>
@@ -3135,7 +3135,7 @@
 
         <!--不显示部分-->
         <div style="display: none">
-            <input type="text" name="m3f" />
+            <!--<input type="text" name="m3f" />-->
             <input type="text" name="m5f" />
             <input type="text" name="m13f" />
             <input type="text" name="yxjgaz" />
@@ -3348,6 +3348,9 @@
         //         return ' ';
         //     }
         // },
+        p: function () {
+            return 250 ;
+        },
         pf: function () {
             if (h <= 20 && h > 0) return 800;
             else if (20 < h && h <= 100) return 1100;
@@ -3477,78 +3480,78 @@
         fdjlsfb:' lsgca * 270 * 0.64 ',
         nwd3:'2 * nwd4 ',
         fdjlszfb:' nwd3 * fdjlsfb ',
-        lbtzh:function(){
-            switch ( btModel ) {
-                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.55;
-                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.55;
-                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.55;
-                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.55;
-                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.55;
-                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.55;
-                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.55;
-                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.55;
-                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.55;
-                case 'HDBT2300(2.3米蝴蝶臂头)':return 0.8;
-                case 'XDBT2300(2.3米下挂臂头)':return 0;
-                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
-                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
-                case 'DJBT1800(1.8米单角臂头)':return 0.8;
-                case 'DJBT2300(2.3米单角臂头)':return 0.9;
-                case 'DJBT2500Φ13(2.5米单角臂头)':return 1.6;
-                case 'DJBT3300(3.3米单角臂头)':return 1.2;
-                case 'PBT800(0.8米一字臂头)':return 0.4;
-                case 'MHEBT1944(MHE1944臂头)':return 0.4;
-                case '其它':return ' ';
-            }
-        },
-        ldcgh:function(){
-            switch ( btModel ) {
-                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 1.35;
-                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 1.35;
-                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 1.35;
-                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 1.35;
-                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 1.35;
-                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 1.35;
-                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 1.35;
-                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 1.35;
-                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 1.35;
-                case 'HDBT2300(2.3米蝴蝶臂头)':return 1.8;
-                case 'XDBT2300(2.3米下挂臂头)':return 0;
-                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
-                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
-                case 'DJBT1800(1.8米单角臂头)':return 2;
-                case 'DJBT2300(2.3米单角臂头)':return 2;
-                case 'DJBT2500Φ13(2.5米单角臂头)':return 2.2;
-                case 'DJBT3300(3.3米单角臂头)':return 2.5;
-                case 'PBT800(0.8米一字臂头)':return 0.4;
-                case 'MHEBT1944(MHE1944臂头)':return 0.4;
-                case '其它':return ' ';
-            }
-        },
-        ldslzh:function(){
-            switch ( btModel ) {
-                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.35;
-                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.35;
-                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.35;
-                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.35;
-                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.35;
-                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.35;
-                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.35;
-                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.35;
-                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.35;
-                case 'HDBT2300(2.3米蝴蝶臂头)':return 0.8;
-                case 'XDBT2300(2.3米下挂臂头)':return 0;
-                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
-                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
-                case 'DJBT1800(1.8米单角臂头)':return 1;
-                case 'DJBT2300(2.3米单角臂头)':return 1;
-                case 'DJBT2500Φ13(2.5米单角臂头)':return 1.2;
-                case 'DJBT3300(3.3米单角臂头)':return 1.5;
-                case 'PBT800(0.8米一字臂头)':return 0;
-                case 'MHEBT1944(MHE1944臂头)':return 0;
-                case '其它':return ' ';
-            }
-        },
+        // lbtzh:function(){
+        //     switch ( btModel ) {
+        //         case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.55;
+        //         case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.55;
+        //         case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.55;
+        //         case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.55;
+        //         case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.55;
+        //         case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.55;
+        //         case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.55;
+        //         case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.55;
+        //         case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.55;
+        //         case 'HDBT2300(2.3米蝴蝶臂头)':return 0.8;
+        //         case 'XDBT2300(2.3米下挂臂头)':return 0;
+        //         case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
+        //         case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
+        //         case 'DJBT1800(1.8米单角臂头)':return 0.8;
+        //         case 'DJBT2300(2.3米单角臂头)':return 0.9;
+        //         case 'DJBT2500Φ13(2.5米单角臂头)':return 1.6;
+        //         case 'DJBT3300(3.3米单角臂头)':return 1.2;
+        //         case 'PBT800(0.8米一字臂头)':return 0.4;
+        //         case 'MHEBT1944(MHE1944臂头)':return 0.4;
+        //         case '其它':return ' ';
+        //     }
+        // },
+        // ldcgh:function(){
+        //     switch ( btModel ) {
+        //         case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 1.35;
+        //         case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 1.35;
+        //         case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 1.35;
+        //         case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 1.35;
+        //         case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 1.35;
+        //         case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 1.35;
+        //         case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 1.35;
+        //         case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 1.35;
+        //         case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 1.35;
+        //         case 'HDBT2300(2.3米蝴蝶臂头)':return 1.8;
+        //         case 'XDBT2300(2.3米下挂臂头)':return 0;
+        //         case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
+        //         case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
+        //         case 'DJBT1800(1.8米单角臂头)':return 2;
+        //         case 'DJBT2300(2.3米单角臂头)':return 2;
+        //         case 'DJBT2500Φ13(2.5米单角臂头)':return 2.2;
+        //         case 'DJBT3300(3.3米单角臂头)':return 2.5;
+        //         case 'PBT800(0.8米一字臂头)':return 0.4;
+        //         case 'MHEBT1944(MHE1944臂头)':return 0.4;
+        //         case '其它':return ' ';
+        //     }
+        // },
+        // ldslzh:function(){
+        //     switch ( btModel ) {
+        //         case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.35;
+        //         case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.35;
+        //         case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.35;
+        //         case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.35;
+        //         case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.35;
+        //         case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.35;
+        //         case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.35;
+        //         case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.35;
+        //         case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.35;
+        //         case 'HDBT2300(2.3米蝴蝶臂头)':return 0.8;
+        //         case 'XDBT2300(2.3米下挂臂头)':return 0;
+        //         case 'XDBT2500Φ13(2.5米下挂臂头)':return 0;
+        //         case 'XDBT3000Φ13(3.0米下挂臂头)':return 0;
+        //         case 'DJBT1800(1.8米单角臂头)':return 1;
+        //         case 'DJBT2300(2.3米单角臂头)':return 1;
+        //         case 'DJBT2500Φ13(2.5米单角臂头)':return 1.2;
+        //         case 'DJBT3300(3.3米单角臂头)':return 1.5;
+        //         case 'PBT800(0.8米一字臂头)':return 0;
+        //         case 'MHEBT1944(MHE1944臂头)':return 0;
+        //         case '其它':return ' ';
+        //     }
+        // },
         umcxs:function(){
             if( wdlyp3 =='无')
                 return 0;
@@ -3562,84 +3565,97 @@
                 case '450'  :return 0.05;
             }
         },
-        dcgssp:function(){
-            switch ( dcgssModel ) {
-                case'Φ7':  return  0.179;
-                case'Φ8':  return  0.244;
-                case'Φ8.3':  return  0.255;
-                case'Φ10':  return  0.391;
-                case'Φ13':  return  0.65;
-                case'布鲁格Φ7':  return  0.179;
-                case'布鲁格Φ8':  return  0.217;
-            }
-        },
+        // dcgssp:function(){
+        //     switch ( dcgssModel ) {
+        //         case'Φ7':  return  0.179;
+        //         case'Φ8':  return  0.244;
+        //         case'Φ8.3':  return  0.255;
+        //         case'Φ10':  return  0.391;
+        //         case'Φ13':  return  0.65;
+        //         case'布鲁格Φ7':  return  0.179;
+        //         case'布鲁格Φ8':  return  0.217;
+        //     }
+        // },
+        // grugssp:function(){
+        //     switch ( typeOfGRU ) {
+        //         case'GRU285':  return 0.252 ;
+        //         case'GRU295':  return 0.391 ;
+        //         case'GRU313':  return 0.65 ;
+        //         case'无':  return 0 ;
+        //     }
+        // },
         grugssp:function(){
-            switch ( typeOfGRU ) {
-                case'GRU285':  return 0.252 ;
-                case'GRU295':  return 0.391 ;
-                case'GRU313':  return 0.65 ;
-                case'无':  return 0 ;
+           if( typeOfGRU =='无') {
+               return 0 ;
             }
         },
-        swp:function(){
-            switch ( dcModel ) {
-                case '2.0米铝吊船(PT(250_2))':return 96;
-                case '2.5米铝吊船(PT(250_2.5))':return 105;
-                case '3.0米铝吊船(PT(250_3))':return 115;
-                case '4.0米铝吊船(PT(250_4.0))':return 135;
-                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 577;
-                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 650;
-                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 585;
-                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 619;
-                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 634;
-                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 683;
-                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 624;
-                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 651;
-                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 675;
-                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 696;
-                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 720;
-                case '2.0米折叠吊船(SSPT(250_2.0))':return 116;
-                case '2.5米折叠吊船(SSPT(250_2.5))':return 124;
-                case '2.0米折弯吊船(ZWDC(250_2))':return 120;
-                case '2.5米折弯吊船(ZWDC(250_2.5))':return 133;
-                case '3.0米折弯吊船(ZWDC(250_3))':return 155;
-                case '2.5米伸缩子吊船':return 1140;
-                case '2.0米CDD吊船(CDD240(2A).0)':return 350;
-                case '2.5米CDD吊船(CDD240(2.5))':return 375;
-                case '3.0米CDD吊船(CDD240(3))':return 400;
-                case '4.0米CDD吊船(CDD240(4))':return 450;
-                case '其它':return ' ';
-            }
+        // swp:function(){
+        //     switch ( dcModel ) {
+        //         case '2.0米铝吊船(PT(250_2))':return 96;
+        //         case '2.5米铝吊船(PT(250_2.5))':return 105;
+        //         case '3.0米铝吊船(PT(250_3))':return 115;
+        //         case '4.0米铝吊船(PT(250_4.0))':return 135;
+        //         case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 577;
+        //         case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 650;
+        //         case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 585;
+        //         case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 619;
+        //         case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 634;
+        //         case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 683;
+        //         case '2.0米液压伸展吊船(YYPT200G(2.0))':return 624;
+        //         case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 651;
+        //         case '2.5米液压伸展吊船(YYPT200G(2.5))':return 675;
+        //         case '3.0米液压伸展吊船(YYPT200G(3.0))':return 696;
+        //         case '3.5米液压伸展吊船(YYPT200G(3.5))':return 720;
+        //         case '2.0米折叠吊船(SSPT(250_2.0))':return 116;
+        //         case '2.5米折叠吊船(SSPT(250_2.5))':return 124;
+        //         case '2.0米折弯吊船(ZWDC(250_2))':return 120;
+        //         case '2.5米折弯吊船(ZWDC(250_2.5))':return 133;
+        //         case '3.0米折弯吊船(ZWDC(250_3))':return 155;
+        //         case '2.5米伸缩子吊船':return 1140;
+        //         case '2.0米CDD吊船(CDD240(2A).0)':return 350;
+        //         case '2.5米CDD吊船(CDD240(2.5))':return 375;
+        //         case '3.0米CDD吊船(CDD240(3))':return 400;
+        //         case '4.0米CDD吊船(CDD240(4))':return 450;
+        //         case '其它':return ' ';
+        //     }
+        // },
+        // r1:function(){
+        //     switch ( dcModel ) {
+        //         case '2.0米铝吊船(PT(250_2))':return 250;
+        //         case '2.5米铝吊船(PT(250_2.5))':return 250;
+        //         case '3.0米铝吊船(PT(250_3))':return 250;
+        //         case '4.0米铝吊船(PT(250_4.0))':return 250;
+        //         case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 250;
+        //         case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 250;
+        //         case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 250;
+        //         case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 250;
+        //         case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 250;
+        //         case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 250;
+        //         case '2.0米液压伸展吊船(YYPT200G(2.0))':return 250;
+        //         case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 250;
+        //         case '2.5米液压伸展吊船(YYPT200G(2.5))':return 250;
+        //         case '3.0米液压伸展吊船(YYPT200G(3.0))':return 250;
+        //         case '3.5米液压伸展吊船(YYPT200G(3.5))':return 250;
+        //         case '2.0米折叠吊船(SSPT(250_2.0))':return 250;
+        //         case '2.5米折叠吊船(SSPT(250_2.5))':return 250;
+        //         case '2.0米折弯吊船(ZWDC(250_2))':return 250;
+        //         case '2.5米折弯吊船(ZWDC(250_2.5))':return 250;
+        //         case '3.0米折弯吊船(ZWDC(250_3))':return 250;
+        //         case '2.5米伸缩子吊船':return 250;
+        //         case '2.0米CDD吊船(CDD240(2A).0)':return 250;
+        //         case '2.5米CDD吊船(CDD240(2.5))':return 250;
+        //         case '3.0米CDD吊船(CDD240(3))':return 250;
+        //         case '4.0米CDD吊船(CDD240(4))':return 250;
+        //         case '其它':return ' ';
+        //     }
+        // },
+        swp: function(){
+            if( dcModel =='其它')
+                return ' ';
         },
         r1:function(){
-            switch ( dcModel ) {
-                case '2.0米铝吊船(PT(250_2))':return 250;
-                case '2.5米铝吊船(PT(250_2.5))':return 250;
-                case '3.0米铝吊船(PT(250_3))':return 250;
-                case '4.0米铝吊船(PT(250_4.0))':return 250;
-                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 250;
-                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 250;
-                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 250;
-                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 250;
-                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 250;
-                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 250;
-                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 250;
-                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 250;
-                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 250;
-                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 250;
-                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 250;
-                case '2.0米折叠吊船(SSPT(250_2.0))':return 250;
-                case '2.5米折叠吊船(SSPT(250_2.5))':return 250;
-                case '2.0米折弯吊船(ZWDC(250_2))':return 250;
-                case '2.5米折弯吊船(ZWDC(250_2.5))':return 250;
-                case '3.0米折弯吊船(ZWDC(250_3))':return 250;
-                case '2.5米伸缩子吊船':return 250;
-                case '2.0米CDD吊船(CDD240(2A).0)':return 250;
-                case '2.5米CDD吊船(CDD240(2.5))':return 250;
-                case '3.0米CDD吊船(CDD240(3))':return 250;
-                case '4.0米CDD吊船(CDD240(4))':return 250;
-                case '其它':return ' ';
-            }
+            if( dcModel =='其它')
+                return ' ';
         },
         mwr:' h * dcgssp * 4 ',
         mffbb:function(){
@@ -3651,46 +3667,58 @@
         tsl:' swp + r1 + mwr + mffbb ',
         hsw:' h * grugssp ',
         tshl:' hwll + hsw ',
+        // m1:function(){
+        //     switch ( btModel ) {
+        //         case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 330;
+        //         case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 305;
+        //         case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 297;
+        //         case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 339;
+        //         case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 312;
+        //         case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 302;
+        //         case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 344;
+        //         case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 317;
+        //         case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 309;
+        //         case 'HDBT2300(2.3米蝴蝶臂头)':return 554;
+        //         case 'XDBT2300(2.3米下挂臂头)':return 208;
+        //         case 'XDBT2500Φ13(2.5米下挂臂头)':return 312;
+        //         case 'XDBT3000Φ13(3.0米下挂臂头)':return 346;
+        //         case 'DJBT1800(1.8米单角臂头)':return 280;
+        //         case 'DJBT2300(2.3米单角臂头)':return 308;
+        //         case 'DJBT2500Φ13(2.5米单角臂头)':return 403;
+        //         case 'DJBT3300(3.3米单角臂头)':return 359;
+        //         case 'PBT800(0.8米一字臂头)':return 207;
+        //         case 'MHEBT1944(MHE1944臂头)':return 235;
+        //         case '其它':return ' ';
+        //     }
+        // },
+        // m2:function(){
+        //     switch ( typeOfGRU ) {
+        //         case'GRU285':  return 50;
+        //         case'GRU295':  return 50;
+        //         case'GRU313':  return 50;
+        //         case'无':  return 0;
+        //     }
+        // },
         m1:function(){
-            switch ( btModel ) {
-                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 330;
-                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 305;
-                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 297;
-                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 339;
-                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 312;
-                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 302;
-                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 344;
-                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 317;
-                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 309;
-                case 'HDBT2300(2.3米蝴蝶臂头)':return 554;
-                case 'XDBT2300(2.3米下挂臂头)':return 208;
-                case 'XDBT2500Φ13(2.5米下挂臂头)':return 312;
-                case 'XDBT3000Φ13(3.0米下挂臂头)':return 346;
-                case 'DJBT1800(1.8米单角臂头)':return 280;
-                case 'DJBT2300(2.3米单角臂头)':return 308;
-                case 'DJBT2500Φ13(2.5米单角臂头)':return 403;
-                case 'DJBT3300(3.3米单角臂头)':return 359;
-                case 'PBT800(0.8米一字臂头)':return 207;
-                case 'MHEBT1944(MHE1944臂头)':return 235;
-                case '其它':return ' ';
-            }
+            if( btModel =='其它')
+                return ' ' ;
         },
         m2:function(){
-            switch ( typeOfGRU ) {
-                case'GRU285':  return 50;
-                case'GRU295':  return 50;
-                case'GRU313':  return 50;
-                case'无':  return 0;
-            }
+            if( typeOfGRU =='无')
+                return 0 ;
         },
         m3:' 25 ',
+        // m5:function(){
+        //     switch ( typeOfGRU ) {
+        //         case'GRU285':  return 235;
+        //         case'GRU295':  return 285;
+        //         case'GRU313':  return 385;
+        //         case'无':  return 0;
+        //     }
+        // },
         m5:function(){
-            switch ( typeOfGRU ) {
-                case'GRU285':  return 235;
-                case'GRU295':  return 285;
-                case'GRU313':  return 385;
-                case'无':  return 0;
-            }
+            if( typeOfGRU =='无')
+                return 0 ;
         },
         m6:' 0',
         m7:function(){
@@ -3709,29 +3737,29 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        m9:function(){
-            switch( dhzjgModel ){
-                case 'HZX5.0RF57':return 186;
-                case 'HZX5.6RF77':return 149;
-                case 'HZX6.3RF77':return 160;
-                case 'HZX7.1RF87':return 223;
-                case 'HZX8.0RF87':return 237;
-                case 'HZX9.0RF97':return 356;
-                case 'HZX10.0RF97':return 440;
-                case 'HZX11.2RF107':return 579;
-                case 'HZX12.5RF107':return 634;
-                case 'HZX12.5RF137':return 715;
-                case 'HZX14.0RF137':return 750;
-                case 'HZX14.0RF147':return 888;
-                case 'HZX16.0RF147':return 1084;
-                case 'HZX12.5X307':return 536;
-                case 'HZX14.0X307':return 572;
-                case 'HZX16.0X309':return 801;
-                case 'HZS-7.1RF77':return 255;
-                case 'HZS-8.0RF87':return 354;
-                case 'HZS-9.0RF97':return 533;
-            }
-        },
+        // m9:function(){
+        //     switch( dhzjgModel ){
+        //         case 'HZX5.0RF57':return 186;
+        //         case 'HZX5.6RF77':return 149;
+        //         case 'HZX6.3RF77':return 160;
+        //         case 'HZX7.1RF87':return 223;
+        //         case 'HZX8.0RF87':return 237;
+        //         case 'HZX9.0RF97':return 356;
+        //         case 'HZX10.0RF97':return 440;
+        //         case 'HZX11.2RF107':return 579;
+        //         case 'HZX12.5RF107':return 634;
+        //         case 'HZX12.5RF137':return 715;
+        //         case 'HZX14.0RF137':return 750;
+        //         case 'HZX14.0RF147':return 888;
+        //         case 'HZX16.0RF147':return 1084;
+        //         case 'HZX12.5X307':return 536;
+        //         case 'HZX14.0X307':return 572;
+        //         case 'HZX16.0X309':return 801;
+        //         case 'HZS-7.1RF77':return 255;
+        //         case 'HZS-8.0RF87':return 354;
+        //         case 'HZS-9.0RF97':return 533;
+        //     }
+        // },
         m10:function(){
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
@@ -3740,20 +3768,20 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        m13:function(){
-            switch ( typeOfLifting ) {
-                case '105起升机构':return 785;
-                case '145起升机构':return 830;
-                case '175起升机构':return 1450;
-                case '275起升机构':return 1500;
-                case '185起升机构':return 2057;
-                case '285起升机构':return 2500;
-                case '385起升机构':return 3980;
-                case '295起升机构':return 2750;
-                case '495起升机构':return 3585;
-                case '313起升机构':return 4880;
-            }
-        },
+        // m13:function(){
+        //     switch ( typeOfLifting ) {
+        //         case '105起升机构':return 785;
+        //         case '145起升机构':return 830;
+        //         case '175起升机构':return 1450;
+        //         case '275起升机构':return 1500;
+        //         case '185起升机构':return 2057;
+        //         case '285起升机构':return 2500;
+        //         case '385起升机构':return 3980;
+        //         case '295起升机构':return 2750;
+        //         case '495起升机构':return 3585;
+        //         case '313起升机构':return 4880;
+        //     }
+        // },
 
         m14:function(){
             if( m6 == 0 && m7 == 0 && m8 == 0)
@@ -4201,76 +4229,93 @@
         },
 
 
+        // aslcx:function(){
+        //     switch ( dcModel ) {
+        //         case '2.0米铝吊船(PT(250_2))':return 1.46;
+        //         case '2.5米铝吊船(PT(250_2.5))':return 1.46;
+        //         case '3.0米铝吊船(PT(250_3))':return 1.46;
+        //         case '4.0米铝吊船(PT(250_4.0))':return 1.46;
+        //         case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 3.26;
+        //         case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 3.26;
+        //         case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 1.59;
+        //         case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 2.17;
+        //         case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 2.75;
+        //         case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 3.33;
+        //         case '2.0米液压伸展吊船(YYPT200G(2.0))':return 2.84;
+        //         case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 2.84;
+        //         case '2.5米液压伸展吊船(YYPT200G(2.5))':return 3.09;
+        //         case '3.0米液压伸展吊船(YYPT200G(3.0))':return 3.25;
+        //         case '3.5米液压伸展吊船(YYPT200G(3.5))':return 3.5;
+        //         case '2.0米折叠吊船(SSPT(250_2.0))':return 1.62;
+        //         case '2.5米折叠吊船(SSPT(250_2.5))':return 1.62;
+        //         case '2.0米折弯吊船(ZWDC(250_2))':return 1.46;
+        //         case '2.5米折弯吊船(ZWDC(250_2.5))':return 1.46;
+        //         case '3.0米折弯吊船(ZWDC(250_3))':return 1.46;
+        //         case '2.5米伸缩子吊船':return 3.46;
+        //         case '2.0米CDD吊船(CDD240(2A).0)':return 1.8;
+        //         case '2.5米CDD吊船(CDD240(2.5))':return 1.8;
+        //         case '3.0米CDD吊船(CDD240(3))':return 1.8;
+        //         case '4.0米CDD吊船(CDD240(4))':return 1.8;
+        //         case '其它':return ' ';
+        //     }
+        // },
+        // acx1:function(){
+        //     switch ( btModel ) {
+        //         case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.95;
+        //         case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.77;
+        //         case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.73;
+        //         case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.95;
+        //         case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.77;
+        //         case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.73;
+        //         case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.95;
+        //         case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.77;
+        //         case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.73;
+        //         case 'HDBT2300(2.3米蝴蝶臂头)':return 0.72;
+        //         case 'XDBT2300(2.3米下挂臂头)':return 0.41;
+        //         case 'XDBT2500Φ13(2.5米下挂臂头)':return 0.74;
+        //         case 'XDBT3000Φ13(3.0米下挂臂头)':return 0.86;
+        //         case 'DJBT1800(1.8米单角臂头)':return 0.9;
+        //         case 'DJBT2300(2.3米单角臂头)':return 1.08;
+        //         case 'DJBT2500Φ13(2.5米单角臂头)':return 1.13;
+        //         case 'DJBT3300(3.3米单角臂头)':return 1.3;
+        //         case 'PBT800(0.8米一字臂头)':return 0.54;
+        //         case 'MHEBT1944(MHE1944臂头)':return 0.7;
+        //         case '其它':return ' ';
+        //     }
+        // },
+        // acx2:function(){
+        //     switch ( typeOfGRU ) {
+        //         case'GRU285':  return 0.1;
+        //         case'GRU295':  return 0.1;
+        //         case'GRU313':  return 0.1;
+        //         case'无':  return 0;
+        //     }
+        // },
+
         aslcx:function(){
-            switch ( dcModel ) {
-                case '2.0米铝吊船(PT(250_2))':return 1.46;
-                case '2.5米铝吊船(PT(250_2.5))':return 1.46;
-                case '3.0米铝吊船(PT(250_3))':return 1.46;
-                case '4.0米铝吊船(PT(250_4.0))':return 1.46;
-                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 3.26;
-                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 3.26;
-                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 1.59;
-                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 2.17;
-                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 2.75;
-                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 3.33;
-                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 2.84;
-                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 2.84;
-                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 3.09;
-                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 3.25;
-                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 3.5;
-                case '2.0米折叠吊船(SSPT(250_2.0))':return 1.62;
-                case '2.5米折叠吊船(SSPT(250_2.5))':return 1.62;
-                case '2.0米折弯吊船(ZWDC(250_2))':return 1.46;
-                case '2.5米折弯吊船(ZWDC(250_2.5))':return 1.46;
-                case '3.0米折弯吊船(ZWDC(250_3))':return 1.46;
-                case '2.5米伸缩子吊船':return 3.46;
-                case '2.0米CDD吊船(CDD240(2A).0)':return 1.8;
-                case '2.5米CDD吊船(CDD240(2.5))':return 1.8;
-                case '3.0米CDD吊船(CDD240(3))':return 1.8;
-                case '4.0米CDD吊船(CDD240(4))':return 1.8;
-                case '其它':return ' ';
-            }
+            if( dcModel =='其它')
+                return ' ' ;
         },
         acx1:function(){
-            switch ( btModel ) {
-                case 'YJBT1800G(1.8米羊角臂头-高臂头)':return 0.95;
-                case 'YJBT1800Z(1.8米羊角臂头-中臂头)':return 0.77;
-                case 'YJBT1800D(1.8米羊角臂头-低臂头)':return 0.73;
-                case 'YJBT2300G(2.3米羊角臂头-高臂头)':return 0.95;
-                case 'YJBT2300Z(2.3米羊角臂头-中臂头)':return 0.77;
-                case 'YJBT2300D(2.3米羊角臂头-低臂头)':return 0.73;
-                case 'YJBT2800G(2.8米羊角臂头-高臂头)':return 0.95;
-                case 'YJBT2800Z(2.8米羊角臂头-中臂头)':return 0.77;
-                case 'YJBT2800D(2.8米羊角臂头-低臂头)':return 0.73;
-                case 'HDBT2300(2.3米蝴蝶臂头)':return 0.72;
-                case 'XDBT2300(2.3米下挂臂头)':return 0.41;
-                case 'XDBT2500Φ13(2.5米下挂臂头)':return 0.74;
-                case 'XDBT3000Φ13(3.0米下挂臂头)':return 0.86;
-                case 'DJBT1800(1.8米单角臂头)':return 0.9;
-                case 'DJBT2300(2.3米单角臂头)':return 1.08;
-                case 'DJBT2500Φ13(2.5米单角臂头)':return 1.13;
-                case 'DJBT3300(3.3米单角臂头)':return 1.3;
-                case 'PBT800(0.8米一字臂头)':return 0.54;
-                case 'MHEBT1944(MHE1944臂头)':return 0.7;
-                case '其它':return ' ';
-            }
+            if( btModel =='其它')
+                return ' ' ;
         },
         acx2:function(){
-            switch ( typeOfGRU ) {
-                case'GRU285':  return 0.1;
-                case'GRU295':  return 0.1;
-                case'GRU313':  return 0.1;
-                case'无':  return 0;
-            }
+            if( typeOfGRU =='无')
+                return 0 ;
         },
         acx3:' 0.05 ',
+        // acx5:function(){
+        //     switch ( typeOfGRU ) {
+        //         case'GRU285':  return 0.42;
+        //         case'GRU295':  return 0.5;
+        //         case'GRU313':  return 0.62;
+        //         case'无':  return 0;
+        //     }
+        // },
         acx5:function(){
-            switch ( typeOfGRU ) {
-                case'GRU285':  return 0.42;
-                case'GRU295':  return 0.5;
-                case'GRU313':  return 0.62;
-                case'无':  return 0;
-            }
+            if( typeOfGRU =='无')
+                return 0 ;
         },
         acx6:' 0 ',
         acx7:function () {
@@ -4289,29 +4334,29 @@
                 case '顶升+仰臂':return ' ';
             }
         },
-        acx9:function(){
-            switch( dhzjgModel ){
-                case 'HZX5.0RF57':return 0.18;
-                case 'HZX5.6RF77':return 0.26;
-                case 'HZX6.3RF77':return 0.27;
-                case 'HZX7.1RF87':return 0.36;
-                case 'HZX8.0RF87':return 0.37;
-                case 'HZX9.0RF97':return 0.46;
-                case 'HZX10.0RF97':return 0.49;
-                case 'HZX11.2RF107':return 0.64;
-                case 'HZX12.5RF107':return 0.66;
-                case 'HZX12.5RF137':return 0.7;
-                case 'HZX14.0RF137':return 0.73;
-                case 'HZX14.0RF147':return 0.8;
-                case 'HZX16.0RF147':return 0.85;
-                case 'HZX12.5X307':return 0.53;
-                case 'HZX14.0X307':return 0.56;
-                case 'HZX16.0X309':return 0.64;
-                case 'HZS-7.1RF77':return 0.39;
-                case 'HZS-8.0RF87':return 0.53;
-                case 'HZS-9.0RF97':return 0.72;
-            }
-        },
+        // acx9:function(){
+        //     switch( dhzjgModel ){
+        //         case 'HZX5.0RF57':return 0.18;
+        //         case 'HZX5.6RF77':return 0.26;
+        //         case 'HZX6.3RF77':return 0.27;
+        //         case 'HZX7.1RF87':return 0.36;
+        //         case 'HZX8.0RF87':return 0.37;
+        //         case 'HZX9.0RF97':return 0.46;
+        //         case 'HZX10.0RF97':return 0.49;
+        //         case 'HZX11.2RF107':return 0.64;
+        //         case 'HZX12.5RF107':return 0.66;
+        //         case 'HZX12.5RF137':return 0.7;
+        //         case 'HZX14.0RF137':return 0.73;
+        //         case 'HZX14.0RF147':return 0.8;
+        //         case 'HZX16.0RF147':return 0.85;
+        //         case 'HZX12.5X307':return 0.53;
+        //         case 'HZX14.0X307':return 0.56;
+        //         case 'HZX16.0X309':return 0.64;
+        //         case 'HZS-7.1RF77':return 0.39;
+        //         case 'HZS-8.0RF87':return 0.53;
+        //         case 'HZS-9.0RF97':return 0.72;
+        //     }
+        // },
         acx10:function(){
             if( m10 == 0 ){
                 return 0 ;
@@ -4319,20 +4364,20 @@
                 return ' ' ;
             }
         },
-        acx13:function(){
-            switch ( typeOfLifting ) {
-                case '105起升机构':return 1.29;
-                case '145起升机构':return 1.29;
-                case '175起升机构':return 1.48;
-                case '275起升机构':return 1.64;
-                case '185起升机构':return 2.15;
-                case '285起升机构':return 2.41;
-                case '385起升机构':return 3.14;
-                case '295起升机构':return 2.86;
-                case '495起升机构':return 3.38;
-                case '313起升机构':return 4.03;
-            }
-        },
+        // acx13:function(){
+        //     switch ( typeOfLifting ) {
+        //         case '105起升机构':return 1.29;
+        //         case '145起升机构':return 1.29;
+        //         case '175起升机构':return 1.48;
+        //         case '275起升机构':return 1.64;
+        //         case '185起升机构':return 2.15;
+        //         case '285起升机构':return 2.41;
+        //         case '385起升机构':return 3.14;
+        //         case '295起升机构':return 2.86;
+        //         case '495起升机构':return 3.38;
+        //         case '313起升机构':return 4.03;
+        //     }
+        // },
         acx14:function(){
             if( m14 == 0 ){
                 return 0 ;
@@ -4408,35 +4453,39 @@
         },
 
 
+        // asltx:function(){
+        //     switch ( dcModel ) {
+        //         case '2.0米铝吊船(PT(250_2))':return 3.02;
+        //         case '2.5米铝吊船(PT(250_2.5))':return 3.6;
+        //         case '3.0米铝吊船(PT(250_3))':return 4.18;
+        //         case '4.0米铝吊船(PT(250_4.0))':return 5.34;
+        //         case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 3.35;
+        //         case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 3.35;
+        //         case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 3.79;
+        //         case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 3.79;
+        //         case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 3.79;
+        //         case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 3.79;
+        //         case '2.0米液压伸展吊船(YYPT200G(2.0))':return 3.89;
+        //         case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 4.52;
+        //         case '2.5米液压伸展吊船(YYPT200G(2.5))':return 3.89;
+        //         case '3.0米液压伸展吊船(YYPT200G(3.0))':return 3.89;
+        //         case '3.5米液压伸展吊船(YYPT200G(3.5))':return 3.89;
+        //         case '2.0米折叠吊船(SSPT(250_2.0))':return 3.02;
+        //         case '2.5米折叠吊船(SSPT(250_2.5))':return 3.6;
+        //         case '2.0米折弯吊船(ZWDC(250_2))':return 3.02;
+        //         case '2.5米折弯吊船(ZWDC(250_2.5))':return 3.6;
+        //         case '3.0米折弯吊船(ZWDC(250_3))':return 4.18;
+        //         case '2.5米伸缩子吊船':return 4.18;
+        //         case '2.0米CDD吊船(CDD240(2A).0)':return 2.79;
+        //         case '2.5米CDD吊船(CDD240(2.5))':return 3;
+        //         case '3.0米CDD吊船(CDD240(3))':return 3.2;
+        //         case '4.0米CDD吊船(CDD240(4))':return 3.6;
+        //         case '其它':return ' ';
+        //     }
+        // },
         asltx:function(){
-            switch ( dcModel ) {
-                case '2.0米铝吊船(PT(250_2))':return 3.02;
-                case '2.5米铝吊船(PT(250_2.5))':return 3.6;
-                case '3.0米铝吊船(PT(250_3))':return 4.18;
-                case '4.0米铝吊船(PT(250_4.0))':return 5.34;
-                case '1.5米卫星吊船(PT(800_2.0)W(100-1.5))':return 3.35;
-                case '2.0米卫星吊船(PT(800_2.0)W(100-2.0))':return 3.35;
-                case '1.5米手动丝杠伸展吊船(SDPT250G(1.5))':return 3.79;
-                case '2.0米手动丝杠伸展吊船(SDPT250G(2.0))':return 3.79;
-                case '2.5米手动丝杠伸展吊船(SDPT250G(2.5))':return 3.79;
-                case '3.0米手动丝杠伸展吊船(SDPT250G(3.0))':return 3.79;
-                case '2.0米液压伸展吊船(YYPT200G(2.0))':return 3.89;
-                case '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))':return 4.52;
-                case '2.5米液压伸展吊船(YYPT200G(2.5))':return 3.89;
-                case '3.0米液压伸展吊船(YYPT200G(3.0))':return 3.89;
-                case '3.5米液压伸展吊船(YYPT200G(3.5))':return 3.89;
-                case '2.0米折叠吊船(SSPT(250_2.0))':return 3.02;
-                case '2.5米折叠吊船(SSPT(250_2.5))':return 3.6;
-                case '2.0米折弯吊船(ZWDC(250_2))':return 3.02;
-                case '2.5米折弯吊船(ZWDC(250_2.5))':return 3.6;
-                case '3.0米折弯吊船(ZWDC(250_3))':return 4.18;
-                case '2.5米伸缩子吊船':return 4.18;
-                case '2.0米CDD吊船(CDD240(2A).0)':return 2.79;
-                case '2.5米CDD吊船(CDD240(2.5))':return 3;
-                case '3.0米CDD吊船(CDD240(3))':return 3.2;
-                case '4.0米CDD吊船(CDD240(4))':return 3.6;
-                case '其它':return ' ';
-            }
+            if( dcModel =='其它')
+                return ' ' ;
         },
         atx3:' 0.05 ',
         atx6:' 0 ',
@@ -4905,6 +4954,12 @@
             }
         },
     }
+    getTable("btModel","btxz");
+    getTable("dcModel","dcxz");
+    getTable("dcgssModel","dcgssxz");
+    getTable("typeOfGRU","gruxz");
+    getTable("typeOfLifting","qsjgxz");
+    getTable("dhzjgModel","hzjgxz");
     data.init(calculateFunction);
     (function () {
         InitNav(4);

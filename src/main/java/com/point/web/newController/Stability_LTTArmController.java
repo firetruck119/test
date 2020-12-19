@@ -41,6 +41,12 @@ public class Stability_LTTArmController {
     @Autowired
     URLCacheData urlCacheData;
 
+    @GetMapping("/pdf/Stability_LTTArm")
+    public String getMap2(Model model) {
+        model.addAttribute("entity", new StabilityEnity_LTTArmEntity());
+        return "pdf/Stability_LTTArm";
+    }
+
     @GetMapping("/Stability_LTTArm")
     public String getMap(Model model) {
         model.addAttribute("entity", new StabilityEnity_LTTArmEntity());
