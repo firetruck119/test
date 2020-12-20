@@ -340,20 +340,15 @@
                         </select>
                         <script>
                             $("[name=cddxhModel]").change(function () {
-                                var cddxhModel=$("[name=cddxhModel]")[0].value;
-                                var filename="";
-                                if( cddxhModel=="CDD240(2A)" ){
-                                    filename="CDD240（2A）.png";
-                                }else if ( cddxhModel=="CDD240(3A)" ){
-                                    filename="CDD240（3A）.png";
-                                }else if ( cddxhModel=="CDD240(4A)" ){
-                                    filename="CDD240（4A）.png";
+                                var data = new FormData();
+                                var els = $("input[type=text],select");
+                                for (var index = 0; index < els.length; index++) {
+                                    var e = els[index];
+                                    data.append(e.name, e.value);
                                 }
-                                if ($('input[name=tu_cddtu]').length == 0) {
-                                    $('form').append('<input name="tu_cddtu" type="hidden"/>');
-                                }
-                                $("[name=tu_cddtu]")[0].value=filename;
-                                $("[name=cddtu]")[0].src="/pdf/getImg?filename=CDD/"+ filename+"";
+                                axios.post("/CDDDrawing/showDrawing", data).then(function (e) {
+                                    $("img[id=cddtu]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=CDD&tempid=' + Math.random();
+                                })
                             })
                         </script>
 
@@ -447,8 +442,6 @@
                onclick="isCheck(false);$('form').attr('action','saveValue')"/>
         <input type="submit" form="form1" class="button"  value="获取图纸pdf" onclick="$('form').attr('action','CDDDrawing/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
-        <!--<input type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','OneJibWheel/getPDF');-->
-                                                                                            <!--isCheck(true);changeType('Check')"/>-->
         <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
     </div>
 

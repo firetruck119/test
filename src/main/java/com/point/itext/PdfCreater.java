@@ -5,22 +5,46 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.*;
+import com.point.common.CommonFunc;
 import com.point.common.MyEnv;
 import com.point.common.OperationLog;
 import com.point.entity.InputImageCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Field;
+import java.util.*;
 
 @Component
 public class PdfCreater {
 
     @Autowired
     OperationLog operationLog;
+
+    public Map entity2Map(Object entity){
+        Class clazz = entity.getClass();
+        Field[] fields = clazz.getDeclaredFields();
+        Map<String, String> map = new HashMap<>();
+        Iterator<Field> it = CollectionUtils.arrayToList(fields).iterator();
+        try {
+            while (it.hasNext()) {
+                Field f = it.next();
+                f.setAccessible(true);
+                String v = "";
+                if(f.getType().getName().toString().equals("java.lang.Double"))
+                    v= CommonFunc.convertDoubleToString(Double.parseDouble(f.get(entity).toString()));
+                else
+                    v=f.get(entity).toString();
+                String name = f.getName();
+                map.put(name, v);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return map;
+    }
 
     public static byte[] File2byte(File tradeFile){
         byte[] buffer = null;

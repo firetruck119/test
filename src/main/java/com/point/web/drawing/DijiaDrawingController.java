@@ -60,51 +60,41 @@ public class DijiaDrawingController {
     @PostMapping("DijiaDrawing/getDrawingName")
     @ResponseBody
     public Object getDrawingName(@ModelAttribute DijiaDrawingEntity entity) throws NoSuchFieldException, IllegalAccessException, UserException {
-        Map map = drawing.getPDF("dijia", entity2Map(entity));
-        return map;
-    }
-    private Map entity2Map(Object entity){
-        Class clazz = entity.getClass();
-        Field[] fields = clazz.getDeclaredFields();
-        Map<String, String> map = new HashMap<>();
-        Iterator<Field> it = CollectionUtils.arrayToList(fields).iterator();
-        try {
-            while (it.hasNext()) {
-                Field f = it.next();
-                f.setAccessible(true);
-                String v = "";
-                if(f.getType().getName().toString().equals("java.lang.Double"))
-                    v= CommonFunc.convertDoubleToString(Double.parseDouble(f.get(entity).toString()));
-                else
-                    v=f.get(entity).toString();
-                String name = f.getName();
-                map.put(name, v);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        Map map = drawing.getPDF("dijia", pdf.entity2Map(entity));
         return map;
     }
 
     @PostMapping("DijiaDrawing/showDrawing")
     @ResponseBody
     public String showDrawing(HttpServletResponse response, @ModelAttribute DijiaDrawingEntity entity) throws IOException, DocumentException, NoSuchFieldException, IllegalAccessException {
-        List<String> name = drawing.getPDFName("dijia", entity2Map(entity));
-        return name.get(0)+".png";
+        String name=null;
+        List<byte[]> list = new ArrayList<>();
+        String temp=entity._getImageName();
+        if(temp!=null){
+            name=temp;
+        }else {
+            List<String> names = drawing.getPDFName("dijia",pdf.entity2Map(entity));
+            name=names.get(0)+".png";
+        }
+        return name;
     }
 
     @PostMapping("DijiaDrawing/getPDF")
-    public Object getPDF(HttpServletRequest request,
-                         @ModelAttribute DijiaDrawingEntity entity,
-                         @RequestParam(required = false) String pdfType,
-                         @RequestParam(required = false) Boolean check,
+    public Object getPDF(@ModelAttribute DijiaDrawingEntity entity,
                          @RequestParam(required = false) String sjht) throws IOException, DocumentException, NoSuchFieldException, IllegalAccessException {
-
-        Map map= entity2Map(entity);
+        Map map= pdf.entity2Map(entity);
         cacheData.saveCacheValue(sjht, entity);
+        String name=null;
+        String temp=entity._getPDFName();
         List<byte[]> list = new ArrayList<>();
-        List<String> name = drawing.getPDFName("dijia", map);
-        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing(null, null, "/dijia/" + name.get(0)));
-        return tool.getResponseEntity(name.get(0), list.get(0));
+        if(temp!=null){
+            name=temp;
+        }else {
+            cacheData.saveCacheValue(sjht, entity);
+            List<String> names = drawing.getPDFName("dijia", map);
+            name=names.get(0);
+        }
+        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing(null, null, "/dijia/" + name));
+        return tool.getResponseEntity(name, list.get(0));
     }
 }

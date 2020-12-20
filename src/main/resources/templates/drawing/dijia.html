@@ -218,7 +218,7 @@
                 $('#' + element).attr('src', fileReader.result).attr('display', 'inline-block')
             }
         }
-
+        //获取图片
         function ajaxForImage(imageid) {
             var data = new FormData();
             var els = $("input[type=text],select");
@@ -231,6 +231,7 @@
             })
         }
 
+        //获取图纸
         function ajaxForDrawing(imageid) {
             var data = new FormData();
             var els = $("input[type=text],select");
@@ -351,7 +352,7 @@
                     <input type="submit" form="form1" class="button" value="获取图纸" onclick="$('form').attr('action','DijiaDrawing/getPDF');
                                                                                             isCheck(true);changeType('Check')"/>
                     <input type="reset" form="form1" value="重置"
-                           onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa');$('img').prop('src','')"/>
+                           onclick="$('img').prop('src','')"/>
                 </div>
             </table>
         </div>
@@ -366,7 +367,6 @@
         e = $('input[name=pdfType]');
         e.val(l);
     }
-
 
     $("[name=djhzxs]").change(() => {
         var v = $("[name=djhzxs]").val();
