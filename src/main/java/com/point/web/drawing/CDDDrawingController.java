@@ -91,10 +91,10 @@ public class CDDDrawingController {
         }else {
             Map map= pdf.entity2Map(entity);
             cacheData.saveCacheValue(sjht, entity);
-            List<String> names = drawing.getPDFName("dijia", map);
+            List<String> names = drawing.getPDFName("CDDDrawing", map);
             name=names.get(0);
         }
-        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing(null, null, "CDD/" + name));
+        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing( entity.takeMapForPDF( ), null, "CDD/" + name));
         return tool.getResponseEntity(name, list.get(0));
     }
 }
