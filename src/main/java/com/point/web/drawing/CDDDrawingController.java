@@ -44,6 +44,9 @@ public class CDDDrawingController {
     @Autowired
     DrawingTableController drawing;
 
+    @GetMapping("/pdf/CDDDrawing")
+    public String getMap2() { return "pdf/CDDDrawing"; }
+
     @GetMapping("/CDDDrawing")
     public String getMap() {
         return "drawing/CDDDrawing";

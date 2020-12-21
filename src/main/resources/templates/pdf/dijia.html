@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>底架图纸</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app">
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" target="stop" method="post"
+                              enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">底架图纸</div>
+                            <!- 封面内容 ->
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:40%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:40%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <div class="subtable">
+                                        <table>
+                                            <tr>
+                                                <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>基本参数</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:40%;padding:10px 0;;"><b>名称</b></td>
+                                                <td style="width:40%;">数值</td>
+                                                <td style="width:20%;">单位</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>回转形式</b></td>
+                                                <td><select name="djhzxs"></select></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>轨距</b></td>
+                                                <td><select name="lg"></select></td>
+                                                <td>m</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>轮距</b></td>
+                                                <td><select name="ll"></select></td>
+                                                <td>m</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>回转支撑型号</b></td>
+                                                <td><select name="hzzc"></select></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>运行机构</b></td>
+                                                <td><select name="yxjgxz"></select></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>有无摆动臂</b></td>
+                                                <td><select name="djbdb"></select></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>立柱偏心距</b></td>
+                                                <td><select name="lzpxj"></select></td>
+                                                <td>m</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>底架类型</b></td>
+                                                <td><select name="djlx"></select></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>起升机构</b></td>
+                                                <td><select name="djqsjg"></select></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>底架图号</b></td>
+                                                <td><input type="text" name="th"/></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>底架质量</b></td>
+                                                <td><input type="text" name="mdj"/></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div style="width:600px;">
+                                        <img id="image" style="margin-top:100px;max-width: 600px" src=""/>
+                                    </div>
+                                    <div class="buttonbox">
+                                        <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                               onclick="$('form').attr('action','/saveValue')"/>
+                                        <input style="cursor: pointer" class="button" type="button" value="显示图片" onclick="ajaxForImage('dijia')"/>
+                                        <input style="cursor: pointer" class="button" type="button" value="获取图号" onclick="ajaxForDrawing('dijia')"/>
+                                        <input style="cursor: pointer" type="submit" form="form1" class="button" value="获取图纸" onclick="$('form').attr('action','/DijiaDrawing/getPDF');
+                                                                                                                isCheck(true);changeType('Check')"/>
+                                        <input style="cursor: pointer" type="reset" form="form1" value="重置"
+                                               onclick="$('img').prop('src','')"/>
+                                    </div>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    Array.prototype.unique3 = function () {
+        var res = [];
+        var json = {};
+        for (var i = 0; i < this.length; i++) {
+            if (!json[this[i]]) {
+                res.push(this[i]);
+                json[this[i]] = 1;
+            }
+        }
+        return res;
+    }
+    // $(document).ready(function () {
+    //     InitNav(10)
+    //     $('#DijiaDrawing').addClass('o-sub-cur');
+    // });
+    (function getIDlist() {
+        $.ajax({
+            url: "/getBatchIdList",
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            async: false,
+            success: function (e) {
+                var list = [];
+                list = list.concat(e);
+                if (list != null) {
+                    var html = '';
+                    for (var valueIndex = 0; valueIndex < list.length; valueIndex++) {
+                        var value = list[valueIndex];
+                        html += '<option value="';
+                        html += value;
+                        html += '">';
+                    }
+                    $('#txtBatchId').html(html)
+                }
+            }
+        });
+    })();
+    (async function getSelect() {
+        var columns, table;
+        await axios.get("/drawingTable/getColumnsByNo?name=" + "dijia").then(function (e) {
+            columns = [].concat(e.data);
+        })
+        await axios.get("/drawingTable/getTableByNo?name=" + "dijia").then(function (e) {
+            table = [].concat(e.data);
+        })
+        if (columns != null && table != null) {
+            for (var i = 0; i < columns.length; i++) {
+                var html = '<option value="" hidden="hidden"></option>', list = {};
+                for (var j = 0; j < table.length; j++) {
+                    var value = table[j]["column" + (i + 1)];
+                    list[value] = 1;
+                }
+                for (var k in list) {
+                    html += '<option value="';
+                    html += k;
+                    html += '">';
+                    html += k;
+                    html += '</option>';
+                }
+                $("select[name=" + columns[i].columnno + "]").html(html)
+            }
+        }
+    })();
+
+    function geteDataFromDB(url, id) {
+        $.ajax({
+            url: url,
+            type: "get",
+            async: false,
+            data: {'batchId': id},
+            dataType: "json",
+            cache: false,
+            success: function (e) {
+                console.log(e)
+                var list = {};
+                var dataObj = e['datalist'];
+                for (var index in dataObj)
+                    $("[name=" + index + "]").val(dataObj[index])
+            }
+        })
+    };
+
+    function showImage(form, element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if (fileObj.size > 1048576) {
+            alert("上传文件大于1M，请重新选择");
+            form.value = "";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function () {  // 等待文件阅读器读取完毕再渲染图片
+            $('#' + element).attr('src', fileReader.result).attr('display', 'inline-block')
+        }
+    }
+    //获取图片
+    function ajaxForImage(imageid) {
+        var data = new FormData();
+        var els = $("input[type=text],select");
+        for (var index = 0; index < els.length; index++) {
+            var e = els[index];
+            data.append(e.name, e.value);
+        }
+        axios.post("/DijiaDrawing/showDrawing", data).then(function (e) {
+            $("img[id=image]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=dijia&tempid=' + Math.random();
+        })
+    }
+
+    //获取图纸
+    function ajaxForDrawing(imageid) {
+        var data = new FormData();
+        var els = $("input[type=text],select");
+        for (var index = 0; index < els.length; index++) {
+            var e = els[index];
+            data.append(e.name, e.value);
+        }
+        axios.post("/DijiaDrawing/getDrawingName", data).then(function (e) {
+            $("[name=mdj]").val(e.data["mdj"]);
+            $("[name=th]").val(e.data["th"]);
+        })
+    }
+</script>
+
+<script>
+    function changeType(l) {
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+
+    $("[name=djhzxs]").change(() => {
+        var v = $("[name=djhzxs]").val();
+        if (v == "下回转") {
+            $("[name=djqsjg]").val('无限制')
+            $("[name=lzpxj]").val(0)
+        } else if (v == "上回转") {
+            $("[name=djqsjg]").val("")
+            $("[name=lzpxj]").val("")
+        }
+    })
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/DijiaDrawing/getData';
+            var id = $('input[name="sjht"]').val();
+            geteDataFromDB(url, id)
+        }
+    )
+</script>
+</body>
+</html>

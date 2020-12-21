@@ -295,7 +295,7 @@ asideDatas = {
             children: [
                 {
                     title: '底架',
-
+                    url: "DijiaDrawing",
                 },
                 {
                     title: '立柱',
@@ -318,8 +318,8 @@ asideDatas = {
 
                 },
                 {
-                    title: 'CDD吊篮',
-
+                    title: 'CDD',
+                    url: "CDDDrawing",
                 },
                 {
                     title: '滑车',

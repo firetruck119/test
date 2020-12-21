@@ -42,10 +42,8 @@ public class DijiaDrawingController {
     @Autowired
     DrawingTableController drawing;
 
-//    @GetMapping("/pdf/DijiaDrawing")
-//    public String getMap2() {
-//        return "pdf/dijia";
-//    }
+    @GetMapping("/pdf/DijiaDrawing")
+    public String getMap2() { return "pdf/dijia"; }
 
     @GetMapping("/DijiaDrawing")
     public String getMap() {
