@@ -50,14 +50,6 @@ asideDatas = {
                     url: "Counterweights",
                 },
                 {
-                    title: '非普通吊船无约束系统',
-                    url: "PlatformUnconstrained",
-                },
-                {
-                    title: '普通吊船无约束系统',
-                    url: "PtPlatformUnconstrained",
-                },
-                {
                     title: '清洗周期',
                     url: "CleaningCycle",
                 },
@@ -209,6 +201,10 @@ asideDatas = {
 
                         },
                         {
+                            title: '仰柱机构',
+                            url:'UprightMechanism'
+                        },
+                        {
                             title: '1+1顶升立柱顶轮',
                             url:'IdlerWheel'
                         },
@@ -255,6 +251,20 @@ asideDatas = {
             url: "pdf",
             children: [
                 {
+                    title: '吊船',
+                    url: "pdf",
+                    children: [
+                        {
+                            title: '非普通吊船无约束系统',
+                            url: "PlatformUnconstrained",
+                        },
+                        {
+                            title: '普通吊船无约束系统',
+                            url: "PtPlatformUnconstrained",
+                        },
+                    ]
+                },
+                {
                     title: '钢丝绳',
                     url:'WireRope'
                 },
@@ -262,10 +272,7 @@ asideDatas = {
                     title: '大回转机构',
                     url:'RotaryStructure'
                 },
-                {
-                    title: '仰柱机构',
-                    url:'UprightMechanism'
-                },
+
             ]
         },
         {

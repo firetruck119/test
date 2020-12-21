@@ -81,8 +81,8 @@ public class IdlerWheelController {
         List<byte[]> list = new ArrayList<>();
         list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/立柱顶轮校核计算书"));
         if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/立柱顶轮校核计算书验证部分"));
-            return tool.getResponseEntity("立柱顶轮校核计算书验证部分", pdf.MergePDF(list));
+//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/立柱顶轮校核计算书验证部分"));
+//            return tool.getResponseEntity("立柱顶轮校核计算书验证部分", pdf.MergePDF(list));
         }
         return tool.getResponseEntity("立柱顶轮校核计算书", list.get(0));
     }

@@ -161,7 +161,7 @@
     <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop"
           th:opType="@{/PinSeatEntity}" th:Object="${entity}"
           method="post" enctype="multipart/form-data">
-        <div class="tabletitle">稳定性校核及轮压计算书</div>
+        <div class="tabletitle">下回转固定臂稳定性校核及轮压计算书</div>
         <div class="subtable" style="text-align: center;padding: 10px 0 0px 0;overflow: hidden;border:1px solid #aaa;">
             <div style="height:335px">
                 <img alt="擦窗机整机示意图" src="/image/Tensile/wdlyxgtu1.png" id="wdlyxgtu1" name="wdlyxgtu1" />
@@ -3782,14 +3782,11 @@
         //         case '313起升机构':return 4880;
         //     }
         // },
-
         m14:function(){
             if( m6 == 0 && m7 == 0 && m8 == 0)
-                return 0;
+                return 0 ;
             else return '';
         },
-
-
         m16:function(){
             if( wdlyp3 =='无')
                 return 0;

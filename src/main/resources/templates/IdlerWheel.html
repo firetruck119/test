@@ -125,7 +125,7 @@
                 dlbcw:65,
                 cr:135000,
                 c0r:158000,
-                zcxhxz:"30310",
+                // zcxhxz:"30310",
                 bfb:0.75,
             },
             "LZDLS125":{
@@ -133,7 +133,7 @@
                 dlbcw:70,
                 cr:95200,
                 c0r:108000,
-                zcxhxz:"30308",
+                // zcxhxz:"30308",
                 bfb:0.75,
             },
             "LZ-KTDL":{
@@ -141,35 +141,38 @@
                 dlbcw:75,
                 cr:95200,
                 c0r:155000,
-                zcxhxz:"NUP312",
+                // zcxhxz:"NUP312",
                 bfb:0.5,
             },
-            "其它":{
-                dldcw:'',
-                dlbcw:'',
-                cr:'',
-                c0r:'',
-                zcxhxz:' ',
+        };
+        grudsModelList= {
+            "是":{
+                grudsxs:0,
+            },
+            "否":{
+                grudsxs:1,
             },
         };
-        bdlxzModelList= {
-            "是": {
-                bfb:0.5,
-            },
-            "否": {
-                bfb:0.75,
-            },
-        };
+        // bdlxzModelList= {
+        //     "是": {
+        //         bfb:0.5,
+        //     },
+        //     "否": {
+        //         bfb:0.75,
+        //     },
+        // };
         sfybxzModelList= {
             "是": {
                 m7:' ',
-                atx7:' ',
-                hb7:' ',
+                m10:' ',
+                // atx7:' ',
+                // hb7:' ',
             },
             "否": {
                 m7:0,
-                atx7:0,
-                hb7:0,
+                m10:0,
+                // atx7:0,
+                // hb7:0,
             },
         };
         sfsglxzModelList= {
@@ -482,6 +485,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>GRU装置是否在外立柱上</td>
+                    <td colspan="3">
+                        <select name="grudsModel" style="width:100%;height:40px;text-align-last:center">
+                            <option value="" style="display: none"></option>
+                            <option value="是">是</option>
+                            <option value="否">否</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td>是否有防风背包</td>
                     <td colspan="3">
                         <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
@@ -552,7 +565,6 @@
                             <option value="LZDL160">LZDL160</option>
                             <option value="LZDLS125">LZDLS125</option>
                             <option value="LZ-KTDL">LZ-KTDL</option>
-                            <option value="其它">其它</option>
                         </select>
                     </td>
                 </tr>
@@ -563,10 +575,10 @@
                     <!--&lt;!&ndash;<td >mm</td>&ndash;&gt;-->
                 <!--</tr>-->
                 <tr>
-                    <td ><b>基本额定动载荷</b></td>
-                    <td ><p><i>C<sub>r</sub></i></p></td>
-                    <td ><input type="text" name="cr"/></td>
-                    <td ></td>
+                    <td style="width: 26%"><b>基本额定动载荷</b></td>
+                    <td style="width: 17%"><p><i>C<sub>r</sub></i></p></td>
+                    <td style="width: 40%"><input type="text" name="cr"/></td>
+                    <td style="width: 17%"></td>
                 </tr>
                 <tr>
                     <td ><b>基本额定静载荷</b></td>
@@ -637,7 +649,7 @@
                 <tr>
                     <td></td>
                     <td colspan="3" style="padding: 10px 0;">工作状态1自重</td>
-                    <td colspan="3">工作状态1各部件到立柱中心的距离</td>
+                    <td colspan="3">工作状态1各部件到液压缸中心的距离</td>
                 </tr>
                 <tr>
                     <td style="width:20%;padding:10px 0;;">名称</td>
@@ -680,7 +692,7 @@
                     <td ><input type="text" name="tsl"/></td>
                     <td >kg</td>
                     <td >L<sub>sl</sub></td>
-                    <td ><input type="text" name="lslhz"/></td>
+                    <td ><input type="text" name="lsly"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -704,7 +716,7 @@
                     <td ><input type="text" name="tshl"/></td>
                     <td >kg</td>
                     <td >L<sub>shl</sub></td>
-                    <td ><input type="text" name="lshlhz"/></td>
+                    <td ><input type="text" name="lshly"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -713,7 +725,7 @@
                     <td ><input type="text" name="m1"/></td>
                     <td >kg</td>
                     <td >L<sub>l</sub></td>
-                    <td ><input type="text" name="lhz1"/></td>
+                    <td ><input type="text" name="ly1"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -722,7 +734,7 @@
                     <td ><input type="text" name="m2"/></td>
                     <td >kg</td>
                     <td >L<sub>2</sub></td>
-                    <td ><input type="text" name="lhz2"/></td>
+                    <td ><input type="text" name="ly2"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -733,7 +745,7 @@
                     <td ><input type="text" name="m3"/></td>
                     <td >kg</td>
                     <td >L<sub>3</sub></td>
-                    <td ><input type="text" name="lhz3"/></td>
+                    <td ><input type="text" name="ly3"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -742,16 +754,16 @@
                     <td ><input type="text" name="m4"/></td>
                     <td >kg</td>
                     <td >L<sub>4</sub></td>
-                    <td ><input type="text" name="lhz4"/></td>
+                    <td ><input type="text" name="ly4"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置</td>
+                    <td>物料起升机构装置(距离顶升液压缸前为负，后为正)</td>
                     <td><p><i>m<sub>5</sub></i></p></td>
-                    <td ><input type="text" name="m5"/></td>
+                    <td ><input type="text" name="m5ds"/></td>
                     <td >kg</td>
                     <td >L<sub>5</sub></td>
-                    <td ><input type="text" name="lhz5"/></td>
+                    <td ><input type="text" name="ly5"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -760,7 +772,7 @@
                     <td ><input type="text" name="m6"/></td>
                     <td >kg</td>
                     <td >L<sub>6</sub></td>
-                    <td ><input type="text" name="lhz6"/></td>
+                    <td ><input type="text" name="ly6"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -769,7 +781,7 @@
                     <td ><input type="text" name="m7"/></td>
                     <td >kg</td>
                     <td >L<sub>7</sub></td>
-                    <td ><input type="text" name="lhz7"/></td>
+                    <td ><input type="text" name="ly7"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -778,7 +790,7 @@
                     <td ><input type="text" name="m12n"/></td>
                     <td >kg</td>
                     <td >L<sub>8</sub></td>
-                    <td ><input type="text" name="lhz12"/></td>
+                    <td ><input type="text" name="ly12n"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -787,7 +799,7 @@
                     <td ><input type="text" name="m10"/></td>
                     <td >kg</td>
                     <td >L<sub>9</sub></td>
-                    <td ><input type="text" name="lhz10"/></td>
+                    <td ><input type="text" name="ly10"/></td>
                     <td >m</td>
                 </tr>
                 <tr>
@@ -796,7 +808,7 @@
                     <td ><input type="text" name="m11"/></td>
                     <td >kg</td>
                     <td >L<sub>10</sub></td>
-                    <td ><input type="text" name="lhz11"/></td>
+                    <td ><input type="text" name="ly11"/></td>
                     <td >m</td>
                 </tr>
             </table>
@@ -893,7 +905,7 @@
                 <tr>
                     <td>物料起升机构装置</td>
                     <td><p><i>A<sub>t5</sub></i></p></td>
-                    <td ><input type="text" name="atx5"/></td>
+                    <td ><input type="text" name="atx5ds"/></td>
                     <td >m<sup>2</sup></td>
                     <td >h<sub>5</sub></td>
                     <td ><input type="text" name="hb5"/></td>
@@ -1021,7 +1033,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置</td>
+                    <td>物料起升机构装置(顶升液压缸前为负，后为正)</td>
                     <td><p><i>L<sub>5I</sub></i></p></td>
                     <td ><input type="text" name="lfy5i"/></td>
                     <td >m</td>
@@ -1150,7 +1162,7 @@
                 <tr>
                     <td>物料起升机构装置</td>
                     <td><p><i>A<sub>t5I</sub></i></p></td>
-                    <td ><input type="text" name="atx5i"/></td>
+                    <td ><input type="text" name="atx5dsi"/></td>
                     <td >m<sup>2</sup></td>
                     <td >h<sub>5I</sub></td>
                     <td ><input type="text" name="hb5i"/></td>
@@ -1270,7 +1282,7 @@
                     <td >m</td>
                 </tr>
                 <tr>
-                    <td>物料起升机构装置</td>
+                    <td>物料起升机构装置(顶升液压缸前为负，后为正)</td>
                     <td><p><i>L<sub>f5</sub></i></p></td>
                     <td ><input type="text" name="lfy5"/></td>
                     <td >m</td>
@@ -1381,7 +1393,7 @@
                 <tr>
                     <td>物料起升机构装置</td>
                     <td><p><i>A<sub>f5</sub></i></p></td>
-                    <td ><input type="text" name="aftx5"/></td>
+                    <td ><input type="text" name="aftx5ds"/></td>
                     <td >m<sup>2</sup></td>
                     <td >h<sub>f5</sub></td>
                     <td ><input type="text" name="hfb5"/></td>
@@ -1440,49 +1452,26 @@
             <input type="text" name="dsglxs" />
             <input type="text" name="bfb" />
             <input type="text" name="zcsm" />
+
             <input type="text" name="dcgssp" />
             <input type="text" name="grugssp" />
+            <input type="text" name="m5" />
+            <input type="text" name="acx5" />
+            <input type="text" name="grudsxs" />
+
             <input type="text" name="ldcgh" />
             <input type="text" name="lbtzh" />
             <input type="text" name="ldslzh" />
-            <!--<input type="text" name="cr" />-->
-            <!--<input type="text" name="c0r" />-->
-<!--大臂立柱质量计算-->
-            <input type="text" name="lxtz" />
-            <input type="text" name="lxtm" />
-            <input type="text" name="ldjm" />
-            <input type="text" name="ldbm" />
-            <input type="text" name="mbgj"/>
-            <input type="text" name="mbmj"/>
-            <input type="text" name="ldbbz"/>
-            <input type="text" name="mbg1"/>
-            <input type="text" name="mbm1"/>
-            <input type="text" name="mbm2"/>
-            <input type="text" name="mbm3"/>
-            <input type="text" name="mbm4"/>
-            <input type="text" name="mbg1"/>
-            <input type="text" name="mbg2"/>
-            <input type="text" name="mbg3"/>
-            <input type="text" name="mbg4"/>
-            <input type="text" name="mdbb"/>
-            <!--<input type="text" name="mlz1gd"/>-->
-            <!--<input type="text" name="lz1mmzl"/>-->
-            <!--<input type="text" name="lz2mmzl"/>-->
-            <!--<input type="text" name="myzjg"/>-->
-            <input type="text" name="lbj"/>
-            <input type="text" name="lsly"/>
-            <input type="text" name="lshly"/>
-            <input type="text" name="ly1"/>
-            <input type="text" name="ly2"/>
-            <input type="text" name="ly3"/>
-            <input type="text" name="ly4"/>
-            <input type="text" name="ly5"/>
-            <input type="text" name="ly6"/>
-            <input type="text" name="ly7"/>
-            <input type="text" name="ly12n"/>
-            <input type="text" name="ly10"/>
-            <input type="text" name="ly11"/>
-            <input type="text" name="zcxhxz"/>
+
+            <input type="text" name="lhz4"/>
+            <input type="text" name="lhz5"/>
+            <input type="text" name="lhz6"/>
+            <input type="text" name="lhz7"/>
+            <input type="text" name="lhz10"/>
+            <input type="text" name="lhz11"/>
+            <input type="text" name="m5dsp"/>
+
+            <!--<input type="text" name="zcxhxz"/>-->
         </div>
         <input type="hidden" name="pdfType"/>
     </form>
@@ -1501,22 +1490,18 @@
                     </tr>
                     <tr>
                         <td><b>内立柱侧板接触应力</b></td>
-                        <!--<td id="ssqd"></td>-->
-                        <!--<td id="smax"></td>-->
                         <td><p>800MPa</p></td>
                         <td><p><span id="ohz"></span>MPa</p></td>
                         <td id="lzglm1"></td>
                     </tr>
                     <tr>
                         <td><b>立柱顶轮轴承受力</b></td>
-                        <td><p><span id="cr"></span>N</p></td>
-                        <td><p><span id="c"></span>N</p></td>
+                        <td><p><span id="crk"></span>kN</p></td>
+                        <td><p><span id="ck"></span>kN</p></td>
                         <td id="lzglm2"></td>
                     </tr>
                     <tr>
                         <td><b>立柱顶轮支撑板抗压强度</b></td>
-                        <!--<td id="nd"></td>-->
-                        <!--<td id="f"></td>-->
                         <td><p>206.7MPa</p></td>
                         <td><p><span id="o"></span>MPa</p></td>
                         <td id="lzglm3"></td>
@@ -1533,8 +1518,8 @@
                onclick="isCheck(false);$('form').attr('action','saveValue')"/>
         <input type="submit" form="form1" class="button"  value="导出立柱顶轮计算书pdf" onclick="$('form').attr('action','IdlerWheel/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
-        <input type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','IdlerWheel/getPDF');
-                                                                                            isCheck(true);changeType('Check')"/>
+        <!--<input type="submit" form="form1" class="button"  value="导出验证部分pdf" onclick="$('form').attr('action','IdlerWheel/getPDF');-->
+                                                                                            <!--isCheck(true);changeType('Check')"/>-->
         <input type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','#aaa')"/>
     </div>
 
@@ -1568,12 +1553,42 @@
                 return '无';
             }
         },
+        grugssp:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        m5:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        acx5:function(){
+            if( gruModel =='无')
+                return 0;
+        },
+        grudsxs:function(){
+            return grudsModelList[ grudsModel ]['grudsxs'];
+        },
+        m5dsp:function(){
+            if( m5ds == 0 )
+                return 0 ;
+            else
+                return m5ds + hsw ;
+        },
 
+        p: function () {
+            return 250 ;
+        },
         pf: function () {
             if (h <= 20 && h > 0) return 800;
             else if (20 < h && h <= 100) return 1100;
             else if (100 < h && h <= 150) return 1300;
             else if (h > 150) return ' ';
+        },
+        dldcw:function(){
+            return dlxhxzModelList[ dlxhxzModel ]['dldcw'];
+        },
+        dlbcw:function(){
+            return dlxhxzModelList[ dlxhxzModel ]['dlbcw'];
         },
         ndlsl:function(){
             return sfsglxzModelList[ sfsglxzModel ]['ndlsl'];
@@ -1582,22 +1597,13 @@
             return sfsglxzModelList[ sfsglxzModel ]['dsglxs'];
         },
         cr:function(){
-            return zcxhxzModelList[ zcxhxzModel ]['cr'];
+            return dlxhxzModelList[ dlxhxzModel ]['cr'];
         },
         c0r:function(){
-            return zcxhxzModelList[ zcxhxzModel ]['c0r'];
+            return dlxhxzModelList[ dlxhxzModel ]['c0r'];
         },
         bfb:function(){
-            return bdlxzModelList[ bdlxzModel ]['bfb'];
-        },
-        m7:function(){
-            return sfybxzModelList[ sfybxzModel ]['m7'];
-        },
-        atx7:function(){
-            return sfybxzModelList[ sfybxzModel ]['atx7'];
-        },
-        hb7:function(){
-            return sfybxzModelList[ sfybxzModel ]['hb7'];
+            return dlxhxzModelList[ dlxhxzModel ]['bfb'];
         },
         zcsm:function(){
             return zcsmxzModelList[ zcsmxzModel ]['zcsm'];
@@ -1605,179 +1611,154 @@
         fh:function(){
             return zcsmxzModelList[ zcsmxzModel ]['fh'];
         },
+        // zcxhxz:function(){
+        //     return dlxhxzModelList[ dlxhxzModel ]['zcxhxz'];
+        // },
+
+        swp: function(){
+            if( dcModel =='其它')
+                return ' ' ;
+        },
+        r1:function(){
+            if( dcModel =='其它')
+                return ' ' ;
+        },
         mwr:function(){
             return h * dcgssp * 4 ;
         },
         mffbb:function(){
             return ffbbModelList[ ffbbModel ]['mffbb'];
         },
-        dldcw:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['dldcw'];
-        },
-        dlbcw:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['dlbcw'];
-        },
-        cr:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['cr'];
-        },
-        c0r:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['c0r'];
-        },
-        zcxhxz:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['czxhxz'];
-        },
-        bfb:function(){
-            return dlxhxzModelList[ dlxhxzModel ]['bfb'];
-        },
         tsl:function (){
             return swp + r1 + mwr + mffbb ;
         },
-        // hwll:function(){
-        //     return gruModelList[ gruModel ]['hwll'];
-        // },
+        hwll:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
         hsw:function(){
             return h * grugssp ;
         },
         tshl:function(){
             return hwll + hsw ;
         },
-        // m1:function(){
-        //     return btModelList[ btModel ]['m1'];
-        // },
-        // m2:function(){
-        //     return gruModelList[ gruModel ]['m2'];
-        // },
+        m1:function(){
+            if( btModel =='其它')
+                return ' ' ;
+        },
+        m2:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
         m3:function(){
             return  25 ;
         },
-        lxtz:()=>{
-            return lbd - lbx ;
+        m5ds:function(){
+            return m5 * grudsxs ;
         },
-        lxtm:()=>{
-            if ( dbModel &&dbModel.indexOf('1+1伸缩臂')>-1) return lxtz ;
-            if ( dbModel &&dbModel.indexOf('2+1伸缩臂')>-1) return lxtz /2;
-            if ( dbModel &&dbModel.indexOf('3+1伸缩臂')>-1) return lxtz /3;
-            if ( dbModel &&dbModel.indexOf('4+1伸缩臂')>-1) return lxtz /4;
+        m7:function(){
+            return sfybxzModelList[ sfybxzModel ]['m7'];
         },
-        ldjm:()=>{
-            return lxtm /2;
-        },
-        ldbm:()=>{
-            return lxtm + ldjm ;
+        m10:function(){
+            return sfybxzModelList[ sfybxzModel ]['m10'];
         },
 
-        m4:() => {
-            var data;
-            if ( dbModel.indexOf('DB') > -1 && lbd ) data = mdbb + mbmj * ( lbd - ldbbz / 1000 );
-            if ( dbModel.indexOf('1+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + ldbm * mbm1 ;
-            if ( dbModel.indexOf('2+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + ldbm * ( mbm1 + mbm2 );
-            if ( dbModel.indexOf('3+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + ldbm * ( mbm1 + mbm2 + mbm3 );
-            if ( dbModel.indexOf('4+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + mbg4 + ldbm * ( mbm1 + mbm2 + mbm3 + mbm4 );
-            return data;
-        },
-        // m6:()=>{
-        //     if ( dbType .indexOf('单臂')>-1)
-        //         return 0;
-        // },
-        // m7:()=>{
-        //     if ( lzType .indexOf('固定')>-1 ||
-        //         lzType .indexOf('1+1顶升')>-1||
-        //         lzType .indexOf('仰柱机构')>-1)
-        //         return 0;
-        // },
-        // m12n:function(){
-        //     return  mlzlgd + llzgdn * llzmmzl ;
-        // },
-        // lsly:function(){
-        //     return lbd - llzyyg ;
-        // },
-        // lshly:function(){
-        //     return lbd - ( ldcgh - lbtzh ) - llzyyg ;
-        // },
-        // ly1:function(){
-        //     return lshly ;
-        // },
-        // ly2:function(){
-        //     if( m2 == 0 ){
-        //        return 0 ;
-        //     }else {
-        //         return lbd - ( ldcgh - ldslzh ) - llzyyg ;
-        //     }
-        // },
-        // ly3:function(){
-        //     return lshly ;
-        // },
-        // ly6:function(){
-        //     if( m6 == 0 ){
-        //         return 0 ;
-        //     }
-        //     else {
-        //         return ' ' ;
-        //     }
-        // },
-        // ly7:function(){
-        //     if( m7 == 0 ){
-        //         return 0 ;
-        //     }
-        //     else {
-        //         return ' ' ;
-        //     }
-        // },
-        // ly12n:function(){
-        //     return llzyyg ;
-        // },
-        // ly10:function(){
-        //     if( m10 == 0 ){
-        //         return 0 ;
-        //     }
-        //     else {
-        //         return ' ' ;
-        //     }
-        // },
         lsly:function(){
-            return lslhz - llzyyg ;
+            return lbd - llzyyg ;
         },
         lshly:function(){
-            return lshlhz - llzyyg ;
+            return lbd - ( ldcgh - lbtzh ) - llzyyg ;
         },
         ly1:function(){
-            return lhz1 - llzyyg  ;
+            return lshly ;
         },
         ly2:function(){
-            return lhz2 - llzyyg  ;
+            if( m2 == 0 ){
+               return 0 ;
+            }else {
+                return lbd - ( ldcgh - ldslzh ) - llzyyg ;
+            }
         },
         ly3:function(){
-            return lhz3 - llzyyg  ;
+            if( m3 == 0 ){
+                return 0 ;
+            }else {
+                return lshly ;
+            }
         },
         ly4:function(){
-            return lhz4 - llzyyg  ;
+            return lhz4 - llzyyg ;
         },
         ly5:function(){
-            return lhz5 + llzyyg  ;
+            if( m5ds == 0 ){
+                return 0 ;
+            }else {
+                return llzyyg - lhz5 ;
+            }
         },
         ly6:function(){
-            return lhz6 - llzyyg  ;
+            if( m6 == 0 ){
+                return 0 ;
+            }
+            else {
+                return lhz6 - llzyyg ;
+            }
         },
         ly7:function(){
-            return lhz7 - llzyyg  ;
+            if( m7 == 0 ){
+                return 0 ;
+            }
+            else {
+                return lhz7 - llzyyg ;
+            }
         },
         ly12n:function(){
-            return lhz12 + llzyyg  ;
+            return llzyyg ;
         },
         ly10:function(){
-            return lhz10 + llzyyg  ;
+            if( m10 == 0 ){
+                return 0 ;
+            }
+            else {
+                return lhz10 + llzyyg ;
+            }
         },
         ly11:function(){
-            return lhz11 + llzyyg  ;
+            return lhz11 + llzyyg ;
         },
 
-
-
+        asltx: function(){
+            if( dcModel =='其它')
+                return ' ' ;
+        },
+        atx2:function(){
+            if( m2 == 0 )
+                return 0 ;
+            else
+                return 0.02 ;
+        },
         atx3:function(){
-            return 0.05 ;
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return 0.05 ;
+        },
+        atx5ds:function(){
+            if( m5ds == 0 )
+                return 0 ;
+            else
+                return acx5 ;
         },
         atx6:function(){
             if( m6 == 0 ){
+                return 0 ;
+            }
+            else {
+                return ' ' ;
+            }
+        },
+        atx7:function(){
+            if( m7 == 0 ){
                 return 0 ;
             }
             else {
@@ -1792,25 +1773,37 @@
                 return ' ' ;
             }
         },
-        // atx7:function(){
-        //     if( m6 == 0 ){
-        //         return 0 ;
-        //     }
-        // },
 
-        hb6:function(){
-            if( m6 == 0 ){
+        hb2:function(){
+            if( m2 == 0 )
                 return 0 ;
-            }
-            else {
-                return ' ' ;
-            }
+            else
+                return ' ';
         },
-        // hb7:function(){
-        //     if( m6 == 0 ){
-        //         return 0 ;
-        //     }
-        // },
+        hb3:function(){
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        hb5:function(){
+            if( m5ds == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        hb6:function(){
+            if( m6 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        hb7:function(){
+            if( m7 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
         hb10:function(){
             if( m10 == 0 ){
                 return 0 ;
@@ -1856,6 +1849,7 @@
         hb11i:function(){
             return hb11 ;
         },
+
         asltxi:function(){
             return asltx ;
         },
@@ -1874,8 +1868,8 @@
         atx4i:function(){
             return atx4 ;
         },
-        atx5i:function(){
-            return atx5 ;
+        atx5dsi:function(){
+            return atx5ds ;
         },
         atx6i:function(){
             return atx6 ;
@@ -1893,49 +1887,6 @@
             return atx11 ;
         },
 
-        // lslfyi:function(){
-        //     return lbx - llzyyg ;
-        // },
-        // lshlfyi:function(){
-        //     return lbx - ( ldcgh -lbtzh ) - llzyyg ;
-        // },
-        // lfy1i:function(){
-        //     return lshlfyi ;
-        // },
-        // lfy2i:function(){
-        //     return lbx - ( ldcgh -ldslzh ) - llzyyg ;
-        // },
-        // lfy3i:function(){
-        //     return lshlfyi ;
-        // },
-        // lfy6i:function(){
-        //     if( m6 == 0 ){
-        //         return 0 ;
-        //     }
-        //     else {
-        //         return ' ' ;
-        //     }
-        // },
-        // lfy7i:function(){
-        //     if( m7 == 0 ){
-        //         return 0 ;
-        //     }
-        //     else {
-        //         return ' ' ;
-        //     }
-        // },
-        // lfy12ni:function(){
-        //     return llzyyg ;
-        // },
-        // lfy10i:function(){
-        //     if( m10 == 0 ){
-        //         return 0 ;
-        //     }
-        //     else {
-        //         return ' ' ;
-        //     }
-        // },
-
         lslfyi:function(){
             return lbx - llzyyg ;
         },
@@ -1946,17 +1897,25 @@
             return lshlfyi ;
         },
         lfy2i:function(){
-            return lbx - ( ldcgh -ldslzh ) - llzyyg ;
+            if ( m2 == 0)
+                return 0 ;
+            else
+                return lbx - ( ldcgh -ldslzh ) - llzyyg ;
         },
         lfy3i:function(){
-            return lshlfyi ;
+            if ( m3 == 0)
+                return 0 ;
+            else
+                return lshlfyi ;
         },
-        // lfy4i:function(){
-        //     return lhz4 - lbd + lbx - llzyyg  ;
-        // },
-        // lfy5i:function(){
-        //     return lhz5 - lbd + lbx - llzyyg  ;
-        // },
+        lfy5i:function(){
+            if( m5ds == 0 ){
+                return 0 ;
+            }
+            else {
+                return ' ' ;
+            }
+        },
         lfy6i:function(){
             if( m6 == 0 ){
                 return 0 ;
@@ -1984,9 +1943,6 @@
                 return ' ' ;
             }
         },
-        // lfy11i:function(){
-        //     return lhz11 - lbd + lbx - llzyyg ;
-        // },
 
         lfy1:function(){
             return lfy1i ;
@@ -2026,13 +1982,13 @@
             return atx2 ;
         },
         aftx3:function(){
-            return 0.05 ;
+            return atx3 ;
         },
         aftx4:function(){
             return atx4 ;
         },
-        aftx5:function(){
-            return atx5 ;
+        aftx5ds:function(){
+            return atx5ds ;
         },
         aftx6:function(){
             return atx6 ;
@@ -2054,23 +2010,32 @@
             return hb1 - llzss ;
         },
         hfb2:function(){
-            return hb2 - llzss ;
+            if ( m2 == 0)
+                return 0 ;
+            else
+                return hb2 - llzss ;
         },
         hfb3:function(){
-            return 0 ;
+            if ( m3 == 0)
+                return 0 ;
+            else
+                return hb3 - llzss ;
         },
         hfb4:function(){
             return hb4 - llzss ;
         },
         hfb5:function(){
-            return hb5 - llzss ;
+            if ( m5dsp == 0)
+                return 0 ;
+            else
+                return hb5 - llzss ;
         },
         hfb6:function(){
             if( m6 == 0 ){
                 return 0 ;
             }
             else {
-                return ' ' ;
+                return hb6 - llzss ;
             }
         },
         hfb7:function(){
@@ -2078,7 +2043,7 @@
                 return 0 ;
             }
             else {
-                return ' ' ;
+                return hb7 - llzss ;
             } ;
         },
         hfb12n:function(){
@@ -2089,7 +2054,7 @@
                 return 0 ;
             }
             else {
-                return ' ' ;
+                return hb10 - llzss ;
             } ;
         },
         hfb11:function(){
@@ -2097,14 +2062,10 @@
         },
 
     };
-    // getMultilevelTable("dbType","dbModel",["dbxzd", "dbxz1", "dbxz2", "dbxz3", "dbxz4"]);
-    // getMultilevelTable("lzType","lzModel",["lzxzgd", "lzxzds", "lzxzybgd", "yzjgxz"]);
     getTable("dcModel","dcxz");
     getTable("gruModel","gruxz");
     getTable("btModel","btxz");
     getTable("dcgssModel","dcgssxz");
-    getMultilevelTable("dbType","dbModel",["dbxzd", "dbxz1", "dbxz2", "dbxz3", "dbxz4"]);
-    // getMultilevelTable("lzModel",["lzxzgd", "lzxzds", "lzxzybgd", "yzjgxz"]);
     data.init(calculateFunction);
 
     imgDaefultData={

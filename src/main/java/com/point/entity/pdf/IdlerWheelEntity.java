@@ -43,32 +43,24 @@ public class IdlerWheelEntity {
     //非页面数据
     private Double dcgssp;
     private Double grugssp;
+    private Double m5;
+    private Double acx5;
+    private Double grudsxs;
     private Double ldcgh;
     private Double lbtzh;
     private Double ldslzh;
 
+    private Double lhz4;
+    private Double lhz5;
+    private Double lhz6;
+    private Double lhz7;
+    private Double lhz10;
+    private Double lhz11;
+
+    private Double m5dsp;
+
     //    提示提醒
     private String grutstx;
-
-//    private Double mlz1gd;
-//    private Double lz1mmzz;
-
-//    private Double lxtz;
-//    private Double lxtm;
-//    private Double ldjm;
-//    private Double ldbm;
-//    private Double mdbb;
-//    private Double ldbbz;
-//    private Double mbmj;
-//    private Double mbm1;
-//    private Double mbm2;
-//    private Double mbm3;
-//    private Double mbm4;
-//    private Double mbgj;
-//    private Double mbg1;
-//    private Double mbg2;
-//    private Double mbg3;
-//    private Double mbg4;
 
     private Double swp;
     private Double r1;
@@ -82,25 +74,12 @@ public class IdlerWheelEntity {
     private Double m2;
     private Double m3;
     private Double m4;
-    private Double m5;
+    private Double m5ds;
     private Double m6;
     private Double m7;
     private Double m12n;
     private Double m10;
     private Double m11;
-
-    private Double lslhz;
-    private Double lshlhz;
-    private Double lhz1;
-    private Double lhz2;
-    private Double lhz3;
-    private Double lhz4;
-    private Double lhz5;
-    private Double lhz6;
-    private Double lhz7;
-    private Double lhz10;
-    private Double lhz11;
-    private Double lhz12;
 
     private Double lsly;
     private Double lshly;
@@ -121,7 +100,7 @@ public class IdlerWheelEntity {
     private Double atx2;
     private Double atx3;
     private Double atx4;
-    private Double atx5;
+    private Double atx5ds;
     private Double atx6;
     private Double atx7;
     private Double atx12n;
@@ -160,7 +139,7 @@ public class IdlerWheelEntity {
     private Double atx2i;
     private Double atx3i;
     private Double atx4i;
-    private Double atx5i;
+    private Double atx5dsi;
     private Double atx6i;
     private Double atx7i;
     private Double atx12ni;
@@ -195,7 +174,7 @@ public class IdlerWheelEntity {
     private Double aftx2;
     private Double aftx3;
     private Double aftx4;
-    private Double aftx5;
+    private Double aftx5ds;
     private Double aftx6;
     private Double aftx7;
     private Double aftx12n;
@@ -218,13 +197,11 @@ public class IdlerWheelEntity {
     private String dcgssModel;
     private String gruModel;
     private String ffbbModel;
-//    private String bdlxzModel;
     private String sfybxzModel;
-//    private String dbxzModel;
-//    private String lzxzModel;
     private String sfsglxzModel;
     private String zcxhxz;
     private String zcsmxzModel;
+    private String grudsModel;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -260,30 +237,23 @@ public class IdlerWheelEntity {
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
         map.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
-//        map.put("m5", CommonFunc.convertDoubleToString(m5));
+        map.put("m5", CommonFunc.convertDoubleToString(m5));
+        map.put("acx5", CommonFunc.convertDoubleToString(acx5));
+        map.put("grudsxs", CommonFunc.convertDoubleToString(grudsxs));
+
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
 
-        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
+        map.put("lhz4", CommonFunc.convertDoubleToString(lhz4));
+        map.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
+        map.put("lhz6", CommonFunc.convertDoubleToString(lhz6));
+        map.put("lhz7", CommonFunc.convertDoubleToString(lhz7));
+        map.put("lhz10", CommonFunc.convertDoubleToString(lhz10));
+        map.put("lhz11", CommonFunc.convertDoubleToString(lhz11));
+        map.put("m5dsp", CommonFunc.convertDoubleToString(m5dsp));
 
-//        map.put("lz1mmzz", CommonFunc.convertDoubleToString(lz1mmzz));
-//        map.put("lxtz", CommonFunc.convertDoubleToString(lxtz));
-//        map.put("lxtm", CommonFunc.convertDoubleToString(lxtm));
-//        map.put("ldjm", CommonFunc.convertDoubleToString(ldjm));
-//        map.put("ldbm", CommonFunc.convertDoubleToString(ldbm));
-//        map.put("mdbb", CommonFunc.convertDoubleToString(mdbb));
-//        map.put("ldbbz", CommonFunc.convertDoubleToString(ldbbz));
-//        map.put("mbmj", CommonFunc.convertDoubleToString(mbmj));
-//        map.put("mbm1", CommonFunc.convertDoubleToString(mbm1));
-//        map.put("mbm2", CommonFunc.convertDoubleToString(mbm2));
-//        map.put("mbm3", CommonFunc.convertDoubleToString(mbm3));
-//        map.put("mbm4", CommonFunc.convertDoubleToString(mbm4));
-//        map.put("mbgj", CommonFunc.convertDoubleToString(mbgj));
-//        map.put("mbg1", CommonFunc.convertDoubleToString(mbg1));
-//        map.put("mbg2", CommonFunc.convertDoubleToString(mbg2));
-//        map.put("mbg3", CommonFunc.convertDoubleToString(mbg3));
-//        map.put("mbg4", CommonFunc.convertDoubleToString(mbg4));
+        map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
@@ -297,25 +267,12 @@ public class IdlerWheelEntity {
         map.put("m2", CommonFunc.convertDoubleToString(m2));
         map.put("m3", CommonFunc.convertDoubleToString(m3));
         map.put("m4", CommonFunc.convertDoubleToString(m4));
-        map.put("m5", CommonFunc.convertDoubleToString(m5));
+        map.put("m5ds", CommonFunc.convertDoubleToString(m5ds));
         map.put("m6", CommonFunc.convertDoubleToString(m6));
         map.put("m7", CommonFunc.convertDoubleToString(m7));
         map.put("m12n", CommonFunc.convertDoubleToString(m12n));
         map.put("m10", CommonFunc.convertDoubleToString(m10));
         map.put("m11", CommonFunc.convertDoubleToString(m11));
-
-        map.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
-        map.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));
-        map.put("lhz1", CommonFunc.convertDoubleToString(lhz1));
-        map.put("lhz2", CommonFunc.convertDoubleToString(lhz2));
-        map.put("lhz3", CommonFunc.convertDoubleToString(lhz3));
-        map.put("lhz4", CommonFunc.convertDoubleToString(lhz4));
-        map.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
-        map.put("lhz6", CommonFunc.convertDoubleToString(lhz6));
-        map.put("lhz7", CommonFunc.convertDoubleToString(lhz7));
-        map.put("lhz10", CommonFunc.convertDoubleToString(lhz10));
-        map.put("lhz11", CommonFunc.convertDoubleToString(lhz11));
-        map.put("lhz12", CommonFunc.convertDoubleToString(lhz12));
 
         map.put("lsly", CommonFunc.convertDoubleToString(lsly));
         map.put("lshly", CommonFunc.convertDoubleToString(lshly));
@@ -336,7 +293,7 @@ public class IdlerWheelEntity {
         map.put("atx2", CommonFunc.convertDoubleToString(atx2));
         map.put("atx3", CommonFunc.convertDoubleToString(atx3));
         map.put("atx4", CommonFunc.convertDoubleToString(atx4));
-        map.put("atx5", CommonFunc.convertDoubleToString(atx5));
+        map.put("atx5ds", CommonFunc.convertDoubleToString(atx5ds));
         map.put("atx6", CommonFunc.convertDoubleToString(atx6));
         map.put("atx7", CommonFunc.convertDoubleToString(atx7));
         map.put("atx12n", CommonFunc.convertDoubleToString(atx12n));
@@ -375,7 +332,7 @@ public class IdlerWheelEntity {
         map.put("atx2i", CommonFunc.convertDoubleToString(atx2i));
         map.put("atx3i", CommonFunc.convertDoubleToString(atx3i));
         map.put("atx4i", CommonFunc.convertDoubleToString(atx4i));
-        map.put("atx5i", CommonFunc.convertDoubleToString(atx5i));
+        map.put("atx5dsi", CommonFunc.convertDoubleToString(atx5dsi));
         map.put("atx6i", CommonFunc.convertDoubleToString(atx6i));
         map.put("atx7i", CommonFunc.convertDoubleToString(atx7i));
         map.put("atx12ni", CommonFunc.convertDoubleToString(atx12ni));
@@ -410,7 +367,7 @@ public class IdlerWheelEntity {
         map.put("aftx2", CommonFunc.convertDoubleToString(aftx2));
         map.put("aftx3", CommonFunc.convertDoubleToString(aftx3));
         map.put("aftx4", CommonFunc.convertDoubleToString(aftx4));
-        map.put("aftx5", CommonFunc.convertDoubleToString(aftx5));
+        map.put("aftx5ds", CommonFunc.convertDoubleToString(aftx5ds));
         map.put("aftx6", CommonFunc.convertDoubleToString(aftx6));
         map.put("aftx7", CommonFunc.convertDoubleToString(aftx7));
         map.put("aftx12n", CommonFunc.convertDoubleToString(aftx12n));
@@ -437,24 +394,17 @@ public class IdlerWheelEntity {
     //验证部分
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
-//
-//
-        Double pg2 = map.get("pg2");
-
-        Double fhp = 0.638 * cr / pg2 ;
-        String lzdlyzm5 = (fhp >= fh) ? "满足" : "不满足";
-        String lzdlyzp5 = takeSignByCompareNumber(fhp,fh);
-
+//        Double pg2 = map.get("pg2");
+//        Double fhp = 0.638 * cr / pg2 ;
+//        String lzdlyzm5 = (fhp >= fh) ? "满足" : "不满足";
+//        String lzdlyzp5 = takeSignByCompareNumber(fhp,fh);
         Map<String, String> result = new HashMap<>();
-        result.put("pg2", CommonFunc.convertDoubleToString(pg2));
-        result.put("fh", CommonFunc.convertDoubleToString(fh));
-        result.put("fhp", CommonFunc.convertDoubleToString(fhp));
-        result.put("cr", CommonFunc.convertDoubleToString(cr));
-        result.put("lzdlyzm5", CommonFunc.convertDoubleToString(lzdlyzm5));
-        result.put("lzdlyzp5", CommonFunc.convertDoubleToString(lzdlyzp5));
-
-
-
+//        result.put("pg2", CommonFunc.convertDoubleToString(pg2));
+//        result.put("fh", CommonFunc.convertDoubleToString(fh));
+//        result.put("fhp", CommonFunc.convertDoubleToString(fhp));
+//        result.put("cr", CommonFunc.convertDoubleToString(cr));
+//        result.put("lzdlyzm5", CommonFunc.convertDoubleToString(lzdlyzm5));
+//        result.put("lzdlyzp5", CommonFunc.convertDoubleToString(lzdlyzp5));
         return result;
     }
 
@@ -485,7 +435,7 @@ public class IdlerWheelEntity {
         Double mtxw2 = atx2 * hb2 * p * 1.25 ;
         Double mtxw3 = atx3 * hb3 * p * 1.25 ;
         Double mtxw4 = atx4 * hb4 * p * 1.25 ;
-        Double mtxw5 = atx5 * hb5 * p * 1.25 ;
+        Double mtxw5 = atx5ds * hb5 * p * 1.25 ;
         Double mtxw6 = atx6 * hb6 * p * 1.25 ;
         Double mtxw7 = atx7 * hb7 * p * 1.25 ;
         Double mtxw12n = atx12n * hb12n * p * 1.25 ;
@@ -504,7 +454,7 @@ public class IdlerWheelEntity {
         map.put("mtxw10", mtxw10);
         map.put("mtxw11", mtxw11);
 
-        Double md5 = m5 * ly5 * 10 ;
+        Double md5 = m5ds * ly5 * 10 ;
         Double md12n = m12n * ly12n * 10 ;
         Double md10 = m10 * ly10 * 10 ;
         Double md11 = m11 * ly11 * 10 ;
@@ -536,7 +486,7 @@ public class IdlerWheelEntity {
         Double mtxw2i = atx2i * hb2i * p * 1.25 ;
         Double mtxw3i = atx3i * hb3i * p * 1.25 ;
         Double mtxw4i = atx4i * hb4i * p * 1.25 ;
-        Double mtxw5i = atx5i * hb5i * p * 1.25 ;
+        Double mtxw5i = atx5dsi * hb5i * p * 1.25 ;
         Double mtxw6i = atx6i * hb6i * p * 1.25 ;
         Double mtxw7i = atx7i * hb7i * p * 1.25 ;
         Double mtxw12ni = atx12ni * hb12ni * p * 1.25 ;
@@ -555,7 +505,7 @@ public class IdlerWheelEntity {
         map.put("mtxw10i", mtxw10i);
         map.put("mtxw11i", mtxw11i);
 
-        Double md5i = m5 * lfy5i * 10 ;
+        Double md5i = m5dsp * lfy5i * 10 ;
         Double md12ni = m12n * lfy12ni * 10 ;
         Double md10i = m10 * lfy10i * 10 ;
         Double md11i = m11 * lfy11i * 10 ;
@@ -564,7 +514,7 @@ public class IdlerWheelEntity {
         map.put("md10i", md10i);
         map.put("md11i", md11i);
 
-        Double mfd5 = m5 * lfy5 * 10 ;
+        Double mfd5 = m5dsp * lfy5 * 10 ;
         Double mfd12n = m12n * lfy12n * 10 ;
         Double mfd10 = m10 * lfy10 * 10 ;
         Double mfd11 = m11 * lfy11 * 10 ;
@@ -577,7 +527,7 @@ public class IdlerWheelEntity {
         Double mftxw2 = pf * aftx2 * hfb2 ;
         Double mftxw3 = pf * aftx3 * hfb3 ;
         Double mftxw4 = pf * aftx4 * hfb4 ;
-        Double mftxw5 = pf * aftx5 * hfb5 ;
+        Double mftxw5 = pf * aftx5ds * hfb5 ;
         Double mftxw6 = pf * aftx6 * hfb6 ;
         Double mftxw7 = pf * aftx7 * hfb7 ;
         Double mftxw12n = pf * aftx12n * hfb12n ;
@@ -646,6 +596,8 @@ public class IdlerWheelEntity {
         Double bohz = ohz / 800 ;
         Double pg2 = fmax * bfb / 2 / ndlsl ;
         Double c = fh * 1.57 * pg2 ;
+        Double ck = c / 1000 ;
+        Double crk = cr / 1000 ;
         Double c1 = 2.25 * pg2 ;
         Double a = 3.14 * rzcb * tzcb ;
         Double o = bfb * fmax / 2 / a ;
@@ -655,6 +607,8 @@ public class IdlerWheelEntity {
         map.put("bohz", bohz);
         map.put("pg2", pg2);
         map.put("c", c);
+        map.put("ck", ck);
+        map.put("crk", crk);
         map.put("c1", c1);
         map.put("a", a);
         map.put("o", o);

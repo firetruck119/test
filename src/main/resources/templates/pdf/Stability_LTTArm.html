@@ -123,7 +123,7 @@
 
     <link rel="stylesheet" th:href="@{/css/home.css}">
 
-    <title>下回转固定臂-稳定性校核及轮压计算书</title>
+    <title>下回转伸缩臂-稳定性校核及轮压计算书</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
     <link rel="stylesheet" th:href="@{/css/pdf.css}">
@@ -158,23 +158,23 @@
                         <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop"
                               th:opType="@{/PinSeatEntity}" th:Object="${entity}"
                               method="post" enctype="multipart/form-data">
-                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">下回转固定臂-稳定性校核及轮压计算书</div>
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">下回转伸缩臂-稳定性校核及轮压计算书</div>
                             <div class="subtable" style="text-align: center;padding: 10px 0 0px 0;overflow: hidden;border:1px solid #aaa;">
                                 <div style="width:600px;height:335px">
-                                    <img alt="擦窗机整机示意图" src="/image/Tensile/wdlyxgtu1.png" id="wdlyxgtu1" name="wdlyxgtu1" />
-                                    <input type="hidden" value="tu_wdlyxgtu1.png"/>
+                                    <img alt="擦窗机整机示意图" src="/image/Tensile/wdlyxstu1.png" id="wdlyxstu1" name="wdlyxstu1" />
+                                    <input type="hidden" value="tu_wdlyxstu1.png"/>
                                 </div>
                                 <table>
                                     <tr>
                                         <td style="padding:10px 0;font-size: 14px">擦窗机整机示意图</td>
                                         <td colspan="3" style="font-size: 14px">
-                                            <input class="image" type="file" name="wdlyxgtu1" accept="image/*"
-                                                   oninput="showImage(this,'wdlyxgtu1')"/>
+                                            <input class="image" type="file" name="wdlyxstu1" accept="image/*"
+                                                   oninput="showImage(this,'wdlyxstu1')"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td >擦窗机机型选择</td>
-                                        <td colspan="3">
+                                        <td>擦窗机机型选择</td>
+                                        <td colspan="3" style="font-size: 14px">
                                             <select name="typeOfMachine" style="width:100%;height:40px;text-align-last:center">
                                                 <option style="display: none"></option>
                                                 <option value="固定立柱">固定立柱</option>
@@ -193,7 +193,6 @@
                                         </td>
                                         <td style="width:20%;"><input type="button" name="getData" value="读取"/></td>
                                     </tr>
-
                                     <tr>
                                         <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0">1.封面内容</td>
                                     </tr>
@@ -233,7 +232,6 @@
                                         <td>计算日期</td>
                                         <td colspan="2"><input name="date" type="text" th:field="*{date}"/></td>
                                     </tr>
-
                                 </table>
                             </div>
                             <!--擦窗机参数-->
@@ -251,6 +249,16 @@
                                         <td style="width:17%;">符号</td>
                                         <td style="width:36%;">数值</td>
                                         <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>有无移动配重</td>
+                                        <td colspan="3">
+                                            <select name="haveOfMobileCounterweight" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="有">有</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>最大臂长</td>
@@ -390,7 +398,7 @@
                             <div class="subtable">
                                 <table class="tb">
                                     <tr>
-                                        <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">5.擦窗机抗倾覆部分参数</td>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">5.擦窗机抗倾覆部分参数</td>
                                     </tr>
                                     <tr>
                                         <td style="width:30%;padding:10px 0;;">名称</td>
@@ -467,50 +475,50 @@
                                         <td>个</td>
                                     </tr>
                                     <!--<tr>-->
-                                        <!--<td>弹性销型号选择</td>-->
-                                        <!--<td colspan="3">-->
-                                            <!--<select name="typeOfPin" style="width:100%;height:40px;text-align-last:center">-->
-                                                <!--<option style="display: none"></option>-->
-                                                <!--<option value="Ф12">Ф12</option>-->
-                                                <!--<option value="Ф16">Ф16</option>-->
-                                                <!--<option value="Ф20">Ф20</option>-->
-                                                <!--<option value="无">无</option>-->
-                                            <!--</select>-->
-                                        <!--</td>-->
+                                    <!--<td>弹性销型号选择</td>-->
+                                    <!--<td colspan="3">-->
+                                    <!--<select name="typeOfPin" style="width:100%;height:40px;text-align-last:center">-->
+                                    <!--<option style="display: none"></option>-->
+                                    <!--<option value="Ф12">Ф12</option>-->
+                                    <!--<option value="Ф16">Ф16</option>-->
+                                    <!--<option value="Ф20">Ф20</option>-->
+                                    <!--<option value="无">无</option>-->
+                                    <!--</select>-->
+                                    <!--</td>-->
                                     <!--</tr>-->
                                     <!--<tr>-->
-                                        <!--<td>弹性销性能等级</td>-->
-                                        <!--<td colspan="3">-->
-                                            <!--<select name="levelOfPin" style="width:100%;height:40px;text-align-last:center">-->
-                                                <!--<option style="display: none"></option>-->
-                                                <!--<option value="65Mn">65Mn</option>-->
-                                                <!--<option value="A2-70">A2-70</option>-->
-                                            <!--</select>-->
-                                        <!--</td>-->
+                                    <!--<td>弹性销性能等级</td>-->
+                                    <!--<td colspan="3">-->
+                                    <!--<select name="levelOfPin" style="width:100%;height:40px;text-align-last:center">-->
+                                    <!--<option style="display: none"></option>-->
+                                    <!--<option value="65Mn">65Mn</option>-->
+                                    <!--<option value="A2-70">A2-70</option>-->
+                                    <!--</select>-->
+                                    <!--</td>-->
                                     <!--</tr>-->
                                     <!--<tr>-->
-                                        <!--<td>弹性销型号</td>-->
-                                        <!--<td><p><i></i></p></td>-->
-                                        <!--<td><input name="txxxh" id="txxxh" type="text" th:field="*{txxxh}"/></td>-->
-                                        <!--<td></td>-->
+                                    <!--<td>弹性销型号</td>-->
+                                    <!--<td><p><i></i></p></td>-->
+                                    <!--<td><input name="txxxh" id="txxxh" type="text" th:field="*{txxxh}"/></td>-->
+                                    <!--<td></td>-->
                                     <!--</tr>-->
                                     <!--<tr>-->
-                                        <!--<td>弹性销性能等级</td>-->
-                                        <!--<td><p><i></i></p></td>-->
-                                        <!--<td><input name="txxdj" id="txxdj" type="text" th:field="*{txxdj}"/></td>-->
-                                        <!--<td></td>-->
+                                    <!--<td>弹性销性能等级</td>-->
+                                    <!--<td><p><i></i></p></td>-->
+                                    <!--<td><input name="txxdj" id="txxdj" type="text" th:field="*{txxdj}"/></td>-->
+                                    <!--<td></td>-->
                                     <!--</tr>-->
                                     <!--<tr>-->
-                                        <!--<td>最小双面剪切载荷</td>-->
-                                        <!--<td><p><i>F<sub>t</sub></i></p></td>-->
-                                        <!--<td><input name="ftxxjq" id="ftxxjq" type="text" th:field="*{ftxxjq}"/></td>-->
-                                        <!--<td>N</td>-->
+                                    <!--<td>最小双面剪切载荷</td>-->
+                                    <!--<td><p><i>F<sub>t</sub></i></p></td>-->
+                                    <!--<td><input name="ftxxjq" id="ftxxjq" type="text" th:field="*{ftxxjq}"/></td>-->
+                                    <!--<td>N</td>-->
                                     <!--</tr>-->
                                     <!--<tr>-->
-                                        <!--<td>单个运行轮上的弹性销数</td>-->
-                                        <!--<td><p><i>nt</i></p></td>-->
-                                        <!--<td><input name="nwdt" id="nwdt" type="text" th:field="*{nwdt}"/></td>-->
-                                        <!--<td>个</td>-->
+                                    <!--<td>单个运行轮上的弹性销数</td>-->
+                                    <!--<td><p><i>nt</i></p></td>-->
+                                    <!--<td><input name="nwdt" id="nwdt" type="text" th:field="*{nwdt}"/></td>-->
+                                    <!--<td>个</td>-->
                                     <!--</tr>-->
 
                                     <!--埋件的抗倾覆力矩相关参数-->
@@ -591,16 +599,17 @@
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="工作状态擦窗机各部件载荷示意图" src="/image/Tensile/wdlyxgtu2.png" id="wdlyxgtu2" name="wdlyxgtu2" >
-                                                <input type="hidden" value="tu_wdlyxgtu2.png"/>
+                                                <img alt="工作状态擦窗机各部件载荷" src="/image/Tensile/wdlyxstu2.png" id="wdlyxstu2" name="wdlyxstu2"/>
+                                                <input type="hidden" value="tu_wdlyxstu2.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:10px 0">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="wdlyxgtu2" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu2')"/></td>
+                                        <td style="padding: 10px 0;">选择图片</td>
+                                        <td colspan="3"><input class="image" type="file" name="wdlyxstu2" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu2')"/></td>
                                     </tr>
+
                                     <tr>
                                         <td>吊船选择</td>
                                         <td colspan="3">
@@ -902,30 +911,18 @@
                                     <tr>
                                         <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">7.工作状态擦窗机各部件重心至前轨道距离</td>
                                     </tr>
-                                    <!--<tr>-->
-                                        <!--<td colspan="4">-->
-                                            <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                                                <!--<img alt="工作状态擦窗机各部件重心至前轨道距离" id="wdlytu3" name="wdlytu3"/>-->
-                                            <!--</div>-->
-                                        <!--</td>-->
-                                    <!--</tr>-->
-                                    <!--<tr>-->
-                                        <!--<td style="padding: 10px 0;">选择图片</td>-->
-                                        <!--<td colspan="3"><input class="image" type="file" name="wdlytu3" accept="image/*"-->
-                                                               <!--oninput="showImage(this,'wdlytu3')"/></td>-->
-                                    <!--</tr>-->
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="工作状态擦窗机各部件重心至前轨道距离示意图" src="/image/Tensile/wdlyxgtu3.png" id="wdlyxgtu3" name="wdlyxgtu3" >
-                                                <input type="hidden" value="tu_wdlyxgtu3.png"/>
+                                                <img alt="工作状态擦窗机各部件重心至前轨道距离" src="/image/Tensile/wdlyxstu3.png" id="wdlyxstu3" name="wdlyxstu3"/>
+                                                <input type="hidden" value="tu_wdlyxstu3.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:10px 0">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="wdlyxgtu3" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu3')"/></td>
+                                        <td style="padding: 10px 0;">选择图片</td>
+                                        <td colspan="3"><input class="image" type="file" name="wdlyxstu3" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu3')"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:30%;padding:10px 0;;">名称</td>
@@ -1127,30 +1124,18 @@
                                     <tr>
                                         <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">8.非工作状态擦窗机各部件重心至后轮距离</td>
                                     </tr>
-                                    <!--<tr>-->
-                                        <!--<td colspan="5">-->
-                                            <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                                                <!--<img alt="非工作状态擦窗机各部件重心至后轮距离" id="wdlytu9" name="wdlytu9"/>-->
-                                            <!--</div>-->
-                                        <!--</td>-->
-                                    <!--</tr>-->
-                                    <!--<tr>-->
-                                        <!--<td style="padding: 10px 0;">选择图片</td>-->
-                                        <!--<td colspan="5"><input class="image" type="file" name="wdlytu9" accept="image/*"-->
-                                                               <!--oninput="showImage(this,'wdlytu9')"/></td>-->
-                                    <!--</tr>-->
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="非工作状态擦窗机各部件重心至后轮距离示意图"src="/image/Tensile/wdlyxgtu9.png" id="wdlyxgtu9" name="wdlyxgtu9" >
-                                                <input type="hidden" value="tu_wdlyxgtu9.png"/>
+                                                <img alt="非工作状态擦窗机各部件重心至后轮距离" src="/image/Tensile/wdlyxstu9.png" id="wdlyxstu9" name="wdlyxstu9"/>
+                                                <input type="hidden" value="tu_wdlyxstu9.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:10px 0">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="wdlyxgtu9" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu9')"/></td>
+                                        <td style="padding: 10px 0;">选择图片</td>
+                                        <td colspan="3"><input class="image" type="file" name="wdlyxstu9" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu9')"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:30%;padding:10px 0;;">名称</td>
@@ -1338,25 +1323,25 @@
                                     </tr>
                                     <tr>
                                         <td colspan="6">
-                                            <div style="display:inline-block;height:200px;width:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="工作状态风载荷作用高度" src="/image/Tensile/wdlyxgtu6.png" id="wdlyxgtu6" name="wdlyxgtu6"/>
-                                                <input type="hidden" value="tu_wdlyxgtu6.png"/>
+                                            <div style="display:inline-block;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="工作状态风载荷作用高度" src="/image/Tensile/wdlyxstu6.png" id="wdlyxstu6" name="wdlyxstu6"/>
+                                                <input type="hidden" value="tu_wdlyxstu6.png"/>
                                             </div>
-                                            <div style="display:inline-block;height:200px;width:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="非工作状态风载荷作用高度" src="/image/Tensile/wdlyxgtu10.png" id="wdlyxgtu10" name="wdlyxgtu10"/>
-                                                <input type="hidden" value="tu_wdlyxgtu10.png"/>
+                                            <div style="display:inline-block;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="非工作状态风载荷作用高度" src="/image/Tensile/wdlyxstu10.png" id="wdlyxstu10" name="wdlyxstu10"/>
+                                                <input type="hidden" value="tu_wdlyxstu10.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择工作状态图片</td>
-                                        <td colspan="5"><input class="image" type="file" name="wdlyxgtu6" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu6')"/></td>
+                                        <td colspan="5"><input class="image" type="file" name="wdlyxstu6" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu6')"/></td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择非工作状态图片</td>
-                                        <td colspan="5"><input class="image" type="file" name="wdlyxgtu10" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu10')"/></td>
+                                        <td colspan="5"><input class="image" type="file" name="wdlyxstu10" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu10')"/></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -1657,25 +1642,25 @@
                                     </tr>
                                     <tr>
                                         <td colspan="6">
-                                            <div style="display:inline-block;height:200px;width:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="工作状态各部件面心至回转中心距离" src="/image/Tensile/wdlyxgtu7.png" id="wdlyxgtu7" name="wdlyxgtu7"/>
-                                                <input type="hidden" value="tu_wdlyxgtu7.png"/>
+                                            <div style="display:inline-block;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="工作状态各部件面心至回转中心距离" src="/image/Tensile/wdlyxstu7.png" id="wdlyxstu7" name="wdlyxstu7"/>
+                                                <input type="hidden" value="tu_wdlyxstu7.png"/>
                                             </div>
-                                            <div style="display:inline-block;height:200px;width:300px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="非工作状态各部件面心至回转中心距离" src="/image/Tensile/wdlyxgtu11.png" id="wdlyxgtu11" name="wdlyxgtu11"/>
-                                                <input type="hidden" value="tu_wdlyxgtu11.png"/>
+                                            <div style="display:inline-block;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="非工作状态各部件面心至回转中心距离" src="/image/Tensile/wdlyxstu11.png" id="wdlyxstu11" name="wdlyxstu11"/>
+                                                <input type="hidden" value="tu_wdlyxstu11.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择工作状态图片</td>
-                                        <td colspan="5"><input class="image" type="file" name="wdlyxgtu7" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu7')"/></td>
+                                        <td colspan="5"><input class="image" type="file" name="wdlyxstu7" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu7')"/></td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择非工作状态图片</td>
-                                        <td colspan="5"><input class="image" type="file" name="wdlyxgtu11" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu11')"/></td>
+                                        <td colspan="5"><input class="image" type="file" name="wdlyxstu11" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu11')"/></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -1973,26 +1958,6 @@
                                     <tr>
                                         <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0">11.擦窗机各部件迎风面积（大臂侧向）</td>
                                     </tr>
-                                    <!--<tr>-->
-                                        <!--<td colspan="6">-->
-                                            <!--<div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                                                <!--<img alt="工作状态大臂侧向迎风面积" id="wdlytu7" name="wdlytu7"/>-->
-                                            <!--</div>-->
-                                            <!--<div style="display:inline-block;height:200px;width:250px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
-                                                <!--<img alt="非工作状态大臂侧向迎风面积" id="wdlytu12" name="wdlytu12"/>-->
-                                            <!--</div>-->
-                                        <!--</td>-->
-                                    <!--</tr>-->
-                                    <!--<tr>-->
-                                        <!--<td style="padding: 10px 0;">选择工作状态图片</td>-->
-                                        <!--<td colspan="5"><input class="image" type="file" name="wdlytu7" accept="image/*"-->
-                                                               <!--oninput="showImage(this,'wdlytu7')"/></td>-->
-                                    <!--</tr>-->
-                                    <!--<tr>-->
-                                        <!--<td style="padding: 10px 0;">选择非工作状态图片</td>-->
-                                        <!--<td colspan="5"><input class="image" type="file" name="wdlytu12" accept="image/*"-->
-                                                               <!--oninput="showImage(this,'wdlytu12')"/></td>-->
-                                    <!--</tr>-->
                                     <tr>
                                         <td></td>
                                         <td colspan="2" style="padding: 10px 0;">工作状态</td>
@@ -2282,9 +2247,7 @@
                                 </table>
                             </div>
 
-
                             <!--擦窗机各部件迎风面积（大臂同向）-->
-
                             <div class="subtable">
                                 <table class="tb">
                                     <tr>
@@ -2292,25 +2255,25 @@
                                     </tr>
                                     <tr>
                                         <td colspan="6">
-                                            <div style="display:inline-block;width:300px;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="工作状态大臂同向迎风面积" src="/image/Tensile/wdlyxgtu8.png" id="wdlyxgtu8" name="wdlyxgtu8"/>
-                                                <input type="hidden" value="tu_wdlyxgtu8.png"/>
+                                            <div style="display:inline-block;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="工作状态大臂同向迎风面积" src="/image/Tensile/wdlyxstu8.png" id="wdlyxstu8" name="wdlyxstu8"/>
+                                                <input type="hidden" value="tu_wdlyxstu8.png"/>
                                             </div>
-                                            <div style="display:inline-block;width:300px;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="非工作状态大臂同向迎风面积" src="/image/Tensile/wdlyxgtu12.png" id="wdlyxgtu12" name="wdlyxgtu12"/>
-                                                <input type="hidden" value="tu_wdlyxgtu12.png"/>
+                                            <div style="display:inline-block;height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="非工作状态大臂同向迎风面积" src="/image/Tensile/wdlyxstu12.png" id="wdlyxstu12" name="wdlyxstu12"/>
+                                                <input type="hidden" value="tu_wdlyxstu12.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择工作状态图片</td>
-                                        <td colspan="5"><input class="image" type="file" name="wdlyxgtu8" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu8')"/></td>
+                                        <td colspan="5"><input class="image" type="file" name="wdlyxstu8" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu8')"/></td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择非工作状态图片</td>
-                                        <td colspan="5"><input class="image" type="file" name="wdlyxgtu12" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu12')"/></td>
+                                        <td colspan="5"><input class="image" type="file" name="wdlyxstu12" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu12')"/></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -2611,15 +2574,15 @@
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="工作状态擦窗机各部件重心至回转中心距离" src="/image/Tensile/wdlyxgtu4.png" id="wdlyxgtu4" name="wdlyxgtu4"/>
-                                                <input type="hidden" value="tu_wdlyxgtu4.png"/>
+                                                <img alt="工作状态擦窗机各部件重心至回转中心距离" src="/image/Tensile/wdlyxstu4.png" id="wdlyxstu4" name="wdlyxstu4"/>
+                                                <input type="hidden" value="tu_wdlyxstu4.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="wdlyxgtu4" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu4')"/></td>
+                                        <td colspan="3"><input class="image" type="file" name="wdlyxstu4" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu4')"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:30%;padding:10px 0;;">名称</td>
@@ -2814,7 +2777,6 @@
                                 </table>
                             </div>
 
-
                             <!--工作状态擦窗机各部件重心至前轮距离-->
 
                             <div class="subtable">
@@ -2825,15 +2787,15 @@
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="工作状态擦窗机各部件重心至前轮距离" src="/image/Tensile/wdlyxgtu5.png" id="wdlyxgtu5" name="wdlyxgtu5"/>
-                                                <input type="hidden" value="tu_wdlyxgtu5.png"/>
+                                                <img alt="工作状态擦窗机各部件重心至前轮距离" src="/image/Tensile/wdlyxstu5.png" id="wdlyxstu5" name="wdlyxstu5"/>
+                                                <input type="hidden" value="tu_wdlyxstu5.png"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 10px 0;">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="wdlyxgtu5" accept="image/*"
-                                                               oninput="showImage(this,'wdlyxgtu5')"/></td>
+                                        <td colspan="3"><input class="image" type="file" name="wdlyxstu5" accept="image/*"
+                                                               oninput="showImage(this,'wdlyxstu5')"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width:30%;padding:10px 0;;">名称</td>
@@ -3041,10 +3003,8 @@
                                 <input type="text" name="ldslzh" />
                                 <input type="text" name="umcxs" />
                             </div>
-
                             <input name="language" type="hidden"/>
                         </form>
-
 
                         <!--    按钮-->
                         <div class="buttonbox" >
@@ -3058,225 +3018,127 @@
                                     e.val(l);
                                 }
                             </script>
-
-                            <input style="cursor: pointer" type="submit" class="button" value="国标版校验" onclick="showjy();return janyan('/Stability_LSFArm/getCheck')"/>
+                            <input style="cursor: pointer" type="submit" class="button" value="国标版校验" onclick="showjy();return janyan('/Stability_LTTArm/getCheck')"/>
                             <!--<input type="submit" class="button" value="澳大利亚版校验" onclick="return janyan('Stability/aujy')"/>-->
                             <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
                                    onclick="isCheck(false);$('form').attr('action','saveValue')"/>
                             <input style="cursor: pointer" type="submit" form="form1" class="button" value="输出中文版计算书pdf"
-                                   onclick="changeLanguage('CN');isCheck(false);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
+                                   onclick="changeLanguage('CN');isCheck(false);$('#form1').attr('action','/Stability_LTTArm/getPDF')"/>
                             <!--<input type="submit" form="form1" class="button" value="输出英文版计算书pdf"-->
-                                   <!--onclick="changeLanguage('EN');isCheck(false);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>-->
+                                   <!--onclick="changeLanguage('EN');isCheck(false);$('#form1').attr('action','/Stability_LTTArm/getPDF')"/>-->
                             <!--        <input type="submit" form="form1" class="button" value="输出澳大利亚版计算书pdf"-->
                             <!--               onclick="$('#form1').attr('action','/stabilityaupdf1')"/>-->
                             <input style="cursor: pointer" type="submit" form="form1" class="button" value="输出验证部分pdf"
-                                           onclick="changeLanguage('CN');isCheck(true);$('#form1').attr('action','/Stability_LSFArm/getPDF')"/>
+                                           onclick="changeLanguage('CN');isCheck(true);$('#form1').attr('action','/Stability_LTTArm/getPDF')"/>
                             <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                         </div>
                         <div class="navbox">
                             <div style="width:500px;height:520px; font-size: 14px   ;">
-                            <table class="tb" id="pdf3tb" style="background-color: rgb(220,220,220)">
-                                <tr>
-                                    <td colspan="5" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);">核算结果</td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td rowspan="2">
-                                        <div style="top:52px;left:2px;position:absolute;width:0px;height:0px;border-left:75px solid black;border-top:131px solid transparent;">
-                                        </div>
-                                        <div style="top:52px;left:2px;position:absolute;margin:3px 0 0 0;width:0px;height:0px;border-left:73px solid rgb(220,220,220);border-top:129px solid transparent;">
-                                        </div>
-                                        <p style="position:absolute;top:60px;left:35px">工况</p>
-                                        <p style="position:absolute;top:150px;left:15px">轮压</p>
-                                    </td>
-                                    <td colspan="3">工作状态kN</td>
-                                    <td>非工作状态kN</td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td style="padding:0;">
-                                        <div style="padding:0;width: 99%;height:100px;">
-                                            <img style="width:125px;" src="\work1.jpg"/>
-                                        </div>
-                                    </td>
-                                    <td style="padding:0;">
-                                        <div style="padding:0;width: 99%;height:100px;">
-                                            <img style="width:125px;" src="\work2.jpg"/>
-                                        </div>
-                                    </td>
-                                    <td style="padding:0;">
-                                        <div style="padding:0;width: 99%;height:100px;">
-                                            <img style="width:125px;" src="\work3.jpg"/>
-                                        </div>
-                                    </td>
-                                    <td style="padding:0;">
-                                        <div style="padding:0;width: 99%;height:100px;">
-                                            <img style="width:125px;" src="\work4.jpg"/>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td width="15%">A<sub>v</sub></td>
-                                    <td width="21%" id="av1k"></td>
-                                    <td width="21%" id="av2k"></td>
-                                    <td width="21%" id="av3k"></td>
-                                    <td width="21%" id="av4k"></td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td>B<sub>v</sub></td>
-                                    <td id="bv1k"></td>
-                                    <td id="bv2k"></td>
-                                    <td id="bv3k"></td>
-                                    <td id="bv4k"></td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td>C<sub>v</sub></td>
-                                    <td id="cv1k"></td>
-                                    <td id="cv2k"></td>
-                                    <td id="cv3k"></td>
-                                    <td id="cv4k"></td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td>D<sub>v</sub></td>
-                                    <td id="dv1k"></td>
-                                    <td id="dv2k"></td>
-                                    <td id="dv3k"></td>
-                                    <td id="dv4k"></td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td>A<sub>h</sub></td>
-                                    <td id="ah1k"></td>
-                                    <td id="ah2k"></td>
-                                    <td id="ah3k"></td>
-                                    <td id="ah4k"></td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td>A<sub>t</sub></td>
-                                    <td id="at1k"></td>
-                                    <td id="at2k"></td>
-                                    <td id="at3k"></td>
-                                    <td id="at4k">0</td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td>B<sub>h</sub></td>
-                                    <td id="bh1k"></td>
-                                    <td id="bh2k"></td>
-                                    <td id="bh3k"></td>
-                                    <td id="bh4k"></td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td>B<sub>t</sub></td>
-                                    <td id="bt1k"></td>
-                                    <td id="bt2k"></td>
-                                    <td id="bt3k"></td>
-                                    <td id="bt4k">0</td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td colspan="3">工作状态稳定性校核</td>
-                                    <td colspan="2" id="wdlym1"></td>
-                                </tr>
-                                <tr style="background-color: rgb(220,220,220)">
-                                    <td colspan="3">非工作状态稳定性校核</td>
-                                    <td colspan="2" id="wdlym2"></td>
-                                </tr>
-                            </table>
+                                <table class="tb" id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                    <tr>
+                                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);">核算结果</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td rowspan="2">
+                                            <div style="top:52px;left:2px;position:absolute;width:0px;height:0px;border-left:75px solid black;border-top:131px solid transparent;">
+                                            </div>
+                                            <div style="top:52px;left:2px;position:absolute;margin:3px 0 0 0;width:0px;height:0px;border-left:73px solid rgb(220,220,220);border-top:129px solid transparent;">
+                                            </div>
+                                            <p style="position:absolute;top:60px;left:35px">工况</p>
+                                            <p style="position:absolute;top:150px;left:15px">轮压</p>
+                                        </td>
+                                        <td colspan="3">工作状态kN</td>
+                                        <td>非工作状态kN</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td style="padding:0;">
+                                            <div style="padding:0;width: 99%;height:100px;">
+                                                <img style="width:125px;" src="\work1.jpg"/>
+                                            </div>
+                                        </td>
+                                        <td style="padding:0;">
+                                            <div style="padding:0;width: 99%;height:100px;">
+                                                <img style="width:125px;" src="\work2.jpg"/>
+                                            </div>
+                                        </td>
+                                        <td style="padding:0;">
+                                            <div style="padding:0;width: 99%;height:100px;">
+                                                <img style="width:125px;" src="\work3.jpg"/>
+                                            </div>
+                                        </td>
+                                        <td style="padding:0;">
+                                            <div style="padding:0;width: 99%;height:100px;">
+                                                <img style="width:125px;" src="\work4.jpg"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td width="15%">A<sub>v</sub></td>
+                                        <td width="21%" id="av1k"></td>
+                                        <td width="21%" id="av2k"></td>
+                                        <td width="21%" id="av3k"></td>
+                                        <td width="21%" id="av4k"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>B<sub>v</sub></td>
+                                        <td id="bv1k"></td>
+                                        <td id="bv2k"></td>
+                                        <td id="bv3k"></td>
+                                        <td id="bv4k"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>C<sub>v</sub></td>
+                                        <td id="cv1k"></td>
+                                        <td id="cv2k"></td>
+                                        <td id="cv3k"></td>
+                                        <td id="cv4k"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>D<sub>v</sub></td>
+                                        <td id="dv1k"></td>
+                                        <td id="dv2k"></td>
+                                        <td id="dv3k"></td>
+                                        <td id="dv4k"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>A<sub>h</sub></td>
+                                        <td id="ah1k"></td>
+                                        <td id="ah2k"></td>
+                                        <td id="ah3k"></td>
+                                        <td id="ah4k"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>A<sub>t</sub></td>
+                                        <td id="at1k"></td>
+                                        <td id="at2k"></td>
+                                        <td id="at3k"></td>
+                                        <td id="at4k">0</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>B<sub>h</sub></td>
+                                        <td id="bh1k"></td>
+                                        <td id="bh2k"></td>
+                                        <td id="bh3k"></td>
+                                        <td id="bh4k"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>B<sub>t</sub></td>
+                                        <td id="bt1k"></td>
+                                        <td id="bt2k"></td>
+                                        <td id="bt3k"></td>
+                                        <td id="bt4k">0</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td colspan="3">工作状态稳定性校核</td>
+                                        <td colspan="2" id="wdlym1"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td colspan="3">非工作状态稳定性校核</td>
+                                        <td colspan="2" id="wdlym2"></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-
-                            <!--<p align="right">单位：kN</p>-->
-                            <!--<table class="tb" style="width:600px;position: relative" style="background-color: rgb(220,220,220)">-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td rowspan="2">-->
-                                        <!--<div style="top:2px;left:2px;position:absolute;width:0px;height:0px;border-left:75px solid black;border-top:131px solid transparent;">-->
-                                        <!--</div>-->
-                                        <!--<div style="top:2px;left:2px;position:absolute;margin:3px 0 0 0;width:0px;height:0px;border-left:73px solid #EFF3F6;border-top:129px solid transparent;">-->
-                                        <!--</div>-->
-                                        <!--<p style="position:absolute;top:35px;left:35px">工况</p>-->
-                                        <!--<p style="position:absolute;top:90px;left:15px">轮压</p>-->
-
-                                    <!--</td>-->
-                                    <!--<td colspan="3">工作状态</td>-->
-                                    <!--<td>非工作状态</td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td style="padding:0;">-->
-                                        <!--<div style="padding:0;width: 99%;height:100px;">-->
-                                            <!--<img style="width:125px;" th:src="@{work1.jpg}"/>-->
-                                        <!--</div>-->
-                                    <!--</td>-->
-                                    <!--<td style="padding:0;">-->
-                                        <!--<div style="padding:0;width: 99%;height:100px;">-->
-                                            <!--<img style="width:125px;" th:src="@{work2.jpg}"/>-->
-                                        <!--</div>-->
-                                    <!--</td>-->
-                                    <!--<td style="padding:0;">-->
-                                        <!--<div style="padding:0;width: 99%;height:100px;">-->
-                                            <!--<img style="width:125px;" th:src="@{work3.jpg}"/>-->
-                                        <!--</div>-->
-                                    <!--</td>-->
-                                    <!--<td style="padding:0;">-->
-                                        <!--<div style="padding:0;width: 99%;height:100px;">-->
-                                            <!--<img style="width:125px;" th:src="@{work4.jpg}"/>-->
-                                        <!--</div>-->
-                                    <!--</td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td width="15%">A<sub>v</sub></td>-->
-                                    <!--<td width="21%" id="av1k"></td>-->
-                                    <!--<td width="21%" id="av2k"></td>-->
-                                    <!--<td width="21%" id="av3k"></td>-->
-                                    <!--<td width="21%" id="av4k"></td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td>B<sub>v</sub></td>-->
-                                    <!--<td id="bv1k"></td>-->
-                                    <!--<td id="bv2k"></td>-->
-                                    <!--<td id="bv3k"></td>-->
-                                    <!--<td id="bv4k"></td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td>C<sub>v</sub></td>-->
-                                    <!--<td id="cv1k"></td>-->
-                                    <!--<td id="cv2k"></td>-->
-                                    <!--<td id="cv3k"></td>-->
-                                    <!--<td id="cv4k"></td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td>D<sub>v</sub></td>-->
-                                    <!--<td id="dv1k"></td>-->
-                                    <!--<td id="dv2k"></td>-->
-                                    <!--<td id="dv3k"></td>-->
-                                    <!--<td id="dv4k"></td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td>A<sub>h</sub></td>-->
-                                    <!--<td id="ah1k"></td>-->
-                                    <!--<td id="ah2k"></td>-->
-                                    <!--<td id="ah3k"></td>-->
-                                    <!--<td id="ah4k"></td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td>A<sub>t</sub></td>-->
-                                    <!--<td id="at1k"></td>-->
-                                    <!--<td id="at2k"></td>-->
-                                    <!--<td id="at3k"></td>-->
-                                    <!--<td id="at4k">0</td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td>B<sub>h</sub></td>-->
-                                    <!--<td id="bh1k"></td>-->
-                                    <!--<td id="bh2k"></td>-->
-                                    <!--<td id="bh3k"></td>-->
-                                    <!--<td id="bh4k"></td>-->
-                                <!--</tr>-->
-                                <!--<tr style="background-color: rgb(220,220,220)">-->
-                                    <!--<td>B<sub>t</sub></td>-->
-                                    <!--<td id="bt1k"></td>-->
-                                    <!--<td id="bt2k"></td>-->
-                                    <!--<td id="bt3k"></td>-->
-                                    <!--<td id="bt4k">0</td>-->
-                                <!--</tr>-->
-                            <!--</table>-->
-                            <!--</div>-->
-                        <!--</div>-->
 
                         <!--    校验-->
                         <!--<div class="navbox">-->
@@ -3301,7 +3163,7 @@
                                 <!--</table>-->
                                 <!--<div style="position:absolute;margin: 0 0 0 -75px;left:50%;">-->
                                     <!--<input type="submit" class="button" value="国标版校验"-->
-                                           <!--onclick="return janyan('Stability_LSFArm/getCheck')"/>-->
+                                           <!--onclick="return janyan('Stability_LTTArm/getCheck')"/>-->
                     <!--&lt;!&ndash;                <input type="submit" class="button" value="澳大利亚版校验"&ndash;&gt;-->
                     <!--&lt;!&ndash;                       onclick="return janyan('Stability/aujy')"/>&ndash;&gt;-->
                                 <!--</div>-->
@@ -3413,16 +3275,12 @@
 
             }
         },
-        lbx:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':return lbd;
-                case '仰臂':return ' ';
-                case '顶升':return lbd ;
-                case '顶升+仰臂':return ' ' ;
+
+        lbpx: function(){
+            switch( haveOfMobileCounterweight ){
+                case '有':return ' ';
+                case '无':return lbp ;
             }
-        },
-        lbpx: function () {
-            return lbp ;
         },
         mzj: function () {
             return tsl + tshl + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
@@ -3430,6 +3288,7 @@
         mzjf: function () {
             return  m1 + m2 + m3 + m4 + m5f + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13f + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21 ;
         },
+
         gdlsxh:function(){
             if( wdlyp3 == '无'){
                 return  '无';
@@ -3438,9 +3297,9 @@
                 case "160LZ":
                     return 'M12';
                 case "170LZ":case "200LZ":case "230LZ":case "260LZ":
-                return 'M16';
+                    return 'M16';
                 case "350":case "450":
-                return 'M20';
+                    return 'M20';
             }
         },
         flsjl:function(){
@@ -3522,7 +3381,6 @@
         fdjlsfb:' lsgca * 270 * 0.64 ',
         nwd3:'2 * nwd4 ',
         fdjlszfb:' nwd3 * fdjlsfb ',
-
         umcxs:function(){
             if( wdlyp3 =='无')
                 return 0;
@@ -3536,13 +3394,11 @@
                 case '450'  :return 0.05;
             }
         },
-
         grugssp:function(){
-           if( typeOfGRU =='无') {
-               return 0 ;
+            if( typeOfGRU =='无') {
+                return 0 ;
             }
         },
-
         swp: function(){
             if( dcModel =='其它')
                 return ' ';
@@ -3574,7 +3430,6 @@
             if( typeOfGRU =='无')
                 return 0 ;
         },
-        m6:' 0',
         m7:function(){
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
@@ -3600,9 +3455,9 @@
             }
         },
         m14:function(){
-            if( m6 == 0 && m7 == 0 && m8 == 0)
+            if( m6 == 0 && m7 == 0 && m8 == 0 )
                 return 0 ;
-            else return '';
+            else return ' ';
         },
         m16:function(){
             if( wdlyp3 =='无')
@@ -3656,12 +3511,17 @@
                 case '450':return   825;
             }
         },
+
         lslqg: ' lbd - lg / 2 ',
         lshlqg: ' lbd - ( ldcgh - lbtzh ) - lg / 2 ',
         lqg1: ' lshlqg ',
         lqg2: ' lbd - ( ldcgh - ldslzh ) - lg / 2 ',
         lqg3: ' lshlqg ',
-        lqg6: ' 0 ',
+        lqg6:function(){
+            if( m6 == 0)
+                return 0;
+            else return '';
+        },
         lqg7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
@@ -3699,6 +3559,7 @@
                 case '同侧安装':return "同侧安装";
             }
         },
+
         lqg16:function(){
             if( m16 == 0 ){
                 return 0 ;
@@ -3757,7 +3618,13 @@
         lhz3: ' lqg3 + lg / 2 ',
         lhz4: ' lqg4 + lg / 2 ',
         lhz5: ' lg / 2 - lqg5 ',
-        lhz6: ' 0 ',
+        lhz6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return lqg6 + lg / 2 ;
+            }
+        },
         lhz7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
@@ -3843,7 +3710,13 @@
         lql3:' lhz3 - ll / 2 ',
         lql4:' lhz4 - ll / 2 ',
         lql5:' ll / 2 - lhz5 ',
-        lql6:' 0 ',
+        lql6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return lhz6 - ll / 2 ;
+            }
+        },
         lql7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return  0;
@@ -3923,9 +3796,13 @@
             }
         },
 
-
-
-        hg6:' 0 ',
+        hg6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
         hg7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
@@ -4005,7 +3882,7 @@
         lmz2:' lhz2 ',
         lmz3:' lhz3 ',
         lmz5:' lhz5 ',
-        lmz6:' 0 ',
+        lmz6:' lhz6 ',
         lmz7:' lhz7 ',
         lmz8:' lhz8 ',
         lmz9:' lhz9 ',
@@ -4057,7 +3934,13 @@
             if( typeOfGRU =='无')
                 return 0 ;
         },
-        acx6:' 0 ',
+        acx6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
         acx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
@@ -4160,7 +4043,13 @@
                 return ' ' ;
         },
         atx3:' 0.05 ',
-        atx6:' 0 ',
+        atx6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
         atx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0;
@@ -4234,21 +4123,13 @@
             }
         },
 
-        // m3f:' 25 ',
+        // m3f:' 0 ',
         m5f:' m5 + hsw ',
         m13f:' m13 + mwr ',
 
-        lhl1:' lbx - ( ldcgh - lbtzh ) + ll / 2',
-        lhl2:' lbx - ( ldcgh - ldslzh ) + ll / 2',
+        lhl1:' lbx - ( ldcgh - lbtzh ) + ll / 2 ',
+        lhl2:' lbx - ( ldcgh - ldslzh ) + ll / 2 ',
         lhl3:' lhl1 ',
-        lhl4:function () {
-            switch( typeOfMachine ){
-                case '固定立柱':return lhz4 + ll / 2 ;
-                case '仰臂':return   lhz4 / Math.cos(dbyj / 180 * Math.PI) + ll / 2 ;
-                case '顶升':return   lhz4 + ll / 2 ;
-                case '顶升+仰臂':return lhz4 / Math.cos(dbyj / 180 * Math.PI) + ll / 2 ;
-            }
-        },
         lhl5:function () {
             switch( typeOfMachine ){
                 case '固定立柱' :return lhz5 + ll / 2 ;
@@ -4257,7 +4138,13 @@
                 case '顶升+仰臂':return lhz5 / Math.cos(dbyj / 180 * Math.PI) + ll / 2 ;
             }
         },
-        lhl6:' 0',
+        lhl6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
         lhl7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':return 0 ;
@@ -4376,7 +4263,16 @@
                 case '顶升+仰臂': return ' ';
             }
         },
-        hgf6:' 0 ',
+        hgf6:function(){
+            if( m6 == 0 )
+                return 0;
+            switch (String( typeOfMachine )) {
+                case '固定立柱':  return hg6 ;
+                case '仰臂':      return ' ';
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
         hgf7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
@@ -4394,7 +4290,14 @@
             }
         },
         hgf9:' hg9 ',
-        hgf10:' hg10 ',
+        hgf10:function () {
+            switch( typeOfMachine ){
+                case '固定立柱':  return hg10 ;
+                case '仰臂':      return hg10;
+                case '顶升':      return ' ';
+                case '顶升+仰臂': return ' ';
+            }
+        },
         hgf11:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return hg11 ;
@@ -4437,7 +4340,13 @@
         lmzf2:' lhl2 - ll / 2 ',
         lmzf3:' lhl3 - ll / 2 ',
         lmzf5:' lhl5 - ll / 2 ',
-        lmzf6:' 0 ',
+        lmzf6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return lhl6 - ll /2 ;
+            }
+        },
         lmzf7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
@@ -4510,15 +4419,17 @@
             }
         },
 
-
         afcx1:' acx1 ',
         afcx2:' acx2 ',
         afcx3:' acx3 ',
-        afcx4:' acx4 ',
         afcx5:' acx5 ',
-        afcx6:' acx6 ',
-
-
+        afcx6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
         afcx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
@@ -4570,9 +4481,15 @@
 
 
         aftx2:' atx2 ',
-        aftx3:' 0.05 ',
+        aftx3:' atx3 ',
         aftx5:' atx5 ',
-        aftx6:' 0 ',
+        aftx6:function(){
+            if( m6 == 0 ){
+                return 0 ;
+            }else {
+                return ' ' ;
+            }
+        },
         aftx7:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
@@ -4635,7 +4552,7 @@
     data.init(calculateFunction);
     (function () {
         // InitNav(4);
-        $('#Stability_LSFArm').addClass('o-sub-cur');
+        $('#Stability_LTTArm').addClass('o-sub-cur');
         $("button[class='button']").on("click", function () {
             if ($(".conllect_table").css("display") == "none") {
                 $(".conllect_table").css("display", "block");
@@ -4647,29 +4564,28 @@
         })
     })()
     imgDaefultData={
-        wdlyxgtu1:{inputvalue:"wdlyxgtu1.png"},
-        wdlyxgtu2:{inputvalue:"wdlyxgtu2.png"},
-        wdlyxgtu3:{inputvalue:"wdlyxgtu3.png"},
-        wdlyxgtu4:{inputvalue:"wdlyxgtu4.png"},
-        wdlyxgtu5:{inputvalue:"wdlyxgtu5.png"},
-        wdlyxgtu6:{inputvalue:"wdlyxgtu6.png"},
-        wdlyxgtu7:{inputvalue:"wdlyxgtu7.png"},
-        wdlyxgtu8:{inputvalue:"wdlyxgtu8.png"},
-        wdlyxgtu9:{inputvalue:"wdlyxgtu9.png"},
-        wdlyxgtu10:{inputvalue:"wdlyxgtu10.png"},
-        wdlyxgtu11:{inputvalue:"wdlyxgtu11.png"},
-        wdlyxgtu12:{inputvalue:"wdlyxgtu12.png"},
+        wdlyxstu1:{inputvalue:"wdlyxstu1.png"},
+        wdlyxstu2:{inputvalue:"wdlyxstu2.png"},
+        wdlyxstu3:{inputvalue:"wdlyxstu3.png"},
+        wdlyxstu4:{inputvalue:"wdlyxstu4.png"},
+        wdlyxstu5:{inputvalue:"wdlyxstu5.png"},
+        wdlyxstu6:{inputvalue:"wdlyxstu6.png"},
+        wdlyxstu7:{inputvalue:"wdlyxstu7.png"},
+        wdlyxstu8:{inputvalue:"wdlyxstu8.png"},
+        wdlyxstu9:{inputvalue:"wdlyxstu9.png"},
+        wdlyxstu10:{inputvalue:"wdlyxstu10.png"},
+        wdlyxstu11:{inputvalue:"wdlyxstu11.png"},
+        wdlyxstu12:{inputvalue:"wdlyxstu12.png"},
     }
     getData.dataToImage(imgDaefultData);
 </script>
 <script>
     $('input[name="getData"]').click(function () {
-            var url = '/Stability_LSFArm/getData';
+            var url = '/Stability_LTTArm/getData';
             var id = $('input[name="sjht"]').val();
             getData.geteDataFromDB(url, id)
         }
     )
 </script>
-
 </body>
 </html>
