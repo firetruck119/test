@@ -25,25 +25,28 @@ public class Consts {
 
     //超级管理员有权限的页面和管理员申请后有权限的页面
     public static final String[] OWERN_PERMITS = new String[]{
-
             "/projectData/ProjectColumnDefinitionList",//项目查询-列定义
             "/projectData/ImportExportProjectData",//项目查询-项目导入导出
-            "/dataTable",//模块编辑-界面
-            "/dataTable/updataTable",//模块编辑-编辑表名？
+//            "/dataTable",//模块编辑-界面
+            "/dataTable/updataTable",//模块编辑-编辑表名
             "/dataTable/createNewTable",//模块编辑-新建表格
             "/dataTable/deleteTable",//模块编辑-删除表
             "/dataTable/upExcel",//模块编辑-上传表
             "/dataTable/downLoadExcel",//模块编辑-下载表
             "/OperationLog",//计算书日志-界面
             "/OperationLog/List",//计算书日志-日志搜索
-            "/drawingTable",//图纸查询-数据库-界面
+//            "/drawingTable",//图纸查询-数据库-界面
+            "/drawingTable/upDrawing",//图纸查询-数据库-编辑表名
+            "/drawingTable/addDrawing",//图纸查询-数据库-新建表格
+            "/drawingTable/deleteDrawing",//图纸查询-数据库-删除表
+            "/drawingTable/insertOrUpdateDrawing",//图纸查询-数据库-上传表
+            "/drawingTable/getExcel",//图纸查询-数据库-下载表
 
             "/ProjectColumnDefinitionList",//旧-项目查询-列定义
             "/ImportExportProjectData",//旧-项目查询-项目导入导出
             "/ProjectData",//旧-项目查询-数据维护
             "/ExportProjectData",//旧-项目查询-下载图片名称
             "/ImportProjectData",//旧-项目查询-选取文件并上传
-
     };
 
     //管理员默认就有权限的页面
