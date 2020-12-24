@@ -182,47 +182,47 @@
                                             </tr>
                                             <tr>
                                                 <td><b>回转形式</b></td>
-                                                <td><select name="djhzxs"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="djhzxs"></select></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td><b>轨距</b></td>
-                                                <td><select name="lg"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="lg"></select></td>
                                                 <td>m</td>
                                             </tr>
                                             <tr>
                                                 <td><b>轮距</b></td>
-                                                <td><select name="ll"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="ll"></select></td>
                                                 <td>m</td>
                                             </tr>
                                             <tr>
                                                 <td><b>回转支撑型号</b></td>
-                                                <td><select name="hzzc"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="hzzc"></select></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td><b>运行机构</b></td>
-                                                <td><select name="yxjgxz"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="yxjgxz"></select></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td><b>有无摆动臂</b></td>
-                                                <td><select name="djbdb"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="djbdb"></select></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td><b>立柱偏心距</b></td>
-                                                <td><select name="lzpxj"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="lzpxj"></select></td>
                                                 <td>m</td>
                                             </tr>
                                             <tr>
                                                 <td><b>底架类型</b></td>
-                                                <td><select name="djlx"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="djlx"></select></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td><b>起升机构</b></td>
-                                                <td><select name="djqsjg"></select></td>
+                                                <td><select style="width: 100%;height: 40px;text-align-last: center;background-color: white" name="djqsjg"></select></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
@@ -290,10 +290,10 @@
         }
         return res;
     }
-    // $(document).ready(function () {
-    //     InitNav(10)
-    //     $('#DijiaDrawing').addClass('o-sub-cur');
-    // });
+    $(document).ready(function () {
+        // InitNav(10)
+        $('#DijiaDrawing').addClass('o-sub-cur');
+    });
     (function getIDlist() {
         $.ajax({
             url: "/getBatchIdList",

@@ -702,6 +702,10 @@
         $('[name=gruSelect]').change(gruSelectCDhange)
     })();
     data.init(calculateFunction);
+    (function () {
+        // InitNav(1);
+        $('#WireRope').addClass('o-sub-cur');
+    })();
     function gondolaSelectChange() {
         console.log(1);
         var t = ['swp','windbreakBackpackSelect','typeOfShipWireRope', 'mffbb','r1', 'mwr', 'tsl', 'dcgssxh', 'dcgssd', 'dcgssn', 'dcgssf', 'dcgssp',]

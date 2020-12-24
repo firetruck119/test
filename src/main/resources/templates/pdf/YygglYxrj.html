@@ -229,7 +229,7 @@
                                                                    oninput="showImage(this,'yygtu1')"/></td>
                                         </tr>
                                     <tr>
-                                        <td style="width:35%;padding:10px 0;;"><b>液压缸型号选择</b></td>
+                                        <td style="width:35%"><b>液压缸型号选择</b></td>
                                         <td>
                                             <select name="yygModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
@@ -489,6 +489,10 @@
             return true
         }
     }
+    $(document).ready(function () {
+        // InitNav(8)
+        $('#YygglYxrj').addClass('o-sub-cur');
+    })
 
     function janyan() {
         $.ajax({

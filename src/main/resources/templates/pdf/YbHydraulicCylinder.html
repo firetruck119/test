@@ -242,7 +242,7 @@
                                         <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.下拉参数选择</b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:35%;padding:10px 0;;"><b>仰臂液压缸选择</b></td>
+                                        <td style="width:35%"><b>仰臂液压缸选择</b></td>
                                         <td>
                                             <select name="ybyygModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
@@ -823,6 +823,10 @@
             return true
         }
     }
+    $(document).ready(function () {
+        // InitNav(8)
+        $('#YbHydraulicCylinder').addClass('o-sub-cur');
+    })
 
     function janyan() {
         $.ajax({
