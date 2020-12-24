@@ -77,6 +77,7 @@ public class Consts {
             "/pdf/ThreeJibWheel",//3+1滚轮、链条及伸缩机构
             "/pdf/FourJibWheel",//4+1滚轮、链条及伸缩机构
             "/pdf/JibFrontButtFlange",//吊臂前对接法兰
+            "/pdf/JibRearButtFlange",//配重臂对接法兰
             "/pdf/UprightMechanism",//仰柱机构
             "/pdf/IdlerWheel",//1+1立柱顶轮
             "/pdf/DijiaDrawing",//底架图纸
