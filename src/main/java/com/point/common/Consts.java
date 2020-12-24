@@ -81,6 +81,8 @@ public class Consts {
             "/pdf/IdlerWheel",//1+1立柱顶轮
             "/pdf/DijiaDrawing",//底架图纸
             "/pdf/CDDDrawing",//CDD图纸
+            "/dataTable",//模块编辑-界面
+            "/drawingTable",//图纸查询-数据库-界面
     };
 
 

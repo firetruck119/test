@@ -179,8 +179,8 @@ asideDatas = {
                             url:'JibFrontButtFlange'
                         },
                         {
-                            title: '吊臂后对接法兰',
-
+                            title: '配重臂对接法兰',
+                            url:'JibRearButtFlange'
                         },
                     ]
                 },
