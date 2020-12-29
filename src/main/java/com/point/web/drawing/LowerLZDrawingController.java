@@ -72,7 +72,7 @@ public class LowerLZDrawingController {
             name=temp;
         }else {
             //否则查询数据库
-            List<String> names = drawing.getPDFName("LowerLZ",pdf.entity2Map(entity));
+            List<String> names = drawing.getPDFName("lzxxz",pdf.entity2Map(entity));
             name=names.get(0)+".png";
         }
         return name;
@@ -91,10 +91,10 @@ public class LowerLZDrawingController {
         }else {
             Map map= pdf.entity2Map(entity);
             cacheData.saveCacheValue(sjht, entity);
-            List<String> names = drawing.getPDFName("LowerLZDrawing", map);
+            List<String> names = drawing.getPDFName("lzxxz", map);
             name=names.get(0);
         }
-        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing( entity.takeMapForPDF( ), null, "LowerLZ/" + name));
+        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing( entity.takeMapForPDF( ), null, "/lzxxz/" + name));
         return tool.getResponseEntity(name, list.get(0));
     }
 }

@@ -73,10 +73,12 @@ public class LowerLZDrawingEntity {
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
         map.put("jsr", CommonFunc.convertDoubleToString(jsr));
         map.put("date", CommonFunc.convertDoubleToString(date));
+
         map.put("lzxhzjgxz", CommonFunc.convertDoubleToString(lzxhzjgxz));
         map.put("lzxdbjm", CommonFunc.convertDoubleToString(lzxdbjm));
         map.put("lzxxz", CommonFunc.convertDoubleToString(lzxxz));
         map.put("lzxhlz", CommonFunc.convertDoubleToString(lzxhlz));
+
         map.put("lzx001", CommonFunc.convertDoubleToString(lzx001));
         map.put("lzx002", CommonFunc.convertDoubleToString(lzx002));
         map.put("lzx003", CommonFunc.convertDoubleToString(lzx003));
@@ -91,6 +93,7 @@ public class LowerLZDrawingEntity {
         map.put("lzx012", CommonFunc.convertDoubleToString(lzx012));
         map.put("lzx013", CommonFunc.convertDoubleToString(lzx013));
         map.put("lzx014", CommonFunc.convertDoubleToString(lzx014));
+
         map.put("mlzx001", CommonFunc.convertDoubleToString(mlzx001));
         map.put("mlzx002", CommonFunc.convertDoubleToString(mlzx002));
         map.put("mlzx003", CommonFunc.convertDoubleToString(mlzx003));
@@ -106,6 +109,7 @@ public class LowerLZDrawingEntity {
         map.put("mlzx013", CommonFunc.convertDoubleToString(mlzx013));
         map.put("mlzx014", CommonFunc.convertDoubleToString(mlzx014));
         map.put("mlzx015", CommonFunc.convertDoubleToString(mlzx015));
+        
         map.put("lzxg1", CommonFunc.convertDoubleToString(lzxg1));
         map.put("lzxg2", CommonFunc.convertDoubleToString(lzxg2));
         map.put("mlzxg1", CommonFunc.convertDoubleToString(mlzxg1));
