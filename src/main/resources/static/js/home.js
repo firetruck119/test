@@ -299,7 +299,7 @@ asideDatas = {
                 },
                 {
                     title: '立柱',
-
+                    url: "LowerLZDrawing",
                 },
                 {
                     title: '大臂',
