@@ -12,6 +12,7 @@ public class LowerLZDrawingEntity {
     private String xmmc;
     private String jsr;
     private String date;
+    private String qsjg;
 
     private String lzxxzModel;
     private String qsjgazwzModel;
@@ -23,6 +24,7 @@ public class LowerLZDrawingEntity {
     private String lzxhlz;
 
     private Double lzx001;
+//    lzx001.rotate(Math.PI);
     private Double lzx002;
     private Double lzx003;
     private Double lzx004;
@@ -67,12 +69,14 @@ public class LowerLZDrawingEntity {
     private Double mlzxg10;
     private Double mlzxg11;
 
+    private Double mlzwbxs;
 
     public Map<String, String> takeMapForPDF() {
         Map map = new HashMap();
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
         map.put("jsr", CommonFunc.convertDoubleToString(jsr));
         map.put("date", CommonFunc.convertDoubleToString(date));
+        map.put("qsjg", CommonFunc.convertDoubleToString(qsjg));
 
         map.put("lzxhzjgxz", CommonFunc.convertDoubleToString(lzxhzjgxz));
         map.put("lzxdbjm", CommonFunc.convertDoubleToString(lzxdbjm));
@@ -123,6 +127,7 @@ public class LowerLZDrawingEntity {
         map.put("mlzxg9", CommonFunc.convertDoubleToString(mlzxg9));
         map.put("mlzxg10", CommonFunc.convertDoubleToString(mlzxg10));
         map.put("mlzxg11", CommonFunc.convertDoubleToString(mlzxg11));
+        map.put("mlzwbxs", CommonFunc.convertDoubleToString(mlzwbxs));
 
         return map;
     }

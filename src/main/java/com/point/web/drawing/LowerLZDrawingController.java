@@ -94,7 +94,7 @@ public class LowerLZDrawingController {
             List<String> names = drawing.getPDFName("lzxxz", map);
             name=names.get(0);
         }
-        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing( entity.takeMapForPDF( ), null, "/lzxxz/" + name));
+        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing( entity.takeMapForPDF( ), null, "/LowerLZ/" + name));
         return tool.getResponseEntity(name, list.get(0));
     }
 }
