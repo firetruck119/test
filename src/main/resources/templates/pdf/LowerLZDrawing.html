@@ -451,6 +451,11 @@
                                             <td ><input type="text" name="lzx014"/></td>
                                             <td >mm</td>
                                         </tr>
+                                        <tr>
+                                              <td>尺寸15：两个起升支架之间的距离</td>
+                                              <td ><input type="text" name="lzx015"/></td>
+                                              <td >mm</td>
+                                        </tr>
                                 </table>
                             </div>
 
@@ -601,46 +606,46 @@
             lzx007:1600,
             lzx013:950,
             lzx014:880,
+            lzx015:970,
             qsjg:"175",
         },
         "275":{
             lzx005:640,
             lzx006:1480,
             lzx007:1600,
-            lzx013:1480,
-            lzx014:1600,
+            lzx013:1060,
+            lzx014:990,
+            lzx015:1050,
             qsjg:"275",
         },
         "185":{
             lzx005:747,
             lzx006:1400,
             lzx007:2000,
-            lzx013:1480,
-            lzx014:1600,
+            lzx013:1200,
+            lzx014:1130,
+            lzx015:1190,
             qsjg:"185",
         },
         "285":{
             lzx005:877,
             lzx006:1400,
             lzx007:2000,
-            lzx013:1480,
-            lzx014:1600,
+            lzx013:1300,
+            lzx014:1230,
+            lzx015:1290,
             qsjg:"285",
         },
         "295":{
             lzx005:877,
             lzx006:960,
             lzx007:1200,
-            lzx013:1480,
-            lzx014:1600,
             qsjg:"295",
         },
         "313":{
             lzx005:1070,
             lzx006:2300,
             lzx007:2550,
-            lzx013:1480,
-            lzx014:1600,
             qsjg:"313",
         },
     };
@@ -733,6 +738,9 @@
         lzx014:function(){
             return qsjgModelList[ qsjgModel ]['lzx014'];
         },
+        lzx015:function(){
+            return qsjgModelList[ qsjgModel ]['lzx015'];
+        },
         mlzx001:function(){
             return mlzx002 + mlzxg1 ;
         },
@@ -740,15 +748,13 @@
             return mlzxg2 + mlzx011 + mlzx013 + mlzx014 + mlzx003 + mlzx015 ;
         },
         mlzx003:function(){
-                if ( lzxxzModel = "LZX(300×300)(6.3)") {
-                    return 0.08848 * lzx004 - 14.52;
-                }
-                else if ( lzxxzModel = "LZX(300×300)(6.3)") {
-                    return 0.1243 * lzx004 - 20.45;
-                }
-                else {
-                    return mlzx004 + mlzx005 + mlzx006 + mlzx007;
-                }
+            if ( lzxxzModel = "LZX(300×300)(6.3)") {
+                return 0.088 * lzx004 - 14.52 ;
+            }else if ( lzxxzModel = "LZX(350×350)(7.1)") {
+                return 0.124 * lzx004 - 20.45 ;
+            }else if ( lzxxzModel = "LZX(390×500)(8.0)")  {
+                return mlzx004 + mlzx005 + mlzx006 + mlzx007 ;
+            }
         },
         mlzx004:function(){
             return mlzxg3 * lzx004 - mlzxg4 ;
@@ -762,11 +768,12 @@
         mlzx007:function(){
             return mlzxg9 * lzx004 - mlzxg10 ;
         },
+
         mlzx008:function(){
-            return 0.009357 * lzx013 - 0.56 ;
+            return 0.009 * lzx013 - 0.56 ;
         },
         mlzx009:function(){
-            return 0.01638 * lzx014 + 1.4042 ;
+            return 0.016 * lzx014 + 1.4042 ;
         },
         mlzx010:function(){
             return mlzx008 + mlzx009 ;
@@ -775,13 +782,13 @@
             return 2 * mlzx010 ;
         },
         mlzx012:function(){
-            return 0.0166 * lzx007 - 1.7 ;
+            return 0.017 * lzx007 - 1.7 ;
         },
         mlzx013:function(){
             return 2 * mlzx012 ;
         },
         mlzx014:function(){
-            return 0.00574 * lzx012 ;
+            return 0.006 * lzx012 ;
         },
         mlzwbxs:function(){
                 if ( lzx001 <= 4000 ) {

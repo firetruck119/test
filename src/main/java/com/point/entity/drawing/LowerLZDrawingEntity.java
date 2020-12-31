@@ -38,6 +38,7 @@ public class LowerLZDrawingEntity {
     private Double lzx012;
     private Double lzx013;
     private Double lzx014;
+    private Double lzx015;
 
     private Double mlzx001;
     private Double mlzx002;
@@ -97,6 +98,7 @@ public class LowerLZDrawingEntity {
         map.put("lzx012", CommonFunc.convertDoubleToString(lzx012));
         map.put("lzx013", CommonFunc.convertDoubleToString(lzx013));
         map.put("lzx014", CommonFunc.convertDoubleToString(lzx014));
+        map.put("lzx015", CommonFunc.convertDoubleToString(lzx015));
 
         map.put("mlzx001", CommonFunc.convertDoubleToString(mlzx001));
         map.put("mlzx002", CommonFunc.convertDoubleToString(mlzx002));
