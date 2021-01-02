@@ -7,7 +7,10 @@ import com.point.excel.DrawingTableExcelUtil;
 import com.point.mapper.DrawingDao;
 import com.point.mapper.DrawingtableColumnnameDao;
 import com.point.mapper.DrawingtableDao;
+import com.point.newPDF.entity.select.DataTableEntity;
 import com.point.security.error.UserException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -125,6 +128,29 @@ public class DrawingTableController {
         workbook.write(response.getOutputStream());
     }
 
+    @GetMapping("/dataTable/getDrawingNameList/{name}")
+    @ResponseBody
+    public Object getDrawingNameList(@PathVariable("name") String name) throws NoSuchFieldException, IllegalAccessException {
+        Drawing d = drawing.getByNo(name);
+        List<DrawingtableColumnname> columns = selectColumnsByDrawingid(d.getId().toString());
+        List<Drawingtable> table = selectTableByDrawingid(d.getId().toString());
+        Map<String,Hashtable> map=new HashMap<>();
+        Class classr;
+        for(Drawingtable row :table){
+            Hashtable<String,String> tb=new Hashtable<>();
+            String temp;
+            int i=1;
+            classr=row.getClass();
+            for(DrawingtableColumnname col : columns){
+                Field field=classr.getDeclaredField("column"+i++);
+                field.setAccessible(true);
+                temp=field.get(row).toString();
+                tb.put(col.getColumnno(),temp);
+            }
+            map.put(row.getDrawingtype(),tb);
+        }
+        return map;
+    }
     @GetMapping("/drawing/getImg")
     public void getImg2(HttpServletRequest request, HttpServletResponse response, String filename, String drawingname)
             throws IOException {

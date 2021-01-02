@@ -360,6 +360,47 @@ function getTable(tablename,tableSy){
         }
     })
 }
+
+function ajaxDrawingName(tablename,name){
+    var datas = [];
+    axios.get('/dataTable/getDrawingNameList/'+name).then(
+        (e) => {
+            var data=e.data;
+            var temp=tablename?tablename:name;
+            model[temp]=data;
+            $("select[name="+tablename+"]").prepend('<option value="" style="display: none"></option>');
+            for(var i in data){
+                if(i) $("select[name="+tablename+"]").append('<option value="'+i+'" >'+i+'</option>');
+            }
+        }
+    ).catch(
+        (e) => {
+            console.log(e)
+        }
+    )
+}
+function getDrawing(tablename,tableSy){
+    if(! window['model'] )window['model']={};
+    var temp=tablename?tablename:tableSy;
+    if(! model[temp] )model[temp]={};
+    ajaxDrawingName(tablename,tableSy);
+    if(!tablename)
+        return ;
+    var $select=$("select[name="+tablename+"]");
+    $select.change((e)=>{
+        var $element=$(e.target);
+        var val=$element.val();
+        var d=model[tablename][val];
+        data.datalist[tablename].value=val;
+        for(var key in d){
+            var $e=$("[name="+key+"]");
+            if($e.length>0 && !$e.attr("undb")){
+                data.datalist[key].value=parseFloat(d[key])==d[key]?parseFloat(d[key]):d[key];
+                data.changeValue(data.datalist[key])
+            }
+        }
+    })
+}
 function getMultilevelTable(first,second,dblist){
     if(! window['model'] )window['model']={};
     if(! model[first] )model[first]={};

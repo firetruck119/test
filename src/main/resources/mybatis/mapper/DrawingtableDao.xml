@@ -181,6 +181,9 @@
             and column_20 = #{column20,jdbcType=OTHER}
         </if>
     </select>
+    <select id="getDrawingListName" resultType="java.lang.String">
+        SELECT * FROM drawingtable where drawingname in (select id from drawing where drawinNo = #{name,jdbcType=OTHER}) ;
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from drawingtable
     where id = #{id,jdbcType=BIGINT}
