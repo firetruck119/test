@@ -150,7 +150,7 @@ public class PdfCreater {
             }
             document = new Document();
             document.open();
-            ps.setFormFlattening(true);
+            ps.setFormFlattening(false);
             ps.close();
             result = bos.toByteArray();
             bos.close();
