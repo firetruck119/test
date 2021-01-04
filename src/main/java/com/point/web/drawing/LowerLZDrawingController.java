@@ -101,44 +101,4 @@ public class LowerLZDrawingController {
         list.add(pdf.fromPDFTempletToPdfWithValue_Drawing( entity.takeMapForPDF( ), null, "/LowerLZ/" + name));
         return tool.getResponseEntity(name, list.get(0));
     }
-
-    public static  void main(String[] args) {
-        //模板路径
-        String templatePath = "C:\\Users\\Administrator\\Desktop\\LZX(300×300)(6.3)(4M).pdf";
-        //生成的新文件路径
-        String newPDFPath = "C:\\Users\\Administrator\\Desktop\\1.pdf";
-        PdfReader reader;
-        FileOutputStream out;
-        ByteArrayOutputStream bos;
-        PdfStamper stamper;
-        try {
-            out = new FileOutputStream(newPDFPath);//输出流
-            reader = new PdfReader(templatePath);//读取pdf模板
-            bos = new ByteArrayOutputStream();
-            stamper = new PdfStamper(reader, bos);
-            AcroFields form = stamper.getAcroFields();
-            java.util.Iterator<String> it = form.getFields().keySet().iterator();
-            while (it.hasNext()) {
-                String name = it.next().toString();
-                //填写内容部分
-                form.setField(name, "10900");
-                //
-            }
-            stamper.setFormFlattening(false);//如果为false那么生成的PDF文件还能编辑，一定要设为true
-            stamper.close();
-
-            Document doc = new Document();
-            PdfCopy copy = new PdfCopy(doc, out);
-            doc.open();
-            PdfImportedPage importPage = copy.getImportedPage(
-                    new PdfReader(bos.toByteArray()), 1);
-            copy.addPage(importPage);
-            doc.close();
-
-        } catch (IOException e) {
-            System.out.println(1);
-        } catch (DocumentException e) {
-            System.out.println(2);
-        }
-    }
 }

@@ -103,7 +103,7 @@ public class PdfCreater {
      */
     public byte[] fromPDFTempletToPdfWithValue_New(Map<String, String> textMap, Map<String, File> imageMap, String fileName) {
         PdfReader reader=readFile(fileName);
-        return setValue(textMap,imageMap,reader);
+        return setValue(textMap,imageMap,reader,true);//如果t为true那么生成的PDF文件不能编辑
     }
     public byte[] fromPDFTempletToPdfWithValue_Drawing(Map<String, String> textMap, Map<String, File> imageMap, String fileName) throws IOException {
         PdfReader reader;
@@ -121,9 +121,9 @@ public class PdfCreater {
                 reader = new PdfReader("C://resource/drawing/" + fileName + ".pdf");
             }
         }
-        return setValue(textMap,imageMap,reader);
+        return setValue(textMap,imageMap,reader,false);//如果t为false那么生成的PDF文件能编辑
     }
-    private byte[] setValue(Map<String, String> textMap, Map<String, File> imageMap, PdfReader reader) {
+    private byte[] setValue(Map<String, String> textMap, Map<String, File> imageMap, PdfReader reader, boolean t) {
         ByteArrayOutputStream bos = null;
         PdfStamper ps = null;
         Document document = null;
@@ -150,7 +150,7 @@ public class PdfCreater {
             }
             document = new Document();
             document.open();
-            ps.setFormFlattening(false);
+            ps.setFormFlattening(t);//如果t为false那么生成的PDF文件还能编辑，一定要设为true
             ps.close();
             result = bos.toByteArray();
             bos.close();
