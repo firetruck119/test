@@ -57,15 +57,9 @@ public class Consts {
 
     //超级用户及以上有权限的页面
     public static final String[] SUPERUSER_PERMITS = new String[]{
-            "/pdf/RotaryStructure",//大回转机构
-            "/pdf/PlatformUnconstrained",//非普通吊船无约束系统
-            "/pdf/PtPlatformUnconstrained",//普通吊船无约束系统
-            "/pdf/YygglYxrj",//液压系统电机功率及油箱容积
-            "/pdf/YbHydraulicCylinder",//仰臂液压缸
-            "/pdf/DsHydraulicCylinder",//顶升液压缸
+            "/pdf/SuspensionCtrack",//悬挂C型轨
             "/pdf/Tensile",//抗拉埋件
             "/pdf/Resistant",//抗压埋件
-            "/pdf/SuspensionCtrack",//悬挂C型轨
             "/pdf/YbAxis",//仰臂大轴
             "/pdf/SingleJib",//单臂机吊臂
             "/pdf/OneJib",//1+1伸缩臂吊臂
@@ -80,8 +74,17 @@ public class Consts {
             "/pdf/JibRearButtFlange",//配重臂对接法兰
             "/pdf/UprightMechanism",//仰柱机构
             "/pdf/IdlerWheel",//1+1立柱顶轮
+            "/pdf/YygglYxrj",//液压系统电机功率及油箱容积
+            "/pdf/YbHydraulicCylinder",//仰臂液压缸
+            "/pdf/DsHydraulicCylinder",//顶升液压缸
+            "/pdf/PlatformUnconstrained",//非普通吊船无约束系统
+            "/pdf/PtPlatformUnconstrained",//普通吊船无约束系统
+            "/pdf/RotaryStructure",//大回转机构
+
             "/pdf/DijiaDrawing",//底架图纸
             "/pdf/CDDDrawing",//CDD图纸
+            "/pdf/LowerLZDrawing",//立柱下回转图纸
+
             "/dataTable",//模块编辑-界面
             "/drawingTable",//图纸查询-数据库-界面
     };

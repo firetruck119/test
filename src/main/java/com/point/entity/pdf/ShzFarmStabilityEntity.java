@@ -481,6 +481,9 @@ public class ShzFarmStabilityEntity {
         map.put("mzj", CommonFunc.convertDoubleToString(mzj));
         map.put("mzjf", CommonFunc.convertDoubleToString(mzjf));
 
+        map.put("qt1", CommonFunc.convertDoubleToString(qt1));
+        map.put("qt2", CommonFunc.convertDoubleToString(qt2));
+
         map.put("lslqg", CommonFunc.convertDoubleToString(lslqg));
         map.put("lshlqg", CommonFunc.convertDoubleToString(lshlqg));
         map.put("lqg1", CommonFunc.convertDoubleToString(lqg1));
