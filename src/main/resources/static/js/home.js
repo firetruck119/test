@@ -33,7 +33,7 @@ asideDatas = {
                         },
                         {
                             title: '上回转固定臂',
-
+                            url: "ShzFarmStability",
                         },
                         {
                             title: '双臂机',

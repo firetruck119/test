@@ -336,7 +336,7 @@
                                         <td colspan="4" style="padding: 10px 0 10px 0">工作状态整机质量及非工作状态整机质量不需要手动填写，会自动填充</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">3.起升高度及非工作时风压</td>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0">3.作业高度及风压</td>
                                     </tr>
                                     <tr>
                                         <td>作业高度</td>
@@ -3600,9 +3600,10 @@
             }
         },
         m14:function(){
-            if( m6 == 0 && m7 == 0 && m8 == 0)
+            if( m6 == 0 && m7 == 0 && m8 == 0 )
                 return 0 ;
-            else return '';
+            else
+                return ' ';
         },
         m16:function(){
             if( wdlyp3 =='无')
