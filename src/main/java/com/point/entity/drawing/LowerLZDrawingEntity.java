@@ -136,65 +136,65 @@ public class LowerLZDrawingEntity {
 
     public String _getPDFName(){
         if ( lzxxzModel.equals("LZX(300×300)(6.3)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(300×300)(6.3)(4M)";
+            return "LZX(300×300)(6.3)(4M)" ;
         } else if ( lzxxzModel.equals("LZX(350×350)(7.1)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(350×350)(7.1)(4M)";
+            return "LZX(350×350)(7.1)(4M)" ;
         } else if ( lzxxzModel.equals("LZX(390×500)(8.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(390×500)(8.0)(4M)";
+            return "LZX(390×500)(8.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(500×600)(9.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(500×600)(9.0)(4M)";
+            return "LZX(500×600)(9.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(535×700)(10.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×700)(10.0)(4M)";
+            return "LZX(535×700)(10.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(535×750)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×750)(11.2)(4M)";
+            return "LZX(535×750)(11.2)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(535×800)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×800)(12.5)(4M)";
+            return "LZX(535×800)(12.5)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(675×800)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×800)(11.2)(4M)";
+            return "LZX(675×800)(11.2)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(675×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×850)(12.5)(4M)";
+            return "LZX(675×850)(12.5)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(675×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×900)(14.0)(4M)";
+            return "LZX(675×900)(14.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(815×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×850)(12.5)(4M)";
+            return "LZX(815×850)(12.5)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(815×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×900)(14.0)(4M)";
+            return "LZX(815×900)(14.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(815×950)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×950)(14.0)(4M)";
+            return "LZX(815×950)(14.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(815×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×1000)(16.0)(4M)";
+            return "LZX(815×1000)(16.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(975×1000)(16.0)(4M)";
+            return "LZX(975×1000)(16.0)(4M)" ;
         }else if ( lzxxzModel.equals("LZX(300×300)(6.3)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(300×300)(6.3)";
+            return "LZX(300×300)(6.3)" ;
         }else if ( lzxxzModel.equals("LZX(350×350)(7.1)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(350×350)(7.1)";
+            return "LZX(350×350)(7.1)" ;
         } else if ( lzxxzModel.equals("LZX(390×500)(8.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(390×500)(8.0)";
+            return "LZX(390×500)(8.0)" ;
         }else if ( lzxxzModel.equals("LZX(500×600)(9.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(500×600)(9.0)";
+            return "LZX(500×600)(9.0)" ;
         }else if ( lzxxzModel.equals("LZX(535×700)(10.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×700)(10.0)";
+            return "LZX(535×700)(10.0)" ;
         }else if ( lzxxzModel.equals("LZX(535×750)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×750)(11.2)";
+            return "LZX(535×750)(11.2)" ;
         }else if ( lzxxzModel.equals("LZX(535×800)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×800)(12.5)";
+            return "LZX(535×800)(12.5)" ;
         }else if ( lzxxzModel.equals("LZX(675×800)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×800)(11.2)";
+            return "LZX(675×800)(11.2)" ;
         }else if ( lzxxzModel.equals("LZX(675×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×850)(12.5)";
+            return "LZX(675×850)(12.5)" ;
         }else if ( lzxxzModel.equals("LZX(675×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×900)(14.0)";
+            return "LZX(675×900)(14.0)" ;
         }else if ( lzxxzModel.equals("LZX(815×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×850)(12.5)";
+            return "LZX(815×850)(12.5)" ;
         }else if ( lzxxzModel.equals("LZX(815×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×900)(14.0)";
+            return "LZX(815×900)(14.0)" ;
         }else if ( lzxxzModel.equals("LZX(815×950)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×950)(14.0)";
+            return "LZX(815×950)(14.0)" ;
         }else if ( lzxxzModel.equals("LZX(815×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×1000)(16.0)";
+            return "LZX(815×1000)(16.0)" ;
         }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(975×1000)(16.0)";
+            return "LZX(975×1000)(16.0)" ;
         }
         return null;
     }
