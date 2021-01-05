@@ -28,9 +28,8 @@ public class ShzFarmStabilityEntity {
     private Double lg;
     private Double ll;
     private Double gxh;
-    private Double llyqghz;
     private Double llylzhz;
-    private Double llydjhz;
+    private Double llylzdj;
 
     //非页面数据
     private Double dcgssp;
@@ -40,6 +39,7 @@ public class ShzFarmStabilityEntity {
     private Double ldslzh;
     private Double nwd3;
     private Double umcxs;
+    private Double llyqghz;
 
 //    提示提醒
     private String grutstx;
@@ -424,9 +424,8 @@ public class ShzFarmStabilityEntity {
         map.put("lg", CommonFunc.convertDoubleToString(lg));
         map.put("ll", CommonFunc.convertDoubleToString(ll));
         map.put("gxh", CommonFunc.convertDoubleToString(gxh));
-        map.put("llyqghz", CommonFunc.convertDoubleToString(llyqghz));
         map.put("llylzhz", CommonFunc.convertDoubleToString(llylzhz));
-        map.put("llydjhz", CommonFunc.convertDoubleToString(llydjhz));
+        map.put("llylzdj", CommonFunc.convertDoubleToString(llylzdj));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
         map.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
@@ -435,6 +434,7 @@ public class ShzFarmStabilityEntity {
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
         map.put("nwd3", CommonFunc.convertDoubleToString(nwd3));
         map.put("umcxs", CommonFunc.convertDoubleToString(umcxs));
+        map.put("llyqghz", CommonFunc.convertDoubleToString(llyqghz));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 

@@ -275,24 +275,6 @@
                                         <td >m</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>前轨道至回转中心距离</b></td>
-                                        <td ><p><i> </i></p></td>
-                                        <td ><input type="text" name="llyqghz"/></td>
-                                        <td >m</td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>立柱重心至回转中心距离</b></td>
-                                        <td ><p><i> </i></p></td>
-                                        <td ><input type="text" name="llylzhz"/></td>
-                                        <td >m</td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>底架重心至回转中心距离</b></td>
-                                        <td ><p><i> </i></p></td>
-                                        <td ><input type="text" name="llydjhz"/></td>
-                                        <td >m</td>
-                                    </tr>
-                                    <tr>
                                         <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.作业高度及风压</b></td>
                                     </tr>
                                     <tr>
@@ -441,11 +423,11 @@
                                 <div style="width: 100%">
                                     <table>
                                         <tr>
-                                            <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.下拉参数选择</b></td>
+                                            <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.下拉参数选择</b></td>
                                         </tr>
                                         <tr>
                                             <td style="width:26%"><b>吊船型号选择</b></td>
-                                            <td>
+                                            <td colspan="3">
                                                 <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                                                     <option value="" style="display: none"></option>
                                                     <option value="其它">其它</option>
@@ -454,7 +436,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>是否有防风背包</b></td>
-                                            <td>
+                                            <td colspan="3">
                                                 <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
                                                     <option value="" style="display: none"></option>
                                                     <option value="有">有</option>
@@ -464,7 +446,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>吊船钢丝绳型号选择</b></td>
-                                            <td>
+                                            <td colspan="3">
                                                 <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                                                     <option value="" style="display: none"></option>
                                                 </select>
@@ -472,7 +454,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>臂头型号选择</b></td>
-                                            <td>
+                                            <td colspan="3">
                                                 <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                     <option value="" style="display: none"></option>
                                                     <option value="其它">其它</option>
@@ -481,7 +463,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>GRU型号选择</b></td>
-                                            <td>
+                                            <td colspan="3">
                                                 <select name="gruModel" style="width:100%;height:40px;text-align-last:center">
                                                     <option value="" style="display: none"></option>
                                                     <option value="无">无</option>
@@ -490,7 +472,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>起升机构型号选择</b></td>
-                                            <td>
+                                            <td colspan="3">
                                                 <select name="qsjgModel" style="width:100%;height:40px;text-align-last:center">
                                                     <option value="" style="display: none"></option>
                                                     <option value="无">无</option>
@@ -499,7 +481,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>大回转机构型号选择</b></td>
-                                            <td>
+                                            <td colspan="3">
                                                 <select name="dhzjgModel" style="width:100%;height:40px;text-align-last:center">
                                                     <option value="" style="display: none"></option>
                                                     <option value="HZS-7.1RF77">HZS-7.1RF77</option>
@@ -507,6 +489,24 @@
                                                     <option value="HZS-9.0RF97">HZS-9.0RF97</option>
                                                 </select>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:26%"><b>名称</b></td>
+                                            <td style="width:17%;">符号</td>
+                                            <td style="width:40%;">数值</td>
+                                            <td style="width:17%;">单位</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b>立柱重心至回转中心距离</b></td>
+                                            <td ><p><i> </i></p></td>
+                                            <td ><input type="text" name="llylzhz"/></td>
+                                            <td >m</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><b>立柱重心至底架重心距离</b></td>
+                                            <td ><p><i> </i></p></td>
+                                            <td ><input type="text" name="llylzdj"/></td>
+                                            <td >m</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -2397,6 +2397,8 @@
                                 <input type="text" name="nwd3" />
                                 <input type="text" name="umcxs" />
 
+                                <input type="text" name="llyqghz" />
+
                                 <input type="text" name="m5f" />
                                 <input type="text" name="m13f" />
                             </div>
@@ -2547,14 +2549,17 @@
         "HZS-7.1RF77":{
             m9:255,
             acx9:0.39,
+            llylzhz:0.075,
         },
         "HZS-8.0RF87":{
             m9:354,
             acx9:0.53,
+            llylzhz:0.135,
         },
         "HZS-9.0RF97":{
             m9:533,
             acx9:0.72,
+            llylzhz:0.135,
         },
     };
     yxjgModelList={
@@ -2572,6 +2577,14 @@
             acx17:0.12,
             acx18:0.07,
             acx19:0.07,
+            atx16:0.07,
+            atx17:0.07,
+            atx18:0.07,
+            atx19:0.07,
+            hg16:0.1,
+            hg17:0.1,
+            hg18:0.1,
+            hg19:0.1,
         },
         "170LZ":{
             umcxs:0.05,
@@ -2587,6 +2600,14 @@
             acx17:0.18,
             acx18:0.12,
             acx19:0.12,
+            atx16:0.13,
+            atx17:0.13,
+            atx18:0.13,
+            atx19:0.13,
+            hg16:0.15,
+            hg17:0.15,
+            hg18:0.15,
+            hg19:0.15,
         },
         "200LZ":{
             umcxs:0.05,
@@ -2602,6 +2623,14 @@
             acx17:0.22,
             acx18:0.15,
             acx19:0.15,
+            atx16:0.17,
+            atx17:0.17,
+            atx18:0.17,
+            atx19:0.17,
+            hg16:0.19,
+            hg17:0.19,
+            hg18:0.19,
+            hg19:0.19,
         },
         "230LZ":{
             umcxs:0.05,
@@ -2617,6 +2646,14 @@
             acx17:0.28,
             acx18:0.19,
             acx19:0.19,
+            atx16:0.23,
+            atx17:0.23,
+            atx18:0.23,
+            atx19:0.23,
+            hg16:0.23,
+            hg17:0.23,
+            hg18:0.23,
+            hg19:0.23,
         },
         "260LZ":{
             umcxs:0.05,
@@ -2632,6 +2669,14 @@
             acx17:0.31,
             acx18:0.2,
             acx19:0.2,
+            atx16:0.28,
+            atx17:0.28,
+            atx18:0.28,
+            atx19:0.28,
+            hg16:0.28,
+            hg17:0.28,
+            hg18:0.28,
+            hg19:0.28,
         },
         "350":{
             umcxs:0.05,
@@ -2647,6 +2692,14 @@
             acx17:0.42,
             acx18:0.27,
             acx19:0.27,
+            atx16:0.38,
+            atx17:0.38,
+            atx18:0.38,
+            atx19:0.38,
+            hg16:0.32,
+            hg17:0.32,
+            hg18:0.32,
+            hg19:0.32,
         },
         "450":{
             umcxs:0.05,
@@ -2662,6 +2715,14 @@
             acx17:0.8,
             acx18:0.6,
             acx19:0.6,
+            atx16:0.75,
+            atx17:0.75,
+            atx18:0.75,
+            atx19:0.75,
+            hg16:0.4,
+            hg17:0.4,
+            hg18:0.4,
+            hg19:0.4,
         },
         "无":{
             umcxs:0,
@@ -2677,6 +2738,14 @@
             acx17:0,
             acx18:0,
             acx19:0,
+            atx16:0,
+            atx17:0,
+            atx18:0,
+            atx19:0,
+            hg16:0,
+            hg17:0,
+            hg18:0,
+            hg19:0,
         },
     };
     yxjgazModelList={
@@ -2784,8 +2853,8 @@
         lbpx:function(){
             return lbp ;
         },
-        llydjhz:function(){
-            return lg - llyqghz ;
+        llylzhz:function(){
+            return dhzjgModelList[ dhzjgModel ]['llylzhz'];
         },
 
         // 后台
@@ -2811,7 +2880,9 @@
             else
                 return m13 + mwr;
         },
-
+        llyqghz:function(){
+            return lg / 2 - ( llylzhz + llylzdj ) ;
+        },
 
         //运行机构
         gdlsxh:function(){
@@ -3015,7 +3086,7 @@
             return lbp + llyqghz ;
         },
         lqg12:function(){
-            return llyqghz + llylzhz ;
+            return lg / 2 - llylzdj ;
         },
         lqg13:function(){
             if( m13 == 0 )
@@ -3173,7 +3244,7 @@
                 return lqg14 - llyqghz ;
         },
         lhz15:function(){
-            return llydjhz ;
+            return llylzhz + llylzdj ;
         },
         lhz16:function(){
             if( m16 == 0 )
@@ -3381,29 +3452,41 @@
             else
                 return ' ';
         },
+        // hg16:function(){
+        //     if( m16 == 0 )
+        //         return 0 ;
+        //     else
+        //         return ' ';
+        // },
+        // hg17:function(){
+        //     if( m17 == 0 )
+        //         return 0 ;
+        //     else
+        //         return hg16 ;
+        // },
+        // hg18:function(){
+        //     if( m18 == 0 )
+        //         return 0 ;
+        //     else
+        //         return hg16 ;
+        // },
+        // hg19:function(){
+        //     if( m19 == 0 )
+        //         return 0 ;
+        //     else
+        //         return hg16 ;
+        // },
         hg16:function(){
-            if( m16 == 0 )
-                return 0 ;
-            else
-                return ' ';
+            return yxjgModelList[ yxjgModel ]['hg16'];
         },
         hg17:function(){
-            if( m17 == 0 )
-                return 0 ;
-            else
-                return hg16 ;
+            return yxjgModelList[ yxjgModel ]['hg17'];
         },
         hg18:function(){
-            if( m18 == 0 )
-                return 0 ;
-            else
-                return hg16 ;
+            return yxjgModelList[ yxjgModel ]['hg18'];
         },
         hg19:function(){
-            if( m19 == 0 )
-                return 0 ;
-            else
-                return hg16 ;
+            return yxjgModelList[ yxjgModel ]['hg19'];
         },
         hg20:function(){
             if( m20 == 0 )
@@ -3673,16 +3756,16 @@
             return afcx15 ;
         },
         atx16:function(){
-            return afcx16 ;
+            return yxjgModelList[ yxjgModel ]['atx16'];
         },
         atx17:function(){
-            return afcx17 ;
+            return yxjgModelList[ yxjgModel ]['atx17'];
         },
         atx18:function(){
-            return afcx18 ;
+            return yxjgModelList[ yxjgModel ]['atx18'];
         },
         atx19:function(){
-            return afcx19 ;
+            return yxjgModelList[ yxjgModel ]['atx19'];
         },
         atx20:function(){
             if( m20 == 0 )
@@ -4068,28 +4151,16 @@
                 return ' ';
         },
         afcx16:function(){
-            if( m16 == 0 )
-                return 0 ;
-            else
-                return ' ';
+            return atx16 ;
         },
         afcx17:function(){
-            if( m17 == 0 )
-                return 0 ;
-            else
-                return afcx16 ;
+            return atx17 ;
         },
         afcx18:function(){
-            if( m18 == 0 )
-                return 0 ;
-            else
-                return afcx16 ;
+            return atx18 ;
         },
         afcx19:function(){
-            if( m19 == 0 )
-                return 0 ;
-            else
-                return afcx16 ;
+            return atx19 ;
         },
         afcx20:function(){
             if( m20 == 0 )
