@@ -6,7 +6,7 @@ asideDatas = {
             children:[
                 {
                     title:'跳转旧模块(临时)',
-                    url:"CleaningCycle",
+                    // url:"CleaningCycle",
                 },
                 {
                     title:'申请临时权限',
