@@ -666,12 +666,18 @@
             lzx005:877,
             lzx006:960,
             lzx007:1200,
+            lzx013:' ',
+            lzx014:' ',
+            lzx015:' ',
             qsjg:"295",
         },
         "313":{
             lzx005:1070,
             lzx006:2300,
             lzx007:2550,
+            lzx013:' ',
+            lzx014:' ',
+            lzx015:' ',
             qsjg:"313",
         },
     };
@@ -837,7 +843,7 @@
                     return 0 ;
                 }
                 else {
-                    return 1;
+                    return 1 ;
                 }
         },
         mlzx015:function(){
@@ -862,7 +868,7 @@
         var els = $("input[type=text],select");
         for (var index = 0; index < els.length; index++) {
             var e = els[index];
-            data.append(e.name, e.value);
+            data.append(e.name,e.value);
         }
         axios.post("/LowerLZDrawing/showDrawing", data).then(function (e) {
             $("img[id=lzxtu]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=LowerLZ&tempid=' + Math.random();
