@@ -134,22 +134,23 @@ public class DrawingTableController {
         Drawing d = drawing.getByNo(name);
         List<DrawingtableColumnname> columns = selectColumnsByDrawingid(d.getId().toString());
         List<Drawingtable> table = selectTableByDrawingid(d.getId().toString());
-        Map<String,Hashtable> map=new HashMap<>();
+        List<Hashtable> list=new ArrayList<>();
         Class classr;
         for(Drawingtable row :table){
             Hashtable<String,String> tb=new Hashtable<>();
             String temp;
             int i=1;
             classr=row.getClass();
+            tb.put("drawingType",row.getDrawingtype());
             for(DrawingtableColumnname col : columns){
                 Field field=classr.getDeclaredField("column"+i++);
                 field.setAccessible(true);
                 temp=field.get(row).toString();
                 tb.put(col.getColumnno(),temp);
             }
-            map.put(row.getDrawingtype(),tb);
+            list.add(tb);
         }
-        return map;
+        return list;
     }
     @GetMapping("/drawing/getImg")
     public void getImg2(HttpServletRequest request, HttpServletResponse response, String filename, String drawingname)

@@ -370,7 +370,7 @@ function ajaxDrawingName(tablename,name){
             model[temp]=data;
             $("select[name="+tablename+"]").prepend('<option value="" style="display: none"></option>');
             for(var i in data){
-                if(i) $("select[name="+tablename+"]").append('<option value="'+i+'" >'+i+'</option>');
+                if(i) $("select[name="+tablename+"]").append('<option value="'+data[i].drawingType+'" >'+data[i].drawingType+'</option>');
             }
         }
     ).catch(

@@ -1350,7 +1350,10 @@
     )
 </script>
 <script>
-    $("[name=lzxxzModel]" && "[name=qsjgazwzModel]" && "[name=lzx001]").change(function () {
+    function showImage() {
+        var l=window.data.datalist;
+        if(!(l['lzxxzModel'].value && l['qsjgazwzModel'] && l['lzx001']))
+            return ;
         var data = new FormData();
         var els = $("input[type=text],select");
         for (var index = 0; index < els.length; index++) {
@@ -1358,9 +1361,17 @@
             data.append(e.name,e.value);
         }
         axios.post("/LowerLZDrawing/showDrawing", data).then(function (e) {
-            $("img[id=lzxtu]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=LowerLZ&tempid=' + Math.random();
+            var imageName=e.data;
+            if(window.data.image==null)
+                window.data.image={"lzxtu":imageName}
+            else if(window.data.image['lzxtu']==imageName)
+                return null;
+            else;
+            $("img[id=lzxtu]")[0].src = '/drawing/getImg?filename=' + imageName + '&drawingname=LowerLZ&tempid=' + Math.random();
         })
-    })
+    }
+    $("[name]").change(showImage);
+    $("[name=getData]").click(showImage)
 </script>
 </body>
 </html>

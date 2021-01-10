@@ -16,10 +16,10 @@ var newTableDialog = Vue.component('new_table_dialog', {
                 role: "",
             },
             rolelist: [],
-            needIpChech:true
+            needIpChech:true,
+            user:0
         }
     },
-    props: ["userlevel"],
     computed:{
         ipChechComputed:{
             get:function(){
@@ -33,6 +33,13 @@ var newTableDialog = Vue.component('new_table_dialog', {
         }
     },
     mounted() {
+        axios.get("/getCurrentUser").then(
+            (e) => {
+                if ( e.data ) {
+                    this.user = e.data;
+                }
+            }
+        )
         axios.get("/usermanager/getRoleList").then(
             (e) => {
                 if (e.data instanceof Array) {
@@ -62,10 +69,10 @@ var newTableDialog = Vue.component('new_table_dialog', {
             this.userdata.level = e.level;
             this.userdata.role = e.role;
             this.visible = true;
-            this.isedit = true;
+            this.isedit = (this.user.level>=3&&e.level<3)||this.user.username==e.username;
         },
         openInsertDialog() {
-            this.title = "新建用户"
+            this.title = "新建用户";
             this.userdata.id = "";
             this.userdata.username = "";
             this.userdata.userrealname = "";
@@ -75,7 +82,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
             this.userdata.level = "";
             this.userdata.role = "";
             this.visible = true;
-            this.isedit = false;
+            this.isedit = true;
         },
 
         handleClose() {
@@ -137,7 +144,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
             <el-form-item label="姓名">
                 <el-input v-model="userdata.userrealname"></el-input>
             </el-form-item>
-            <el-form-item v-if="!isedit" label="邮箱">
+            <el-form-item v-if="isedit" label="邮箱">
                 <el-input type="email" v-model="userdata.emailaddress"></el-input>
             </el-form-item>
            <el-form-item v-if="userlevel==4 && !userdata.ipCheck" label="ip地址">

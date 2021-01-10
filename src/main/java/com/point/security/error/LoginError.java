@@ -1,8 +1,8 @@
 package com.point.security.error;
 
 public enum LoginError implements Error {
-    ERROR_USERNAME(1, "用户名错误"),
-    ERROR_PASSWORD(2, "密码错误"),
+    ERROR_USERNAME(1, "用户名或密码错误"),
+    ERROR_PASSWORD(2, "用户名或密码错误"),
     ERROR_IP(3, "IP错误"),
     ERROR_VERIFICATION(4, "验证码错误"),
     ERROR_VERIFICATIONTIME(5, "验证码过期"),
