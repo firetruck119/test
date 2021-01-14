@@ -797,7 +797,7 @@
 
                                 <input type="text" name="dbhflflsp" />
                                 <input type="text" name="dbhflflspk" />
-                                <input type="text" name="dbhflflspk1" />
+                                <!--<input type="text" name="dbhflflspk1" />-->
                                 <input type="text" name="dbhfltls" />
                             </div>
                             <input type="hidden" name="pdfType"/>
@@ -816,28 +816,22 @@
                                             <td style="width:25%;"><b>是否满足</b></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
-                                            <td><b>螺栓拉力</b></td>
+                                            <td><b>螺栓预紧力</b></td>
                                             <td><p><span id="dbhflflspk"></span>kN</p></td>
-                                            <td><p><span id="flslpk"></span>kN</p></td>
+                                            <td><p><span id="flssk"></span>kN</p></td>
                                             <td id="dbhflm1"></td>
-                                        </tr>
-                                        <tr style="background-color: rgb(220,220,220)">
-                                            <td><b>螺栓对法兰压力</b></td>
-                                            <td><p><span id="dbhflflspk1"></span>kN</p></td>
-                                            <td><p><span id="flsyjpk"></span>kN</p></td>
-                                            <td id="dbhflm2"></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
                                             <td><b>螺栓拧紧力矩</b></td>
                                             <td><p><span id="dbhfltls"></span>N·m</p></td>
                                             <td><p><span id="tlss"></span>N·m</p></td>
-                                            <td id="dbhflm3"></td>
+                                            <td id="dbhflm2"></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
                                             <td><b>焊缝抗拉强度</b></td>
                                             <td><p><span id="dbhflhfffw"></span>N/mm<sup>2</sup></p></td>
                                             <td><p><span id="dbhflhfs1"></span>N/mm<sup>2</sup></p></td>
-                                            <td id="dbhflm4"></td>
+                                            <td id="dbhflm3"></td>
                                         </tr>
                                      </table>
                                 </div>
@@ -979,9 +973,9 @@
         dbhflflspk:function () {
             return dbhflflsp / 1000 ;
         },
-        dbhflflspk1:function () {
-            return dbhflflspk ;
-        },
+        // dbhflflspk1:function () {
+        //     return dbhflflspk ;
+        // },
         dbhfltls:function () {
             return 0.18 * dbhflflsp * dbhfllsgcd / 1000 ;
         },
