@@ -58,9 +58,12 @@ public class UserManagerController {
     @ResponseBody
     public String updataUser( @RequestBody UserEntity user,HttpServletRequest req) throws Exception {
         MyUserDetails currentUser=getCurrentUser();
-        if(!currentUser.getUsername().equals(user.getUsername())&&RoleEntity.getRoleByString(user.getRole()).getLevel()>=currentUser.getLevel()){
+        if(!currentUser.getUsername().equals(user.getUsername())&&user.getLevel()>=currentUser.getLevel()){
             throw new CustomerException("没有权限");
         }
+//        if(!currentUser.getUsername().equals(user.getUsername())&&RoleEntity.getRoleByString(user.getRole()).getLevel()>=currentUser.getLevel()){
+//            throw new CustomerException("没有权限");
+//        }
         if(user.getIpaddress().isEmpty())user.setIpaddress(req.getRemoteAddr());
         userService.updataUser(user);
         return "";

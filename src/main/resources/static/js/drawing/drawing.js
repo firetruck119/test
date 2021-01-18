@@ -223,7 +223,7 @@ var editbuttons = {
                     accept=".xls">
                     <el-button style="width: 60%;margin: 10px 20%" >上传表</el-button>
                 </el-upload>
-          <newTableDialog key="update" :userlevel="" :info="data" ref="uptableform" @getTable="getTable"></newTableDialog>
+          <newTableDialog key="update" :info="data" ref="uptableform" @getTable="getTable"></newTableDialog>
           <el-button style="width: 60%;margin: 10px 20%" @click="upInfo">编辑表名</el-button>
           <el-popover
                 placement="left"

@@ -69,7 +69,8 @@ var newTableDialog = Vue.component('new_table_dialog', {
             this.userdata.level = e.level;
             this.userdata.role = e.role;
             this.visible = true;
-            this.isedit = (this.user.level>=3&&e.level<3)||this.user.username==e.username;
+            this.isedit = true;
+            // this.isedit = (this.user.level>=3 && e.level<3)||this.user.username==e.username;
         },
         openInsertDialog() {
             this.title = "新建用户";
@@ -82,7 +83,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
             this.userdata.level = "";
             this.userdata.role = "";
             this.visible = true;
-            this.isedit = true;
+            this.isedit = false;
         },
 
         handleClose() {
@@ -135,22 +136,23 @@ var newTableDialog = Vue.component('new_table_dialog', {
         :destroy-on-close="true "
         :before-close="handleClose">
         <el-form  ref="form" :model="userdata" label-width="80px">
-            <el-form-item label="用户名">
+            <el-form-item v-if="user.level>=3 && userdata.level<user.level" label="用户名">
                 <el-input v-model="userdata.username"></el-input>
             </el-form-item>
-            <el-form-item label="密码">
+            <el-form-item v-if="user.level>=3 &&(userdata.username==user.username || userdata.level<user.level)" label="密码">
                 <el-input v-model="userdata.password" ></el-input>
             </el-form-item>
-            <el-form-item label="姓名">
+            <el-form-item v-if="user.level>=3 && userdata.level<user.level" label="姓名">
                 <el-input v-model="userdata.userrealname"></el-input>
             </el-form-item>
-            <el-form-item v-if="isedit" label="邮箱">
+            <!--<el-form-item v-if="isedit" label="邮箱">-->
+            <el-form-item v-if="user.level>=3 &&(userdata.username==user.username || userdata.level<user.level)" label="邮箱">
                 <el-input type="email" v-model="userdata.emailaddress"></el-input>
             </el-form-item>
-           <el-form-item v-if="(userdata.level>2&&user.username==userdata.username)||(user.level==4 && userdata.level<user.level)" label="ip地址">
+           <el-form-item v-if="user.level==4 && !userdata.ipCheck" label="ip地址">
                 <el-input v-model="userdata.ipaddress"></el-input>
             </el-form-item>
-            <el-form-item v-if="userdata.username!=user.usernam&&userdata.level<user.level" label="身份">
+            <el-form-item v-if="user.level>=3 && userdata.level<user.level" label="身份">
                 <el-select v-model="userdata.role" @change="change" placeholder="请选择身份">
                     <el-option v-for="i in rolelist" :label="i" :value="i"></el-option>
                 </el-select>
@@ -158,7 +160,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="visible = false">取 消</el-button>
-            <el-button type="primary" @click="!isedit?updataTable():createNewTable()">确 定</el-button>
+            <el-button type="primary" @click="isedit?updataTable():createNewTable()">确 定</el-button>
         </span>
     </el-dialog>
 `,
@@ -290,7 +292,7 @@ var user_manager_table = {
                         e => {
                             this.visible = false;
                             this.$emit("getuseruist");
-                            this.$message.success("chenggong")
+                            this.$message.success("成功")
                         }).catch(
                         (e) => {
                             this.$message.error(e.response.data.message);
