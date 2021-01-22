@@ -489,6 +489,7 @@ public class CostEntity {
     private String lt5Model;
     private String xdModel;
     private String gdModel;
+    private String gdczModel;
     private String mbModel;
     private String djlsModel;
     private String grujxModel;

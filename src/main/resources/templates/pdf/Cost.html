@@ -1196,7 +1196,17 @@
                                                 <option value="PH250*250-138.8">PH250*250-138.8</option>
                                                 <option value="PH300*250-146.6">PH300*250-146.6</option>
                                                 <option value="PH300*300-168.1">PH300*300-168.1</option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">轨道材质选择</td>
+                                        <td>
+                                            <select name="gdczModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="Q235B">Q235B</option>
+                                                <option value="Q355B">Q355B</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -2635,18 +2645,18 @@
     djxhModelList={
         "管材式":{
             djlx:"管材式",
-            cbdjdj:5300,
+            cbdjdj:6000,
         },
         "板拼式":{
             djlx:"板拼式",
-            cbdjdj:4600,
+            cbdjdj:5500,
         },
     };
     //大臂类型
     dbxhModelList={
         "单臂横截面":{
-            cbdbmc:'方管式吊臂',
-            cbdbdj:5300,
+            cbdbmc:'管式吊臂',
+            cbdbdj:6000,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -2658,7 +2668,7 @@
         },
         "单臂变截面":{
             cbdbmc:'板拼式吊臂',
-            cbdbdj:4600,
+            cbdbdj:5500,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -2670,7 +2680,7 @@
         },
         "1+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:6000,
+            cbdbdj:6300,
             cb3yqdj:4000,
             cbssjjmc:'1+1伸缩臂机加件',
             cbssjjsl:1,
@@ -2682,7 +2692,7 @@
         },
         "2+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:6000,
+            cbdbdj:6300,
             cb3yqdj:5000,
             cbssjjmc:'2+1伸缩臂机加件',
             cbssjjsl:1,
@@ -2694,7 +2704,7 @@
         },
         "3+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:6000,
+            cbdbdj:6300,
             cb3yqdj:6000,
             cbssjjmc:'3+1伸缩臂机加件',
             cbssjjsl:1,
@@ -2706,7 +2716,7 @@
         },
         "4+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:6000,
+            cbdbdj:6300,
             cb3yqdj:8000,
             cbssjjmc:'4+1伸缩臂机加件',
             cbssjjsl:1,
@@ -2722,15 +2732,17 @@
         "混凝土配重块":{
             cbpzkmc:'混凝土',
             cbpzkdj:316,
+            cbpzklyl:0.95,
             cbpzfgzl:' ',
-            cbpzfgdj:4400,
+            cbpzfgdj:5400,
             cbpzfglyl:1,
             cbpzktzl:' ',
-            cbpzktdj:4400,
+            cbpzktdj:5400,
         },
         "钢板配重块":{
             cbpzkmc:'钢板',
-            cbpzkdj:4800,
+            cbpzkdj:6000,
+            cbpzklyl:0.9,
             cbpzfgzl:0,
             cbpzfgdj:0,
             cbpzfglyl:1,
@@ -2742,15 +2754,15 @@
     lzxhModelList={
         "固定立柱":{
             cblzmc:'固定立柱',
-            cblzdj:4600,
+            cblzdj:5500,
         },
         "1+1顶升立柱":{
             cblzmc:'1+1顶升立柱',
-            cblzdj:4600,
+            cblzdj:5500,
         },
         "2+1顶升立柱":{
             cblzmc:'2+1顶升立柱',
-            cblzdj:4600,
+            cblzdj:5500,
         },
     };
     //齿条
@@ -2780,13 +2792,13 @@
             cblt1sl:4,
             cblt1cd:" ",
             cblt1dj:180,
-            cblt1lyl:" ",
+            cblt1lyl:0.9,
         },
         "宏达304链条1246":{
             cblt1sl:4,
             cblt1cd:" ",
             cblt1dj:290,
-            cblt1lyl:" ",
+            cblt1lyl:0.9,
         },
         "无":{
             cblt1sl:0,
@@ -2801,13 +2813,13 @@
             cblt2sl:4,
             cblt2cd:" ",
             cblt2dj:200,
-            cblt2lyl:" ",
+            cblt2lyl:0.9,
         },
         "宏达304链条1266":{
             cblt2sl:4,
             cblt2cd:" ",
             cblt2dj:325,
-            cblt2lyl:" ",
+            cblt2lyl:0.9,
         },
         "无":{
             cblt2sl:0,
@@ -2822,13 +2834,13 @@
             cblt3sl:4,
             cblt3cd:" ",
             cblt3dj:270,
-            cblt3lyl:" ",
+            cblt3lyl:0.9,
         },
         "宏达304链条1666":{
             cblt3sl:4,
             cblt3cd:" ",
             cblt3dj:460,
-            cblt3lyl:" ",
+            cblt3lyl:0.9,
         },
         "无":{
             cblt3sl:0,
@@ -2843,13 +2855,13 @@
             cblt4sl:4,
             cblt4cd:" ",
             cblt4dj:" ",
-            cblt4lyl:" ",
+            cblt4lyl:0.9,
         },
         "宏达304链条2466":{
             cblt4sl:4,
             cblt4cd:" ",
             cblt4dj:" ",
-            cblt4lyl:" ",
+            cblt4lyl:0.9,
         },
         "无":{
             cblt4sl:0,
@@ -2864,13 +2876,13 @@
             cblt5sl:2,
             cblt5cd:" ",
             cblt5dj:180,
-            cblt5lyl:" ",
+            cblt5lyl:0.9,
         },
         "宏达304链条1246":{
             cblt5sl:2,
             cblt5cd:" ",
             cblt5dj:290,
-            cblt5lyl:" ",
+            cblt5lyl:0.9,
         },
         "无":{
             cblt5sl:0,
@@ -2906,221 +2918,229 @@
     gdModelList={
         'I20b-31':{
             cbgdxh:"I20b-31",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:31,
         },
         'I22b-36.5':{
             cbgdxh:"I22b-36.5",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:36.5,
         },
         'I25b-42':{
             cbgdxh:"I25b-42",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:42,
         },
         'I28b-47.8':{
             cbgdxh:"I28b-47.8",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:47.8,
         },
         'I32b-57.7':{
             cbgdxh:"I32b-57.7",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:57.7,
         },
         'H150*150-31.1':{
             cbgdxh:"H150*150-31.1",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:31.1,
         },
         'H175*175-40.4':{
             cbgdxh:"H175*175-40.4",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:40.4,
         },
         'H200*200-49.9':{
             cbgdxh:"H200*200-49.9",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:49.9,
         },
         'H200*204-56.2':{
             cbgdxh:"H200*204-56.2",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:56.2,
         },
         'H250*250-71.8':{
             cbgdxh:"H250*250-71.8",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:71.8,
         },
         'H250*255-81.6':{
             cbgdxh:"H250*255-81.6",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:81.6,
         },
         'H300*300-93':{
             cbgdxh:"H300*300-93",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:93,
         },
         'H300*305-105':{
             cbgdxh:"H300*305-105",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:105,
         },
         'H200*200T-71':{
             cbgdxh:"H200*200T-71",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:71,
         },
         'H250*250T-99':{
             cbgdxh:"H250*250T-99",
-            cbgdcz:"Q235B",
+            // cbgdcz:"Q235B",
             cbgdsl:1,
-            cbgddj:4200,
+            // cbgddj:4200,
             cbgdmmzl:99,
         },
         'PH216*200-84.7':{
             cbgdxh:"PH216*200-84.7",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:84.7,
         },
         'PH266*250-128.1':{
             cbgdxh:"PH266*250-128.1",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:128.1,
         },
         'PH200*200-90.7':{
             cbgdxh:"PH200*200-90.7",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:90.7,
         },
         'PH220*170-82.6':{
             cbgdxh:"PH220*170-82.6",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:82.6,
         },
         'PH250*200-117.4':{
             cbgdxh:"PH250*200-117.4",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:117.4,
         },
         'PH250*250-104.2':{
             cbgdxh:"PH250*250-104.2",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:104.2,
         },
         'PH250*250-113.3':{
             cbgdxh:"PH250*250-113.3",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:113.3,
         },
         'PH250*250-138.8':{
             cbgdxh:"PH250*250-138.8",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:138.8,
         },
         'PH300*250-146.6':{
             cbgdxh:"PH300*250-146.6",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:146.6,
         },
         'PH300*300-168.1':{
             cbgdxh:"PH300*300-168.1",
-            cbgdcz:"Q355B",
+            // cbgdcz:"Q355B",
             cbgdsl:1,
-            cbgddj:8000,
+            // cbgddj:8000,
             cbgdmmzl:168.1,
         },
-        "其它":{
-            cbgdxh:" ",
-            cbgdcz:" ",
-            cbgdsl:" ",
-            cbgddj:" ",
-            cbgdmmzl:" ",
-        }
+        // "其它":{
+        //     cbgdxh:" ",
+        //     cbgdcz:" ",
+        //     cbgdsl:" ",
+        //     cbgddj:" ",
+        //     cbgdmmzl:" ",
+        // }
+    };
+    gdczModelList={
+        "Q235B":{
+            cbgdcz:'Q235B',
+        },
+        "Q355B":{
+            cbgdcz:'Q355B',
+        },
     };
     //埋板
     mbModelList={
         "350*350*12":{
             cbmbxh:'350*350*12',
             cbmbmzl:10.8,
-            cbmbdj:65,
+            cbmbdj:70,
             cbmbdjdw:'元/块',
             cbmblyl:1,
         },
         "400*400*16":{
             cbmbxh:'400*400*16',
             cbmbmzl:18.3,
-            cbmbdj:110,
+            cbmbdj:119,
             cbmbdjdw:'元/块',
             cbmblyl:1,
         },
         "450*450*16":{
             cbmbxh:'450*450*16',
             cbmbmzl:23.6,
-            cbmbdj:125,
+            cbmbdj:135,
             cbmbdjdw:'元/块',
             cbmblyl:1,
         },
         "500*500*20":{
             cbmbxh:'500*500*20',
             cbmbmzl:35.8,
-            cbmbdj:150,
+            cbmbdj:162,
             cbmbdjdw:'元/块',
             cbmblyl:1,
         },
         "550*550*25":{
             cbmbxh:'550*550*25',
             cbmbmzl:51.67,
-            cbmbdj:195,
+            cbmbdj:211,
             cbmbdjdw:'元/块',
             cbmblyl:1,
         },
@@ -3129,7 +3149,7 @@
             cbmbmzl:' ',
             cbmbdj:5600,
             cbmbdjdw:'元/吨',
-            cbmblyl:" ",
+            cbmblyl:0.85,
         },
     };
     //地脚螺栓
@@ -3216,19 +3236,19 @@
             cbgrujxmc:'GRU285检修平台',
             cbgrujxsl:1,
             cbgrujxzl:" ",
-            cbgrujxlyl:" ",
+            cbgrujxlyl:0.9,
         },
         "GRU295检修平台":{
             cbgrujxmc:'GRU295检修平台',
             cbgrujxsl:1,
             cbgrujxzl:" ",
-            cbgrujxlyl:" ",
+            cbgrujxlyl:0.9,
         },
         "GRU313检修平台":{
             cbgrujxmc:'GRU313检修平台',
             cbgrujxsl:1,
             cbgrujxzl:" ",
-            cbgrujxlyl:" ",
+            cbgrujxlyl:0.9,
         },
         "无":{
             cbgrujxmc:'无',
@@ -3243,61 +3263,61 @@
             cbqsjgjxmc:'105起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "145起升机构检修平台":{
             cbqsjgjxmc:'145起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "175起升机构检修平台":{
             cbqsjgjxmc:'175起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "275起升机构检修平台":{
             cbqsjgjxmc:'275起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "185起升机构检修平台":{
             cbqsjgjxmc:'185起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "285起升机构检修平台":{
             cbqsjgjxmc:'285起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "385起升机构检修平台":{
             cbqsjgjxmc:'385起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "295起升机构检修平台":{
             cbqsjgjxmc:'295起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "495起升机构检修平台":{
             cbqsjgjxmc:'495起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "313起升机构检修平台":{
             cbqsjgjxmc:'313起升机构检修平台',
             cbqsjgjxsl:1,
             cbqsjgjxzl:" ",
-            cbqsjgjxlyl:" ",
+            cbqsjgjxlyl:0.9,
         },
         "无":{
             cbqsjgjxmc:'无',
@@ -3312,19 +3332,19 @@
             cbssjgjxmc:'6模数2.78伸缩机构检修平台',
             cbssjgjxsl:1,
             cbssjgjxzl:" ",
-            cbssjgjxlyl:" ",
+            cbssjgjxlyl:0.9,
         },
         "6模数1.7伸缩机构检修平台":{
             cbssjgjxmc:'6模数1.7伸缩机构检修平台',
             cbssjgjxsl:1,
             cbssjgjxzl:" ",
-            cbssjgjxlyl:" ",
+            cbssjgjxlyl:0.9,
         },
         "8模数1.7伸缩机构检修平台":{
             cbssjgjxmc:'8模数1.7伸缩机构检修平台',
             cbssjgjxsl:1,
             cbssjgjxzl:" ",
-            cbssjgjxlyl:" ",
+            cbssjgjxlyl:0.9,
         },
         "无":{
             cbssjgjxmc:'无',
@@ -3505,7 +3525,23 @@
                 return ' ';
             }
         },
-
+        gdczModel: function () {
+            if ( yxjgModel == '无') {
+                $('[name=gdczModel]').prop('disabled', true);
+                data.datalist['gdczModel'].color = 'rgb(227, 227, 227)';
+                return gdczModel;
+            } else {
+                if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
+                    $('[name=gdczModel]').prop('disabled', true);
+                    data.datalist['gdczModel'].color = 'rgb(227, 227, 227)';
+                    return "Q355B";
+                }else {
+                    $('[name=gdczModel]').prop('disabled', false)
+                    data.datalist['gdczModel'].color = 'white';
+                    return ' ';
+                }
+            }
+        },
         lt1Model: function () {
             if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' || dbxhModel == '1+1伸缩臂' ) {
                 $('[name=lt1Model]').prop('disabled', true);
@@ -3723,11 +3759,17 @@
         cbdbdj: function () {
             return dbxhModelList[ dbxhModel ]['cbdbdj'];
         },
+        cbdblyl: function () {
+            return 0.85 ;
+        },
         cbpzkmc: function () {
             return pzkModelList[ pzkModel ]['cbpzkmc'];
         },
         cbpzkdj: function () {
             return pzkModelList[ pzkModel ]['cbpzkdj'];
+        },
+        cbpzklyl: function () {
+            return pzkModelList[ pzkModel ]['cbpzklyl'];
         },
         cbpzfgzl: function () {
             return pzkModelList[ pzkModel ]['cbpzfgzl'];
@@ -3748,16 +3790,16 @@
             if ( cbpzktzl == 0 )
                 return 1 ;
             else
-                return ' ' ;
+                return 0.85 ;
         },
         cbpzxtdj: function () {
-            return 4400 ;
+            return 5400 ;
         },
         cbpzxtlyl: function () {
             if ( cbpzxtzl == 0 )
                 return 1 ;
             else
-                return ' ' ;
+                return 0.85 ;
         },
         cblzmc: function () {
             return lzxhModelList[ lzxhModel ]['cblzmc'];
@@ -3768,11 +3810,17 @@
         cblzdj: function () {
             return lzxhModelList[ lzxhModel ]['cblzdj'];
         },
+        cblzlyl: function () {
+            return 0.85 ;
+        },
         cbdjzl: function () {
             return m15 / 1000 ;
         },
         cbdjdj: function () {
             return djxhModelList[ djxhModel ]['cbdjdj'];
+        },
+        cbdjlyl: function () {
+            return 0.85 ;
         },
         cb3zl: function () {
             if ( pzkModel == "混凝土配重块" ) {
@@ -3792,7 +3840,7 @@
             return cb3zl * 0.03 ;
         },
         cb3hsdj: function () {
-            return 7500 ;
+            return 8000 ;
         },
         cb3qdj: function () {
             return 500 ;
@@ -4101,7 +4149,7 @@
             if ( yxjgModel == "无" ) {
                 return '无' ;
             } else
-                return gdModelList[ gdModel ]['cbgdcz'];
+                return gdczModelList[ gdczModel ]['cbgdcz'];
         },
         cbgdsl: function () {
             if ( yxjgModel == "无" ) {
@@ -4115,17 +4163,32 @@
             } else
                 return cbgdcd * cbgdmmzl / 1000 ;
         },
+        // cbgddj: function () {
+        //     if ( yxjgModel == "无" ) {
+        //         return 0 ;
+        //     } else
+        //         return gdModelList[ gdModel ]['cbgddj'];
+        // },
         cbgddj: function () {
             if ( yxjgModel == "无" ) {
                 return 0 ;
-            } else
-                return gdModelList[ gdModel ]['cbgddj'];
+            } else{
+                if ( gdModel == "I20b-31" || gdModel == "I22b-36.5" || gdModel == "I25b-42" || gdModel == "I28b-47.8" || gdModel == "I32b-57.7" || gdModel == "H150*150-31.1" || gdModel == "H175*175-40.4" || gdModel == "H200*200-49.9" || gdModel == "H200*204-56.2" || gdModel == "H250*250-71.8" || gdModel == "H250*255-81.6" || gdModel == "H300*300-93" || gdModel == "H300*305-105" || gdModel == "H200*200T-71" || gdModel == "H250*250T-99" ) {
+                    if ( gdczModel == "Q235B" ) {
+                        return 4900 ;
+                    }else if ( gdczModel == "Q355B" ) {
+                        return 5250 ;
+                    }
+                }else if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
+                    return 8000 ;
+                }
+            }
         },
         cbgdlyl: function () {
             if ( yxjgModel == "无" ) {
                 return 1 ;
             } else
-                return ' ' ;
+                return 0.95 ;
         },
         cbgdcd: function () {
             if ( yxjgModel == "无" ) {
@@ -4315,7 +4378,7 @@
             if ( cbsyjsl == 0 ) {
                 return 0 ;
             } else {
-                return 5300 ;
+                return 6000 ;
             }
         },
 
@@ -4323,21 +4386,6 @@
         cbmfsl: function () {
             return 1 ;
         },
-        // cbmftj: function () {
-        //     return mfModelList[ mfModel ]['cbmftj'];
-        // },
-        // cbmfdj: function () {
-        //     return mfModelList[ mfModel ]['cbmfdj'];
-        // },
-        // cbmfdjdw: function () {
-        //     return mfModelList[ mfModel ]['cbmfdjdw'];
-        // },
-        // cbbzsl: function () {
-        //     return 1 ;
-        // },
-        // cbbzdj: function () {
-        //     return 200 ;
-        // },
 
         cbmfdj: function () {
             if ( mfModel == "国内" ) {
@@ -4381,7 +4429,6 @@
                 }
             }
         },
-
 
         //运输
         cbc1lc: function () {
