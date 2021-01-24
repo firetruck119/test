@@ -132,7 +132,7 @@
 </head>
 
 <body>
-<div id="app">
+<div id="app" hidden hidden>
     <el-container>
         <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
             <!--头元素-->
@@ -694,10 +694,6 @@
 </script>
 
 <script>
-    $(document).ready(function () {
-        // InitNav(1)
-    })
-
     function showImage(form, element) {
         // 先获取用户上传的文件对象
         var fileObj = form.files[0];

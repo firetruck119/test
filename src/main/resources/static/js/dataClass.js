@@ -1,4 +1,8 @@
-
+$(document).ready(function () {
+    setTimeout(function (){
+        document.getElementById("app").hidden=false
+    }, 500);
+})
 function showjy() {
     $(".navbox").css("display", $(".navbox").css("display") == "block" ? "none" : "block")
 }
@@ -390,6 +394,9 @@ function getDrawing(tablename,tableSy){
     $select.change((e)=>{
         var $element=$(e.target);
         var val=$element.val();
+        for(var key in model[temp]){
+            model[temp][model[temp][key]["drawingType"]]=model[temp][key];
+        }
         var d=model[tablename][val];
         data.datalist[tablename].value=val;
         for(var key in d){

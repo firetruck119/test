@@ -72,7 +72,7 @@ public class UserManagerController {
     @ResponseBody
     public void deleteUser(@RequestBody UserEntity user) throws CustomerException {
         MyUserDetails currentUser=getCurrentUser();
-        if(user.getLevel()>=getCurrentUserLevel()){
+        if(user.getLevel()<getCurrentUserLevel()&&currentUser.getLevel()<3){
             throw new CustomerException("没有权限");
         }
         userService.deleteById(user);

@@ -53,7 +53,7 @@ public class Consts {
     public static final String[] ADMIN_PERMITS = new String[]{
 //            "/ExportProjectData",
 //            "/dataTable/downLoadExcel"
-            "/usermanager/deleteUser",
+//            "/usermanager/deleteUser",
     };
 
     //超级用户及以上有权限的页面
