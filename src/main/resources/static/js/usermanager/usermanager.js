@@ -148,7 +148,7 @@ var newTableDialog = Vue.component('new_table_dialog', {
             <el-form-item v-if="(user.level>=3 && (userdata.username==user.username || userdata.level<user.level)) || (user.level<=2 && userdata.username==user.username)" label="邮箱">
                 <el-input type="email" v-model="userdata.emailaddress"></el-input>
             </el-form-item>
-           <el-form-item v-if="user.level==4 && userdata.level<user.level && !userdata.ipCheck" label="ip地址">
+           <el-form-item v-if="user.level==4 && userdata.level<user.level && userdata.level!=user.level && !userdata.ipCheck" label="ip地址">
                 <el-input v-model="userdata.ipaddress"></el-input>
             </el-form-item>
             <el-form-item v-if="user.level>=3 && userdata.level<user.level" label="身份">
