@@ -49,9 +49,6 @@ public class TwoJibEntity {
     private Double mbg2;
     private Double mbm2;
 
-    private Double m4jbnd;
-    private Double m5dbnd;
-
     //    挠度
     private Double dbld;
     private Double dblx1;
@@ -112,6 +109,10 @@ public class TwoJibEntity {
     private Double m6dbxt;
     private Double m7dbxt;
 
+    private Double m4jbnd;
+    private Double m5dbnd;
+    private Double kgpdbpg;
+    private Double kgpdbpq;
     private Double pdbpg;
     private Double pdbpq;
 
@@ -224,9 +225,6 @@ public class TwoJibEntity {
         map.put("mbg2", CommonFunc.convertDoubleToString(mbg2));
         map.put("mbm2", CommonFunc.convertDoubleToString(mbm2));
 
-        map.put("m4jbnd", CommonFunc.convertDoubleToString(m4jbnd));
-        map.put("m5dbnd", CommonFunc.convertDoubleToString(m5dbnd));
-
         map.put("dbld", CommonFunc.convertDoubleToString(dbld));
         map.put("dblx1", CommonFunc.convertDoubleToString(dblx1));
         map.put("dblx2", CommonFunc.convertDoubleToString(dblx2));
@@ -283,6 +281,10 @@ public class TwoJibEntity {
         map.put("m6dbxt", CommonFunc.convertDoubleToString(m6dbxt));
         map.put("m7dbxt", CommonFunc.convertDoubleToString(m7dbxt));
 
+        map.put("m4jbnd", CommonFunc.convertDoubleToString(m4jbnd));
+        map.put("m5dbnd", CommonFunc.convertDoubleToString(m5dbnd));
+        map.put("kgpdbpg", CommonFunc.convertDoubleToString(kgpdbpg));
+        map.put("kgpdbpq", CommonFunc.convertDoubleToString(kgpdbpq));
         map.put("pdbpg", CommonFunc.convertDoubleToString(pdbpg));
         map.put("pdbpq", CommonFunc.convertDoubleToString(pdbpq));
 

@@ -368,6 +368,12 @@
                                         <td >m</td>
                                     </tr>
                                     <tr>
+                                        <td ><b>基臂总长</b></td>
+                                        <td ><p><i></i></p></td>
+                                        <td ><input type="text" name="ljbzc"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
                                         <td ><b>立柱总高度</b></td>
                                         <td ><p><i></i></p></td>
                                         <td ><input type="text" name="llzgd"/></td>
@@ -647,7 +653,7 @@
                                 <input type="text" name="lz1mmzl"/>
                                 <input type="text" name="lz2mmzl"/>
                                 <input type="text" name="myzjg"/>
-                                <input type="text" name="lbj"/>
+                                <!--<input type="text" name="lbj"/>-->
                                 <input type="text" name="lslhz"/>
                                 <input type="text" name="lshlhz"/>
                                 <input type="text" name="lhz1"/>
@@ -1017,7 +1023,7 @@
     $('[name=lzType]').change((e)=> {
         var $element = $(e.target);
         var val = $element.val();
-        if (val.indexOf("仰臂固定立柱") <= -1) {
+        if (val.indexOf("仰臂固定立柱数据库") <= -1) {
             $('[name=dbyj]').attr("readonly", true);
             data.datalist["dbyj"].color = "#bbb";
         } else {
@@ -1037,7 +1043,7 @@
             $('[name=llzgd]').attr("readonly", true);
             data.datalist["llzgd"].color = "#bbb";
         } else {
-            $('[name=dbyj]').attr("readonly", false);
+            $('[name=llzgd]').attr("readonly", false);
             data.datalist["llzgd"].color = "#FFF";
         };
     })
@@ -1053,8 +1059,9 @@
             data.datalist["lbpx"].color="#FFF";
         }
     })
-    var calculateFunction={
 
+
+    var calculateFunction={
         grutstx: function () {
             if ( gruModel == "GRU285" ) {
                 $('[name=grutstx]').prop('disabled', true)
@@ -1072,6 +1079,18 @@
                 $('[name=grutstx]').prop('disabled', true)
                 data.datalist['grutstx'].color = 'white';
                 return '无';
+            }
+        },
+
+        ljbzc: function () {
+            if ( lzType == "仰臂固定立柱数据库" ) {
+                $('[name=ljbzc]').prop('disabled', true)
+                data.datalist['ljbzc'].color = '#bbb';
+                return null;
+            } else {
+                $('[name=ljbzc]').prop('disabled', false)
+                data.datalist['ljbzc'].color = '#FFF';
+                return ' ';
             }
         },
 
@@ -1099,12 +1118,12 @@
         },
         lxtm:()=>{
             if ( dbModel &&dbModel.indexOf('1+1伸缩臂')>-1) return lxtz ;
-            if ( dbModel &&dbModel.indexOf('2+1伸缩臂')>-1) return lxtz /2;
-            if ( dbModel &&dbModel.indexOf('3+1伸缩臂')>-1) return lxtz /3;
-            if ( dbModel &&dbModel.indexOf('4+1伸缩臂')>-1) return lxtz /4;
+            if ( dbModel &&dbModel.indexOf('2+1伸缩臂')>-1) return lxtz / 2 ;
+            if ( dbModel &&dbModel.indexOf('3+1伸缩臂')>-1) return lxtz / 3 ;
+            if ( dbModel &&dbModel.indexOf('4+1伸缩臂')>-1) return lxtz / 4 ;
         },
         ldjm:()=>{
-            return lxtm /2;
+            return lxtm / 2 ;
         },
         ldbm:()=>{
             return lxtm + ldjm ;
@@ -1112,11 +1131,11 @@
 
         m4:() => {
             var data;
-            if ( dbModel.indexOf('DB') > -1 && lbd ) data = mdbb + mbmj * ( lbd - ldbbz / 1000 );
-            if ( dbModel.indexOf('1+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + ldbm * mbm1 ;
-            if ( dbModel.indexOf('2+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + ldbm * ( mbm1 + mbm2 );
-            if ( dbModel.indexOf('3+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + ldbm * ( mbm1 + mbm2 + mbm3 );
-            if ( dbModel.indexOf('4+1伸缩臂') > -1 && lbj ) data = mbgj + mbmj * lbj + mbg1 + mbg2 + mbg3 + mbg4 + ldbm * ( mbm1 + mbm2 + mbm3 + mbm4 );
+            if ( dbModel.indexOf('DB') > -1 && ljbzc ) data = mdbb + mbgj + mbmj * ( ljbzc - ldbbz / 1000 );
+            if ( dbModel.indexOf('1+1伸缩臂') > -1 && ljbzc ) data = mbgj + mbmj * ljbzc + mbg1 + ldbm * mbm1 ;
+            if ( dbModel.indexOf('2+1伸缩臂') > -1 && ljbzc ) data = mbgj + mbmj * ljbzc + mbg1 + mbg2 + ldbm * ( mbm1 + mbm2 );
+            if ( dbModel.indexOf('3+1伸缩臂') > -1 && ljbzc ) data = mbgj + mbmj * ljbzc + mbg1 + mbg2 + mbg3 + ldbm * ( mbm1 + mbm2 + mbm3 );
+            if ( dbModel.indexOf('4+1伸缩臂') > -1 && ljbzc ) data = mbgj + mbmj * ljbzc + mbg1 + mbg2 + mbg3 + mbg4 + ldbm * ( mbm1 + mbm2 + mbm3 + mbm4 );
             return data;
         },
         m6:()=>{
@@ -1183,24 +1202,24 @@
         lshlqg:function(){
             return lbd - ( lg / 2 ) - ( ldcgh - lbtzh ) ;
         },
-         lbj:function(){
-            let dbjs=null;
-            let temp= dbModel ;
-            if(!temp)
-                return ;
-            else if(temp.indexOf('1+1伸缩臂')>-1){
-                dbjs=1;
-            }else if(temp.indexOf('2+1伸缩臂')>-1){
-                dbjs=2;
-            }else if(temp.indexOf('3+1伸缩臂')>-1){
-                dbjs=3;
-            }else if(temp.indexOf('4+1伸缩臂')>-1){
-                dbjs=4;
-            }else if(temp.indexOf('单臂')>-1){
-                dbjs=0;
-            }
-            return lbx - ldcgh -0.1* dbjs ;
-         },
+         // lbj:function(){
+         //    let dbjs=null;
+         //    let temp= dbModel ;
+         //    if(!temp)
+         //        return ;
+         //    else if(temp.indexOf('1+1伸缩臂')>-1){
+         //        dbjs=1;
+         //    }else if(temp.indexOf('2+1伸缩臂')>-1){
+         //        dbjs=2;
+         //    }else if(temp.indexOf('3+1伸缩臂')>-1){
+         //        dbjs=3;
+         //    }else if(temp.indexOf('4+1伸缩臂')>-1){
+         //        dbjs=4;
+         //    }else if(temp.indexOf('单臂')>-1){
+         //        dbjs=0;
+         //    }
+         //    return lbx - ldcgh -0.1* dbjs ;
+         // },
 
         lbpx:function(){
             if( ydpzModel == "是" )

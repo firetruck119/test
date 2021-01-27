@@ -30,6 +30,7 @@ public class SingleJibEntity {
     private Double lbtzh;
     private Double ldcgh;
     private Double ldslzh;
+    private Double mbgj;
     private Double mbmj;
     private Double ldbb;
     private Double ldbbz;
@@ -126,6 +127,7 @@ public class SingleJibEntity {
         map.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
         map.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
+        map.put("mbgj", CommonFunc.convertDoubleToString(mbgj));
         map.put("mbmj", CommonFunc.convertDoubleToString(mbmj));
         map.put("ldbb", CommonFunc.convertDoubleToString(ldbb));
         map.put("ldbbz", CommonFunc.convertDoubleToString(ldbbz));
@@ -197,7 +199,7 @@ public class SingleJibEntity {
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
 
-        Double m4jbhzq = mdbb + ( dblm - ldbbz + dbll / 2 ) * mbmj / 1000 ;
+        Double m4jbhzq = mdbb + mbgj / 2 + ( dblm - ldbbz + dbll / 2 ) * mbmj / 1000 ;
         Double lslhz = lbd;
         Double lshlhz = lbd - ( ldcgh - lbtzh ) ;
         Double lhz1 = lshlhz ;
@@ -208,7 +210,7 @@ public class SingleJibEntity {
             lhz2 = lc2 + dbll / 2000 ;
         }
         Double lhz3 = lshlhz ;
-        Double lhzjb4 = ( mdbb * ( dblm - ldbb + dbll / 2 ) / 1000 + ( dblm - ldbbz + dbll / 2 ) * mbmj * ( dblm - ldbbz + dbll / 2 ) / 2000000 ) / m4jbhzq ;
+        Double lhzjb4 = ( mdbb * ( dblm - ldbb + dbll / 2 ) / 1000 + ( m4jbhzq - mdbb ) * ( dblm - ldbbz + dbll / 2 ) / 2000000 ) / m4jbhzq ;
         Double lhz5;
         if ( m5db == 0 ) {
             lhz5 = 0.0 ;

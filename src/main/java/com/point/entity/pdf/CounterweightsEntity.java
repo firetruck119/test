@@ -23,6 +23,14 @@ public class CounterweightsEntity {
     private Double h;
     private Double lbd;
     private Double lbx;
+//    private Double ltjbpz;
+    private Double dbyj;
+    private Double lbp;
+    private Double lbpx;
+    private Double ljbzc;
+    private Double llzgd;
+    private Double llzgdn;
+    private Double llzgdw;
     private Double lg;
     private Double ll;
     private Double npz;
@@ -60,41 +68,21 @@ public class CounterweightsEntity {
     private Double m20;
     private Double m21;
 
-    private Double lslqg;
-    private Double lshlqg;
-    private Double lqg1;
-    private Double lqg2;
-    private Double lqg3;
-    private Double lqg4;
-    private Double lqg5;
-    private Double lqg6;
-    private Double lqg7;
-    private Double lqg8;
-    private Double lqg9;
-    private Double lqg10;
-    private Double lqg11;
-    private Double lqg12;
-    private Double lqg13;
-    private Double lqg14;
-    private Double lqg15;
-    private Double lqg16;
-    private Double lqg17;
-    private Double lqg18;
-    private Double lqg19;
-    private Double lqg20;
-    private Double lqg21;
-    private Double ltjbpz;
-    private Double lbp;
-    private Double dbyj;
-    private Double lbpx;
+    private String qt1;
+    private String qt2;
 
     //    非界面
+    private String yxjgaz;
     private Double dcgssp;
     private Double grugssp;
     private Double lbtzh;
     private Double ldcgh;
     private Double ldslzh;
-    private String yxjgaz;
+//    private Double lxtz;
+//    private Double lxtm;
+//    private Double ldjm;
+//    private Double ldbm;
+
     private String hzzcxh;
 
 //    非界面--重心至回转中心
@@ -122,8 +110,29 @@ public class CounterweightsEntity {
     private Double lhz20;
     private Double lhz21;
 
-    private String qt1;
-    private String qt2;
+    private Double lslqg;
+    private Double lshlqg;
+    private Double lqg1;
+    private Double lqg2;
+    private Double lqg3;
+    private Double lqg4;
+    private Double lqg5;
+    private Double lqg6;
+    private Double lqg7;
+    private Double lqg8;
+    private Double lqg9;
+    private Double lqg10;
+    private Double lqg11;
+    private Double lqg12;
+    private Double lqg13;
+    private Double lqg14;
+    private Double lqg15;
+    private Double lqg16;
+    private Double lqg17;
+    private Double lqg18;
+    private Double lqg19;
+    private Double lqg20;
+    private Double lqg21;
 
     private String ydpz;
 
@@ -141,8 +150,6 @@ public class CounterweightsEntity {
     private String yxjgazModel;
     private String ffbbModel;
     private String ydpzModel;
-
-
 
     private Double ma1;
     private Double ma2;
@@ -229,9 +236,7 @@ public class CounterweightsEntity {
     private Double mqhl;
     private Double mkhl;
 
-    private Double llzgd;
-    private Double llzgdn;
-    private Double llzgdw;
+
     private String pzyzy2;
     private String pzyzm2;
     private String pzyzm;
@@ -252,9 +257,15 @@ public class CounterweightsEntity {
         map.put("h", CommonFunc.convertDoubleToString(h));
         map.put("lbd", CommonFunc.convertDoubleToString(lbd));
         map.put("lbx", CommonFunc.convertDoubleToString(lbx));
+//        map.put("ltjbpz", CommonFunc.convertDoubleToString(ltjbpz));
+        map.put("lbp", CommonFunc.convertDoubleToString(lbp));
+        map.put("lbpx", CommonFunc.convertDoubleToString(lbpx));
+        map.put("dbyj", CommonFunc.convertDoubleToString(dbyj));
         map.put("lg", CommonFunc.convertDoubleToString(lg));
         map.put("ll", CommonFunc.convertDoubleToString(ll));
         map.put("npz", CommonFunc.convertDoubleToString(npz));
+        map.put("ljbzc", CommonFunc.convertDoubleToString(ljbzc));
+
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
         map.put("mwr", CommonFunc.convertDoubleToString(mwr));
@@ -310,8 +321,6 @@ public class CounterweightsEntity {
         map.put("lqg19", CommonFunc.convertDoubleToString(lqg19));
         map.put("lqg20", CommonFunc.convertDoubleToString(lqg20));
         map.put("lqg21", CommonFunc.convertDoubleToString(lqg21));
-        map.put("ltjbpz", CommonFunc.convertDoubleToString(ltjbpz));
-        map.put("lbp", CommonFunc.convertDoubleToString(lbp));
 
         map.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
         map.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));

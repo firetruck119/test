@@ -809,6 +809,7 @@
                                 <input type="text" name="lbtzh" />
                                 <input type="text" name="ldcgh" />
                                 <input type="text" name="ldslzh" />
+                                <input type="text" name="mbgj" />
                                 <input type="text" name="mbmj" />
                                 <input type="text" name="ldbb" />
                                 <input type="text" name="ldbbz" />
@@ -1040,7 +1041,7 @@
             return 25 ;
         },
         m4jbcq:function(){
-            return  mdbb + ( dblm - ldbbz ) * mbmj / 1000 ;
+            return  mdbb + mbgj / 2 + ( dblm - ldbbz ) * mbmj / 1000 ;
         },
         m5db:function(){
             return m5 * gruqhxs ;
@@ -1066,7 +1067,7 @@
             return lshlc ;
         },
         lc4:function(){
-            return ( mdbb * ( dblm - ldbb ) / 1000 + ( dblm - ldbbz ) * mbmj * ( dblm - ldbbz ) / 2000000 ) / m4jbcq ;
+            return ( mdbb * ( dblm - ldbb ) / 1000 + ( m4jbcq - mdbb ) * ( dblm - ldbbz ) / 2000000 ) / m4jbcq ;
         },
         lc5:function(){
             if( m5db == 0 ){

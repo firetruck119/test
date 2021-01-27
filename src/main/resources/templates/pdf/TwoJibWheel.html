@@ -447,37 +447,37 @@
                                         <td style="width:17%;">单位</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>第1节臂两销轴距离</b></td>
+                                        <td ><b>基臂两销轴距离</b></td>
                                         <td ><p><i>l<sub>l1</sub></i></p></td>
                                         <td ><input type="text" name="dblx1"/></td>
                                         <td >mm</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>第2节臂搭接长度</b></td>
+                                        <td ><b>第一节伸缩臂搭接长度</b></td>
                                         <td ><p><i>l<sub>l2</sub></i></p></td>
                                         <td ><input type="text" name="dblx2"/></td>
                                         <td >mm</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>第3节臂搭接长度</b></td>
+                                        <td ><b>第二节伸缩臂搭接长度</b></td>
                                         <td ><p><i>l<sub>l3</sub></i></p></td>
                                         <td ><input type="text" name="dblx3"/></td>
                                         <td >mm</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>第1节臂根部至端部距离</b></td>
+                                        <td ><b>基臂后支撑点至端部距离</b></td>
                                         <td ><p><i>L<sub>l1</sub></i></p></td>
                                         <td ><input type="text" name="dbld1"/></td>
                                         <td >mm</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>第2节臂根部至端部距离</b></td>
+                                        <td ><b>第一节伸缩臂总长</b></td>
                                         <td ><p><i>L<sub>l2</sub></i></p></td>
                                         <td ><input type="text" name="dbld2"/></td>
                                         <td >mm</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>第3节臂根部至端部距离</b></td>
+                                        <td ><b>第二节伸缩臂总长</b></td>
                                         <td ><p><i>L<sub>l3</sub></i></p></td>
                                         <td ><input type="text" name="dbld3"/></td>
                                         <td >mm</td>
@@ -1700,7 +1700,7 @@
             return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
         },
         dblx3:function(){
-            return dblx2 ;
+            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
         },
         dbld1:function(){
             return (( lbx - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) - 0.67 + dblx1 / 2000 ) * 1000 ;
