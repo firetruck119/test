@@ -195,8 +195,10 @@ public class LowerLZDrawingEntity {
             return "LZX(815×1000)(16.0)" ;
         }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
             return "LZX(975×1000)(16.0)" ;
+        }else {
+            return " ";
         }
-        return null;
+//        return null;
     }
 
     public String _getImageName() {
@@ -260,7 +262,9 @@ public class LowerLZDrawingEntity {
             return "LZX(815×1000)(16.0).png";
         }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
             return "LZX(975×1000)(16.0).png";
+        }else{
+            return " ";
         }
-        return null;
+//            return null;
     }
 }

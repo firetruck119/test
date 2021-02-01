@@ -2396,6 +2396,8 @@
 
                                 <input type="text" name="nwd3" />
                                 <input type="text" name="umcxs" />
+                                <input type="text" name="wddzxs4" />
+                                <input type="text" name="wddzxs5" />
 
                                 <input type="text" name="llyqghz" />
 
@@ -2868,6 +2870,21 @@
         umcxs:function(){
             return yxjgModelList[ yxjgModel ]['umcxs'];
         },
+        wddzxs4:function(){
+            if( lqg4 < 0 ) {
+                return 1 ;
+            }else {
+                return 1.25 ;
+            }
+        },
+        wddzxs5:function(){
+            if( lqg5 < 0 ) {
+                return 1.25 ;
+            }else {
+                return 1 ;
+            }
+        },
+
         m5f:function(){
             if( m5 == 0 )
                 return 0 ;

@@ -40,6 +40,8 @@ public class ShzFarmStabilityEntity {
     private Double nwd3;
     private Double umcxs;
     private Double llyqghz;
+    private Double wddzxs4;
+    private Double wddzxs5;
 
 //    提示提醒
     private String grutstx;
@@ -435,6 +437,8 @@ public class ShzFarmStabilityEntity {
         map.put("nwd3", CommonFunc.convertDoubleToString(nwd3));
         map.put("umcxs", CommonFunc.convertDoubleToString(umcxs));
         map.put("llyqghz", CommonFunc.convertDoubleToString(llyqghz));
+        map.put("wddzxs4", CommonFunc.convertDoubleToString(wddzxs4));
+        map.put("wddzxs5", CommonFunc.convertDoubleToString(wddzxs5));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
@@ -790,7 +794,7 @@ public class ShzFarmStabilityEntity {
         Double ma1 = m1 * lqg1 * 10 * 1.25 ;
         Double ma2 = m2 * lqg2 * 10 * 1.25 ;
         Double ma3 = m3 * lqg3 * 10 * 1.25 ;
-        Double ma4 = m4 * lqg4 * 10 * 1.25 ;
+        Double ma4 = m4 * lqg4 * 10 * wddzxs4 ;
         Double ma6 = m6 * lqg6 * 10 * 1.25 ;
         Double ma20 = m20 * lqg20 * 10 * 1.25 ;
         map.put("msla", msla);
@@ -803,7 +807,7 @@ public class ShzFarmStabilityEntity {
         map.put("ma20", ma20);
 
         //计算稳定性工作状态自重产生的抗倾覆力矩
-        Double ma5 = m5 * lqg5 * 10 ;
+        Double ma5 = m5 * lqg5 * 10 * wddzxs5 ;
         Double ma7 = m7 * lqg7 * 10 ;
         Double ma8 = m8 * lqg8 * 10 ;
         Double ma9 = m9 * lqg9 * 10 ;

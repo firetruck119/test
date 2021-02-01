@@ -3040,6 +3040,9 @@
                                 <input type="text" name="ldcgh" />
                                 <input type="text" name="ldslzh" />
                                 <input type="text" name="umcxs" />
+                                <input type="text" name="wddzxs4" />
+                                <input type="text" name="wddzxs5" />
+                                <input type="text" name="wddzxs7" />
                             </div>
 
                             <input name="language" type="hidden"/>
@@ -3534,6 +3537,27 @@
                 case '260LZ':return 0.05;
                 case '350'  :return 0.05;
                 case '450'  :return 0.05;
+            }
+        },
+        wddzxs4:function(){
+            if( lqg4 < 0 ) {
+                return 1 ;
+            }else {
+                return 1.25 ;
+            }
+        },
+        wddzxs5:function(){
+            if( lqg5 < 0 ) {
+                return 1.25 ;
+            }else {
+                return 1 ;
+            }
+        },
+        wddzxs7:function(){
+            if( lqg7 < 0 ) {
+                return 1.25 ;
+            }else {
+                return 1 ;
             }
         },
 
