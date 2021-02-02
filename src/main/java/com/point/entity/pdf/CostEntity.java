@@ -979,20 +979,20 @@ public class CostEntity {
         Double cbdjzjzj = cbbtdjzj + cbssjgdjzj + cbgrudjzj + cbqsjgdj1zj + cbqsjgdj2zj + cbhzdjzj + cbyxdjzj ;
         Double cbwgjzj = cbdcgsszj + cbgrugsszj + cbaqszj + cbctzj + cbbthzzczj + cbhzhzzczj ;
         Double cbwxjzj = cblt1zj + cblt2zj + cblt3zj + cblt4zj + cblt5zj + cbxzzj + cbxdzj + cbssjjzj + cbdbxzzj ;
-        Double cbdqyyzj = cbdqzj + cbyyzj ;
+//        Double cbdqyyzj = cbdqzj + cbyyzj ;
         Double cbgdxtzj = cbgdzj + cbgdjxzj + cbmbzj + cbmbjxzj + cbdjlszj + cbmdzj + cbhlzj + cbptzj ;
         Double cbjxzj = cbgrujxzj + cbqsjgjxzj + cbssjgjxzj ;
         Double cbcnzyzj = cbsygdzj + cbsyjzj ;
         Double cbbzcbzj = cbmfzj ;
         Double cbyszj = cbc1zj + cbc2zj + cbc3zj + cbc4zj ;
-        Double cbbmuclzj = cb8mkzj + cb3djzj + cbdjzjzj + cbwgjzj + cbwxjzj + cbdqyyzj + cbgdxtzj + cbjxzj + cbcnzyzj + cbbzcbzj + cbyszj ;
+        Double cbbmuclzj = cb8mkzj + cb3djzj + cbdjzjzj + cbwgjzj + cbwxjzj + cbdqzj + cbyyzj + cbjxzj + cbcnzyzj + cbbzcbzj ;
 
         map.put("cb8mkzj", cb8mkzj);
         map.put("cb3djzj", cb3djzj);
         map.put("cbdjzjzj", cbdjzjzj);
         map.put("cbwgjzj", cbwgjzj);
         map.put("cbwxjzj", cbwxjzj);
-        map.put("cbdqyyzj", cbdqyyzj);
+//        map.put("cbdqyyzj", cbdqyyzj);
         map.put("cbgdxtzj", cbgdxtzj);
         map.put("cbjxzj", cbjxzj);
         map.put("cbcnzyzj", cbcnzyzj);
