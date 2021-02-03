@@ -290,6 +290,24 @@ asideDatas = {
             ]
         },
         {
+            title: '澳大利亚版计算书',
+            url: "pdf",
+            children: [
+                {
+                    title: '下回转伸缩臂',
+                    url: "AsXhzTS",
+                },
+                {
+                    title: '平板型防风销座',
+
+                },
+                {
+                    title: '螺栓头型防风销座',
+
+                },
+            ]
+        },
+        {
             title: '设计图纸',
             url: "pdf",
             children: [

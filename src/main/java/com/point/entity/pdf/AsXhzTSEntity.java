@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class ShzFarmStabilityEntity {
+public class AsXhzTSEntity {
     private String no;
     private String ver;
     private String xmmc;
@@ -28,8 +28,7 @@ public class ShzFarmStabilityEntity {
     private Double lg;
     private Double ll;
     private Double gxh;
-    private Double llylzhz;
-    private Double llylzdj;
+    private Double dbyj;
 
     //非页面数据
     private Double dcgssp;
@@ -39,9 +38,6 @@ public class ShzFarmStabilityEntity {
     private Double ldslzh;
     private Double nwd3;
     private Double umcxs;
-    private Double llyqghz;
-    private Double wddzxs4;
-    private Double wddzxs5;
 
 //    提示提醒
     private String grutstx;
@@ -401,6 +397,9 @@ public class ShzFarmStabilityEntity {
     private String dhzjgModel;
     private String yxjgModel;
 
+    private String typeOfMachine;//机型
+    private String haveOfMobileCounterweight;//移动配重选择
+
     private String yxjgazModel;//运行机构安装
     private String wdlydjlsModel;
 
@@ -426,8 +425,7 @@ public class ShzFarmStabilityEntity {
         map.put("lg", CommonFunc.convertDoubleToString(lg));
         map.put("ll", CommonFunc.convertDoubleToString(ll));
         map.put("gxh", CommonFunc.convertDoubleToString(gxh));
-        map.put("llylzhz", CommonFunc.convertDoubleToString(llylzhz));
-        map.put("llylzdj", CommonFunc.convertDoubleToString(llylzdj));
+        map.put("dbyj", CommonFunc.convertDoubleToString(dbyj));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
         map.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
@@ -436,9 +434,6 @@ public class ShzFarmStabilityEntity {
         map.put("ldslzh", CommonFunc.convertDoubleToString(ldslzh));
         map.put("nwd3", CommonFunc.convertDoubleToString(nwd3));
         map.put("umcxs", CommonFunc.convertDoubleToString(umcxs));
-        map.put("llyqghz", CommonFunc.convertDoubleToString(llyqghz));
-        map.put("wddzxs4", CommonFunc.convertDoubleToString(wddzxs4));
-        map.put("wddzxs5", CommonFunc.convertDoubleToString(wddzxs5));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
@@ -789,14 +784,14 @@ public class ShzFarmStabilityEntity {
         Map<String, Double> map = new HashMap();
 
 //计算稳定性工作状态自重及载荷产生的倾覆力矩
-        Double msla = tsl * lslqg * 10 * 2 ;
-        Double mshla = tshl * lshlqg * 10 * 1.4 ;
-        Double ma1 = m1 * lqg1 * 10 * 1.25 ;
-        Double ma2 = m2 * lqg2 * 10 * 1.25 ;
-        Double ma3 = m3 * lqg3 * 10 * 1.25 ;
-        Double ma4 = m4 * lqg4 * 10 * wddzxs4 ;
-        Double ma6 = m6 * lqg6 * 10 * 1.25 ;
-        Double ma20 = m20 * lqg20 * 10 * 1.25 ;
+        Double msla = tsl * lslqg * 10 ;
+        Double mshla = tshl * lshlqg * 10 ;
+        Double ma1 = m1 * lqg1 * 10 ;
+        Double ma2 = m2 * lqg2 * 10 ;
+        Double ma3 = m3 * lqg3 * 10 ;
+        Double ma4 = m4 * lqg4 * 10 ;
+        Double ma6 = m6 * lqg6 * 10 ;
+        Double ma20 = m20 * lqg20 * 10 ;
         map.put("msla", msla);
         map.put("mshla", mshla);
         map.put("ma1", ma1);
@@ -807,7 +802,7 @@ public class ShzFarmStabilityEntity {
         map.put("ma20", ma20);
 
         //计算稳定性工作状态自重产生的抗倾覆力矩
-        Double ma5 = m5 * lqg5 * 10 * wddzxs5 ;
+        Double ma5 = m5 * lqg5 * 10 ;
         Double ma7 = m7 * lqg7 * 10 ;
         Double ma8 = m8 * lqg8 * 10 ;
         Double ma9 = m9 * lqg9 * 10 ;
@@ -839,29 +834,29 @@ public class ShzFarmStabilityEntity {
         map.put("ma21", ma21);
 
         //计算稳定性工作状态风载荷产生的倾覆力矩（吊臂同向）
-        Double msltxw = p * asltx * hslg * 1.25 ;
-        Double mshltxw = p * ashltx * hshlg * 1.25 ;
-        Double mtxw1 = p * atx1 * hg1 * 1.25 ;
-        Double mtxw2 = p * atx2 * hg2 * 1.25 ;
-        Double mtxw3 = p * atx3 * hg3 * 1.25 ;
-        Double mtxw4 = p * atx4 * hg4 * 1.25 ;
-        Double mtxw5 = p * atx5 * hg5 * 1.25 ;
-        Double mtxw6 = p * atx6 * hg6 * 1.25 ;
-        Double mtxw7 = p * atx7 * hg7 * 1.25 ;
-        Double mtxw8 = p * atx8 * hg8 * 1.25 ;
-        Double mtxw9 = p * atx9 * hg9 * 1.25 ;
-        Double mtxw10 = p * atx10 * hg10 * 1.25 ;
-        Double mtxw11 = p * atx11 * hg11 * 1.25 ;
-        Double mtxw12 = p * atx12 * hg12 * 1.25 ;
-        Double mtxw13 = p * atx13 * hg13 * 1.25 ;
-        Double mtxw14 = p * atx14 * hg14 * 1.25 ;
-        Double mtxw15 = p * atx15 * hg15 * 1.25 ;
-        Double mtxw16 = p * atx16 * hg16 * 1.25 ;
-        Double mtxw17 = p * atx17 * hg17 * 1.25 ;
-        Double mtxw18 = p * atx18 * hg18 * 1.25 ;
-        Double mtxw19 = p * atx19 * hg19 * 1.25 ;
-        Double mtxw20 = p * atx20 * hg20 * 1.25 ;
-        Double mtxw21 = p * atx21 * hg21 * 1.25 ;
+        Double msltxw = p * asltx * hslg ;
+        Double mshltxw = p * ashltx * hshlg ;
+        Double mtxw1 = p * atx1 * hg1 ;
+        Double mtxw2 = p * atx2 * hg2 ;
+        Double mtxw3 = p * atx3 * hg3 ;
+        Double mtxw4 = p * atx4 * hg4 ;
+        Double mtxw5 = p * atx5 * hg5 ;
+        Double mtxw6 = p * atx6 * hg6 ;
+        Double mtxw7 = p * atx7 * hg7 ;
+        Double mtxw8 = p * atx8 * hg8 ;
+        Double mtxw9 = p * atx9 * hg9 ;
+        Double mtxw10 = p * atx10 * hg10 ;
+        Double mtxw11 = p * atx11 * hg11 ;
+        Double mtxw12 = p * atx12 * hg12 ;
+        Double mtxw13 = p * atx13 * hg13 ;
+        Double mtxw14 = p * atx14 * hg14 ;
+        Double mtxw15 = p * atx15 * hg15 ;
+        Double mtxw16 = p * atx16 * hg16 ;
+        Double mtxw17 = p * atx17 * hg17 ;
+        Double mtxw18 = p * atx18 * hg18 ;
+        Double mtxw19 = p * atx19 * hg19 ;
+        Double mtxw20 = p * atx20 * hg20 ;
+        Double mtxw21 = p * atx21 * hg21 ;
         map.put("msltxw", msltxw);
         map.put("mshltxw", mshltxw);
         map.put("mtxw1", mtxw1);
@@ -983,7 +978,10 @@ public class ShzFarmStabilityEntity {
         Double mkhl = mfhl1 + mfhl2 + mfhl3 + mfhl4 + mfhl5 + mfhl6 + mfhl7 + mfhl8 + mfhl9 + mfhl12 + mfhl13 + mfhl14 + mfhl15 + mfhl16 + mfhl17 + mfhl18 + mfhl19 + mfhl20 ;
         Double mqhl = mfhl10 + mfhl11 + mfhl21 ;
         Double mftxw = mftxw1 + mftxw2 + mftxw3 + mftxw4 + mftxw5 + mftxw6 + mftxw7 + mftxw8 + mftxw9 + mftxw10 + mftxw11 + mftxw12 + mftxw13 + mftxw14 + mftxw15 + mftxw16 + mftxw17 + mftxw18 + mftxw19 + mftxw20 + mftxw21 ;
-        Double mm1 = mq + mtxw ;
+        Double ms = 1.4 * tsl * 10 * lslqg ;
+        Double mo1 = 1.5 * ( mq + mtxw + ms );
+        Double mg1 = 3 * mq ;
+        Double mm1 = Math.max( mo1,mg1 ) ;
         Double mmx3 = nwd1 * nwd2 * flsjl * lg ;
         Double mmg3 = fdjlszfb * lg ;
         Double mm3 = yxjgModel == "无" ? mmg3 : Math.min(mmx3, mmg3) ;
@@ -996,6 +994,9 @@ public class ShzFarmStabilityEntity {
         map.put("mkhl", mkhl);
         map.put("mqhl", mqhl);
         map.put("mftxw", mftxw);
+        map.put("ms", ms);
+        map.put("mo1", mo1);
+        map.put("mg1", mg1);
         map.put("mm1", mm1);
         map.put("mmx3", mmx3);
         map.put("mmg3", mmg3);
@@ -1003,6 +1004,7 @@ public class ShzFarmStabilityEntity {
         map.put("mmh1", mmh1);
         map.put("mm1p", mm1p);
         map.put("mmh2", mmh2);
+
 
         //0°工作状态自重及载荷产生的倾覆力矩
         Double mslqg = tsl * lslqg * 10 * 1.25 ;
@@ -1303,26 +1305,26 @@ public class ShzFarmStabilityEntity {
         //45°轮压值计算
         Double mqhz = mslhz + mshlhz + mhz1 + mhz2 + mhz3 + mhz4 + mhz5 + mhz6 + mhz7 + mhz8 + mhz20 ;
         Double mkhz = mhz9 + mhz10 + mhz11 + mhz12 + mhz13 + mhz14 + mhz15 + mhz16 + mhz17 + mhz18 + mhz19 + mhz21 ;
-        Double vmab = 1.25 * mzj * 10 * ( lg - lqg9 ) / 2 / lg ;
-        Double vmcd = 1.25 * mzj * 10 * lqg9 / 2 / lg ;
+        Double vm = 1.25 * mzj * 10 / 4 ;
         Double mfhz = mqhz - mkhz ;
-        Double dtvgx = mfhz * Math.sin( Math.PI / 4 ) / ll / 2 ;
-        Double dtvgy = mfhz * Math.cos( Math.PI / 4 ) / lg / 2 ;
-        Double dtvx2 = msq * Math.cos( Math.PI / 4 ) / ll / 2 ;
-        Double dtvy2 = msq * Math.sin( Math.PI / 4 ) / lg / 2 ;
-        Double av2 = vmab - dtvgx + dtvgy - dtvx2 - dtvy2 ;
-        Double bv2 = vmab + dtvgx + dtvgy + dtvx2 - dtvy2 ;
-        Double cv2 = vmcd + dtvgx - dtvgy + dtvx2 + dtvy2 ;
-        Double dv2 = vmcd - dtvgx - dtvgy - dtvx2 + dtvy2 ;
+        Double mfhzx = mfhz * 0.707 ;
+        Double mfhzy = mfhz * 0.707 ;
+        Double dtvx = mfhzx / ll / 2 ;
+        Double dtvy = mfhzy / lg / 2 ;
+        Double dtv2 = msq / Math.sqrt(lg * lg + ll * ll) ;
+        Double av2 = vm - dtvx + dtvy - dtv2 ;
+        Double bv2 = vm + dtvx + dtvy ;
+        Double cv2 = vm + dtvx - dtvy + dtv2 ;
+        Double dv2 = vm - dtvx - dtvy ;
         map.put("mqhz", mqhz);
         map.put("mkhz", mkhz);
-        map.put("vmab", vmab);
-        map.put("vmcd", vmcd);
+        map.put("vm", vm);
         map.put("mfhz", mfhz);
-        map.put("dtvgx", dtvgx);
-        map.put("dtvgy", dtvgy);
-        map.put("dtvx2", dtvx2);
-        map.put("dtvy2", dtvy2);
+        map.put("mfhzx", mfhzx);
+        map.put("mfhzy", mfhzy);
+        map.put("dtvx", dtvx);
+        map.put("dtvy", dtvy);
+        map.put("dtv2", dtv2);
         map.put("av2", av2);
         map.put("bv2", bv2);
         map.put("cv2", cv2);
@@ -1336,8 +1338,8 @@ public class ShzFarmStabilityEntity {
 
         //45°水平力计算
         Double dth2 = mwhz / ll ;
-        Double ah2 = fwcx * Math.cos( Math.PI / 4 ) / 2 - dth2 ;
-        Double bh2 = fwcx * Math.cos( Math.PI / 4 ) / 2 + dth2 ;
+        Double ah2 = fwcx * 0.707 - dth2 ;
+        Double bh2 = fwcx * 0.707 + dth2 ;
         map.put("dth2", dth2);
         map.put("ah2", ah2);
         map.put("bh2", bh2);
@@ -1396,26 +1398,18 @@ public class ShzFarmStabilityEntity {
         Double mqql = mslql + mshlql + mql1 + mql2 + mql3 + mql4 + mql6 + mql20 ;
         Double mkql = mql5 + mql7 + mql8 + mql9 + mql10 + mql11 + mql12 + mql13 + mql14 + mql15 + mql16 + mql17 + mql18 + mql19 + mql21 ;
         Double mfql = mkql - mqql ;
-        Double vad = mfql / ll ;
-        Double vbc = 1.25 * mzj * 10 - vad ;
-        Double va1 = vad * ( lg - lqg9 ) / lg ;
-        Double vb1 = vbc * ( lg - lqg9 ) / lg ;
-        Double vc1 = vbc * lqg9 / lg ;
-        Double vd1 = vad * lqg9 / lg ;
+        Double vad = mfql / ll / 2 ;
+        Double vbc = 1.25 * mzj * 10 / 2 - vad ;
         Double dtv3 = msq / lg / 2 ;
-        Double av3 = va1 - dtv3 ;
-        Double bv3 = vb1 - dtv3 ;
-        Double cv3 = vc1 + dtv3 ;
-        Double dv3 = vd1 + dtv3 ;
+        Double av3 = vad - dtv3 ;
+        Double bv3 = vbc - dtv3 ;
+        Double cv3 = vbc + dtv3 ;
+        Double dv3 = vad + dtv3 ;
         map.put("mqql", mqql);
         map.put("mkql", mkql);
         map.put("mfql", mfql);
         map.put("vad", vad);
         map.put("vbc", vbc);
-        map.put("va1", va1);
-        map.put("vb1", vb1);
-        map.put("vc1", vc1);
-        map.put("vd1", vd1);
         map.put("dtv3", dtv3);
         map.put("av3", av3);
         map.put("bv3", bv3);
@@ -1483,25 +1477,17 @@ public class ShzFarmStabilityEntity {
         //非工作状态轮压值计算
         Double mfhl = mkhl - mqhl ;
         Double mwqf = mwqf1 + mwqf2 + mwqf3 + mwqf4 + mwqf5 + mwqf6 + mwqf7 + mwqf8 + mwqf9 + mwqf10 + mwqf11 + mwqf12 + mwqf13 + mwqf14 + mwqf15 + mwqf16 + mwqf17 + mwqf18 + mwqf19 + mwqf20 + mwqf21 ;
-        Double vbcf = mfhl / ll ;
-        Double vadf = mzjf * 10 - vbcf ;
-        Double vaf = vadf * ( lg - lqg9 ) / lg ;
-        Double vbf = vbcf * ( lg - lqg9 ) / lg ;
-        Double vcf = vbcf * lqg9 / lg ;
-        Double vdf = vadf * lqg9 / lg ;
+        Double vbcf = mfhl / ll / 2 ;
+        Double vadf = mzjf * 10 / 2 - vbcf ;
         Double dtvf = mwqf / lg / 2 ;
-        Double av4 = vaf - dtvf ;
-        Double bv4 = vbf - dtvf ;
-        Double cv4 = vcf + dtvf ;
-        Double dv4 = vdf + dtvf ;
+        Double av4 = vadf - dtvf ;
+        Double bv4 = vbcf - dtvf ;
+        Double cv4 = vbcf + dtvf ;
+        Double dv4 = vadf + dtvf ;
         map.put("mfhl", mfhl);
         map.put("mwqf", mwqf);
         map.put("vbcf", vbcf);
         map.put("vadf", vadf);
-        map.put("vaf", vaf);
-        map.put("vbf", vbf);
-        map.put("vcf", vcf);
-        map.put("vdf", vdf);
         map.put("dtvf", dtvf);
         map.put("av4", av4);
         map.put("bv4", bv4);
@@ -1752,6 +1738,18 @@ public class ShzFarmStabilityEntity {
             wdlyp3 = "有";
         }
         map.put("wdlyp3", CommonFunc.convertDoubleToString(wdlyp3));
+
+        Double mo1 = doubleMap.get("mo1");
+        Double mg1 = doubleMap.get("mg1");
+        String wdlyp4;
+        if ( mo1 < mg1 ) {
+            wdlyp4 = "<" ;
+        } else if ( mo1 == mg1 ) {
+            wdlyp4 = "=";
+        } else{
+            wdlyp4 = ">";
+        }
+        map.put("wdlyp4", CommonFunc.convertDoubleToString(wdlyp4));
 
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));
