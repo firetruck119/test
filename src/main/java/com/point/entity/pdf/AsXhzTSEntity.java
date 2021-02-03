@@ -47,6 +47,10 @@ public class AsXhzTSEntity {
     private Double flsjl;
     private Double nwd1;
     private Double nwd2;
+    private String txxxh;
+    private String txxdj;
+    private Double ftj;
+    private Double nt;
 
     //    埋件部分参数
     private String djlsxh;
@@ -402,6 +406,8 @@ public class AsXhzTSEntity {
 
     private String yxjgazModel;//运行机构安装
     private String wdlydjlsModel;
+    private String wdlytxxModel;
+    private String wdlytxxdjModel;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -441,6 +447,10 @@ public class AsXhzTSEntity {
         map.put("flsjl", CommonFunc.convertDoubleToString(flsjl));
         map.put("nwd1", CommonFunc.convertDoubleToString(nwd1));
         map.put("nwd2", CommonFunc.convertDoubleToString(nwd2));
+        map.put("txxxh", CommonFunc.convertDoubleToString(txxxh));
+        map.put("txxdj", CommonFunc.convertDoubleToString(txxdj));
+        map.put("ftj", CommonFunc.convertDoubleToString(ftj));
+        map.put("nt", CommonFunc.convertDoubleToString(nt));
 
         map.put("djlsxh", CommonFunc.convertDoubleToString(djlsxh));
         map.put("lsgca", CommonFunc.convertDoubleToString(lsgca));
@@ -982,7 +992,7 @@ public class AsXhzTSEntity {
         Double mo1 = 1.5 * ( mq + mtxw + ms );
         Double mg1 = 3 * mq ;
         Double mm1 = Math.max( mo1,mg1 ) ;
-        Double mmx3 = nwd1 * nwd2 * flsjl * lg ;
+        Double mmx3 = nwd1 * ( nwd2 * flsjl + nt * ftj ) * lg ;
         Double mmg3 = fdjlszfb * lg ;
         Double mm3 = yxjgModel == "无" ? mmg3 : Math.min(mmx3, mmg3) ;
         Double mmh1 = mm2 + mm3 ;

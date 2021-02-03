@@ -395,6 +395,52 @@
                                         <td >个</td>
                                     </tr>
                                     <tr>
+                                        <td><b>弹性销型号</b></td>
+                                        <td colspan="3">
+                                            <select name="wdlytxxModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="Ф12">Ф12</option>
+                                                <option value="Ф16">Ф16</option>
+                                                <option value="Ф20">Ф20</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>弹性销性能等级</b></td>
+                                        <td colspan="3">
+                                            <select name="wdlytxxdjModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="65Mn">65Mn</option>
+                                                <option value="A2-70">A2-70</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>弹性销型号</b></td>
+                                        <td ><p><i> </i></p></td>
+                                        <td ><input type="text" name="txxxh"/></td>
+                                        <td > </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>弹性销性能等级</b></td>
+                                        <td ><p><i> </i></p></td>
+                                        <td ><input type="text" name="txxdj"/></td>
+                                        <td > </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>弹性销最小双面剪切载荷</b></td>
+                                        <td ><p><i>F<sub>tj</sub></i></p></td>
+                                        <td ><input type="text" name="ftj"/></td>
+                                        <td >N</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>单个运行轮上的弹性销数量</b></td>
+                                        <td ><p><i>n<sub>t</sub></i></p></td>
+                                        <td ><input type="text" name="nt"/></td>
+                                        <td >个</td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="4"><b>埋件的抗倾覆力矩相关参数</b></td>
                                     </tr>
                                     <tr>
@@ -2565,6 +2611,33 @@
             lsgca:561,
         },
     };
+    wdlytxxModelList={
+        "Ф12":{
+            txxxh:'Ф12',
+            ftj:104100,
+        },
+        "Ф16":{
+            txxxh:'Ф16',
+            ftj:171000,
+        },
+        "Ф20":{
+            txxxh:'Ф20',
+            ftj:280600,
+        },
+        "无":{
+            txxxh:'无',
+            ftj:0,
+        },
+    };
+    wdlytxxdjModelList={
+        "65Mn":{
+            txxdj:'65Mn',
+        },
+        "A2-70":{
+            txxdj:'A2-70',
+        },
+    };
+
 </script>
 <script type="text/javascript">
     function isNumber(value) {         //验证是否为数字
@@ -2701,6 +2774,15 @@
         nwd2:function(){
             if ( yxjgModel == "无" )
                 return 0 ;
+        },
+        txxxh:function(){
+            return wdlytxxModelList[ wdlytxxModel ]['txxxh'];
+        },
+        txxdj:function(){
+            return wdlytxxdjModelList[ wdlytxxdjModel ]['txxdj'];
+        },
+        ftj:function(){
+            return wdlytxxModelList[ wdlytxxModel ]['ftj'];
         },
 
         //埋件
