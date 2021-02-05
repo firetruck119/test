@@ -721,7 +721,7 @@ public class RotaryStructureEntity {
         map.put("ta", ta);
         map.put("t", t);
 
-        Double pa = ( tw + tm +tg ) * ndbhz / 9550 / 0.8 / 0.94 ;
+        Double pa = ( tw + tm +tg ) * ndbhz / 9550 / 0.94 ;
         map.put("pa", pa);
 
 //回转电机制动力矩

@@ -9,7 +9,7 @@ import java.util.Map;
 import static java.lang.Math.sqrt;
 
 @Data
-public class IdlerWheelEntity {
+public class AsIdlerWheelEntity {
     private String no;
     private String ver;
     private String xmmc;

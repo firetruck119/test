@@ -298,12 +298,16 @@ asideDatas = {
                     url: "AsXhzTS",
                 },
                 {
-                    title: '平板型防风销座',
-
+                    title: '4+1伸缩臂吊臂',
+                    url:'AsFourJib'
                 },
                 {
-                    title: '螺栓头型防风销座',
-
+                    title: '4+1滚轮、链条及伸缩机构',
+                    url:'AsFourJibWheel'
+                },
+                {
+                    title: '1+1顶升立柱顶轮',
+                    url:'AsIdlerWheel'
                 },
             ]
         },
