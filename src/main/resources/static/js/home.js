@@ -302,6 +302,10 @@ asideDatas = {
                     url:'AsFourJib'
                 },
                 {
+                    title: '4+1吊臂强度',
+                    url:'AsqFourJib'
+                },
+                {
                     title: '4+1滚轮、链条及伸缩机构',
                     url:'AsFourJibWheel'
                 },
