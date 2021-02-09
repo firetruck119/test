@@ -653,7 +653,7 @@ public class AsFourJibEntity {
         Double q = ( m4jbcq + m5db ) * 10 / dblm ;
         Double f3 = 1.25 * q * dblm * dblm * dblm * dbll * ( 4 + 3 * kn ) / 24 / 210000 / dbix ;
         Double f = f1 + f2 + f3 ;
-        Double nd = dblm / 300 ;
+        Double nd = ( dblm + dbll ) / 300 ;
         map.put("kn", kn);
         map.put("mwz", mwz);
         map.put("f1", f1);
@@ -726,7 +726,7 @@ public class AsFourJibEntity {
         Double qi = m6dbxt * 10 / dblmi ;
         Double f3i = 1.25 * qi * dblmi * dblmi * dblmi * dblli * ( 4 + 3 * kni ) / 24 / 210000 / dbixi ;
         Double fi = f1i + f2i + f3i ;
-        Double ndi = dblmi / 300 ;
+        Double ndi = ( dblmi + dblli ) / 300 ;
         map.put("kni", kni);
         map.put("mwzi", mwzi);
         map.put("f1i", f1i);
@@ -795,7 +795,7 @@ public class AsFourJibEntity {
         Double qii = m7dbxt * 10 / dblmii ;
         Double f3ii = 1.25 * qii * dblmii * dblmii * dblmii * dbllii * ( 4 + 3 * knii ) / 24 / 210000 / dbixii ;
         Double fii = f1ii + f2ii + f3ii ;
-        Double ndii = dblmii / 300 ;
+        Double ndii =  ( dblmii + dbllii ) / 300 ;
         map.put("knii", knii);
         map.put("mwzii", mwzii);
         map.put("f1ii", f1ii);
@@ -860,7 +860,7 @@ public class AsFourJibEntity {
         Double qiii = m8dbxt * 10 / dblmiii ;
         Double f3iii = 1.25 * qiii * dblmiii * dblmiii * dblmiii * dblliii * ( 4 + 3 * kniii ) / 24 / 210000 / dbixiii ;
         Double fiii = f1iii + f2iii + f3iii ;
-        Double ndiii = dblmiii / 300 ;
+        Double ndiii = ( dblmiii + dblliii ) / 300 ;
         map.put("kniii", kniii);
         map.put("mwziii", mwziii);
         map.put("f1iii", f1iii);
@@ -921,7 +921,7 @@ public class AsFourJibEntity {
         Double qiv = m9dbxt * 10 / dblmiv ;
         Double f3iv = 1.25 * qiv * dblmiv * dblmiv * dblmiv* dblliv * ( 4 + 3 * kniv ) / 24 / 210000 / dbixiv ;
         Double fiv = f1iv + f2iv + f3iv ;
-        Double ndiv = dblmiv / 300 ;
+        Double ndiv = ( dblmiv + dblliv ) / 300 ;
         map.put("kniv", kniv);
         map.put("mwziv", mwziv);
         map.put("f1iv", f1iv);
