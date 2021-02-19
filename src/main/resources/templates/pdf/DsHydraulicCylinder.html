@@ -274,7 +274,7 @@
                                         <td>
                                             <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -283,7 +283,7 @@
                                         <td>
                                             <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -292,7 +292,7 @@
                                         <td>
                                             <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -1175,14 +1175,14 @@
             }
         },
 
-        swp: function(){
-            if( dcModel =='其它')
-                return ' ' ;
-        },
-        r1:function(){
-            if( dcModel =='其它')
-                return ' ' ;
-        },
+        // swp: function(){
+        //     if( dcModel =='其它')
+        //         return ' ' ;
+        // },
+        // r1:function(){
+        //     if( dcModel =='其它')
+        //         return ' ' ;
+        // },
         mwr:function(){
             return h * dcgssp * 4 ;
         },
@@ -1202,16 +1202,19 @@
         tshl:function(){
             return hwll + hsw ;
         },
-        m1:function(){
-            if( btModel =='其它')
-                return ' ' ;
-        },
+        // m1:function(){
+        //     if( btModel =='其它')
+        //         return ' ' ;
+        // },
         m2:function(){
             if( gruModel =='无')
                 return 0 ;
         },
         m3:function(){
-            return 25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return 25 ;
         },
         m5ds:function(){
             return m5 * grudsxs ;
@@ -1226,7 +1229,10 @@
             return tsl + tshl + m1 + m2 + m3 + m4 + m5ds + m6 + m7 + m10 + m11 + m12n ;
         },
         tsldsp:function(){
-            return tsl - mwr ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return tsl - mwr ;
         },
         tshldsp:function(){
             return 0 ;
@@ -1242,19 +1248,34 @@
         },
 
         lslhzf:function(){
-            return lbx ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lbx ;
         },
         lshlhzf:function(){
-            return lbx - ( ldcgh - lbtzh ) ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh - lbtzh ) ;
         },
         lhzf1:function(){
-            return lshlhzf ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh - lbtzh ) ;
         },
         lhzf2:function(){
-            return lbx - ( ldcgh - ldslzh ) ;
+            if ( m2 == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh - ldslzh ) ;
         },
         lhzf3:function(){
-            return lshlhzf ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh - lbtzh ) ;
         },
         lhzf5:function(){
             if( m5dsp == 0 )
@@ -1285,19 +1306,34 @@
         },
 
         lslfy:function(){
-            return lslhzf - llzyyg ;
+            if( tsldsp == 0 )
+                return 0 ;
+            else
+                return lslhzf - llzyyg ;
         },
         lshlfy:function(){
-            return lshlhzf - llzyyg ;
+            if( tshldsp == 0 )
+                return 0 ;
+            else
+                return lshlhzf - llzyyg ;
         },
         lfy1:function(){
-            return lhzf1 - llzyyg ;
+            if( m1 == 0 )
+                return 0 ;
+            else
+                return lhzf1 - llzyyg ;
         },
         lfy2:function(){
-            return lhzf2 - llzyyg ;
+            if( m2 == 0 )
+                return 0 ;
+            else
+                return lhzf2 - llzyyg ;
         },
         lfy3:function(){
-            return lhzf3 - llzyyg ;
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return lhzf3 - llzyyg ;
         },
         lfy4:function(){
             return lhzf4 - llzyyg ;
@@ -1334,16 +1370,34 @@
         },
 
         aslftx:function(){
-            return asltx ;
+            if( tsldsp == 0 )
+                return 0 ;
+            else
+                return asltx ;
+        },
+        ashlftx:function(){
+            if( tshldsp == 0 )
+                return 0 ;
+            else
+                return ' ';
         },
         aftx1:function(){
-            return acx1 ;
+            if( m1 == 0 )
+                return 0 ;
+            else
+                return acx1 ;
         },
         aftx2:function(){
-            return acx2 ;
+            if( m2 == 0 )
+                return 0 ;
+            else
+                return acx2 ;
         },
         aftx3:function(){
-            return 0.05 ;
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return 0.05 ;
         },
         aftx5ds:function(){
             if( m5dsp == 0 )
@@ -1373,6 +1427,36 @@
             return 0 ;
         },
 
+        hslfb:function(){
+            if( tsldsp == 0 )
+                return 0 ;
+            else
+                return ' ' ;
+        },
+        hshlfb:function(){
+            if( tshldsp == 0 )
+                return 0 ;
+            else
+                return ' ' ;
+        },
+        hfb1:function(){
+            if( m1 == 0 )
+                return 0 ;
+            else
+                return ' ' ;
+        },
+        hfb2:function(){
+            if( m2 == 0 )
+                return 0 ;
+            else
+                return ' ' ;
+        },
+        hfb3:function(){
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return ' ' ;
+        },
         hfb5:function(){
             if( m5dsp == 0 )
                 return 0 ;

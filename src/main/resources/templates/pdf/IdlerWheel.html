@@ -294,7 +294,7 @@
                                         <td colspan="4">
                                             <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -303,7 +303,7 @@
                                         <td colspan="3">
                                             <select name="dcgssModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -312,7 +312,7 @@
                                         <td colspan="3">
                                             <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -1529,9 +1529,9 @@
             return 250 ;
         },
         pf: function () {
-            if (h <= 20 && h > 0) return 800;
-            else if (20 < h && h <= 100) return 1100;
-            else if (100 < h && h <= 150) return 1300;
+            if (h <= 20 && h > 0) return 800 ;
+            else if (20 < h && h <= 100) return 1100 ;
+            else if (100 < h && h <= 150) return 1300 ;
             else if (h > 150) return ' ';
         },
         dldcw:function(){
@@ -1565,14 +1565,14 @@
         //     return dlxhxzModelList[ dlxhxzModel ]['zcxhxz'];
         // },
 
-        swp: function(){
-            if( dcModel =='其它')
-                return ' ' ;
-        },
-        r1:function(){
-            if( dcModel =='其它')
-                return ' ' ;
-        },
+        // swp: function(){
+        //     if( dcModel =='其它')
+        //         return ' ' ;
+        // },
+        // r1:function(){
+        //     if( dcModel =='其它')
+        //         return ' ' ;
+        // },
         mwr:function(){
             return h * dcgssp * 4 ;
         },
@@ -1592,16 +1592,19 @@
         tshl:function(){
             return hwll + hsw ;
         },
-        m1:function(){
-            if( btModel =='其它')
-                return ' ' ;
-        },
+        // m1:function(){
+        //     if( btModel =='其它')
+        //         return ' ' ;
+        // },
         m2:function(){
             if( gruModel =='无')
                 return 0 ;
         },
         m3:function(){
-            return  25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return 25 ;
         },
         m5ds:function(){
             return m5 * grudsxs ;
@@ -1614,13 +1617,22 @@
         },
 
         lsly:function(){
-            return lbd - llzyyg ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lbd - llzyyg ;
         },
         lshly:function(){
-            return lbd - ( ldcgh - lbtzh ) - llzyyg ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) - llzyyg ;
         },
         ly1:function(){
-            return lshly ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) - llzyyg ;
         },
         ly2:function(){
             if( m2 == 0 ){
@@ -1633,7 +1645,7 @@
             if( m3 == 0 ){
                 return 0 ;
             }else {
-                return lshly ;
+                return lbd - ( ldcgh - lbtzh ) - llzyyg ;
             }
         },
         ly4:function(){
@@ -1677,9 +1689,18 @@
             return lhz11 + llzyyg ;
         },
 
+        // 改到这里
         asltx: function(){
-            if( dcModel =='其它')
-                return ' ' ;
+            if( tsl == 0 )
+                return 0 ;
+        },
+        ashltx: function(){
+            if( tshl == 0 )
+                return 0 ;
+        },
+        atx1: function(){
+            if( m1 == 0 )
+                return 0 ;
         },
         atx2:function(){
             if( m2 == 0 )
@@ -1724,6 +1745,24 @@
             }
         },
 
+        hslb:function(){
+            if( tsl == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        hshlb:function(){
+            if( tshl == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
+        hb1:function(){
+            if( m1 == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
         hb2:function(){
             if( m2 == 0 )
                 return 0 ;
@@ -1838,13 +1877,22 @@
         },
 
         lslfyi:function(){
-            return lbx - llzyyg ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lbx - llzyyg ;
         },
         lshlfyi:function(){
-            return lbx - ( ldcgh -lbtzh ) - llzyyg ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh -lbtzh ) - llzyyg ;
         },
         lfy1i:function(){
-            return lshlfyi ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh -lbtzh ) - llzyyg ;
         },
         lfy2i:function(){
             if ( m2 == 0)
@@ -1856,7 +1904,7 @@
             if ( m3 == 0)
                 return 0 ;
             else
-                return lshlfyi ;
+                return lbx - ( ldcgh -lbtzh ) - llzyyg ;
         },
         lfy5i:function(){
             if( m5ds == 0 ){
@@ -1957,7 +2005,10 @@
         },
 
         hfb1:function(){
-            return hb1 - llzss ;
+            if ( m1 == 0)
+                return 0 ;
+            else
+                return hb1 - llzss ;
         },
         hfb2:function(){
             if ( m2 == 0)

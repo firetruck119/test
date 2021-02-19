@@ -298,6 +298,12 @@
                                         <td ><input type="text" name="dbyj"/></td>
                                         <td >°</td>
                                     </tr>
+                                    <tr>
+                                        <td ><b>大回转机构面心至轨道上表面的距离</b></td>
+                                        <td ><p><i> </i></p></td>
+                                        <td ><input type="text" name="lhzgd"/></td>
+                                        <td >m</td>
+                                    </tr>
                                 </table>
                             </div>
 
@@ -311,7 +317,7 @@
                                         <td>
                                             <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -338,7 +344,7 @@
                                         <td>
                                             <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -1664,6 +1670,38 @@
 
                                 <input type="text" name="m5f" />
                                 <input type="text" name="m13hzf" />
+
+                                <input type="text" name="hslg" />
+                                <input type="text" name="hshlg" />
+                                <input type="text" name="hg1" />
+                                <input type="text" name="hg2" />
+                                <input type="text" name="hg3" />
+                                <input type="text" name="hg4" />
+                                <input type="text" name="hg5" />
+                                <input type="text" name="hg6" />
+                                <input type="text" name="hg7" />
+                                <input type="text" name="hg8" />
+                                <input type="text" name="hg9" />
+                                <input type="text" name="hg10" />
+                                <input type="text" name="hg11" />
+                                <input type="text" name="hg12" />
+                                <input type="text" name="hg13" />
+                                <input type="text" name="hg14" />
+
+                                <input type="text" name="hgf1" />
+                                <input type="text" name="hgf2" />
+                                <input type="text" name="hgf3" />
+                                <input type="text" name="hgf4" />
+                                <input type="text" name="hgf5" />
+                                <input type="text" name="hgf6" />
+                                <input type="text" name="hgf7" />
+                                <input type="text" name="hgf8" />
+                                <input type="text" name="hgf9" />
+                                <input type="text" name="hgf10" />
+                                <input type="text" name="hgf11" />
+                                <input type="text" name="hgf12" />
+                                <input type="text" name="hgf13" />
+                                <input type="text" name="hgf14" />
                             </div>
                             <input type="hidden" name="pdfType"/>
                         </form>
@@ -2054,14 +2092,14 @@
             return hzlsljgkModelList[ hzlsljgkModel ]['nlsyjlxs'];
         },
 
-        swp:function(){
-            if( dcModel =='其它')
-                return ' ' ;
-        },
-        r1:function(){
-            if( dcModel =='其它')
-                return ' ' ;
-        },
+        // swp:function(){
+        //     if( dcModel =='其它')
+        //         return ' ' ;
+        // },
+        // r1:function(){
+        //     if( dcModel =='其它')
+        //         return ' ' ;
+        // },
         mwr:function(){
             return h * dcgssp * 4 ;
         },
@@ -2081,16 +2119,19 @@
         tshl:function(){
             return hwll + hsw ;
         },
-        m1:function(){
-            if( btModel =='其它')
-                return ' ' ;
-        },
+        // m1:function(){
+        //     if( btModel =='其它')
+        //         return ' ' ;
+        // },
         m2:function(){
             if( gruModel =='无')
                 return 0 ;
         },
         m3:function(){
-            return 25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return 25 ;
         },
         m5:function(){
             if( gruModel =='无')
@@ -2127,7 +2168,10 @@
                 return m14 ;
         },
         m5f:function(){
-            return m5 + hsw ;
+            if( m5 == 0 )
+                return 0 ;
+            else
+                return m5 + hsw ;
         },
         m13hzf:function(){
             if( m13hz == 0 )
@@ -2143,19 +2187,40 @@
         },
 
         lslhz:function(){
-            return lbd ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lbd ;
         },
         lshlhz:function(){
-            return lbd - ( ldcgh - lbtzh ) ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) ;
         },
         lhz1:function(){
-            return lshlhz ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) ;
         },
         lhz2:function(){
-            return lbd - ( ldcgh - ldslzh ) ;
+            if ( m2 == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - ldslzh ) ;
         },
         lhz3:function(){
-            return lshlhz ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) ;
+        },
+        lhz5:function(){
+            if( m5 == 0 )
+                return 0 ;
+            else
+                return ' ';
         },
         lhz6:function(){
             if( m6 == 0 )
@@ -2254,20 +2319,28 @@
         },
 
         aslcx: function(){
-            if( dcModel =='其它')
+            if( tsl == 0 )
+                return 0 ;
+        },
+        ashlcx: function(){
+            if( tshl == 0 )
+                return 0 ;
+            else
                 return ' ' ;
         },
-
         acx1:function(){
-            if( btModel =='其它')
-                return ' ' ;
+            if( m1 == 0 )
+                return 0 ;
         },
         acx2:function(){
-            if( gruModel =='无')
+            if( m2 == 0 )
                 return 0 ;
         },
         acx3:function(){
-            return 0.05 ;
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return 0.05 ;
         },
         acx5:function(){
             if( gruModel =='无')
@@ -2316,23 +2389,62 @@
                 return acx14 ;
         },
 
+        hslm:function(){
+            if( tsl == 0 )
+                return 0 ;
+            else
+                return hslg - lhzgd ;
+        },
+        hshlm:function(){
+            if( tshl == 0 )
+                return 0 ;
+            else
+                return hshlg - lhzgd ;
+        },
+        hm1:function(){
+            if( m1 == 0 )
+                return 0 ;
+            else
+                return hg1 - lhzgd ;
+        },
+        hm2:function(){
+            if( m2 == 0 )
+                return 0 ;
+            else
+                return hg2 - lhzgd ;
+        },
+        hm3:function(){
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return hg3 - lhzgd ;
+        },
+        hm4:function(){
+            return hg4 - lhzgd ;
+        },
+        hm5:function(){
+            if( m5 == 0 )
+                return 0 ;
+            else
+                return hg5 - lhzgd ;
+        },
         hm6:function(){
             if( m6 == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hg6 - lhzgd ;
         },
         hm7:function(){
             if( m7 == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hg7 - lhzgd ;
         },
         hm8:function(){
             if( m8 == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hg8 - lhzgd ;
         },
         hm9:function(){
             return 0 ;
@@ -2341,36 +2453,47 @@
             if( m10 == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hg10 - lhzgd ;
+        },
+        hm11:function(){
+            return hg11 - lhzgd ;
         },
         hm12:function(){
             if( m12hz == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hg12 - lhzgd ;
         },
         hm13:function(){
             if( m13hz == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hg13 - lhzgd ;
         },
         hm14:function(){
             if( m14hz == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hg14 - lhzgd ;
         },
-
 
         lhzf1:function(){
-            return lbx - ( ldcgh - lbtzh ) ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh - lbtzh ) ;
         },
         lhzf2:function(){
-            return lbx - ( ldcgh - ldslzh ) ;
+            if ( m2 == 0 )
+                return 0 ;
+            else
+                return lbx - ( ldcgh - ldslzh ) ;
         },
         lhzf3:function(){
-            return lhzf1 ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lhzf1 ;
         },
         lhzf4:function(){
             if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='上回转单臂机' )
@@ -2381,10 +2504,14 @@
                 return ' ';
         },
         lhzf5:function(){
-            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-                return lhz5 ;
-            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+            if ( m5 == 0 )
+                return 0 ;
+            else {
+                if (ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '下回转固定立柱伸缩臂机' || ccjjxModel == '下回转顶升伸缩臂机' || ccjjxModel == '上回转单臂机' || ccjjxModel == '上回转伸缩臂机')
+                    return lhz5;
+                else if (ccjjxModel == '下回转仰臂单臂机' || ccjjxModel == '下回转顶升仰臂单臂机' || ccjjxModel == '下回转仰臂伸缩臂机' || ccjjxModel == '下回转顶升仰臂伸缩臂机')
+                    return ' ';
+            }
         },
         lhzf6:function(){
             if( m6 == 0 )
@@ -2527,82 +2654,105 @@
         },
 
         hmf1:function(){
-            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-                return hm1 ;
-            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+            if ( m1 == 0 )
+                return 0 ;
+            else {
+                if (ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转固定立柱伸缩臂机' || ccjjxModel == '上回转单臂机' || ccjjxModel == '上回转伸缩臂机')
+                    return hm1 ;
+                else if (ccjjxModel == '下回转仰臂单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '下回转顶升仰臂单臂机' || ccjjxModel == '下回转仰臂伸缩臂机' || ccjjxModel == '下回转顶升伸缩臂机' || ccjjxModel == '下回转顶升仰臂伸缩臂机')
+                    return hgf1 - lhzgd ;
+            }
         },
         hmf2:function(){
-            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-                return hm2 ;
-            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+            if ( m2 == 0 )
+                return 0 ;
+            else {
+                if (ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转固定立柱伸缩臂机' || ccjjxModel == '上回转单臂机' || ccjjxModel == '上回转伸缩臂机')
+                    return hm2 ;
+                else if (ccjjxModel == '下回转仰臂单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '下回转顶升仰臂单臂机' || ccjjxModel == '下回转仰臂伸缩臂机' || ccjjxModel == '下回转顶升伸缩臂机' || ccjjxModel == '下回转顶升仰臂伸缩臂机')
+                    return hgf2 - lhzgd ;
+            }
         },
         hmf3:function(){
-            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-                return hm3 ;
-            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+            if ( m3 == 0 )
+                return 0 ;
+            else {
+                if (ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转固定立柱伸缩臂机' || ccjjxModel == '上回转单臂机' || ccjjxModel == '上回转伸缩臂机')
+                    return hm3 ;
+                else if (ccjjxModel == '下回转仰臂单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '下回转顶升仰臂单臂机' || ccjjxModel == '下回转仰臂伸缩臂机' || ccjjxModel == '下回转顶升伸缩臂机' || ccjjxModel == '下回转顶升仰臂伸缩臂机')
+                    return hgf3 - lhzgd ;
+            }
         },
         hmf4:function(){
             if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
                 return hm4 ;
             else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+                return hgf4 - lhzgd ;
         },
         hmf5:function(){
-            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
-                return hm5 ;
-            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+            if ( m5 == 0 )
+                return 0 ;
+            else {
+                if (ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转固定立柱伸缩臂机' || ccjjxModel == '上回转单臂机' || ccjjxModel == '上回转伸缩臂机')
+                    return hm5 ;
+                else if (ccjjxModel == '下回转仰臂单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '下回转顶升仰臂单臂机' || ccjjxModel == '下回转仰臂伸缩臂机' || ccjjxModel == '下回转顶升伸缩臂机' || ccjjxModel == '下回转顶升仰臂伸缩臂机')
+                    return hgf5 - lhzgd ;
+            }
         },
         hmf6:function(){
             if ( m6 == 0 ){
                 return 0 ;
-            }
-            else {
+            } else {
                 if(  ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='上回转伸缩臂机' )
                     return hm6 ;
                 else if ( ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                    return ' ';
+                    return hgf6 - lhzgd ;
             }
         },
         hmf7:function(){
             if( m7 == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hgf7 - lhzgd ;
         },
         hmf8:function(){
             if( m8 == 0 )
                 return 0 ;
             else
-                return ' ';
+                return hgf8 - lhzgd ;
         },
         hmf9:function(){
             return hm9 ;
         },
         hmf10:function(){
-            if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+            if ( m10 == 0 )
                 return 0 ;
-            else if ( ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转仰臂伸缩臂机' )
-                return hm10 ;
-            else if ( ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+            else {
+                if (ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '下回转固定立柱伸缩臂机' || ccjjxModel == '下回转顶升伸缩臂机' || ccjjxModel == '上回转单臂机' || ccjjxModel == '上回转伸缩臂机')
+                    return 0 ;
+                else if (ccjjxModel == '下回转仰臂单臂机' || ccjjxModel == '下回转仰臂伸缩臂机')
+                    return hm10 ;
+                else if (ccjjxModel == '下回转顶升仰臂单臂机' || ccjjxModel == '下回转顶升仰臂伸缩臂机')
+                    return hgf10 - lhzgd ;
+            }
         },
         hmf11:function(){
             if( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' || ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
                 return hm11 ;
             else if (  ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+                return hgf11 - lhzgd ;
         },
         hmf12:function(){
-            if( ccjjxModel =='上回转单臂机' || ccjjxModel =='上回转伸缩臂机' )
+            if ( m12hz == 0 )
                 return 0 ;
-            else if ( ccjjxModel =='下回转固定立柱单臂机' || ccjjxModel =='下回转仰臂单臂机' || ccjjxModel =='下回转固定立柱伸缩臂机' || ccjjxModel =='下回转仰臂伸缩臂机' )
-                return hm12 ;
-            else if ( ccjjxModel =='下回转顶升单臂机' || ccjjxModel =='下回转顶升仰臂单臂机' || ccjjxModel =='下回转顶升伸缩臂机' || ccjjxModel =='下回转顶升仰臂伸缩臂机' )
-                return ' ';
+            else {
+                if (ccjjxModel == '上回转单臂机' || ccjjxModel == '上回转伸缩臂机')
+                    return 0 ;
+                else if (ccjjxModel == '下回转固定立柱单臂机' || ccjjxModel == '下回转仰臂单臂机' || ccjjxModel == '下回转固定立柱伸缩臂机' || ccjjxModel == '下回转仰臂伸缩臂机')
+                    return hm12 ;
+                else if (ccjjxModel == '下回转顶升单臂机' || ccjjxModel == '下回转顶升仰臂单臂机' || ccjjxModel == '下回转顶升伸缩臂机' || ccjjxModel == '下回转顶升仰臂伸缩臂机')
+                    return hgf12 - lhzgd ;
+            }
         },
         hmf13:function(){
             return hm13 ;

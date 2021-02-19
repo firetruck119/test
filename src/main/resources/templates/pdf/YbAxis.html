@@ -998,7 +998,10 @@
                 return 0 ;
         },
         m3:function(){
-            return  25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return  25 ;
         },
         m5yb:function(){
             return m5 * gruybxs ;
@@ -1006,13 +1009,22 @@
 
 
         lslyz:function(){
-            return lslhz - lyyglz ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lslhz - lyyglz ;
         },
         lshlyz:function(){
-            return lslyz - ( ldcgh - lbtzh ) ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lslyz - ( ldcgh - lbtzh ) ;
         },
         lyz1:function(){
-            return lshlyz ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lslyz - ( ldcgh - lbtzh ) ;
         },
         lyz2:function(){
             if( m2 == 0 ){
@@ -1022,7 +1034,10 @@
             }
         },
         lyz3:function(){
-            return lshlyz ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lslyz - ( ldcgh - lbtzh ) ;
         },
         lyz4:function(){
             return lhz4 - lyyglz ;
@@ -1043,13 +1058,22 @@
         },
 
         lsljz:function(){
-            return lslyz + ybdzly ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lslyz + ybdzly ;
         },
         lshljz:function(){
-            return lshlyz + ybdzly ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lshlyz + ybdzly ;
         },
         ljz1:function(){
-            return lyz1 + ybdzly ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lyz1 + ybdzly ;
         },
         ljz2:function(){
             if( m2 == 0 ){
@@ -1059,7 +1083,10 @@
             }
         },
         ljz3:function(){
-            return lyz3 + ybdzly ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lyz3 + ybdzly ;
         },
         ljz4:function(){
             return lyz4 + ybdzly ;

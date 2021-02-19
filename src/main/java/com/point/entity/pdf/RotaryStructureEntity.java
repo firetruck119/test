@@ -24,6 +24,7 @@ public class RotaryStructureEntity {
     private Double lbx;
     private Double lbp;
     private Double lbpx;
+    private Double lhzgd;
     private Double dbyj;
 
     //非页面数据
@@ -48,6 +49,38 @@ public class RotaryStructureEntity {
     private Double flsp;
     private Double tls;
     private Double nlsr;
+
+    private Double hslg;
+    private Double hshlg;
+    private Double hg1;
+    private Double hg2;
+    private Double hg3;
+    private Double hg4;
+    private Double hg5;
+    private Double hg6;
+    private Double hg7;
+    private Double hg8;
+    private Double hg9;
+    private Double hg10;
+    private Double hg11;
+    private Double hg12;
+    private Double hg13;
+    private Double hg14;
+
+    private Double hgf1;
+    private Double hgf2;
+    private Double hgf3;
+    private Double hgf4;
+    private Double hgf5;
+    private Double hgf6;
+    private Double hgf7;
+    private Double hgf8;
+    private Double hgf9;
+    private Double hgf10;
+    private Double hgf11;
+    private Double hgf12;
+    private Double hgf13;
+    private Double hgf14;
 
 //    提示提醒
     private String grutstx;
@@ -298,6 +331,7 @@ public class RotaryStructureEntity {
         map.put("lbx", CommonFunc.convertDoubleToString(lbx));
         map.put("lbp", CommonFunc.convertDoubleToString(lbp));
         map.put("lbpx", CommonFunc.convertDoubleToString(lbpx));
+        map.put("lhzgd", CommonFunc.convertDoubleToString(lhzgd));
         map.put("dbyj", CommonFunc.convertDoubleToString(dbyj));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
@@ -319,6 +353,38 @@ public class RotaryStructureEntity {
         map.put("flsp", CommonFunc.convertDoubleToString(flsp));
         map.put("tls", CommonFunc.convertDoubleToString(tls));
         map.put("nlsr", CommonFunc.convertDoubleToString(nlsr));
+
+        map.put("hslg", CommonFunc.convertDoubleToString(hslg));
+        map.put("hshlg", CommonFunc.convertDoubleToString(hshlg));
+        map.put("hg1", CommonFunc.convertDoubleToString(hg1));
+        map.put("hg2", CommonFunc.convertDoubleToString(hg2));
+        map.put("hg3", CommonFunc.convertDoubleToString(hg3));
+        map.put("hg4", CommonFunc.convertDoubleToString(hg4));
+        map.put("hg5", CommonFunc.convertDoubleToString(hg5));
+        map.put("hg6", CommonFunc.convertDoubleToString(hg6));
+        map.put("hg7", CommonFunc.convertDoubleToString(hg7));
+        map.put("hg8", CommonFunc.convertDoubleToString(hg8));
+        map.put("hg9", CommonFunc.convertDoubleToString(hg9));
+        map.put("hg10", CommonFunc.convertDoubleToString(hg10));
+        map.put("hg11", CommonFunc.convertDoubleToString(hg11));
+        map.put("hg12", CommonFunc.convertDoubleToString(hg12));
+        map.put("hg13", CommonFunc.convertDoubleToString(hg13));
+        map.put("hg14", CommonFunc.convertDoubleToString(hg14));
+
+        map.put("hgf1", CommonFunc.convertDoubleToString(hgf1));
+        map.put("hgf2", CommonFunc.convertDoubleToString(hgf2));
+        map.put("hgf3", CommonFunc.convertDoubleToString(hgf3));
+        map.put("hgf4", CommonFunc.convertDoubleToString(hgf4));
+        map.put("hgf5", CommonFunc.convertDoubleToString(hgf5));
+        map.put("hgf6", CommonFunc.convertDoubleToString(hgf6));
+        map.put("hgf7", CommonFunc.convertDoubleToString(hgf7));
+        map.put("hgf8", CommonFunc.convertDoubleToString(hgf8));
+        map.put("hgf9", CommonFunc.convertDoubleToString(hgf9));
+        map.put("hgf10", CommonFunc.convertDoubleToString(hgf10));
+        map.put("hgf11", CommonFunc.convertDoubleToString(hgf11));
+        map.put("hgf12", CommonFunc.convertDoubleToString(hgf12));
+        map.put("hgf13", CommonFunc.convertDoubleToString(hgf13));
+        map.put("hgf14", CommonFunc.convertDoubleToString(hgf14));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 

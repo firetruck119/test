@@ -289,7 +289,7 @@
                                         <td>
                                             <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -316,7 +316,7 @@
                                         <td>
                                             <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -1365,14 +1365,14 @@
             return 355 ;
         },
 
-        swp: function(){
-            if( dcModel =='其它')
-                return ' ';
-        },
-        r1:function(){
-            if( dcModel =='其它')
-                return ' ';
-        },
+        // swp: function(){
+        //     if( dcModel =='其它')
+        //         return ' ';
+        // },
+        // r1:function(){
+        //     if( dcModel =='其它')
+        //         return ' ';
+        // },
         mwr:function(){
             return h * dcgssp * 4 ;
         },
@@ -1392,16 +1392,19 @@
         tshl:function(){
             return hwll + hsw ;
         },
-        m1:function(){
-            if( btModel =='其它')
-                return ' ' ;
-        },
+        // m1:function(){
+        //     if( btModel =='其它')
+        //         return ' ' ;
+        // },
         m2:function(){
             if( gruModel =='无')
                 return 0 ;
         },
         m3:function(){
-            return  25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return 25 ;
         },
         m4jbcq:function(){
             return  mbgj / 2 + ( dbld1 - dblx1 ) * mbmj / 1000 ;
@@ -1436,19 +1439,26 @@
         },
 
         aslcx:function(){
-            if( dcModel =='其它')
-                return ' ' ;
+            if ( tsl == 0 )
+                return 0 ;
+        },
+        ashlcx:function(){
+            if ( tshl == 0 )
+                return 0 ;
         },
         acx1:function(){
-            if( btModel =='其它')
-                return ' ' ;
+            if ( m1 == 0 )
+                return 0 ;
         },
         acx2:function(){
-            if( gruModel =='无')
+            if ( m2 == 0 )
                 return 0 ;
         },
         acx3:function(){
-            return 0.05 ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return 0.05 ;
         },
         acx4cq:function(){
             return ( dbld1 - dblx1 ) * dbjh / 1000000 ;
@@ -1462,13 +1472,22 @@
 
         //基臂
         lslc:function(){
-            return lbd - dblx1 / 2000 ;
+            if( tsl == 0 )
+                return 0 ;
+            else
+                return lbd - dblx1 / 2000 ;
         },
         lshlc:function(){
-            return lbd - ( ldcgh - lbtzh ) - dblx1 / 2000 ;
+            if( tshl == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) - dblx1 / 2000 ;
         },
         lc1:function(){
-            return lshlc ;
+            if( m1 == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) - dblx1 / 2000 ;
         },
         lc2:function(){
             if( m2 == 0 ){
@@ -1478,7 +1497,10 @@
             }
         },
         lc3:function(){
-            return lshlc ;
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return lbd - ( ldcgh - lbtzh ) - dblx1 / 2000 ;
         },
         lc4:function(){
             return ( mbgj * ( dbld1 - dblx1 ) / 2000 + mbmj * ( dbld1 - dblx1 ) * ( dbld1 - dblx1 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m4jbcq ;
@@ -1521,13 +1543,22 @@
 
         //一臂
         lslci:function(){
-            return lslc - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if( tsl == 0 )
+                return 0 ;
+            else
+                return lslc - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lshlci:function(){
-            return lshlc - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if( tshl == 0 )
+                return 0 ;
+            else
+                return lshlc - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc1i:function(){
-            return lc1 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if( m1 == 0 )
+                return 0 ;
+            else
+                return lc1 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc2i:function(){
             if( m2 == 0 ){
@@ -1537,7 +1568,10 @@
             }
         },
         lc3i:function(){
-            return lc3 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if( m3 == 0 )
+                return 0 ;
+            else
+                return lc3 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc6i:function(){
             return ( mbg1 * ( dbld2 - dblx2 ) / 2000 + mbm1 * ( dbld2 - dblx2 ) * ( dbld2 - dblx2 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6dbxt  ;

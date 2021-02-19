@@ -254,7 +254,7 @@
                                         <td>
                                             <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -281,7 +281,7 @@
                                         <td>
                                             <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -952,14 +952,14 @@
                 return 2 ;
         },
 
-        swp: function(){
-            if( dcModel =='其它')
-                return ' ';
-        },
-        r1:function(){
-            if( dcModel =='其它')
-                return ' ';
-        },
+        // swp: function(){
+        //     if( dcModel =='其它')
+        //         return ' ';
+        // },
+        // r1:function(){
+        //     if( dcModel =='其它')
+        //         return ' ';
+        // },
         mwr:function(){
             return h * dcgssp * 4 ;
         },
@@ -979,26 +979,41 @@
         tshl:function(){
             return hwll + hsw ;
         },
-        m1:function(){
-            if( btModel =='其它')
-                return ' ' ;
-        },
+        // m1:function(){
+        //     if( btModel =='其它')
+        //         return ' ' ;
+        // },
         m2:function(){
             if( gruModel =='无')
                 return 0 ;
         },
         m3:function(){
-            return  25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return 25 ;
         },
         m5yb:function(){
             return m5 * gruybxs ;
         },
 
+        lsljz:function(){
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return ' ';
+        },
         lshljz:function(){
-            return lsljz - ( ldcgh - lbtzh ) ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lsljz - ( ldcgh - lbtzh ) ;
         },
         ljz1:function(){
-            return lshljz ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lsljz - ( ldcgh - lbtzh ) ;
         },
         ljz2:function(){
             if( m2 == 0 ){
@@ -1008,7 +1023,10 @@
             }
         },
         ljz3:function(){
-            return lshljz ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lsljz - ( ldcgh - lbtzh ) ;
         },
         ljz5:function(){
             if( m5yb == 0 ){
@@ -1019,35 +1037,35 @@
         },
 
         lsljzf:function(){
-            return lsljz / Math.cos(dbyj / 180 * Math.PI) ;
+            return lsljz / Math.cos( dbyj / 180 * Math.PI ) ;
         },
         lshljzf:function(){
             if ( tshlp == 0 )
                 return 0 ;
             else
-                return lshljz / Math.cos(dbyj / 180 * Math.PI) ;
+                return lshljz / Math.cos( dbyj / 180 * Math.PI ) ;
         },
         ljzf1:function(){
-            return ljz1 / Math.cos(dbyj / 180 * Math.PI) ;
+            return ljz1 / Math.cos( dbyj / 180 * Math.PI ) ;
         },
         ljzf2:function(){
             if( m2 == 0 ){
                 return 0 ;
             }else {
-                return ljz2 / Math.cos(dbyj / 180 * Math.PI) ;
+                return ljz2 / Math.cos( dbyj / 180 * Math.PI ) ;
             }
         },
         ljzf3:function(){
-            return ljz3 / Math.cos(dbyj / 180 * Math.PI) ;
+            return ljz3 / Math.cos( dbyj / 180 * Math.PI ) ;
         },
         ljzf4:function(){
-            return ljz4 / Math.cos(dbyj / 180 * Math.PI) ;
+            return ljz4 / Math.cos( dbyj / 180 * Math.PI ) ;
         },
         ljzf5:function(){
             if( m5yb == 0 ){
                 return 0 ;
             }else {
-                return ljz5 / Math.cos(dbyj / 180 * Math.PI) ;
+                return ljz5 / Math.cos( dbyj / 180 * Math.PI ) ;
             }
         },
     };

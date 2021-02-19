@@ -291,7 +291,7 @@
                                         <td>
                                             <select name="dcModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -318,7 +318,7 @@
                                         <td>
                                             <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="其它">其它</option>
+                                                <!--<option value="其它">其它</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -2907,14 +2907,14 @@
             }
         },
 
-        swp: function(){
-            if( dcModel =='其它')
-                return ' ';
-        },
-        r1:function(){
-            if( dcModel =='其它')
-                return ' ';
-        },
+        // swp: function(){
+        //     if( dcModel =='其它')
+        //         return ' ';
+        // },
+        // r1:function(){
+        //     if( dcModel =='其它')
+        //         return ' ';
+        // },
         mwr:function(){
             return h * dcgssp * 4 ;
         },
@@ -2934,16 +2934,19 @@
         tshl:function(){
             return hwll + hsw ;
         },
-        m1:function(){
-            if( btModel =='其它')
-                return ' ' ;
-        },
+        // m1:function(){
+        //     if( btModel =='其它')
+        //         return ' ' ;
+        // },
         m2:function(){
             if( gruModel =='无')
                 return 0 ;
         },
         m3:function(){
-            return  25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return 25 ;
         },
         m6db:function(){
             return  mbg1 + dbld2 * mbm1 / 1000 ;
@@ -2993,13 +2996,22 @@
         },
 
         lslp:function(){
-            return lbd / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lbd / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
         },
         lshlp:function(){
-            return ( lbd - ( ldcgh - lbtzh ) ) / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return ( lbd - ( ldcgh - lbtzh ) ) / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
         },
         lp1:function(){
-            return lshlp ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return ( lbd - ( ldcgh - lbtzh ) ) / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
         },
         lp2:function(){
             if( m2 == 0 ){
@@ -3009,7 +3021,10 @@
             }
         },
         lp3:function(){
-            return lshlp ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return ( lbd - ( ldcgh - lbtzh ) ) / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
         },
         lp6gl:function(){
             return ( mbg1 * ( dbld2 - dblx2 ) / 2000 - mbg1 * dblx2 / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 ) / 1000000 ) / m6db ;
@@ -3025,13 +3040,22 @@
         },
 
         lslpi:function(){
-            return lslp - ( dbld2 - dblx2 ) / 1000 ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lslp - ( dbld2 - dblx2 ) / 1000 ;
         },
         lshlpi:function(){
-            return lshlp - ( dbld2 - dblx2 ) / 1000 ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lshlp - ( dbld2 - dblx2 ) / 1000 ;
         },
         lp1i:function(){
-            return lp1 - ( dbld2 - dblx2 ) / 1000 ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lp1 - ( dbld2 - dblx2 ) / 1000 ;
         },
         lp2i:function(){
             if( m2 == 0 ){
@@ -3041,7 +3065,10 @@
             }
         },
         lp3i:function(){
-            return lp3 - ( dbld2 - dblx2 ) / 1000 ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lp3 - ( dbld2 - dblx2 ) / 1000 ;
         },
         lp7gli:function(){
             return lp7gl - ( dbld2 - dblx2 ) / 1000 ;
@@ -3054,13 +3081,22 @@
         },
 
         lslpii:function(){
-            return lslpi - ( dbld3 - dblx3 ) / 1000 ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lslpi - ( dbld3 - dblx3 ) / 1000 ;
         },
         lshlpii:function(){
-            return lshlpi - ( dbld3 - dblx3 ) / 1000 ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lshlpi - ( dbld3 - dblx3 ) / 1000 ;
         },
         lp1ii:function(){
-            return lp1i - ( dbld3 - dblx3 ) / 1000 ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lp1i - ( dbld3 - dblx3 ) / 1000 ;
         },
         lp2ii:function(){
             if( m2 == 0 ){
@@ -3070,7 +3106,10 @@
             }
         },
         lp3ii:function(){
-            return lp3i - ( dbld3 - dblx3 ) / 1000 ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lp3i - ( dbld3 - dblx3 ) / 1000 ;
         },
         lp8glii:function(){
             return lp8gli - ( dbld3 - dblx3 ) / 1000 ;
@@ -3080,13 +3119,22 @@
         },
 
         lslpiii:function(){
-            return lslpii - ( dbld4 - dblx4 ) / 1000 ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lslpii - ( dbld4 - dblx4 ) / 1000 ;
         },
         lshlpiii:function(){
-            return lshlpii - ( dbld4 - dblx4 ) / 1000 ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lshlpii - ( dbld4 - dblx4 ) / 1000 ;
         },
         lp1iii:function(){
-            return lp1ii - ( dbld4 - dblx4 ) / 1000 ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lp1ii - ( dbld4 - dblx4 ) / 1000 ;
         },
         lp2iii:function(){
             if( m2 == 0 ){
@@ -3096,7 +3144,10 @@
             }
         },
         lp3iii:function(){
-            return lp3ii - ( dbld4 - dblx4 ) / 1000 ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lp3ii - ( dbld4 - dblx4 ) / 1000 ;
         },
         lp9gliii:function(){
             return lp9glii - ( dbld4 - dblx4 ) / 1000 ;

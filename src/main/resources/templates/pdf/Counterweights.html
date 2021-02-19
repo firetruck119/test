@@ -1094,15 +1094,23 @@
             }
         },
 
+        grugssp:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
+
         mwr:function() {
             return h * dcgssp * 4 ;
         },
-
         mffbb:function(){
             return ffbbModelList[ ffbbModel ]['mffbb'];
         },
         tsl:function (){
             return swp + r1 + mwr + mffbb ;
+        },
+        hwll:function(){
+            if( gruModel =='无')
+                return 0 ;
         },
         hsw:function(){
             return h * grugssp ;
@@ -1110,8 +1118,15 @@
         tshl:function(){
             return hwll + hsw ;
         },
+        m2:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
         m3:function(){
-            return  25 ;
+            if( gruModel =='无')
+                return 0 ;
+            else
+                return 25 ;
         },
         lxtz:()=>{
             return lbd - lbx ;
@@ -1138,6 +1153,10 @@
             if ( dbModel.indexOf('4+1伸缩臂') > -1 && ljbzc ) data = mbgj + mbmj * ljbzc + mbg1 + mbg2 + mbg3 + mbg4 + ldbm * ( mbm1 + mbm2 + mbm3 + mbm4 );
             return data;
         },
+        m5:function(){
+            if( gruModel =='无')
+                return 0 ;
+        },
         m6:()=>{
             if ( dbType .indexOf('单臂')>-1)
                 return 0;
@@ -1147,19 +1166,19 @@
                  lzType .indexOf('1+1顶升')>-1||
                  lzType .indexOf('仰柱机构')>-1)
                 return 0;
-    },
+        },
        m8:()=>{
            if ( lzType .indexOf('固定')>-1 ||
                 lzType .indexOf('仰臂固定')>-1 ||
                 lzType .indexOf('仰柱机构')>-1)
                return 0;
-    },
-       m10:()=>{
+        },
+        m10:()=>{
            if ( lzType .indexOf('固定')>-1 ||
                  lzType .indexOf('1+1顶升')>-1 ||
                  lzType .indexOf('仰柱机构')>-1)
                 return 0;
-    },
+        },
         m12:()=>{
             if( lzType .indexOf('仰臂固定')>-1)return mlz1gd + llzgd * lz1mmzl ;
             if( lzType .indexOf('固定')>-1)   return mlz1gd + llzgd * lz1mmzl ;
@@ -1196,11 +1215,18 @@
             if( trippingModel =='无')
                 return 0
         },
+
         lslqg:function(){
-            return lbd - ( lg / 2 ) ;
+            if ( tsl == 0 )
+                return 0 ;
+            else
+                return lbd - ( lg / 2 ) ;
         },
         lshlqg:function(){
-            return lbd - ( lg / 2 ) - ( ldcgh - lbtzh ) ;
+            if ( tshl == 0 )
+                return 0 ;
+            else
+                return lbd - ( lg / 2 ) - ( ldcgh - lbtzh ) ;
         },
          // lbj:function(){
          //    let dbjs=null;
@@ -1228,13 +1254,28 @@
                 return lbp;
         },
         lqg1:function(){
-            return lshlqg ;
+            if ( m1 == 0 )
+                return 0 ;
+            else
+                return lbd - ( lg / 2 ) - ( ldcgh - lbtzh ) ;
         },
         lqg2:function(){
-            return lbd - ( lg / 2 ) - ( ldcgh - ldslzh ) ;
+            if ( m2 == 0 )
+                return 0 ;
+            else
+                return lbd - ( lg / 2 ) - ( ldcgh - ldslzh ) ;
         },
         lqg3:function(){
-            return lshlqg ;
+            if ( m3 == 0 )
+                return 0 ;
+            else
+                return lbd - ( lg / 2 ) - ( ldcgh - lbtzh ) ;
+        },
+        lqg5:function(){
+            if( m5 == 0 )
+                return 0 ;
+            else
+                return ' ';
         },
         lqg6:function(){
             if( m6 == 0 ){
@@ -1334,25 +1375,43 @@
         },
 
     lslhz:function(){
-        return lslqg + lg / 2 ;
+        if ( tsl == 0 )
+            return 0 ;
+        else
+            return lslqg + lg / 2 ;
     },
     lshlhz:function(){
-        return lshlqg + lg / 2 ;
+        if ( tshl == 0 )
+            return 0 ;
+        else
+            return lshlqg + lg / 2 ;
     },
     lhz1:function(){
-        return lqg1 + lg / 2 ;
+        if ( m1 == 0 )
+            return 0 ;
+        else
+            return lqg1 + lg / 2 ;
     },
     lhz2:function(){
-        return lqg2 + lg / 2 ;
+        if ( m2 == 0 )
+            return 0 ;
+        else
+            return lqg2 + lg / 2 ;
     },
     lhz3:function(){
-        return lqg3 + lg / 2 ;
+        if ( m3 == 0 )
+            return 0 ;
+        else
+            return lqg3 + lg / 2 ;
     },
     lhz4:function(){
         return lqg4 + lg / 2 ;
     },
     lhz5:function(){
-        return lg / 2 - lqg5 ;
+        if ( m5 == 0 )
+            return 0 ;
+        else
+            return lg / 2 - lqg5 ;
     },
     lhz6:function(){
         if( m6 == 0 ){
