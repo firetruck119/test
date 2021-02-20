@@ -106,6 +106,11 @@ public class CostEntity {
     private Double cbdjdj;
     private Double cbdjlyl;
 
+    //    底架摆动臂
+    private String cbdjbdbmc;
+    private Double cbdjbdbzl;
+    private Double cbdjbdbdj;
+
     //    3大件热浸锌、油漆、气体
     private Double cb3zl;
     private Double cb3jxdj;
@@ -388,6 +393,7 @@ public class CostEntity {
     private Double cbpzxtzj;
     private Double cblzzj;
     private Double cbdjzj;
+    private Double cbdjbdbzj;
     private Double cb3jxzj;
     private Double cb3yqzj;
     private Double cb3hszj;
@@ -480,6 +486,7 @@ public class CostEntity {
     private String pzkModel;
     private String lzxhModel;
     private String djxhModel;
+    private String djbdbxhModel;
     private String dcgssModel;
     private String ctxhModel;
     private String lt1Model;
@@ -599,6 +606,11 @@ public class CostEntity {
         map.put("cbdjzl", CommonFunc.convertDoubleToString(cbdjzl));
         map.put("cbdjdj", CommonFunc.convertDoubleToString(cbdjdj));
         map.put("cbdjlyl", CommonFunc.convertDoubleToString(cbdjlyl));
+
+        //        底架摆动臂
+        map.put("cbdjbdbmc", CommonFunc.convertDoubleToString(cbdjbdbmc));
+        map.put("cbdjbdbzl", CommonFunc.convertDoubleToString3(cbdjbdbzl));
+        map.put("cbdjbdbdj", CommonFunc.convertDoubleToString(cbdjbdbdj));
 
         //        3大件热浸锌、油漆、气体
         map.put("cb3zl", CommonFunc.convertDoubleToString(cb3zl));
@@ -893,6 +905,7 @@ public class CostEntity {
         map.put("cbpzxtzj", CommonFunc.convertDoubleToString(cbpzxtzj));
         map.put("cblzzj", CommonFunc.convertDoubleToString(cblzzj));
         map.put("cbdjzj", CommonFunc.convertDoubleToString(cbdjzj));
+        map.put("cbdjbdbzj", CommonFunc.convertDoubleToString(cbdjbdbzj));
         map.put("cb3jxzj", CommonFunc.convertDoubleToString(cb3jxzj));
         map.put("cb3yqzj", CommonFunc.convertDoubleToString(cb3yqzj));
         map.put("cb3hszj", CommonFunc.convertDoubleToString(cb3hszj));
@@ -975,7 +988,7 @@ public class CostEntity {
         Map<String, Double> map = new HashMap();
 
         Double cb8mkzj = cbdczj + cbbtzj + cbssjgzj + cbgruzj + cbqsjgzj + cbslqzj + cbhzzj + cbyxzj + cbjgqzj ;
-        Double cb3djzj = cbdbzj + cbpzkzj + cbpzfgzj + cbpzktzj + cbpzxtzj + cblzzj + cbdjzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj ;
+        Double cb3djzj = cbdbzj + cbpzkzj + cbpzfgzj + cbpzktzj + cbpzxtzj + cblzzj + cbdjzj + cbdjbdbzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj ;
         Double cbdjzjzj = cbbtdjzj + cbssjgdjzj + cbgrudjzj + cbqsjgdj1zj + cbqsjgdj2zj + cbhzdjzj + cbyxdjzj ;
         Double cbwgjzj = cbdcgsszj + cbgrugsszj + cbaqszj + cbctzj + cbbthzzczj + cbhzhzzczj ;
         Double cbwxjzj = cblt1zj + cblt2zj + cblt3zj + cblt4zj + cblt5zj + cbxzzj + cbxdzj + cbssjjzj + cbdbxzzj ;

@@ -597,6 +597,21 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="width:40%;">底架摆动臂类型选择</td>
+                                        <td>
+                                            <select name="djbdbxhModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="固定式">固定式</option>
+                                                <option value="160摆动臂">160摆动臂</option>
+                                                <option value="170摆动臂">170摆动臂</option>
+                                                <option value="200摆动臂">200摆动臂</option>
+                                                <option value="230摆动臂">230摆动臂</option>
+                                                <option value="260摆动臂">260摆动臂</option>
+                                                <option value="350摆动臂">350摆动臂</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="width:40%;">配重块类型选择</td>
                                         <td>
                                             <select name="pzkModel" style="width:100%;height:40px;text-align-last:center">
@@ -684,7 +699,7 @@
                                     </tr>
                                     <tr>
                                         <td >7</td>
-                                        <td >底架</td>
+                                        <td >底架(不含摆动臂)</td>
                                         <td ><input type="text" name="cbdjmc"/></td>
                                         <td ><input type="text" name="cbdjzl"/></td>
                                         <td ><input type="text" name="cbdjdj"/></td>
@@ -694,6 +709,16 @@
                                     </tr>
                                     <tr>
                                         <td >8</td>
+                                        <td >底架摆动臂</td>
+                                        <td ><input type="text" name="cbdjbdbmc"/></td>
+                                        <td ><input type="text" name="cbdjbdbzl"/></td>
+                                        <td ><input type="text" name="cbdjbdbdj"/></td>
+                                        <td >元/台</td>
+                                        <td >无</td>
+                                        <td ><input type="text" name="cbdjbdbzj"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >9</td>
                                         <td >3大件热浸锌</td>
                                         <td >无</td>
                                         <td ><input type="text" name="cb3zl"/></td>
@@ -703,7 +728,7 @@
                                         <td ><input type="text" name="cb3jxzj"/></td>
                                     </tr>
                                     <tr>
-                                        <td >9</td>
+                                        <td >10</td>
                                         <td >3大件油漆</td>
                                         <td >无</td>
                                         <td >无</td>
@@ -713,7 +738,7 @@
                                         <td ><input type="text" name="cb3yqzj"/></td>
                                     </tr>
                                     <tr>
-                                        <td >10</td>
+                                        <td >11</td>
                                         <td >3大件焊丝</td>
                                         <td >无</td>
                                         <td ><input type="text" name="cb3hszl"/></td>
@@ -723,7 +748,7 @@
                                         <td ><input type="text" name="cb3hszj"/></td>
                                     </tr>
                                     <tr>
-                                        <td >11</td>
+                                        <td >12</td>
                                         <td >3大件气体</td>
                                         <td >无</td>
                                         <td ><input type="text" name="cb3zl"/></td>
@@ -2774,6 +2799,44 @@
             cblzdj:5500,
         },
     };
+    //底架摆动臂类型
+    djbdbxhModelList={
+        "固定式":{
+            cbdjbdbmc:'无',
+            cbdjbdbzl:0,
+            cbdjbdbdj:0,
+        },
+        "160摆动臂":{
+            cbdjbdbmc:'160摆动臂',
+            cbdjbdbzl:0.062,
+            cbdjbdbdj:830,
+        },
+        "170摆动臂":{
+            cbdjbdbmc:'170摆动臂',
+            cbdjbdbzl:0.124,
+            cbdjbdbdj:1400,
+        },
+        "200摆动臂":{
+            cbdjbdbmc:'200摆动臂',
+            cbdjbdbzl:0.192,
+            cbdjbdbdj:2300,
+        },
+        "230摆动臂":{
+            cbdjbdbmc:'230摆动臂',
+            cbdjbdbzl:0.265,
+            cbdjbdbdj:3400,
+        },
+        "260摆动臂":{
+            cbdjbdbmc:'260摆动臂',
+            cbdjbdbzl:0.404,
+            cbdjbdbdj:4400,
+        },
+        "350摆动臂":{
+            cbdjbdbmc:'350摆动臂',
+            cbdjbdbzl:0.528,
+            cbdjbdbdj:6200,
+        },
+    };
     //齿条
     ctxhModelList={
         "6模齿条":{
@@ -3830,7 +3893,7 @@
             return 0.85 ;
         },
         cbdjzl: function () {
-            return m15 / 1000 ;
+            return m15 / 1000 - cbdjbdbzl ;
         },
         cbdjdj: function () {
             return djxhModelList[ djxhModel ]['cbdjdj'];
@@ -3838,12 +3901,21 @@
         cbdjlyl: function () {
             return 0.85 ;
         },
+        cbdjbdbmc: function () {
+            return djbdbxhModelList[ djbdbxhModel ]['cbdjbdbmc'];
+        },
+        cbdjbdbzl: function () {
+            return djbdbxhModelList[ djbdbxhModel ]['cbdjbdbzl'];
+        },
+        cbdjbdbdj: function () {
+            return djbdbxhModelList[ djbdbxhModel ]['cbdjbdbdj'];
+        },
         cb3zl: function () {
             if ( pzkModel == "混凝土配重块" ) {
-                return cbdbzl + cbpzktzl + cbpzxtzl + cblzzl + cbdjzl ;
+                return cbdbzl + cbpzktzl + cbpzxtzl + cblzzl + cbdjzl + cbdjbdbzl ;
             }
             else if ( pzkModel == "钢板配重块" ) {
-                return cbdbzl + cbpzkzl + cbpzxtzl + cblzzl + cbdjzl ;
+                return cbdbzl + cbpzkzl + cbpzxtzl + cblzzl + cbdjzl + cbdjbdbzl ;
             }
         },
         cb3jxdj: function () {
@@ -4611,6 +4683,9 @@
         },
         cbdjzj: function () {
             return cbdjzl * cbdjdj / cbdjlyl / 10000 ;
+        },
+        cbdjbdbzj: function () {
+            return cbdjbdbdj / 10000 ;
         },
         cb3jxzj: function () {
             return cb3zl * cb3jxdj / 10000 ;
