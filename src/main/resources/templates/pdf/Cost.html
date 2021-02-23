@@ -1011,19 +1011,6 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style="width:40%;">防风销钉选择</td>
-                                        <td>
-                                            <select name="xdModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="8mm防风销钉">8mm防风销钉</option>
-                                                <option value="9mm防风销钉">9mm防风销钉</option>
-                                                <option value="10mm防风销钉">10mm防风销钉</option>
-                                                <option value="12mm防风销钉">12mm防风销钉</option>
-                                                <option value="无">无</option>
-                                            </select>
-                                        </td>
-                                    </tr>
                                 </table>
                             </div>
 
@@ -1037,7 +1024,7 @@
                                         <td style="width:10%;">部件类型</td>
                                         <td style="width:15%;">名称</td>
                                         <td style="width:10%;">数量</td>
-                                        <td style="width:10%;">单根长度或单个重量</td>
+                                        <td style="width:10%;">单根长度</td>
                                         <td style="width:10%;">单位</td>
                                         <td style="width:10%;">单价</td>
                                         <td style="width:10%;">单位</td>
@@ -1106,30 +1093,6 @@
                                     </tr>
                                     <tr>
                                         <td >6</td>
-                                        <td >防风销座</td>
-                                        <td >无</td>
-                                        <td ><input type="text" name="cbxzsl"/></td>
-                                        <td ><input type="text" name="cbxzzl"/></td>
-                                        <td >千克</td>
-                                        <td ><input type="text" name="cbxzdj"/></td>
-                                        <td >元/千克</td>
-                                        <td >无</td>
-                                        <td ><input type="text" name="cbxzzj"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td >7</td>
-                                        <td >防风销钉</td>
-                                        <td ><input type="text" name="cbxdxh"/></td>
-                                        <td ><input type="text" name="cbxdsl"/></td>
-                                        <td >无</td>
-                                        <td >无</td>
-                                        <td ><input type="text" name="cbxddj"/></td>
-                                        <td >元/件</td>
-                                        <td >无</td>
-                                        <td ><input type="text" name="cbxdzj"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td >8</td>
                                         <td >伸缩臂机加件</td>
                                         <td ><input type="text" name="cbssjjmc"/></td>
                                         <td ><input type="text" name="cbssjjsl"/></td>
@@ -1141,7 +1104,7 @@
                                         <td ><input type="text" name="cbssjjzj"/></td>
                                     </tr>
                                     <tr>
-                                        <td >9</td>
+                                        <td >7</td>
                                         <td >吊臂-立柱销轴</td>
                                         <td ><input type="text" name="cbdbxzmc"/></td>
                                         <td ><input type="text" name="cbdbxzsl"/></td>
@@ -1187,8 +1150,179 @@
                                 </table>
                             </div>
 
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>13.检修平台选择</b></div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:40%;">物料起升机构检修平台选择</td>
+                                        <td>
+                                            <select name="grujxModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="GRU285检修平台">GRU285检修平台</option>
+                                                <option value="GRU295检修平台">GRU295检修平台</option>
+                                                <option value="GRU313检修平台">GRU313检修平台</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">起升机构检修平台选择</td>
+                                        <td>
+                                            <select name="qsjgjxModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="105起升机构检修平台">105起升机构检修平台</option>
+                                                <option value="145起升机构检修平台">145起升机构检修平台</option>
+                                                <option value="175起升机构检修平台">175起升机构检修平台</option>
+                                                <option value="275起升机构检修平台">275起升机构检修平台</option>
+                                                <option value="185起升机构检修平台">185起升机构检修平台</option>
+                                                <option value="285起升机构检修平台">285起升机构检修平台</option>
+                                                <option value="385起升机构检修平台">385起升机构检修平台</option>
+                                                <option value="295起升机构检修平台">295起升机构检修平台</option>
+                                                <option value="495起升机构检修平台">495起升机构检修平台</option>
+                                                <option value="313起升机构检修平台">313起升机构检修平台</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
 
-                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>13.轨道系统选择</b></div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:40%;">伸缩机构检修平台选择</td>
+                                        <td>
+                                            <select name="ssjgjxModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="6模数2.78伸缩机构检修平台">6模数2.78伸缩机构检修平台</option>
+                                                <option value="6模数1.7伸缩机构检修平台">6模数1.7伸缩机构检修平台</option>
+                                                <option value="8模数1.7伸缩机构检修平台">8模数1.7伸缩机构检修平台</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;" class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="8" style="background-color: #aaa;padding: 10px 0 10px 0"><b>14.检修平台成本</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:5%;padding:10px 0;;">序号</td>
+                                        <td style="width:15%;">类型</td>
+                                        <td style="width:25%;">名称</td>
+                                        <td style="width:10%;">数量</td>
+                                        <td style="width:10%;">总重量(千克)</td>
+                                        <td style="width:15%;">单价(元/千克)</td>
+                                        <td style="width:10%;">材料利用率</td>
+                                        <td style="width:10%;">总价(万元)</td>
+                                    </tr>
+                                    <tr>
+                                        <td >1</td>
+                                        <td >GRU检修平台</td>
+                                        <td ><input type="text" name="cbgrujxmc"/></td>
+                                        <td ><input type="text" name="cbgrujxsl"/></td>
+                                        <td ><input type="text" name="cbgrujxzl"/></td>
+                                        <td ><input type="text" name="cbgrujxdj"/></td>
+                                        <td ><input type="text" name="cbgrujxlyl"/></td>
+                                        <td ><input type="text" name="cbgrujxzj"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >2</td>
+                                        <td >起升机构检修平台</td>
+                                        <td ><input type="text" name="cbqsjgjxmc"/></td>
+                                        <td ><input type="text" name="cbqsjgjxsl"/></td>
+                                        <td ><input type="text" name="cbqsjgjxzl"/></td>
+                                        <td ><input type="text" name="cbqsjgjxdj"/></td>
+                                        <td ><input type="text" name="cbqsjgjxlyl"/></td>
+                                        <td ><input type="text" name="cbqsjgjxzj"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >3</td>
+                                        <td >伸缩机构检修平台</td>
+                                        <td ><input type="text" name="cbssjgjxmc"/></td>
+                                        <td ><input type="text" name="cbssjgjxsl"/></td>
+                                        <td ><input type="text" name="cbssjgjxzl"/></td>
+                                        <td ><input type="text" name="cbssjgjxdj"/></td>
+                                        <td ><input type="text" name="cbssjgjxlyl"/></td>
+                                        <td ><input type="text" name="cbssjgjxzj"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;" class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0"><b>15.试验轨道/试验架成本</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">序号</td>
+                                        <td style="width:20%;">类型</td>
+                                        <td style="width:10%;">数量</td>
+                                        <td style="width:20%;">总重量(吨)</td>
+                                        <td style="width:20%;">单价(元/吨)</td>
+                                        <td style="width:20%;">总价(万元)</td>
+                                    </tr>
+                                    <tr>
+                                        <td >1</td>
+                                        <td >试验轨道</td>
+                                        <td ><input type="text" name="cbsygdsl"/></td>
+                                        <td ><input type="text" name="cbsygdzl"/></td>
+                                        <td ><input type="text" name="cbsygddj"/></td>
+                                        <td ><input type="text" name="cbsygdzj"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >2</td>
+                                        <td >试验架</td>
+                                        <td ><input type="text" name="cbsyjsl"/></td>
+                                        <td ><input type="text" name="cbsyjzl"/></td>
+                                        <td ><input type="text" name="cbsyjdj"/></td>
+                                        <td ><input type="text" name="cbsyjzj"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>16.木方选择</b></div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:40%;">木方选择</td>
+                                        <td>
+                                            <select name="mfModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="国内">国内</option>
+                                                <option value="国外(EGS、MHE等)">国外(EGS、MHE等)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;" class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>17.包装成本</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:5%;padding:10px 0;;">序号</td>
+                                        <td style="width:15%;">类型</td>
+                                        <td style="width:10%;">数量</td>
+                                        <td style="width:15%;">单价(元/台)</td>
+                                        <td style="width:10%;">总价(万元)</td>
+                                    </tr>
+                                    <tr>
+                                        <td >1</td>
+                                        <td >木方</td>
+                                        <td ><input type="text" name="cbmfsl"/></td>
+                                        <td ><input type="text" name="cbmfdj"/></td>
+                                        <td ><input type="text" name="cbmfzj"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>18.轨道系统选择</b></div>
                             <div class='subtable'>
                                 <table>
                                     <tr>
@@ -1299,7 +1433,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="11" style="background-color: #aaa;padding: 10px 0 10px 0"><b>14.轨道系统成本</b></td>
+                                        <td colspan="11" style="background-color: #aaa;padding: 10px 0 10px 0"><b>19.轨道系统成本</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:5%;padding:10px 0;;">序号</td>
@@ -1421,53 +1555,18 @@
                                 </table>
                             </div>
 
-                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>15.检修平台选择</b></div>
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>20.防风销座、销钉选择</b></div>
                             <div class='subtable'>
                                 <table>
                                     <tr>
-                                        <td style="width:40%;">物料起升机构检修平台选择</td>
+                                        <td style="width:40%;">防风销钉选择</td>
                                         <td>
-                                            <select name="grujxModel" style="width:100%;height:40px;text-align-last:center">
+                                            <select name="xdModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="GRU285检修平台">GRU285检修平台</option>
-                                                <option value="GRU295检修平台">GRU295检修平台</option>
-                                                <option value="GRU313检修平台">GRU313检修平台</option>
-                                                <option value="无">无</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:40%;">起升机构检修平台选择</td>
-                                        <td>
-                                            <select name="qsjgjxModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="105起升机构检修平台">105起升机构检修平台</option>
-                                                <option value="145起升机构检修平台">145起升机构检修平台</option>
-                                                <option value="175起升机构检修平台">175起升机构检修平台</option>
-                                                <option value="275起升机构检修平台">275起升机构检修平台</option>
-                                                <option value="185起升机构检修平台">185起升机构检修平台</option>
-                                                <option value="285起升机构检修平台">285起升机构检修平台</option>
-                                                <option value="385起升机构检修平台">385起升机构检修平台</option>
-                                                <option value="295起升机构检修平台">295起升机构检修平台</option>
-                                                <option value="495起升机构检修平台">495起升机构检修平台</option>
-                                                <option value="313起升机构检修平台">313起升机构检修平台</option>
-                                                <option value="无">无</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div class='subtable'>
-                                <table>
-                                    <tr>
-                                        <td style="width:40%;">伸缩机构检修平台选择</td>
-                                        <td>
-                                            <select name="ssjgjxModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="6模数2.78伸缩机构检修平台">6模数2.78伸缩机构检修平台</option>
-                                                <option value="6模数1.7伸缩机构检修平台">6模数1.7伸缩机构检修平台</option>
-                                                <option value="8模数1.7伸缩机构检修平台">8模数1.7伸缩机构检修平台</option>
+                                                <option value="8mm防风销钉">8mm防风销钉</option>
+                                                <option value="9mm防风销钉">9mm防风销钉</option>
+                                                <option value="10mm防风销钉">10mm防风销钉</option>
+                                                <option value="12mm防风销钉">12mm防风销钉</option>
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
@@ -1478,122 +1577,48 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="8" style="background-color: #aaa;padding: 10px 0 10px 0"><b>16.检修平台成本</b></td>
+                                        <td colspan="10" style="background-color: #aaa;padding: 10px 0 10px 0"><b>21.防风销座、销钉成本</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:5%;padding:10px 0;;">序号</td>
-                                        <td style="width:15%;">类型</td>
-                                        <td style="width:25%;">名称</td>
+                                        <td style="width:10%;">部件类型</td>
+                                        <td style="width:15%;">名称</td>
                                         <td style="width:10%;">数量</td>
-                                        <td style="width:10%;">总重量(千克)</td>
-                                        <td style="width:15%;">单价(元/千克)</td>
+                                        <td style="width:10%;">单个重量</td>
+                                        <td style="width:10%;">单位</td>
+                                        <td style="width:10%;">单价</td>
+                                        <td style="width:10%;">单位</td>
                                         <td style="width:10%;">材料利用率</td>
                                         <td style="width:10%;">总价(万元)</td>
                                     </tr>
                                     <tr>
                                         <td >1</td>
-                                        <td >GRU检修平台</td>
-                                        <td ><input type="text" name="cbgrujxmc"/></td>
-                                        <td ><input type="text" name="cbgrujxsl"/></td>
-                                        <td ><input type="text" name="cbgrujxzl"/></td>
-                                        <td ><input type="text" name="cbgrujxdj"/></td>
-                                        <td ><input type="text" name="cbgrujxlyl"/></td>
-                                        <td ><input type="text" name="cbgrujxzj"/></td>
+                                        <td >防风销座</td>
+                                        <td >无</td>
+                                        <td ><input type="text" name="cbxzsl"/></td>
+                                        <td ><input type="text" name="cbxzzl"/></td>
+                                        <td >千克</td>
+                                        <td ><input type="text" name="cbxzdj"/></td>
+                                        <td >元/千克</td>
+                                        <td >无</td>
+                                        <td ><input type="text" name="cbxzzj"/></td>
                                     </tr>
                                     <tr>
                                         <td >2</td>
-                                        <td >起升机构检修平台</td>
-                                        <td ><input type="text" name="cbqsjgjxmc"/></td>
-                                        <td ><input type="text" name="cbqsjgjxsl"/></td>
-                                        <td ><input type="text" name="cbqsjgjxzl"/></td>
-                                        <td ><input type="text" name="cbqsjgjxdj"/></td>
-                                        <td ><input type="text" name="cbqsjgjxlyl"/></td>
-                                        <td ><input type="text" name="cbqsjgjxzj"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td >3</td>
-                                        <td >伸缩机构检修平台</td>
-                                        <td ><input type="text" name="cbssjgjxmc"/></td>
-                                        <td ><input type="text" name="cbssjgjxsl"/></td>
-                                        <td ><input type="text" name="cbssjgjxzl"/></td>
-                                        <td ><input type="text" name="cbssjgjxdj"/></td>
-                                        <td ><input type="text" name="cbssjgjxlyl"/></td>
-                                        <td ><input type="text" name="cbssjgjxzj"/></td>
+                                        <td >防风销钉</td>
+                                        <td ><input type="text" name="cbxdxh"/></td>
+                                        <td ><input type="text" name="cbxdsl"/></td>
+                                        <td >无</td>
+                                        <td >无</td>
+                                        <td ><input type="text" name="cbxddj"/></td>
+                                        <td >元/件</td>
+                                        <td >无</td>
+                                        <td ><input type="text" name="cbxdzj"/></td>
                                     </tr>
                                 </table>
                             </div>
 
-                            <div style="width:97%;" class='subtable'>
-                                <table>
-                                    <tr>
-                                        <td colspan="6" style="background-color: #aaa;padding: 10px 0 10px 0"><b>17.试验轨道/试验架成本</b></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:10%;padding:10px 0;;">序号</td>
-                                        <td style="width:20%;">类型</td>
-                                        <td style="width:10%;">数量</td>
-                                        <td style="width:20%;">总重量(吨)</td>
-                                        <td style="width:20%;">单价(元/吨)</td>
-                                        <td style="width:20%;">总价(万元)</td>
-                                    </tr>
-                                    <tr>
-                                        <td >1</td>
-                                        <td >试验轨道</td>
-                                        <td ><input type="text" name="cbsygdsl"/></td>
-                                        <td ><input type="text" name="cbsygdzl"/></td>
-                                        <td ><input type="text" name="cbsygddj"/></td>
-                                        <td ><input type="text" name="cbsygdzj"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td >2</td>
-                                        <td >试验架</td>
-                                        <td ><input type="text" name="cbsyjsl"/></td>
-                                        <td ><input type="text" name="cbsyjzl"/></td>
-                                        <td ><input type="text" name="cbsyjdj"/></td>
-                                        <td ><input type="text" name="cbsyjzj"/></td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>18.木方选择</b></div>
-                            <div class='subtable'>
-                                <table>
-                                    <tr>
-                                        <td style="width:40%;">木方选择</td>
-                                        <td>
-                                            <select name="mfModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="国内">国内</option>
-                                                <option value="国外(EGS、MHE等)">国外(EGS、MHE等)</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div style="width:97%;" class='subtable'>
-                                <table>
-                                    <tr>
-                                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>19.包装成本</b></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:5%;padding:10px 0;;">序号</td>
-                                        <td style="width:15%;">类型</td>
-                                        <td style="width:10%;">数量</td>
-                                        <td style="width:15%;">单价(元/台)</td>
-                                        <td style="width:10%;">总价(万元)</td>
-                                    </tr>
-                                    <tr>
-                                        <td >1</td>
-                                        <td >木方</td>
-                                        <td ><input type="text" name="cbmfsl"/></td>
-                                        <td ><input type="text" name="cbmfdj"/></td>
-                                        <td ><input type="text" name="cbmfzj"/></td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>20.运输城市选择</b></div>
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>22.运输城市选择</b></div>
                             <div class='subtable'>
                                 <table>
                                     <tr>
@@ -1622,7 +1647,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="7" style="background-color: #aaa;padding: 10px 0 10px 0"><b>21.运输成本</b></td>
+                                        <td colspan="7" style="background-color: #aaa;padding: 10px 0 10px 0"><b>23.运输成本</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:5%;padding:10px 0;;">序号</td>
@@ -1683,7 +1708,7 @@
                             <input type="hidden" name="pdfType"/>
                         </form>
 
-                        <div class="navbox" style="top: 35%;">
+                        <div class="navbox" style="top: 30%;">
                             <div style="width:600px;height:520px; font-size: 14px   ;">
                                 <table id="pdf3tb" style="background-color: rgb(220,220,220)">
                                     <tr>
@@ -1749,7 +1774,7 @@
                                         <td id="cbbmuclzj"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>轨道材料及运输成本核算</b></td>
+                                        <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>擦窗机其他材料成本核算</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>1</td>
@@ -1758,6 +1783,11 @@
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>2</td>
+                                        <td>防风销座销钉成本小计</td>
+                                        <td id="cbxzxdzj"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td>3</td>
                                         <td>运输成本小计</td>
                                         <td id="cbyszj"></td>
                                     </tr>
@@ -2963,6 +2993,142 @@
             cblt5lyl:1,
         },
     };
+    //GRU检修平台
+    grujxModelList={
+        "GRU285检修平台":{
+            cbgrujxmc:'GRU285检修平台',
+            cbgrujxsl:1,
+            cbgrujxzl:" ",
+            cbgrujxlyl:0.9,
+        },
+        "GRU295检修平台":{
+            cbgrujxmc:'GRU295检修平台',
+            cbgrujxsl:1,
+            cbgrujxzl:" ",
+            cbgrujxlyl:0.9,
+        },
+        "GRU313检修平台":{
+            cbgrujxmc:'GRU313检修平台',
+            cbgrujxsl:1,
+            cbgrujxzl:" ",
+            cbgrujxlyl:0.9,
+        },
+        "无":{
+            cbgrujxmc:'无',
+            cbgrujxsl:0,
+            cbgrujxzl:0,
+            cbgrujxlyl:1,
+        },
+    };
+    //起升机构检修平台
+    qsjgjxModelList={
+        "105起升机构检修平台":{
+            cbqsjgjxmc:'105起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "145起升机构检修平台":{
+            cbqsjgjxmc:'145起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "175起升机构检修平台":{
+            cbqsjgjxmc:'175起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "275起升机构检修平台":{
+            cbqsjgjxmc:'275起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "185起升机构检修平台":{
+            cbqsjgjxmc:'185起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "285起升机构检修平台":{
+            cbqsjgjxmc:'285起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "385起升机构检修平台":{
+            cbqsjgjxmc:'385起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "295起升机构检修平台":{
+            cbqsjgjxmc:'295起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "495起升机构检修平台":{
+            cbqsjgjxmc:'495起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "313起升机构检修平台":{
+            cbqsjgjxmc:'313起升机构检修平台',
+            cbqsjgjxsl:1,
+            cbqsjgjxzl:" ",
+            cbqsjgjxlyl:0.9,
+        },
+        "无":{
+            cbqsjgjxmc:'无',
+            cbqsjgjxsl:0,
+            cbqsjgjxzl:0,
+            cbqsjgjxlyl:1,
+        },
+    };
+    //伸缩机构检修平台
+    ssjgjxModelList={
+        "6模数2.78伸缩机构检修平台":{
+            cbssjgjxmc:'6模数2.78伸缩机构检修平台',
+            cbssjgjxsl:1,
+            cbssjgjxzl:" ",
+            cbssjgjxlyl:0.9,
+        },
+        "6模数1.7伸缩机构检修平台":{
+            cbssjgjxmc:'6模数1.7伸缩机构检修平台',
+            cbssjgjxsl:1,
+            cbssjgjxzl:" ",
+            cbssjgjxlyl:0.9,
+        },
+        "8模数1.7伸缩机构检修平台":{
+            cbssjgjxmc:'8模数1.7伸缩机构检修平台',
+            cbssjgjxsl:1,
+            cbssjgjxzl:" ",
+            cbssjgjxlyl:0.9,
+        },
+        "无":{
+            cbssjgjxmc:'无',
+            cbssjgjxsl:0,
+            cbssjgjxzl:0,
+            cbssjgjxlyl:1,
+        },
+    };
+    //木方
+    mfModelList={
+        "国内":{
+            // cbmftj:0.3,
+            // cbmfdj:300,
+            // cbmfdjdw:'元/台',
+        },
+        "国外(EGS、MHE等)":{
+            // cbmftj:" ",
+            // cbmfdj:5200,
+            // cbmfdjdw:'元/立方米',
+        },
+    };
     //防风销钉型号
     xdModelList={
         "8mm防风销钉":{
@@ -3307,142 +3473,6 @@
             cbdjlsxh:'无',
             cbdjlscz:'无',
             cbdjlsdj:0,
-        },
-    };
-    //GRU检修平台
-    grujxModelList={
-        "GRU285检修平台":{
-            cbgrujxmc:'GRU285检修平台',
-            cbgrujxsl:1,
-            cbgrujxzl:" ",
-            cbgrujxlyl:0.9,
-        },
-        "GRU295检修平台":{
-            cbgrujxmc:'GRU295检修平台',
-            cbgrujxsl:1,
-            cbgrujxzl:" ",
-            cbgrujxlyl:0.9,
-        },
-        "GRU313检修平台":{
-            cbgrujxmc:'GRU313检修平台',
-            cbgrujxsl:1,
-            cbgrujxzl:" ",
-            cbgrujxlyl:0.9,
-        },
-        "无":{
-            cbgrujxmc:'无',
-            cbgrujxsl:0,
-            cbgrujxzl:0,
-            cbgrujxlyl:1,
-        },
-    };
-    //起升机构检修平台
-    qsjgjxModelList={
-        "105起升机构检修平台":{
-            cbqsjgjxmc:'105起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "145起升机构检修平台":{
-            cbqsjgjxmc:'145起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "175起升机构检修平台":{
-            cbqsjgjxmc:'175起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "275起升机构检修平台":{
-            cbqsjgjxmc:'275起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "185起升机构检修平台":{
-            cbqsjgjxmc:'185起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "285起升机构检修平台":{
-            cbqsjgjxmc:'285起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "385起升机构检修平台":{
-            cbqsjgjxmc:'385起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "295起升机构检修平台":{
-            cbqsjgjxmc:'295起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "495起升机构检修平台":{
-            cbqsjgjxmc:'495起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "313起升机构检修平台":{
-            cbqsjgjxmc:'313起升机构检修平台',
-            cbqsjgjxsl:1,
-            cbqsjgjxzl:" ",
-            cbqsjgjxlyl:0.9,
-        },
-        "无":{
-            cbqsjgjxmc:'无',
-            cbqsjgjxsl:0,
-            cbqsjgjxzl:0,
-            cbqsjgjxlyl:1,
-        },
-    };
-    //伸缩机构检修平台
-    ssjgjxModelList={
-        "6模数2.78伸缩机构检修平台":{
-            cbssjgjxmc:'6模数2.78伸缩机构检修平台',
-            cbssjgjxsl:1,
-            cbssjgjxzl:" ",
-            cbssjgjxlyl:0.9,
-        },
-        "6模数1.7伸缩机构检修平台":{
-            cbssjgjxmc:'6模数1.7伸缩机构检修平台',
-            cbssjgjxsl:1,
-            cbssjgjxzl:" ",
-            cbssjgjxlyl:0.9,
-        },
-        "8模数1.7伸缩机构检修平台":{
-            cbssjgjxmc:'8模数1.7伸缩机构检修平台',
-            cbssjgjxsl:1,
-            cbssjgjxzl:" ",
-            cbssjgjxlyl:0.9,
-        },
-        "无":{
-            cbssjgjxmc:'无',
-            cbssjgjxsl:0,
-            cbssjgjxzl:0,
-            cbssjgjxlyl:1,
-        },
-    };
-    //木方
-    mfModelList={
-        "国内":{
-            // cbmftj:0.3,
-            // cbmfdj:300,
-            // cbmfdjdw:'元/台',
-        },
-        "国外(EGS、MHE等)":{
-            // cbmftj:" ",
-            // cbmfdj:5200,
-            // cbmfdjdw:'元/立方米',
         },
     };
     //运输城市
@@ -4176,15 +4206,6 @@
             } else
                 return lt5ModelList[ lt5Model ]['cblt5lyl'];
         },
-        cbxzdj: function () {
-            return 150 ;
-        },
-        cbxdxh: function () {
-            return xdModelList[ xdModel ]['cbxdxh'];
-        },
-        cbxddj: function () {
-            return xdModelList[ xdModel ]['cbxddj'];
-        },
         cbssjjmc: function () {
             return dbxhModelList[ dbxhModel ]['cbssjjmc'];
         },
@@ -4225,165 +4246,6 @@
                 return 0 ;
             else
                 return ' ' ;
-        },
-        //轨道系统
-        cbgdxh: function () {
-            if ( yxjgModel == "无" ) {
-                return '无' ;
-            } else
-                return gdModelList[ gdModel ]['cbgdxh'];
-        },
-        cbgdcz: function () {
-            if ( yxjgModel == "无" ) {
-                return '无' ;
-            } else
-                return gdczModelList[ gdczModel ]['cbgdcz'];
-        },
-        cbgdsl: function () {
-            if ( yxjgModel == "无" ) {
-                return 0 ;
-            } else
-                return gdModelList[ gdModel ]['cbgdsl'];
-        },
-        cbgdzl: function () {
-            if ( yxjgModel == "无" ) {
-                return 0 ;
-            } else
-                return cbgdcd * cbgdmmzl / 1000 ;
-        },
-        // cbgddj: function () {
-        //     if ( yxjgModel == "无" ) {
-        //         return 0 ;
-        //     } else
-        //         return gdModelList[ gdModel ]['cbgddj'];
-        // },
-        cbgddj: function () {
-            if ( yxjgModel == "无" ) {
-                return 0 ;
-            } else{
-                if ( gdModel == "I20b-31" || gdModel == "I22b-36.5" || gdModel == "I25b-42" || gdModel == "I28b-47.8" || gdModel == "I32b-57.7" || gdModel == "H150*150-31.1" || gdModel == "H175*175-40.4" || gdModel == "H200*200-49.9" || gdModel == "H200*204-56.2" || gdModel == "H250*250-71.8" || gdModel == "H250*255-81.6" || gdModel == "H300*300-93" || gdModel == "H300*305-105" || gdModel == "H200*200T-71" || gdModel == "H250*250T-99" ) {
-                    if ( gdczModel == "Q235B" ) {
-                        return 4900 ;
-                    }else if ( gdczModel == "Q355B" ) {
-                        return 5250 ;
-                    }
-                }else if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
-                    return 8000 ;
-                }
-            }
-        },
-        cbgdlyl: function () {
-            if ( yxjgModel == "无" ) {
-                return 1 ;
-            } else
-                return 0.95 ;
-        },
-        cbgdcd: function () {
-            if ( yxjgModel == "无" ) {
-                return 0 ;
-            } else
-                return ' ' ;
-        },
-        cbgdmmzl: function () {
-            if ( yxjgModel == "无" ) {
-                return 0 ;
-            } else
-                return gdModelList[ gdModel ]['cbgdmmzl'];
-        },
-        cbgdjxsl: function () {
-            if ( yxjgModel == "无" ) {
-                return 0 ;
-            } else
-                return cbgdsl ;
-        },
-        cbgdjxdj: function () {
-            return 1500 ;
-        },
-        cbmbxh: function () {
-            return mbModelList[ mbModel ]['cbmbxh'];
-        },
-        cbmbcz: function () {
-            return 'Q235B';
-        },
-        cbmbmzl: function () {
-            return mbModelList[ mbModel ]['cbmbmzl'];
-        },
-        cbmbzl: function () {
-            return cbmbsl * cbmbmzl / 1000 ;
-        },
-        cbmbdj: function () {
-            return mbModelList[ mbModel ]['cbmbdj'];
-        },
-        cbmbdjdw: function () {
-            return mbModelList[ mbModel ]['cbmbdjdw'];
-        },
-        cbmblyl: function () {
-            return mbModelList[ mbModel ]['cbmblyl'];
-        },
-        cbmbjxsl: function () {
-            if ( cbmbsl == 0 ) {
-                return 0;
-            } else {
-                return 1 ;
-            }
-        },
-        cbmbjxdj: function () {
-            return 1500 ;
-        },
-        cbdjlsxh: function () {
-            return djlsModelList[ djlsModel ]['cbdjlsxh'];
-        },
-        cbdjlscz: function () {
-            return djlsModelList[ djlsModel ]['cbdjlscz'];
-        },
-        cbdjlssl: function () {
-            if ( djlsModel == '无' ) {
-                return 0;
-            } else {
-                return ' ' ;
-            }
-        },
-        cbdjlsdj: function () {
-            return djlsModelList[ djlsModel ]['cbdjlsdj'];
-        },
-        cbmdcz: function () {
-            return 'Q235B';
-        },
-        cbmdmj: function () {
-            if ( cbmdsl == 0 ) {
-                return 0;
-            } else {
-                return ' ' ;
-            }
-        },
-        cbmddj: function () {
-            return 200 ;
-        },
-        cbhlcz: function () {
-            return 'Q235B';
-        },
-        cbhlcd: function () {
-            if ( cbhlsl == 0 ) {
-                return 0;
-            } else {
-                return ' ' ;
-            }
-        },
-        cbhldj: function () {
-            return 120 ;
-        },
-        cbptcz: function () {
-            return 'Q235B';
-        },
-        cbptcd: function () {
-            if ( cbptsl == 0 ) {
-                return 0;
-            } else {
-                return ' ' ;
-            }
-        },
-        cbptdj: function () {
-            return 400 ;
         },
 
         //检修平台
@@ -4516,6 +4378,177 @@
                     return 38000;
                 }
             }
+        },
+
+        //轨道系统
+        cbgdxh: function () {
+            if ( yxjgModel == "无" ) {
+                return '无' ;
+            } else
+                return gdModelList[ gdModel ]['cbgdxh'];
+        },
+        cbgdcz: function () {
+            if ( yxjgModel == "无" ) {
+                return '无' ;
+            } else
+                return gdczModelList[ gdczModel ]['cbgdcz'];
+        },
+        cbgdsl: function () {
+            if ( yxjgModel == "无" ) {
+                return 0 ;
+            } else
+                return gdModelList[ gdModel ]['cbgdsl'];
+        },
+        cbgdzl: function () {
+            if ( yxjgModel == "无" ) {
+                return 0 ;
+            } else
+                return cbgdcd * cbgdmmzl / 1000 ;
+        },
+        // cbgddj: function () {
+        //     if ( yxjgModel == "无" ) {
+        //         return 0 ;
+        //     } else
+        //         return gdModelList[ gdModel ]['cbgddj'];
+        // },
+        cbgddj: function () {
+            if ( yxjgModel == "无" ) {
+                return 0 ;
+            } else{
+                if ( gdModel == "I20b-31" || gdModel == "I22b-36.5" || gdModel == "I25b-42" || gdModel == "I28b-47.8" || gdModel == "I32b-57.7" || gdModel == "H150*150-31.1" || gdModel == "H175*175-40.4" || gdModel == "H200*200-49.9" || gdModel == "H200*204-56.2" || gdModel == "H250*250-71.8" || gdModel == "H250*255-81.6" || gdModel == "H300*300-93" || gdModel == "H300*305-105" || gdModel == "H200*200T-71" || gdModel == "H250*250T-99" ) {
+                    if ( gdczModel == "Q235B" ) {
+                        return 4900 ;
+                    }else if ( gdczModel == "Q355B" ) {
+                        return 5250 ;
+                    }
+                }else if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
+                    return 8000 ;
+                }
+            }
+        },
+        cbgdlyl: function () {
+            if ( yxjgModel == "无" ) {
+                return 1 ;
+            } else
+                return 0.95 ;
+        },
+        cbgdcd: function () {
+            if ( yxjgModel == "无" ) {
+                return 0 ;
+            } else
+                return ' ' ;
+        },
+        cbgdmmzl: function () {
+            if ( yxjgModel == "无" ) {
+                return 0 ;
+            } else
+                return gdModelList[ gdModel ]['cbgdmmzl'];
+        },
+        cbgdjxsl: function () {
+            if ( yxjgModel == "无" ) {
+                return 0 ;
+            } else
+                return cbgdsl ;
+        },
+        cbgdjxdj: function () {
+            return 1500 ;
+        },
+        cbmbxh: function () {
+            return mbModelList[ mbModel ]['cbmbxh'];
+        },
+        cbmbcz: function () {
+            return 'Q235B';
+        },
+        cbmbmzl: function () {
+            return mbModelList[ mbModel ]['cbmbmzl'];
+        },
+        cbmbzl: function () {
+            return cbmbsl * cbmbmzl / 1000 ;
+        },
+        cbmbdj: function () {
+            return mbModelList[ mbModel ]['cbmbdj'];
+        },
+        cbmbdjdw: function () {
+            return mbModelList[ mbModel ]['cbmbdjdw'];
+        },
+        cbmblyl: function () {
+            return mbModelList[ mbModel ]['cbmblyl'];
+        },
+        cbmbjxsl: function () {
+            if ( cbmbsl == 0 ) {
+                return 0 ;
+            } else {
+                return 1 ;
+            }
+        },
+        cbmbjxdj: function () {
+            return 1500 ;
+        },
+        cbdjlsxh: function () {
+            return djlsModelList[ djlsModel ]['cbdjlsxh'];
+        },
+        cbdjlscz: function () {
+            return djlsModelList[ djlsModel ]['cbdjlscz'];
+        },
+        cbdjlssl: function () {
+            if ( djlsModel == '无' ) {
+                return 0 ;
+            } else {
+                return ' ' ;
+            }
+        },
+        cbdjlsdj: function () {
+            return djlsModelList[ djlsModel ]['cbdjlsdj'];
+        },
+        cbmdcz: function () {
+            return 'Q235B';
+        },
+        cbmdmj: function () {
+            if ( cbmdsl == 0 ) {
+                return 0 ;
+            } else {
+                return ' ' ;
+            }
+        },
+        cbmddj: function () {
+            return 200 ;
+        },
+        cbhlcz: function () {
+            return 'Q235B';
+        },
+        cbhlcd: function () {
+            if ( cbhlsl == 0 ) {
+                return 0 ;
+            } else {
+                return ' ' ;
+            }
+        },
+        cbhldj: function () {
+            return 120 ;
+        },
+        cbptcz: function () {
+            return 'Q235B';
+        },
+        cbptcd: function () {
+            if ( cbptsl == 0 ) {
+                return 0 ;
+            } else {
+                return ' ' ;
+            }
+        },
+        cbptdj: function () {
+            return 400 ;
+        },
+
+        //防风销座销钉
+        cbxzdj: function () {
+            return 150 ;
+        },
+        cbxdxh: function () {
+            return xdModelList[ xdModel ]['cbxdxh'];
+        },
+        cbxddj: function () {
+            return xdModelList[ xdModel ]['cbxddj'];
         },
 
         //运输
@@ -4759,12 +4792,6 @@
         cblt5zj: function () {
             return cblt5sl * cblt5cd * cblt5dj / cblt5lyl / 10000 ;
         },
-        cbxzzj: function () {
-            return cbxzsl * cbxzzl * cbxzdj / 10000 ;
-        },
-        cbxdzj: function () {
-            return cbxdsl * cbxddj / 10000 ;
-        },
         cbssjjzj: function () {
             return cbssjjsl * cbssjjdj / 10000 ;
         },
@@ -4779,6 +4806,33 @@
         cbyyzj: function () {
             return cbyysl * cbyydj / 10000 ;
         },
+
+        //检修平台
+        cbgrujxzj: function () {
+            return cbgrujxsl * cbgrujxzl * cbgrujxdj / cbgrujxlyl / 10000 ;
+        },
+        cbqsjgjxzj: function () {
+            return cbqsjgjxsl * cbqsjgjxzl * cbqsjgjxdj / cbqsjgjxlyl / 10000 ;
+        },
+        cbssjgjxzj: function () {
+            return cbssjgjxsl * cbssjgjxzl * cbssjgjxdj / cbssjgjxlyl / 10000 ;
+        },
+
+        //工厂内作业
+        cbsygdzj: function () {
+            return cbsygdsl * cbsygdzl * cbsygddj / 10000 ;
+        },
+        cbsyjzj: function () {
+            return cbsyjsl * cbsyjzl * cbsyjdj / 10000 ;
+        },
+
+        //包装
+        cbmfzj: function () {
+            return cbmfsl * cbmfdj / 10000 ;
+        },
+        // cbbzzj: function () {
+        //     return cbbzsl * cbbzdj / 10000 ;
+        // },
 
         //轨道系统
         cbgdzj: function () {
@@ -4809,32 +4863,13 @@
             return cbptsl * cbptcd * cbptdj / 10000 ;
         },
 
-        //检修平台
-        cbgrujxzj: function () {
-            return cbgrujxsl * cbgrujxzl * cbgrujxdj / cbgrujxlyl / 10000 ;
+        //防风销座销钉
+        cbxzzj: function () {
+            return cbxzsl * cbxzzl * cbxzdj / 10000 ;
         },
-        cbqsjgjxzj: function () {
-            return cbqsjgjxsl * cbqsjgjxzl * cbqsjgjxdj / cbqsjgjxlyl / 10000 ;
+        cbxdzj: function () {
+            return cbxdsl * cbxddj / 10000 ;
         },
-        cbssjgjxzj: function () {
-            return cbssjgjxsl * cbssjgjxzl * cbssjgjxdj / cbssjgjxlyl / 10000 ;
-        },
-
-        //工厂内作业
-        cbsygdzj: function () {
-            return cbsygdsl * cbsygdzl * cbsygddj / 10000 ;
-        },
-        cbsyjzj: function () {
-            return cbsyjsl * cbsyjzl * cbsyjdj / 10000 ;
-        },
-
-        //包装
-        cbmfzj: function () {
-            return cbmfsl * cbmfdj / 10000 ;
-        },
-        // cbbzzj: function () {
-        //     return cbbzsl * cbbzdj / 10000 ;
-        // },
 
         //运输
         cbc1zj: function () {

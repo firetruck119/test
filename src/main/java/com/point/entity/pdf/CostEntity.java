@@ -217,16 +217,6 @@ public class CostEntity {
     private Double cblt5dj;
     private Double cblt5lyl;
 
-    //    防风销座
-    private Double cbxzsl;
-    private Double cbxzzl;
-    private Double cbxzdj;
-
-    //    防风销钉
-    private String cbxdxh;
-    private Double cbxdsl;
-    private Double cbxddj;
-
     //    伸缩臂机加件
     private String cbssjjmc;
     private Double cbssjjsl;
@@ -246,57 +236,6 @@ public class CostEntity {
     private String cbyymc;
     private Double cbyysl;
     private Double cbyydj;
-
-    //    轨道
-    private String cbgdxh;
-    private String cbgdcz;
-    private Double cbgdsl;
-    private Double cbgdzl;
-    private Double cbgddj;
-    private Double cbgdlyl;
-
-    //    轨道热浸锌
-    private Double cbgdjxsl;
-    private Double cbgdjxdj;
-
-    //    埋板
-    private String cbmbxh;
-    private String cbmbcz;
-    private Double cbmbsl;
-    private Double cbmbmzl;
-    private Double cbmbzl;
-    private Double cbmbdj;
-    private String cbmbdjdw;
-    private Double cbmblyl;
-
-    //    埋板热浸锌
-    private Double cbmbjxsl;
-    private Double cbmbjxdj;
-
-    //    地脚螺栓
-    private String cbdjlsxh;
-    private String cbdjlscz;
-    private Double cbdjlssl;
-    private Double cbdjlsdj;
-
-
-    //    马道
-    private String cbmdcz;
-    private Double cbmdsl;
-    private Double cbmdmj;
-    private Double cbmddj;
-
-    //    护栏
-    private String cbhlcz;
-    private Double cbhlsl;
-    private Double cbhlcd;
-    private Double cbhldj;
-
-    //    爬梯
-    private String cbptcz;
-    private Double cbptsl;
-    private Double cbptcd;
-    private Double cbptdj;
 
     //    GRU检修平台
     private String cbgrujxmc;
@@ -338,6 +277,66 @@ public class CostEntity {
     //    包装
 //    private Double cbbzsl;
 //    private Double cbbzdj;
+
+    //    轨道
+    private String cbgdxh;
+    private String cbgdcz;
+    private Double cbgdsl;
+    private Double cbgdzl;
+    private Double cbgddj;
+    private Double cbgdlyl;
+
+    //    轨道热浸锌
+    private Double cbgdjxsl;
+    private Double cbgdjxdj;
+
+    //    埋板
+    private String cbmbxh;
+    private String cbmbcz;
+    private Double cbmbsl;
+    private Double cbmbmzl;
+    private Double cbmbzl;
+    private Double cbmbdj;
+    private String cbmbdjdw;
+    private Double cbmblyl;
+
+    //    埋板热浸锌
+    private Double cbmbjxsl;
+    private Double cbmbjxdj;
+
+    //    地脚螺栓
+    private String cbdjlsxh;
+    private String cbdjlscz;
+    private Double cbdjlssl;
+    private Double cbdjlsdj;
+
+    //    马道
+    private String cbmdcz;
+    private Double cbmdsl;
+    private Double cbmdmj;
+    private Double cbmddj;
+
+    //    护栏
+    private String cbhlcz;
+    private Double cbhlsl;
+    private Double cbhlcd;
+    private Double cbhldj;
+
+    //    爬梯
+    private String cbptcz;
+    private Double cbptsl;
+    private Double cbptcd;
+    private Double cbptdj;
+
+    //    防风销座
+    private Double cbxzsl;
+    private Double cbxzzl;
+    private Double cbxzdj;
+
+    //    防风销钉
+    private String cbxdxh;
+    private Double cbxdsl;
+    private Double cbxddj;
 
     //    6.8m车
     private Double cbc1lc;
@@ -422,24 +421,12 @@ public class CostEntity {
     private Double cblt3zj;
     private Double cblt4zj;
     private Double cblt5zj;
-    private Double cbxzzj;
-    private Double cbxdzj;
     private Double cbssjjzj;
     private Double cbdbxzzj;
 
     //    电气液压系统成本小计
     private Double cbdqzj;
     private Double cbyyzj;
-
-    //    轨道成本小计
-    private Double cbgdzj;
-    private Double cbgdjxzj;
-    private Double cbmbzj;
-    private Double cbmbjxzj;
-    private Double cbdjlszj;
-    private Double cbmdzj;
-    private Double cbhlzj;
-    private Double cbptzj;
 
     //    检修平台成本小计
     private Double cbgrujxzj;
@@ -453,6 +440,20 @@ public class CostEntity {
     //    包装成本小计
     private Double cbmfzj;
 //    private Double cbbzzj;
+
+    //    轨道成本小计
+    private Double cbgdzj;
+    private Double cbgdjxzj;
+    private Double cbmbzj;
+    private Double cbmbjxzj;
+    private Double cbdjlszj;
+    private Double cbmdzj;
+    private Double cbhlzj;
+    private Double cbptzj;
+
+//防风销座销钉小计
+    private Double cbxzzj;
+    private Double cbxdzj;
 
     //    运输成本小计
     private Double cbc1zj;
@@ -718,16 +719,6 @@ public class CostEntity {
         map.put("cblt5dj", CommonFunc.convertDoubleToString(cblt5dj));
         map.put("cblt5lyl", CommonFunc.convertDoubleToString(cblt5lyl));
 
-        //       防风销座
-        map.put("cbxzsl", CommonFunc.convertDoubleToString(cbxzsl));
-        map.put("cbxzzl", CommonFunc.convertDoubleToString(cbxzzl));
-        map.put("cbxzdj", CommonFunc.convertDoubleToString(cbxzdj));
-
-        //       防风销钉
-        map.put("cbxdxh", CommonFunc.convertDoubleToString(cbxdxh));
-        map.put("cbxdsl", CommonFunc.convertDoubleToString(cbxdsl));
-        map.put("cbxddj", CommonFunc.convertDoubleToString(cbxddj));
-
         //       伸缩臂机加件
         map.put("cbssjjmc", CommonFunc.convertDoubleToString(cbssjjmc));
         map.put("cbssjjsl", CommonFunc.convertDoubleToString(cbssjjsl));
@@ -747,6 +738,47 @@ public class CostEntity {
         map.put("cbyymc", CommonFunc.convertDoubleToString(cbyymc));
         map.put("cbyysl", CommonFunc.convertDoubleToString(cbyysl));
         map.put("cbyydj", CommonFunc.convertDoubleToString(cbyydj));
+
+        //       GRU检修平台
+        map.put("cbgrujxmc", CommonFunc.convertDoubleToString(cbgrujxmc));
+        map.put("cbgrujxsl", CommonFunc.convertDoubleToString(cbgrujxsl));
+        map.put("cbgrujxzl", CommonFunc.convertDoubleToString(cbgrujxzl));
+        map.put("cbgrujxdj", CommonFunc.convertDoubleToString(cbgrujxdj));
+        map.put("cbgrujxlyl", CommonFunc.convertDoubleToString(cbgrujxlyl));
+
+        //       起升机构检修平台
+        map.put("cbqsjgjxmc", CommonFunc.convertDoubleToString(cbqsjgjxmc));
+        map.put("cbqsjgjxsl", CommonFunc.convertDoubleToString(cbqsjgjxsl));
+        map.put("cbqsjgjxzl", CommonFunc.convertDoubleToString(cbqsjgjxzl));
+        map.put("cbqsjgjxdj", CommonFunc.convertDoubleToString(cbqsjgjxdj));
+        map.put("cbqsjgjxlyl", CommonFunc.convertDoubleToString(cbqsjgjxlyl));
+
+        //       伸缩机构检修平台
+        map.put("cbssjgjxmc", CommonFunc.convertDoubleToString(cbssjgjxmc));
+        map.put("cbssjgjxsl", CommonFunc.convertDoubleToString(cbssjgjxsl));
+        map.put("cbssjgjxzl", CommonFunc.convertDoubleToString(cbssjgjxzl));
+        map.put("cbssjgjxdj", CommonFunc.convertDoubleToString(cbssjgjxdj));
+        map.put("cbssjgjxlyl", CommonFunc.convertDoubleToString(cbssjgjxlyl));
+
+        //       试验轨道
+        map.put("cbsygdsl", CommonFunc.convertDoubleToString(cbsygdsl));
+        map.put("cbsygdzl", CommonFunc.convertDoubleToString(cbsygdzl));
+        map.put("cbsygddj", CommonFunc.convertDoubleToString(cbsygddj));
+
+        //       试验架
+        map.put("cbsyjsl", CommonFunc.convertDoubleToString(cbsyjsl));
+        map.put("cbsyjzl", CommonFunc.convertDoubleToString(cbsyjzl));
+        map.put("cbsyjdj", CommonFunc.convertDoubleToString(cbsyjdj));
+
+        //       木方
+        map.put("cbmfsl", CommonFunc.convertDoubleToString(cbmfsl));
+//        map.put("cbmftj", CommonFunc.convertDoubleToString(cbmftj));
+        map.put("cbmfdj", CommonFunc.convertDoubleToString(cbmfdj));
+//        map.put("cbmfdjdw", CommonFunc.convertDoubleToString(cbmfdjdw));
+
+        //       包装
+//        map.put("cbbzsl", CommonFunc.convertDoubleToString(cbbzsl));
+//        map.put("cbbzdj", CommonFunc.convertDoubleToString(cbbzdj));
 
         //       轨道
         map.put("cbgdxh", CommonFunc.convertDoubleToString(cbgdxh));
@@ -798,46 +830,15 @@ public class CostEntity {
         map.put("cbptcd", CommonFunc.convertDoubleToString(cbptcd));
         map.put("cbptdj", CommonFunc.convertDoubleToString(cbptdj));
 
-        //       GRU检修平台
-        map.put("cbgrujxmc", CommonFunc.convertDoubleToString(cbgrujxmc));
-        map.put("cbgrujxsl", CommonFunc.convertDoubleToString(cbgrujxsl));
-        map.put("cbgrujxzl", CommonFunc.convertDoubleToString(cbgrujxzl));
-        map.put("cbgrujxdj", CommonFunc.convertDoubleToString(cbgrujxdj));
-        map.put("cbgrujxlyl", CommonFunc.convertDoubleToString(cbgrujxlyl));
+        //       防风销座
+        map.put("cbxzsl", CommonFunc.convertDoubleToString(cbxzsl));
+        map.put("cbxzzl", CommonFunc.convertDoubleToString(cbxzzl));
+        map.put("cbxzdj", CommonFunc.convertDoubleToString(cbxzdj));
 
-        //       起升机构检修平台
-        map.put("cbqsjgjxmc", CommonFunc.convertDoubleToString(cbqsjgjxmc));
-        map.put("cbqsjgjxsl", CommonFunc.convertDoubleToString(cbqsjgjxsl));
-        map.put("cbqsjgjxzl", CommonFunc.convertDoubleToString(cbqsjgjxzl));
-        map.put("cbqsjgjxdj", CommonFunc.convertDoubleToString(cbqsjgjxdj));
-        map.put("cbqsjgjxlyl", CommonFunc.convertDoubleToString(cbqsjgjxlyl));
-
-        //       伸缩机构检修平台
-        map.put("cbssjgjxmc", CommonFunc.convertDoubleToString(cbssjgjxmc));
-        map.put("cbssjgjxsl", CommonFunc.convertDoubleToString(cbssjgjxsl));
-        map.put("cbssjgjxzl", CommonFunc.convertDoubleToString(cbssjgjxzl));
-        map.put("cbssjgjxdj", CommonFunc.convertDoubleToString(cbssjgjxdj));
-        map.put("cbssjgjxlyl", CommonFunc.convertDoubleToString(cbssjgjxlyl));
-
-        //       试验轨道
-        map.put("cbsygdsl", CommonFunc.convertDoubleToString(cbsygdsl));
-        map.put("cbsygdzl", CommonFunc.convertDoubleToString(cbsygdzl));
-        map.put("cbsygddj", CommonFunc.convertDoubleToString(cbsygddj));
-
-        //       试验架
-        map.put("cbsyjsl", CommonFunc.convertDoubleToString(cbsyjsl));
-        map.put("cbsyjzl", CommonFunc.convertDoubleToString(cbsyjzl));
-        map.put("cbsyjdj", CommonFunc.convertDoubleToString(cbsyjdj));
-
-        //       木方
-        map.put("cbmfsl", CommonFunc.convertDoubleToString(cbmfsl));
-//        map.put("cbmftj", CommonFunc.convertDoubleToString(cbmftj));
-        map.put("cbmfdj", CommonFunc.convertDoubleToString(cbmfdj));
-//        map.put("cbmfdjdw", CommonFunc.convertDoubleToString(cbmfdjdw));
-
-        //       包装
-//        map.put("cbbzsl", CommonFunc.convertDoubleToString(cbbzsl));
-//        map.put("cbbzdj", CommonFunc.convertDoubleToString(cbbzdj));
+        //       防风销钉
+        map.put("cbxdxh", CommonFunc.convertDoubleToString(cbxdxh));
+        map.put("cbxdsl", CommonFunc.convertDoubleToString(cbxdsl));
+        map.put("cbxddj", CommonFunc.convertDoubleToString(cbxddj));
 
         //       6.8m车
         map.put("cbc1lc", CommonFunc.convertDoubleToString(cbc1lc));
@@ -934,24 +935,12 @@ public class CostEntity {
         map.put("cblt3zj", CommonFunc.convertDoubleToString(cblt3zj));
         map.put("cblt4zj", CommonFunc.convertDoubleToString(cblt4zj));
         map.put("cblt5zj", CommonFunc.convertDoubleToString(cblt5zj));
-        map.put("cbxzzj", CommonFunc.convertDoubleToString(cbxzzj));
-        map.put("cbxdzj", CommonFunc.convertDoubleToString(cbxdzj));
         map.put("cbssjjzj", CommonFunc.convertDoubleToString(cbssjjzj));
         map.put("cbdbxzzj", CommonFunc.convertDoubleToString(cbdbxzzj));
 
         //       电气液压系统成本小计
         map.put("cbdqzj", CommonFunc.convertDoubleToString(cbdqzj));
         map.put("cbyyzj", CommonFunc.convertDoubleToString(cbyyzj));
-
-        //       轨道成本小计
-        map.put("cbgdzj", CommonFunc.convertDoubleToString(cbgdzj));
-        map.put("cbgdjxzj", CommonFunc.convertDoubleToString(cbgdjxzj));
-        map.put("cbmbzj", CommonFunc.convertDoubleToString(cbmbzj));
-        map.put("cbmbjxzj", CommonFunc.convertDoubleToString(cbmbjxzj));
-        map.put("cbdjlszj", CommonFunc.convertDoubleToString(cbdjlszj));
-        map.put("cbmdzj", CommonFunc.convertDoubleToString(cbmdzj));
-        map.put("cbhlzj", CommonFunc.convertDoubleToString(cbhlzj));
-        map.put("cbptzj", CommonFunc.convertDoubleToString(cbptzj));
 
         //       检修平台成本小计
         map.put("cbgrujxzj", CommonFunc.convertDoubleToString(cbgrujxzj));
@@ -965,6 +954,20 @@ public class CostEntity {
         //       包装成本小计
         map.put("cbmfzj", CommonFunc.convertDoubleToString(cbmfzj));
 //        map.put("cbbzzj", CommonFunc.convertDoubleToString(cbbzzj));
+
+        //       轨道成本小计
+        map.put("cbgdzj", CommonFunc.convertDoubleToString(cbgdzj));
+        map.put("cbgdjxzj", CommonFunc.convertDoubleToString(cbgdjxzj));
+        map.put("cbmbzj", CommonFunc.convertDoubleToString(cbmbzj));
+        map.put("cbmbjxzj", CommonFunc.convertDoubleToString(cbmbjxzj));
+        map.put("cbdjlszj", CommonFunc.convertDoubleToString(cbdjlszj));
+        map.put("cbmdzj", CommonFunc.convertDoubleToString(cbmdzj));
+        map.put("cbhlzj", CommonFunc.convertDoubleToString(cbhlzj));
+        map.put("cbptzj", CommonFunc.convertDoubleToString(cbptzj));
+
+//防风销座销钉小计
+        map.put("cbxzzj", CommonFunc.convertDoubleToString(cbxzzj));
+        map.put("cbxdzj", CommonFunc.convertDoubleToString(cbxdzj));
 
         //       运输成本小计
         map.put("cbc1zj", CommonFunc.convertDoubleToString(cbc1zj));
@@ -991,14 +994,16 @@ public class CostEntity {
         Double cb3djzj = cbdbzj + cbpzkzj + cbpzfgzj + cbpzktzj + cbpzxtzj + cblzzj + cbdjzj + cbdjbdbzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj ;
         Double cbdjzjzj = cbbtdjzj + cbssjgdjzj + cbgrudjzj + cbqsjgdj1zj + cbqsjgdj2zj + cbhzdjzj + cbyxdjzj ;
         Double cbwgjzj = cbdcgsszj + cbgrugsszj + cbaqszj + cbctzj + cbbthzzczj + cbhzhzzczj ;
-        Double cbwxjzj = cblt1zj + cblt2zj + cblt3zj + cblt4zj + cblt5zj + cbxzzj + cbxdzj + cbssjjzj + cbdbxzzj ;
+        Double cbwxjzj = cblt1zj + cblt2zj + cblt3zj + cblt4zj + cblt5zj + cbssjjzj + cbdbxzzj ;
 //        Double cbdqyyzj = cbdqzj + cbyyzj ;
-        Double cbgdxtzj = cbgdzj + cbgdjxzj + cbmbzj + cbmbjxzj + cbdjlszj + cbmdzj + cbhlzj + cbptzj ;
         Double cbjxzj = cbgrujxzj + cbqsjgjxzj + cbssjgjxzj ;
         Double cbcnzyzj = cbsygdzj + cbsyjzj ;
         Double cbbzcbzj = cbmfzj ;
-        Double cbyszj = cbc1zj + cbc2zj + cbc3zj + cbc4zj ;
         Double cbbmuclzj = cb8mkzj + cb3djzj + cbdjzjzj + cbwgjzj + cbwxjzj + cbdqzj + cbyyzj + cbjxzj + cbcnzyzj + cbbzcbzj ;
+
+        Double cbgdxtzj = cbgdzj + cbgdjxzj + cbmbzj + cbmbjxzj + cbdjlszj + cbmdzj + cbhlzj + cbptzj ;
+        Double cbxzxdzj = cbxzzj + cbxdzj ;
+        Double cbyszj = cbc1zj + cbc2zj + cbc3zj + cbc4zj ;
 
         map.put("cb8mkzj", cb8mkzj);
         map.put("cb3djzj", cb3djzj);
@@ -1006,12 +1011,14 @@ public class CostEntity {
         map.put("cbwgjzj", cbwgjzj);
         map.put("cbwxjzj", cbwxjzj);
 //        map.put("cbdqyyzj", cbdqyyzj);
-        map.put("cbgdxtzj", cbgdxtzj);
         map.put("cbjxzj", cbjxzj);
         map.put("cbcnzyzj", cbcnzyzj);
         map.put("cbbzcbzj", cbbzcbzj);
-        map.put("cbyszj", cbyszj);
         map.put("cbbmuclzj", cbbmuclzj);
+
+        map.put("cbgdxtzj", cbgdxtzj);
+        map.put("cbxzxdzj", cbxzxdzj);
+        map.put("cbyszj", cbyszj);
 
         return map;
     }
