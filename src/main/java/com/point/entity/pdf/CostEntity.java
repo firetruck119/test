@@ -17,6 +17,9 @@ public class CostEntity {
     private String pzr;
     private String date;
 
+//    报价
+    private Double cbzjbj;
+
     //    吊船
     private String cbdct;
     private String cbdcmc;
@@ -519,6 +522,9 @@ public class CostEntity {
         map.put("pzr", CommonFunc.convertDoubleToString(pzr));
         map.put("date", CommonFunc.convertDoubleToString(date));
 
+//        报价
+        map.put("cbzjbj", CommonFunc.convertDoubleToString(cbzjbj));
+
 //        吊船
         map.put("cbdct", CommonFunc.convertDoubleToString(cbdct));
         map.put("cbdcmc", CommonFunc.convertDoubleToString(cbdcmc));
@@ -1020,6 +1026,9 @@ public class CostEntity {
         map.put("cbxzxdzj", cbxzxdzj);
         map.put("cbyszj", cbyszj);
 
+//        成本材料占比
+        Double cbclzbl = 100 * cbbmuclzj / cbzjbj ;
+        map.put("cbclzbl", cbclzbl);
         return map;
     }
 

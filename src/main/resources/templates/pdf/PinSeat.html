@@ -220,14 +220,15 @@
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img id="xztu1" name="xztu1">
+                                                <img alt=" " id="xztu1" height="200px"  name="xztu1">
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:10px 0">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="xztu1" accept="image/*"
-                                                               oninput="showImage(this,'xztu1')"/></td>
+                                        <td><b>选择图片</b></td>
+                                        <td colspan="3">
+                                            <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="xztu1" oninput="showImage(this,'xztu1')"/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>选择材料</td>
@@ -393,18 +394,31 @@
                                         <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0;font-size: 17px"><b>3.焊缝的基本尺寸及相关参数</b>
                                         </td>
                                     </tr>
+                                    <!--<tr>-->
+                                        <!--<td colspan="4">-->
+                                            <!--<div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">-->
+                                                <!--<img id="xztu2" name="xztu2">-->
+                                            <!--</div>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img id="xztu2" name="xztu2">
+                                                <img alt=" " id="xztu2" height="200px"  name="xztu2">
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:10px 0">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="xztu2" accept="image/*"
-                                                               oninput="showImage(this,'xztu2')"/></td>
+                                        <td><b>选择图片</b></td>
+                                        <td colspan="3">
+                                            <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="xztu2" oninput="showImage(this,'xztu2')"/>
+                                        </td>
                                     </tr>
+                                    <!--<tr>-->
+                                        <!--<td style="padding:10px 0">选择图片</td>-->
+                                        <!--<td colspan="3"><input class="image" type="file" name="xztu2" accept="image/*"-->
+                                                               <!--oninput="showImage(this,'xztu2')"/></td>-->
+                                    <!--</tr>-->
                                     <tr>
                                         <td>焊条材料</td>
                                         <td colspan="3">
@@ -412,6 +426,16 @@
                                                 <option style="display: none"></option>
                                                 <option value="S31608">S31608</option>
                                                 <option value="S22053">S22053</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>焊缝形式</td>
+                                        <td colspan="3">
+                                            <select name="hfysModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="角焊">角焊</option>
+                                                <option value="坡口焊">坡口焊</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -428,11 +452,17 @@
                                         <td>mm</td>
                                     </tr>
                                     <tr>
-                                        <td><b>焊缝最外圈直径</b></td>
-                                        <td><p><i>d<sub>4</sub></i></p></td>
-                                        <td><input name="xzd4" type="text"/></td>
+                                        <td><b>焊缝宽度</b></td>
+                                        <td><p><i>K<sub>b</sub></i></p></td>
+                                        <td><input name="xzkb" type="text"/></td>
                                         <td>mm</td>
                                     </tr>
+                                    <!--<tr>-->
+                                        <!--<td><b>焊缝最外圈直径</b></td>-->
+                                        <!--<td><p><i>d<sub>4</sub></i></p></td>-->
+                                        <!--<td><input name="xzd4" type="text"/></td>-->
+                                        <!--<td>mm</td>-->
+                                    <!--</tr>-->
                                     <tr>
                                         <td><b>受力点到焊缝截面的距离</b></td>
                                         <td><p><i>L<sub>4</sub></i></p></td>
@@ -474,14 +504,15 @@
                                     <tr>
                                         <td colspan="4">
                                             <div style="height:200px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img id="xztu3" name="xztu3">
+                                                <img alt=" " id="xztu3" height="200px"  name="xztu3">
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:10px 0">选择图片</td>
-                                        <td colspan="3"><input class="image" type="file" name="xztu3" accept="image/*"
-                                                               oninput="showImage(this,'xztu3')"/></td>
+                                        <td><b>选择图片</b></td>
+                                        <td colspan="3">
+                                            <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="xztu3" oninput="showImage(this,'xztu3')"/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>性能等级</td>
@@ -729,6 +760,14 @@
             // xzf02: 385,
         },
     }
+    hfysModel = {
+        "角焊": {
+
+        },
+        "坡口焊": {
+
+        },
+    }
     materialOfElectrodeList = {
         "S31608": {
             xzclh: 'S31608',
@@ -814,10 +853,18 @@
             return 3.14*( xzdd /2)*(xzdd/2)
         },
         xzah:function(){
-            return 3.14*Math.pow( xzd4 /2,2)-3.14*Math.pow( xzd1 /2,2);
+            if ( hfysModel == "角焊" ) {
+                return 3.14*Math.pow( ( xzd1 + 2 * xzkb ) /2,2)-3.14*Math.pow( xzd1 /2,2);
+            }else if ( hfysModel == "坡口焊" ) {
+                return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( ( xzd1 - 2 * xzkb ) /2,2);
+            }
         },
         xzwh:function(){
-            return 0.0982*(Math.pow( xzd4 ,4)-Math.pow( xzd1 ,4))/xzd4;
+            if ( hfysModel == "角焊" ) {
+                return 0.0982*(Math.pow( xzd1 + 2 * xzkb ,4)-Math.pow( xzd1 ,4))/( xzd1 + 2 * xzkb );
+            }else if ( hfysModel == "坡口焊" ) {
+                return 0.0982*(Math.pow( xzd1 ,4)-Math.pow( xzd1 - 2 * xzkb ,4 ))/ xzd1 ;
+            }
         },
         xzclh:function(){
             return materialOfElectrodeList[ materialOfElectrode ]["xzclh"];
@@ -865,9 +912,9 @@
     }
     data.init(calculateFunction);
     imgDaefultData={
-        xztu1:{inputvalue:"图1.防风销座及销钉各截面示意图.png"},
-        xztu2:{inputvalue:"图2.焊缝截面示意图.png"},
-        xztu3:{inputvalue:"图3.防风销座三种工况图.png"},
+        // xztu1:{inputvalue:"图1.防风销座及销钉各截面示意图.png"},
+        // // xztu2:{inputvalue:"图2.焊缝截面示意图.png"},
+        // xztu3:{inputvalue:"图3.防风销座三种工况图.png"},
     }
     getData.dataToImage(imgDaefultData);
 </script>
@@ -879,6 +926,53 @@
         }
     )
 </script>
-
+<script>
+    $("[name=hfysModel]").change(function () {
+        var hfysModel=$("[name=hfysModel]")[0].value;
+        var filename="";
+        if( hfysModel=="角焊" ){
+            filename="xztu1-jh.png";
+        }else if ( hfysModel=="坡口焊" ){
+            filename="xztu1-pkh.png";
+        }
+        if ($('input[name=tu_xztu1]').length == 0) {
+            $('form').append('<input name="tu_xztu1" type="hidden"/>');
+        }
+        $("[name=tu_xztu1]")[0].value=filename;
+        $("[name=xztu1]")[0].src="/pdf/getImg?filename="+ filename+"";
+    })
+</script>
+<script>
+    $("[name=hfysModel]").change(function () {
+        var hfysModel=$("[name=hfysModel]")[0].value;
+        var filename="";
+        if( hfysModel=="角焊" ){
+            filename="xztu2-jh.png";
+        }else if ( hfysModel=="坡口焊" ){
+            filename="xztu2-pkh.png";
+        }
+        if ($('input[name=tu_xztu2]').length == 0) {
+            $('form').append('<input name="tu_xztu2" type="hidden"/>');
+        }
+        $("[name=tu_xztu2]")[0].value=filename;
+        $("[name=xztu2]")[0].src="/pdf/getImg?filename="+ filename+"";
+    })
+</script>
+<script>
+    $("[name=hfysModel]").change(function () {
+        var hfysModel=$("[name=hfysModel]")[0].value;
+        var filename="";
+        if( hfysModel=="角焊" ){
+            filename="xztu3-jh.png";
+        }else if ( hfysModel=="坡口焊" ){
+            filename="xztu3-pkh.png";
+        }
+        if ($('input[name=tu_xztu3]').length == 0) {
+            $('form').append('<input name="tu_xztu3" type="hidden"/>');
+        }
+        $("[name=tu_xztu3]")[0].value=filename;
+        $("[name=xztu3]")[0].src="/pdf/getImg?filename="+ filename+"";
+    })
+</script>
 </body>
 </html>

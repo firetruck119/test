@@ -94,7 +94,9 @@ public class PinSeatEntity {
     @Getter
     @Setter
     private Double xzk;
-
+    @Getter
+    @Setter
+    private Double xzkb;
     @Getter
     @Setter
     private Double xzl4;
@@ -143,13 +145,13 @@ public class PinSeatEntity {
     @Getter @Setter private Double xzd1;
     @Getter @Setter private Double xzd2;
     @Getter @Setter private Double xzd3;
-    @Getter @Setter private Double xzd4;
+//    @Getter @Setter private Double xzd4;
     //Select
     @Getter @Setter private String pinDiameter;
     @Getter @Setter private String boltPerformanceGrade;
     @Getter @Setter private String materialOfElectrode;
     @Getter @Setter private String materialOfPinSeat;
-
+    @Getter @Setter private String hfysModel;
     private String xzosa;
 
     private Double xzma;
@@ -303,6 +305,7 @@ public class PinSeatEntity {
         result.put("xzad",CommonFunc.convertDoubleToString(xzad));
         result.put("xzf",CommonFunc.convertDoubleToString(xzf));
         result.put("xzk",CommonFunc.convertDoubleToString(xzk));
+        result.put("xzkb",CommonFunc.convertDoubleToString(xzkb));
         result.put("xzl4",CommonFunc.convertDoubleToString(xzl4));
         result.put("xzah",CommonFunc.convertDoubleToString(xzah));
         result.put("xzwh",CommonFunc.convertDoubleToString(xzwh));
@@ -620,7 +623,7 @@ public class PinSeatEntity {
         resultmap.put("xzm4",CommonFunc.convertDoubleToString(xzm4));
         resultmap.put("xzm8",CommonFunc.convertDoubleToString(xzm8));
         resultmap.put("xzm12",CommonFunc.convertDoubleToString(xzm12));
-        resultmap.put("Xzm16",CommonFunc.convertDoubleToString(xzm16));
+        resultmap.put("xzm16",CommonFunc.convertDoubleToString(xzm16));
         resultmap.put("xzm17",CommonFunc.convertDoubleToString(xzm17));
         resultmap.put("xzm18",CommonFunc.convertDoubleToString(xzm18));
         resultmap.put("xzm23",CommonFunc.convertDoubleToString(xzm23));

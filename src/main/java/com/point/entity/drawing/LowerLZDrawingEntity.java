@@ -10,21 +10,40 @@ import java.util.Map;
 public class LowerLZDrawingEntity {
 
     private String xmmc;
+    private String plh;
     private String jsr;
     private String date;
+
+    private String lzxhzjgxh;
+    private String lzxlzxh;
+    private String lzxxzxh;
+    private Double llzxxz;
     private String qsjg;
+    private String lzxhlzxh;
 
-    private String lzxxzModel;
-    private String qsjgazwzModel;
-    private String qsjgModel;
+    private Double lzxg1;
+    private Double lzxg2;
+    private Double mlzxg1;
+    private Double mlzxg2;
+    private Double mlzxg3;
+    private Double mlzxg4;
+    private Double mlzxg5;
+    private Double mlzxg6;
+    private Double mlzxg7;
+    private Double mlzxg8;
+    private Double mlzxg9;
+    private Double mlzxg10;
+    private Double mlzxg11;
 
-    private String lzxhzjgxz;
-    private String lzxdbjm;
-    private String lzxxz;
-    private String lzxhlz;
+    private Double mlzxxz1;
+    private Double mlzxxz2;
+    private Double dlzxxz;
+    private Double dlzxxzpz;
+    private Double dlzxxzxl;
+    private Double mlzxkkx1;
+    private Double mlzxkkx2;
 
     private Double lzx001;
-//    lzx001.rotate(Math.PI);
     private Double lzx002;
     private Double lzx003;
     private Double lzx004;
@@ -39,6 +58,8 @@ public class LowerLZDrawingEntity {
     private Double lzx013;
     private Double lzx014;
     private Double lzx015;
+
+    private Double nlzjbjg;
 
     private Double mlzx001;
     private Double mlzx002;
@@ -55,34 +76,64 @@ public class LowerLZDrawingEntity {
     private Double mlzx013;
     private Double mlzx014;
     private Double mlzx015;
+    private Double mlzx016;
+    private Double mlzx017;
+    private Double mlzx018;
 
-    private Double lzxg1;
-    private Double lzxg2;
-    private Double mlzxg1;
-    private Double mlzxg2;
-    private Double mlzxg3;
-    private Double mlzxg4;
-    private Double mlzxg5;
-    private Double mlzxg6;
-    private Double mlzxg7;
-    private Double mlzxg8;
-    private Double mlzxg9;
-    private Double mlzxg10;
-    private Double mlzxg11;
+//    private String dbtypeModel;
+//    private String lzxlzModel;
+    private String lzxlzdModel;
+//    private String lzxlz1Model;
+//    private String lzxlz2Model;
+//    private String lzxlz3Model;
+//    private String lzxlz4Model;
 
-    private Double mlzwbxs;
+//    private String lzxxztypeModel;
+//    private String lzxxzModel;
+//    private String db1xzModel;
+//    private String db2xzModel;
+//    private String db3xzModel;
+//    private String db4xzModel;
+
+    private String qsjgazwzModel;
+    private String qsjgModel;
+    private String lzxhzfljjModel;
 
     public Map<String, String> takeMapForPDF() {
         Map map = new HashMap();
         map.put("xmmc", CommonFunc.convertDoubleToString(xmmc));
+        map.put("plh", CommonFunc.convertDoubleToString(plh));
         map.put("jsr", CommonFunc.convertDoubleToString(jsr));
         map.put("date", CommonFunc.convertDoubleToString(date));
-        map.put("qsjg", CommonFunc.convertDoubleToString(qsjg));
 
-        map.put("lzxhzjgxz", CommonFunc.convertDoubleToString(lzxhzjgxz));
-        map.put("lzxdbjm", CommonFunc.convertDoubleToString(lzxdbjm));
-        map.put("lzxxz", CommonFunc.convertDoubleToString(lzxxz));
-        map.put("lzxhlz", CommonFunc.convertDoubleToString(lzxhlz));
+        map.put("lzxhzjgxh", CommonFunc.convertDoubleToString(lzxhzjgxh));
+        map.put("lzxlzxh", CommonFunc.convertDoubleToString(lzxlzxh));
+        map.put("lzxxzxh", CommonFunc.convertDoubleToString(lzxxzxh));
+        map.put("llzxxz", CommonFunc.convertDoubleToString(llzxxz));
+        map.put("qsjg", CommonFunc.convertDoubleToString(qsjg));
+        map.put("lzxhlzxh", CommonFunc.convertDoubleToString(lzxhlzxh));
+
+        map.put("lzxg1", CommonFunc.convertDoubleToString(lzxg1));
+        map.put("lzxg2", CommonFunc.convertDoubleToString(lzxg2));
+        map.put("mlzxg1", CommonFunc.convertDoubleToString(mlzxg1));
+        map.put("mlzxg2", CommonFunc.convertDoubleToString(mlzxg2));
+        map.put("mlzxg3", CommonFunc.convertDoubleToString(mlzxg3));
+        map.put("mlzxg4", CommonFunc.convertDoubleToString(mlzxg4));
+        map.put("mlzxg5", CommonFunc.convertDoubleToString(mlzxg5));
+        map.put("mlzxg6", CommonFunc.convertDoubleToString(mlzxg6));
+        map.put("mlzxg7", CommonFunc.convertDoubleToString(mlzxg7));
+        map.put("mlzxg8", CommonFunc.convertDoubleToString(mlzxg8));
+        map.put("mlzxg9", CommonFunc.convertDoubleToString(mlzxg9));
+        map.put("mlzxg10", CommonFunc.convertDoubleToString(mlzxg10));
+        map.put("mlzxg11", CommonFunc.convertDoubleToString(mlzxg11));
+
+        map.put("mlzxxz1", CommonFunc.convertDoubleToString(mlzxxz1));
+        map.put("mlzxxz2", CommonFunc.convertDoubleToString(mlzxxz2));
+        map.put("dlzxxz", CommonFunc.convertDoubleToString(dlzxxz));
+        map.put("dlzxxzpz", CommonFunc.convertDoubleToString(dlzxxzpz));
+        map.put("dlzxxzxl", CommonFunc.convertDoubleToString(dlzxxzxl));
+        map.put("mlzxkkx1", CommonFunc.convertDoubleToString(mlzxkkx1));
+        map.put("mlzxkkx2", CommonFunc.convertDoubleToString(mlzxkkx2));
 
         map.put("lzx001", CommonFunc.convertDoubleToString(lzx001));
         map.put("lzx002", CommonFunc.convertDoubleToString(lzx002));
@@ -100,6 +151,8 @@ public class LowerLZDrawingEntity {
         map.put("lzx014", CommonFunc.convertDoubleToString(lzx014));
         map.put("lzx015", CommonFunc.convertDoubleToString(lzx015));
 
+        map.put("nlzjbjg", CommonFunc.convertDoubleToString(nlzjbjg));
+
         map.put("mlzx001", CommonFunc.convertDoubleToString(mlzx001));
         map.put("mlzx002", CommonFunc.convertDoubleToString(mlzx002));
         map.put("mlzx003", CommonFunc.convertDoubleToString(mlzx003));
@@ -115,156 +168,111 @@ public class LowerLZDrawingEntity {
         map.put("mlzx013", CommonFunc.convertDoubleToString(mlzx013));
         map.put("mlzx014", CommonFunc.convertDoubleToString(mlzx014));
         map.put("mlzx015", CommonFunc.convertDoubleToString(mlzx015));
-        
-        map.put("lzxg1", CommonFunc.convertDoubleToString(lzxg1));
-        map.put("lzxg2", CommonFunc.convertDoubleToString(lzxg2));
-        map.put("mlzxg1", CommonFunc.convertDoubleToString(mlzxg1));
-        map.put("mlzxg2", CommonFunc.convertDoubleToString(mlzxg2));
-        map.put("mlzxg3", CommonFunc.convertDoubleToString(mlzxg3));
-        map.put("mlzxg4", CommonFunc.convertDoubleToString(mlzxg4));
-        map.put("mlzxg5", CommonFunc.convertDoubleToString(mlzxg5));
-        map.put("mlzxg6", CommonFunc.convertDoubleToString(mlzxg6));
-        map.put("mlzxg7", CommonFunc.convertDoubleToString(mlzxg7));
-        map.put("mlzxg8", CommonFunc.convertDoubleToString(mlzxg8));
-        map.put("mlzxg9", CommonFunc.convertDoubleToString(mlzxg9));
-        map.put("mlzxg10", CommonFunc.convertDoubleToString(mlzxg10));
-        map.put("mlzxg11", CommonFunc.convertDoubleToString(mlzxg11));
-        map.put("mlzwbxs", CommonFunc.convertDoubleToString(mlzwbxs));
+        map.put("mlzx016", CommonFunc.convertDoubleToString(mlzx016));
+        map.put("mlzx017", CommonFunc.convertDoubleToString(mlzx017));
+        map.put("mlzx018", CommonFunc.convertDoubleToString(mlzx018));
 
         return map;
     }
 
-    public String _getPDFName(){
-        if ( lzxxzModel.equals("LZX(300×300)(6.3)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(300×300)(6.3)(4M)" ;
-        } else if ( lzxxzModel.equals("LZX(350×350)(7.1)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(350×350)(7.1)(4M)" ;
-        } else if ( lzxxzModel.equals("LZX(390×500)(8.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(390×500)(8.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(500×600)(9.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(500×600)(9.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(535×700)(10.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×700)(10.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(535×750)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×750)(11.2)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(535×800)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×800)(12.5)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(675×800)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×800)(11.2)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(675×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×850)(12.5)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(675×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×900)(14.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(815×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×850)(12.5)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(815×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×900)(14.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(815×950)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×950)(14.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(815×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×1000)(16.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(975×1000)(16.0)(4M)" ;
-        }else if ( lzxxzModel.equals("LZX(300×300)(6.3)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(300×300)(6.3)" ;
-        }else if ( lzxxzModel.equals("LZX(350×350)(7.1)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(350×350)(7.1)" ;
-        } else if ( lzxxzModel.equals("LZX(390×500)(8.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(390×500)(8.0)" ;
-        }else if ( lzxxzModel.equals("LZX(500×600)(9.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(500×600)(9.0)" ;
-        }else if ( lzxxzModel.equals("LZX(535×700)(10.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×700)(10.0)" ;
-        }else if ( lzxxzModel.equals("LZX(535×750)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×750)(11.2)" ;
-        }else if ( lzxxzModel.equals("LZX(535×800)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×800)(12.5)" ;
-        }else if ( lzxxzModel.equals("LZX(675×800)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×800)(11.2)" ;
-        }else if ( lzxxzModel.equals("LZX(675×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×850)(12.5)" ;
-        }else if ( lzxxzModel.equals("LZX(675×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×900)(14.0)" ;
-        }else if ( lzxxzModel.equals("LZX(815×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×850)(12.5)" ;
-        }else if ( lzxxzModel.equals("LZX(815×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×900)(14.0)" ;
-        }else if ( lzxxzModel.equals("LZX(815×950)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×950)(14.0)" ;
-        }else if ( lzxxzModel.equals("LZX(815×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×1000)(16.0)" ;
-        }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(975×1000)(16.0)" ;
-        }else {
+    public String _getPDFName() {
+
+        if (lzx001 <= 4000 && lzx001 > 0) {
+            if (qsjgazwzModel.equals("立柱后面")) {
+                if (qsjgModel.equals("175")||qsjgModel.equals("275")){
+                    if (lzxhzfljjModel.equals("不机加")) {
+                        if (lzxlzxh == "LZX(300×300)(6.3)") {
+                            return "LZX(300×300)(6.3)(4M-7)";
+                        } else if (lzxlzxh == "LZX(350×350)(7.1)") {
+                            return "LZX(350×350)(7.1)(4M-7)";
+                        } else if (lzxlzxh == "LZX(390×500)(8.0)") {
+                            return "LZX(390×500)(8.0)(4M-7)";
+                        } else if (lzxlzxh == "LZX(500×600)(9.0)") {
+                            return "LZX(500×600)(9.0)(4M-7)";
+                        }
+//                    else if ( lzxxzModel.equals("LZX(535×700)(10.0)") ) {
+//                            if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
+//                                return "LZX(535×700)(10.0)(4M-7)-(67)";
+//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
+//                                return "LZX(535×700)(10.0)(4M-7)-(77)";
+//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
+//                                return "LZX(535×700)(10.0)(4M-7)-(87)";
+//                            }
+//                    }
+
+                    } else if (lzxhzfljjModel.equals("机加")) {
+                        if (lzxlzxh == "LZX(300×300)(6.3)") {
+                            return " ";
+                        } else if (lzxlzxh == "LZX(350×350)(7.1)") {
+                            return " ";
+                        } else if (lzxlzxh == "LZX(390×500)(8.0)") {
+                            return " ";
+                        } else if (lzxlzxh == "LZX(500×600)(9.0)") {
+                            return "LZX(500×600)(9.0)(4M-7)-J";
+                        }
+
+                    }
+                }else if (qsjgModel.equals("185")||qsjgModel.equals("285")){
+                    return " ";
+                }
+
+            } else if (qsjgazwzModel.equals("立柱侧面")) {
+                return " ";
+            }
+        } else {
             return " ";
         }
-//        return null;
+        return null;
     }
 
+
+
     public String _getImageName() {
-        if ( lzxxzModel.equals("LZX(300×300)(6.3)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(300×300)(6.3)(4M).png";
-        } else if ( lzxxzModel.equals("LZX(350×350)(7.1)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(350×350)(7.1)(4M).png";
-        } else if ( lzxxzModel.equals("LZX(390×500)(8.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(390×500)(8.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(500×600)(9.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(500×600)(9.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(535×700)(10.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×700)(10.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(535×750)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×750)(11.2)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(535×800)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(535×800)(12.5)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(675×800)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×800)(11.2)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(675×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×850)(12.5)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(675×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(675×900)(14.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(815×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×850)(12.5)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(815×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×900)(14.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(815×950)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×950)(14.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(815×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(815×1000)(16.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 <= 4000 ) {
-            return "LZX(975×1000)(16.0)(4M).png";
-        }else if ( lzxxzModel.equals("LZX(300×300)(6.3)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(300×300)(6.3).png";
-        }else if ( lzxxzModel.equals("LZX(350×350)(7.1)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(350×350)(7.1).png";
-        } else if ( lzxxzModel.equals("LZX(390×500)(8.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(390×500)(8.0).png";
-        }else if ( lzxxzModel.equals("LZX(500×600)(9.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(500×600)(9.0).png";
-        }else if ( lzxxzModel.equals("LZX(535×700)(10.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×700)(10.0).png";
-        }else if ( lzxxzModel.equals("LZX(535×750)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×750)(11.2).png";
-        }else if ( lzxxzModel.equals("LZX(535×800)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(535×800)(12.5).png";
-        }else if ( lzxxzModel.equals("LZX(675×800)(11.2)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×800)(11.2).png";
-        }else if ( lzxxzModel.equals("LZX(675×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×850)(12.5).png";
-        }else if ( lzxxzModel.equals("LZX(675×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(675×900)(14.0).png";
-        }else if ( lzxxzModel.equals("LZX(815×850)(12.5)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×850)(12.5).png";
-        }else if ( lzxxzModel.equals("LZX(815×900)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×900)(14.0).png";
-        }else if ( lzxxzModel.equals("LZX(815×950)(14.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×950)(14.0).png";
-        }else if ( lzxxzModel.equals("LZX(815×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(815×1000)(16.0).png";
-        }else if ( lzxxzModel.equals("LZX(975×1000)(16.0)") && qsjgazwzModel.equals("立柱后面") && lzx001 > 4000 ) {
-            return "LZX(975×1000)(16.0).png";
-        }else{
+        if (lzx001 <= 4000 && lzx001 > 0) {
+            if (qsjgazwzModel.equals("立柱后面")) {
+                if (qsjgModel.equals("175")||qsjgModel.equals("275")){
+                    if (lzxhzfljjModel.equals("不机加")) {
+                        if (lzxlzxh == "LZX(300×300)(6.3)") {
+                            return "LZX(300×300)(6.3)(4M-7).png";
+                        } else if (lzxlzxh == "LZX(350×350)(7.1)") {
+                            return "LZX(350×350)(7.1)(4M-7).png";
+                        } else if (lzxlzxh == "LZX(390×500)(8.0)") {
+                            return "LZX(390×500)(8.0)(4M-7).png";
+                        } else if (lzxlzxh == "LZX(500×600)(9.0)") {
+                            return "LZX(500×600)(9.0)(4M-7).png";
+                        }
+//                    else if ( lzxxzModel.equals("LZX(535×700)(10.0)") ) {
+//                            if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
+//                                return "LZX(535×700)(10.0)(4M-7)-(67).png";
+//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
+//                                return "LZX(535×700)(10.0)(4M-7)-(77).png";
+//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
+//                                return "LZX(535×700)(10.0)(4M-7)-(87).png";
+//                            }
+//                    }
+
+                    } else if (lzxhzfljjModel.equals("机加")) {
+                        if (lzxlzxh == "LZX(300×300)(6.3)") {
+                            return " ";
+                        } else if (lzxlzxh == "LZX(350×350)(7.1)") {
+                            return " ";
+                        } else if (lzxlzxh == "LZX(390×500)(8.0)") {
+                            return " ";
+                        } else if (lzxlzxh == "LZX(500×600)(9.0)") {
+                            return "LZX(500×600)(9.0)(4M-7)-J.png";
+                        }
+
+                    }
+                }else if (qsjgModel.equals("185")||qsjgModel.equals("285")){
+                    return " ";
+                }
+
+            } else if (qsjgazwzModel.equals("立柱侧面")) {
+                return " ";
+            }
+        } else {
             return " ";
         }
-//            return null;
+        return null;
     }
 }

@@ -171,6 +171,12 @@
                                         <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
                                     </tr>
                                     <tr>
+                                        <td><b>该项目整机报价</b></td>
+                                        <td><input type="text" name="cbzjbj"/></td>
+                                        <td>万元</td>
+                                    </tr>
+
+                                    <tr>
                                         <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
                                     </tr>
                                     <tr>
@@ -1745,30 +1751,47 @@
                         </form>
 
                         <div class="navbox" style="top: 30%;">
-                            <div style="width:600px;height:520px; font-size: 14px   ;">
+                            <div style="width:900px;height:520px; font-size: 14px   ;">
                                 <table id="pdf3tb" style="background-color: rgb(220,220,220)">
                                     <tr>
-                                        <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
+                                        <td colspan="7" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>整机材料成本</b></td>
+                                        <td style="width:2%;" rowspan="13" ><b></b></td>
+                                        <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>擦窗机其他材料成本核算</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
-                                        <td style="width:12%;">序号</td>
-                                        <td style="width:60%;">成本小计</td>
-                                        <td style="width:23%;">总计(万元)</td>
+                                        <td style="width:6%;">序号</td>
+                                        <td style="width:31%;">成本小计</td>
+                                        <td style="width:12%;">总计(万元)</td>
+                                        <td style="width:6%;">序号</td>
+                                        <td style="width:31%;">成本小计</td>
+                                        <td style="width:12%;">总计(万元)</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>1</td>
                                         <td>8模块材料成本小计</td>
                                         <td id="cb8mkzj"></td>
+                                        <td>1</td>
+                                        <td>轨道成本小计</td>
+                                        <td id="cbgdxtzj"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>2</td>
                                         <td>3大件成本小计</td>
                                         <td id="cb3djzj"></td>
+                                        <td>2</td>
+                                        <td>防风销座销钉成本小计</td>
+                                        <td id="cbxzxdzj"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>3</td>
                                         <td>电机成本小计</td>
                                         <td id="cbdjzjzj"></td>
+                                        <td>3</td>
+                                        <td>运输成本小计</td>
+                                        <td id="cbyszj"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>4</td>
@@ -1804,28 +1827,12 @@
                                         <td>10</td>
                                         <td>包装成本小计</td>
                                         <td id="cbbzcbzj"></td>
+                                        <td colspan="3"><b>擦窗机材料成本占报价比例(%)</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="2">擦窗机材料成本总计</td>
                                         <td id="cbbmuclzj"></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>擦窗机其他材料成本核算</b></td>
-                                    </tr>
-                                    <tr style="background-color: rgb(220,220,220)">
-                                        <td>1</td>
-                                        <td>轨道成本小计</td>
-                                        <td id="cbgdxtzj"></td>
-                                    </tr>
-                                    <tr style="background-color: rgb(220,220,220)">
-                                        <td>2</td>
-                                        <td>防风销座销钉成本小计</td>
-                                        <td id="cbxzxdzj"></td>
-                                    </tr>
-                                    <tr style="background-color: rgb(220,220,220)">
-                                        <td>3</td>
-                                        <td>运输成本小计</td>
-                                        <td id="cbyszj"></td>
+                                        <td colspan="3" id="cbclzbl"></td>
                                     </tr>
                                 </table>
                             </div>

@@ -324,7 +324,7 @@ asideDatas = {
                     url: "DijiaDrawing",
                 },
                 {
-                    title: '立柱',
+                    title: '立柱(单臂)',
                     url: "LowerLZDrawing",
                 },
                 {
