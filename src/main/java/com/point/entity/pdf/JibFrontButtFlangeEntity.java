@@ -3,6 +3,7 @@ package com.point.entity.pdf;
 import com.point.common.CommonFunc;
 import lombok.Data;
 
+import javax.validation.constraints.Max;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ public class JibFrontButtFlangeEntity {
     private Double h;
     private Double p;
     private Double ldbflqhz;
+    private Double ldbflb;
 
     //非页面数据
     private Double dcgssp;
@@ -163,7 +165,7 @@ public class JibFrontButtFlangeEntity {
     private String gruModel;
 
     private String dbflgruwzModel;
-    private String dbfllsljgkModel;
+//    private String dbfllsljgkModel;
     private String dbfllsxndjModel;
 
     public Map<String, String> takeMapForPDF(String type) {
@@ -180,6 +182,7 @@ public class JibFrontButtFlangeEntity {
         map.put("h", CommonFunc.convertDoubleToString(h));
         map.put("p", CommonFunc.convertDoubleToString(p));
         map.put("ldbflqhz", CommonFunc.convertDoubleToString(ldbflqhz));
+        map.put("ldbflb", CommonFunc.convertDoubleToString(ldbflb));
 
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));
         map.put("grugssp", CommonFunc.convertDoubleToString(grugssp));
@@ -318,7 +321,7 @@ public class JibFrontButtFlangeEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
-//        前对接法兰螺栓预紧力校核
+//        前对接法兰螺栓拉力校核
         //        载荷倾覆力矩
         Double mslfl = 10 * tsl * lslfl ;
         Double mshlfl = 10 * tshl * lshlfl ;
@@ -354,6 +357,22 @@ public class JibFrontButtFlangeEntity {
         map.put("mflw5", mflw5);
         map.put("mflw6", mflw6);
 
+        Double mflq = mslfl + mshlfl + mfl1 + mfl2 + mfl3 + mfl4 + mfl5 + mfl6 ;
+        Double mflw = mslflw + mshlflw + mflw1 + mflw2 + mflw3 + mflw4 + mflw5 + mflw6 ;
+        Double flslh = mflq * dbfllsrh1 / ( dbfllsnh1 * dbfllsrh1 * dbfllsrh1 + dbfllsnh2 * dbfllsrh2 * dbfllsrh2 + dbfllsnh3 * dbfllsrh3 * dbfllsrh3 + dbfllsnh4 * dbfllsrh4 * dbfllsrh4 + dbfllsnh5 * dbfllsrh5 * dbfllsrh5 + dbfllsnh6 * dbfllsrh6 * dbfllsrh6 + dbfllsnh7 * dbfllsrh7 * dbfllsrh7 + dbfllsnh8 * dbfllsrh8 * dbfllsrh8 + dbfllsnh9 * dbfllsrh9 * dbfllsrh9 + dbfllsnh10 * dbfllsrh10 * dbfllsrh10 + dbfllsnh11 * dbfllsrh11 * dbfllsrh11 + dbfllsnh12 * dbfllsrh12 * dbfllsrh12 ) ;
+        Double flsll = mflw * dbfllsrl1 / ( dbfllsnl1 * dbfllsrl1 * dbfllsrl1 + dbfllsnl2 * dbfllsrl2 * dbfllsrl2 + dbfllsnl3 * dbfllsrl3 * dbfllsrl3 + dbfllsnl4 * dbfllsrl4 * dbfllsrl4 + dbfllsnl5 * dbfllsrl5 * dbfllsrl5 + dbfllsnl6 * dbfllsrl6 * dbfllsrl6 + dbfllsnl7 * dbfllsrl7 * dbfllsrl7 + dbfllsnl8 * dbfllsrl8 * dbfllsrl8 + dbfllsnl9 * dbfllsrl9 * dbfllsrl9 ) ;
+        Double flsl = flslh + flsll ;
+        map.put("mflq", mflq);
+        map.put("mflw", mflw);
+        map.put("flslh", flslh);
+        map.put("flsll", flsll);
+        map.put("flsl", flsl);
+//        map.put("btxs", btxs);
+//        map.put("nt", nt);
+//        map.put("flslk", flslk);
+//        map.put("ntk", ntk);
+
+        //        前对接法兰螺栓预紧力校核
         //        风载荷
         Double fslfl = p * aslcx ;
         Double fshlfl = p * ashlcx ;
@@ -372,24 +391,15 @@ public class JibFrontButtFlangeEntity {
         map.put("ffl5", ffl5);
         map.put("ffl6", ffl6);
 
-        Double mflq = mslfl + mshlfl + mfl1 + mfl2 + mfl3 + mfl4 + mfl5 + mfl6 ;
-        Double mflw = mslflw + mshlflw + mflw1 + mflw2 + mflw3 + mflw4 + mflw5 + mflw6 ;
-        Double flslh = mflq * dbfllsrh1 / ( dbfllsnh1 * dbfllsrh1 * dbfllsrh1 + dbfllsnh2 * dbfllsrh2 * dbfllsrh2 + dbfllsnh3 * dbfllsrh3 * dbfllsrh3 + dbfllsnh4 * dbfllsrh4 * dbfllsrh4 + dbfllsnh5 * dbfllsrh5 * dbfllsrh5 + dbfllsnh6 * dbfllsrh6 * dbfllsrh6 + dbfllsnh7 * dbfllsrh7 * dbfllsrh7 + dbfllsnh8 * dbfllsrh8 * dbfllsrh8 + dbfllsnh9 * dbfllsrh9 * dbfllsrh9 + dbfllsnh10 * dbfllsrh10 * dbfllsrh10 + dbfllsnh11 * dbfllsrh11 * dbfllsrh11 + dbfllsnh12 * dbfllsrh12 * dbfllsrh12 ) ;
-        Double flsll = mflw * dbfllsrl1 / ( dbfllsnl1 * dbfllsrl1 * dbfllsrl1 + dbfllsnl2 * dbfllsrl2 * dbfllsrl2 + dbfllsnl3 * dbfllsrl3 * dbfllsrl3 + dbfllsnl4 * dbfllsrl4 * dbfllsrl4 + dbfllsnl5 * dbfllsrl5 * dbfllsrl5 + dbfllsnl6 * dbfllsrl6 * dbfllsrl6 + dbfllsnl7 * dbfllsrl7 * dbfllsrl7 + dbfllsnl8 * dbfllsrl8 * dbfllsrl8 + dbfllsnl9 * dbfllsrl9 * dbfllsrl9 ) ;
-        Double flsl = flslh + flsll ;
         Double fflw = fslfl + fshlfl + ffl1 + ffl2 + ffl3 + ffl4 + ffl5 + ffl6 ;
         Double flsyj = Math.sqrt( 100 * mflz * mflz + fflw * fflw ) / 0.15 / dbfllsn ;
-        Double flss = dbflnlsyjlxs * ( flsl + flsyj ) ;
+        Double flss = dbflnlsyjlxs * Math.max(flsl,flsyj) ;
         Double flssk = flss / 1000 ;
-        map.put("mflq", mflq);
-        map.put("mflw", mflw);
-        map.put("flslh", flslh);
-        map.put("flsll", flsll);
-        map.put("flsl", flsl);
         map.put("fflw", fflw);
         map.put("flsyj", flsyj);
         map.put("flss", flss);
         map.put("flssk", flssk);
+
 
         //螺栓拧紧力矩计算
         Double tlss = 0.18 * flss * dbfllsgcd / 1000 ;
@@ -429,23 +439,39 @@ public class JibFrontButtFlangeEntity {
         Map map = new HashMap();
         Map<String, Double> doubleMap = takeDoubleMapForPdf(type);
 
-        Double flss = doubleMap.get("flss");
-        String dbflb1 = takeSignByCompareNumber(flss,dbflflsp);
-        String dbflm1 = takeStringByCompareNumber(flss,dbflflsp);
+        Double flsl = doubleMap.get("flsl");
+        Double btxs = 0.17 + 0.33 - 0.057 * ldbflb / dbfllsgcd ;
+        Double nt = 0.2 * dbfllsss * dbfllsgca / 1.34 / btxs ;
+        Double flslk = flsl / 1000 ;
+        Double ntk = nt / 1000 ;
+        map.put("btxs", CommonFunc.convertDoubleToString3(btxs));
+        map.put("nt", CommonFunc.convertDoubleToString(nt));
+        map.put("flslk", CommonFunc.convertDoubleToString(flslk));
+        map.put("ntk", CommonFunc.convertDoubleToString(ntk));
+        String dbflb1 = takeSignByCompareNumber(flsl,nt);
+        String dbflm1 = takeStringByCompareNumber(flsl,nt);
         map.put("dbflb1", CommonFunc.convertDoubleToString(dbflb1));
         map.put("dbflm1", CommonFunc.convertDoubleToString(dbflm1));
 
-        Double tlss = doubleMap.get("tlss");
-        String dbflb2 = takeSignByCompareNumber(tlss,dbfltls);
-        String dbflm2 = takeStringByCompareNumber(tlss,dbfltls);
+
+
+        Double flss = doubleMap.get("flss");
+        String dbflb2 = takeSignByCompareNumber(flss,dbflflsp);
+        String dbflm2 = takeStringByCompareNumber(flss,dbflflsp);
         map.put("dbflb2", CommonFunc.convertDoubleToString(dbflb2));
         map.put("dbflm2", CommonFunc.convertDoubleToString(dbflm2));
 
-        Double dbflhfs1 = doubleMap.get("dbflhfs1");
-        String dbflb3 = takeSignByCompareNumber(dbflhfs1,dbflhfffw);
-        String dbflm3 = takeStringByCompareNumber(dbflhfs1,dbflhfffw);
+        Double tlss = doubleMap.get("tlss");
+        String dbflb3 = takeSignByCompareNumber(tlss,dbfltls);
+        String dbflm3 = takeStringByCompareNumber(tlss,dbfltls);
         map.put("dbflb3", CommonFunc.convertDoubleToString(dbflb3));
         map.put("dbflm3", CommonFunc.convertDoubleToString(dbflm3));
+
+        Double dbflhfs1 = doubleMap.get("dbflhfs1");
+        String dbflb4 = takeSignByCompareNumber(dbflhfs1,dbflhfffw);
+        String dbflm4 = takeStringByCompareNumber(dbflhfs1,dbflhfffw);
+        map.put("dbflb4", CommonFunc.convertDoubleToString(dbflb4));
+        map.put("dbflm4", CommonFunc.convertDoubleToString(dbflm4));
 
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));

@@ -331,16 +331,16 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td><b>螺栓连接工作情况</b></td>
-                                        <td colspan="3">
-                                            <select name="dbfllsljgkModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="一般连接">一般连接</option>
-                                                <option value="重要连接">重要连接</option>
-                                            </select>
-                                        </td>
-                                    </tr>
+                                    <!--<tr>-->
+                                        <!--<td><b>螺栓连接工作情况</b></td>-->
+                                        <!--<td colspan="3">-->
+                                            <!--<select name="dbfllsljgkModel" style="width:100%;height:40px;text-align-last:center">-->
+                                                <!--<option value="" style="display: none"></option>-->
+                                                <!--<option value="一般连接">一般连接</option>-->
+                                                <!--<option value="重要连接">重要连接</option>-->
+                                            <!--</select>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
                                     <tr>
                                         <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
                                         <td style="width:17%;">符号</td>
@@ -388,6 +388,12 @@
                                         <td ><p><i>n<sub>ls</sub></i></p></td>
                                         <td ><input type="text" name="dbflnlsyjlxs"/></td>
                                         <td > </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>前对接法兰板总厚度</b></td>
+                                        <td ><p><i>L</i></p></td>
+                                        <td ><input type="text" name="ldbflb" /></td>
+                                        <td >mm</td>
                                     </tr>
                                 </table>
                             </div>
@@ -446,17 +452,17 @@
                             <div class="subtable">
                                 <table>
                                     <tr>
-                                        <td colspan="7" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.吊臂前对接法兰螺栓至螺栓群形心垂直距离及每行螺栓数量参数</b></td>
+                                        <td colspan="7" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.吊臂前对接法兰螺栓至八边管中心垂直距离及每行螺栓数量参数</b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="7">
                                             <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="吊臂前对接法兰螺栓至螺栓群形心垂直距离参数示意图" id="dbfltu1" height="400px"  name="dbfltu1">
+                                                <img alt="吊臂前对接法兰螺栓至八边管中心垂直距离参数示意图" id="dbfltu1" height="400px"  name="dbfltu1">
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>吊臂前对接法兰螺栓至螺栓群形心垂直距离参数示意图</b></td>
+                                        <td><b>吊臂前对接法兰螺栓至八边管中心垂直距离参数示意图</b></td>
                                         <td colspan="6">
                                             <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbfltu1" oninput="showImage(this,'dbfltu1')"/>
                                         </td>
@@ -464,7 +470,7 @@
                                     <tr>
                                         <td style="width:20%;padding:10px 0;;"><b>名称</b></td>
                                         <td style="width:10%;">符号</td>
-                                        <td style="width:20%;">至螺栓群形心垂直距离</td>
+                                        <td style="width:20%;">至八边管中心垂直距离</td>
                                         <td style="width:10%;">单位</td>
                                         <td style="width:10%;">符号</td>
                                         <td style="width:20%;">数量</td>
@@ -584,17 +590,17 @@
                             <div class="subtable">
                                 <table>
                                     <tr>
-                                        <td colspan="7" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.吊臂前对接法兰螺栓至螺栓群形心水平距离及每列螺栓数量参数</b></td>
+                                        <td colspan="7" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.吊臂前对接法兰螺栓至八边管中心水平距离及每列螺栓数量参数</b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="7">
                                             <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
-                                                <img alt="吊臂前对接法兰螺栓至螺栓群形心水平距离参数示意图" id="dbfltu2" height="400px"  name="dbfltu2">
+                                                <img alt="吊臂前对接法兰螺栓至八边管中心水平距离参数示意图" id="dbfltu2" height="400px"  name="dbfltu2">
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>吊臂前对接法兰螺栓至螺栓群形心水平距离参数示意图</b></td>
+                                        <td><b>吊臂前对接法兰螺栓至八边管中心水平距离参数示意图</b></td>
                                         <td colspan="6">
                                             <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="dbfltu2" oninput="showImage(this,'dbfltu2')"/>
                                         </td>
@@ -602,7 +608,7 @@
                                     <tr>
                                         <td style="width:20%;padding:10px 0;;"><b>名称</b></td>
                                         <td style="width:10%;">符号</td>
-                                        <td style="width:20%;">至螺栓群形心水平距离</td>
+                                        <td style="width:20%;">至八边管中心水平距离</td>
                                         <td style="width:10%;">单位</td>
                                         <td style="width:10%;">符号</td>
                                         <td style="width:20%;">数量</td>
@@ -1046,22 +1052,28 @@
                                             <td style="width:25%;"><b>是否满足</b></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
+                                            <td><b>螺栓拉力</b></td>
+                                            <td><p><span id="ntk"></span>kN</p></td>
+                                            <td><p><span id="flslk"></span>kN</p></td>
+                                            <td id="dbflm1"></td>
+                                        </tr>
+                                        <tr style="background-color: rgb(220,220,220)">
                                             <td><b>螺栓预紧力</b></td>
                                             <td><p><span id="dbflflspk"></span>kN</p></td>
                                             <td><p><span id="flssk"></span>kN</p></td>
-                                            <td id="dbflm1"></td>
+                                            <td id="dbflm2"></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
                                             <td><b>螺栓拧紧力矩</b></td>
                                             <td><p><span id="dbfltls"></span>N·m</p></td>
                                             <td><p><span id="tlss"></span>N·m</p></td>
-                                            <td id="dbflm2"></td>
+                                            <td id="dbflm3"></td>
                                         </tr>
                                         <tr style="background-color: rgb(220,220,220)">
                                             <td><b>焊缝抗拉强度</b></td>
                                             <td><p><span id="dbflhfffw"></span>N/mm<sup>2</sup></p></td>
                                             <td><p><span id="dbflhfs1"></span>N/mm<sup>2</sup></p></td>
-                                            <td id="dbflm3"></td>
+                                            <td id="dbflm4"></td>
                                         </tr>
                                      </table>
                                 </div>
@@ -1108,14 +1120,14 @@
             dbflgruxs:0,
         },
     };
-    dbfllsljgkModelList={
-        "一般连接":{
-            dbflnlsyjlxs:1.4,
-        },
-        "重要连接":{
-            dbflnlsyjlxs:2.65,
-        },
-    };
+    // dbfllsljgkModelList={
+    //     "一般连接":{
+    //         dbflnlsyjlxs:1.4,
+    //     },
+    //     "重要连接":{
+    //         dbflnlsyjlxs:2.65,
+    //     },
+    // };
     dbfllsxndjModelList={
         "8.8级":{
             dbfllsxndj:'8.8级',
@@ -1223,6 +1235,13 @@
         dbfltls:function () {
             return 0.18 * dbflflsp * dbfllsgcd / 1000 ;
         },
+        ldbflb:function () {
+            if ( dbflxhModel == '1+1伸缩臂（3x5）' || dbflxhModel == '1+1伸缩臂（3x6.5）' || dbflxhModel == '2+1伸缩臂（3x5）' || dbflxhModel == '2+1伸缩臂（3x6.5）' ) {
+                return 60 ;
+            }else if ( dbflxhModel == '3+1伸缩臂（3x5）' || dbflxhModel == '3+1伸缩臂（3x6.5）' ) {
+                return 70 ;
+            }
+        },
 
         grutstx:function () {
             if ( gruModel == "GRU285" ) {
@@ -1250,8 +1269,11 @@
         dbfllsss:function(){
             return dbfllsxndjModelList[ dbfllsxndjModel ]['dbfllsss'];
         },
+        // dbflnlsyjlxs:function(){
+        //     return dbfllsljgkModelList[ dbfllsljgkModel ]['dbflnlsyjlxs'];
+        // },
         dbflnlsyjlxs:function(){
-            return dbfllsljgkModelList[ dbfllsljgkModel ]['dbflnlsyjlxs'];
+            return 2 ;
         },
 
         dbflhfhtxh:function(){

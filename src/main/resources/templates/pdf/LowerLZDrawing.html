@@ -177,6 +177,10 @@
                                         <td colspan="2"><input type="text" name="xmmc"/></td>
                                     </tr>
                                     <tr>
+                                        <td ><b>项目批令号</b></td>
+                                        <td colspan="2"><input type="text" name="plh"/></td>
+                                    </tr>
+                                    <tr>
                                         <td ><b>填写人</b></td>
                                         <td colspan="2"><input type="text" name="jsr"/></td>
                                     </tr>
@@ -492,13 +496,13 @@
                                 <input type="text" name="mlzxg11" />
                                 <input type="text" name="qsjg" />
 
-                                <input type="text" name="mlzxxz1" />
-                                <input type="text" name="mlzxxz2" />
-                                <input type="text" name="dlzxxz" />
-                                <input type="text" name="dlzxxzpz" />
-                                <input type="text" name="dlzxxzxl" />
-                                <input type="text" name="mlzxkkx1" />
-                                <input type="text" name="mlzxkkx2" />
+                                <!--<input type="text" name="mlzxxz1" />-->
+                                <!--<input type="text" name="mlzxxz2" />-->
+                                <!--<input type="text" name="dlzxxz" />-->
+                                <!--<input type="text" name="dlzxxzpz" />-->
+                                <!--<input type="text" name="dlzxxzxl" />-->
+                                <!--<input type="text" name="mlzxkkx1" />-->
+                                <!--<input type="text" name="mlzxkkx2" />-->
 
                                 <input type="text" name="mlzx003" />
                                 <input type="text" name="mlzx004" />
@@ -511,11 +515,11 @@
                                 <input type="text" name="mlzx011" />
                                 <input type="text" name="mlzx012" />
                                 <input type="text" name="mlzx013" />
-                                <input type="text" name="mlzx014" />
-                                <input type="text" name="mlzx015" />
-                                <input type="text" name="mlzx016" />
-                                <input type="text" name="mlzx017" />
-                                <input type="text" name="mlzx018" />
+                                <!--<input type="text" name="mlzx014" />-->
+                                <!--<input type="text" name="mlzx015" />-->
+                                <!--<input type="text" name="mlzx016" />-->
+                                <!--<input type="text" name="mlzx017" />-->
+                                <!--<input type="text" name="mlzx018" />-->
                             </div>
                             <input type="hidden" name="pdfType"/>
                         </form>
@@ -829,7 +833,7 @@
             return mlzxg1 + mlzx002 ;
         },
         mlzx002:function(){
-            return mlzxg2 + mlzx003  + mlzx011 + mlzx012  + mlzx013 + mlzx015 + mlzx017  + mlzx018 ;
+            return mlzxg2 + mlzx003  + mlzx011 + mlzx012  + mlzx013 ;
         },
         mlzx003:function(){
             if ( lzxlzxh == "LZX(300×300)(6.3)") {
@@ -898,55 +902,55 @@
                 return mlzxg11 ;
             }
         },
-        //需测质量
-        mlzx014:function(){
-            if ( lzxlzxh == "LZX(300×300)(6.3)" ) {
-                return 550 ;
-            } else if ( lzxlzxh == "LZX(350×350)(7.1)" ) {
-                return 650 ;
-            }else if ( lzxlzxh == "LZX(390×500)(8.0)" ) {
-                return 800 ;
-            }else if ( lzxlzxh == "LZX(500×600)(9.0)" ) {
-                return 1000 ;
-            }
-            // else if ( lzxlzxh == "LZX(535×700)(10.0)" ) {
-            //     if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
-            //         return 900 ;
-            //     } else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
-            //         return 1000 ;
-            //     } else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
-            //         return 1200 ;
-            //     }
-            // }
-        },
-        mlzx015:function(){
-            return 4 * mlzx014 ;
-        },
-        mlzx016:function(){
-            if ( lzxlzxh == "LZX(300×300)(6.3)" ) {
-                return 550 ;
-            } else if ( lzxlzxh == "LZX(350×350)(7.1)" ) {
-                return 650 ;
-            }else if ( lzxlzxh == "LZX(390×500)(8.0)" ) {
-                return 800 ;
-            }else if ( lzxlzxh == "LZX(500×600)(9.0)" ) {
-                return 1000 ;
-            }
-        },
-        mlzx017:function(){
-            return 2 * mlzx016 ;
-        },
-        mlzx018:function(){
-            if ( lzxlzxh == "LZX(300×300)(6.3)" ) {
-                return 550 ;
-            }else if ( lzxlzxh == "LZX(350×350)(7.1)" ) {
-                return 650 ;
-            }else if ( lzxlzxh == "LZX(390×500)(8.0)" ) {
-                return 800 ;
-            }else if ( lzxlzxh == "LZX(500×600)(9.0)" ) {
-                return 1000;
-            }
-        },
+    //     //需测质量
+    //     mlzx014:function(){
+    //         if ( lzxlzxh == "LZX(300×300)(6.3)" ) {
+    //             return 550 ;
+    //         } else if ( lzxlzxh == "LZX(350×350)(7.1)" ) {
+    //             return 650 ;
+    //         }else if ( lzxlzxh == "LZX(390×500)(8.0)" ) {
+    //             return 800 ;
+    //         }else if ( lzxlzxh == "LZX(500×600)(9.0)" ) {
+    //             return 1000 ;
+    //         }
+    //         // else if ( lzxlzxh == "LZX(535×700)(10.0)" ) {
+    //         //     if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
+    //         //         return 900 ;
+    //         //     } else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
+    //         //         return 1000 ;
+    //         //     } else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
+    //         //         return 1200 ;
+    //         //     }
+    //         // }
+    //     },
+    //     mlzx015:function(){
+    //         return 4 * mlzx014 ;
+    //     },
+    //     mlzx016:function(){
+    //         if ( lzxlzxh == "LZX(300×300)(6.3)" ) {
+    //             return 550 ;
+    //         } else if ( lzxlzxh == "LZX(350×350)(7.1)" ) {
+    //             return 650 ;
+    //         }else if ( lzxlzxh == "LZX(390×500)(8.0)" ) {
+    //             return 800 ;
+    //         }else if ( lzxlzxh == "LZX(500×600)(9.0)" ) {
+    //             return 1000 ;
+    //         }
+    //     },
+    //     mlzx017:function(){
+    //         return 2 * mlzx016 ;
+    //     },
+    //     mlzx018:function(){
+    //         if ( lzxlzxh == "LZX(300×300)(6.3)" ) {
+    //             return 550 ;
+    //         }else if ( lzxlzxh == "LZX(350×350)(7.1)" ) {
+    //             return 650 ;
+    //         }else if ( lzxlzxh == "LZX(390×500)(8.0)" ) {
+    //             return 800 ;
+    //         }else if ( lzxlzxh == "LZX(500×600)(9.0)" ) {
+    //             return 1000;
+    //         }
+    //     },
     };
 
     // getMultilevelTable("dbtypeModel","lzxlzModel",["lzxlzd", "lzxlz1", "lzxlz2", "lzxlz3", "lzxlz4"]);
@@ -966,7 +970,7 @@
 <script>
     function showImage() {
         var l=window.data.datalist;
-        if(!(l['lzx001'].value && l['qsjgazwzModel'].value && l['qsjgModel'].value && l['lzxhzfljjModel'].value && l['lzxlzxh'].value && l['lzxxzxh'].value ))
+        if(!(l['lzx001'].value && l['qsjgazwzModel'].value && l['qsjgModel'].value && l['lzxhzfljjModel'].value && l['lzxlzdModel'].value ))
             return ;
         var data = new FormData();
         var els = $("input[type=text],select");
