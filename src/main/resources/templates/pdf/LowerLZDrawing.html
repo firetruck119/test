@@ -692,7 +692,7 @@
             return qsjgModelList[ qsjgModel ]['qsjg'];
         },
         lzxhlzxh:function(){
-            return 'HLZS2Φ200(Φ8)DA';
+            return 'HLZS2Φ200(Φ8)DA' ;
         },
 
         mlzxxz2:function(){
@@ -970,7 +970,7 @@
 <script>
     function showImage() {
         var l=window.data.datalist;
-        if(!(l['lzx001'].value && l['qsjgazwzModel'].value && l['qsjgModel'].value && l['lzxhzfljjModel'].value && l['lzxlzdModel'].value ))
+        if(!( l['lzx001'].value && l['qsjgazwzModel'].value && l['qsjgModel'].value && l['lzxhzfljjModel'].value && l['lzxlzdModel'].value ))
             return ;
         var data = new FormData();
         var els = $("input[type=text],select");
@@ -989,7 +989,7 @@
         })
     }
     $("[name]").change(showImage);
-    $("[name=getData]").click(showImage)
+    $("[name=getData]").click(showImage);
 </script>
 </body>
 </html>

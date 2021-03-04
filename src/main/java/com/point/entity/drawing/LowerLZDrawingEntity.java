@@ -2,6 +2,7 @@ package com.point.entity.drawing;
 
 import com.point.common.CommonFunc;
 import lombok.Data;
+import org.apache.el.lang.ELArithmetic;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -176,10 +177,9 @@ public class LowerLZDrawingEntity {
     }
 
     public String _getPDFName() {
-
         if ( lzx001 <= 4000 && lzx001 > 0 ) {
             if ( qsjgazwzModel.equals("立柱后面") ) {
-                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ){
+                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ) {
                     if ( lzxhzfljjModel.equals("不机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return "LZX(300×300)(6.3)(4M-7)";
@@ -190,16 +190,6 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(4M-7)";
                         }
-//                    else if ( lzxxzModel.equals("LZX(535×700)(10.0)") ) {
-//                            if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(67)";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(77)";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(87)";
-//                            }
-//                    }
-
                     } else if ( lzxhzfljjModel.equals("机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return " ";
@@ -210,19 +200,16 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(4M-7)-J";
                         }
-
                     }
-                }else if ( qsjgModel.equals("185") || qsjgModel.equals("285") ){
+                } else if ( qsjgModel.equals("185") || qsjgModel.equals("285") ) {
                     return " ";
                 }
-
             } else if ( qsjgazwzModel.equals("立柱侧面") ) {
                 return " ";
             }
         } else {
-//            return " ";
             if ( qsjgazwzModel.equals("立柱后面") ) {
-                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ){
+                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ) {
                     if ( lzxhzfljjModel.equals("不机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return "LZX(300×300)(6.3)(7)";
@@ -233,16 +220,6 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(7)";
                         }
-//                    else if ( lzxxzModel.equals("LZX(535×700)(10.0)") ) {
-//                            if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(67)";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(77)";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(87)";
-//                            }
-//                    }
-
                     } else if ( lzxhzfljjModel.equals("机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return " ";
@@ -253,12 +230,10 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(7)-J";
                         }
-
                     }
-                }else if ( qsjgModel.equals("185") || qsjgModel.equals("285") ){
+                } else if ( qsjgModel.equals("185") || qsjgModel.equals("285") ) {
                     return " ";
                 }
-
             } else if ( qsjgazwzModel.equals("立柱侧面") ) {
                 return " ";
             }
@@ -266,12 +241,10 @@ public class LowerLZDrawingEntity {
         return null;
     }
 
-
-
     public String _getImageName() {
         if ( lzx001 <= 4000 && lzx001 > 0 ) {
             if ( qsjgazwzModel.equals("立柱后面") ) {
-                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ){
+                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ) {
                     if ( lzxhzfljjModel.equals("不机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return "LZX(300×300)(6.3)(4M-7).png";
@@ -282,16 +255,6 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(4M-7).png";
                         }
-//                    else if ( lzxxzModel.equals("LZX(535×700)(10.0)") ) {
-//                            if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(67).png";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(77).png";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(87).png";
-//                            }
-//                    }
-
                     } else if ( lzxhzfljjModel.equals("机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return " ";
@@ -302,19 +265,16 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(4M-7)-J.png";
                         }
-
                     }
-                }else if ( qsjgModel.equals("185")||qsjgModel.equals("285") ){
+                } else if ( qsjgModel.equals("185")||qsjgModel.equals("285") ) {
                     return " ";
                 }
-
             } else if ( qsjgazwzModel.equals("立柱侧面") ) {
                 return " ";
             }
         } else {
-//            return " ";
             if ( qsjgazwzModel.equals("立柱后面") ) {
-                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ){
+                if ( qsjgModel.equals("175") || qsjgModel.equals("275") ) {
                     if ( lzxhzfljjModel.equals("不机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return "LZX(300×300)(6.3)(7).png";
@@ -325,16 +285,6 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(7).png";
                         }
-//                    else if ( lzxxzModel.equals("LZX(535×700)(10.0)") ) {
-//                            if ( lzxxzxh == "SSB(1+1)-XZ(Φ67)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(67).png";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ77)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(77).png";
-//                            }else if ( lzxxzxh == "SSB(1+1)-XZ(Φ87)" ) {
-//                                return "LZX(535×700)(10.0)(4M-7)-(87).png";
-//                            }
-//                    }
-
                     } else if ( lzxhzfljjModel.equals("机加") ) {
                         if ( lzxlzdModel.equals("LZX(300×300)(6.3)") ) {
                             return " ";
@@ -345,12 +295,10 @@ public class LowerLZDrawingEntity {
                         } else if ( lzxlzdModel.equals("LZX(500×600)(9.0)") ) {
                             return "LZX(500×600)(9.0)(7)-J.png";
                         }
-
                     }
-                }else if ( qsjgModel.equals("185") || qsjgModel.equals("285") ){
+                } else if ( qsjgModel.equals("185") || qsjgModel.equals("285") ) {
                     return " ";
                 }
-
             } else if ( qsjgazwzModel.equals("立柱侧面") ) {
                 return " ";
             }
