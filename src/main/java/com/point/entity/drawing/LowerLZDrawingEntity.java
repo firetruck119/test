@@ -36,6 +36,9 @@ public class LowerLZDrawingEntity {
     private Double mlzxg10;
     private Double mlzxg11;
 
+//    立柱总高度提示提醒
+    private String lzx001tstx;
+
 //    private Double mlzxxz1;
 //    private Double mlzxxz2;
 //    private Double dlzxxz;
@@ -127,6 +130,8 @@ public class LowerLZDrawingEntity {
         map.put("mlzxg9", CommonFunc.convertDoubleToString(mlzxg9));
         map.put("mlzxg10", CommonFunc.convertDoubleToString(mlzxg10));
         map.put("mlzxg11", CommonFunc.convertDoubleToString(mlzxg11));
+
+        map.put("lzx001tstx", CommonFunc.convertDoubleToString(lzx001tstx));
 
 //        map.put("mlzxxz1", CommonFunc.convertDoubleToString(mlzxxz1));
 //        map.put("mlzxxz2", CommonFunc.convertDoubleToString(mlzxxz2));
