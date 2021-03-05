@@ -623,7 +623,7 @@ public class PinSeatEntity {
         resultmap.put("xzm4",CommonFunc.convertDoubleToString(xzm4));
         resultmap.put("xzm8",CommonFunc.convertDoubleToString(xzm8));
         resultmap.put("xzm12",CommonFunc.convertDoubleToString(xzm12));
-        resultmap.put("xzm16",CommonFunc.convertDoubleToString(xzm16));
+        resultmap.put("Xzm16",CommonFunc.convertDoubleToString(xzm16));
         resultmap.put("xzm17",CommonFunc.convertDoubleToString(xzm17));
         resultmap.put("xzm18",CommonFunc.convertDoubleToString(xzm18));
         resultmap.put("xzm23",CommonFunc.convertDoubleToString(xzm23));
