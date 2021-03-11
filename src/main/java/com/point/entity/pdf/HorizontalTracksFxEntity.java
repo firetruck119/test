@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.min;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
@@ -430,9 +431,11 @@ public class HorizontalTracksFxEntity {
         map.put("a8", a8);
         map.put("b8", b8);
 
-        Double fz2rd = 0.125 * gdtw * gdtw * sqrt(210000 * gdss) * (sqrt(gdtfx / gdtw) + 3 * gdtw * bef1c / gdtfx / gdhw);
+        Double cbhw = Math.min( bef1c / gdhw , 0.2 );
+        Double fz2rd = 0.125 * gdtw * gdtw * sqrt(210000 * gdss) * (sqrt(gdtfx / gdtw) + 3 * gdtw * cbhw / gdtfx );
         Double a9 = rzed / fz2rd;
         Double b9 = rzed / fz2rd;
+        map.put("cbhw", cbhw);
         map.put("fz2rd", fz2rd);
         map.put("a9", a9);
         map.put("b9", b9);
