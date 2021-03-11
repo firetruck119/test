@@ -74,7 +74,7 @@ public class PdfCreater {
         if(list!=null){
             for (AcroFields.FieldPosition item:list){
                 Rectangle signRect = item.position;
-                PdfContentByte under = ps.getOverContent(item.page);
+                PdfContentByte under = ps.getUnderContent(item.page);
                 float rectW = signRect.getWidth();
                 float rectH = signRect.getHeight();
                 float rectL = signRect.getLeft();
