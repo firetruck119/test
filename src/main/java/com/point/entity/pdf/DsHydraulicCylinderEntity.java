@@ -366,8 +366,8 @@ public class DsHydraulicCylinderEntity {
         Double mgkf = mslf + mshlf + mf1 + mf2 + mf3 + mf4 + mf6 + mf7 ;
         Double gf = mwlzf * 10 ;
         Double mgqf = mgzf + mgwf ;
-        Double fglf = ( mgqf - mgkf ) / lwlzbg / 2 ;
-        Double ff = 0.05 * fglf / dsdlr ;
+        Double fglf = ( mgqf - mgkf ) / lwlzbg ;
+        Double ff = 2 * 0.05 * fglf / dsdlr ;
         Double fsf = gf + ff ;
         Double fsnf = dsn * fsf / dsn1 ;
         Double fsnfk = fsnf / 1000 ;
