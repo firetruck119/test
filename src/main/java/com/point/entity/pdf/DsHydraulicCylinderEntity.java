@@ -301,13 +301,15 @@ public class DsHydraulicCylinderEntity {
         Double fk = 3.14 * 3.14 * 180000 * dsi / dsk / dsk / dslb / dslb ;
         Double fkn = fk / dsnk ;
         Double f1 = fs ;
+        Double f1n = f1 / dsn1 ;
         Double fknk = fkn / 1000 ;
-        Double f1k = f1 / 1000 ;
+        Double f1nk = f1n / 1000 ;
         map.put("fk", fk);
         map.put("fkn", fkn);
         map.put("f1", f1);
+        map.put("f1n", f1n);
         map.put("fknk", fknk);
-        map.put("f1k", f1k);
+        map.put("f1nk", f1nk);
 
 //工况2
         Double mf5 = m5dsp * lfy5 * 10 ;
@@ -385,13 +387,15 @@ public class DsHydraulicCylinderEntity {
         Double fkf = 3.14 * 3.14 * 180000 * dsi / dsk / dsk / dslbf / dslbf ;
         Double fknf = fkf / dsnk ;
         Double f2 = fsf ;
+        Double f2n = f2 / dsn1 ;
         Double fknfk = fknf / 1000 ;
-        Double f2k = f2 / 1000 ;
+        Double f2nk = f2n / 1000 ;
         map.put("fkf", fkf);
         map.put("fknf", fknf);
         map.put("f2", f2);
+        map.put("f2n", f2n);
         map.put("fknfk", fknfk);
-        map.put("f2k", f2k);
+        map.put("f2nk", f2nk);
 
         return map;
     }
@@ -425,10 +429,10 @@ public class DsHydraulicCylinderEntity {
         map.put("dsb1", CommonFunc.convertDoubleToString(dsb1));
         map.put("dsm1", CommonFunc.convertDoubleToString(dsm1));
 
-        Double f1 = doubleMap.get("f1");
+        Double f1n = doubleMap.get("f1n");
         Double fkn = doubleMap.get("fkn");
-        String dsb2 = takeSignByCompareNumber(f1,fkn);
-        String dsm2 = takeStringByCompareNumber(f1,fkn);
+        String dsb2 = takeSignByCompareNumber(f1n,fkn);
+        String dsm2 = takeStringByCompareNumber(f1n,fkn);
         map.put("dsb2", CommonFunc.convertDoubleToString(dsb2));
         map.put("dsm2", CommonFunc.convertDoubleToString(dsm2));
 
@@ -438,10 +442,10 @@ public class DsHydraulicCylinderEntity {
         map.put("dsb3", CommonFunc.convertDoubleToString(dsb3));
         map.put("dsm3", CommonFunc.convertDoubleToString(dsm3));
 
-        Double f2 = doubleMap.get("f2");
+        Double f2n = doubleMap.get("f2n");
         Double fknf = doubleMap.get("fknf");
-        String dsb4 = takeSignByCompareNumber(f2,fknf);
-        String dsm4 = takeStringByCompareNumber(f2,fknf);
+        String dsb4 = takeSignByCompareNumber(f2n,fknf);
+        String dsm4 = takeStringByCompareNumber(f2n,fknf);
         map.put("dsb4", CommonFunc.convertDoubleToString(dsb4));
         map.put("dsm4", CommonFunc.convertDoubleToString(dsm4));
 
