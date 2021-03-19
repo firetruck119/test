@@ -97,7 +97,7 @@ public class DijiaDrawingController {
             List<String> names = drawing.getPDFName("dijia", map);
             name=names.get(0);
         }
-        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing(null, null, "/dijia/" + name));
+        list.add(pdf.fromPDFTempletToPdfWithValue_Drawing(entity.takeMapForPDF( ), null, "/dijia/" + name));
         return tool.getResponseEntity(name, list.get(0));
     }
 }

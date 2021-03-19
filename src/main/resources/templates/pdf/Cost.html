@@ -1334,8 +1334,8 @@
                                         <td>
                                             <select name="mfModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="国内">国内</option>
-                                                <option value="国外(EGS、MHE等)">国外(EGS、MHE等)</option>
+                                                <option value="国内或EGS">国内或EGS</option>
+                                                <option value="MHE">MHE</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -3557,12 +3557,12 @@
     };
     //木方
     mfModelList={
-        "国内":{
+        "国内或EGS":{
             // cbmftj:0.3,
             // cbmfdj:300,
             // cbmfdjdw:'元/台',
         },
-        "国外(EGS、MHE等)":{
+        "MHE":{
             // cbmftj:" ",
             // cbmfdj:5200,
             // cbmfdjdw:'元/立方米',
@@ -4777,7 +4777,7 @@
         },
 
         cbmfdj: function () {
-            if ( mfModel == "国内" ) {
+            if ( mfModel == "国内或EGS" ) {
                 if ( dbxhModel == "单臂横截面" ) {
                     return 500;
                 }
@@ -4797,7 +4797,7 @@
                     return 1400;
                 }
             }
-            else if ( mfModel == "国外(EGS、MHE等)" ) {
+            else if ( mfModel == "MHE" ) {
                 if ( dbxhModel == "单臂横截面" ) {
                     return 12000;
                 }

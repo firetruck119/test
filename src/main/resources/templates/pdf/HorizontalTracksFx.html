@@ -443,17 +443,17 @@
                                         <td>mm<sup>4</sup></td>
                                     </tr>
                                     <tr>
-                                        <td>y向上截面抗弯模量</td>
-                                        <td><p><i>Wys,el</i></p></td>
-                                        <td><input type='text' name="gdwysel"/></td>
+                                        <td>y向截面抗弯模量</td>
+                                        <td><p><i>Wy,el</i></p></td>
+                                        <td><input type='text' name="gdwyel"/></td>
                                         <td>mm<sup>3</sup></td>
                                     </tr>
-                                    <tr>
-                                        <td>y向下截面抗弯模量</td>
-                                        <td><p><i>Wyx,el</i></p></td>
-                                        <td><input type='text' name="gdwyxel"/></td>
-                                        <td>mm<sup>3</sup></td>
-                                    </tr>
+                                    <!--<tr>-->
+                                        <!--<td>y向下截面抗弯模量</td>-->
+                                        <!--<td><p><i>Wyx,el</i></p></td>-->
+                                        <!--<td><input type='text' name="gdwyxel"/></td>-->
+                                        <!--<td>mm<sup>3</sup></td>-->
+                                    <!--</tr>-->
                                     <tr>
                                         <td>z向截面抗弯模量</td>
                                         <td><p><i>Wz,el</i></p></td>
@@ -490,8 +490,8 @@
                             <div style="display: none">
                                 <input type="text" name="gdiyc" />
                                 <input type="text" name="gdizc" />
-                                <input type="text" name="gdwyselc" />
-                                <input type="text" name="gdwyxelc" />
+                                <input type="text" name="gdwyelc" />
+                                <!--<input type="text" name="gdwyxelc" />-->
                                 <input type="text" name="gdwzelc" />
                             </div>
 
@@ -736,12 +736,12 @@
         gdiz:function(){
             return gdizc * 10000 ;
         },
-        gdwysel:function(){
-            return gdwyselc * 1000 ;
+        gdwyel:function(){
+            return gdwyelc * 1000 ;
         },
-        gdwyxel:function(){
-            return gdwyxelc * 1000 ;
-        },
+        // gdwyxel:function(){
+        //     return gdwyxelc * 1000 ;
+        // },
         gdwzel:function(){
             return gdwzelc * 1000 ;
         },

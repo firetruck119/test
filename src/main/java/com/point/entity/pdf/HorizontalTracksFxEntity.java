@@ -43,8 +43,9 @@ public class HorizontalTracksFxEntity {
 //    后台数据
     private Double gdiyc;
     private Double gdizc;
-    private Double gdwyselc;
-    private Double gdwyxelc;
+    private Double gdwyelc;
+//    private Double gdwyselc;
+//    private Double gdwyxelc;
     private Double gdwzelc;
 
     private Double bef1x;
@@ -63,8 +64,9 @@ public class HorizontalTracksFxEntity {
     private Double gdsy;
     private Double gdiy;
     private Double gdiz;
-    private Double gdwysel;
-    private Double gdwyxel;
+//    private Double gdwysel;
+//    private Double gdwyxel;
+    private Double gdwyel;
     private Double gdwzel;
     private Double gdz;
     private Double gdy;
@@ -119,8 +121,9 @@ public class HorizontalTracksFxEntity {
         //后台
         map.put("gdiyc", CommonFunc.convertDoubleToString(gdiyc));
         map.put("gdizc", CommonFunc.convertDoubleToString(gdizc));
-        map.put("gdwyselc", CommonFunc.convertDoubleToString(gdwyselc));
-        map.put("gdwyxelc", CommonFunc.convertDoubleToString(gdwyxelc));
+//        map.put("gdwyselc", CommonFunc.convertDoubleToString(gdwyselc));
+//        map.put("gdwyxelc", CommonFunc.convertDoubleToString(gdwyxelc))
+        map.put("gdwyelc", CommonFunc.convertDoubleToString(gdwyelc));;
         map.put("gdwzelc", CommonFunc.convertDoubleToString(gdwzelc));
 
         map.put("bef1x", CommonFunc.convertDoubleToString(bef1x));
@@ -138,8 +141,9 @@ public class HorizontalTracksFxEntity {
         map.put("gdsy", CommonFunc.convertDoubleToString(gdsy));
         map.put("gdiy", CommonFunc.convertDoubleToString(gdiy));
         map.put("gdiz", CommonFunc.convertDoubleToString(gdiz));
-        map.put("gdwysel", CommonFunc.convertDoubleToString(gdwysel));
-        map.put("gdwyxel", CommonFunc.convertDoubleToString(gdwyxel));
+//        map.put("gdwysel", CommonFunc.convertDoubleToString(gdwysel));
+//        map.put("gdwyxel", CommonFunc.convertDoubleToString(gdwyxel));
+        map.put("gdwyel", CommonFunc.convertDoubleToString(gdwyel));
         map.put("gdwzel", CommonFunc.convertDoubleToString(gdwzel));
         map.put("gdz", CommonFunc.convertDoubleToString(gdz));
         map.put("gdy", CommonFunc.convertDoubleToString(gdy));
@@ -332,7 +336,7 @@ public class HorizontalTracksFxEntity {
         Double s = sqrt(210000 * iw / 81000 / it);
         Double ccr = 1.35 * 3.14 * (sqrt(1 + Math.pow(3.14 * s / lkj, 2) * (1 + 0.55 * 0.55)) + 0.55 * 3.14 * s / lkj);
         Double mcr = ccr * sqrt(210000 * gdiz * 81000 * it) / lkj;
-        Double klt = sqrt(gdss * gdwysel / mcr);
+        Double klt = sqrt(gdss * gdwyel / mcr);
         Double qlt1 = 0.5 * (1 + 0.34 * (klt - 0.4) + 0.75 * klt * klt);
         Double qlt2 = 0.5 * (1 + 0.49 * (klt - 0.4) + 0.75 * klt * klt);
         //String[] temp = {"H200*200+贴板", "H250*250+贴板", "拼焊H216*200", "拼焊H266*250", "其它"};
@@ -344,7 +348,7 @@ public class HorizontalTracksFxEntity {
             qlt = qlt1;
         }
         Double xlt = 1 / (qlt + sqrt(qlt * qlt - 0.75 * klt * klt));
-        Double mbrd = xlt * gdss * gdwysel;
+        Double mbrd = xlt * gdss * gdwyel;
         Double a3 = myed / mbrd;
         Double b3 = myeds / mbrd;
         map.put("iw", iw);
