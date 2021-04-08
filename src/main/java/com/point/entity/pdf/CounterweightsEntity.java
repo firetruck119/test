@@ -654,7 +654,7 @@ public class CounterweightsEntity {
         mkpz = ma5 + ma7 + ma8 + ma9 + ma10 + ma12 + ma13 + ma14 + ma15 + ma16 + ma17 + ma18 + ma19 + ma21;
         m11s = (npz * mq - mkpz) / (lqg11 * 10);
         if( m11 != null ){
-         mz = swp + mwr + hwll + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21;
+         mz = swp + mwr + mffbb + hsw + m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + m9 + m10 + m11 + m12 + m13 + m14 + m15 + m16 + m17 + m18 + m19 + m20 + m21;
         };
         map.put("msla", msla);
         map.put("mshla", mshla);
