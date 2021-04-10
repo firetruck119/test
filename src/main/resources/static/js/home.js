@@ -320,17 +320,19 @@ asideDatas = {
             url: "pdf",
             children: [
                 {
-                    title: '底架',
-                    url: "DijiaDrawing",
+                    title: '单臂大臂',
+                    url: "DbdbDrawing",
                 },
                 {
                     title: '立柱(单臂)',
                     url: "LowerLZDrawing",
                 },
                 {
-                    title: '大臂',
-
+                    title: '底架',
+                    url: "DijiaDrawing",
                 },
+
+
                 {
                     title: '配重',
 

@@ -427,6 +427,12 @@ public class OneJibEntity {
         map.put("smax", smax);
         map.put("ssqd", ssqd);
 
+//        应力集中系数1.1.
+        Double smaxp = smax ;
+        Double ssqdp = dbss / 1.5 / 1.1 ;
+        map.put("smaxp", smaxp);
+        map.put("ssqdp", ssqdp);
+
         //        一臂
         Double mslzai= 1.25 * 10 * tsl * lslci ;
         Double mshlzai= 1.25 * 10 * tshl * lshlci ;
@@ -466,6 +472,12 @@ public class OneJibEntity {
         map.put("swi", swi);
         map.put("smaxi", smaxi);
         map.put("ssqdi", ssqdi);
+
+        //        应力集中系数1.1.
+        Double smaxip = smaxi ;
+        Double ssqdip = dbssi / 1.5 / 1.1 ;
+        map.put("smaxip", smaxip);
+        map.put("ssqdip", ssqdip);
 
         //        挠度计算
         Double pdbp = 1.25 * pdbpg / 3 + 1.25 * pdbpq ;
@@ -540,6 +552,22 @@ public class OneJibEntity {
         String dbm6 = takeStringByCompareNumber(f, nd);
         map.put("dbb6", CommonFunc.convertDoubleToString(dbb6));
         map.put("dbm6", CommonFunc.convertDoubleToString(dbm6));
+
+//        应力集中系数比较
+        Double smaxp = doubleMap.get("smaxp");
+        Double ssqdp = doubleMap.get("ssqdp");
+        String dbb1p = takeSignByCompareNumber(smaxp, ssqdp);
+        String dbm1p = takeStringByCompareNumber(smaxp, ssqdp);
+        map.put("dbb1p", CommonFunc.convertDoubleToString(dbb1p));
+        map.put("dbm1p", CommonFunc.convertDoubleToString(dbm1p));
+
+        Double smaxip = doubleMap.get("smaxip");
+        Double ssqdip = doubleMap.get("ssqdip");
+        String dbb2p = takeSignByCompareNumber(smaxip, ssqdip);
+        String dbm2p = takeStringByCompareNumber(smaxip, ssqdip);
+        map.put("dbb2p", CommonFunc.convertDoubleToString(dbb2p));
+        map.put("dbm2p", CommonFunc.convertDoubleToString(dbm2p));
+
 
         for (Map.Entry<String, Double> entry : doubleMap.entrySet()) {
             map.put(entry.getKey(), CommonFunc.convertDoubleToString(entry.getValue()));

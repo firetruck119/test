@@ -1,0 +1,997 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <title>单臂吊臂软件图纸</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app" hidden>
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">单臂吊臂软件图纸</div>
+                            <!- 封面内容 ->
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 5px 0"><b>基本参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>名称</b></td>
+                                        <td colspan="2">数值</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2"><input type="text" name="xmmc"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目批令号</b></td>
+                                        <td colspan="2"><input type="text" name="plh"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>填写人</b></td>
+                                        <td colspan="2"><input type="text" name="jsr"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>填写日期（参考格式：2020/12/25）</b></td>
+                                        <td colspan="2"><input type="text" name="date"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>单臂吊臂型号选择</b></td>
+                                        <td colspan="2">
+                                            <select name="dbdbtzModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>变截面单臂吊臂对接螺栓性能等级</b></td>
+                                        <td colspan="2">
+                                            <select name="dbdblsxndjModel" style="color:black;width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="8.8级">8.8级</option>
+                                                <option value="10.9级">10.9级</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>滑轮组型号</b></td>
+                                        <td colspan="2"><input type="text" name="dbdbhlzxh"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div style="height:480px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img id="tudbdb1" height="480px"  name="tudbdb1">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.总图相关参数填写</b></td>
+                                    </tr>
+                                </table>
+                            </div >
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;height: auto">
+                                            <img style="width:600px" src="\tudbdb2.png"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">编号</td>
+                                        <td style="width:50%;padding:10px 0;;">名称</td>
+                                        <td style="width:30%;">数值</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">①</td>
+                                        <td style="text-align: left"><b>吊臂总长</b></td>
+                                        <td><input type="text" name="ldbdb1"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">②</td>
+                                        <td style="text-align: left"><b>吊臂前端头部至回转中心长度</b></td>
+                                        <td><input type="text" name="ldbdb2"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">③</td>
+                                        <td style="text-align: left"><b>吊臂配重臂端尾部至回转中心长度</b></td>
+                                        <td><input type="text" name="ldbdb3"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">④</td>
+                                        <td style="text-align: left"><b>配重重心至回转中心长度</b></td>
+                                        <td><input type="text" name="ldbdb4"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">⑤</td>
+                                        <td style="text-align: left"><b>配重宽度</b></td>
+                                        <td><input type="text" name="ldbdb5"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>吊臂基臂后段走线管长度</b></td>
+                                        <td><input type="text" name="ldbdbzxg1"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>吊臂基臂前段走线管长度</b></td>
+                                        <td><input type="text" name="ldbdbzxg2"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>变截面吊臂对接螺栓性能等级</b></td>
+                                        <td><input type="text" name="lsxndj1"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>变截面吊臂对接螺栓对应的螺母及平垫性能等级</b></td>
+                                        <td><input type="text" name="lsxndj2"/></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.基臂后段组焊件相关参数填写</b></td>
+                                    </tr>
+                                </table>
+                            </div >
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;height: auto">
+                                            <img style="width:600px" src="\tudbdb3.png"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;height: auto">
+                                            <img style="width:600px" src="\tudbdb4.png"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">编号</td>
+                                        <td style="width:50%;padding:10px 0;;">名称</td>
+                                        <td style="width:30%;">数值</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>吊臂基臂回转中心前端矩形管长度(横截面单臂)</b></td>
+                                        <td><input type="text" name="ldbdb6"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">⑥</td>
+                                        <td style="text-align: left"><b>吊臂基臂矩形管总长(吊臂基臂后段总长)</b></td>
+                                        <td><input type="text" name="ldbdb7"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px" th:rowspan="2">⑦</td>
+                                        <td style="text-align: left"><b>吊臂基臂后段回转中心前端U型筋板1500mm的间距数量</b></td>
+                                        <td><input type="text" name="ndbdbj1"/></td>
+                                        <td>个</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left"><b>吊臂基臂后段回转中心前端U型筋板1500mm的间距总长</b></td>
+                                        <td><input type="text" name="ldbdbj1"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px" th:rowspan="2">⑧</td>
+                                        <td style="text-align: left"><b>吊臂基臂后段回转中心后端U型筋板1500mm的间距数量</b></td>
+                                        <td><input type="text" name="ndbdbj2"/></td>
+                                        <td>个</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left"><b>吊臂基臂后段回转中心后端U型筋板1500mm的间距总长</b></td>
+                                        <td><input type="text" name="ldbdbj2"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>吊臂基臂后段U型筋板总数量</b></td>
+                                        <td><input type="text" name="ndbdbjz1"/></td>
+                                        <td>个</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">编号</td>
+                                        <td style="width:50%;padding:10px 0;;">名称</td>
+                                        <td style="width:30%;">数值</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">⑨</td>
+                                        <td style="text-align: left"><b>吊臂基臂后段下加强板长度</b></td>
+                                        <td><input type="text" name="ldbdb8"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"><input style="color: white;" type='text' name="dbdbjqbtstx"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px" th:rowspan="2">⑩</td>
+                                        <td style="text-align: left"><b>吊臂基臂后段下加强板前端塞焊孔间隔数量</b></td>
+                                        <td><input type="text" name="ndbdbjqb"/></td>
+                                        <td>个</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left"><b>吊臂基臂后段下加强板前端塞焊孔间隔总长</b></td>
+                                        <td><input type="text" name="ldbdbjqb"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 28px">⑪</td>
+                                        <td style="text-align: left"><b>吊臂基臂后段上面板开孔至配重臂端尾部长度</b></td>
+                                        <td><input type="text" name="ldbdb9"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.基臂前段组焊件相关参数填写</b></td>
+                                    </tr>
+                                </table>
+                            </div >
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;height: auto">
+                                            <img style="width:600px" src="\tudbdb5.png"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">编号</td>
+                                        <td style="width:50%;padding:10px 0;;">名称</td>
+                                        <td style="width:30%;">数值</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 28px">⑫</td>
+                                        <td style="text-align: left"><b>吊臂基臂前段总长</b></td>
+                                        <td><input type="text" name="ldbdb10"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 28px" th:rowspan="2">⑬</td>
+                                        <td style="text-align: left"><b>吊臂基臂前段U型筋板1500mm的间距数量</b></td>
+                                        <td><input type="text" name="ndbdbj3"/></td>
+                                        <td>个</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left"><b>吊臂基臂前段U型筋板1500mm的间距总长</b></td>
+                                        <td><input type="text" name="ldbdbj3"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>吊臂基臂前段U型筋板总数量</b></td>
+                                        <td><input type="text" name="ndbdbjz2"/></td>
+                                        <td>个</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.质量参数</b></td>
+                                    </tr>
+                                </table>
+                            </div >
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:40%;padding:10px 0;;">名称</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:20%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>单臂吊臂总质量</b></td>
+                                        <td><input type="text" name="mdbdb1"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="display: none">
+                                <input type="text" name="dbdbjxgm1" />
+                                <input type="text" name="dbdbjxgm2" />
+                                <input type="text" name="dbdbjbcbm1" />
+                                <input type="text" name="dbdbjbcbm2" />
+                                <input type="text" name="dbdbjbcbm3" />
+                                <input type="text" name="dbdbjbsxbm1" />
+                                <input type="text" name="dbdbjbsxbm2" />
+                                <input type="text" name="dbdbjbsxbm3" />
+                                <input type="text" name="dbdbjbsxbm4" />
+                                <input type="text" name="dbdbjbjqbm1" />
+                                <input type="text" name="dbdbjbjqbm2" />
+                                <input type="text" name="dbdbzxgm1" />
+                                <input type="text" name="dbdbzxgm2" />
+                                <input type="text" name="dbdbgm1" />
+                                <input type="text" name="dbdbgm2" />
+                                <input type="text" name="dbdbgm3" />
+                                <input type="text" name="dbdbgm4" />
+                                <input type="text" name="dbdbgl1" />
+                                <input type="text" name="dbdbgl2" />
+
+                                <input type="text" name="mdbdb2" />
+                                <input type="text" name="mdbdb3" />
+                                <input type="text" name="mdbdb4" />
+                                <input type="text" name="mdbdb5" />
+                                <input type="text" name="mdbdb5s" />
+                                <input type="text" name="mdbdb6" />
+                                <input type="text" name="mdbdb7" />
+                                <input type="text" name="mdbdb8" />
+                                <input type="text" name="mdbdb9" />
+                                <input type="text" name="mdbdb9s" />
+                                <input type="text" name="mdbdb10" />
+                                <input type="text" name="mdbdb11" />
+                                <input type="text" name="mdbdb12" />
+                                <input type="text" name="mdbdb13" />
+                                <input type="text" name="mdbdbzxg1" />
+                                <input type="text" name="mdbdbzxg2" />
+
+                                <input type="text" name="dbdbjqbtcck" />
+
+                            </div>
+                            <input type="hidden" name="pdfType"/>
+                        </form>
+                        </div>
+
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="获取图纸pdf" onclick="$('form').attr('action','/DbdbDrawing/getPDF');
+                                                                                                                isCheck(false);changeType('Calculation')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','transparent')"/>
+                        </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+
+<script>
+    dbdblsxndjModelList= {
+        "8.8级":{
+            lsxndj1:"8.8级",
+            lsxndj2:"8级",
+        },
+        "10.9级":{
+            lsxndj1:"10.9级",
+            lsxndj2:"10级",
+        },
+    };
+</script>
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+    $(document).ready(function () {
+        // InitNav(10)
+        $('#DbdbDrawing').addClass('o-sub-cur');
+    })
+
+    function janyan() {
+        $.ajax({
+            url: "/DbdbDrawing/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                    // if(data[id]=="不满足") $("#" + id).css("background-color","red");
+                    // if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+        ldbdb3:function(){
+            return ldbdb1 - ldbdb2 ;
+        },
+        ldbdbzxg2:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    $('[name=ldbdbzxg2]').prop('disabled', true)
+                    data.datalist['ldbdbzxg2'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ldbdbzxg2]').prop('disabled', false)
+                    data.datalist['ldbdbzxg2'].color = 'white';
+                    return ' ';
+                }
+            },
+        lsxndj1:function(){
+            return dbdblsxndjModelList[ dbdblsxndjModel ]['lsxndj1'];
+        },
+        lsxndj2:function(){
+            return dbdblsxndjModelList[ dbdblsxndjModel ]['lsxndj2'];
+        },
+
+            ldbdb6:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    $('[name=ldbdb6]').prop('disabled', false)
+                    data.datalist['ldbdb6'].color = 'white';
+                    return ldbdb2 - dbdbgl1 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ldbdb6]').prop('disabled', true)
+                    data.datalist['ldbdb6'].color = 'rgb(200, 200, 200)';
+                    return null;
+                }
+            },
+            ldbdb7:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    return ldbdb1 - dbdbgl1 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
+                    return ldbdb1 - 6500 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ' ';
+                }
+            },
+            dbdbjqbtstx:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" ) {
+                    $('[name=dbdbjqbtstx]').prop('disabled', true)
+                    data.datalist['dbdbjqbtstx'].color = 'white';
+                    return '吊臂基臂下加强板长度最短1000mm，可向臂头方向每500mm一段加长';
+                } else if ( dbdbtzModel == "DB(250×400)(10)" ) {
+                    $('[name=dbdbjqbtstx]').prop('disabled', true)
+                    data.datalist['dbdbjqbtstx'].color = 'white';
+                    return '吊臂基臂下加强板长度最短1100mm，可向臂头方向每500mm一段加长';
+                } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
+                    $('[name=dbdbjqbtstx]').prop('disabled', true)
+                    data.datalist['dbdbjqbtstx'].color = 'white';
+                    return '吊臂基臂下加强板长度最短2500mm，可向臂头方向每500mm一段加长';
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=dbdbjqbtstx]').prop('disabled', true)
+                    data.datalist['dbdbjqbtstx'].color = 'white';
+                    return '吊臂基臂下加强板长度最短2500mm，可向臂头方向每500mm一段加长';
+                }
+            },
+            dbdbjqbtcck:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" && ldbdb8 != null && ( ldbdb8 >= ldbdb7 || ldbdb8 < 1000 || ( ( ldbdb8 - 1000 ) % 500 != 0 ) ) ) {
+                    alert('吊臂基臂下加强板长度填写有误');
+                } else if ( dbdbtzModel == "DB(250×400)(10)" && ldbdb8 != null && ( ldbdb8 >= ldbdb7 || ldbdb8 < 1100 || ( ( ldbdb8 - 1100 ) % 500 != 0 ) ) ) {
+                    alert('吊臂基臂下加强板长度填写有误');
+                } else if ( dbdbtzModel == "DB(300×500)(15)" && ldbdb8 != null && ( ldbdb8 >= ldbdb7 || ldbdb8 < 2500 || ( ( ldbdb8 - 2500 ) % 500 != 0 ) ) ) {
+                    alert('吊臂基臂下加强板长度填写有误');
+                } else if ( dbdbtzModel == "DB(400×600)(20)" && ldbdb8 != null && ( ldbdb8 >= ldbdb7 || ldbdb8 < 2500 || ( ( ldbdb8 - 2500 ) % 500 != 0 ) ) ) {
+                    alert('吊臂基臂下加强板长度填写有误');
+                } else {
+                    return null;
+                }
+            },
+            ldbdb9:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    $('[name=ldbdb9]').prop('disabled', true)
+                    data.datalist['ldbdb9'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ldbdb9]').prop('disabled', false)
+                    data.datalist['ldbdb9'].color = 'white';
+                    return ldbdb3 + dbdbgl2 ;
+                }
+            },
+            ndbdbjqb:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" ) {
+                    return ( ldbdb8 - 1000 ) / 500 ;
+                } else if ( dbdbtzModel == "DB(250×400)(10)" ) {
+                    return ( ldbdb8 - 1100 ) / 500 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
+                    return ( ldbdb8 - 2500 ) / 500 + 2 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ( ldbdb8 - 2500 ) / 500 + 2 ;
+                }
+            },
+            ldbdbjqb:function(){
+                return ndbdbjqb * 500 ;
+            },
+            ndbdbj1:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    $('[name=ndbdbj1]').prop('disabled', true)
+                    data.datalist['ndbdbj1'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ndbdbj1]').prop('disabled', false)
+                    data.datalist['ndbdbj1'].color = 'white';
+                    return ' ';
+                }
+            },
+            ndbdbj2:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    $('[name=ndbdbj2]').prop('disabled', true)
+                    data.datalist['ndbdbj2'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ndbdbj2]').prop('disabled', false)
+                    data.datalist['ndbdbj2'].color = 'white';
+                    return ' ';
+                }
+            },
+            ldbdbj1:function(){
+            if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                $('[name=ldbdbj1]').prop('disabled', true)
+                data.datalist['ldbdbj1'].color = 'rgb(200, 200, 200)';
+                return null;
+            } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                $('[name=ldbdbj1]').prop('disabled', false)
+                data.datalist['ldbdbj1'].color = 'white';
+                return ndbdbj1 * 1500 ;
+            }
+        },
+        ldbdbj2:function(){
+            if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                $('[name=ldbdbj2]').prop('disabled', true)
+                data.datalist['ldbdbj2'].color = 'rgb(200, 200, 200)';
+                return null;
+            } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                $('[name=ldbdbj2]').prop('disabled', false)
+                data.datalist['ldbdbj2'].color = 'white';
+                return ndbdbj2 * 1500 ;
+            }
+        },
+            ndbdbjz1:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    $('[name=ndbdbjz1]').prop('disabled', true)
+                    data.datalist['ndbdbjz1'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ndbdbjz1]').prop('disabled', false)
+                    data.datalist['ndbdbjz1'].color = 'white';
+                    return ndbdbj1 + ndbdbj2 + 3 ;
+                }
+            },
+
+            ldbdb10:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    $('[name=ldbdb10]').prop('disabled', true)
+                    data.datalist['ldbdb10'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ldbdb10]').prop('disabled', false)
+                    data.datalist['ldbdb10'].color = 'white';
+                    return ldbdb1 - 6500 - ldbdb7 ;
+                }
+            },
+            ndbdbj3:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    $('[name=ndbdbj3]').prop('disabled', true)
+                    data.datalist['ndbdbj3'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ndbdbj3]').prop('disabled', false)
+                    data.datalist['ndbdbj3'].color = 'white';
+                    return ' ';
+                }
+            },
+            ldbdbj3:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    $('[name=ldbdbj3]').prop('disabled', true)
+                    data.datalist['ldbdbj3'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ldbdbj3]').prop('disabled', false)
+                    data.datalist['ldbdbj3'].color = 'white';
+                    return ndbdbj3 * 1500 ;
+                }
+            },
+            ndbdbjz2:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    $('[name=ndbdbjz2]').prop('disabled', true)
+                    data.datalist['ndbdbjz2'].color = 'rgb(200, 200, 200)';
+                    return null;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    $('[name=ndbdbjz2]').prop('disabled', false)
+                    data.datalist['ndbdbjz2'].color = 'white';
+                    return ndbdbj3 + 2 ;
+                }
+            },
+
+            mdbdb1:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    return dbdbgm1 + mdbdb2 + mdbdbzxg1 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return dbdbgm1 + mdbdb2 + mdbdbzxg1 + mdbdb8 + mdbdbzxg2 ;
+                }
+            },
+            mdbdb2:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    return dbdbgm2 + mdbdb3 + mdbdb4 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    return dbdbgm2 + mdbdb4 + mdbdb5s + mdbdb6 + mdbdb7 + mdbdb12 ;
+                }
+            },
+            mdbdb3:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    return ldbdb7 * dbdbjxgm1 / 1000 - dbdbjxgm2 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    return 0 ;
+                }
+            },
+            mdbdb4:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" ) {
+                    return dbdbjbjqbm1 + dbdbjbjqbm2 * ( ldbdb8 - 1000 ) / 500 ;
+                } else if ( dbdbtzModel == "DB(250×400)(10)" ) {
+                    return dbdbjbjqbm1 + dbdbjbjqbm2 * ( ldbdb8 - 1100 ) / 500 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
+                    return dbdbjbjqbm1 + dbdbjbjqbm2 * ( ldbdb8 - 2500 ) / 500 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return dbdbjbjqbm1 + dbdbjbjqbm2 * ( ldbdb8 - 2500 ) / 500 ;
+                }
+            },
+            mdbdb5:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ldbdb7 * dbdbjbcbm1 / 1000 - dbdbjbcbm2 ;
+                }
+            },
+            mdbdb5s:function(){
+                return mdbdb5 * 2 ;
+            },
+            mdbdb6:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ldbdb7 * dbdbjbsxbm1 / 1000 - dbdbjbsxbm3 ;
+                }
+            },
+            mdbdb7:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ldbdb7 * dbdbjbsxbm1 / 1000 - dbdbjbsxbm2 ;
+                }
+            },
+            mdbdb8:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return dbdbgm3 + mdbdb9s + mdbdb10 + mdbdb11 + mdbdb13 ;
+                }
+            },
+            mdbdb9:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ldbdb10 * dbdbjbcbm1 / 1000 - dbdbjbcbm3 ;
+                }
+            },
+            mdbdb9s:function(){
+                return mdbdb9 * 2 ;
+            },
+            mdbdb10:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ldbdb10 * dbdbjbsxbm1 / 1000 - dbdbjbsxbm4 ;
+                }
+            },
+            mdbdb11:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ldbdb10 * dbdbjbsxbm1 / 1000 ;
+                }
+            },
+            mdbdb12:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ndbdbjz1 * dbdbgm4 ;
+                }
+            },
+            mdbdb13:function(){
+                if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
+                    return 0 ;
+                } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                    return ndbdbjz2 * dbdbgm4 ;
+                }
+            },
+            mdbdbzxg1:function(){
+                return ldbdbzxg1 * dbdbzxgm1 / 1000 - dbdbzxgm2 ;
+            },
+            mdbdbzxg2:function(){
+                return ldbdbzxg2 * dbdbzxgm1 / 1000 - dbdbzxgm2 ;
+            },
+        };
+
+    getDrawing("dbdbtzModel","dbdb");
+    data.init(calculateFunction);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/DbdbDrawing/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+<script>
+    function showImage() {
+        var l=window.data.datalist;
+        if(!( l['dbdbtzModel'].value && l['ldbdb8'].value ))
+            return ;
+        var data = new FormData();
+        var els = $("input[type=text],select");
+        for (var index = 0; index < els.length; index++) {
+            var e = els[index];
+            data.append(e.name,e.value);
+        }
+        // axios.post("/DbdbDrawing/showDrawing", data).then(function (e) {
+        //     var imageName=e.data;
+        //     if(window.data.image==null)
+        //         window.data.image={"tudbdb1":imageName}
+        //     else if(window.data.image['tudbdb1']==imageName)
+        //         return null;
+        //     else;
+        //     $("img[id=tudbdb1]")[0].src = '/drawing/getImg?filename=' + imageName + '&drawingname=dbdb&tempid=' + Math.random();
+        // })
+    }
+    $("[name]").change(showImage);
+    $("[name=getData]").click(showImage)
+
+    $("[name=dbdbtzModel]").change(function () {
+        var data = new FormData();
+        var els = $("input[type=text],select");
+        for (var index = 0; index < els.length; index++) {
+            var e = els[index];
+            data.append(e.name, e.value);
+        }
+        axios.post("/DbdbDrawing/showDrawing", data).then(function (e) {
+            $("img[id=tudbdb1]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=dbdb&tempid=' + Math.random();
+        })
+    })
+</script>
+</body>
+</html>
