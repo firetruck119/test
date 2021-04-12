@@ -25,17 +25,11 @@
         <result column="column_18" jdbcType="OTHER" property="column18"/>
         <result column="column_19" jdbcType="OTHER" property="column19"/>
         <result column="column_20" jdbcType="OTHER" property="column20"/>
-        <result column="column_21" jdbcType="OTHER" property="column21"/>
-        <result column="column_22" jdbcType="OTHER" property="column22"/>
-        <result column="column_23" jdbcType="OTHER" property="column23"/>
-        <result column="column_24" jdbcType="OTHER" property="column24"/>
-        <result column="column_25" jdbcType="OTHER" property="column25"/>
     </resultMap>
     <sql id="Base_Column_List">
     id, drawingType, drawingName, column_1, column_2, column_3, column_4, column_5, column_6,
     column_7, column_8, column_9, column_10, column_11, column_12, column_13, column_14, 
-    column_15, column_16, column_17, column_18, column_19, column_20, column_21, column_22, column_23,
-    column_24, column_25
+    column_15, column_16, column_17, column_18, column_19, column_20
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
@@ -116,21 +110,6 @@
         <if test="column20 != null">
             and column_20 = #{column20,jdbcType=OTHER}
         </if>
-        <if test="column21 != null">
-            and column_21 = #{column21,jdbcType=OTHER}
-        </if>
-        <if test="column22 != null">
-            and column_22 = #{column22,jdbcType=OTHER}
-        </if>
-        <if test="column23 != null">
-            and column_23 = #{column23,jdbcType=OTHER}
-        </if>
-        <if test="column24 != null">
-            and column_24 = #{column24,jdbcType=OTHER}
-        </if>
-        <if test="column25 != null">
-            and column_25 = #{column25,jdbcType=OTHER}
-        </if>
     </select>
 
     <select id="selectMapByTable" parameterType="com.point.entity.Drawingtable" resultMap="BaseResultMap">
@@ -201,21 +180,6 @@
         <if test="column20 != null">
             and column_20 = #{column20,jdbcType=OTHER}
         </if>
-        <if test="column21 != null">
-            and column_21 = #{column21,jdbcType=OTHER}
-        </if>
-        <if test="column22 != null">
-            and column_22 = #{column22,jdbcType=OTHER}
-        </if>
-        <if test="column23 != null">
-            and column_23 = #{column23,jdbcType=OTHER}
-        </if>
-        <if test="column24 != null">
-            and column_24 = #{column24,jdbcType=OTHER}
-        </if>
-        <if test="column25 != null">
-            and column_25 = #{column25,jdbcType=OTHER}
-        </if>
     </select>
     <select id="getDrawingListName" resultType="java.lang.String">
         SELECT * FROM drawingtable where drawingname in (select id from drawing where drawinNo = #{name,jdbcType=OTHER}) ;
@@ -233,8 +197,7 @@
       column_11, column_12, column_13, 
       column_14, column_15, column_16, 
       column_17, column_18, column_19, 
-      column_20, column_21, column_22,
-      column_23, column_24, column_25)
+      column_20)
     values (#{drawingtype,jdbcType=CHAR}, #{drawingname,jdbcType=CHAR}, #{column1,jdbcType=OTHER}, 
       #{column2,jdbcType=OTHER}, #{column3,jdbcType=OTHER}, #{column4,jdbcType=OTHER}, 
       #{column5,jdbcType=OTHER}, #{column6,jdbcType=OTHER}, #{column7,jdbcType=OTHER}, 
@@ -242,8 +205,7 @@
       #{column11,jdbcType=OTHER}, #{column12,jdbcType=OTHER}, #{column13,jdbcType=OTHER}, 
       #{column14,jdbcType=OTHER}, #{column15,jdbcType=OTHER}, #{column16,jdbcType=OTHER}, 
       #{column17,jdbcType=OTHER}, #{column18,jdbcType=OTHER}, #{column19,jdbcType=OTHER}, 
-      #{column20,jdbcType=OTHER}, #{column21,jdbcType=OTHER}, #{column22,jdbcType=OTHER},
-      #{column23,jdbcType=OTHER}, #{column24,jdbcType=OTHER}, #{column25,jdbcType=OTHER})
+      #{column20,jdbcType=OTHER})
   </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.point.entity.Drawingtable"
             useGeneratedKeys="true">
@@ -315,21 +277,6 @@
             <if test="column20 != null">
                 column_20,
             </if>
-            <if test="column21 != null">
-                column_21,
-            </if>
-            <if test="column22 != null">
-                column_22,
-            </if>
-            <if test="column23 != null">
-                column_23,
-            </if>
-            <if test="column24 != null">
-                column_24,
-            </if>
-            <if test="column25 != null">
-                column_25,
-            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="drawingtype != null">
@@ -397,21 +344,6 @@
             </if>
             <if test="column20 != null">
                 #{column20,jdbcType=OTHER},
-            </if>
-            <if test="column21 != null">
-                #{column21,jdbcType=OTHER},
-            </if>
-            <if test="column22 != null">
-                #{column22,jdbcType=OTHER},
-            </if>
-            <if test="column23 != null">
-                #{column23,jdbcType=OTHER},
-            </if>
-            <if test="column24 != null">
-                #{column24,jdbcType=OTHER},
-            </if>
-            <if test="column25 != null">
-                #{column25,jdbcType=OTHER},
             </if>
         </trim>
     </insert>
@@ -484,21 +416,6 @@
             <if test="column20 != null">
                 column_20 = #{column20,jdbcType=OTHER},
             </if>
-            <if test="column21 != null">
-                column_21 = #{column21,jdbcType=OTHER},
-            </if>
-            <if test="column22 != null">
-                column_22 = #{column22,jdbcType=OTHER},
-            </if>
-            <if test="column23 != null">
-                column_23 = #{column23,jdbcType=OTHER},
-            </if>
-            <if test="column24 != null">
-                column_24 = #{column24,jdbcType=OTHER},
-            </if>
-            <if test="column25 != null">
-                column_25 = #{column25,jdbcType=OTHER},
-            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
@@ -526,11 +443,6 @@
       column_18 = #{column18,jdbcType=OTHER},
       column_19 = #{column19,jdbcType=OTHER},
       column_20 = #{column20,jdbcType=OTHER}
-      column_21 = #{column21,jdbcType=OTHER}
-      column_22 = #{column22,jdbcType=OTHER}
-      column_23 = #{column23,jdbcType=OTHER}
-      column_24 = #{column24,jdbcType=OTHER}
-      column_25 = #{column25,jdbcType=OTHER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 
