@@ -55,5 +55,15 @@ public class Drawingtable implements Serializable {
 
     private Object column20;
 
+    private Object column21;
+
+    private Object column22;
+
+    private Object column23;
+
+    private Object column24;
+
+    private Object column25;
+
     private static final long serialVersionUID = 1L;
 }

@@ -237,7 +237,10 @@
                                 <table>
                                     <tr>
                                         <td style="background-color: #aaa;height: auto">
-                                            <img style="width:600px" src="\tudbdb2.png"/>
+                                            <!--<img style="width:600px" src="\tudbdb2.png"/>-->
+                                            <div style="width:600px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img id="tudbdb2" width="600px"  name="tudbdb2">
+                                            </div>
                                         </td>
                                     </tr>
                                 </table>
@@ -262,6 +265,9 @@
                                         <td style="text-align: left"><b>吊臂前端头部至回转中心长度</b></td>
                                         <td><input type="text" name="ldbdb2"/></td>
                                         <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"><input style="color: white;" type='text' name="dbdb2tstx"/></td>
                                     </tr>
                                     <tr>
                                         <td style="font-size: 25px">③</td>
@@ -320,7 +326,10 @@
                                 <table>
                                     <tr>
                                         <td style="background-color: #aaa;height: auto">
-                                            <img style="width:600px" src="\tudbdb3.png"/>
+                                            <!--<img style="width:600px" src="\tudbdb3.png"/>-->
+                                            <div style="width:600px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img id="tudbdb3" width="600px"  name="tudbdb3">
+                                            </div>
                                         </td>
                                     </tr>
                                 </table>
@@ -329,11 +338,15 @@
                                 <table>
                                     <tr>
                                         <td style="background-color: #aaa;height: auto">
-                                            <img style="width:600px" src="\tudbdb4.png"/>
+                                            <!--<img style="width:600px" src="\tudbdb4.png"/>-->
+                                            <div style="width:600px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img id="tudbdb4" width="600px"  name="tudbdb4">
+                                            </div>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
+
 
                             <div class="subtable">
                                 <table class="tb">
@@ -435,7 +448,10 @@
                                 <table>
                                     <tr>
                                         <td style="background-color: #aaa;height: auto">
-                                            <img style="width:600px" src="\tudbdb5.png"/>
+                                            <!--<img style="width:600px" src="\tudbdb5.png"/>-->
+                                            <div style="width:600px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img id="tudbdb5" width="600px"  name="tudbdb5">
+                                            </div>
                                         </td>
                                     </tr>
                                 </table>
@@ -517,6 +533,7 @@
                                 <input type="text" name="dbdbgm4" />
                                 <input type="text" name="dbdbgl1" />
                                 <input type="text" name="dbdbgl2" />
+                                <input type="text" name="dbdbhlzjqb" />
 
                                 <input type="text" name="mdbdb2" />
                                 <input type="text" name="mdbdb3" />
@@ -535,6 +552,7 @@
                                 <input type="text" name="mdbdbzxg1" />
                                 <input type="text" name="mdbdbzxg2" />
 
+                                <input type="text" name="dbdb2tcck" />
                                 <input type="text" name="dbdbjqbtcck" />
 
                             </div>
@@ -638,8 +656,64 @@
         e.val(l);
     }
     var calculateFunction={
+
+        dbdblsxndjModel:function(){
+            if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                $('[name=dbdblsxndjModel]').prop('disabled', true)
+                data.datalist['dbdblsxndjModel'].color = 'rgb(200, 200, 200)';
+                return null;
+            } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                $('[name=dbdblsxndjModel]').prop('disabled', false)
+                data.datalist['dbdblsxndjModel'].color = 'white';
+                return dbdblsxndjModel;
+            }
+        },
+
+        dbdb2tstx:function(){
+            if ( dbdbtzModel == "DB(200×300)(7)" ) {
+                $('[name=dbdb2tstx]').prop('disabled', true)
+                data.datalist['dbdb2tstx'].color = 'white';
+                return '吊臂前端至回转中心长度不大于5685mm';
+            } else if ( dbdbtzModel == "DB(250×400)(10)" ) {
+                $('[name=dbdb2tstx]').prop('disabled', true)
+                data.datalist['dbdb2tstx'].color = 'white';
+                return '吊臂前端至回转中心长度范围为5695-8685mm';
+            } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
+                $('[name=dbdb2tstx]').prop('disabled', true)
+                data.datalist['dbdb2tstx'].color = 'white';
+                return '吊臂前端至回转中心长度范围为8695-13685mm';
+            } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                $('[name=dbdb2tstx]').prop('disabled', true)
+                data.datalist['dbdb2tstx'].color = 'white';
+                return '吊臂前端至回转中心长度范围为13695-18685mm';
+            }
+        },
+        dbdb2tcck:function(){
+            if ( dbdbtzModel == "DB(200×300)(7)" && ( ldbdb2 > 5685 || ldbdb2 <= 0 ) ) {
+                alert('吊臂前端至回转中心长度填写有误');
+            } else if ( dbdbtzModel == "DB(250×400)(10)" && ( ldbdb2 > 8685 || ldbdb2 < 5685 ) ) {
+                alert('吊臂前端至回转中心长度填写有误');
+            } else if ( dbdbtzModel == "DB(300×500)(15)" && ( ldbdb2 > 13685 || ldbdb2 < 8685 ) ) {
+                alert('吊臂前端至回转中心长度填写有误');
+            } else if ( dbdbtzModel == "DB(400×600)(20)" && ( ldbdb2 > 18685 || ldbdb2 < 13685 ) ) {
+                alert('吊臂前端至回转中心长度填写有误');
+            } else {
+                return null;
+            }
+        },
+
         ldbdb3:function(){
             return ldbdb1 - ldbdb2 ;
+        },
+
+        ldbdbzxg1:function(){
+            if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                return ldbdb2 - 250 - 200 - dbdbhlzjqb / 2 - dbdbgl1 - dbdbgl2 ;
+            } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
+                return ldbdb7 - ldbdb3 - 500 - 200 - dbdbhlzjqb / 2 -dbdbgl2 ;
+            } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                return ldbdb7 - ldbdb3 - 510 - 200 - dbdbhlzjqb / 2 -dbdbgl2 ;
+            }
         },
         ldbdbzxg2:function(){
                 if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" || dbdbtzModel == "DB(300×500)(15)" ) {
@@ -649,14 +723,31 @@
                 } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
                     $('[name=ldbdbzxg2]').prop('disabled', false)
                     data.datalist['ldbdbzxg2'].color = 'white';
-                    return ' ';
+                    return ldbdb10 - 1100 - 510 ;
                 }
             },
+
         lsxndj1:function(){
-            return dbdblsxndjModelList[ dbdblsxndjModel ]['lsxndj1'];
+            if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                $('[name=lsxndj1]').prop('disabled', true)
+                data.datalist['lsxndj1'].color = 'rgb(200, 200, 200)';
+                return null;
+            } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                $('[name=lsxndj1]').prop('disabled', false)
+                data.datalist['lsxndj1'].color = 'white';
+                return dbdblsxndjModelList[ dbdblsxndjModel ]['lsxndj1'];
+            }
         },
         lsxndj2:function(){
-            return dbdblsxndjModelList[ dbdblsxndjModel ]['lsxndj2'];
+            if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
+                $('[name=lsxndj2]').prop('disabled', true)
+                data.datalist['lsxndj2'].color = 'rgb(200, 200, 200)';
+                return null;
+            } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
+                $('[name=lsxndj2]').prop('disabled', false)
+                data.datalist['lsxndj2'].color = 'white';
+                return dbdblsxndjModelList[ dbdblsxndjModel ]['lsxndj2'];
+            }
         },
 
             ldbdb6:function(){
@@ -679,6 +770,42 @@
                     return ' ';
                 }
             },
+
+        ldbdb8:function(){
+            if ( dbdbtzModel == "DB(200×300)(7)") {
+                if ( ldbdb2 > 0 && ldbdb2 <= 2685 ){
+                    return 1000 ;
+                } else if ( ldbdb2 > 2685 && ldbdb2 <= 4685 ) {
+                    return 1500 ;
+                } else if ( ldbdb2 > 4685 && ldbdb2 <= 5685 ) {
+                    return 2000 ;
+                }
+            } else if ( dbdbtzModel == "DB(250×400)(10)" ) {
+                if ( ldbdb2 > 5685 && ldbdb2 <= 6685 ){
+                    return 1100 ;
+                } else if ( ldbdb2 > 6685 && ldbdb2 <= 7685 ) {
+                    return 1600 ;
+                } else if ( ldbdb2 > 7685 && ldbdb2 <= 8685 ) {
+                    return 2100 ;
+                }
+            } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
+                if ( ldbdb2 > 8685 && ldbdb2 <= 10685 ){
+                    return 2500 ;
+                } else if ( ldbdb2 > 10685 && ldbdb2 <= 12685 ) {
+                    return 3000 ;
+                } else if ( ldbdb2 > 12685 && ldbdb2 <= 13685 ) {
+                    return 3500 ;
+                }
+            } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
+                if ( ldbdb2 > 13685 && ldbdb2 <= 15685 ){
+                    return 2500 ;
+                } else if ( ldbdb2 > 15685 && ldbdb2 <= 17685 ) {
+                    return 3000 ;
+                } else if ( ldbdb2 > 17685 && ldbdb2 <= 18685 ) {
+                    return 3500 ;
+                }
+            }
+        },
             dbdbjqbtstx:function(){
                 if ( dbdbtzModel == "DB(200×300)(7)" ) {
                     $('[name=dbdbjqbtstx]').prop('disabled', true)
@@ -981,17 +1108,118 @@
     $("[name]").change(showImage);
     $("[name=getData]").click(showImage)
 
+    // $("[name=dbdbtzModel]").change(function () {
+    //     var data = new FormData();
+    //     var els = $("input[type=text],select");
+    //     for (var index = 0; index < els.length; index++) {
+    //         var e = els[index];
+    //         data.append(e.name, e.value);
+    //     }
+    //     axios.post("/DbdbDrawing/showDrawing", data).then(function (e) {
+    //         $("img[id=tudbdb1]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=dbdb&tempid=' + Math.random();
+    //     })
+    // })
+</script>
+<script>
     $("[name=dbdbtzModel]").change(function () {
-        var data = new FormData();
-        var els = $("input[type=text],select");
-        for (var index = 0; index < els.length; index++) {
-            var e = els[index];
-            data.append(e.name, e.value);
+        var dbdbtzModel=$("[name=dbdbtzModel]")[0].value;
+        var filename="";
+        if( dbdbtzModel=="DB(200×300)(7)" ){
+            filename="DB(200×300)(7).png";
+        }else if ( dbdbtzModel=="DB(250×400)(10)" ){
+            filename="DB(250×400)(10).png";
+        }else if ( dbdbtzModel=="DB(300×500)(15)" ){
+            filename="DB(300×500)(15).png";
+        }else if ( dbdbtzModel=="DB(400×600)(20)" ){
+            filename="DB(400×600)(20).png";
         }
-        axios.post("/DbdbDrawing/showDrawing", data).then(function (e) {
-            $("img[id=tudbdb1]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=dbdb&tempid=' + Math.random();
-        })
+        if ($('input[name=tu_tudbdb1]').length == 0) {
+            $('form').append('<input name="tu_tudbdb1" type="hidden"/>');
+        }
+        $("[name=tu_tudbdb1]")[0].value=filename;
+        $("[name=tudbdb1]")[0].src= '/drawing/getImg?filename='+ filename+ '&drawingname=dbdb&tempid=' + Math.random();
     })
 </script>
+<script>
+    $("[name=dbdbtzModel]").change(function () {
+        var dbdbtzModel=$("[name=dbdbtzModel]")[0].value;
+        var filename="";
+        if( dbdbtzModel=="DB(200×300)(7)" ){
+            filename="DB(200×300)(7-1).png";
+        }else if ( dbdbtzModel=="DB(250×400)(10)" ){
+            filename="DB(250×400)(10-1).png";
+        }else if ( dbdbtzModel=="DB(300×500)(15)" ){
+            filename="DB(300×500)(15-1).png";
+        }else if ( dbdbtzModel=="DB(400×600)(20)" ){
+            filename="DB(400×600)(20-1).png";
+        }
+        if ($('input[name=tu_tudbdb2]').length == 0) {
+            $('form').append('<input name="tu_tudbdb2" type="hidden"/>');
+        }
+        $("[name=tu_tudbdb2]")[0].value=filename;
+        $("[name=tudbdb2]")[0].src= '/drawing/getImg?filename='+ filename+ '&drawingname=dbdb&tempid=' + Math.random();
+    })
+</script>
+<script>
+    $("[name=dbdbtzModel]").change(function () {
+        var dbdbtzModel=$("[name=dbdbtzModel]")[0].value;
+        var filename="";
+        if( dbdbtzModel=="DB(200×300)(7)" ){
+            filename="DB(200×300)(7-2).png";
+        }else if ( dbdbtzModel=="DB(250×400)(10)" ){
+            filename="DB(250×400)(10-2).png";
+        }else if ( dbdbtzModel=="DB(300×500)(15)" ){
+            filename="DB(300×500)(15-2).png";
+        }else if ( dbdbtzModel=="DB(400×600)(20)" ){
+            filename="DB(400×600)(20-2).png";
+        }
+        if ($('input[name=tu_tudbdb3]').length == 0) {
+            $('form').append('<input name="tu_tudbdb3" type="hidden"/>');
+        }
+        $("[name=tu_tudbdb3]")[0].value=filename;
+        $("[name=tudbdb3]")[0].src= '/drawing/getImg?filename='+ filename+ '&drawingname=dbdb&tempid=' + Math.random();
+    })
+</script>
+<script>
+    $("[name=dbdbtzModel]").change(function () {
+        var dbdbtzModel=$("[name=dbdbtzModel]")[0].value;
+        var filename="";
+        if( dbdbtzModel=="DB(200×300)(7)" ){
+            filename="DB(200×300)(7-3).png";
+        }else if ( dbdbtzModel=="DB(250×400)(10)" ){
+            filename="DB(250×400)(10-3).png";
+        }else if ( dbdbtzModel=="DB(300×500)(15)" ){
+            filename="DB(300×500)(15-3).png";
+        }else if ( dbdbtzModel=="DB(400×600)(20)" ){
+            filename="DB(400×600)(20-3).png";
+        }
+        if ($('input[name=tu_tudbdb4]').length == 0) {
+            $('form').append('<input name="tu_tudbdb4" type="hidden"/>');
+        }
+        $("[name=tu_tudbdb4]")[0].value=filename;
+        $("[name=tudbdb4]")[0].src= '/drawing/getImg?filename='+ filename+ '&drawingname=dbdb&tempid=' + Math.random();
+    })
+</script>
+<script>
+    $("[name=dbdbtzModel]").change(function () {
+        var dbdbtzModel=$("[name=dbdbtzModel]")[0].value;
+        var filename="";
+        if( dbdbtzModel=="DB(200×300)(7)" ){
+            filename="无.png";
+        }else if ( dbdbtzModel=="DB(250×400)(10)" ){
+            filename="无.png";
+        }else if ( dbdbtzModel=="DB(300×500)(15)" ){
+            filename="无.png";
+        }else if ( dbdbtzModel=="DB(400×600)(20)" ){
+            filename="DB(400×600)(20-4).png";
+        }
+        if ($('input[name=tu_tudbdb5]').length == 0) {
+            $('form').append('<input name="tu_tudbdb5" type="hidden"/>');
+        }
+        $("[name=tu_tudbdb5]")[0].value=filename;
+        $("[name=tudbdb5]")[0].src= '/drawing/getImg?filename='+ filename+ '&drawingname=dbdb&tempid=' + Math.random();
+    })
+</script>
+
 </body>
 </html>

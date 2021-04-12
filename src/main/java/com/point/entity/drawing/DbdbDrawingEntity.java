@@ -34,6 +34,7 @@ public class DbdbDrawingEntity {
     private Double dbdbgm4;
     private Double dbdbgl1;
     private Double dbdbgl2;
+    private Double dbdbhlzjqb;
 
     //    总图参数
     private String dbdbhlzxh;
@@ -46,6 +47,9 @@ public class DbdbDrawingEntity {
     private Double ldbdbzxg2;
     private String lsxndj1;
     private String lsxndj2;
+    //提示提醒
+    private String dbdb2tstx;
+    private String dbdb2tcck;
 
 //    基臂后段组焊件参数
     private Double ldbdb6;
@@ -118,6 +122,7 @@ public class DbdbDrawingEntity {
         map.put("dbdbgm4", CommonFunc.convertDoubleToString(dbdbgm4));
         map.put("dbdbgl1", CommonFunc.convertDoubleToString(dbdbgl1));
         map.put("dbdbgl2", CommonFunc.convertDoubleToString(dbdbgl2));
+        map.put("dbdbhlzjqb", CommonFunc.convertDoubleToString(dbdbhlzjqb));
 
         map.put("dbdbhlzxh", CommonFunc.convertDoubleToString(dbdbhlzxh));
         map.put("ldbdb1", CommonFunc.convertDoubleToString(ldbdb1));
@@ -129,6 +134,9 @@ public class DbdbDrawingEntity {
         map.put("ldbdbzxg2", CommonFunc.convertDoubleToString(ldbdbzxg2));
         map.put("lsxndj1", CommonFunc.convertDoubleToString(lsxndj1));
         map.put("lsxndj2", CommonFunc.convertDoubleToString(lsxndj2));
+
+        map.put("dbdb2tstx", CommonFunc.convertDoubleToString(dbdb2tstx));
+        map.put("dbdb2tcck", CommonFunc.convertDoubleToString(dbdb2tcck));
 
         map.put("ldbdb6", CommonFunc.convertDoubleToString(ldbdb6));
         map.put("ldbdb7", CommonFunc.convertDoubleToString(ldbdb7));
