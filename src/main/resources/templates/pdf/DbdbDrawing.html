@@ -288,6 +288,9 @@
                                         <td>mm</td>
                                     </tr>
                                     <tr>
+                                        <td colspan="4" style="color: white">吊臂型号选择为“DB(400×600)(20)”时，先填写编号⑥参数，走线管长度会自动计算</td>
+                                    </tr>
+                                    <tr>
                                         <td></td>
                                         <td style="text-align: left"><b>吊臂基臂后段走线管长度</b></td>
                                         <td><input type="text" name="ldbdbzxg1"/></td>
@@ -428,7 +431,7 @@
                                         <td>mm</td>
                                     </tr>
                                     <tr>
-                                        <td style="font-size: 28px">⑪</td>
+                                        <td style="font-size: 25px">⑪</td>
                                         <td style="text-align: left"><b>吊臂基臂后段上面板开孔至配重臂端尾部长度</b></td>
                                         <td><input type="text" name="ldbdb9"/></td>
                                         <td>mm</td>
@@ -466,13 +469,13 @@
                                         <td style="width:10%;">单位</td>
                                     </tr>
                                     <tr>
-                                        <td style="font-size: 28px">⑫</td>
+                                        <td style="font-size: 25px">⑫</td>
                                         <td style="text-align: left"><b>吊臂基臂前段总长</b></td>
                                         <td><input type="text" name="ldbdb10"/></td>
                                         <td>mm</td>
                                     </tr>
                                     <tr>
-                                        <td style="font-size: 28px" th:rowspan="2">⑬</td>
+                                        <td style="font-size: 25px" th:rowspan="2">⑬</td>
                                         <td style="text-align: left"><b>吊臂基臂前段U型筋板1500mm的间距数量</b></td>
                                         <td><input type="text" name="ndbdbj3"/></td>
                                         <td>个</td>
@@ -533,7 +536,7 @@
                                 <input type="text" name="dbdbgm4" />
                                 <input type="text" name="dbdbgl1" />
                                 <input type="text" name="dbdbgl2" />
-                                <input type="text" name="dbdbhlzjqb" />
+                                <!--<input type="text" name="dbdbhlzjqb" />-->
 
                                 <input type="text" name="mdbdb2" />
                                 <input type="text" name="mdbdb3" />
@@ -665,7 +668,7 @@
             } else if ( dbdbtzModel == "DB(300×500)(15)" || dbdbtzModel == "DB(400×600)(20)" ) {
                 $('[name=dbdblsxndjModel]').prop('disabled', false)
                 data.datalist['dbdblsxndjModel'].color = 'white';
-                return dbdblsxndjModel;
+                return ' ';
             }
         },
 
@@ -708,11 +711,11 @@
 
         ldbdbzxg1:function(){
             if ( dbdbtzModel == "DB(200×300)(7)" || dbdbtzModel == "DB(250×400)(10)" ) {
-                return ldbdb2 - 250 - 200 - dbdbhlzjqb / 2 - dbdbgl1 - dbdbgl2 ;
+                return ldbdb2 - 250 - 200 - 500 / 2 - dbdbgl1 - dbdbgl2 ;
             } else if ( dbdbtzModel == "DB(300×500)(15)" ) {
-                return ldbdb7 - ldbdb3 - 500 - 200 - dbdbhlzjqb / 2 -dbdbgl2 ;
+                return ldbdb7 - ldbdb3 - 500 - 200 - 500 / 2 -dbdbgl2 ;
             } else if ( dbdbtzModel == "DB(400×600)(20)" ) {
-                return ldbdb7 - ldbdb3 - 510 - 200 - dbdbhlzjqb / 2 -dbdbgl2 ;
+                return ldbdb7 - ldbdb3 - 510 - 200 - 500 / 2 -dbdbgl2 ;
             }
         },
         ldbdbzxg2:function(){

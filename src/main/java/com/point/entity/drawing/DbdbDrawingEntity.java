@@ -34,7 +34,7 @@ public class DbdbDrawingEntity {
     private Double dbdbgm4;
     private Double dbdbgl1;
     private Double dbdbgl2;
-    private Double dbdbhlzjqb;
+//    private Double dbdbhlzjqb;
 
     //    总图参数
     private String dbdbhlzxh;
@@ -122,7 +122,7 @@ public class DbdbDrawingEntity {
         map.put("dbdbgm4", CommonFunc.convertDoubleToString(dbdbgm4));
         map.put("dbdbgl1", CommonFunc.convertDoubleToString(dbdbgl1));
         map.put("dbdbgl2", CommonFunc.convertDoubleToString(dbdbgl2));
-        map.put("dbdbhlzjqb", CommonFunc.convertDoubleToString(dbdbhlzjqb));
+//        map.put("dbdbhlzjqb", CommonFunc.convertDoubleToString(dbdbhlzjqb));
 
         map.put("dbdbhlzxh", CommonFunc.convertDoubleToString(dbdbhlzxh));
         map.put("ldbdb1", CommonFunc.convertDoubleToString(ldbdb1));
