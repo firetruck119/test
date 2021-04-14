@@ -197,15 +197,15 @@ public class DbdbDrawingEntity {
     }
 
     public String _getImageName() {
-        if ( dbdbtzModel.equals("DB(200×300)(7)") ) {
-            return "DB(200×300)(7).png";
-        } else if ( dbdbtzModel.equals("DB(250×400)(10)") ) {
-            return "DB(250×400)(10).png";
-        } else if ( dbdbtzModel.equals("DB(300×500)(15)") ) {
-            return "DB(300×500)(15).png";
-        } else if ( dbdbtzModel.equals("DB(400×600)(20)") ) {
-            return "DB(400×600)(20).png";
-        }
+//        if ( dbdbtzModel.equals("DB(200×300)(7)") ) {
+//            return "DB(200×300)(7).png";
+//        } else if ( dbdbtzModel.equals("DB(250×400)(10)") ) {
+//            return "DB(250×400)(10).png";
+//        } else if ( dbdbtzModel.equals("DB(300×500)(15)") ) {
+//            return "DB(300×500)(15).png";
+//        } else if ( dbdbtzModel.equals("DB(400×600)(20)") ) {
+//            return "DB(400×600)(20).png";
+//        }
         return null;
     }
 }

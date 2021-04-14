@@ -1,0 +1,563 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                        console.log(e.data)
+                    this.username=e.data;
+                }
+                )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                        if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                        var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                        if(e.data==1) {
+                            axios.get("/getPermitsAboveSuperUser").then(
+                                e1 => {
+                                console.log(e1.data);
+                            console.log(invisibleLinks);
+                            for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        else if(e.data==2){
+                            axios.get("/getPermitsAboveAdmin").then(
+                                e1 => {
+                                for(i=0;i < invisibleLinks.length;i++){
+                                for (j = 0; j < e1.data.length; j++) {
+                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                        invisibleLinks[i].style.display = "none";
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                        }
+                        console.log(e.data);
+                        console.log("e.data");
+                        for(i=0;i<invisibleLinks.length;i++){
+                            if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                if(e.data!=3) {
+                                    invisibleLinks[i].style.display = "none";
+                                }
+                                invisibleLinks[i].target="_blank";
+                                break;
+                            }
+                        }
+                    }
+                }
+                )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <title>护栏软件图纸</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app" hidden>
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">护栏软件图纸</div>
+                            <!- 封面内容 ->
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 5px 0"><b>基本参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>名称</b></td>
+                                        <td colspan="2">数值</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2"><input type="text" name="xmmc"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目批令号</b></td>
+                                        <td colspan="2"><input type="text" name="plh"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>填写人</b></td>
+                                        <td colspan="2"><input type="text" name="jsr"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>填写日期（参考格式：2020/12/25）</b></td>
+                                        <td colspan="2"><input type="text" name="date"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>护栏总长(mm)</b></td>
+                                        <td colspan="2"><input type="text" name="lhltz1"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>护栏型号选择</b></td>
+                                        <td colspan="2">
+                                            <select name="hltzModel" style="color:black;width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div style="height:480px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img id="tuhl1" height="480px"  name="tuhl1">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.总图相关参数填写</b></td>
+                                    </tr>
+                                </table>
+                            </div >
+
+                            <div class="subtable">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;height: auto">
+                                            <!--<img style="width:600px" src="\tudbdb2.png"/>-->
+                                            <div style="width:600px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img id="tuhl2" width="600px"  name="tuhl2">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:10%;padding:10px 0;;">编号</td>
+                                        <td style="width:50%;padding:10px 0;;">名称</td>
+                                        <td style="width:30%;">数值</td>
+                                        <td style="width:10%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">①</td>
+                                        <td style="text-align: left"><b>护栏总长</b></td>
+                                        <td><input type="text" name="lhltz1"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"><b>护栏总长范围0-6000mm</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px">②</td>
+                                        <td style="text-align: left"><b>护栏最后两个立柱间隙宽度</b></td>
+                                        <td><input type="text" name="lhltz2"/></td>
+                                        <td>mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left"><b>护栏立柱根数</b></td>
+                                        <td><input type="text" name="hltzn1"/></td>
+                                        <td>根</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="width:97%;">
+                                <table>
+                                    <tr>
+                                        <td style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.质量参数</b></td>
+                                    </tr>
+                                </table>
+                            </div >
+                            <div class="subtable">
+                                <table class="tb">
+                                    <tr>
+                                        <td style="width:40%;padding:10px 0;;">名称</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:20%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>护栏总质量</b></td>
+                                        <td><input type="text" name="mhltz1"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="display: none">
+                                <input type="text" name="hltzm1" />
+                                <input type="text" name="hltzm2" />
+                                <input type="text" name="hltzm3" />
+                                <input type="text" name="hltzgm1" />
+
+                                <input type="text" name="lhltz1tcck" />
+
+                                <input type="text" name="mhltz2" />
+                                <input type="text" name="mhltz3" />
+                                <input type="text" name="mhltz4" />
+
+                            </div>
+                            <input type="hidden" name="pdfType"/>
+                        </form>
+                        </div>
+
+                        <div class="buttonbox">
+                            <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                                   onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
+                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="获取图纸pdf" onclick="$('form').attr('action','/HlDrawing/getPDF');
+                                                                                                                isCheck(false);changeType('Calculation')"/>
+                            <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','transparent')"/>
+                        </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+
+<!--<script>-->
+    <!--dbdblsxndjModelList= {-->
+        <!--"8.8级":{-->
+            <!--lsxndj1:"8.8级",-->
+            <!--lsxndj2:"8级",-->
+        <!--},-->
+        <!--"10.9级":{-->
+            <!--lsxndj1:"10.9级",-->
+            <!--lsxndj2:"10级",-->
+        <!--},-->
+    <!--};-->
+<!--</script>-->
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+    $(document).ready(function () {
+        // InitNav(10)
+        $('#HlDrawing').addClass('o-sub-cur');
+    })
+
+    function janyan() {
+        $.ajax({
+            url: "/HlDrawing/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                    // if(data[id]=="不满足") $("#" + id).css("background-color","red");
+                    // if(data[id]=="满足") $("#" + id).css("background-color","#aaa");
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+
+        hltzModel:function(){
+            if ( lhltz1 > 0 && lhltz1 <= 1050 ) {
+                $('[name=hltzModel]').prop('disabled', true)
+                data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
+                return "HL(1000)";
+            } else if ( lhltz1 > 1050 && lhltz1 <= 2050 ) {
+                $('[name=hltzModel]').prop('disabled', true)
+                data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
+                return "HL(2000)";
+            } else if ( lhltz1 > 2050 && lhltz1 <= 3050 ) {
+                $('[name=hltzModel]').prop('disabled', true)
+                data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
+                return "HL(3000)";
+            } else if ( lhltz1 > 3050 && lhltz1 <= 4050 ) {
+                $('[name=hltzModel]').prop('disabled', true)
+                data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
+                return "HL(4000)";
+            } else if ( lhltz1 > 4050 && lhltz1 <= 5050 ) {
+                $('[name=hltzModel]').prop('disabled', true)
+                data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
+                return "HL(5000)";
+            } else if ( lhltz1 > 5050 && lhltz1 <= 6000 ) {
+                $('[name=hltzModel]').prop('disabled', true)
+                data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
+                return "HL(6000)";
+            }
+        },
+        lhltz1tcck:function(){
+            if ( lhltz1 > 6000 || lhltz1 <= 0 ) {
+                alert('护栏总长填写有误');
+            } else {
+                return null;
+            }
+        },
+
+        lhltz2:function(){
+            if ( hltzModel == "HL(1000)" ) {
+                return lhltz1 - 50 * hltzn1 ;
+            } else if ( hltzModel == "HL(2000)" ) {
+                return ( lhltz1 - 50 * hltzn1 ) / 2 ;
+            } else if ( hltzModel == "HL(3000)" || hltzModel == "HL(4000)" || hltzModel == "HL(5000)" || hltzModel == "HL(6000)" ) {
+                return ( lhltz1 - 50 * hltzn1 - 950 * ( hltzn1 - 3 ) ) / 2 ;
+            }
+        },
+
+        mhltz1:function(){
+            return mhltz2 + mhltz3 + mhltz4 + hltzgm1 ;
+        },
+        mhltz2:function(){
+            return lhltz1 * hltzm1 / 1000 ;
+        },
+        mhltz3:function(){
+            return lhltz1 * hltzm3 / 1000 ;
+        },
+        mhltz4:function(){
+            return lhltz1 * hltzm2 / 1000 ;
+        },
+    };
+
+    getDrawing("hltzModel","hltz");
+    data.init(calculateFunction);
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/HlDrawing/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+<script>
+    function showImage() {
+        var l=window.data.datalist;
+        if(!( l['hltzModel'].value ))
+            return ;
+        var data = new FormData();
+        var els = $("input[type=text],select");
+        for (var index = 0; index < els.length; index++) {
+            var e = els[index];
+            data.append(e.name,e.value);
+        }
+        // axios.post("/DbdbDrawing/showDrawing", data).then(function (e) {
+        //     var imageName=e.data;
+        //     if(window.data.image==null)
+        //         window.data.image={"tudbdb1":imageName}
+        //     else if(window.data.image['tudbdb1']==imageName)
+        //         return null;
+        //     else;
+        //     $("img[id=tudbdb1]")[0].src = '/drawing/getImg?filename=' + imageName + '&drawingname=dbdb&tempid=' + Math.random();
+        // })
+    }
+    $("[name]").change(showImage);
+    $("[name=getData]").click(showImage)
+
+    // $("[name=dbdbtzModel]").change(function () {
+    //     var data = new FormData();
+    //     var els = $("input[type=text],select");
+    //     for (var index = 0; index < els.length; index++) {
+    //         var e = els[index];
+    //         data.append(e.name, e.value);
+    //     }
+    //     axios.post("/DbdbDrawing/showDrawing", data).then(function (e) {
+    //         $("img[id=tudbdb1]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=dbdb&tempid=' + Math.random();
+    //     })
+    // })
+</script>
+<script>
+    $("[name=hltzModel]").change(function () {
+        var hltzModel=$("[name=hltzModel]")[0].value;
+        var filename="";
+        if( hltzModel=="HL(1000)" ){
+            filename="HL(1000).png";
+        }else if ( hltzModel=="HL(2000)" ){
+            filename="HL(2000).png";
+        }else if ( hltzModel=="HL(3000)" ){
+            filename="HL(3000).png";
+        }else if ( hltzModel=="HL(4000)" ){
+            filename="HL(4000).png";
+        }else if ( hltzModel=="HL(5000)" ){
+            filename="HL(5000).png";
+        }else if ( hltzModel=="HL(6000)" ){
+            filename="HL(6000).png";
+        }
+        if ($('input[name=tu_tuhl1]').length == 0) {
+            $('form').append('<input name="tu_tuhl1" type="hidden"/>');
+        }
+        $("[name=tu_tuhl1]")[0].value=filename;
+        $("[name=tuhl1]")[0].src= '/drawing/getImg?filename='+ filename+ '&drawingname=hltz&tempid=' + Math.random();
+    })
+</script>
+<script>
+    $("[name=hltzModel]").change(function () {
+        var hltzModel=$("[name=hltzModel]")[0].value;
+        var filename="";
+        if( hltzModel=="HL(1000)" ){
+            filename="HL(1000)-1.png";
+        }else if ( hltzModel=="HL(2000)" ){
+            filename="HL(2000)-1.png";
+        }else if ( hltzModel=="HL(3000)" ){
+            filename="HL(3000)-1.png";
+        }else if ( hltzModel=="HL(4000)" ){
+            filename="HL(4000)-1.png";
+        }else if ( hltzModel=="HL(5000)" ){
+            filename="HL(5000)-1.png";
+        }else if ( hltzModel=="HL(6000)" ){
+            filename="HL(6000)-1.png";
+        }
+        if ($('input[name=tu_tuhl2]').length == 0) {
+            $('form').append('<input name="tu_tuhl2" type="hidden"/>');
+        }
+        $("[name=tu_tuhl2]")[0].value=filename;
+        $("[name=tuhl2]")[0].src= '/drawing/getImg?filename='+ filename+ '&drawingname=hltz&tempid=' + Math.random();
+    })
+</script>
+
+</body>
+</html>

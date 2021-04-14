@@ -331,7 +331,10 @@ asideDatas = {
                     title: '底架',
                     url: "DijiaDrawing",
                 },
-
+                {
+                    title: '护栏',
+                    url: "HlDrawing",
+                },
 
                 {
                     title: '配重',
