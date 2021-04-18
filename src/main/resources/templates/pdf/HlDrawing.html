@@ -412,32 +412,29 @@
 
         hltzModel:function(){
             if ( lhltz1 > 0 && lhltz1 <= 1050 ) {
-                $('[name=hltzModel]').prop('disabled', true)
                 data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
                 return 'HL(1000)';
             } else if ( lhltz1 > 1050 && lhltz1 <= 2050 ) {
-                $('[name=hltzModel]').prop('disabled', true)
                 data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
                 return 'HL(2000)';
             } else if ( lhltz1 > 2050 && lhltz1 <= 3050 ) {
-                $('[name=hltzModel]').prop('disabled', true)
                 data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
                 return 'HL(3000)';
             } else if ( lhltz1 > 3050 && lhltz1 <= 4050 ) {
-                $('[name=hltzModel]').prop('disabled', true)
                 data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
                 return 'HL(4000)';
             } else if ( lhltz1 > 4050 && lhltz1 <= 5050 ) {
-                $('[name=hltzModel]').prop('disabled', true)
                 data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
                 return 'HL(5000)';
             } else if ( lhltz1 > 5050 && lhltz1 <= 6000 ) {
-                $('[name=hltzModel]').prop('disabled', true)
                 data.datalist['hltzModel'].color = 'rgb(200, 200, 200)';
                 return 'HL(6000)';
             }
         },
         lhltz1tcck:function(){
+
+            $('[name=hltzModel]').val(hltzModel).trigger('change');
+            $('[name=hltzModel]').prop('disabled', true);
             if ( lhltz1 > 6000 || lhltz1 <= 0 ) {
                 alert('护栏总长填写有误');
             } else {
