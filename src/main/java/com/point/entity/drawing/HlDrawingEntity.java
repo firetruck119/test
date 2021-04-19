@@ -25,7 +25,6 @@ public class HlDrawingEntity {
     private Double lhltz2;
     private Double hltzn1;
     //提示提醒
-//    private String lhltz1tstx;
     private String lhltz1tcck;
 
 //    质量参数
@@ -53,7 +52,6 @@ public class HlDrawingEntity {
         map.put("lhltz2", CommonFunc.convertDoubleToString(lhltz2));
         map.put("hltzn1", CommonFunc.convertDoubleToString(hltzn1));
 
-//        map.put("lhltz1tstx", CommonFunc.convertDoubleToString(lhltz1tstx));
         map.put("lhltz1tcck", CommonFunc.convertDoubleToString(lhltz1tcck));
 
         map.put("mhltz1", CommonFunc.convertDoubleToString(mhltz1));

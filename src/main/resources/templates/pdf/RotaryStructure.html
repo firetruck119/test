@@ -2798,6 +2798,8 @@
             var url = '/RotaryStructure/getData';
             var id = $('input[name="sjht"]').val();
             getData.geteDataFromDB(url, id)
+        //下拉框数据联动问题
+        $('[name=dhzjgModel]').val(dhzjgModel).trigger('change');
         }
     )
 </script>
