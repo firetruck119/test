@@ -19,6 +19,7 @@ public class HlDrawingEntity {
     private Double hltzm2;
     private Double hltzm3;
     private Double hltzgm1;
+    private String hltzlzbz;
 
     //    总图参数
     private Double lhltz1;
@@ -32,6 +33,10 @@ public class HlDrawingEntity {
     private Double mhltz2;
     private Double mhltz3;
     private Double mhltz4;
+
+//    锁死（禁用）替代品
+    private Double lhltz2ss;
+    private Double mhltz1ss;
 
 //    下拉
     private String hltzModel;
@@ -47,6 +52,7 @@ public class HlDrawingEntity {
         map.put("hltzm2", CommonFunc.convertDoubleToString(hltzm2));
         map.put("hltzm3", CommonFunc.convertDoubleToString(hltzm3));
         map.put("hltzgm1", CommonFunc.convertDoubleToString(hltzgm1));
+        map.put("hltzlzbz", CommonFunc.convertDoubleToString(hltzlzbz));
 
         map.put("lhltz1", CommonFunc.convertDoubleToString(lhltz1));
         map.put("lhltz2", CommonFunc.convertDoubleToString(lhltz2));
@@ -59,21 +65,37 @@ public class HlDrawingEntity {
         map.put("mhltz3", CommonFunc.convertDoubleToString(mhltz3));
         map.put("mhltz4", CommonFunc.convertDoubleToString(mhltz4));
 
+        map.put("lhltz2ss", CommonFunc.convertDoubleToString(lhltz2ss));
+        map.put("mhltz1ss", CommonFunc.convertDoubleToString(mhltz1ss));
         return map;
     }
 
     public String _getPDFName() {
-        if ( hltzModel.equals("HL(1000)") ) {
+//        if ( hltzModel.equals("HL(1000)") ) {
+//            return "HL(1000)";
+//        } else if ( hltzModel.equals("HL(2000)") ) {
+//            return "HL(2000)";
+//        } else if ( hltzModel.equals("HL(3000)") ) {
+//            return "HL(3000)";
+//        } else if ( hltzModel.equals("HL(4000)") ) {
+//            return "HL(4000)";
+//        } else if ( hltzModel.equals("HL(5000)") ) {
+//            return "HL(5000)";
+//        } else if ( hltzModel.equals("HL(6000)") ) {
+//            return "HL(6000)";
+//        }
+//        return null;
+        if ( lhltz1 > 0 && lhltz1 <= 1050 ) {
             return "HL(1000)";
-        } else if ( hltzModel.equals("HL(2000)") ) {
+        } else if ( lhltz1 > 1050 && lhltz1 <= 2050 ) {
             return "HL(2000)";
-        } else if ( hltzModel.equals("HL(3000)") ) {
+        } else if ( lhltz1 > 2050 && lhltz1 <= 3050 ) {
             return "HL(3000)";
-        } else if ( hltzModel.equals("HL(4000)") ) {
+        } else if ( lhltz1 > 3050 && lhltz1 <= 4050 ) {
             return "HL(4000)";
-        } else if ( hltzModel.equals("HL(5000)") ) {
+        } else if ( lhltz1 > 4050 && lhltz1 <= 5050 ) {
             return "HL(5000)";
-        } else if ( hltzModel.equals("HL(6000)") ) {
+        } else if ( lhltz1 > 5050 && lhltz1 <= 6000 ) {
             return "HL(6000)";
         }
         return null;

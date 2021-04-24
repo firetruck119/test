@@ -193,16 +193,13 @@
                                         <td colspan="2"><input type="text" name="lhltz1"/></td>
                                     </tr>
                                     <tr>
+                                        <td colspan="3"><b>护栏总长范围0-6000mm</b></td>
+                                    </tr>
+                                    <tr>
                                         <td><b>护栏型号选择</b></td>
                                         <td colspan="2">
                                             <select name="hltzModel" style="color:black;width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <!--<option value="HL(1000)" >HL(1000)</option>-->
-                                                <!--<option value="HL(2000)" style="display: none">HL(2000)</option>-->
-                                                <!--<option value="HL(3000)" style="display: none">HL(3000)</option>-->
-                                                <!--<option value="HL(4000)" style="display: none">HL(4000)</option>-->
-                                                <!--<option value="HL(5000)" style="display: none">HL(5000)</option>-->
-                                                <!--<option value="HL(6000)" style="display: none">HL(6000)</option>-->
                                             </select>
                                         </td>
                                     </tr>
@@ -257,18 +254,15 @@
                                         <td>mm</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4"><b>护栏总长范围0-6000mm</b></td>
-                                    </tr>
-                                    <tr>
                                         <td style="font-size: 25px">②</td>
                                         <td style="text-align: left"><b>护栏最后两个立柱间隙宽度</b></td>
-                                        <td><input type="text" name="lhltz2"/></td>
+                                        <td><input style="color: black;" type="text" name="lhltz2ss"/></td>
                                         <td>mm</td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td style="text-align: left"><b>护栏立柱根数</b></td>
-                                        <td><input type="text" name="hltzn1"/></td>
+                                        <td><input style="color: black;" type="text" name="hltzn1"/></td>
                                         <td>根</td>
                                     </tr>
                                 </table>
@@ -290,7 +284,7 @@
                                     </tr>
                                     <tr>
                                         <td><b>护栏总质量</b></td>
-                                        <td><input type="text" name="mhltz1"/></td>
+                                        <td><input style="color: black;" type="text" name="mhltz1ss"/></td>
                                         <td>kg</td>
                                     </tr>
                                 </table>
@@ -301,12 +295,16 @@
                                 <input type="text" name="hltzm2" />
                                 <input type="text" name="hltzm3" />
                                 <input type="text" name="hltzgm1" />
+                                <input type="text" name="hltzlzbz" />
 
                                 <input type="text" name="lhltz1tcck" />
 
                                 <input type="text" name="mhltz2" />
                                 <input type="text" name="mhltz3" />
                                 <input type="text" name="mhltz4" />
+
+                                <input type="text" name="lhltz2" />
+                                <input type="text" name="mhltz1" />
 
                             </div>
                             <input type="hidden" name="pdfType"/>
@@ -432,28 +430,54 @@
             }
         },
         lhltz1tcck:function(){
-
             $('[name=hltzModel]').val(hltzModel).trigger('change');
             $('[name=hltzModel]').prop('disabled', true);
             if ( lhltz1 > 6000 || lhltz1 <= 0 ) {
-                alert('护栏总长填写有误');
+                alert('护栏总长填写有误,范围为0~6000mm');
             } else {
                 return null;
             }
         },
 
-        lhltz2:function(){
+        lhltz2ss:function(){
             if ( hltzModel == "HL(1000)" ) {
+                $('[name=lhltz2ss]').prop('disabled', true);
+                data.datalist['lhltz2ss'].color = 'rgb(200, 200, 200)';
                 return lhltz1 - 50 * hltzn1 ;
             } else if ( hltzModel == "HL(2000)" ) {
+                $('[name=lhltz2ss]').prop('disabled', true);
+                data.datalist['lhltz2ss'].color = 'rgb(200, 200, 200)';
                 return ( lhltz1 - 50 * hltzn1 ) / 2 ;
             } else if ( hltzModel == "HL(3000)" || hltzModel == "HL(4000)" || hltzModel == "HL(5000)" || hltzModel == "HL(6000)" ) {
+                $('[name=lhltz2ss]').prop('disabled', true);
+                data.datalist['lhltz2ss'].color = 'rgb(200, 200, 200)';
                 return ( lhltz1 - 50 * hltzn1 - 950 * ( hltzn1 - 3 ) ) / 2 ;
             }
         },
+        lhltz2:function(){
+            return lhltz2ss ;
 
-        mhltz1:function(){
+        },
+
+        hltzn1:function(){
+            if ( hltzModel != null ) {
+                $('[name=hltzn1]').prop('disabled', true);
+                data.datalist['hltzn1'].color = 'rgb(200, 200, 200)';
+                return hltzn1;
+            } else {
+                $('[name=hltzn1]').prop('disabled', false);
+                data.datalist['hltzn1'].color = 'white';
+                return ' ';
+            }
+        },
+
+        mhltz1ss:function(){
+            $('[name=mhltz1ss]').prop('disabled', true);
+            data.datalist['mhltz1ss'].color = 'rgb(200, 200, 200)';
             return mhltz2 + mhltz3 + mhltz4 + hltzgm1 ;
+        },
+        mhltz1:function(){
+            return mhltz1ss ;
         },
         mhltz2:function(){
             return lhltz1 * hltzm1 / 1000 ;
@@ -463,6 +487,14 @@
         },
         mhltz4:function(){
             return lhltz1 * hltzm2 / 1000 ;
+        },
+
+        hltzlzbz:function(){
+            if ( lhltz1 == 6000 ) {
+                return '无图';
+            } else {
+                return '借用';
+            }
         },
     };
 
@@ -480,7 +512,7 @@
 <script>
     function showImage() {
         var l=window.data.datalist;
-        if(!( l['hltzModel'].value ))
+        if(!( l['lhltz1'].value ))
             return ;
         var data = new FormData();
         var els = $("input[type=text],select");
@@ -500,18 +532,6 @@
     }
     $("[name]").change(showImage);
     $("[name=getData]").click(showImage)
-
-    // $("[name=dbdbtzModel]").change(function () {
-    //     var data = new FormData();
-    //     var els = $("input[type=text],select");
-    //     for (var index = 0; index < els.length; index++) {
-    //         var e = els[index];
-    //         data.append(e.name, e.value);
-    //     }
-    //     axios.post("/DbdbDrawing/showDrawing", data).then(function (e) {
-    //         $("img[id=tudbdb1]")[0].src = '/drawing/getImg?filename=' + e.data + '&drawingname=dbdb&tempid=' + Math.random();
-    //     })
-    // })
 </script>
 <script>
     $("[name=hltzModel]").change(function () {
