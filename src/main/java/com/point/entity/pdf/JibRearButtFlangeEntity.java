@@ -293,8 +293,8 @@ public class JibRearButtFlangeEntity {
         map.put("fhflw11", fhflw11);
 
         Double fhflw = fhflw5 + fhflw10 + fhflw11 ;
-        Double flsyj = Math.sqrt( 100 * mhflz * mhflz + fhflw * fhflw ) / 0.15 / dbhfllsn ;
-        Double flss = dbhflnlsyjlxs * Math.max( flsl , flsyj ) ;
+        Double flsyj = Math.sqrt( 100 * mhflz * mhflz + fhflw * fhflw ) / 0.1 / dbhfllsn ;
+        Double flss = dbhflnlsyjlxs * flsyj ;
         Double flssk = flss / 1000 ;
         map.put("fhflw", fhflw);
         map.put("flsyj", flsyj);
@@ -302,7 +302,7 @@ public class JibRearButtFlangeEntity {
         map.put("flssk", flssk);
 
         //螺栓拧紧力矩计算
-        Double tlss = 0.18 * flss * dbhfllsgcd / 1000 ;
+        Double tlss = 0.22 * flss * dbhfllsgcd / 1000 ;
         map.put("tlss", tlss);
 
         //法兰焊缝计算

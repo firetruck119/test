@@ -347,7 +347,7 @@
                                         <td >MPa</td>
                                     </tr>
                                     <tr>
-                                        <td ><b>螺栓预紧力计算书系数</b></td>
+                                        <td ><b>螺栓预紧力计算系数</b></td>
                                         <td ><p><i>n<sub>ls</sub></i></p></td>
                                         <td ><input type="text" name="dbhflnlsyjlxs"/></td>
                                         <td > </td>
@@ -989,7 +989,7 @@
         //     return dbhflflspk ;
         // },
         dbhfltls:function () {
-            return 0.18 * dbhflflsp * dbhfllsgcd / 1000 ;
+            return 0.22 * dbhflflsp * dbhfllsgcd / 1000 ;
         },
         ldbhflb:function () {
             if ( dbhflxhModel == '1+1伸缩臂（3x5）' || dbhflxhModel == '1+1伸缩臂（3x6.5）' || dbhflxhModel == '2+1伸缩臂（3x5）' || dbhflxhModel == '2+1伸缩臂（3x6.5）' ) {
