@@ -359,6 +359,24 @@ asideDatas = {
             ]
         },
         {
+            title: '采购单',
+            url: "pdf",
+            children: [
+                {
+                    title: '国内采购单',
+                    url: "PurchaseOrderGn",
+                },
+                {
+                    title: '立柱(单臂)',
+                    // url: "LowerLZDrawing",
+                },
+                {
+                    title: '底架',
+                    // url: "DijiaDrawing",
+                },
+            ]
+        },
+        {
             title:'项目查询',
             url:'projectData',
             children:[

@@ -25,6 +25,7 @@ public class HlDrawingEntity {
     private Double lhltz1;
     private Double lhltz2;
     private Double hltzn1;
+    private Double hltzhlsl;
     //提示提醒
     private String lhltz1tcck;
 
@@ -57,6 +58,7 @@ public class HlDrawingEntity {
         map.put("lhltz1", CommonFunc.convertDoubleToString(lhltz1));
         map.put("lhltz2", CommonFunc.convertDoubleToString(lhltz2));
         map.put("hltzn1", CommonFunc.convertDoubleToString(hltzn1));
+        map.put("hltzhlsl", CommonFunc.convertDoubleToString(hltzhlsl));
 
         map.put("lhltz1tcck", CommonFunc.convertDoubleToString(lhltz1tcck));
 
