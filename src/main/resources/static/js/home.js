@@ -109,24 +109,6 @@ asideDatas = {
             ]
         },
         {
-            title: '防风销座校核计算书',
-            url: "pdf",
-            children: [
-                {
-                    title: 'T型防风销座',
-                    url: "PinSeat",
-                },
-                {
-                    title: '平板型防风销座',
-
-                },
-                {
-                    title: '螺栓头型防风销座',
-
-                },
-            ]
-        },
-        {
             title: '3大件计算书',
             url: "pdf",
             children: [
@@ -229,24 +211,6 @@ asideDatas = {
             ]
         },
         {
-            title: '液压系统计算书',
-            url: "pdf",
-            children: [
-                {
-                    title: '液压系统电机功率及油箱容积',
-                    url: 'YygglYxrj'
-                },
-                {
-                    title: '仰臂液压缸',
-                    url: 'YbHydraulicCylinder'
-                },
-                {
-                    title: '顶升液压缸',
-                    url: 'DsHydraulicCylinder'
-                },
-            ]
-        },
-        {
             title: '擦窗机配套件计算书',
             url: "pdf",
             children: [
@@ -261,6 +225,42 @@ asideDatas = {
                         {
                             title: '普通吊船无约束系统',
                             url: "PtPlatformUnconstrained",
+                        },
+                    ]
+                },
+                {
+                    title: '液压系统计算书',
+                    url: "pdf",
+                    children: [
+                        {
+                            title: '液压系统电机功率及油箱容积',
+                            url: 'YygglYxrj'
+                        },
+                        {
+                            title: '仰臂液压缸',
+                            url: 'YbHydraulicCylinder'
+                        },
+                        {
+                            title: '顶升液压缸',
+                            url: 'DsHydraulicCylinder'
+                        },
+                    ]
+                },
+                {
+                    title: '防风销座校核计算书',
+                    url: "pdf",
+                    children: [
+                        {
+                            title: 'T型防风销座',
+                            url: "PinSeat",
+                        },
+                        {
+                            title: '平板型防风销座',
+
+                        },
+                        {
+                            title: '螺栓头型防风销座',
+
                         },
                     ]
                 },

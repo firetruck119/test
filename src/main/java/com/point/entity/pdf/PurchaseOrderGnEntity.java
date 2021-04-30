@@ -255,6 +255,54 @@ public class PurchaseOrderGnEntity {
     private String cgsmspp;
     private String cgsmsbz;
 
+    //    吊船液压
+    private String cgdcyymc;
+    private String cgdcyydgj;
+    private String cgdcyyzgj;
+    private String cgdcyyxgj;
+    private String cgdcyyxc;
+    private String cgdcyyazj;
+    private String cgdcyydy;
+    private String cgdcyysl;
+    private String cgdcyypp;
+    private String cgdcyybz;
+
+    //    伸缩液压
+    private String cgssyymc;
+    private String cgssyydgj;
+    private String cgssyyzgj;
+    private String cgssyyxgj;
+    private String cgssyyxc;
+    private String cgssyyazj;
+    private String cgssyydy;
+    private String cgssyysl;
+    private String cgssyypp;
+    private String cgssyybz;
+
+    //    仰臂液压
+    private String cgybyymc;
+    private String cgybyydgj;
+    private String cgybyyzgj;
+    private String cgybyyxgj;
+    private String cgybyyxc;
+    private String cgybyyazj;
+    private String cgybyydy;
+    private String cgybyysl;
+    private String cgybyypp;
+    private String cgybyybz;
+
+    //    顶升液压
+    private String cgdsyymc;
+    private String cgdsyydgj;
+    private String cgdsyyzgj;
+    private String cgdsyyxgj;
+    private String cgdsyyxc;
+    private String cgdsyyazj;
+    private String cgdsyydy;
+    private String cgdsyysl;
+    private String cgdsyypp;
+    private String cgdsyybz;
+
     //     下拉
     private String btModel;
     private String cgbtdjppModel;
@@ -295,6 +343,15 @@ public class PurchaseOrderGnEntity {
     private String cgzbhzzcppModel;
 
     private String cgsmsModel;
+
+    private String cgssyylxModel;
+    private String cgssyyxhModel;
+
+    private String cgybyylxModel;
+    private String cgybyyxhModel;
+
+    private String cgdsyylxModel;
+    private String cgdsyyxhModel;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -544,6 +601,54 @@ public class PurchaseOrderGnEntity {
         map.put("cgsmssl", CommonFunc.convertDoubleToString(cgsmssl));
         map.put("cgsmspp", CommonFunc.convertDoubleToString(cgsmspp));
         map.put("cgsmsbz", CommonFunc.convertDoubleToString(cgsmsbz));
+
+        //       吊船液压
+        map.put("cgdcyymc", CommonFunc.convertDoubleToString(cgdcyymc));
+        map.put("cgdcyydgj", CommonFunc.convertDoubleToString(cgdcyydgj));
+        map.put("cgdcyyzgj", CommonFunc.convertDoubleToString(cgdcyyzgj));
+        map.put("cgdcyyxgj", CommonFunc.convertDoubleToString(cgdcyyxgj));
+        map.put("cgdcyyxc", CommonFunc.convertDoubleToString(cgdcyyxc));
+        map.put("cgdcyyazj", CommonFunc.convertDoubleToString(cgdcyyazj));
+        map.put("cgdcyydy", CommonFunc.convertDoubleToString(cgdcyydy));
+        map.put("cgdcyysl", CommonFunc.convertDoubleToString(cgdcyysl));
+        map.put("cgdcyypp", CommonFunc.convertDoubleToString(cgdcyypp));
+        map.put("cgdcyybz", CommonFunc.convertDoubleToString(cgdcyybz));
+
+        //       伸缩液压
+        map.put("cgssyymc", CommonFunc.convertDoubleToString(cgssyymc));
+        map.put("cgssyydgj", CommonFunc.convertDoubleToString(cgssyydgj));
+        map.put("cgssyyzgj", CommonFunc.convertDoubleToString(cgssyyzgj));
+        map.put("cgssyyxgj", CommonFunc.convertDoubleToString(cgssyyxgj));
+        map.put("cgssyyxc", CommonFunc.convertDoubleToString(cgssyyxc));
+        map.put("cgssyyazj", CommonFunc.convertDoubleToString(cgssyyazj));
+        map.put("cgssyydy", CommonFunc.convertDoubleToString(cgssyydy));
+        map.put("cgssyysl", CommonFunc.convertDoubleToString(cgssyysl));
+        map.put("cgssyypp", CommonFunc.convertDoubleToString(cgssyypp));
+        map.put("cgssyybz", CommonFunc.convertDoubleToString(cgssyybz));
+
+        //       仰臂液压
+        map.put("cgybyymc", CommonFunc.convertDoubleToString(cgybyymc));
+        map.put("cgybyydgj", CommonFunc.convertDoubleToString(cgybyydgj));
+        map.put("cgybyyzgj", CommonFunc.convertDoubleToString(cgybyyzgj));
+        map.put("cgybyyxgj", CommonFunc.convertDoubleToString(cgybyyxgj));
+        map.put("cgybyyxc", CommonFunc.convertDoubleToString(cgybyyxc));
+        map.put("cgybyyazj", CommonFunc.convertDoubleToString(cgybyyazj));
+        map.put("cgybyydy", CommonFunc.convertDoubleToString(cgybyydy));
+        map.put("cgybyysl", CommonFunc.convertDoubleToString(cgybyysl));
+        map.put("cgybyypp", CommonFunc.convertDoubleToString(cgybyypp));
+        map.put("cgybyybz", CommonFunc.convertDoubleToString(cgybyybz));
+
+        //       顶升液压
+        map.put("cgdsyymc", CommonFunc.convertDoubleToString(cgdsyymc));
+        map.put("cgdsyydgj", CommonFunc.convertDoubleToString(cgdsyydgj));
+        map.put("cgdsyyzgj", CommonFunc.convertDoubleToString(cgdsyyzgj));
+        map.put("cgdsyyxgj", CommonFunc.convertDoubleToString(cgdsyyxgj));
+        map.put("cgdsyyxc", CommonFunc.convertDoubleToString(cgdsyyxc));
+        map.put("cgdsyyazj", CommonFunc.convertDoubleToString(cgdsyyazj));
+        map.put("cgdsyydy", CommonFunc.convertDoubleToString(cgdsyydy));
+        map.put("cgdsyysl", CommonFunc.convertDoubleToString(cgdsyysl));
+        map.put("cgdsyypp", CommonFunc.convertDoubleToString(cgdsyypp));
+        map.put("cgdsyybz", CommonFunc.convertDoubleToString(cgdsyybz));
 
         map.putAll(takeStringMapForPdf(type));
         return map;
