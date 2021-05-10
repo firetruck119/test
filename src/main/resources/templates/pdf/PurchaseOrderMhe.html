@@ -123,7 +123,7 @@
 
     <link rel="stylesheet" th:href="@{/css/home.css}">
 
-    <title>采购单(国内)</title>
+    <title>采购单(MHE)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
 
@@ -157,7 +157,7 @@
                     <div class="main">
                         <iframe style="display: none" name="stop" src="about:blank"></iframe>
                         <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
-                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">采购单(国内)</div>
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">采购单(MHE)</div>
                             <!- 封面内容 ->
                             <div class='subtable'>
                                 <table>
@@ -215,15 +215,46 @@
                                 </table>
                             </div>
 
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.地区电压及频率</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30%;">名称</td>
+                                        <td style="width:55%;">内容</td>
+                                        <td style="width:15%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电机/液压系统电压值</td>
+                                        <td><input type="text" name="cgdqdy"/></td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">填写格式：220/380</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电机/液压系统频率值</td>
+                                        <td><input type="text" name="cgdqpl"/></td>
+                                        <td>HZ</td>
+                                    </tr>
+                                </table>
+                            </div>
+
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.电机型号及品牌选择</b></td>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.电机型号选择</b></td>
                                     </tr>
+                                </table>
+                            </div>
+
+                            <div class='subtable'>
+                                <table>
                                     <tr>
-                                        <td style="width:4%;">1</td>
-                                        <td style="width:18%;">臂头型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">1</td>
+                                        <td style="width:34%;">臂头型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="btModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="YJBT1800G(1.8米羊角臂头-高臂头)">YJBT1800G(1.8米羊角臂头-高臂头)</option>
@@ -242,41 +273,26 @@
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;">臂头电机品牌选择</td>
-                                        <td style="width:30%;">
-                                            <select name="cgbtdjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
                                     <tr>
-                                        <td style="width:4%;">2</td>
-                                        <td style="width:18%;">起升机构型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">2</td>
+                                        <td style="width:34%;">起升机构型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="qsjgModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="105起升机构">105起升机构</option>
-                                                <option value="145起升机构">145起升机构</option>
                                                 <option value="175起升机构">175起升机构</option>
                                                 <option value="275起升机构">275起升机构</option>
                                                 <option value="185起升机构">185起升机构</option>
                                                 <option value="285起升机构">285起升机构</option>
                                                 <option value="385起升机构">385起升机构</option>
-                                                <option value="295起升机构">295起升机构</option>
-                                                <option value="495起升机构">495起升机构</option>
-                                                <option value="313起升机构">313起升机构</option>
                                                 <option value="无">无</option>
                                             </select>
-                                        </td>
-                                        <td style="width:48%;" colspan="2"></td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:4%;">3</td>
-                                        <td style="width:18%;">运行机构型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">3</td>
+                                        <td style="width:34%;">运行机构型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="yxjgModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="160LZ">160LZ</option>
@@ -290,20 +306,12 @@
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;">运行机构电机品牌选择</td>
-                                        <td style="width:30%;">
-                                            <select name="cgyxjgdjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:4%;" th:rowspan="3">4</td>
-                                        <td style="width:18%;">大回转机构是否为标准模块</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;" th:rowspan="3">4</td>
+                                        <td style="width:34%;">大回转机构是否为标准模块</td>
+                                        <td style="width:60%;">
                                             <select name="cgdhzjgmkModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="标准模块大回转机构">标准模块大回转机构</option>
@@ -311,11 +319,10 @@
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
-                                        <td style="width:48%;" colspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:18%;">标准模块大回转机构型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:34%;">标准模块大回转机构型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="dhzjgModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="HZS-7.1RF77">HZS-7.1RF77</option>
@@ -338,19 +345,11 @@
                                                 <option value="HZX16.0X309">HZX16.0X309</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;" th:rowspan="2">大回转机构电机品牌选择</td>
-                                        <td style="width:30%;" th:rowspan="2">
-                                            <select name="cgdhzjgdjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:20%;">非标大回转机构电机型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:34%;">非标大回转机构电机型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="fbdhzjgdjModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="RF77(上回转)">RF77(上回转)</option>
@@ -368,11 +367,15 @@
                                             </select>
                                         </td>
                                     </tr>
+                                </table>
+                            </div>
 
+                            <div class='subtable'>
+                                <table>
                                     <tr>
-                                        <td style="width:4%;">5</td>
-                                        <td style="width:18%;">伸缩机构型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">5</td>
+                                        <td style="width:34%;">伸缩机构型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="ssjgModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="6模数2.78伸缩机构(SSJG6(2.78))">6模数2.78伸缩机构(SSJG6(2.78))</option>
@@ -382,20 +385,12 @@
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;">伸缩机构电机品牌选择</td>
-                                        <td style="width:30%;">
-                                            <select name="cgssjgdjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:4%;">6</td>
-                                        <td style="width:18%;">仰臂类型选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">6</td>
+                                        <td style="width:34%;">仰臂类型选择</td>
+                                        <td style="width:60%;">
                                             <select name="cgybModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="SA67">SA67</option>
@@ -403,20 +398,12 @@
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;">仰臂电机品牌选择</td>
-                                        <td style="width:30%;">
-                                            <select name="cgybdjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:4%;">7</td>
-                                        <td style="width:18%;">GRU型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">7</td>
+                                        <td style="width:34%;">GRU型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="gruModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="GRU285">GRU285</option>
@@ -425,20 +412,12 @@
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;">GRU电机品牌选择</td>
-                                        <td style="width:30%;">
-                                            <select name="cggrudjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:4%;">8</td>
-                                        <td style="width:18%;">吊船型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">8</td>
+                                        <td style="width:34%;">吊船型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="cgdcModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="伸缩子吊船">伸缩子吊船</option>
@@ -450,39 +429,23 @@
                                                 <option value="其它吊船">其它吊船</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;">吊船电机品牌选择</td>
-                                        <td style="width:30%;">
-                                            <select name="cgdcdjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
 
                                     <tr>
-                                        <td style="width:4%;">9</td>
-                                        <td style="width:18%;">折臂1型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">9</td>
+                                        <td style="width:34%;">折臂1型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="cgzb1Model" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="R77">R77</option>
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
-                                        <td style="width:18%;" th:rowspan="2">折臂电机品牌选择</td>
-                                        <td style="width:30%;" th:rowspan="2">
-                                            <select name="cgzbdjppModel" style="width:100%;height:40px;text-align-last:center">
-                                                <option value="" style="display: none"></option>
-                                                <option value="SEW">SEW</option>
-                                                <option value="速博雷尔">速博雷尔</option>
-                                            </select>
-                                        </td>
                                     </tr>
                                     <tr>
-                                        <td style="width:4%;">10</td>
-                                        <td style="width:18%;">折臂2型号选择</td>
-                                        <td style="width:30%;">
+                                        <td style="width:6%;">10</td>
+                                        <td style="width:34%;">折臂2型号选择</td>
+                                        <td style="width:60%;">
                                             <select name="cgzb2Model" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
                                                 <option value="R57">R57</option>
@@ -496,7 +459,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="15" style="background-color: #aaa;padding: 10px 0 10px 0"><b>3.电机采购单</b></td>
+                                        <td colspan="15" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.电机采购单</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">序号</td>
@@ -533,9 +496,9 @@
                                         <td><input type="text" name="cgbtdjbz"/></td>
                                     </tr>
                                     <tr>
-                                        <td th:rowspan="2">2</td>
-                                        <td th:rowspan="2">起升</td>
-                                        <td th:rowspan="2"><input type="text" name="cgqsjgmc"/></td>
+                                        <td>2</td>
+                                        <td>起升</td>
+                                        <td><input type="text" name="cgqsjgmc"/></td>
                                         <td><input type="text" name="cgqsjgdjxh"/></td>
                                         <td><input type="text" name="cgqsjgdjfl"/></td>
                                         <td><input type="text" name="cgqsjgdjsb"/></td>
@@ -548,20 +511,6 @@
                                         <td><input type="text" name="cgqsjgdjsl"/></td>
                                         <td><input type="text" name="cgqsjgdjpp"/></td>
                                         <td><input type="text" name="cgqsjgdjbz"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" name="cgqsjgdjxh1"/></td>
-                                        <td><input type="text" name="cgqsjgdjfl1"/></td>
-                                        <td><input type="text" name="cgqsjgdjsb1"/></td>
-                                        <td><input type="text" name="cgqsjgdjsd1"/></td>
-                                        <td><input type="text" name="cgqsjgdjgl1"/></td>
-                                        <td><input type="text" name="cgqsjgdjdl1"/></td>
-                                        <td><input type="text" name="cgqsjgdjdy1"/></td>
-                                        <td><input type="text" name="cgqsjgdjjydj1"/></td>
-                                        <td><input type="text" name="cgqsjgdjaz1"/></td>
-                                        <td><input type="text" name="cgqsjgdjsl1"/></td>
-                                        <td><input type="text" name="cgqsjgdjpp1"/></td>
-                                        <td><input type="text" name="cgqsjgdjbz1"/></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -725,7 +674,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.回转支承型号及品牌选择</b></td>
+                                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.回转支承型号及品牌选择</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">1</td>
@@ -807,7 +756,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="10" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.回转支承采购单</b></td>
+                                        <td colspan="10" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.回转支承采购单</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">序号</td>
@@ -890,7 +839,7 @@
                             <div class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.生命绳规格及品牌选择</b></td>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.生命绳规格及品牌选择</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:8%;">1</td>
@@ -909,7 +858,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="9" style="background-color: #aaa;padding: 10px 0 10px 0"><b>7.绳索采购单</b></td>
+                                        <td colspan="9" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.绳索采购单</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">序号</td>
@@ -939,7 +888,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>8.液压缸型号选择</b></td>
+                                        <td colspan="5" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.液压缸型号选择</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">1</td>
@@ -1044,7 +993,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="15" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.液压采购单</b></td>
+                                        <td colspan="15" style="background-color: #aaa;padding: 10px 0 10px 0"><b>10.液压采购单</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">序号</td>
@@ -1122,7 +1071,7 @@
 
                             <!--后台-->
                             <div style="display: none">
-                                <!--<input type="text" name="m4" />-->
+                                <input type="text" name="cgdqdypl" />
 
                             </div>
                             <input type="hidden" name="pdfType"/>
@@ -1151,7 +1100,7 @@
                         <!--<input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>-->
                         <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
                                onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
-                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出采购单pdf" onclick="$('form').attr('action','/PurchaseOrderGn/getPDF');
+                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出采购单pdf" onclick="$('form').attr('action','/PurchaseOrderMhe/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
                         <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                     </div>
@@ -1181,10 +1130,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1202,10 +1152,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1223,10 +1174,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1244,10 +1196,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1265,10 +1218,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1286,10 +1240,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1307,10 +1262,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1328,10 +1284,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1349,10 +1306,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1370,10 +1328,11 @@
             cgbtdjsd:'8',
             cgbtdjgl:'0.37',
             cgbtdjdl:'1.2',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M4(180/2)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'蝴蝶臂头',
             cgbthzzcxh:'QWD500.20',
@@ -1391,10 +1350,11 @@
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.68',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'单角臂头',
             cgbthzzcxh:'QND400.20',
@@ -1412,10 +1372,11 @@
             cgbtdjsd:'7.4',
             cgbtdjgl:'0.18',
             cgbtdjdl:'0.58',
-            cgbtdjdy:'220/380 50',
+            // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M4(0/X)',
             cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
             cgbtdjbz:'快制动',
             cgbthzzcmc:'T形臂头',
             cgbthzzcxh:'QWB400.20',
@@ -1433,10 +1394,11 @@
             cgbtdjsd:'/',
             cgbtdjgl:'/',
             cgbtdjdl:'/',
-            cgbtdjdy:'/',
+            // cgbtdjdy:'/',
             cgbtdjjydj:'/',
             cgbtdjaz:'/',
             cgbtdjsl:'/',
+            cgbtdjpp:'/',
             cgbtdjbz:'/',
             cgbthzzcmc:'无',
             cgbthzzcxh:'/',
@@ -1447,313 +1409,98 @@
             cgbthzzcbz:'/',
         },
     };
-    //臂头电机品牌
-    cgbtdjppModelList={
-        "SEW":{
-            cgbtdjpp:'SEW',
-        },
-        "速博雷尔":{
-            cgbtdjpp:'速博雷尔',
-        },
-    };
+
     // 起升机构
     qsjgModelList={
-        "105起升机构":{
-            cgqsjgmc:'105起升机构',
-            cgqsjgdjxh:'RF57DRS90M4/BE2/HR',
-            cgqsjgdjfl:'Φ250',
-            cgqsjgdjsb:'37.3',
-            cgqsjgdjsd:'38',
-            cgqsjgdjgl:'1.6',
-            cgqsjgdjdl:'3.7',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M1(180/X)213',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "145起升机构":{
-            cgqsjgmc:'145起升机构',
-            cgqsjgdjxh:'RF57DRS90M4/BE2/HR',
-            cgqsjgdjfl:'Φ250',
-            cgqsjgdjsb:'37.3',
-            cgqsjgdjsd:'38',
-            cgqsjgdjgl:'1.6',
-            cgqsjgdjdl:'3.7',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M1(180/X)213',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
         "175起升机构":{
             cgqsjgmc:'175起升机构',
-            cgqsjgdjxh:'RF67DRS90M4/BE5/HR',
-            cgqsjgdjfl:'/',
-            cgqsjgdjsb:'39.88',
-            cgqsjgdjsd:'35',
-            cgqsjgdjgl:'1.6',
-            cgqsjgdjdl:'3.7',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M1(180/X)213',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "275起升机构":{
-            cgqsjgmc:'275起升机构',
-            cgqsjgdjxh:'RF67DRS90M4/BE2/HR',
-            cgqsjgdjfl:'/',
-            cgqsjgdjsb:'51.56',
-            cgqsjgdjsd:'27',
-            cgqsjgdjgl:'1.6',
-            cgqsjgdjdl:'3.7',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M1(180/X)213',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "185起升机构":{
-            cgqsjgmc:'185起升机构',
-            cgqsjgdjxh:'RF87DRS100M4/BE5/HR',
-            cgqsjgdjfl:'Φ300',
-            cgqsjgdjsb:'63.68',
-            cgqsjgdjsd:'22',
-            cgqsjgdjgl:'3.3',
-            cgqsjgdjdl:'7.4',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M3(90/2)33',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "285起升机构":{
-            cgqsjgmc:'285起升机构',
-            cgqsjgdjxh:'RF87DRS100M4/BE5/HR',
-            cgqsjgdjfl:'Φ300',
-            cgqsjgdjsb:'63.68',
-            cgqsjgdjsd:'22',
-            cgqsjgdjgl:'3.3',
-            cgqsjgdjdl:'7.4',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M3(90/2)33',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "385起升机构":{
-            cgqsjgmc:'385起升机构',
-            cgqsjgdjxh:'RF87DRS100M4/BE5/HR',
-            cgqsjgdjfl:'Φ300',
-            cgqsjgdjsb:'63.68',
-            cgqsjgdjsd:'22',
-            cgqsjgdjgl:'3.3',
-            cgqsjgdjdl:'7.4',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M3(90/2)33',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "295起升机构":{
-            cgqsjgmc:'295起升机构',
-            cgqsjgdjxh:'RF97DRS112M4/BE5/HR',
-            cgqsjgdjfl:'Φ350',
-            cgqsjgdjsb:'72.17',
-            cgqsjgdjsd:'20',
-            cgqsjgdjgl:'4.4',
-            cgqsjgdjdl:'9.4',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M1(180/X)123',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "495起升机构":{
-            cgqsjgmc:'495起升机构',
-            cgqsjgdjxh:'RF107DRS132S4/BE11/HR/OS2',
-            cgqsjgdjfl:'Φ350',
-            cgqsjgdjsb:'92.7',
-            cgqsjgdjsd:'16',
-            cgqsjgdjgl:'5.5',
-            cgqsjgdjdl:'11.7',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'IP55',
-            cgqsjgdjaz:'M1(180/X)123',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
-        "313起升机构":{
-            cgqsjgmc:'313起升机构',
-            cgqsjgdjxh:'RF137DRS132M4/BE5/HR',
-            cgqsjgdjfl:'Φ450',
-            cgqsjgdjsb:'80.91',
-            cgqsjgdjsd:'18',
-            cgqsjgdjgl:'8',
-            cgqsjgdjdl:'16.6',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M1(180/X)123',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'RF47DRS71S4/BE05',
-            cgqsjgdjfl1:'Φ160',
-            cgqsjgdjsb1:'100.8',
-            cgqsjgdjsd1:'14',
-            cgqsjgdjgl1:'0.37',
-            cgqsjgdjdl1:'1.2',
-            cgqsjgdjdy1:'220/380 50',
-            cgqsjgdjjydj1:'F IP55',
-            cgqsjgdjaz1:'M1(180°/X)',
-            cgqsjgdjsl1:'1',
-            cgqsjgdjpp1:'SEW',
-            cgqsjgdjbz1:'快制动RAL5015',
-        },
-        "无":{
-            cgqsjgmc:'无',
-            cgqsjgdjxh:'/',
+            // cgqsjgdjxh:'DGV 50 DD B3-40-3-40 ZBA 100 AL4 B050 HBL-N',
             cgqsjgdjfl:'/',
             cgqsjgdjsb:'/',
             cgqsjgdjsd:'/',
-            cgqsjgdjgl:'/',
+            // cgqsjgdjgl:'2.2',
             cgqsjgdjdl:'/',
-            cgqsjgdjdy:'/',
+            // cgqsjgdjdy:'220/380 50',
+            cgqsjgdjjydj:'/',
+            cgqsjgdjaz:'/',
+            cgqsjgdjsl:'1',
+            cgqsjgdjpp:'DEMAG',
+            cgqsjgdjbz:'天鹰牌',
+        },
+        "275起升机构":{
+            cgqsjgmc:'275起升机构',
+            // cgqsjgdjxh:'DGV 50 DD B3-40-3-40 ZBA 100 AL4 B050 HBL-N',
+            cgqsjgdjfl:'/',
+            cgqsjgdjsb:'/',
+            cgqsjgdjsd:'/',
+            // cgqsjgdjgl:'2.2',
+            cgqsjgdjdl:'/',
+            // cgqsjgdjdy:'220/380 50',
+            cgqsjgdjjydj:'/',
+            cgqsjgdjaz:'/',
+            cgqsjgdjsl:'1',
+            cgqsjgdjpp:'DEMAG',
+            cgqsjgdjbz:'天鹰牌',
+        },
+        "185起升机构":{
+            cgqsjgmc:'185起升机构',
+            // cgqsjgdjxh:'AFV 50 TD-B5.0-50-3-61.2 ZBA 100 B 4 B050 HBL-N',
+            cgqsjgdjfl:'/',
+            cgqsjgdjsb:'/',
+            cgqsjgdjsd:'/',
+            // cgqsjgdjgl:'3.0',
+            cgqsjgdjdl:'/',
+            // cgqsjgdjdy:'220/380 50',
+            cgqsjgdjjydj:'/',
+            cgqsjgdjaz:'/',
+            cgqsjgdjsl:'1',
+            cgqsjgdjpp:'DEMAG',
+            cgqsjgdjbz:'天鹰牌',
+        },
+        "285起升机构":{
+            cgqsjgmc:'285起升机构',
+            // cgqsjgdjxh:'AFV 50 TD-B5.0-50-3-61.2 ZBA 100 B 4 B050 HBL-N',
+            cgqsjgdjfl:'/',
+            cgqsjgdjsb:'/',
+            cgqsjgdjsd:'/',
+            // cgqsjgdjgl:'3.0',
+            cgqsjgdjdl:'/',
+            // cgqsjgdjdy:'220/380 50',
+            cgqsjgdjjydj:'/',
+            cgqsjgdjaz:'/',
+            cgqsjgdjsl:'1',
+            cgqsjgdjpp:'DEMAG',
+            cgqsjgdjbz:'天鹰牌',
+        },
+        "385起升机构":{
+            cgqsjgmc:'385起升机构',
+            // cgqsjgdjxh:'AFV 50 TD-B5.0-50-3-61.2 ZBA 100 B 4 B050 HBL-N',
+            cgqsjgdjfl:'/',
+            cgqsjgdjsb:'/',
+            cgqsjgdjsd:'/',
+            // cgqsjgdjgl:'3.0',
+            cgqsjgdjdl:'/',
+            // cgqsjgdjdy:'220/380 50',
+            cgqsjgdjjydj:'/',
+            cgqsjgdjaz:'/',
+            cgqsjgdjsl:'1',
+            cgqsjgdjpp:'DEMAG',
+            cgqsjgdjbz:'天鹰牌',
+        },
+        "无":{
+            cgqsjgmc:'无',
+            // cgqsjgdjxh:'/',
+            cgqsjgdjfl:'/',
+            cgqsjgdjsb:'/',
+            cgqsjgdjsd:'/',
+            // cgqsjgdjgl:'/',
+            cgqsjgdjdl:'/',
+            // cgqsjgdjdy:'/',
             cgqsjgdjjydj:'/',
             cgqsjgdjaz:'/',
             cgqsjgdjsl:'/',
             cgqsjgdjpp:'/',
             cgqsjgdjbz:'/',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
         },
     };
 
@@ -1767,10 +1514,11 @@
             cgyxdjsd:'14',
             cgyxdjgl:'0.25',
             cgyxdjdl:'0.73',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M3(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "170LZ":{
@@ -1781,10 +1529,11 @@
             cgyxdjsd:'11',
             cgyxdjgl:'0.37',
             cgyxdjdl:'1.2',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "200LZ":{
@@ -1795,10 +1544,11 @@
             cgyxdjsd:'8.8',
             cgyxdjgl:'0.55',
             cgyxdjdl:'1.63',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "230LZ":{
@@ -1809,10 +1559,11 @@
             cgyxdjsd:'8.5',
             cgyxdjgl:'0.55',
             cgyxdjdl:'1.63',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "260LZ":{
@@ -1823,10 +1574,11 @@
             cgyxdjsd:'7.3',
             cgyxdjgl:'0.8',
             cgyxdjdl:'1.97',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "350":{
@@ -1837,10 +1589,11 @@
             cgyxdjsd:'5.2',
             cgyxdjgl:'1.2',
             cgyxdjdl:'2.75',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "450":{
@@ -1851,10 +1604,11 @@
             cgyxdjsd:'3.5',
             cgyxdjgl:'1.6',
             cgyxdjdl:'3.7',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "轮载300":{
@@ -1865,10 +1619,11 @@
             cgyxdjsd:'7.5',
             cgyxdjgl:'0.37',
             cgyxdjdl:'1.19',
-            cgyxdjdy:'220/380 50',
+            // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
             cgyxdjsl:'2',
+            cgyxdjpp:'SEW',
             cgyxdjbz:'/',
         },
         "无":{
@@ -1879,20 +1634,12 @@
             cgyxdjsd:'/',
             cgyxdjgl:'/',
             cgyxdjdl:'/',
-            cgyxdjdy:'/',
+            // cgyxdjdy:'/',
             cgyxdjjydj:'/',
             cgyxdjaz:'/',
             cgyxdjsl:'/',
+            cgyxdjpp:'/',
             cgyxdjbz:'/',
-        },
-    };
-    //运行机构电机品牌
-    cgyxjgdjppModelList={
-        "SEW":{
-            cgyxdjpp:'SEW',
-        },
-        "速博雷尔":{
-            cgyxdjpp:'速博雷尔',
         },
     };
 
@@ -1919,10 +1666,11 @@
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'上回转',
             cgdhzjghzzcmc:'HZS-7.1RF77',
             cgdhzjghzzcxh:'QND710.20',
@@ -1940,10 +1688,11 @@
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'上回转',
             cgdhzjghzzcmc:'HZS-8.0RF87',
             cgdhzjghzzcxh:'QND800.20',
@@ -1961,10 +1710,11 @@
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'上回转',
             cgdhzjghzzcmc:'HZS-9.0RF97',
             cgdhzjghzzcxh:'QND900.25',
@@ -1982,10 +1732,11 @@
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX5.6RF77',
             cgdhzjghzzcxh:'QWD560.20A',
@@ -2003,10 +1754,11 @@
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX6.3RF77',
             cgdhzjghzzcxh:'QWD630.20A',
@@ -2024,10 +1776,11 @@
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX7.1RF87',
             cgdhzjghzzcxh:'QWD710.20A',
@@ -2045,10 +1798,11 @@
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX8.0RF87',
             cgdhzjghzzcxh:'QWD800.20',
@@ -2066,10 +1820,11 @@
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX9.0RF97',
             cgdhzjghzzcxh:'QWD900.25',
@@ -2087,10 +1842,11 @@
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX10.0RF97',
             cgdhzjghzzcxh:'QWD1000.32A',
@@ -2108,10 +1864,11 @@
             cgdhzjgdjsd:'0.69',
             cgdhzjgdjgl:'0.37',
             cgdhzjgdjdl:'1.2',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX11.2RF107',
             cgdhzjghzzcxh:'QWD1120.32',
@@ -2129,10 +1886,11 @@
             cgdhzjgdjsd:'0.69',
             cgdhzjgdjgl:'0.37',
             cgdhzjgdjdl:'1.2',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX12.5RF107',
             cgdhzjghzzcxh:'QWD1250.32A',
@@ -2150,10 +1908,11 @@
             cgdhzjgdjsd:'0.41',
             cgdhzjgdjgl:'0.37',
             cgdhzjgdjdl:'1.2',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX12.5RF137',
             cgdhzjghzzcxh:'QWD1250.32A',
@@ -2171,10 +1930,11 @@
             cgdhzjgdjsd:'0.41',
             cgdhzjgdjgl:'0.37',
             cgdhzjgdjdl:'1.2',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX14.0RF137',
             cgdhzjghzzcxh:'QWD1400.32',
@@ -2192,10 +1952,11 @@
             cgdhzjgdjsd:'0.32',
             cgdhzjgdjgl:'0.55',
             cgdhzjgdjdl:'1.63',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX14.0RF147',
             cgdhzjghzzcxh:'QWD1400.32',
@@ -2213,10 +1974,11 @@
             cgdhzjgdjsd:'0.32',
             cgdhzjgdjgl:'0.55',
             cgdhzjgdjdl:'1.63',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
             cgdhzjghzzcmc:'HZX16.0RF147',
             cgdhzjghzzcxh:'QWD1600.40',
@@ -2234,10 +1996,11 @@
             cgdhzjgdjsd:'0.58',
             cgdhzjgdjgl:'0.75',
             cgdhzjgdjdl:'2.43',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'邦飞利',
             cgdhzjgdjbz:'下回转、加大防雨罩',
             cgdhzjghzzcmc:'HZX12.5X307',
             cgdhzjghzzcxh:'QWD1250.32A',
@@ -2255,10 +2018,11 @@
             cgdhzjgdjsd:'0.58',
             cgdhzjgdjgl:'0.75',
             cgdhzjgdjdl:'2.43',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'邦飞利',
             cgdhzjgdjbz:'下回转、加大防雨罩',
             cgdhzjghzzcmc:'HZX14.0X307',
             cgdhzjghzzcxh:'QWD1400.32',
@@ -2276,10 +2040,11 @@
             cgdhzjgdjsd:'0.58',
             cgdhzjgdjgl:'1.1',
             cgdhzjgdjdl:'3.37',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'邦飞利',
             cgdhzjgdjbz:'下回转、加大防雨罩',
             cgdhzjghzzcmc:'HZX16.0X309',
             cgdhzjghzzcxh:'QWD1600.40',
@@ -2301,10 +2066,11 @@
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'上回转',
         },
         "RF87(上回转)":{
@@ -2315,10 +2081,11 @@
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'上回转',
         },
         "RF97(上回转)":{
@@ -2329,10 +2096,11 @@
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'上回转',
         },
         "RF77":{
@@ -2343,10 +2111,11 @@
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
         },
         "RF87":{
@@ -2357,10 +2126,11 @@
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
         },
         "RF97":{
@@ -2371,10 +2141,11 @@
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
             cgdhzjgdjdl:'0.71',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
         },
         "RF107":{
@@ -2385,10 +2156,11 @@
             cgdhzjgdjsd:'0.69',
             cgdhzjgdjgl:'0.37',
             cgdhzjgdjdl:'1.2',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
         },
         "RF137":{
@@ -2399,10 +2171,11 @@
             cgdhzjgdjsd:'0.41',
             cgdhzjgdjgl:'0.37',
             cgdhzjgdjdl:'1.2',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
         },
         "RF147":{
@@ -2413,10 +2186,11 @@
             cgdhzjgdjsd:'0.32',
             cgdhzjgdjgl:'0.55',
             cgdhzjgdjdl:'1.63',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'SEW',
             cgdhzjgdjbz:'下回转',
         },
         "307":{
@@ -2427,10 +2201,11 @@
             cgdhzjgdjsd:'0.58',
             cgdhzjgdjgl:'0.75',
             cgdhzjgdjdl:'2.43',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'邦飞利',
             cgdhzjgdjbz:'下回转、加大防雨罩',
         },
         "309":{
@@ -2441,10 +2216,11 @@
             cgdhzjgdjsd:'0.58',
             cgdhzjgdjgl:'1.1',
             cgdhzjgdjdl:'3.37',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'邦飞利',
             cgdhzjgdjbz:'下回转、加大防雨罩',
         },
         "310":{
@@ -2455,20 +2231,12 @@
             cgdhzjgdjsd:'0.55',
             cgdhzjgdjgl:'1.1',
             cgdhzjgdjdl:'3.37',
-            cgdhzjgdjdy:'220/380 50',
+            // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
             cgdhzjgdjsl:'1',
+            cgdhzjgdjpp:'邦飞利',
             cgdhzjgdjbz:'下回转、加大防雨罩',
-        },
-    };
-    //大回转机构电机品牌
-    cgdhzjgdjppModelList={
-        "SEW":{
-            cgdhzjgdjpp:'SEW',
-        },
-        "速博雷尔":{
-            cgdhzjgdjpp:'速博雷尔',
         },
     };
 
@@ -2482,10 +2250,11 @@
             cgssjgdjsd:'8.8',
             cgssjgdjgl:'0.55',
             cgssjgdjdl:'1.63',
-            cgssjgdjdy:'220/380 50',
+            // cgssjgdjdy:'220/380 50',
             cgssjgdjjydj:'F IP55',
             cgssjgdjaz:'M5(90/2)',
             cgssjgdjsl:' ',
+            cgssjgdjpp:'SEW',
             cgssjgdjbz:'快制动',
         },
         "6模数1.7伸缩机构(SSJG6(1.7))":{
@@ -2496,10 +2265,11 @@
             cgssjgdjsd:'7',
             cgssjgdjgl:'0.8',
             cgssjgdjdl:'1.97',
-            cgssjgdjdy:'220/380 50',
+            // cgssjgdjdy:'220/380 50',
             cgssjgdjjydj:'F IP55',
             cgssjgdjaz:'M5(90/2)',
             cgssjgdjsl:' ',
+            cgssjgdjpp:'SEW',
             cgssjgdjbz:'快制动',
         },
         "8模数1.7伸缩机构(SSJG8(1.7))":{
@@ -2510,10 +2280,11 @@
             cgssjgdjsd:'5.2',
             cgssjgdjgl:'1.2',
             cgssjgdjdl:'2.75',
-            cgssjgdjdy:'220/380 50',
+            // cgssjgdjdy:'220/380 50',
             cgssjgdjjydj:'F IP55',
             cgssjgdjaz:'M5(90/2)',
             cgssjgdjsl:' ',
+            cgssjgdjpp:'SEW',
             cgssjgdjbz:'快制动',
         },
         "液压":{
@@ -2524,10 +2295,11 @@
             cgssjgdjsd:'/',
             cgssjgdjgl:'/',
             cgssjgdjdl:'/',
-            cgssjgdjdy:'/',
+            // cgssjgdjdy:'/',
             cgssjgdjjydj:'/',
             cgssjgdjaz:'/',
             cgssjgdjsl:'/',
+            cgssjgdjpp:'/',
             cgssjgdjbz:'/',
         },
         "无":{
@@ -2538,20 +2310,12 @@
             cgssjgdjsd:'/',
             cgssjgdjgl:'/',
             cgssjgdjdl:'/',
-            cgssjgdjdy:'/',
+            // cgssjgdjdy:'/',
             cgssjgdjjydj:'/',
             cgssjgdjaz:'/',
             cgssjgdjsl:'/',
+            cgssjgdjpp:'/',
             cgssjgdjbz:'/',
-        },
-    };
-    //伸缩机构电机品牌
-    cgssjgdjppModelList={
-        "SEW":{
-            cgssjgdjpp:'SEW',
-        },
-        "速博雷尔":{
-            cgssjgdjpp:'速博雷尔',
         },
     };
 
@@ -2565,10 +2329,11 @@
             cgybdjsd:'30',
             cgybdjgl:'1.2',
             cgybdjdl:'2.75',
-            cgybdjdy:'220/380 50',
+            // cgybdjdy:'220/380 50',
             cgybdjjydj:'F IP55',
             cgybdjaz:'M5(A+B)(0/X)',
             cgybdjsl:'1',
+            cgybdjpp:'SEW',
             cgybdjbz:'/',
         },
         "液压":{
@@ -2579,10 +2344,11 @@
             cgybdjsd:'/',
             cgybdjgl:'/',
             cgybdjdl:'/',
-            cgybdjdy:'/',
+            // cgybdjdy:'/',
             cgybdjjydj:'/',
             cgybdjaz:'/',
             cgybdjsl:'/',
+            cgybdjpp:'/',
             cgybdjbz:'/',
         },
         "无":{
@@ -2593,20 +2359,12 @@
             cgybdjsd:'/',
             cgybdjgl:'/',
             cgybdjdl:'/',
-            cgybdjdy:'/',
+            // cgybdjdy:'/',
             cgybdjjydj:'/',
             cgybdjaz:'/',
             cgybdjsl:'/',
+            cgybdjpp:'/',
             cgybdjbz:'/',
-        },
-    };
-    //仰臂电机品牌
-    cgybdjppModelList={
-        "SEW":{
-            cgybdjpp:'SEW',
-        },
-        "速博雷尔":{
-            cgybdjpp:'速博雷尔',
         },
     };
 
@@ -2620,10 +2378,11 @@
             cggrudjsd:'7.4',
             cggrudjgl:'1.5',
             cggrudjdl:'3.45',
-            cggrudjdy:'220/380 50',
+            // cggrudjdy:'220/380 50',
             cggrudjjydj:'IP55',
             cggrudjaz:'M3(270°/1)',
             cggrudjsl:'1',
+            cggrudjpp:'SEW',
             cggrudjbz:'快制动',
         },
         "GRU295":{
@@ -2634,10 +2393,11 @@
             cggrudjsd:'7.8',
             cggrudjgl:'2.2',
             cggrudjdl:'5.1',
-            cggrudjdy:'220/380 50',
+            // cggrudjdy:'220/380 50',
             cggrudjjydj:'F IP55',
             cggrudjaz:'M3(270°/1)',
             cggrudjsl:'1',
+            cggrudjpp:'SEW',
             cggrudjbz:'快制动',
         },
         "GRU313":{
@@ -2648,10 +2408,11 @@
             cggrudjsd:'7.3',
             cggrudjgl:'4.4',
             cggrudjdl:'9.4',
-            cggrudjdy:'220/380 50',
+            // cggrudjdy:'220/380 50',
             cggrudjjydj:'F IP55',
             cggrudjaz:'M3(270°/1)',
             cggrudjsl:'1',
+            cggrudjpp:'SEW',
             cggrudjbz:'快制动',
         },
         "无":{
@@ -2662,20 +2423,12 @@
             cggrudjsd:'/',
             cggrudjgl:'/',
             cggrudjdl:'/',
-            cggrudjdy:'/',
+            // cggrudjdy:'/',
             cggrudjjydj:'/',
             cggrudjaz:'/',
             cggrudjsl:'/',
+            cggrudjpp:'/',
             cggrudjbz:'/',
-        },
-    };
-    //GRU电机品牌
-    cggrudjppModelList={
-        "SEW":{
-            cggrudjpp:'SEW',
-        },
-        "速博雷尔":{
-            cggrudjpp:'速博雷尔',
         },
     };
 
@@ -2689,10 +2442,11 @@
             cgdcdjsd:'4.8',
             cgdcdjgl:'0.25',
             cgdcdjdl:'0.72',
-            cgdcdjdy:'220/380 50',
+            // cgdcdjdy:'220/380 50',
             cgdcdjjydj:'F IP55',
             cgdcdjaz:'M1A(0/X)',
             cgdcdjsl:'1',
+            cgdcdjpp:'SEW',
             cgdcdjbz:'轴径Φ30mm',
             cgdcyymc:'无',
             cgdcyydgj:'/',
@@ -2700,7 +2454,7 @@
             cgdcyyxgj:'/',
             cgdcyyxc:'/',
             cgdcyyazj:'/',
-            cgdcyydy:'/',
+            // cgdcyydy:'/',
             cgdcyysl:'/',
             cgdcyypp:'/',
             cgdcyybz:'/',
@@ -2713,10 +2467,11 @@
             cgdcdjsd:'/',
             cgdcdjgl:'/',
             cgdcdjdl:'/',
-            cgdcdjdy:'/',
+            // cgdcdjdy:'/',
             cgdcdjjydj:'/',
             cgdcdjaz:'/',
             cgdcdjsl:'/',
+            cgdcdjpp:'/',
             cgdcdjbz:'/',
             cgdcyymc:'2.0米液压伸展吊船',
             cgdcyydgj:'80',
@@ -2724,7 +2479,7 @@
             cgdcyyxgj:'55',
             cgdcyyxc:'980',
             cgdcyyazj:'1400',
-            cgdcyydy:'220/380 50',
+            // cgdcyydy:'220/380 50',
             cgdcyysl:'1',
             cgdcyypp:'源爵',
             cgdcyybz:'/',
@@ -2737,10 +2492,11 @@
             cgdcdjsd:'/',
             cgdcdjgl:'/',
             cgdcdjdl:'/',
-            cgdcdjdy:'/',
+            // cgdcdjdy:'/',
             cgdcdjjydj:'/',
             cgdcdjaz:'/',
             cgdcdjsl:'/',
+            cgdcdjpp:'/',
             cgdcdjbz:'/',
             cgdcyymc:'2.0米液压伸展吊船',
             cgdcyydgj:'80',
@@ -2748,7 +2504,7 @@
             cgdcyyxgj:'55',
             cgdcyyxc:'980',
             cgdcyyazj:'1400',
-            cgdcyydy:'220/380 50',
+            // cgdcyydy:'220/380 50',
             cgdcyysl:'1',
             cgdcyypp:'源爵',
             cgdcyybz:'/',
@@ -2761,10 +2517,11 @@
             cgdcdjsd:'/',
             cgdcdjgl:'/',
             cgdcdjdl:'/',
-            cgdcdjdy:'/',
+            // cgdcdjdy:'/',
             cgdcdjjydj:'/',
             cgdcdjaz:'/',
             cgdcdjsl:'/',
+            cgdcdjpp:'/',
             cgdcdjbz:'/',
             cgdcyymc:'2.5米液压伸展吊船',
             cgdcyydgj:'80',
@@ -2772,7 +2529,7 @@
             cgdcyyxgj:'55',
             cgdcyyxc:'1130',
             cgdcyyazj:'1640',
-            cgdcyydy:'220/380 50',
+            // cgdcyydy:'220/380 50',
             cgdcyysl:'1',
             cgdcyypp:'源爵',
             cgdcyybz:'/',
@@ -2785,10 +2542,11 @@
             cgdcdjsd:'/',
             cgdcdjgl:'/',
             cgdcdjdl:'/',
-            cgdcdjdy:'/',
+            // cgdcdjdy:'/',
             cgdcdjjydj:'/',
             cgdcdjaz:'/',
             cgdcdjsl:'/',
+            cgdcdjpp:'/',
             cgdcdjbz:'/',
             cgdcyymc:'3.0米液压伸展吊船',
             cgdcyydgj:'80',
@@ -2796,7 +2554,7 @@
             cgdcyyxgj:'55',
             cgdcyyxc:'1430',
             cgdcyyazj:'1840',
-            cgdcyydy:'220/380 50',
+            // cgdcyydy:'220/380 50',
             cgdcyysl:'1',
             cgdcyypp:'源爵',
             cgdcyybz:'/',
@@ -2809,10 +2567,11 @@
             cgdcdjsd:'/',
             cgdcdjgl:'/',
             cgdcdjdl:'/',
-            cgdcdjdy:'/',
+            // cgdcdjdy:'/',
             cgdcdjjydj:'/',
             cgdcdjaz:'/',
             cgdcdjsl:'/',
+            cgdcdjpp:'/',
             cgdcdjbz:'/',
             cgdcyymc:'3.5米液压伸展吊船',
             cgdcyydgj:'80',
@@ -2820,7 +2579,7 @@
             cgdcyyxgj:'55',
             cgdcyyxc:'1540',
             cgdcyyazj:'2240',
-            cgdcyydy:'220/380 50',
+            // cgdcyydy:'220/380 50',
             cgdcyysl:'1',
             cgdcyypp:'源爵',
             cgdcyybz:'/',
@@ -2833,10 +2592,11 @@
             cgdcdjsd:'/',
             cgdcdjgl:'/',
             cgdcdjdl:'/',
-            cgdcdjdy:'/',
+            // cgdcdjdy:'/',
             cgdcdjjydj:'/',
             cgdcdjaz:'/',
             cgdcdjsl:'/',
+            cgdcdjpp:'/',
             cgdcdjbz:'/',
             cgdcyymc:'无',
             cgdcyydgj:'/',
@@ -2844,19 +2604,10 @@
             cgdcyyxgj:'/',
             cgdcyyxc:'/',
             cgdcyyazj:'/',
-            cgdcyydy:'/',
+            // cgdcyydy:'/',
             cgdcyysl:'/',
             cgdcyypp:'/',
             cgdcyybz:'/',
-        },
-    };
-    //吊船电机品牌
-    cgdcdjppModelList={
-        "SEW":{
-            cgdcdjpp:'SEW',
-        },
-        "速博雷尔":{
-            cgdcdjpp:'速博雷尔',
         },
     };
 
@@ -2870,10 +2621,11 @@
             cgzb1djsd:'2.3',
             cgzb1djgl:'0.25',
             cgzb1djdl:'0.71',
-            cgzb1djdy:'220/380 50',
+            // cgzb1djdy:'220/380 50',
             cgzb1djjydj:'F IP55',
             cgzb1djaz:'M4(0/X)',
             cgzb1djsl:'1',
+            cgzb1djpp:'SEW',
             cgzb1djbz:'/',
         },
         "无":{
@@ -2884,10 +2636,11 @@
             cgzb1djsd:'/',
             cgzb1djgl:'/',
             cgzb1djdl:'/',
-            cgzb1djdy:'/',
+            // cgzb1djdy:'/',
             cgzb1djjydj:'/',
             cgzb1djaz:'/',
             cgzb1djsl:'/',
+            cgzb1djpp:'/',
             cgzb1djbz:'/',
         }
     };
@@ -2901,10 +2654,11 @@
             cgzb2djsd:'2.8',
             cgzb2djgl:'0.18',
             cgzb2djdl:'0.68',
-            cgzb2djdy:'220/380 50',
+            // cgzb2djdy:'220/380 50',
             cgzb2djjydj:'F IP55',
             cgzb2djaz:'M4(0/X)',
             cgzb2djsl:'1',
+            cgzb2djpp:'SEW',
             cgzb2djbz:'/',
         },
         "无":{
@@ -2915,23 +2669,13 @@
             cgzb2djsd:'/',
             cgzb2djgl:'/',
             cgzb2djdl:'/',
-            cgzb2djdy:'/',
+            // cgzb2djdy:'/',
             cgzb2djjydj:'/',
             cgzb2djaz:'/',
             cgzb2djsl:'/',
+            cgzb2djpp:'/',
             cgzb2djbz:'/',
         }
-    };
-    //折臂电机品牌
-    cgzbdjppModelList={
-        "SEW":{
-            cgzb1djpp:'SEW',
-            cgzb2djpp:'SEW',
-        },
-        "速博雷尔":{
-            cgzb1djpp:'速博雷尔',
-            cgzb2djpp:'速博雷尔',
-        },
     };
 
     //臂头回转支承品牌
@@ -3172,7 +2916,7 @@
             cgssyydgj:'40',
             cgssyyzgj:'/',
             cgssyyxgj:'25',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3181,7 +2925,7 @@
             cgssyydgj:'50',
             cgssyyzgj:'/',
             cgssyyxgj:'32',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3190,7 +2934,7 @@
             cgssyydgj:'63',
             cgssyyzgj:'/',
             cgssyyxgj:'45',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3199,7 +2943,7 @@
             cgssyydgj:'80',
             cgssyyzgj:'/',
             cgssyyxgj:'55',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3208,7 +2952,7 @@
             cgssyydgj:'90',
             cgssyyzgj:'/',
             cgssyyxgj:'63',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3217,7 +2961,7 @@
             cgssyydgj:'100',
             cgssyyzgj:'/',
             cgssyyxgj:'70',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3226,7 +2970,7 @@
             cgssyydgj:'110',
             cgssyyzgj:'/',
             cgssyyxgj:'80',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3235,7 +2979,7 @@
             cgssyydgj:'125',
             cgssyyzgj:'/',
             cgssyyxgj:'90',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3244,7 +2988,7 @@
             cgssyydgj:'140',
             cgssyyzgj:'/',
             cgssyyxgj:'100',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3253,7 +2997,7 @@
             cgssyydgj:'150',
             cgssyyzgj:'/',
             cgssyyxgj:'105',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3262,7 +3006,7 @@
             cgssyydgj:'160',
             cgssyyzgj:'/',
             cgssyyxgj:'110',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3271,7 +3015,7 @@
             cgssyydgj:'180',
             cgssyyzgj:'/',
             cgssyyxgj:'125',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3280,7 +3024,7 @@
             cgssyydgj:'200',
             cgssyyzgj:'/',
             cgssyyxgj:'140',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3289,7 +3033,7 @@
             cgssyydgj:'220',
             cgssyyzgj:'/',
             cgssyyxgj:'160',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3298,7 +3042,7 @@
             cgssyydgj:'250',
             cgssyyzgj:'/',
             cgssyyxgj:'180',
-            cgssyydy:'220/380 50',
+            // cgssyydy:'220/380 50',
             cgssyysl:'1',
             cgssyypp:'源爵',
             cgssyybz:'图纸另附',
@@ -3320,7 +3064,7 @@
             cgybyydgj:'40',
             cgybyyzgj:'/',
             cgybyyxgj:'25',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3328,7 +3072,7 @@
             cgybyydgj:'50',
             cgybyyzgj:'/',
             cgybyyxgj:'32',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3336,7 +3080,7 @@
             cgybyydgj:'63',
             cgybyyzgj:'/',
             cgybyyxgj:'45',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3344,7 +3088,7 @@
             cgybyydgj:'80',
             cgybyyzgj:'/',
             cgybyyxgj:'55',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3352,7 +3096,7 @@
             cgybyydgj:'90',
             cgybyyzgj:'/',
             cgybyyxgj:'63',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3360,7 +3104,7 @@
             cgybyydgj:'100',
             cgybyyzgj:'/',
             cgybyyxgj:'70',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3368,7 +3112,7 @@
             cgybyydgj:'110',
             cgybyyzgj:'/',
             cgybyyxgj:'80',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3376,7 +3120,7 @@
             cgybyydgj:'125',
             cgybyyzgj:'/',
             cgybyyxgj:'90',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3384,7 +3128,7 @@
             cgybyydgj:'140',
             cgybyyzgj:'/',
             cgybyyxgj:'100',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3392,7 +3136,7 @@
             cgybyydgj:'150',
             cgybyyzgj:'/',
             cgybyyxgj:'105',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3400,7 +3144,7 @@
             cgybyydgj:'160',
             cgybyyzgj:'/',
             cgybyyxgj:'110',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3408,7 +3152,7 @@
             cgybyydgj:'180',
             cgybyyzgj:'/',
             cgybyyxgj:'125',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3416,7 +3160,7 @@
             cgybyydgj:'200',
             cgybyyzgj:'/',
             cgybyyxgj:'140',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3424,7 +3168,7 @@
             cgybyydgj:'220',
             cgybyyzgj:'/',
             cgybyyxgj:'160',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3432,7 +3176,7 @@
             cgybyydgj:'250',
             cgybyyzgj:'/',
             cgybyyxgj:'180',
-            cgybyydy:'220/380 50',
+            // cgybyydy:'220/380 50',
             cgybyypp:'源爵',
             cgybyybz:'图纸另附',
         },
@@ -3456,7 +3200,7 @@
             cgdsyydgj:'40',
             cgdsyyzgj:'/',
             cgdsyyxgj:'25',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3464,7 +3208,7 @@
             cgdsyydgj:'50',
             cgdsyyzgj:'/',
             cgdsyyxgj:'32',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3472,7 +3216,7 @@
             cgdsyydgj:'63',
             cgdsyyzgj:'/',
             cgdsyyxgj:'45',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3480,7 +3224,7 @@
             cgdsyydgj:'80',
             cgdsyyzgj:'/',
             cgdsyyxgj:'55',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3488,7 +3232,7 @@
             cgdsyydgj:'90',
             cgdsyyzgj:'/',
             cgdsyyxgj:'63',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3496,7 +3240,7 @@
             cgdsyydgj:'100',
             cgdsyyzgj:'/',
             cgdsyyxgj:'70',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3504,7 +3248,7 @@
             cgdsyydgj:'110',
             cgdsyyzgj:'/',
             cgdsyyxgj:'80',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3512,7 +3256,7 @@
             cgdsyydgj:'125',
             cgdsyyzgj:'/',
             cgdsyyxgj:'90',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3520,7 +3264,7 @@
             cgdsyydgj:'140',
             cgdsyyzgj:'/',
             cgdsyyxgj:'100',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3528,7 +3272,7 @@
             cgdsyydgj:'150',
             cgdsyyzgj:'/',
             cgdsyyxgj:'105',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3536,7 +3280,7 @@
             cgdsyydgj:'160',
             cgdsyyzgj:'/',
             cgdsyyxgj:'110',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3544,7 +3288,7 @@
             cgdsyydgj:'180',
             cgdsyyzgj:'/',
             cgdsyyxgj:'125',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3552,7 +3296,7 @@
             cgdsyydgj:'200',
             cgdsyyzgj:'/',
             cgdsyyxgj:'140',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3560,7 +3304,7 @@
             cgdsyydgj:'220',
             cgdsyyzgj:'/',
             cgdsyyxgj:'160',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3568,7 +3312,7 @@
             cgdsyydgj:'250',
             cgdsyyzgj:'/',
             cgdsyyxgj:'180',
-            cgdsyydy:'220/380 50',
+            // cgdsyydy:'220/380 50',
             cgdsyypp:'源爵',
             cgdsyybz:'图纸另附',
         },
@@ -3586,12 +3330,12 @@
     }
     $(document).ready(function () {
         // InitNav(8)
-        $('#PurchaseOrderGn').addClass('o-sub-cur');
+        $('#PurchaseOrderMhe').addClass('o-sub-cur');
     })
 
     function janyan() {
         $.ajax({
-            url: "/PurchaseOrderGn/jy",
+            url: "/PurchaseOrderMhe/jy",
             type: "post",
             data: $("form").serialize(),
             async: false,
@@ -3634,30 +3378,12 @@
         e.val(l);
     }
     var calculateFunction= {
-        //臂头电机下拉框逻辑
-        cgbtdjppModel: function () {
-            if ( btModel == '无') {
-                $('[name=cgbtdjppModel]').prop('disabled', true);
-                data.datalist['cgbtdjppModel'].color = 'rgb(227, 227, 227)';
-                return cgbtdjppModel;
-            } else {
-                $('[name=cgbtdjppModel]').prop('disabled', false)
-                data.datalist['cgbtdjppModel'].color = 'white';
-                return ' ';
-            }
-        },
 
-        //运行机构电机下拉框逻辑
-        cgyxjgdjppModel: function () {
-            if ( yxjgModel == '无') {
-                $('[name=cgyxjgdjppModel]').prop('disabled', true);
-                data.datalist['cgyxjgdjppModel'].color = 'rgb(227, 227, 227)';
-                return cgyxjgdjppModel;
-            } else {
-                $('[name=cgyxjgdjppModel]').prop('disabled', false)
-                data.datalist['cgyxjgdjppModel'].color = 'white';
-                return ' ';
-            }
+        //地区电压频率
+        cgdqdypl: function () {
+            var cgdq = " ";
+            cgdq = cgdqdy + ' ' + cgdqpl ;
+            return cgdq ;
         },
 
         //大回转机构电机下拉框逻辑
@@ -3681,98 +3407,6 @@
                 $('[name=fbdhzjgdjModel]').prop('disabled', true);
                 data.datalist['fbdhzjgdjModel'].color = 'rgb(227, 227, 227)';
                 return fbdhzjgdjModel;
-            }
-        },
-        cgdhzjgdjppModel: function () {
-            if ( cgdhzjgmkModel == '标准模块大回转机构' ) {
-                if ( dhzjgModel == 'HZX12.5X307' || dhzjgModel == 'HZX14.0X307' || dhzjgModel == 'HZX16.0X309' ) {
-                    $('[name=cgdhzjgdjppModel]').prop('disabled', true);
-                    data.datalist['cgdhzjgdjppModel'].color = 'rgb(227, 227, 227)';
-                    return cgdhzjgdjppModel;
-                } else {
-                    $('[name=cgdhzjgdjppModel]').prop('disabled', false)
-                    data.datalist['cgdhzjgdjppModel'].color = 'white';
-                    return ' ';
-                }
-            } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
-                if ( fbdhzjgdjModel == '307' || fbdhzjgdjModel == '309' || fbdhzjgdjModel == '310' ) {
-                    $('[name=cgdhzjgdjppModel]').prop('disabled', true);
-                    data.datalist['cgdhzjgdjppModel'].color = 'rgb(227, 227, 227)';
-                    return cgdhzjgdjppModel;
-                } else {
-                    $('[name=cgdhzjgdjppModel]').prop('disabled', false)
-                    data.datalist['cgdhzjgdjppModel'].color = 'white';
-                    return ' ';
-                }
-            } else if ( cgdhzjgmkModel == '无' ) {
-                $('[name=cgdhzjgdjppModel]').prop('disabled', true);
-                data.datalist['cgdhzjgdjppModel'].color = 'rgb(227, 227, 227)';
-                return cgdhzjgdjppModel;
-            }
-        },
-
-        //伸缩机构电机下拉框逻辑
-        cgssjgdjppModel: function () {
-            if ( ssjgModel == '液压' || ssjgModel == '无' ) {
-                $('[name=cgssjgdjppModel]').prop('disabled', true);
-                data.datalist['cgssjgdjppModel'].color = 'rgb(227, 227, 227)';
-                return cgssjgdjppModel;
-            } else {
-                $('[name=cgssjgdjppModel]').prop('disabled', false)
-                data.datalist['cgssjgdjppModel'].color = 'white';
-                return ' ';
-            }
-        },
-
-        //仰臂电机下拉框逻辑
-        cgybdjppModel: function () {
-            if ( cgybModel == '液压' || cgybModel == '无' ) {
-                $('[name=cgybdjppModel]').prop('disabled', true);
-                data.datalist['cgybdjppModel'].color = 'rgb(227, 227, 227)';
-                return cgybdjppModel;
-            } else {
-                $('[name=cgybdjppModel]').prop('disabled', false)
-                data.datalist['cgybdjppModel'].color = 'white';
-                return ' ';
-            }
-        },
-
-        //GRU电机下拉框逻辑
-        cggrudjppModel: function () {
-            if ( gruModel == '无' ) {
-                $('[name=cggrudjppModel]').prop('disabled', true);
-                data.datalist['cggrudjppModel'].color = 'rgb(227, 227, 227)';
-                return cggrudjppModel;
-            } else {
-                $('[name=cggrudjppModel]').prop('disabled', false)
-                data.datalist['cggrudjppModel'].color = 'white';
-                return ' ';
-            }
-        },
-
-        //吊船电机下拉框逻辑
-        cgdcdjppModel: function () {
-            if ( cgdcModel == '2.0米液压伸展吊船(YYPT200G(2.0))' || cgdcModel == '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))' || cgdcModel == '2.5米液压伸展吊船(YYPT200G(2.5))' || cgdcModel == '3.0米液压伸展吊船(YYPT200G(3.0))' || cgdcModel == '3.5米液压伸展吊船(YYPT200G(3.5))' || cgdcModel == '其它吊船' ) {
-                $('[name=cgdcdjppModel]').prop('disabled', true);
-                data.datalist['cgdcdjppModel'].color = 'rgb(227, 227, 227)';
-                return cgdcdjppModel;
-            } else {
-                $('[name=cgdcdjppModel]').prop('disabled', false)
-                data.datalist['cgdcdjppModel'].color = 'white';
-                return ' ';
-            }
-        },
-
-        //折臂电机下拉框逻辑
-        cgzbdjppModel: function () {
-            if ( cgzb1Model == '无' && cgzb2Model == '无' ) {
-                $('[name=cgzbdjppModel]').prop('disabled', true);
-                data.datalist['cgzbdjppModel'].color = 'rgb(227, 227, 227)';
-                return cgzbdjppModel;
-            } else {
-                $('[name=cgzbdjppModel]').prop('disabled', false)
-                data.datalist['cgzbdjppModel'].color = 'white';
-                return ' ';
             }
         },
 
@@ -3944,7 +3578,11 @@
             return btModelList[ btModel ]['cgbtdjdl'];
         },
         cgbtdjdy: function () {
-            return btModelList[ btModel ]['cgbtdjdy'];
+            if ( btModel == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgbtdjjydj: function () {
             return btModelList[ btModel ]['cgbtdjjydj'];
@@ -3956,11 +3594,7 @@
             return btModelList[ btModel ]['cgbtdjsl'];
         },
         cgbtdjpp: function () {
-            if ( btModel == '无' ){
-                return '/';
-            } else {
-                return cgbtdjppModelList[ cgbtdjppModel ]['cgbtdjpp'];
-            }
+            return btModelList[ btModel ]['cgbtdjpp'];
         },
         cgbtdjbz: function () {
             return btModelList[ btModel ]['cgbtdjbz'];
@@ -3971,7 +3605,21 @@
             return qsjgModelList[ qsjgModel ]['cgqsjgmc'];
         },
         cgqsjgdjxh: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjxh'];
+            if ( qsjgModel == '175起升机构' || qsjgModel == '275起升机构' ) {
+                if ( cgdqpl == '50' ){
+                    return 'DGV 50 DD B3-40-3-40 ZBA 100 AL4 B050 HBL-N' ;
+                } else if ( cgdqpl == '60' ) {
+                    return 'DGV 50 DD B3-40-3-54.7 ZBA 100 AL4 B050 HBL-N' ;
+                }
+            } else if ( qsjgModel == '185起升机构' || qsjgModel == '285起升机构' || qsjgModel == '385起升机构' ) {
+                if ( cgdqpl == '50' ){
+                    return 'AFV 50 TD-B5.0-50-3-61.2 ZBA 100 B 4 B050 HBL-N' ;
+                } else if ( cgdqpl == '60' ) {
+                    return 'AFV 50 TD-B5.0-50-3-78 ZBA 100 B 4 B050 HBL-N' ;
+                }
+            } else if ( qsjgModel == '无' ) {
+                return '/';
+            }
         },
         cgqsjgdjfl: function () {
             return qsjgModelList[ qsjgModel ]['cgqsjgdjfl'];
@@ -3983,13 +3631,31 @@
             return qsjgModelList[ qsjgModel ]['cgqsjgdjsd'];
         },
         cgqsjgdjgl: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjgl'];
+            if ( qsjgModel == '175起升机构' || qsjgModel == '275起升机构' ) {
+                if ( cgdqpl == '50' ){
+                    return '2.2' ;
+                } else if ( cgdqpl == '60' ) {
+                    return '2.64' ;
+                }
+            } else if ( qsjgModel == '185起升机构' || qsjgModel == '285起升机构' || qsjgModel == '385起升机构' ) {
+                if ( cgdqpl == '50' ){
+                    return '3.0' ;
+                } else if ( cgdqpl == '60' ) {
+                    return '3.6' ;
+                }
+            } else if ( qsjgModel == '无' ) {
+                return '/';
+            }
         },
         cgqsjgdjdl: function () {
             return qsjgModelList[ qsjgModel ]['cgqsjgdjdl'];
         },
         cgqsjgdjdy: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjdy'];
+            if ( qsjgModel == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgqsjgdjjydj: function () {
             return qsjgModelList[ qsjgModel ]['cgqsjgdjjydj'];
@@ -4005,42 +3671,6 @@
         },
         cgqsjgdjbz: function () {
             return qsjgModelList[ qsjgModel ]['cgqsjgdjbz'];
-        },
-        cgqsjgdjxh1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjxh1'];
-        },
-        cgqsjgdjfl1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjfl1'];
-        },
-        cgqsjgdjsb1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjsb1'];
-        },
-        cgqsjgdjsd1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjsd1'];
-        },
-        cgqsjgdjgl1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjgl1'];
-        },
-        cgqsjgdjdl1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjdl1'];
-        },
-        cgqsjgdjdy1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjdy1'];
-        },
-        cgqsjgdjjydj1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjjydj1'];
-        },
-        cgqsjgdjaz1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjaz1'];
-        },
-        cgqsjgdjsl1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjsl1'];
-        },
-        cgqsjgdjpp1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjpp1'];
-        },
-        cgqsjgdjbz1: function () {
-            return qsjgModelList[ qsjgModel ]['cgqsjgdjbz1'];
         },
 
         //运行机构电机
@@ -4066,7 +3696,11 @@
             return yxjgModelList[ yxjgModel ]['cgyxdjdl'];
         },
         cgyxdjdy: function () {
-            return yxjgModelList[ yxjgModel ]['cgyxdjdy'];
+            if ( yxjgModel == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgyxdjjydj: function () {
             return yxjgModelList[ yxjgModel ]['cgyxdjjydj'];
@@ -4078,11 +3712,7 @@
             return yxjgModelList[ yxjgModel ]['cgyxdjsl'];
         },
         cgyxdjpp: function () {
-            if ( yxjgModel == '无' ){
-                return '/';
-            } else {
-                return cgyxjgdjppModelList[ cgyxjgdjppModel ]['cgyxdjpp'];
-            }
+            return yxjgModelList[ yxjgModel ]['cgyxdjpp'];
         },
         cgyxdjbz: function () {
             return yxjgModelList[ yxjgModel ]['cgyxdjbz'];
@@ -4095,7 +3725,7 @@
             } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
                 return fbdhzjgdjModelList[ fbdhzjgdjModel ]['cgdhzjgmc'];
             } else if ( cgdhzjgmkModel == '无' ) {
-                return '/';
+                return '无';
             }
         },
         cgdhzjgdjxh: function () {
@@ -4154,9 +3784,9 @@
         },
         cgdhzjgdjdy: function () {
             if ( cgdhzjgmkModel == '标准模块大回转机构' ) {
-                return dhzjgModelList[ dhzjgModel ]['cgdhzjgdjdy'];
+                return cgdqdypl ;
             } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
-                return fbdhzjgdjModelList[ fbdhzjgdjModel ]['cgdhzjgdjdy'];
+                return cgdqdypl ;
             } else if ( cgdhzjgmkModel == '无' ) {
                 return '/';
             }
@@ -4190,17 +3820,9 @@
         },
         cgdhzjgdjpp: function () {
             if ( cgdhzjgmkModel == '标准模块大回转机构' ) {
-                if ( dhzjgModel == 'HZX12.5X307' || dhzjgModel == 'HZX14.0X307' || dhzjgModel == 'HZX16.0X309' ) {
-                    return '邦飞利';
-                } else {
-                    return cgdhzjgdjppModelList[ cgdhzjgdjppModel ]['cgdhzjgdjpp'];
-                }
+                return dhzjgModelList[ dhzjgModel ]['cgdhzjgdjpp'];
             } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
-                if ( fbdhzjgdjModel == '307' || fbdhzjgdjModel == '309' || fbdhzjgdjModel == '310' ) {
-                    return '邦飞利';
-                } else {
-                    return cgdhzjgdjppModelList[ cgdhzjgdjppModel ]['cgdhzjgdjpp'];
-                }
+                return fbdhzjgdjModelList[ fbdhzjgdjModel ]['cgdhzjgdjpp'];
             } else if ( cgdhzjgmkModel == '无' ) {
                 return '/';
             }
@@ -4238,7 +3860,11 @@
             return ssjgModelList[ ssjgModel ]['cgssjgdjdl'];
         },
         cgssjgdjdy: function () {
-            return ssjgModelList[ ssjgModel ]['cgssjgdjdy'];
+            if ( ssjgModel == '液压' || ssjgModel == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgssjgdjjydj: function () {
             return ssjgModelList[ ssjgModel ]['cgssjgdjjydj'];
@@ -4250,11 +3876,7 @@
             return ssjgModelList[ ssjgModel ]['cgssjgdjsl'];
         },
         cgssjgdjpp: function () {
-            if ( ssjgModel == '液压' || ssjgModel == '无' ){
-                return '/';
-            } else {
-                return cgssjgdjppModelList[ cgssjgdjppModel ]['cgssjgdjpp'];
-            }
+            return ssjgModelList[ ssjgModel ]['cgssjgdjpp'];
         },
         cgssjgdjbz: function () {
             return ssjgModelList[ ssjgModel ]['cgssjgdjbz'];
@@ -4283,7 +3905,11 @@
             return cgybModelList[ cgybModel ]['cgybdjdl'];
         },
         cgybdjdy: function () {
-            return cgybModelList[ cgybModel ]['cgybdjdy'];
+            if ( cgybModel == '液压' || cgybModel == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgybdjjydj: function () {
             return cgybModelList[ cgybModel ]['cgybdjjydj'];
@@ -4295,11 +3921,7 @@
             return cgybModelList[ cgybModel ]['cgybdjsl'];
         },
         cgybdjpp: function () {
-            if ( cgybModel == '液压' || cgybModel == '无' ){
-                return '/';
-            } else {
-                return cgybdjppModelList[ cgybdjppModel ]['cgybdjpp'];
-            }
+            return cgybModelList[ cgybModel ]['cgybdjpp'];
         },
         cgybdjbz: function () {
             return cgybModelList[ cgybModel ]['cgybdjbz'];
@@ -4328,7 +3950,11 @@
             return gruModelList[ gruModel ]['cggrudjdl'];
         },
         cggrudjdy: function () {
-            return gruModelList[ gruModel ]['cggrudjdy'];
+            if ( gruModel == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cggrudjjydj: function () {
             return gruModelList[ gruModel ]['cggrudjjydj'];
@@ -4340,11 +3966,7 @@
             return gruModelList[ gruModel ]['cggrudjsl'];
         },
         cggrudjpp: function () {
-            if ( gruModel == '无' ){
-                return '/';
-            } else {
-                return cggrudjppModelList[ cggrudjppModel ]['cggrudjpp'];
-            }
+            return gruModelList[ gruModel ]['cggrudjpp'];
         },
         cggrudjbz: function () {
             return gruModelList[ gruModel ]['cggrudjbz'];
@@ -4373,7 +3995,11 @@
             return cgdcModelList[ cgdcModel ]['cgdcdjdl'];
         },
         cgdcdjdy: function () {
-            return cgdcModelList[ cgdcModel ]['cgdcdjdy'];
+            if ( cgdcModel == '2.0米液压伸展吊船(YYPT200G(2.0))' || cgdcModel == '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))' || cgdcModel == '2.5米液压伸展吊船(YYPT200G(2.5))' || cgdcModel == '3.0米液压伸展吊船(YYPT200G(3.0))' || cgdcModel == '3.5米液压伸展吊船(YYPT200G(3.5))' || cgdcModel == '其它吊船' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgdcdjjydj: function () {
             return cgdcModelList[ cgdcModel ]['cgdcdjjydj'];
@@ -4385,11 +4011,7 @@
             return cgdcModelList[ cgdcModel ]['cgdcdjsl'];
         },
         cgdcdjpp: function () {
-            if ( cgdcModel == '2.0米液压伸展吊船(YYPT200G(2.0))' || cgdcModel == '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))' || cgdcModel == '2.5米液压伸展吊船(YYPT200G(2.5))' || cgdcModel == '3.0米液压伸展吊船(YYPT200G(3.0))' || cgdcModel == '3.5米液压伸展吊船(YYPT200G(3.5))' || cgdcModel == '其它吊船' ){
-                return '/';
-            } else {
-                return cgdcdjppModelList[ cgdcdjppModel ]['cgdcdjpp'];
-            }
+            return cgdcModelList[ cgdcModel ]['cgdcdjpp'];
         },
         cgdcdjbz: function () {
             return cgdcModelList[ cgdcModel ]['cgdcdjbz'];
@@ -4418,7 +4040,11 @@
             return cgzb1ModelList[ cgzb1Model ]['cgzb1djdl'];
         },
         cgzb1djdy: function () {
-            return cgzb1ModelList[ cgzb1Model ]['cgzb1djdy'];
+            if ( cgzb1Model == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgzb1djjydj: function () {
             return cgzb1ModelList[ cgzb1Model ]['cgzb1djjydj'];
@@ -4430,11 +4056,7 @@
             return cgzb1ModelList[ cgzb1Model ]['cgzb1djsl'];
         },
         cgzb1djpp: function () {
-            if ( cgzb1Model == '无' ){
-                return '/';
-            } else {
-                return cgzbdjppModelList[ cgzbdjppModel ]['cgzb1djpp'];
-            }
+            return cgzb1ModelList[ cgzb1Model ]['cgzb1djpp'];
         },
         cgzb1djbz: function () {
             return cgzb1ModelList[ cgzb1Model ]['cgzb1djbz'];
@@ -4463,7 +4085,11 @@
             return cgzb2ModelList[ cgzb2Model ]['cgzb2djdl'];
         },
         cgzb2djdy: function () {
-            return cgzb2ModelList[ cgzb2Model ]['cgzb2djdy'];
+            if ( cgzb2Model == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
         },
         cgzb2djjydj: function () {
             return cgzb2ModelList[ cgzb2Model ]['cgzb2djjydj'];
@@ -4475,11 +4101,7 @@
             return cgzb2ModelList[ cgzb2Model ]['cgzb2djsl'];
         },
         cgzb2djpp: function () {
-            if ( cgzb2Model == '无' ){
-                return '/';
-            } else {
-                return cgzbdjppModelList[ cgzbdjppModel ]['cgzb2djpp'];
-            }
+            return cgzb2ModelList[ cgzb2Model ]['cgzb2djpp'];
         },
         cgzb2djbz: function () {
             return cgzb2ModelList[ cgzb2Model ]['cgzb2djbz'];
@@ -4539,7 +4161,7 @@
             if ( cgqt1 == '无' ){
                 return '/';
             } else {
-                return ' ';
+                return cgdqdypl ;
             }
         },
         cgqt1djjydj: function () {
@@ -4838,7 +4460,11 @@
             return cgdcModelList[ cgdcModel ]['cgdcyyazj'];
         },
         cgdcyydy: function () {
-            return cgdcModelList[ cgdcModel ]['cgdcyydy'];
+            if ( cgdcModel == '2.0米液压伸展吊船(YYPT200G(2.0))' || cgdcModel == '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))' || cgdcModel == '2.5米液压伸展吊船(YYPT200G(2.5))' || cgdcModel == '3.0米液压伸展吊船(YYPT200G(3.0))' || cgdcModel == '3.5米液压伸展吊船(YYPT200G(3.5))' ){
+                return cgdqdypl ;
+            } else if (cgdcModel == '伸缩子吊船' || cgdcModel == '其它吊船' ) {
+                return '/';
+            }
         },
         cgdcyysl: function () {
             return cgdcModelList[ cgdcModel ]['cgdcyysl'];
@@ -4908,9 +4534,9 @@
         cgssyydy: function () {
             if ( ssjgModel == '液压' ) {
                 if ( cgssyylxModel == '一节液压缸' ){
-                    return cgssyyxhModelList[ cgssyyxhModel ]['cgssyydy'];
+                    return cgdqdypl ;
                 } else if ( cgssyylxModel == '二节液压缸' ){
-                    return '220/380 50';
+                    return cgdqdypl ;
                 }
             } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
                 return '/';
@@ -5008,9 +4634,9 @@
         cgybyydy: function () {
             if ( cgybModel == '液压' ) {
                 if ( cgybyylxModel == '一节液压缸' ){
-                    return cgybyyxhModelList[ cgybyyxhModel ]['cgybyydy'];
+                    return cgdqdypl ;
                 } else if ( cgybyylxModel == '二节液压缸' ){
-                    return '220/380 50';
+                    return cgdqdypl ;
                 }
             } else if ( cgybModel == 'SA67' || cgybModel == '无' ) {
                 return '/';
@@ -5097,9 +4723,9 @@
         },
         cgdsyydy: function () {
             if ( cgdsyylxModel == '一节液压缸' ){
-                return cgdsyyxhModelList[ cgdsyyxhModel ]['cgdsyydy'];
+                return cgdqdypl ;
             } else if ( cgdsyylxModel == '二节液压缸' ){
-                return '220/380 50';
+                return cgdqdypl ;
             } else if ( cgdsyylxModel == '无' ) {
                 return '/';
             }
@@ -5139,7 +4765,7 @@
 </script>
 <script>
     $('input[name="getData"]').click(function () {
-            var url = '/PurchaseOrderGn/getData';
+            var url = '/PurchaseOrderMhe/getData';
             var id = $('input[name="sjht"]').val();
             getData.geteDataFromDB(url, id)
         }

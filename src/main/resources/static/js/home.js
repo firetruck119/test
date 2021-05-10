@@ -367,12 +367,12 @@ asideDatas = {
                     url: "PurchaseOrderGn",
                 },
                 {
-                    title: '立柱(单臂)',
-                    // url: "LowerLZDrawing",
+                    title: 'MHE采购单',
+                    url: "PurchaseOrderMhe",
                 },
                 {
-                    title: '底架',
-                    // url: "DijiaDrawing",
+                    title: 'EGS采购单',
+                    url: "PurchaseOrderEgs",
                 },
             ]
         },

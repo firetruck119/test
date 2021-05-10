@@ -123,7 +123,7 @@
 
     <link rel="stylesheet" th:href="@{/css/home.css}">
 
-    <title>采购单(国内)</title>
+    <title>采购单(EGS)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
 
@@ -157,7 +157,7 @@
                     <div class="main">
                         <iframe style="display: none" name="stop" src="about:blank"></iframe>
                         <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
-                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">采购单(国内)</div>
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">采购单(EGS)</div>
                             <!- 封面内容 ->
                             <div class='subtable'>
                                 <table>
@@ -263,9 +263,9 @@
                                                 <option value="275起升机构">275起升机构</option>
                                                 <option value="185起升机构">185起升机构</option>
                                                 <option value="285起升机构">285起升机构</option>
-                                                <option value="385起升机构">385起升机构</option>
+                                                <!--<option value="385起升机构">385起升机构</option>-->
                                                 <option value="295起升机构">295起升机构</option>
-                                                <option value="495起升机构">495起升机构</option>
+                                                <!--<option value="495起升机构">495起升机构</option>-->
                                                 <option value="313起升机构">313起升机构</option>
                                                 <option value="无">无</option>
                                             </select>
@@ -1151,7 +1151,7 @@
                         <!--<input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>-->
                         <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
                                onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
-                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出采购单pdf" onclick="$('form').attr('action','/PurchaseOrderGn/getPDF');
+                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出采购单pdf" onclick="$('form').attr('action','/PurchaseOrderEgs/getPDF');
                                                                                             isCheck(false);changeType('Calculation')"/>
                         <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                     </div>
@@ -1460,7 +1460,7 @@
     qsjgModelList={
         "105起升机构":{
             cgqsjgmc:'105起升机构',
-            cgqsjgdjxh:'RF57DRS90M4/BE2/HR',
+            cgqsjgdjxh:'RF57DRN90L4/BE2/HR',
             cgqsjgdjfl:'Φ250',
             cgqsjgdjsb:'37.3',
             cgqsjgdjsd:'38',
@@ -1487,7 +1487,7 @@
         },
         "145起升机构":{
             cgqsjgmc:'145起升机构',
-            cgqsjgdjxh:'RF57DRS90M4/BE2/HR',
+            cgqsjgdjxh:'RF57DRN90L4/BE2/HR',
             cgqsjgdjfl:'Φ250',
             cgqsjgdjsb:'37.3',
             cgqsjgdjsd:'38',
@@ -1514,7 +1514,7 @@
         },
         "175起升机构":{
             cgqsjgmc:'175起升机构',
-            cgqsjgdjxh:'RF67DRS90M4/BE5/HR',
+            cgqsjgdjxh:'RF67DRN90L4/BE5/HR',
             cgqsjgdjfl:'/',
             cgqsjgdjsb:'39.88',
             cgqsjgdjsd:'35',
@@ -1541,7 +1541,7 @@
         },
         "275起升机构":{
             cgqsjgmc:'275起升机构',
-            cgqsjgdjxh:'RF67DRS90M4/BE2/HR',
+            cgqsjgdjxh:'RF67DRN90L4/BE2/HR',
             cgqsjgdjfl:'/',
             cgqsjgdjsb:'51.56',
             cgqsjgdjsd:'27',
@@ -1568,7 +1568,7 @@
         },
         "185起升机构":{
             cgqsjgmc:'185起升机构',
-            cgqsjgdjxh:'RF87DRS100M4/BE5/HR',
+            cgqsjgdjxh:'RF87DRN100L4/BE5/HR',
             cgqsjgdjfl:'Φ300',
             cgqsjgdjsb:'63.68',
             cgqsjgdjsd:'22',
@@ -1595,7 +1595,7 @@
         },
         "285起升机构":{
             cgqsjgmc:'285起升机构',
-            cgqsjgdjxh:'RF87DRS100M4/BE5/HR',
+            cgqsjgdjxh:'RF87DRN100L4/BE5/HR',
             cgqsjgdjfl:'Φ300',
             cgqsjgdjsb:'63.68',
             cgqsjgdjsd:'22',
@@ -1620,36 +1620,36 @@
             cgqsjgdjpp1:'/',
             cgqsjgdjbz1:'/',
         },
-        "385起升机构":{
-            cgqsjgmc:'385起升机构',
-            cgqsjgdjxh:'RF87DRS100M4/BE5/HR',
-            cgqsjgdjfl:'Φ300',
-            cgqsjgdjsb:'63.68',
-            cgqsjgdjsd:'22',
-            cgqsjgdjgl:'3.3',
-            cgqsjgdjdl:'7.4',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'F IP55',
-            cgqsjgdjaz:'M3(90/2)33',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
+        // "385起升机构":{
+        //     cgqsjgmc:'385起升机构',
+        //     cgqsjgdjxh:'RF87DRS100M4/BE5/HR',
+        //     cgqsjgdjfl:'Φ300',
+        //     cgqsjgdjsb:'63.68',
+        //     cgqsjgdjsd:'22',
+        //     cgqsjgdjgl:'3.3',
+        //     cgqsjgdjdl:'7.4',
+        //     cgqsjgdjdy:'220/380 50',
+        //     cgqsjgdjjydj:'F IP55',
+        //     cgqsjgdjaz:'M3(90/2)33',
+        //     cgqsjgdjsl:'1',
+        //     cgqsjgdjpp:'SEW',
+        //     cgqsjgdjbz:'快制动RAL5015',
+        //     cgqsjgdjxh1:'/',
+        //     cgqsjgdjfl1:'/',
+        //     cgqsjgdjsb1:'/',
+        //     cgqsjgdjsd1:'/',
+        //     cgqsjgdjgl1:'/',
+        //     cgqsjgdjdl1:'/',
+        //     cgqsjgdjdy1:'/',
+        //     cgqsjgdjjydj1:'/',
+        //     cgqsjgdjaz1:'/',
+        //     cgqsjgdjsl1:'/',
+        //     cgqsjgdjpp1:'/',
+        //     cgqsjgdjbz1:'/',
+        // },
         "295起升机构":{
             cgqsjgmc:'295起升机构',
-            cgqsjgdjxh:'RF97DRS112M4/BE5/HR',
+            cgqsjgdjxh:'RF97DRN112M4/BE5/HR',
             cgqsjgdjfl:'Φ350',
             cgqsjgdjsb:'72.17',
             cgqsjgdjsd:'20',
@@ -1674,36 +1674,36 @@
             cgqsjgdjpp1:'/',
             cgqsjgdjbz1:'/',
         },
-        "495起升机构":{
-            cgqsjgmc:'495起升机构',
-            cgqsjgdjxh:'RF107DRS132S4/BE11/HR/OS2',
-            cgqsjgdjfl:'Φ350',
-            cgqsjgdjsb:'92.7',
-            cgqsjgdjsd:'16',
-            cgqsjgdjgl:'5.5',
-            cgqsjgdjdl:'11.7',
-            cgqsjgdjdy:'220/380 50',
-            cgqsjgdjjydj:'IP55',
-            cgqsjgdjaz:'M1(180/X)123',
-            cgqsjgdjsl:'1',
-            cgqsjgdjpp:'SEW',
-            cgqsjgdjbz:'快制动RAL5015',
-            cgqsjgdjxh1:'/',
-            cgqsjgdjfl1:'/',
-            cgqsjgdjsb1:'/',
-            cgqsjgdjsd1:'/',
-            cgqsjgdjgl1:'/',
-            cgqsjgdjdl1:'/',
-            cgqsjgdjdy1:'/',
-            cgqsjgdjjydj1:'/',
-            cgqsjgdjaz1:'/',
-            cgqsjgdjsl1:'/',
-            cgqsjgdjpp1:'/',
-            cgqsjgdjbz1:'/',
-        },
+        // "495起升机构":{
+        //     cgqsjgmc:'495起升机构',
+        //     cgqsjgdjxh:'RF107DRS132S4/BE11/HR/OS2',
+        //     cgqsjgdjfl:'Φ350',
+        //     cgqsjgdjsb:'92.7',
+        //     cgqsjgdjsd:'16',
+        //     cgqsjgdjgl:'5.5',
+        //     cgqsjgdjdl:'11.7',
+        //     cgqsjgdjdy:'220/380 50',
+        //     cgqsjgdjjydj:'IP55',
+        //     cgqsjgdjaz:'M1(180/X)123',
+        //     cgqsjgdjsl:'1',
+        //     cgqsjgdjpp:'SEW',
+        //     cgqsjgdjbz:'快制动RAL5015',
+        //     cgqsjgdjxh1:'/',
+        //     cgqsjgdjfl1:'/',
+        //     cgqsjgdjsb1:'/',
+        //     cgqsjgdjsd1:'/',
+        //     cgqsjgdjgl1:'/',
+        //     cgqsjgdjdl1:'/',
+        //     cgqsjgdjdy1:'/',
+        //     cgqsjgdjjydj1:'/',
+        //     cgqsjgdjaz1:'/',
+        //     cgqsjgdjsl1:'/',
+        //     cgqsjgdjpp1:'/',
+        //     cgqsjgdjbz1:'/',
+        // },
         "313起升机构":{
             cgqsjgmc:'313起升机构',
-            cgqsjgdjxh:'RF137DRS132M4/BE5/HR',
+            cgqsjgdjxh:'RF137DRN132M4/BE5/HR',
             cgqsjgdjfl:'Φ450',
             cgqsjgdjsb:'80.91',
             cgqsjgdjsd:'18',
@@ -1817,7 +1817,7 @@
         },
         "260LZ":{
             cgyxmc:'260LZ',
-            cgyxdjxh:'F77DRS80S4/BE1/OS2',
+            cgyxdjxh:'F77DRN80M4/BE1/OS2',
             cgyxdjfl:'/',
             cgyxdjsb:'188.4',
             cgyxdjsd:'7.3',
@@ -1831,7 +1831,7 @@
         },
         "350":{
             cgyxmc:'350LZ',
-            cgyxdjxh:'F87DRS80M4/BE2/OS2',
+            cgyxdjxh:'F87DRN90S4/BE2/OS2',
             cgyxdjfl:'/',
             cgyxdjsb:'270.7',
             cgyxdjsd:'5.2',
@@ -1845,7 +1845,7 @@
         },
         "450":{
             cgyxmc:'450LZ',
-            cgyxdjxh:'F97R57DRS90M4/BE01/OS2',
+            cgyxdjxh:'F97R57DRN90L4/BE01/OS2',
             cgyxdjfl:'/',
             cgyxdjsb:'406',
             cgyxdjsd:'3.5',
@@ -2490,7 +2490,7 @@
         },
         "6模数1.7伸缩机构(SSJG6(1.7))":{
             cgssjgmc:'SSJG6(1.7)',
-            cgssjgdjxh:'FA77DRS80S4/BE1/OS2',
+            cgssjgdjxh:'FA77DRN80M4/BE1/OS2',
             cgssjgdjfl:'/',
             cgssjgdjsb:'198.31',
             cgssjgdjsd:'7',
@@ -2504,7 +2504,7 @@
         },
         "8模数1.7伸缩机构(SSJG8(1.7))":{
             cgssjgmc:'SSJG8(1.7)',
-            cgssjgdjxh:'FA87DRS80M4/BE2/OS2',
+            cgssjgdjxh:'FA87DRN90S4/BE2/OS2',
             cgssjgdjfl:'/',
             cgssjgdjsb:'270.68',
             cgssjgdjsd:'5.2',
@@ -2559,7 +2559,7 @@
     cgybModelList={
         "SA67":{
             cgybmc:'SA67',
-            cgybdjxh:'SA67DRS80M4/BE2/OS2',
+            cgybdjxh:'SA67DRN90S4/BE2/OS2',
             cgybdjfl:'Φ45',
             cgybdjsb:'46.4',
             cgybdjsd:'30',
@@ -2614,7 +2614,7 @@
     gruModelList={
         "GRU285":{
             cggrumc:'GRU285',
-            cggrudjxh:'SA77DRS90M4/BE05/HR/OS2',
+            cggrudjxh:'SA77DRN90L4/BE2/HR/OS2',
             cggrudjfl:'Φ50',
             cggrudjsb:'189.09',
             cggrudjsd:'7.4',
@@ -2628,7 +2628,7 @@
         },
         "GRU295":{
             cggrumc:'GRU295',
-            cggrudjxh:'SA87DRS90L4/BE5/HR/OS2',
+            cggrudjxh:'SA87DRN90L4/BE5/HR/OS2',
             cggrudjfl:'Φ60',
             cggrudjsb:'180',
             cggrudjsd:'7.8',
@@ -2642,7 +2642,7 @@
         },
         "GRU313":{
             cggrumc:'GRU313',
-            cggrudjxh:'SA97DRS112M4/BE5/HR/OS2',
+            cggrudjxh:'SA97DRN112M4/BE5/HR/OS2',
             cggrudjfl:'Φ70',
             cggrudjsb:'196.52',
             cggrudjsd:'7.3',
@@ -3586,12 +3586,12 @@
     }
     $(document).ready(function () {
         // InitNav(8)
-        $('#PurchaseOrderGn').addClass('o-sub-cur');
+        $('#PurchaseOrderEgs').addClass('o-sub-cur');
     })
 
     function janyan() {
         $.ajax({
-            url: "/PurchaseOrderGn/jy",
+            url: "/PurchaseOrderEgs/jy",
             type: "post",
             data: $("form").serialize(),
             async: false,
@@ -5139,7 +5139,7 @@
 </script>
 <script>
     $('input[name="getData"]').click(function () {
-            var url = '/PurchaseOrderGn/getData';
+            var url = '/PurchaseOrderEgs/getData';
             var id = $('input[name="sjht"]').val();
             getData.geteDataFromDB(url, id)
         }
