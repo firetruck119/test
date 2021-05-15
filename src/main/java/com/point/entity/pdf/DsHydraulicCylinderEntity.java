@@ -136,7 +136,7 @@ public class DsHydraulicCylinderEntity {
     private Double hfb11;
     private Double hfb12n;
 
-    private String dsyygModel;
+
     private String btModel;
     private String dcModel;
     private String dcgssModel;

@@ -187,8 +187,8 @@ asideDatas = {
                             url:'UprightMechanism'
                         },
                         {
-                            title: '1+1顶升立柱顶轮',
-                            url:'IdlerWheel'
+                            title: '1+1顶升立柱滚轮及液压缸',
+                            url:'IdlerWheelYyg'
                         },
                         {
                             title: '2+1顶升立柱顶轮',
@@ -240,10 +240,10 @@ asideDatas = {
                             title: '仰臂液压缸',
                             url: 'YbHydraulicCylinder'
                         },
-                        {
-                            title: '顶升液压缸',
-                            url: 'DsHydraulicCylinder'
-                        },
+                        // {
+                        //     title: '顶升液压缸',
+                        //     url: 'DsHydraulicCylinder'
+                        // },
                     ]
                 },
                 {
