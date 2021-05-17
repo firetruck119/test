@@ -175,6 +175,16 @@
                                         <td><input type="text" name="cbzjbj"/></td>
                                         <td>万元</td>
                                     </tr>
+                                    <tr>
+                                        <td><b>该项目轨道报价</b></td>
+                                        <td><input type="text" name="cbgdbj"/></td>
+                                        <td>万元</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>该项目销座销钉报价</b></td>
+                                        <td><input type="text" name="cbxzxdbj"/></td>
+                                        <td>万元</td>
+                                    </tr>
 
                                     <tr>
                                         <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
@@ -1604,6 +1614,20 @@
                             <div class='subtable'>
                                 <table>
                                     <tr>
+                                        <td style="width:35%;">内容</td>
+                                        <td style="width:50%;">数值</td>
+                                        <td style="width:15%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td >销座单价</td>
+                                        <td ><input type="text" name="cbxzdj"/></td>
+                                        <td >元/个</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
                                         <td style="width:40%;">防风销钉选择</td>
                                         <td>
                                             <select name="xdModel" style="width:100%;height:40px;text-align-last:center">
@@ -1641,10 +1665,10 @@
                                         <td >防风销座</td>
                                         <td >无</td>
                                         <td ><input type="text" name="cbxzsl"/></td>
-                                        <td ><input type="text" name="cbxzzl"/></td>
-                                        <td >千克</td>
+                                        <td >无</td>
+                                        <td >无</td>
                                         <td ><input type="text" name="cbxzdj"/></td>
-                                        <td >元/千克</td>
+                                        <td >元/个</td>
                                         <td >无</td>
                                         <td ><input type="text" name="cbxzzj"/></td>
                                     </tr>
@@ -1761,7 +1785,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>整机材料成本</b></td>
-                                        <td style="width:2%;" rowspan="13" ><b></b></td>
+                                        <td style="width:2%;" rowspan="15" ><b></b></td>
                                         <td colspan="3" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>擦窗机其他材料成本核算</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
@@ -1776,7 +1800,7 @@
                                         <td>1</td>
                                         <td>8模块材料成本小计</td>
                                         <td id="cb8mkzj"></td>
-                                        <td>1</td>
+                                        <td th:rowspan="3">1</td>
                                         <td>轨道成本小计</td>
                                         <td id="cbgdxtzj"></td>
                                     </tr>
@@ -1784,37 +1808,41 @@
                                         <td>2</td>
                                         <td>3大件成本小计</td>
                                         <td id="cb3djzj"></td>
-                                        <td>2</td>
-                                        <td>防风销座销钉成本小计</td>
-                                        <td id="cbxzxdzj"></td>
+                                        <td colspan="2">轨道材料成本占报价比例(%)</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>3</td>
                                         <td>电机成本小计</td>
                                         <td id="cbdjzjzj"></td>
-                                        <td>3</td>
-                                        <td>运输成本小计</td>
-                                        <td id="cbyszj"></td>
+                                        <td colspan="2" id="cbgdzbl"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>4</td>
                                         <td>擦窗机外购件成本小计</td>
                                         <td id="cbwgjzj"></td>
+                                        <td th:rowspan="3">2</td>
+                                        <td>防风销座销钉成本小计</td>
+                                        <td id="cbxzxdzj"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>5</td>
                                         <td>擦窗机外协件成本小计</td>
                                         <td id="cbwxjzj"></td>
+                                        <td colspan="2">销座销钉材料成本占报价比例(%)</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>6</td>
                                         <td>电气元件成本小计</td>
                                         <td id="cbdqzj"></td>
+                                        <td colspan="2" id="cbxzxdzbl"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>7</td>
                                         <td>液压系统成本小计</td>
                                         <td id="cbyyzj"></td>
+                                        <td>3</td>
+                                        <td>运输成本小计</td>
+                                        <td id="cbyszj"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>8</td>
@@ -1830,11 +1858,15 @@
                                         <td>10</td>
                                         <td>包装成本小计</td>
                                         <td id="cbbzcbzj"></td>
-                                        <td colspan="3"><b>擦窗机材料成本占报价比例(%)</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="2">擦窗机材料成本总计</td>
                                         <td id="cbbmuclzj"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td colspan="3">擦窗机材料成本占报价比例(%)</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3" id="cbclzbl"></td>
                                     </tr>
                                 </table>
@@ -3175,18 +3207,18 @@
     djxhModelList={
         "管材式":{
             djlx:"管材式",
-            cbdjdj:6500,
+            cbdjdj:7800,
         },
         "板拼式":{
             djlx:"板拼式",
-            cbdjdj:6300,
+            cbdjdj:7200,
         },
     };
     //大臂类型
     dbxhModelList={
         "单臂横截面":{
             cbdbmc:'管式吊臂',
-            cbdbdj:6500,
+            cbdbdj:7800,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -3198,7 +3230,7 @@
         },
         "单臂变截面":{
             cbdbmc:'板拼式吊臂',
-            cbdbdj:6300,
+            cbdbdj:7200,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -3210,7 +3242,7 @@
         },
         "1+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            cbdbdj:8500,
             cb3yqdj:4000,
             cbssjjmc:'1+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3222,7 +3254,7 @@
         },
         "2+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            cbdbdj:8500,
             cb3yqdj:5000,
             cbssjjmc:'2+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3234,7 +3266,7 @@
         },
         "3+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            cbdbdj:8500,
             cb3yqdj:6000,
             cbssjjmc:'3+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3246,7 +3278,7 @@
         },
         "4+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            cbdbdj:8500,
             cb3yqdj:8000,
             cbssjjmc:'4+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3264,14 +3296,14 @@
             cbpzkdj:316,
             cbpzklyl:0.95,
             cbpzfgzl:' ',
-            cbpzfgdj:6300,
+            cbpzfgdj:7200,
             cbpzfglyl:1,
             cbpzktzl:' ',
-            cbpzktdj:6300,
+            cbpzktdj:7200,
         },
         "钢板配重块":{
             cbpzkmc:'钢板',
-            cbpzkdj:6400,
+            cbpzkdj:7200,
             cbpzklyl:0.9,
             cbpzfgzl:0,
             cbpzfgdj:0,
@@ -3284,15 +3316,15 @@
     lzxhModelList={
         "固定立柱":{
             cblzmc:'固定立柱',
-            cblzdj:6300,
+            cblzdj:7200,
         },
         "1+1顶升立柱":{
             cblzmc:'1+1顶升立柱',
-            cblzdj:6300,
+            cblzdj:7200,
         },
         "2+1顶升立柱":{
             cblzmc:'2+1顶升立柱',
-            cblzdj:6300,
+            cblzdj:7200,
         },
     };
     //底架摆动臂类型
@@ -3858,7 +3890,7 @@
         "其它":{
             cbmbxh:" ",
             cbmbmzl:' ',
-            cbmbdj:6300,
+            cbmbdj:7200,
             cbmbdjdw:'元/吨',
             cbmblyl:0.85,
         },
@@ -4368,7 +4400,7 @@
                 return 0.85 ;
         },
         cbpzxtdj: function () {
-            return 6300 ;
+            return 7200 ;
         },
         cbpzxtlyl: function () {
             if ( cbpzxtzl == 0 )
@@ -4415,7 +4447,7 @@
             }
         },
         cb3jxdj: function () {
-            return 1500 ;
+            return 1550 ;
         },
         cb3yqdj: function () {
             return dbxhModelList[ dbxhModel ]['cb3yqdj'];
@@ -4883,12 +4915,12 @@
             } else{
                 if ( gdModel == "I20b-31" || gdModel == "I22b-36.5" || gdModel == "I25b-42" || gdModel == "I28b-47.8" || gdModel == "I32b-57.7" || gdModel == "H150*150-31.1" || gdModel == "H175*175-40.4" || gdModel == "H200*200-49.9" || gdModel == "H200*204-56.2" || gdModel == "H250*250-71.8" || gdModel == "H250*255-81.6" || gdModel == "H300*300-93" || gdModel == "H300*305-105" || gdModel == "H200*200T-71" || gdModel == "H250*250T-99" ) {
                     if ( gdczModel == "Q235B" ) {
-                        return 5900 ;
+                        return 6700 ;
                     }else if ( gdczModel == "Q355B" ) {
-                        return 6300 ;
+                        return 7000 ;
                     }
                 }else if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
-                    return 9000 ;
+                    return 10000 ;
                 }
             }
         },
@@ -4917,7 +4949,7 @@
                 return cbgdsl ;
         },
         cbgdjxdj: function () {
-            return 1350 ;
+            return 1400 ;
         },
         cbmbxh: function () {
             return mbModelList[ mbModel ]['cbmbxh'];
@@ -5007,9 +5039,9 @@
         },
 
         //防风销座销钉
-        cbxzdj: function () {
-            return 150 ;
-        },
+        // cbxzdj: function () {
+        //     return 150 ;
+        // },
         cbxdxh: function () {
             return xdModelList[ xdModel ]['cbxdxh'];
         },
@@ -5331,7 +5363,7 @@
 
         //防风销座销钉
         cbxzzj: function () {
-            return cbxzsl * cbxzzl * cbxzdj / 10000 ;
+            return cbxzsl * cbxzdj / 10000 ;
         },
         cbxdzj: function () {
             return cbxdsl * cbxddj / 10000 ;

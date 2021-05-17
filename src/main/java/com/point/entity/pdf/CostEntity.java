@@ -19,6 +19,8 @@ public class CostEntity {
 
 //    报价
     private Double cbzjbj;
+    private Double cbgdbj;
+    private Double cbxzxdbj;
 
     //    吊船
     private String cbdct;
@@ -333,7 +335,7 @@ public class CostEntity {
 
     //    防风销座
     private Double cbxzsl;
-    private Double cbxzzl;
+//    private Double cbxzzl;
     private Double cbxzdj;
 
     //    防风销钉
@@ -524,6 +526,8 @@ public class CostEntity {
 
 //        报价
         map.put("cbzjbj", CommonFunc.convertDoubleToString(cbzjbj));
+        map.put("cbgdbj", CommonFunc.convertDoubleToString(cbgdbj));
+        map.put("cbxzxdbj", CommonFunc.convertDoubleToString(cbxzxdbj));
 
 //        吊船
         map.put("cbdct", CommonFunc.convertDoubleToString(cbdct));
@@ -838,7 +842,7 @@ public class CostEntity {
 
         //       防风销座
         map.put("cbxzsl", CommonFunc.convertDoubleToString(cbxzsl));
-        map.put("cbxzzl", CommonFunc.convertDoubleToString(cbxzzl));
+//        map.put("cbxzzl", CommonFunc.convertDoubleToString(cbxzzl));
         map.put("cbxzdj", CommonFunc.convertDoubleToString(cbxzdj));
 
         //       防风销钉
@@ -1029,6 +1033,16 @@ public class CostEntity {
 //        成本材料占比
         Double cbclzbl = 100 * cbbmuclzj / cbzjbj ;
         map.put("cbclzbl", cbclzbl);
+
+
+//        轨道成本材料占比
+        Double cbgdzbl = 100 * cbgdxtzj / cbgdbj ;
+        map.put("cbgdzbl", cbgdzbl);
+
+//        销钉销座成本材料占比
+        Double cbxzxdzbl = 100 * cbxzxdzj / cbxzxdbj ;
+        map.put("cbxzxdzbl", cbxzxdzbl);
+
         return map;
     }
 
