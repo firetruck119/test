@@ -254,6 +254,16 @@
                                         <td ><input type="text" name="lbd"/></td>
                                         <td >m</td>
                                     </tr>
+                                    <tr>
+                                        <td><b>项目类或方案类选择</b></td>
+                                        <td colspan="3">
+                                            <select name="xmfaxzModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="项目类计算">项目类计算</option>
+                                                <option value="方案类计算">方案类计算</option>
+                                            </select>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                             <div class="subtable">
@@ -873,6 +883,14 @@
     vm.$mount('#app')
 </script>
 <script>
+    xmfaxzModelList={
+        "项目类计算":{
+
+        },
+        "方案类计算":{
+
+        },
+    };
     ffbbModelList={
         "有":{
             mffbb:100,
@@ -1044,7 +1062,11 @@
                 return 25 ;
         },
         m4jbcq:function(){
-            return  mdbb + mbgj / 2 + ( dblm - ldbbz ) * mbmj / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mdbb + mbgj / 2 + ( dblm - ldbbz ) * mbmj / 1000 ;
+            }
         },
         m5db:function(){
             return m5 * gruqhxs ;
@@ -1082,7 +1104,11 @@
                 return dblm / 1000 + lbtzh ;
         },
         lc4:function(){
-            return ( mdbb * ( dblm - ldbb ) / 1000 + ( m4jbcq - mdbb ) * ( dblm - ldbbz ) / 2000000 ) / m4jbcq ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mdbb * ( dblm - ldbb ) / 1000 + ( m4jbcq - mdbb ) * ( dblm - ldbbz ) / 2000000 ) / m4jbcq ;
+            }
         },
         lc5:function(){
             if( m5db == 0 ){
@@ -1137,7 +1163,12 @@
             return lc3 ;
         },
         lx4:function(){
-            return lc4 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lc4 ;
+            }
+
         },
         lx5:function(){
             return lc5 ;

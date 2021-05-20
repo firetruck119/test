@@ -172,6 +172,8 @@ public class TwoJibWheelEntity {
     private String ssyygModel;
     private String ssyygezModel;
 
+    private String xmfaxzModel;
+
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
         map.put("no", CommonFunc.convertDoubleToString(no));

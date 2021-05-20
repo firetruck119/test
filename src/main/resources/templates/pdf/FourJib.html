@@ -264,6 +264,16 @@
                                         <td ><input type="text" name="dbyj"/></td>
                                         <td >°</td>
                                     </tr>
+                                    <tr>
+                                        <td><b>项目类或方案类选择</b></td>
+                                        <td colspan="3">
+                                            <select name="xmfaxzModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="项目类计算">项目类计算</option>
+                                                <option value="方案类计算">方案类计算</option>
+                                            </select>
+                                        </td>
+                                    </tr>
                                  </table>
                             </div>
                             <div class='subtable'>
@@ -2177,6 +2187,14 @@
     vm.$mount('#app')
 </script>
 <script>
+    xmfaxzModelList={
+        "项目类计算":{
+
+        },
+        "方案类计算":{
+
+        },
+    };
     ffbbModelList={
         "有":{
             mffbb:100,
@@ -2309,7 +2327,11 @@
 
         //挠度
         dbld:function(){
-            return (( lbd - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) + dblx1 / 2000 ) * 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbd - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) + dblx1 / 2000 ) * 1000 ;
+            }
         },
         dblx1:function(){
             if ( dbyj != 0){
@@ -2324,43 +2346,95 @@
             }
         },
         dblx2:function(){
-            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            }
         },
         dblx3:function(){
-            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            }
         },
         dblx4:function(){
-            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            }
         },
         dblx5:function(){
-            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 1.68 ) * 1000 / 8 ;
+            }
         },
         dbld1:function(){
-            return (( lbx - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) - 1.68 + dblx1 / 2000 ) * 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbx - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) - 1.68 + dblx1 / 2000 ) * 1000 ;
+            }
         },
         dbld2:function(){
-            return 3 * dblx2 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return 3 * dblx2 ;
+            }
         },
         dbld3:function(){
-            return 3 * dblx3 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return 3 * dblx3 ;
+            }
         },
         dbld4:function(){
-            return 3 * dblx4 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return 3 * dblx4 ;
+            }
         },
         dbld5:function(){
-            return 3 * dblx5 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return 3 * dblx5 ;
+            }
         },
         dbhd2:function(){
-            return dbld - dbld1 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return dbld - dbld1 ;
+            }
         },
         dbhd3:function(){
-            return dbhd2 - dbld2 + dblx2 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return dbhd2 - dbld2 + dblx2 ;
+            }
         },
         dbhd4:function(){
-            return dbhd3 - dbld3 + dblx3 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return dbhd3 - dbld3 + dblx3 ;
+            }
         },
         dbhd5:function(){
-            return dbhd4 - dbld4 + dblx4 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return dbhd4 - dbld4 + dblx4 ;
+            }
         },
 
         dbgcph:function(){
@@ -2440,38 +2514,78 @@
                 return 25 ;
         },
         m4jbcq:function(){
-            return  mbgj / 2 + ( dbld1 - dblx1 ) * mbmj / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbgj / 2 + ( dbld1 - dblx1 ) * mbmj / 1000 ;
+            }
         },
         m5db:function(){
             return m5 * gruqhxs ;
         },
         m6db:function(){
-            return  mbg1 + dbld2 * mbm1 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg1 + dbld2 * mbm1 / 1000 ;
+            }
         },
         m7db:function(){
-            return  mbg2 + dbld3 * mbm2 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg2 + dbld3 * mbm2 / 1000 ;
+            }
         },
         m8db:function(){
-            return  mbg3 + dbld4 * mbm3 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg3 + dbld4 * mbm3 / 1000 ;
+            }
         },
         m9db:function(){
-            return  mbg4 + dbld5 * mbm4 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg4 + dbld5 * mbm4 / 1000 ;
+            }
         },
         m6dbxt:function(){
-            return  mbg1 / 2 + ( dbld2 - dblx2 ) * mbm1 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg1 / 2 + ( dbld2 - dblx2 ) * mbm1 / 1000 ;
+            }
         },
         m7dbxt:function(){
-            return  mbg2 / 2 + ( dbld3 - dblx3 ) * mbm2 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg2 / 2 + ( dbld3 - dblx3 ) * mbm2 / 1000 ;
+            }
         },
         m8dbxt:function(){
-            return  mbg3 / 2 + ( dbld4 - dblx4 ) * mbm3 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg3 / 2 + ( dbld4 - dblx4 ) * mbm3 / 1000 ;
+            }
         },
         m9dbxt:function(){
-            return  mbg4 / 2 + ( dbld5 - dblx5 ) * mbm4 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg4 / 2 + ( dbld5 - dblx5 ) * mbm4 / 1000 ;
+            }
         },
 
         m4jbnd:function(){
-            return mbgj + dbld1 * mbmj / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return mbgj + dbld1 * mbmj / 1000 ;
+            }
         },
         m5dbnd:function(){
             return m5 * gruwzxs ;
@@ -2563,7 +2677,11 @@
                 return lbd - ( ldcgh - lbtzh ) - dblx1 / 2000 ;
         },
         lc4:function(){
-            return ( mbgj * ( dbld1 - dblx1 ) / 2000 + mbmj * ( dbld1 - dblx1 ) * ( dbld1 - dblx1 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m4jbcq ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbgj * ( dbld1 - dblx1 ) / 2000 + mbmj * ( dbld1 - dblx1 ) * ( dbld1 - dblx1 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m4jbcq ;
+            }
         },
         lc5:function(){
             if( m5db == 0 ){
@@ -2573,16 +2691,32 @@
             }
         },
         lc6:function(){
-            return ( mbg1 * ( dbld1 - dblx1 + dbld2 - dblx2 ) / 2000 + mbg1 * ( dbld1 - dblx1 - dblx2 ) / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6db ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg1 * ( dbld1 - dblx1 + dbld2 - dblx2 ) / 2000 + mbg1 * ( dbld1 - dblx1 - dblx2 ) / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6db ;
+            }
         },
         lc7:function(){
-            return ( mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m7db ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld1 - dblx1 + dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m7db ;
+            }
         },
         lc8:function(){
-            return ( mbg3 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 ) / 2000 + mbg3 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 - dblx4 ) / 2000 + mbm3 * dbld4 * ( dbld4 / 2 - dblx4 + dbld3 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m8db ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg3 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 ) / 2000 + mbg3 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 - dblx4 ) / 2000 + mbm3 * dbld4 * ( dbld4 / 2 - dblx4 + dbld3 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m8db ;
+            }
         },
         lc9:function(){
-            return ( mbg4 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 + dbld5 - dblx5 ) / 2000 + mbg4 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 - dblx5 ) / 2000 + mbm4 * dbld5 * ( dbld5 / 2 - dblx5 + dbld4 - dblx4 + dbld3 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m9db ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg4 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 + dbld5 - dblx5 ) / 2000 + mbg4 * ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 - dblx5 ) / 2000 + mbm4 * dbld5 * ( dbld5 / 2 - dblx5 + dbld4 - dblx4 + dbld3 - dblx3 + dbld2 - dblx2 + dbld1 - dblx1 ) / 1000000 ) * Math.cos(dbyj / 180 * Math.PI) / m9db ;
+            }
         },
 
         lslx:function(){
@@ -2601,22 +2735,42 @@
             return lc3 ;
         },
         lx4:function(){
-            return ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            }
         },
         lx5:function(){
             return lc5 ;
         },
         lx6:function(){
-            return ( dbld1 - dblx1 + ( dbld2 - dblx2 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld1 - dblx1 + ( dbld2 - dblx2 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lx7:function(){
-            return ( dbld1 - dblx1 + dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld1 - dblx1 + dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lx8:function(){
-            return ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + ( dbld4 - dblx4 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + ( dbld4 - dblx4 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lx9:function(){
-            return ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld1 - dblx1 + dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
 
         //一臂
@@ -2652,16 +2806,32 @@
                 return lc3 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc6i:function(){
-            return ( mbg1 * ( dbld2 - dblx2 ) / 2000 + mbm1 * ( dbld2 - dblx2 ) * ( dbld2 - dblx2 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6dbxt  ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg1 * ( dbld2 - dblx2 ) / 2000 + mbm1 * ( dbld2 - dblx2 ) * ( dbld2 - dblx2 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m6dbxt ;
+            }
         },
         lc7i:function(){
-            return lc7 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lc7 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lc8i:function(){
-            return lc8 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lc8 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lc9i:function(){
-            return lc9 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lc9 - ( dbld1 - dblx1 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
 
         lslxi:function(){
@@ -2680,16 +2850,32 @@
             return lc3i ;
         },
         lx6i:function(){
-            return ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            }
         },
         lx7i:function(){
-            return ( dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld2 - dblx2 + ( dbld3 - dblx3 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lx8i:function(){
-            return ( dbld2 - dblx2 + dbld3 - dblx3 + ( dbld4 - dblx4 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld2 - dblx2 + dbld3 - dblx3 + ( dbld4 - dblx4 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lx9i:function(){
-            return ( dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld2 - dblx2 + dbld3 - dblx3 + dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
 
         //二臂
@@ -2725,13 +2911,25 @@
                 return lc3i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc7ii:function(){
-            return ( mbg2 * ( dbld3 - dblx3 ) / 2000 + mbm2 * ( dbld3 - dblx3 ) * ( dbld3 - dblx3 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m7dbxt  ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg2 * ( dbld3 - dblx3 ) / 2000 + mbm2 * ( dbld3 - dblx3 ) * ( dbld3 - dblx3 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m7dbxt ;
+            }
         },
         lc8ii:function(){
-            return lc8i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lc8i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lc9ii:function(){
-            return lc9i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lc9i - ( dbld2 - dblx2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
 
         lslxii:function(){
@@ -2750,13 +2948,25 @@
             return lc3ii ;
         },
         lx7ii:function(){
-            return ( dbld3 - dblx3 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld3 - dblx3 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            }
         },
         lx8ii:function(){
-            return ( dbld3 - dblx3 + ( dbld4 - dblx4 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld3 - dblx3 + ( dbld4 - dblx4 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
         lx9ii:function(){
-            return ( dbld3 - dblx3 + dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld3 - dblx3 + dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
 
         //三臂
@@ -2792,10 +3002,18 @@
                 return lc3ii - ( dbld3 - dblx3 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc8iii:function(){
-            return ( mbg3 * ( dbld4 - dblx4 ) / 2000 + mbm3 * ( dbld4 - dblx4 ) * ( dbld4 - dblx4 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m8dbxt  ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg3 * ( dbld4 - dblx4 ) / 2000 + mbm3 * ( dbld4 - dblx4 ) * ( dbld4 - dblx4 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m8dbxt ;
+            }
         },
         lc9iii:function(){
-            return lc9ii - ( dbld3 - dblx3 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lc9ii - ( dbld3 - dblx3 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
 
         lslxiii:function(){
@@ -2814,10 +3032,18 @@
             return lc3iii ;
         },
         lx8iii:function(){
-            return ( dbld4 - dblx4 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld4 - dblx4 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            }
         },
         lx9iii:function(){
-            return ( dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld4 - dblx4 + ( dbld5 - dblx5 ) / 2 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
+            }
         },
 
         //四臂
@@ -2853,7 +3079,11 @@
                 return lc3iii - ( dbld4 - dblx4 ) * Math.cos(dbyj / 180 * Math.PI) / 1000 ;
         },
         lc9iv:function(){
-            return ( mbg4 * ( dbld5 - dblx5 ) / 2000 + mbm4 * ( dbld5 - dblx5 ) * ( dbld5 - dblx5 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m9dbxt  ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg4 * ( dbld5 - dblx5 ) / 2000 + mbm4 * ( dbld5 - dblx5 ) * ( dbld5 - dblx5 ) / 2000000 ) * Math.cos(dbyj / 180 * Math.PI) / m9dbxt ;
+            }
         },
 
         lslxiv:function(){
@@ -2872,7 +3102,11 @@
             return lc3iv ;
         },
         lx9iv:function(){
-            return ( dbld5 - dblx5 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( dbld5 - dblx5 ) * Math.cos(dbyj / 180 * Math.PI) / 2000 ;
+            }
         },
 
     };

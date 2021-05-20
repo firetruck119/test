@@ -271,6 +271,16 @@
                                         <td ><input type="text" name="dbgcshzr"/></td>
                                         <td >N/mm<sup>2</sup></td>
                                     </tr>
+                                    <tr>
+                                        <td><b>项目类或方案类选择</b></td>
+                                        <td colspan="3">
+                                            <select name="xmfaxzModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="项目类计算">项目类计算</option>
+                                                <option value="方案类计算">方案类计算</option>
+                                            </select>
+                                        </td>
+                                    </tr>
                                  </table>
                             </div>
                             <div class='subtable'>
@@ -1303,6 +1313,14 @@
 </script>
 
 <script>
+    xmfaxzModelList={
+        "项目类计算":{
+
+        },
+        "方案类计算":{
+
+        },
+    };
     ffbbModelList={
         "有":{
             mffbb:100,
@@ -1697,19 +1715,39 @@
                 }
             },
         dblx2:function(){
-            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
+            }
         },
         dblx3:function(){
-            return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbd - lbx ) / Math.cos( dbyj / 180 * Math.PI ) + 0.67 ) * 1000 / 4 ;
+            }
         },
         dbld1:function(){
-            return (( lbx - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) - 0.67 + dblx1 / 2000 ) * 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return (( lbx - ldcgh ) / Math.cos( dbyj / 180 * Math.PI ) - 0.67 + dblx1 / 2000 ) * 1000 ;
+            }
         },
         dbld2:function(){
-            return 3 * dblx2 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return 3 * dblx2 ;
+            }
         },
         dbld3:function(){
-            return 3 * dblx3 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return 3 * dblx3 ;
+            }
         },
 
         //第一段搭接处滚轮
@@ -1984,10 +2022,18 @@
                 return 25 ;
         },
         m6db:function(){
-            return  mbg1 + dbld2 * mbm1 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg1 + dbld2 * mbm1 / 1000 ;
+            }
         },
         m7db:function(){
-            return  mbg2 + dbld3 * mbm2 / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return  mbg2 + dbld3 * mbm2 / 1000 ;
+            }
         },
         mlz:function(){
             return tsl + tshl + m1 + m2 + m3 + m6db + m7db ;
@@ -2050,10 +2096,18 @@
                 return ( lbd - ( ldcgh - lbtzh ) ) / Math.cos( dbyj / 180 * Math.PI ) - ( dbld1 - dblx1 / 2 ) / 1000 ;
         },
         lp6gl:function(){
-            return ( mbg1 * ( dbld2 - dblx2 ) / 2000 - mbg1 * dblx2 / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 ) / 1000000 ) / m6db ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg1 * ( dbld2 - dblx2 ) / 2000 - mbg1 * dblx2 / 2000 + mbm1 * dbld2 * ( dbld2 / 2 - dblx2 ) / 1000000 ) / m6db ;
+            }
         },
         lp7gl:function(){
-            return ( mbg2 * ( dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 ) / 1000000 ) / m7db ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return ( mbg2 * ( dbld2 - dblx2 + dbld3 - dblx3 ) / 2000 + mbg2 * ( dbld2 - dblx2 - dblx3 ) / 2000 + mbm2 * dbld3 * ( dbld3 / 2 - dblx3 + dbld2 - dblx2 ) / 1000000 ) / m7db ;
+            }
         },
 
         lslpi:function(){
@@ -2088,7 +2142,11 @@
                 return lp3 - ( dbld2 - dblx2 ) / 1000 ;
         },
         lp7gli:function(){
-            return lp7gl - ( dbld2 - dblx2 ) / 1000 ;
+            if ( xmfaxzModel == '项目类计算' ){
+                return ' ' ;
+            } else if ( xmfaxzModel == '方案类计算' ) {
+                return lp7gl - ( dbld2 - dblx2 ) / 1000 ;
+            }
         },
 
     };

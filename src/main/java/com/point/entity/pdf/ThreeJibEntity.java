@@ -224,6 +224,8 @@ public class ThreeJibEntity {
     private String gruModel;
     private String gruazModel;
 
+    private String xmfaxzModel;
+
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
         map.put("no", CommonFunc.convertDoubleToString(no));
