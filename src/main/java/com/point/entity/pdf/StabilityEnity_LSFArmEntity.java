@@ -1030,6 +1030,16 @@ public class StabilityEnity_LSFArmEntity {
         result.put("mm1p", mm1p);
         result.put("mmh2", mmh2);
 
+        //        稳定性比值
+        Double wdmb1 = mmh1 / mm1 ;
+        Double wdmb2 = mmh2 / mm1p ;
+        Double wdmb3 = mm2 / mm1 ;
+        Double wdmb4 = mkhl / mm1p ;
+        result.put("wdmb1", wdmb1);
+        result.put("wdmb2", wdmb2);
+        result.put("wdmb3", wdmb3);
+        result.put("wdmb4", wdmb4);
+
         //0°工作状态自重及载荷产生的倾覆力矩
         Double mslqg = tsl * lslqg * 10 * 1.25 ;
         Double mshlqg = tshl * lshlqg * 10 * 1.25 ;
@@ -1907,6 +1917,10 @@ public class StabilityEnity_LSFArmEntity {
         result.put("bt4k", map.get("bt4k"));
         result.put("ah4k", map.get("ah4k"));
         result.put("bh4k", map.get("bh4k"));
+        result.put("wdmb1", map.get("wdmb1"));
+        result.put("wdmb2", map.get("wdmb2"));
+        result.put("wdmb3", map.get("wdmb3"));
+        result.put("wdmb4", map.get("wdmb4"));
         return result;
     }
 

@@ -3039,10 +3039,10 @@
                             <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                         </div>
                         <div class="navbox">
-                            <div style="width:500px;height:520px; font-size: 14px   ;">
+                            <div style="width:1000px;height:520px; font-size: 14px   ;">
                                 <table class="tb" id="pdf3tb" style="background-color: rgb(220,220,220)">
                                     <tr>
-                                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);">核算结果</td>
+                                        <td colspan="9" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);">核算结果</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td rowspan="2">
@@ -3055,6 +3055,10 @@
                                         </td>
                                         <td colspan="3">工作状态kN</td>
                                         <td>非工作状态kN</td>
+                                        <td width="1%" th:rowspan="11"></td>
+                                        <td th:rowspan="2">名称</td>
+                                        <td th:rowspan="2">计算值</td>
+                                        <td th:rowspan="2">标准值</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td style="padding:0;">
@@ -3079,11 +3083,14 @@
                                         </td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
-                                        <td width="15%">A<sub>v</sub></td>
-                                        <td width="21%" id="av1k"></td>
-                                        <td width="21%" id="av2k"></td>
-                                        <td width="21%" id="av3k"></td>
-                                        <td width="21%" id="av4k"></td>
+                                        <td width="8%">A<sub>v</sub></td>
+                                        <td width="11%" id="av1k"></td>
+                                        <td width="11%" id="av2k"></td>
+                                        <td width="11%" id="av3k"></td>
+                                        <td width="11%" id="av4k"></td>
+                                        <td width="18%">工作状态总抗倾覆力矩/倾覆力矩比值</td>
+                                        <td width="16%" id="wdmb1"></td>
+                                        <td width="13%">1</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>B<sub>v</sub></td>
@@ -3091,6 +3098,9 @@
                                         <td id="bv2k"></td>
                                         <td id="bv3k"></td>
                                         <td id="bv4k"></td>
+                                        <td>非工作状态总抗倾覆力矩/倾覆力矩比值</td>
+                                        <td id="wdmb2"></td>
+                                        <td>1</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>C<sub>v</sub></td>
@@ -3098,6 +3108,9 @@
                                         <td id="cv2k"></td>
                                         <td id="cv3k"></td>
                                         <td id="cv4k"></td>
+                                        <td>工作状态自重抗倾覆力矩/倾覆力矩比值</td>
+                                        <td id="wdmb3"></td>
+                                        <td>1</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>D<sub>v</sub></td>
@@ -3105,6 +3118,9 @@
                                         <td id="dv2k"></td>
                                         <td id="dv3k"></td>
                                         <td id="dv4k"></td>
+                                        <td>非工作状态自重抗倾覆力矩/倾覆力矩比值</td>
+                                        <td id="wdmb4"></td>
+                                        <td>1</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>A<sub>h</sub></td>
@@ -3112,6 +3128,8 @@
                                         <td id="ah2k"></td>
                                         <td id="ah3k"></td>
                                         <td id="ah4k"></td>
+                                        <td colspan="2">工作状态稳定性校核</td>
+                                        <td id="wdlym1"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>A<sub>t</sub></td>
@@ -3119,6 +3137,8 @@
                                         <td id="at2k"></td>
                                         <td id="at3k"></td>
                                         <td id="at4k">0</td>
+                                        <td colspan="2">非工作状态稳定性校核</td>
+                                        <td id="wdlym2"></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td>B<sub>h</sub></td>
@@ -3134,14 +3154,12 @@
                                         <td id="bt3k"></td>
                                         <td id="bt4k">0</td>
                                     </tr>
-                                    <tr style="background-color: rgb(220,220,220)">
-                                        <td colspan="3">工作状态稳定性校核</td>
-                                        <td colspan="2" id="wdlym1"></td>
-                                    </tr>
-                                    <tr style="background-color: rgb(220,220,220)">
-                                        <td colspan="3">非工作状态稳定性校核</td>
-                                        <td colspan="2" id="wdlym2"></td>
-                                    </tr>
+                                    <!--<tr style="background-color: rgb(220,220,220)">-->
+                                        <!---->
+                                    <!--</tr>-->
+                                    <!--<tr style="background-color: rgb(220,220,220)">-->
+                                       <!---->
+                                    <!--</tr>-->
                                 </table>
                             </div>
                         </div>

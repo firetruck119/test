@@ -1004,6 +1004,16 @@ public class ShzFarmStabilityEntity {
         map.put("mm1p", mm1p);
         map.put("mmh2", mmh2);
 
+        //        稳定性比值
+        Double wdmb1 = mmh1 / mm1 ;
+        Double wdmb2 = mmh2 / mm1p ;
+        Double wdmb3 = mm2 / mm1 ;
+        Double wdmb4 = mkhl / mm1p ;
+        map.put("wdmb1", wdmb1);
+        map.put("wdmb2", wdmb2);
+        map.put("wdmb3", wdmb3);
+        map.put("wdmb4", wdmb4);
+
         //0°工作状态自重及载荷产生的倾覆力矩
         Double mslqg = tsl * lslqg * 10 * 1.25 ;
         Double mshlqg = tshl * lshlqg * 10 * 1.25 ;
