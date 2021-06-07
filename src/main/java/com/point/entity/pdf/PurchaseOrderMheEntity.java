@@ -96,6 +96,19 @@ public class PurchaseOrderMheEntity {
     private String cgssjgdjsl;
     private String cgssjgdjpp;
     private String cgssjgdjbz;
+    private String cgssjgdjxh1;
+    private String cgssjgdjfl1;
+    private String cgssjgdjsb1;
+    private String cgssjgdjsd1;
+    private String cgssjgdjgl1;
+    private String cgssjgdjdl1;
+    private String cgssjgdjdy1;
+    private String cgssjgdjjydj1;
+    private String cgssjgdjaz1;
+    private String cgssjgdjsl1;
+    private String cgssjgdjpp1;
+    private String cgssjgdjbz1;
+
 
     //    仰臂电机
     private String cgybmc;
@@ -427,6 +440,18 @@ public class PurchaseOrderMheEntity {
         map.put("cgssjgdjsl", CommonFunc.convertDoubleToString(cgssjgdjsl));
         map.put("cgssjgdjpp", CommonFunc.convertDoubleToString(cgssjgdjpp));
         map.put("cgssjgdjbz", CommonFunc.convertDoubleToString(cgssjgdjbz));
+        map.put("cgssjgdjxh1", CommonFunc.convertDoubleToString(cgssjgdjxh1));
+        map.put("cgssjgdjfl1", CommonFunc.convertDoubleToString(cgssjgdjfl1));
+        map.put("cgssjgdjsb1", CommonFunc.convertDoubleToString(cgssjgdjsb1));
+        map.put("cgssjgdjsd1", CommonFunc.convertDoubleToString(cgssjgdjsd1));
+        map.put("cgssjgdjgl1", CommonFunc.convertDoubleToString(cgssjgdjgl1));
+        map.put("cgssjgdjdl1", CommonFunc.convertDoubleToString(cgssjgdjdl1));
+        map.put("cgssjgdjdy1", CommonFunc.convertDoubleToString(cgssjgdjdy1));
+        map.put("cgssjgdjjydj1", CommonFunc.convertDoubleToString(cgssjgdjjydj1));
+        map.put("cgssjgdjaz1", CommonFunc.convertDoubleToString(cgssjgdjaz1));
+        map.put("cgssjgdjsl1", CommonFunc.convertDoubleToString(cgssjgdjsl1));
+        map.put("cgssjgdjpp1", CommonFunc.convertDoubleToString(cgssjgdjpp1));
+        map.put("cgssjgdjbz1", CommonFunc.convertDoubleToString(cgssjgdjbz1));
 
 //        仰臂电机
         map.put("cgybmc", CommonFunc.convertDoubleToString(cgybmc));
