@@ -1007,11 +1007,175 @@ public class ShzFarmStabilityEntity {
         //        稳定性比值
         Double wdmb1 = mmh1 / mm1 ;
         Double wdmb2 = mmh2 / mm1p ;
-        Double wdmb3 = mm2 / mm1 ;
-        Double wdmb4 = mkhl / mm1p ;
         map.put("wdmb1", wdmb1);
         map.put("wdmb2", wdmb2);
+
+//        工作状态自重抗倾覆力矩/倾覆力矩
+        Double mslbq = tsl * lslqg * 10 ;
+        Double mshlbq = tshl * lshlqg * 10 ;
+        Double mbq1 = m1 * lqg1 * 10 ;
+        Double mbq2 = m2 * lqg2 * 10 ;
+        Double mbq3 = m3 * lqg3 * 10 ;
+        Double mbq4;
+        if ( lqg4 >= 0 ) {
+            mbq4 = m4 * lqg4 * 10 ;
+        } else {
+            mbq4 = 0.0 ;
+        }
+        Double mbq5;
+        if ( lqg5 >= 0 ) {
+            mbq5 = m5 * lqg5 * 10 ;
+        } else {
+            mbq5 = 0.0 ;
+        }
+        Double mbq6 = m6 * lqg6 * 10 ;
+        Double mbq7 = m7 * lqg7 * 10 ;
+        Double mbq8 = m8 * lqg8 * 10 ;
+        Double mbq20 = m20 * lqg20 * 10 ;
+        map.put("mslbq", mslbq);
+        map.put("mshlbq", mshlbq);
+        map.put("mbq1", mbq1);
+        map.put("mbq2", mbq2);
+        map.put("mbq3", mbq3);
+        map.put("mbq4", mbq4);
+        map.put("mbq5", mbq5);
+        map.put("mbq6", mbq6);
+        map.put("mbq7", mbq7);
+        map.put("mbq8", mbq8);
+        map.put("mbq20", mbq20);
+
+        Double mbk4;
+        if ( lqg4 < 0 ) {
+            mbk4 = m4 * lqg4 * -10 ;
+        } else {
+            mbk4 = 0.0 ;
+        }
+        Double mbk5;
+        if ( lqg5 < 0 ) {
+            mbk5 = m5 * lqg5 * -10 ;
+        } else {
+            mbk5 = 0.0 ;
+        }
+        Double mbk9 = m9 * lqg9 * 10 ;
+        Double mbk10 = m10 * lqg10 * 10 ;
+        Double mbk11 = m11 * lqg11 * 10 ;
+        Double mbk12 = m12 * lqg12 * 10 ;
+        Double mbk13 = m13 * lqg13 * 10 ;
+        Double mbk14 = m14 * lqg14 * 10 ;
+        Double mbk15 = m15 * lqg15 * 10 ;
+        Double mbk16 = m16 * lqg16 * 10 ;
+        Double mbk17 = m17 * lqg17 * 10 ;
+        Double mbk18 = m18 * lqg18 * 10 ;
+        Double mbk19 = m19 * lqg19 * 10 ;
+        Double mbk21 = m21 * lqg21 * 10 ;
+        map.put("mbk4", mbk4);
+        map.put("mbk5", mbk5);
+        map.put("mbk9", mbk9);
+        map.put("mbk10", mbk10);
+        map.put("mbk11", mbk11);
+        map.put("mbk12", mbk12);
+        map.put("mbk13", mbk13);
+        map.put("mbk14", mbk14);
+        map.put("mbk15", mbk15);
+        map.put("mbk16", mbk16);
+        map.put("mbk17", mbk17);
+        map.put("mbk18", mbk18);
+        map.put("mbk19", mbk19);
+        map.put("mbk21", mbk21);
+
+        Double mbq = mslbq + mshlbq + mbq1 + mbq2 + mbq3 + mbq4 + mbq5 + mbq6 + mbq7 + mbq8 + mbq20 ;
+        Double mbk= mbk4 + mbk5 + mbk9 + mbk10 + mbk11 + mbk12 + mbk13 + mbk14 + mbk15 + mbk16 + mbk17 + mbk18 + mbk19 + mbk21 ;
+        Double wdmb3 = mbk / mbq ;
+        map.put("mbq", mbq);
+        map.put("mbk", mbk);
         map.put("wdmb3", wdmb3);
+
+        //        非工作状态自重抗倾覆力矩/倾覆力矩
+        Double mfbk1 = m1 * lhl1 * 10 ;
+        Double mfbk2 = m2 * lhl2 * 10 ;
+        Double mfbk3 = m3 * lhl3 * 10 ;
+        Double mfbk4;
+        if ( lhl4 >= 0 ) {
+            mfbk4 = m4 * lhl4 * 10 ;
+        } else {
+            mfbk4 = 0.0 ;
+        }
+        Double mfbk5;
+        if ( lhl5 >= 0 ) {
+            mfbk5 = m5f * lhl5 * 10 ;
+        } else {
+            mfbk5 = 0.0 ;
+        }
+        Double mfbk6 = m6 * lhl6 * 10 ;
+        Double mfbk7 = m7 * lhl7 * 10 ;
+        Double mfbk8 = m8 * lhl8 * 10 ;
+        Double mfbk9 = m9 * lhl9 * 10 ;
+        Double mfbk12 = m12 * lhl12 * 10 ;
+        Double mfbk13;
+        if ( lhl13 >= 0 ) {
+            mfbk13 = m13f * lhl13 * 10 ;
+        } else {
+            mfbk13 = 0.0 ;
+        }
+        Double mfbk14 = m14 * lhl14 * 10 ;
+        Double mfbk15 = m15 * lhl15 * 10 ;
+        Double mfbk16 = m16 * lhl16 * 10 ;
+        Double mfbk17 = m17 * lhl17 * 10 ;
+        Double mfbk18 = m18 * lhl18 * 10 ;
+        Double mfbk19 = m19 * lhl19 * 10 ;
+        Double mfbk20 = m20 * lhl20 * 10 ;
+        map.put("mfbk1", mfbk1);
+        map.put("mfbk2", mfbk2);
+        map.put("mfbk3", mfbk3);
+        map.put("mfbk4", mfbk4);
+        map.put("mfbk5", mfbk5);
+        map.put("mfbk6", mfbk6);
+        map.put("mfbk7", mfbk7);
+        map.put("mfbk8", mfbk8);
+        map.put("mfbk9", mfbk9);
+        map.put("mfbk12", mfbk12);
+        map.put("mfbk13", mfbk13);
+        map.put("mfbk14", mfbk14);
+        map.put("mfbk15", mfbk15);
+        map.put("mfbk16", mfbk16);
+        map.put("mfbk17", mfbk17);
+        map.put("mfbk18", mfbk18);
+        map.put("mfbk19", mfbk19);
+        map.put("mfbk20", mfbk20);
+
+        Double mfbq4;
+        if ( lhl4 < 0 ) {
+            mfbq4 = m4 * lhl4 * -10 ;
+        } else {
+            mfbq4 = 0.0 ;
+        }
+        Double mfbq5;
+        if ( lhl5 < 0 ) {
+            mfbq5 = m5f * lhl5 * -10 ;
+        } else {
+            mfbq5 = 0.0 ;
+        }
+        Double mfbq10 = m10 * lhl10 * 10 ;
+        Double mfbq11 = m11 * lhl11 * 10 ;
+        Double mfbq13;
+        if ( lhl13 < 0 ) {
+            mfbq13 = m13f * lhl13 * -10 ;
+        } else {
+            mfbq13 = 0.0 ;
+        }
+        Double mfbq21 = m21 * lhl21 * 10 ;
+        map.put("mfbq4", mfbq4);
+        map.put("mfbq5", mfbq5);
+        map.put("mfbq10", mfbq10);
+        map.put("mfbq11", mfbq11);
+        map.put("mfbq13", mfbq13);
+        map.put("mfbq21", mfbq21);
+
+        Double mfbk= mfbk1 + mfbk2 + mfbk3 + mfbk4 + mfbk5 + mfbk6 + mfbk7 + mfbk8 + mfbk9 + mfbk12 + mfbk13 + mfbk14 + mfbk15 + mfbk16 + mfbk17 + mfbk18 + mfbk19 + mfbk20 ;
+        Double mfbq = mfbq4 + mfbq5 + mfbq10 + mfbq11 + mfbq13 + mfbq21 ;
+        Double wdmb4 = mfbk / mfbq ;
+        map.put("mfbq", mfbq);
+        map.put("mfbk", mfbk);
         map.put("wdmb4", wdmb4);
 
         //0°工作状态自重及载荷产生的倾覆力矩

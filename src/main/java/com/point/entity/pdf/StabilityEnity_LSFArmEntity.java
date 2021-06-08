@@ -1033,11 +1033,211 @@ public class StabilityEnity_LSFArmEntity {
         //        稳定性比值
         Double wdmb1 = mmh1 / mm1 ;
         Double wdmb2 = mmh2 / mm1p ;
-        Double wdmb3 = mm2 / mm1 ;
-        Double wdmb4 = mkhl / mm1p ;
         result.put("wdmb1", wdmb1);
         result.put("wdmb2", wdmb2);
+
+//        工作状态自重抗倾覆力矩/倾覆力矩
+        Double mslbq = tsl * lslqg * 10 ;
+        Double mshlbq = tshl * lshlqg * 10 ;
+        Double mbq1 = m1 * lqg1 * 10 ;
+        Double mbq2 = m2 * lqg2 * 10 ;
+        Double mbq3 = m3 * lqg3 * 10 ;
+        Double mbq4;
+        if ( lqg4 >= 0 ) {
+            mbq4 = m4 * lqg4 * 10 ;
+        } else {
+            mbq4 = 0.0 ;
+        }
+        Double mbq5;
+        if ( lqg5 >= 0 ) {
+            mbq5 = m5 * lqg5 * 10 ;
+        } else {
+            mbq5 = 0.0 ;
+        }
+        Double mbq6 = m6 * lqg6 * 10 ;
+        Double mbq7;
+        if ( lqg7 >= 0 ) {
+            mbq7 = m7 * lqg7 * 10 ;
+        } else {
+            mbq7 = 0.0 ;
+        }
+        Double mbq8;
+        if ( lqg8 >= 0 ) {
+            mbq8 = m8 * lqg8 * 10 ;
+        } else {
+            mbq8 = 0.0 ;
+        }
+        Double mbq20 = m20 * lqg20 * 10 ;
+        result.put("mslbq", mslbq);
+        result.put("mshlbq", mshlbq);
+        result.put("mbq1", mbq1);
+        result.put("mbq2", mbq2);
+        result.put("mbq3", mbq3);
+        result.put("mbq4", mbq4);
+        result.put("mbq5", mbq5);
+        result.put("mbq6", mbq6);
+        result.put("mbq7", mbq7);
+        result.put("mbq8", mbq8);
+        result.put("mbq20", mbq20);
+
+        Double mbk4;
+        if ( lqg4 < 0 ) {
+            mbk4 = m4 * lqg4 * -10 ;
+        } else {
+            mbk4 = 0.0 ;
+        }
+        Double mbk5;
+        if ( lqg5 < 0 ) {
+            mbk5 = m5 * lqg5 * -10 ;
+        } else {
+            mbk5 = 0.0 ;
+        }
+        Double mbk7;
+        if ( lqg7 < 0 ) {
+            mbk7 = m7 * lqg7 * -10 ;
+        } else {
+            mbk7 = 0.0 ;
+        }
+        Double mbk8;
+        if ( lqg8 < 0 ) {
+            mbk8 = m8 * lqg8 * -10 ;
+        } else {
+            mbk8 = 0.0 ;
+        }
+        Double mbk9 = m9 * lqg9 * 10 ;
+        Double mbk10 = m10 * lqg10 * 10 ;
+        Double mbk11 = m11 * lqg11 * 10 ;
+        Double mbk12 = m12 * lqg12 * 10 ;
+        Double mbk13 = m13 * lqg13 * 10 ;
+        Double mbk14 = m14 * lqg14 * 10 ;
+        Double mbk15 = m15 * lqg15 * 10 ;
+        Double mbk16 = m16 * lqg16 * 10 ;
+        Double mbk17 = m17 * lqg17 * 10 ;
+        Double mbk18 = m18 * lqg18 * 10 ;
+        Double mbk19 = m19 * lqg19 * 10 ;
+        Double mbk21 = m21 * lqg21 * 10 ;
+        result.put("mbk4", mbk4);
+        result.put("mbk5", mbk5);
+        result.put("mbk7", mbk7);
+        result.put("mbk8", mbk8);
+        result.put("mbk9", mbk9);
+        result.put("mbk10", mbk10);
+        result.put("mbk11", mbk11);
+        result.put("mbk12", mbk12);
+        result.put("mbk13", mbk13);
+        result.put("mbk14", mbk14);
+        result.put("mbk15", mbk15);
+        result.put("mbk16", mbk16);
+        result.put("mbk17", mbk17);
+        result.put("mbk18", mbk18);
+        result.put("mbk19", mbk19);
+        result.put("mbk21", mbk21);
+
+        Double mbq = mslbq + mshlbq + mbq1 + mbq2 + mbq3 + mbq4 + mbq5 + mbq6 + mbq7 + mbq8 + mbq20 ;
+        Double mbk= mbk4 + mbk5 + mbk7 + mbk8 + mbk9 + mbk10 + mbk11 + mbk12 + mbk13 + mbk14 + mbk15 + mbk16 + mbk17 + mbk18 + mbk19 + mbk21 ;
+        Double wdmb3 = mbk / mbq ;
+        result.put("mbq", mbq);
+        result.put("mbk", mbk);
         result.put("wdmb3", wdmb3);
+
+        //        非工作状态自重抗倾覆力矩/倾覆力矩
+        Double mfbk1 = m1 * lhl1 * 10 ;
+        Double mfbk2 = m2 * lhl2 * 10 ;
+        Double mfbk3 = m3 * lhl3 * 10 ;
+        Double mfbk4;
+        if ( lhl4 >= 0 ) {
+            mfbk4 = m4 * lhl4 * 10 ;
+        } else {
+            mfbk4 = 0.0 ;
+        }
+        Double mfbk5;
+        if ( lhl5 >= 0 ) {
+            mfbk5 = m5f * lhl5 * 10 ;
+        } else {
+            mfbk5 = 0.0 ;
+        }
+        Double mfbk6 = m6 * lhl6 * 10 ;
+        Double mfbk7 = m7 * lhl7 * 10 ;
+        Double mfbk8;
+        if ( lhl8 >= 0 ) {
+            mfbk8 = m8 * lhl8 * 10 ;
+        } else {
+            mfbk8 = 0.0 ;
+        }
+        Double mfbk9 = m9 * lhl9 * 10 ;
+        Double mfbk12 = m12 * lhl12 * 10 ;
+        Double mfbk13;
+        if ( lhl13 >= 0 ) {
+            mfbk13 = m13f * lhl13 * 10 ;
+        } else {
+            mfbk13 = 0.0 ;
+        }
+        Double mfbk14 = m14 * lhl14 * 10 ;
+        Double mfbk15 = m15 * lhl15 * 10 ;
+        Double mfbk16 = m16 * lhl16 * 10 ;
+        Double mfbk17 = m17 * lhl17 * 10 ;
+        Double mfbk18 = m18 * lhl18 * 10 ;
+        Double mfbk19 = m19 * lhl19 * 10 ;
+        Double mfbk20 = m20 * lhl20 * 10 ;
+        result.put("mfbk1", mfbk1);
+        result.put("mfbk2", mfbk2);
+        result.put("mfbk3", mfbk3);
+        result.put("mfbk4", mfbk4);
+        result.put("mfbk5", mfbk5);
+        result.put("mfbk6", mfbk6);
+        result.put("mfbk7", mfbk7);
+        result.put("mfbk8", mfbk8);
+        result.put("mfbk9", mfbk9);
+        result.put("mfbk12", mfbk12);
+        result.put("mfbk13", mfbk13);
+        result.put("mfbk14", mfbk14);
+        result.put("mfbk15", mfbk15);
+        result.put("mfbk16", mfbk16);
+        result.put("mfbk17", mfbk17);
+        result.put("mfbk18", mfbk18);
+        result.put("mfbk19", mfbk19);
+        result.put("mfbk20", mfbk20);
+
+        Double mfbq4;
+        if ( lhl4 < 0 ) {
+            mfbq4 = m4 * lhl4 * -10 ;
+        } else {
+            mfbq4 = 0.0 ;
+        }
+        Double mfbq5;
+        if ( lhl5 < 0 ) {
+            mfbq5 = m5f * lhl5 * -10 ;
+        } else {
+            mfbq5 = 0.0 ;
+        }
+        Double mfbq8;
+        if ( lhl8 < 0 ) {
+            mfbq8 = m8 * lhl8 * -10 ;
+        } else {
+            mfbq8 = 0.0 ;
+        }
+        Double mfbq10 = m10 * lhl10 * 10 ;
+        Double mfbq11 = m11 * lhl11 * 10 ;
+        Double mfbq13;
+        if ( lhl13 < 0 ) {
+            mfbq13 = m13f * lhl13 * -10 ;
+        } else {
+            mfbq13 = 0.0 ;
+        }
+        Double mfbq21 = m21 * lhl21 * 10 ;
+        result.put("mfbq4", mfbq4);
+        result.put("mfbq5", mfbq5);
+        result.put("mfbq8", mfbq8);
+        result.put("mfbq10", mfbq10);
+        result.put("mfbq11", mfbq11);
+        result.put("mfbq13", mfbq13);
+        result.put("mfbq21", mfbq21);
+
+        Double mfbk= mfbk1 + mfbk2 + mfbk3 + mfbk4 + mfbk5 + mfbk6 + mfbk7 + mfbk8 + mfbk9 + mfbk12 + mfbk13 + mfbk14 + mfbk15 + mfbk16 + mfbk17 + mfbk18 + mfbk19 + mfbk20 ;
+        Double mfbq = mfbq4 + mfbq5 + mfbq8 + mfbq10 + mfbq11 + mfbq13 + mfbq21 ;
+        Double wdmb4 = mfbk / mfbq ;
+        result.put("mfbq", mfbq);
+        result.put("mfbk", mfbk);
         result.put("wdmb4", wdmb4);
 
         //0°工作状态自重及载荷产生的倾覆力矩

@@ -90,7 +90,7 @@ public class CounterweightsController {
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/"+name));
         if (null != check && check) {
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/配重计算书"));
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无图版配重计算书"));
+//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/无图版配重计算书"));
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/配重计算书验证部分"));
             return tool.getResponseEntity("配重计算书验证部分", pdf.MergePDF(list));
         }
