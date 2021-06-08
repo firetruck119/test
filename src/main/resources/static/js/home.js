@@ -24,15 +24,15 @@ asideDatas = {
                     url: "pdf",
                     children: [
                         {
-                            title: '下回转固定臂',
+                            title: '下回转-固定臂',
                             url: "Stability_LSFArm",
                         },
                         {
-                            title: '下回转伸缩臂',
+                            title: '下回转-伸缩臂',
                             url: "Stability_LTTArm",
                         },
                         {
-                            title: '上回转固定臂',
+                            title: '上回转-固定臂',
                             url: "ShzFarmStability",
                         },
                         {
