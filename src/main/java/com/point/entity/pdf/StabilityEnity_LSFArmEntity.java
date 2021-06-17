@@ -1012,7 +1012,7 @@ public class StabilityEnity_LSFArmEntity {
         Double mm1 = mq + mtxw ;
         Double mmx3 = nwd1 * nwd2 * flsjl * lg ;
         Double mmg3 = fdjlszfb * lg ;
-        Double mm3 = wdlyp3 == "有" ? Math.min(mmx3, mmg3) : mmg3 ;
+        Double mm3 = wdlyp3.equals("有") ? Math.min(mmx3, mmg3) : mmg3 ;
         Double mmh1 = mm2 + mm3 ;
         Double mm1p = mqhl + mftxw ;
         Double mmh2 = mkhl + mm3 ;

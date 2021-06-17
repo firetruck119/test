@@ -807,6 +807,7 @@ public class StabilityEnity_LTTArmEntity {
         result.put("wddzxs5", CommonFunc.convertDoubleToString(wddzxs5));
         result.put("wddzxs7", CommonFunc.convertDoubleToString(wddzxs7));
 
+        result.put("wdlyp3", CommonFunc.convertDoubleToString(wdlyp3));
         String wdlyp3y=wdlyp3.equals("有")?"has":"hasn't";
         result.put("wdlyp3y",CommonFunc.convertDoubleToString(wdlyp3y));
         return result;
@@ -1012,7 +1013,7 @@ public class StabilityEnity_LTTArmEntity {
         Double mm1 = mq + mtxw ;
         Double mmx3 = nwd1 * nwd2 * flsjl * lg ;
         Double mmg3 = fdjlszfb * lg ;
-        Double mm3 = wdlyp3 == "有" ? Math.min(mmx3, mmg3) : mmg3 ;
+        Double mm3 = wdlyp3.equals("有") ? Math.min( mmx3, mmg3 ) : mmg3 ;
         Double mmh1 = mm2 + mm3 ;
         Double mm1p = mqhl + mftxw ;
         Double mmh2 = mkhl + mm3 ;
