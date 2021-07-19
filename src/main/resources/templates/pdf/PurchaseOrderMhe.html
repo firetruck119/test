@@ -268,7 +268,9 @@
                                                 <option value="YJBT2800D(2.8米羊角臂头-低臂头)">YJBT2800D(2.8米羊角臂头-低臂头)</option>
                                                 <option value="HDBT2300(2.3米蝴蝶臂头)">HDBT2300(2.3米蝴蝶臂头)</option>
                                                 <option value="DJBT1800(1.8米单角臂头)">DJBT1800(1.8米单角臂头)</option>
+                                                <option value="TBT1800(1.8米T形臂头)">TBT1800(1.8米T形臂头)</option>
                                                 <option value="TBT2300(2.3米T形臂头)">TBT2300(2.3米T形臂头)</option>
+                                                <option value="TBT2800(2.8米T形臂头)">TBT2800(2.8米T形臂头)</option>
                                                 <!--<option value="涡轮蜗杆臂头">涡轮蜗杆臂头</option>-->
                                                 <option value="无">无</option>
                                             </select>
@@ -401,7 +403,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td style="width:6%;">7</td>
+                                        <td th:rowspan="2" style="width:6%;">7</td>
                                         <td style="width:34%;">GRU型号选择</td>
                                         <td style="width:60%;">
                                             <select name="gruModel" style="width:100%;height:40px;text-align-last:center">
@@ -411,6 +413,16 @@
                                                 <option value="GRU313">GRU313</option>
                                                 <option value="GRU295A">GRU295A</option>
                                                 <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:34%;">GRU安装位置选择</td>
+                                        <td style="width:60%;">
+                                            <select name="cggruazwzModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="吊臂">吊臂</option>
+                                                <option value="立柱">立柱</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -1150,7 +1162,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1172,7 +1184,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1194,7 +1206,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1216,7 +1228,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1238,7 +1250,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1260,7 +1272,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1282,7 +1294,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1304,7 +1316,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1326,7 +1338,7 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'标准羊角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
@@ -1348,7 +1360,7 @@
             cgbtdjaz:'M4(180/2)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动',
+            cgbtdjbz:'/',
             cgbthzzcmc:'蝴蝶臂头',
             cgbthzzcxh:'QWD500.20',
             cgbthzzcms:'5',
@@ -1370,12 +1382,34 @@
             cgbtdjaz:'M2(180/X)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'单角臂头',
             cgbthzzcxh:'QND400.20',
             cgbthzzcms:'4',
             cgbthzzccs:'73',
             cgbthzzcaz:'内上螺纹外通孔',
+            cgbthzzcsl:'1',
+            cgbthzzcbz:'/',
+        },
+        "TBT1800(1.8米T形臂头)":{
+            cgbtmc:'T形臂头',
+            cgbtdjxh:'RF37R17DRN63M4/BE03/OS2',
+            cgbtdjfl:'Φ160',
+            cgbtdjsb:'179',
+            cgbtdjsd:'7.4',
+            cgbtdjgl:'0.18',
+            cgbtdjdl:'0.58',
+            // cgbtdjdy:'220/380 50',
+            cgbtdjjydj:'F IP55',
+            cgbtdjaz:'M4(0/1)',
+            cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
+            cgbtdjbz:'制动扭矩3.4NM',
+            cgbthzzcmc:'T形臂头',
+            cgbthzzcxh:'QWB400.20',
+            cgbthzzcms:'4',
+            cgbthzzccs:'127',
+            cgbthzzcaz:'内外螺纹',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
         },
@@ -1392,7 +1426,29 @@
             cgbtdjaz:'M4(0/1)',
             cgbtdjsl:'1',
             cgbtdjpp:'SEW',
-            cgbtdjbz:'快制动/制动扭矩3.4NM',
+            cgbtdjbz:'制动扭矩3.4NM',
+            cgbthzzcmc:'T形臂头',
+            cgbthzzcxh:'QWB400.20',
+            cgbthzzcms:'4',
+            cgbthzzccs:'127',
+            cgbthzzcaz:'内外螺纹',
+            cgbthzzcsl:'1',
+            cgbthzzcbz:'/',
+        },
+        "TBT2800(2.8米T形臂头)":{
+            cgbtmc:'T形臂头',
+            cgbtdjxh:'RF37R17DRN63M4/BE03/OS2',
+            cgbtdjfl:'Φ160',
+            cgbtdjsb:'179',
+            cgbtdjsd:'7.4',
+            cgbtdjgl:'0.18',
+            cgbtdjdl:'0.58',
+            // cgbtdjdy:'220/380 50',
+            cgbtdjjydj:'F IP55',
+            cgbtdjaz:'M4(0/1)',
+            cgbtdjsl:'1',
+            cgbtdjpp:'SEW',
+            cgbtdjbz:'制动扭矩3.4NM',
             cgbthzzcmc:'T形臂头',
             cgbthzzcxh:'QWB400.20',
             cgbthzzcms:'4',
@@ -2455,10 +2511,10 @@
             cggrudjdl:'3.7',
             // cggrudjdy:'220/380 50',
             cggrudjjydj:'IP55',
-            cggrudjaz:'M3(270°/1)',
+            // cggrudjaz:'M3(270°/1)',
             cggrudjsl:'1',
             cggrudjpp:'SEW',
-            cggrudjbz:'快制动',
+            // cggrudjbz:'快制动',
         },
         "GRU295":{
             cggrumc:'GRU295',
@@ -2470,10 +2526,10 @@
             cggrudjdl:'5.8',
             // cggrudjdy:'220/380 50',
             cggrudjjydj:'F IP55',
-            cggrudjaz:'M3(270°/1)',
+            // cggrudjaz:'M3(270°/1)',
             cggrudjsl:'1',
             cggrudjpp:'SEW',
-            cggrudjbz:'快制动',
+            // cggrudjbz:'快制动',
         },
         "GRU313":{
             cggrumc:'GRU313',
@@ -2485,10 +2541,10 @@
             cggrudjdl:'9.4',
             // cggrudjdy:'220/380 50',
             cggrudjjydj:'F IP55',
-            cggrudjaz:'M3(270°/1)',
+            // cggrudjaz:'M3(270°/1)',
             cggrudjsl:'1',
             cggrudjpp:'SEW',
-            cggrudjbz:'快制动',
+            // cggrudjbz:'快制动',
         },
         "GRU295A":{
             cggrumc:'GRU295A',
@@ -2500,10 +2556,10 @@
             cggrudjdl:'7.4',
             // cggrudjdy:'220/380 50',
             cggrudjjydj:'F IP55',
-            cggrudjaz:'M3(270°/1)',
+            // cggrudjaz:'M3(270°/1)',
             cggrudjsl:'1',
             cggrudjpp:'SEW',
-            cggrudjbz:'快制动',
+            // cggrudjbz:'快制动',
         },
         "无":{
             cggrumc:'无',
@@ -2515,10 +2571,20 @@
             cggrudjdl:'/',
             // cggrudjdy:'/',
             cggrudjjydj:'/',
-            cggrudjaz:'/',
+            // cggrudjaz:'/',
             cggrudjsl:'/',
             cggrudjpp:'/',
-            cggrudjbz:'/',
+            // cggrudjbz:'/',
+        },
+    };
+
+    //GRU安装位置
+    cggruazwzModelList={
+        "吊臂":{
+
+        },
+        "立柱":{
+
         },
     };
 
@@ -3500,6 +3566,19 @@
             }
         },
 
+        //GRU电机下拉框逻辑
+        cggruazwzModel: function () {
+            if ( gruModel == '无' ) {
+                $('[name=cggruazwzModel]').prop('disabled', true);
+                data.datalist['cggruazwzModel'].color = 'rgb(227, 227, 227)';
+                return cggruazwzModel;
+            } else {
+                $('[name=cggruazwzModel]').prop('disabled', false)
+                data.datalist['cggruazwzModel'].color = 'white';
+                return ' ';
+            }
+        },
+
         //臂头回转支承下拉框逻辑
         cgbthzzcppModel: function () {
             if ( btModel == '无') {
@@ -4091,7 +4170,14 @@
             return gruModelList[ gruModel ]['cggrudjjydj'];
         },
         cggrudjaz: function () {
-            return gruModelList[ gruModel ]['cggrudjaz'];
+            if ( gruModel == '无' ){
+                return '/';
+            } else {
+                if ( cggruazwzModel == '吊臂')
+                    return 'M3(270°/1)';
+                else if ( cggruazwzModel == '立柱')
+                    return 'M4(270°/1)';
+            }
         },
         cggrudjsl: function () {
             return gruModelList[ gruModel ]['cggrudjsl'];
@@ -4100,7 +4186,14 @@
             return gruModelList[ gruModel ]['cggrudjpp'];
         },
         cggrudjbz: function () {
-            return gruModelList[ gruModel ]['cggrudjbz'];
+            if ( gruModel == '无' ){
+                return '/';
+            } else {
+                if ( cggruazwzModel == '吊臂')
+                    return '快制动';
+                else if ( cggruazwzModel == '立柱')
+                    return '快制动、加大防雨罩';
+            }
         },
 
         //吊船电机

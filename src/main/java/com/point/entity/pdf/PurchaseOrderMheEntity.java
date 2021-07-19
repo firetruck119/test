@@ -324,6 +324,7 @@ public class PurchaseOrderMheEntity {
     private String cgybModel;
 
     private String gruModel;
+    private String cggruazwzModel;
 
     private String cgdcModel;
 
