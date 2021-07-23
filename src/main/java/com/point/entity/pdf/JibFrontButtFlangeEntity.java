@@ -393,7 +393,7 @@ public class JibFrontButtFlangeEntity {
 
         Double fflw = fslfl + fshlfl + ffl1 + ffl2 + ffl3 + ffl4 + ffl5 + ffl6 ;
         Double flsyj = Math.sqrt( 100 * mflz * mflz + fflw * fflw ) / 0.1 / dbfllsn ;
-        Double flss = dbflnlsyjlxs * flsyj ;
+        Double flss = dbflnlsyjlxs * Math.max( flsl,flsyj );
         Double flssk = flss / 1000 ;
         map.put("fflw", fflw);
         map.put("flsyj", flsyj);

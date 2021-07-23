@@ -294,7 +294,7 @@ public class JibRearButtFlangeEntity {
 
         Double fhflw = fhflw5 + fhflw10 + fhflw11 ;
         Double flsyj = Math.sqrt( 100 * mhflz * mhflz + fhflw * fhflw ) / 0.1 / dbhfllsn ;
-        Double flss = dbhflnlsyjlxs * flsyj ;
+        Double flss = dbhflnlsyjlxs * Math.max( flsl,flsyj );
         Double flssk = flss / 1000 ;
         map.put("fhflw", fhflw);
         map.put("flsyj", flsyj);
