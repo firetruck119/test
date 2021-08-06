@@ -676,13 +676,23 @@
                                             </select>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="width:40%;">立柱底架法兰、吊臂立柱销轴孔是否机加</td>
+                                        <td>
+                                            <select name="ccjckjjModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="机加">机加</option>
+                                                <option value="不机加">不机加</option>
+                                            </select>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
 
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>钢材单价提示(2021/6/1)</b></td>
+                                        <td colspan="3"><b>钢材单价提示(2021/8/6)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>钢板(元/吨)</b></td>
@@ -690,9 +700,9 @@
                                         <td style="width:33%"><b>八边管(元/吨)</b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>6600</b></td>
-                                        <td style="width:33%"><b>7200</b></td>
-                                        <td style="width:33%"><b>7900</b></td>
+                                        <td style="width:34%"><b>6500</b></td>
+                                        <td style="width:33%"><b>7100</b></td>
+                                        <td style="width:33%"><b>7800</b></td>
                                     </tr>
                                 </table>
                             </div>
@@ -829,6 +839,16 @@
                                         <td >元/吨</td>
                                         <td >无</td>
                                         <td ><input type="text" name="cb3qzj"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td >13</td>
+                                        <td >3大件机加</td>
+                                        <td >立柱底架法兰、吊臂立柱销轴孔</td>
+                                        <td >无</td>
+                                        <td ><input type="text" name="cb3jjdj"/></td>
+                                        <td >元/台</td>
+                                        <td >无</td>
+                                        <td ><input type="text" name="cb3jjzj"/></td>
                                     </tr>
                                 </table>
                             </div>
@@ -1506,7 +1526,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>轨道材料单价提示(2021/6/1)</b></td>
+                                        <td colspan="3"><b>轨道材料单价提示(2021/8/6)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>常规I/H-Q235B(元/吨)</b></td>
@@ -1514,9 +1534,9 @@
                                         <td style="width:33%"><b>拼焊-Q355B(元/吨)</b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>6100</b></td>
-                                        <td style="width:33%"><b>6400</b></td>
-                                        <td style="width:33%"><b>9400</b></td>
+                                        <td style="width:34%"><b>6000</b></td>
+                                        <td style="width:33%"><b>6300</b></td>
+                                        <td style="width:33%"><b>9300</b></td>
                                     </tr>
                                 </table>
                             </div>
@@ -1894,23 +1914,23 @@
                                         <td>10</td>
                                         <td>包装成本小计</td>
                                         <td id="cbbzcbzj"></td>
-                                        <td colspan="3"><b>钢材单价(2021/6/1)</b></td>
+                                        <td colspan="3"><b>钢材单价(2021/8/6)</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="2">擦窗机材料成本总计</td>
                                         <td id="cbbmuclzj"></td>
                                         <td colspan="2">钢板(元/吨)</td>
-                                        <td>6600</td>
+                                        <td>6500</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3">擦窗机材料成本占报价比例(%)</td>
                                         <td colspan="2">方管/矩形管(元/吨)</td>
-                                        <td>7200</td>
+                                        <td>7100</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3" id="cbclzbl"></td>
                                         <td colspan="2">八边管(元/吨)</td>
-                                        <td>7900</td>
+                                        <td>7800</td>
                                     </tr>
                                 </table>
                             </div>
@@ -3250,18 +3270,18 @@
     djxhModelList={
         "管材式":{
             djlx:"管材式",
-            cbdjdj:7200,
+            cbdjdj:7100,
         },
         "板拼式":{
             djlx:"板拼式",
-            cbdjdj:6600,
+            cbdjdj:6500,
         },
     };
     //大臂类型
     dbxhModelList={
         "单臂横截面":{
             cbdbmc:'管式吊臂',
-            cbdbdj:7200,
+            cbdbdj:7100,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -3273,7 +3293,7 @@
         },
         "单臂变截面":{
             cbdbmc:'板拼式吊臂',
-            cbdbdj:6600,
+            cbdbdj:6500,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -3285,7 +3305,7 @@
         },
         "1+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7900,
+            cbdbdj:7800,
             cb3yqdj:4000,
             cbssjjmc:'1+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3297,7 +3317,7 @@
         },
         "2+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7900,
+            cbdbdj:7800,
             cb3yqdj:5000,
             cbssjjmc:'2+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3309,7 +3329,7 @@
         },
         "3+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7900,
+            cbdbdj:7800,
             cb3yqdj:6000,
             cbssjjmc:'3+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3321,7 +3341,7 @@
         },
         "4+1伸缩臂":{
             cbdbmc:'八边管式吊臂',
-            cbdbdj:7900,
+            cbdbdj:7800,
             cb3yqdj:8000,
             cbssjjmc:'4+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3339,14 +3359,14 @@
             cbpzkdj:316,
             cbpzklyl:0.95,
             cbpzfgzl:' ',
-            cbpzfgdj:6600,
+            cbpzfgdj:6500,
             cbpzfglyl:1,
             cbpzktzl:' ',
-            cbpzktdj:6600,
+            cbpzktdj:6500,
         },
         "钢板配重块":{
             cbpzkmc:'钢板',
-            cbpzkdj:6600,
+            cbpzkdj:6500,
             cbpzklyl:0.9,
             cbpzfgzl:0,
             cbpzfgdj:0,
@@ -3359,15 +3379,15 @@
     lzxhModelList={
         "固定立柱":{
             cblzmc:'固定立柱',
-            cblzdj:6600,
+            cblzdj:6500,
         },
         "1+1顶升立柱":{
             cblzmc:'1+1顶升立柱',
-            cblzdj:6600,
+            cblzdj:6500,
         },
         "2+1顶升立柱":{
             cblzmc:'2+1顶升立柱',
-            cblzdj:6600,
+            cblzdj:6500,
         },
     };
     //底架摆动臂类型
@@ -3933,7 +3953,7 @@
         "其它":{
             cbmbxh:" ",
             cbmbmzl:' ',
-            cbmbdj:6600,
+            cbmbdj:6500,
             cbmbdjdw:'元/吨',
             cbmblyl:0.85,
         },
@@ -4443,7 +4463,7 @@
                 return 0.85 ;
         },
         cbpzxtdj: function () {
-            return 6600 ;
+            return 6500 ;
         },
         cbpzxtlyl: function () {
             if ( cbpzxtzl == 0 )
@@ -4503,6 +4523,12 @@
         },
         cb3qdj: function () {
             return 500 ;
+        },
+        cb3jjdj: function () {
+            if ( ccjckjjModel == "机加" ) {
+                return 13000 ;
+            } else if (  ccjckjjModel == "不机加"  )
+                return 0 ;
         },
 
         //电机
@@ -4958,12 +4984,12 @@
             } else{
                 if ( gdModel == "I20b-31" || gdModel == "I22b-36.5" || gdModel == "I25b-42" || gdModel == "I28b-47.8" || gdModel == "I32b-57.7" || gdModel == "H150*150-31.1" || gdModel == "H175*175-40.4" || gdModel == "H200*200-49.9" || gdModel == "H200*204-56.2" || gdModel == "H250*250-71.8" || gdModel == "H250*255-81.6" || gdModel == "H300*300-93" || gdModel == "H300*305-105" || gdModel == "H200*200T-71" || gdModel == "H250*250T-99" ) {
                     if ( gdczModel == "Q235B" ) {
-                        return 6100 ;
+                        return 6000 ;
                     }else if ( gdczModel == "Q355B" ) {
-                        return 6400 ;
+                        return 6300 ;
                     }
                 }else if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
-                    return 9400 ;
+                    return 9300 ;
                 }
             }
         },
@@ -5273,7 +5299,10 @@
         cb3qzj: function () {
             return cb3zl * cb3qdj / 10000 ;
         },
-
+        cb3jjzj: function () {
+            return cb3jjdj / 10000 ;
+        },
+    
         //电机总价
         cbbtdjzj: function () {
             return cbbtdjsl * cbbtdjdj / 10000 ;

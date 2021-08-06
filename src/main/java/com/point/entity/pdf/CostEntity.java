@@ -116,13 +116,14 @@ public class CostEntity {
     private Double cbdjbdbzl;
     private Double cbdjbdbdj;
 
-    //    3大件热浸锌、油漆、气体
+    //    3大件热浸锌、油漆、气体、机加
     private Double cb3zl;
     private Double cb3jxdj;
     private Double cb3yqdj;
     private Double cb3hszl;
     private Double cb3hsdj;
     private Double cb3qdj;
+    private Double cb3jjdj;
 
     //    臂头电机
     private String cbbtdjxh;
@@ -402,6 +403,7 @@ public class CostEntity {
     private Double cb3yqzj;
     private Double cb3hszj;
     private Double cb3qzj;
+    private Double cb3jjzj;
 
     //    电机成本小计
     private Double cbbtdjzj;
@@ -493,6 +495,8 @@ public class CostEntity {
     private String lzxhModel;
     private String djxhModel;
     private String djbdbxhModel;
+    private String ccjckjjModel;
+
     private String dcgssModel;
     private String ctxhModel;
     private String lt1Model;
@@ -623,13 +627,14 @@ public class CostEntity {
         map.put("cbdjbdbzl", CommonFunc.convertDoubleToString3(cbdjbdbzl));
         map.put("cbdjbdbdj", CommonFunc.convertDoubleToString(cbdjbdbdj));
 
-        //        3大件热浸锌、油漆、气体
+        //        3大件热浸锌、油漆、气体、机加
         map.put("cb3zl", CommonFunc.convertDoubleToString(cb3zl));
         map.put("cb3jxdj", CommonFunc.convertDoubleToString(cb3jxdj));
         map.put("cb3yqdj", CommonFunc.convertDoubleToString(cb3yqdj));
         map.put("cb3hszl", CommonFunc.convertDoubleToString(cb3hszl));
         map.put("cb3hsdj", CommonFunc.convertDoubleToString(cb3hsdj));
         map.put("cb3qdj", CommonFunc.convertDoubleToString(cb3qdj));
+        map.put("cb3jjdj", CommonFunc.convertDoubleToString(cb3jjdj));
 
         //       臂头电机
         map.put("cbbtdjxh", CommonFunc.convertDoubleToString(cbbtdjxh));
@@ -921,6 +926,7 @@ public class CostEntity {
         map.put("cb3yqzj", CommonFunc.convertDoubleToString(cb3yqzj));
         map.put("cb3hszj", CommonFunc.convertDoubleToString(cb3hszj));
         map.put("cb3qzj", CommonFunc.convertDoubleToString(cb3qzj));
+        map.put("cb3jjzj", CommonFunc.convertDoubleToString(cb3jjzj));
 
         //       电机成本小计
         map.put("cbbtdjzj", CommonFunc.convertDoubleToString(cbbtdjzj));
@@ -1001,7 +1007,7 @@ public class CostEntity {
         Map<String, Double> map = new HashMap();
 
         Double cb8mkzj = cbdczj + cbbtzj + cbssjgzj + cbgruzj + cbqsjgzj + cbslqzj + cbhzzj + cbyxzj + cbjgqzj ;
-        Double cb3djzj = cbdbzj + cbpzkzj + cbpzfgzj + cbpzktzj + cbpzxtzj + cblzzj + cbdjzj + cbdjbdbzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj ;
+        Double cb3djzj = cbdbzj + cbpzkzj + cbpzfgzj + cbpzktzj + cbpzxtzj + cblzzj + cbdjzj + cbdjbdbzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj + cb3jjzj ;
         Double cbdjzjzj = cbbtdjzj + cbssjgdjzj + cbgrudjzj + cbqsjgdj1zj + cbqsjgdj2zj + cbhzdjzj + cbyxdjzj ;
         Double cbwgjzj = cbdcgsszj + cbgrugsszj + cbaqszj + cbctzj + cbbthzzczj + cbhzhzzczj ;
         Double cbwxjzj = cblt1zj + cblt2zj + cblt3zj + cblt4zj + cblt5zj + cbssjjzj + cbdbxzzj ;
