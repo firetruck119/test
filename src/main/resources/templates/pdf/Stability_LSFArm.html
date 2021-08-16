@@ -3429,13 +3429,13 @@
                     data.datalist['dbyj'].color = 'rgb(227, 227, 227)';
                     return null;
                 case '顶升+仰臂':
-                case '仰臂':return dbyj;
+                case '仰臂':return dbyj ;
 
             }
         },
         lbx:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return lbd;
+                case '固定立柱':return lbd ;
                 case '仰臂':return ' ';
                 case '顶升':return lbd ;
                 case '顶升+仰臂':return ' ' ;
@@ -3465,27 +3465,27 @@
         },
         flsjl:function(){
             if( wdlyp3 == '无'){
-                return  0;
+                return  0 ;
             }
             switch (String( typeOfRunningGear )){
-                case "160LZ":return 10790.4;
-                case "170LZ":case "200LZ":case "230LZ":case "260LZ":return 20096;
-                case "350":case "450":return 31360;
-                case "无":return 0;
+                case "160LZ":return 10790.4 ;
+                case "170LZ":case "200LZ":case "230LZ":case "260LZ":return 20096 ;
+                case "350":case "450":return 31360 ;
+                case "无":return 0 ;
             }
         },
         nwd1:function(){
             if ( wdlyp3 == '无') {
-                return 0;
+                return 0 ;
             }else if( wdlyp3 == '有'){
-                return 2;
+                return 2 ;
             }
         },
         nwd2:function(){
             if ( wdlyp3 == '无') {
-                return 0;
+                return 0 ;
             }else if( wdlyp3 == '有'){
-                return 4;
+                return 4 ;
             }
         },
         // txxxh:function(){
@@ -3533,10 +3533,10 @@
         djlsxh:' typeOfBolt ',
         lsgca:function(){
             switch ( djlsxh ) {
-                case 'M16':return 157;
-                case 'M20':return 245;
-                case 'M24':return 353;
-                case 'M30':return 561;
+                case 'M16':return 157 ;
+                case 'M20':return 245 ;
+                case 'M24':return 353 ;
+                case 'M30':return 561 ;
             }
         },
         fdjlsfb:' lsgca * 270 * 0.64 ',
@@ -3545,15 +3545,15 @@
 
         umcxs:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.05;
-                case '170LZ':return 0.05;
-                case '200LZ':return 0.05;
-                case '230LZ':return 0.05;
-                case '260LZ':return 0.05;
-                case '350'  :return 0.05;
-                case '450'  :return 0.05;
+                case '160LZ':return 0.05 ;
+                case '170LZ':return 0.05 ;
+                case '200LZ':return 0.05 ;
+                case '230LZ':return 0.05 ;
+                case '260LZ':return 0.05 ;
+                case '350'  :return 0.05 ;
+                case '450'  :return 0.05 ;
             }
         },
         wddzxs4:function(){
@@ -3627,25 +3627,25 @@
         m6:' 0',
         m7:function(){
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
+                case '固定立柱':return 0 ;
                 case '仰臂':return ' ';
-                case '顶升':return 0;
+                case '顶升':return 0 ;
                 case '顶升+仰臂':return ' ';
             }
         },
         m8:function(){
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
+                case '固定立柱':return 0 ;
+                case '仰臂':return 0 ;
                 case '顶升':return ' ';
                 case '顶升+仰臂':return ' ';
             }
         },
         m10:function(){
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
+                case '固定立柱':return 0 ;
                 case '仰臂':return ' ';
-                case '顶升':return 0;
+                case '顶升':return 0 ;
                 case '顶升+仰臂':return ' ';
             }
         },
@@ -3657,54 +3657,54 @@
         },
         m16:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 70;
-                case '170LZ':return 155;
-                case '200LZ':return 175;
-                case '230LZ':return 235;
-                case '260LZ':return 296;
-                case '350'  :return 420;
-                case '450'  :return 1020;
+                case '160LZ':return 70 ;
+                case '170LZ':return 155 ;
+                case '200LZ':return 175 ;
+                case '230LZ':return 235 ;
+                case '260LZ':return 296 ;
+                case '350'  :return 420 ;
+                case '450'  :return 1020 ;
             }
         },
         m17:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 70;
-                case '170LZ':return 155;
-                case '200LZ':return 175;
-                case '230LZ':return 235;
-                case '260LZ':return 296;
-                case '350'  :return 420;
-                case '450'  :return 1020;
+                case '160LZ':return 70 ;
+                case '170LZ':return 155 ;
+                case '200LZ':return 175 ;
+                case '230LZ':return 235 ;
+                case '260LZ':return 296 ;
+                case '350'  :return 420 ;
+                case '450'  :return 1020 ;
             }
         },
         m18:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 52;
-                case '170LZ':return 130;
-                case '200LZ':return 140;
-                case '230LZ':return 195;
-                case '260LZ':return 230;
-                case '350':return   360;
-                case '450':return   825;
+                case '160LZ':return 52 ;
+                case '170LZ':return 130 ;
+                case '200LZ':return 140 ;
+                case '230LZ':return 195 ;
+                case '260LZ':return 230 ;
+                case '350':return   360 ;
+                case '450':return   825 ;
             }
         },
         m19:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 52;
-                case '170LZ':return 130;
-                case '200LZ':return 140;
-                case '230LZ':return 195;
-                case '260LZ':return 230;
-                case '350':return   360;
-                case '450':return   825;
+                case '160LZ':return 52 ;
+                case '170LZ':return 130 ;
+                case '200LZ':return 140 ;
+                case '230LZ':return 195 ;
+                case '260LZ':return 230 ;
+                case '350':return   360 ;
+                case '450':return   825 ;
             }
         },
 
@@ -3747,16 +3747,16 @@
         lqg6: ' 0 ',
         lqg7:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
+                case '固定立柱':return 0 ;
                 case '仰臂':return ' ';
-                case '顶升':return 0;
+                case '顶升':return 0 ;
                 case '顶升+仰臂':return ' ';
             }
         },
         lqg8:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
+                case '固定立柱':return 0 ;
+                case '仰臂':return 0 ;
                 case '顶升':return ' ';
                 case '顶升+仰臂':return ' ';
             }
@@ -3764,15 +3764,15 @@
         lqg9: ' lg / 2 ',
         lqg10:function(){
             if( m10 == 0)
-                return 0;
-            else return '';
+                return 0 ;
+            else return ' ';
         },
         lqg11: ' lbp + lg / 2 ',
         lqg12: ' lg / 2 ',
         lqg14:function(){
             if( m14 == 0)
-                return 0;
-            else return '';
+                return 0 ;
+            else return ' ';
         },
         lqg15: ' lg / 2 ',
 
@@ -3873,16 +3873,16 @@
         lhz6: ' 0 ',
         lhz7:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
+                case '固定立柱':return 0 ;
                 case '仰臂':return lg / 2 - lqg7 ;
-                case '顶升':return 0;
+                case '顶升':return 0 ;
                 case '顶升+仰臂':return lg / 2 - lqg7 ;
             }
         },
         lhz8:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
+                case '固定立柱':return 0 ;
+                case '仰臂':return 0 ;
                 case '顶升':return lg / 2 - lqg8 ;
                 case '顶升+仰臂':return lg / 2 - lqg8 ;
             }
@@ -3989,16 +3989,16 @@
         lql6:' 0 ',
         lql7:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return  0;
+                case '固定立柱':return  0 ;
                 case '仰臂':return    ll / 2 - lhz7 ;
-                case '顶升':return    0;
+                case '顶升':return    0 ;
                 case '顶升+仰臂':return ll / 2 - lhz7 ;
             }
         },
         lql8:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
+                case '固定立柱':return 0 ;
+                case '仰臂':return 0 ;
                 case '顶升':return ll / 2 - lhz8 ;
                 case '顶升+仰臂':return ll / 2 - lhz8 ;
             }
@@ -4105,16 +4105,16 @@
         hg6:' 0 ',
         hg7:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
+                case '固定立柱':return 0 ;
                 case '仰臂':return ' ';
-                case '顶升':return 0;
+                case '顶升':return 0 ;
                 case '顶升+仰臂':return ' ';
             }
         },
         hg8:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
+                case '固定立柱':return 0 ;
+                case '仰臂':return 0 ;
                 case '顶升':return ' ';
                 case '顶升+仰臂':return ' ';
             }
@@ -4135,54 +4135,54 @@
         },
         hg16:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.1;
-                case '170LZ':return 0.15;
-                case '200LZ':return 0.19;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.32;
-                case '450'  :return 0.4;
+                case '160LZ':return 0.1 ;
+                case '170LZ':return 0.15 ;
+                case '200LZ':return 0.19 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.32 ;
+                case '450'  :return 0.4 ;
             }
         },
         hg17:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.1;
-                case '170LZ':return 0.15;
-                case '200LZ':return 0.19;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.32;
-                case '450'  :return 0.4;
+                case '160LZ':return 0.1 ;
+                case '170LZ':return 0.15 ;
+                case '200LZ':return 0.19 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.32 ;
+                case '450'  :return 0.4 ;
             }
         },
         hg18:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.1;
-                case '170LZ':return 0.15;
-                case '200LZ':return 0.19;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.32;
-                case '450'  :return 0.4;
+                case '160LZ':return 0.1 ;
+                case '170LZ':return 0.15 ;
+                case '200LZ':return 0.19 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.32 ;
+                case '450'  :return 0.4 ;
             }
         },
         hg19:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.1;
-                case '170LZ':return 0.15;
-                case '200LZ':return 0.19;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.32;
-                case '450'  :return 0.4;
+                case '160LZ':return 0.1 ;
+                case '170LZ':return 0.15 ;
+                case '200LZ':return 0.19 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.32 ;
+                case '450'  :return 0.4 ;
             }
         },
         // hg16:function(){
@@ -4300,16 +4300,16 @@
         acx6:' 0 ',
         acx7:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
+                case '固定立柱':return 0 ;
                 case '仰臂':return ' ';
-                case '顶升':return 0;
+                case '顶升':return 0 ;
                 case '顶升+仰臂':return ' ';
             }
         },
         acx8:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
+                case '固定立柱':return 0 ;
+                case '仰臂':return 0 ;
                 case '顶升':return ' ' ;
                 case '顶升+仰臂':return ' ';
             }
@@ -4330,54 +4330,54 @@
         },
         acx16:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.12;
-                case '170LZ':return 0.18;
-                case '200LZ':return 0.22;
-                case '230LZ':return 0.28;
-                case '260LZ':return 0.31;
-                case '350'  :return 0.42;
-                case '450'  :return 0.8;
+                case '160LZ':return 0.12 ;
+                case '170LZ':return 0.18 ;
+                case '200LZ':return 0.22 ;
+                case '230LZ':return 0.28 ;
+                case '260LZ':return 0.31 ;
+                case '350'  :return 0.42 ;
+                case '450'  :return 0.8 ;
             }
         },
         acx17:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.12;
-                case '170LZ':return 0.18;
-                case '200LZ':return 0.22;
-                case '230LZ':return 0.28;
-                case '260LZ':return 0.31;
-                case '350'  :return 0.42;
-                case '450'  :return 0.8;
+                case '160LZ':return 0.12 ;
+                case '170LZ':return 0.18 ;
+                case '200LZ':return 0.22 ;
+                case '230LZ':return 0.28 ;
+                case '260LZ':return 0.31 ;
+                case '350'  :return 0.42 ;
+                case '450'  :return 0.8 ;
             }
         },
         acx18:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.07;
-                case '170LZ':return 0.12;
-                case '200LZ':return 0.15;
-                case '230LZ':return 0.19;
-                case '260LZ':return 0.2;
-                case '350':return   0.27;
-                case '450':return   0.6;
+                case '160LZ':return 0.07 ;
+                case '170LZ':return 0.12 ;
+                case '200LZ':return 0.15 ;
+                case '230LZ':return 0.19 ;
+                case '260LZ':return 0.2 ;
+                case '350':return   0.27 ;
+                case '450':return   0.6 ;
             }
         },
         acx19:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.07;
-                case '170LZ':return 0.12;
-                case '200LZ':return 0.15;
-                case '230LZ':return 0.19;
-                case '260LZ':return 0.2;
-                case '350':return   0.27;
-                case '450':return   0.6;
+                case '160LZ':return 0.07 ;
+                case '170LZ':return 0.12 ;
+                case '200LZ':return 0.15 ;
+                case '230LZ':return 0.19 ;
+                case '260LZ':return 0.2 ;
+                case '350':return   0.27 ;
+                case '450':return   0.6 ;
             }
         },
         acx20:function(){
@@ -4432,16 +4432,16 @@
         atx6:' 0 ',
         atx7:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
+                case '固定立柱':return 0 ;
                 case '仰臂':return ' ';
-                case '顶升':return 0;
+                case '顶升':return 0 ;
                 case '顶升+仰臂':return ' ';
             }
         },
         atx8:function () {
             switch( typeOfMachine ){
-                case '固定立柱':return 0;
-                case '仰臂':return 0;
+                case '固定立柱':return 0 ;
+                case '仰臂':return 0 ;
                 case '顶升':return ' ' ;
                 case '顶升+仰臂':return ' ';
             }
@@ -4462,54 +4462,54 @@
         },
         atx16:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.07;
-                case '170LZ':return 0.13;
-                case '200LZ':return 0.17;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.38;
-                case '450'  :return 0.75;
+                case '160LZ':return 0.07 ;
+                case '170LZ':return 0.13 ;
+                case '200LZ':return 0.17 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.38 ;
+                case '450'  :return 0.75 ;
             }
         },
         atx17:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.07;
-                case '170LZ':return 0.13;
-                case '200LZ':return 0.17;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.38;
-                case '450'  :return 0.75;
+                case '160LZ':return 0.07 ;
+                case '170LZ':return 0.13 ;
+                case '200LZ':return 0.17 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.38 ;
+                case '450'  :return 0.75 ;
             }
         },
         atx18:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.07;
-                case '170LZ':return 0.13;
-                case '200LZ':return 0.17;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.38;
-                case '450'  :return 0.75;
+                case '160LZ':return 0.07 ;
+                case '170LZ':return 0.13 ;
+                case '200LZ':return 0.17 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.38 ;
+                case '450'  :return 0.75 ;
             }
         },
         atx19:function(){
             if( wdlyp3 =='无')
-                return 0;
+                return 0 ;
             switch (String( typeOfRunningGear )) {
-                case '160LZ':return 0.07;
-                case '170LZ':return 0.13;
-                case '200LZ':return 0.17;
-                case '230LZ':return 0.23;
-                case '260LZ':return 0.28;
-                case '350'  :return 0.38;
-                case '450'  :return 0.75;
+                case '160LZ':return 0.07 ;
+                case '170LZ':return 0.13 ;
+                case '200LZ':return 0.17 ;
+                case '230LZ':return 0.23 ;
+                case '260LZ':return 0.28 ;
+                case '350'  :return 0.38 ;
+                case '450'  :return 0.75 ;
             }
         },
         // atx16:function(){
@@ -4761,14 +4761,14 @@
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return ' ';
-                case '顶升':      return 0;
+                case '顶升':      return 0 ;
                 case '顶升+仰臂': return ' ';
             }
         },
         hgf8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
-                case '仰臂':      return 0;
+                case '仰臂':      return 0 ;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }
@@ -4778,7 +4778,7 @@
         hgf11:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return hg11 ;
-                case '仰臂':      return hg11;
+                case '仰臂':      return hg11 ;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }
@@ -4786,7 +4786,7 @@
         hgf12:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return hg12 ;
-                case '仰臂':      return hg12;
+                case '仰臂':      return hg12 ;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }
@@ -4842,7 +4842,7 @@
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return lhl7 - ll / 2 ;
-                case '顶升':      return 0;
+                case '顶升':      return 0 ;
                 case '顶升+仰臂': return lhl7 - ll / 2 ;
             }
         },
@@ -4920,14 +4920,14 @@
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return ' ';
-                case '顶升':      return 0;
+                case '顶升':      return 0 ;
                 case '顶升+仰臂': return ' ';
             }
         },
         afcx8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
-                case '仰臂':      return 0;
+                case '仰臂':      return 0 ;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }
@@ -4974,14 +4974,14 @@
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
                 case '仰臂':      return ' ';
-                case '顶升':      return 0;
+                case '顶升':      return 0 ;
                 case '顶升+仰臂': return ' ';
             }
         },
         aftx8:function () {
             switch( typeOfMachine ){
                 case '固定立柱':  return 0 ;
-                case '仰臂':      return 0;
+                case '仰臂':      return 0 ;
                 case '顶升':      return ' ';
                 case '顶升+仰臂': return ' ';
             }

@@ -16,6 +16,7 @@ public class PurchaseOrderEgsEntity {
     private String cgsbjgdy;
     private String cgsbjgdr;
     private String cgsbn;
+    private String cgtjcs;
 
     //    臂头电机
     private String cgbtmc;
@@ -364,6 +365,7 @@ public class PurchaseOrderEgsEntity {
         map.put("cgsbjgdy", CommonFunc.convertDoubleToString(cgsbjgdy));
         map.put("cgsbjgdr", CommonFunc.convertDoubleToString(cgsbjgdr));
         map.put("cgsbn", CommonFunc.convertDoubleToString(cgsbn));
+        map.put("cgtjcs", CommonFunc.convertDoubleToString(cgtjcs));
 
 //        臂头电机
         map.put("cgbtmc", CommonFunc.convertDoubleToString(cgbtmc));

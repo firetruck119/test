@@ -16,6 +16,7 @@ public class PurchaseOrderMheEntity {
     private String cgsbjgdy;
     private String cgsbjgdr;
     private String cgsbn;
+    private String cgtjcs;
 
 //    手填电压频率
     private String cgdqdy;
@@ -361,6 +362,7 @@ public class PurchaseOrderMheEntity {
         map.put("cgsbjgdy", CommonFunc.convertDoubleToString(cgsbjgdy));
         map.put("cgsbjgdr", CommonFunc.convertDoubleToString(cgsbjgdr));
         map.put("cgsbn", CommonFunc.convertDoubleToString(cgsbn));
+        map.put("cgtjcs", CommonFunc.convertDoubleToString(cgtjcs));
 
 //        收到填写电压频率
         map.put("cgdqdy", CommonFunc.convertDoubleToString(cgdqdy));
