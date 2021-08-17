@@ -542,6 +542,10 @@ public class IdlerWheelYygEntity {
             mg2 = fcsz1 ;
         } else if ( fcsz2 >= 0 && fcsz1 < 0 ){
             mg2 = fcsz2 ;
+        } else if ( fcsz2 >= 0 && fcsz1 >= 0 && fcsz2 > fcsz1 ){
+            mg2 = fcsz2 ;
+        } else if ( fcsz2 >= 0 && fcsz1 >= 0 && fcsz1 > fcsz2 ){
+            mg2 = fcsz1 ;
         } else {
             mg2 = null ;
         }
