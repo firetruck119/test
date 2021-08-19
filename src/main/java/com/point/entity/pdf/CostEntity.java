@@ -239,6 +239,7 @@ public class CostEntity {
     private Double cbdqdj;
 
     //    液压系统
+    private Double cbyygxc;
     private String cbyymc;
     private Double cbyysl;
     private Double cbyydj;
@@ -481,6 +482,7 @@ public class CostEntity {
     private String djlx;
 
     //     下拉
+    private String cbxmlxdqxzModel;
     private String dcModel;
     private String btModel;
     private String ssjgModel;
@@ -490,6 +492,13 @@ public class CostEntity {
     private String dhzjgModel;
     private String yxjgModel;
     private String jgqModel;
+
+    private String cbbtdjppModel;
+    private String cbssjgdjppModel;
+    private String cbgrudjppModel;
+    private String cbdhzjgdjppModel;
+    private String cbyxjgdjppModel;
+
     private String dbxhModel;
     private String pzkModel;
     private String lzxhModel;
@@ -514,6 +523,10 @@ public class CostEntity {
     private String ssjgjxModel;
     private String mfModel;
     private String yscsModel;
+
+//    液压缸下拉
+    private String cbyygxzModel;
+    private String cbyygdsslxzModel;
 
 //    private String djModel;
 
@@ -750,6 +763,7 @@ public class CostEntity {
         map.put("cbdqdj", CommonFunc.convertDoubleToString(cbdqdj));
 
         //       液压系统
+        map.put("cbyygxc", CommonFunc.convertDoubleToString(cbyygxc));
         map.put("cbyymc", CommonFunc.convertDoubleToString(cbyymc));
         map.put("cbyysl", CommonFunc.convertDoubleToString(cbyysl));
         map.put("cbyydj", CommonFunc.convertDoubleToString(cbyydj));
