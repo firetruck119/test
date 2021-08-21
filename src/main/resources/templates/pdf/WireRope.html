@@ -521,30 +521,30 @@
         swp:function(){
             switch( gondolaSelect ){
                 case'2.0米铝吊船':return 96 ;
-                case'2.5米铝吊船':return 105;
-                case'3.0米铝吊船':return 115;
-                case'4.0米铝吊船':return 135;
-                case'1.5米卫星吊船':return 577;
-                case'2.0米卫星吊船':return 650;
-                case'1.5米手动丝杠伸展吊船':return 585;
-                case'2.0米手动丝杠伸展吊船':return 619;
-                case'2.5米手动丝杠伸展吊船':return 634;
-                case'3.0米手动丝杠伸展吊船':return 683;
-                case'2.0米液压伸展吊船':return 624;
-                case'2.0米液压伸展吊船(2.0-2.3)':return 651;
-                case'2.5米液压伸展吊船':return 675;
-                case'3.0米液压伸展吊船':return 696;
-                case'3.5米液压伸展吊船':return 720;
-                case'2.0米折叠吊船':return 116;
-                case'2.5米折叠吊船':return 124;
-                case'2.0米折弯吊船':return 120;
-                case'2.5米折弯吊船':return 133;
-                case'3.0米折弯吊船':return 155;
-                case'2.5米伸缩子吊船':return 1140;
-                case'2.0米CDD吊船':return 350;
-                case'2.5米CDD吊船':return 375;
-                case'3.0米CDD吊船':return 400;
-                case'4.0米CDD吊船':return 450;
+                case'2.5米铝吊船':return 105 ;
+                case'3.0米铝吊船':return 115 ;
+                case'4.0米铝吊船':return 135 ;
+                case'1.5米卫星吊船':return 577 ;
+                case'2.0米卫星吊船':return 650 ;
+                case'1.5米手动丝杠伸展吊船':return 585 ;
+                case'2.0米手动丝杠伸展吊船':return 619 ;
+                case'2.5米手动丝杠伸展吊船':return 634 ;
+                case'3.0米手动丝杠伸展吊船':return 683 ;
+                case'2.0米液压伸展吊船':return 624 ;
+                case'2.0米液压伸展吊船(2.0-2.3)':return 651 ;
+                case'2.5米液压伸展吊船':return 675 ;
+                case'3.0米液压伸展吊船':return 696 ;
+                case'3.5米液压伸展吊船':return 720 ;
+                case'2.0米折叠吊船':return 116 ;
+                case'2.5米折叠吊船':return 124 ;
+                case'2.0米折弯吊船':return 120 ;
+                case'2.5米折弯吊船':return 133 ;
+                case'3.0米折弯吊船':return 155 ;
+                case'2.5米伸缩子吊船':return 1140 ;
+                case'2.0米CDD吊船':return 350 ;
+                case'2.5米CDD吊船':return 375 ;
+                case'3.0米CDD吊船':return 400 ;
+                case'4.0米CDD吊船':return 450 ;
             }
         },
         windbreakBackpackSelect:function(){
@@ -562,12 +562,12 @@
         },
         r1:function(){
             if( gondolaSelect != '无')
-                return 250;
+                return 250 ;
         },
         mffbb:function(){
             if( windbreakBackpackSelect =='有')
-                return 100;
-            return 0;
+                return 100 ;
+            return 0 ;
         },
         tsl: function () {
             if ($('[name=tsl]').prop('readonly'))
@@ -592,19 +592,19 @@
         dcgssd: function () {
             switch ( typeOfShipWireRope ) {
                 case 'Ф7'    :
-                    return 7;
+                    return 7 ;
                 case 'Ф8'    :
-                    return 8;
+                    return 8 ;
                 case 'Ф8.3'    :
-                    return 8.3;
+                    return 8.3 ;
                 case 'Ф10'   :
-                    return 10;
+                    return 10 ;
                 case 'Ф13'   :
-                    return 13;
+                    return 13 ;
                 case '布鲁格Ф7':
-                    return 7;
+                    return 7 ;
                 case '布鲁格Ф8':
-                    return 8;
+                    return 8 ;
             }
         },
         dcgssn:function(){
@@ -612,44 +612,44 @@
                 case'2.0米CDD吊船':
                 case'2.5米CDD吊船':
                 case'3.0米CDD吊船':
-                case'4.0米CDD吊船':return 2;
-                default :return 4;
+                case'4.0米CDD吊船':return 2 ;
+                default :return 4 ;
             }
         },
         dcgssf: function () {
             switch ( typeOfShipWireRope ) {
                 case 'Ф7'    :
-                    return 26;
+                    return 26 ;
                 case 'Ф8'    :
-                    return 37;
+                    return 37 ;
                 case 'Ф8.3'  :
-                    return 58;
+                    return 58 ;
                 case 'Ф10'   :
-                    return 61;
+                    return 61 ;
                 case 'Ф13'   :
-                    return 83;
+                    return 83 ;
                 case '布鲁格Ф7':
-                    return 32.23;
+                    return 32.23 ;
                 case '布鲁格Ф8':
-                    return 39.77;
+                    return 39.77 ;
             }
         },
         dcgssp: function () {
             switch ( typeOfShipWireRope ) {
                 case 'Ф7'    :
-                    return 0.179;
+                    return 0.179 ;
                 case 'Ф8'    :
-                    return 0.244;
+                    return 0.244 ;
                 case 'Ф8.3'    :
-                    return 0.255;
+                    return 0.255 ;
                 case 'Ф10'   :
-                    return 0.391;
+                    return 0.391 ;
                 case 'Ф13'   :
-                    return 0.65;
+                    return 0.65 ;
                 case '布鲁格Ф7':
-                    return 0.179;
+                    return 0.179 ;
                 case '布鲁格Ф8':
-                    return 0.217;
+                    return 0.217 ;
             }
         },
         grugssxh: function () {
@@ -665,35 +665,35 @@
         grugssd: function () {
             switch ( gruSelect ) {
                 case 'GRU 285'  :
-                    return 8;
+                    return 8 ;
                 case 'GRU 295' :
-                    return 10;
+                    return 10 ;
                 case 'GRU 313' :
-                    return 13;
+                    return 13 ;
             }
         },
         grugssf: function () {
             switch ( gruSelect ) {
                 case 'GRU 285'  :
-                    return 39;
+                    return 39 ;
                 case 'GRU 295' :
-                    return 61;
+                    return 61 ;
                 case 'GRU 313' :
-                    return 83;
+                    return 83 ;
             }
         },
         grugssn:function(){
             if( gruSelect !='无')
-                return 1;
+                return 1 ;
         },
         grugssp: function () {
             switch ( gruSelect ) {
                 case 'GRU 285'  :
-                    return 0.252;
+                    return 0.252 ;
                 case 'GRU 295' :
-                    return 0.391;
+                    return 0.391 ;
                 case 'GRU 313' :
-                    return 0.65;
+                    return 0.65 ;
             }
         },
     };

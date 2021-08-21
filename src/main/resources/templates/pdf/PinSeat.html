@@ -829,13 +829,13 @@
             return materialOfPinSeatList[ materialOfPinSeat ]["xzfv"];
         },
         xzaa:function(){
-           return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( xzd2 /2,2);
+           return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( xzd2 /2,2) ;
         },
         xzab:function(){
-            return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( xzd3 /2,2);
+            return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( xzd3 /2,2) ;
         },
         xzac:function(){
-            return 3.14*Math.pow( xzd1 /2,2);
+            return 3.14*Math.pow( xzd1 /2,2) ;
         },
         xzwa:function(){
             return 0.0982*(Math.pow(xzd1,4)-Math.pow( xzd2 ,4))/ xzd1 ;
@@ -844,24 +844,24 @@
             return 0.0982*(Math.pow(xzd1,4)-Math.pow( xzd3 ,3))/ xzd1 ;
         },
         xzwc:function(){
-            return 0.0982*Math.pow( xzd1 ,3);
+            return 0.0982*Math.pow( xzd1 ,3) ;
         },
         xzdd:function(){
             return pinDiameterList[ pinDiameter ]["xzdd"];
         },
         xzad:function (){
-            return 3.14*( xzdd /2)*(xzdd/2)
+            return 3.14*( xzdd /2)*(xzdd/2) ;
         },
         xzah:function(){
             if ( hfysModel == "角焊" ) {
-                return 3.14*Math.pow( ( xzd1 + 2 * xzkb ) /2,2)-3.14*Math.pow( xzd1 /2,2);
+                return 3.14*Math.pow( ( xzd1 + 2 * xzkb ) /2,2)-3.14*Math.pow( xzd1 /2,2) ;
             }else if ( hfysModel == "坡口焊" ) {
-                return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( ( xzd1 - 2 * xzkb ) /2,2);
+                return 3.14*Math.pow( xzd1 /2,2)-3.14*Math.pow( ( xzd1 - 2 * xzkb ) /2,2) ;
             }
         },
         xzwh:function(){
             if ( hfysModel == "角焊" ) {
-                return 0.0982*(Math.pow( xzd1 + 2 * xzkb ,4)-Math.pow( xzd1 ,4))/( xzd1 + 2 * xzkb );
+                return 0.0982*(Math.pow( xzd1 + 2 * xzkb ,4)-Math.pow( xzd1 ,4))/( xzd1 + 2 * xzkb ) ;
             }else if ( hfysModel == "坡口焊" ) {
                 return 0.0982*(Math.pow( xzd1 ,4)-Math.pow( xzd1 - 2 * xzkb ,4 ))/ xzd1 ;
             }
@@ -874,22 +874,22 @@
         },
         xzas:function(){
             if ( xzgg == 5 ) {
-                return 14.2;
+                return 14.2 ;
             }
             else if ( xzgg == 6 ) {
-                return 20.1;
+                return 20.1 ;
             }
             else if ( xzgg == 7 ) {
-                return 28.9;
+                return 28.9 ;
             }
             else if ( xzgg == 8 ) {
-                return 36.6;
+                return 36.6 ;
             }
             else if ( xzgg == 10 ) {
-                return 58;
+                return 58 ;
             }
             else if ( xzgg == 12 ) {
-                return 84.3;
+                return 84.3 ;
             }else {
                 return ' ';
             }
