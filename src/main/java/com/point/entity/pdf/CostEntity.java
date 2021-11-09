@@ -160,6 +160,16 @@ public class CostEntity {
     private Double cbyxdjsl;
     private Double cbyxdjdj;
 
+    //    折臂1电机
+    private String cbzb1djxh;
+    private Double cbzb1djsl;
+    private Double cbzb1djdj;
+
+    //    折臂2电机
+    private String cbzb2djxh;
+    private Double cbzb2djsl;
+    private Double cbzb2djdj;
+
     //    吊船钢丝绳
     private String cbdcgssmc;
     private Double cbdcgsssl;
@@ -192,6 +202,16 @@ public class CostEntity {
     private String cbhzhzzcxh;
     private Double cbhzhzzcsl;
     private Double cbhzhzzcdj;
+
+    //    折臂1回转支承
+    private String cbzb1hzzcxh;
+    private Double cbzb1hzzcsl;
+    private Double cbzb1hzzcdj;
+
+    //    折臂1回转支承
+    private String cbzb2hzzcxh;
+    private Double cbzb2hzzcsl;
+    private Double cbzb2hzzcdj;
 
     //    伸缩臂链条1246
     private Double cblt1sl;
@@ -414,6 +434,8 @@ public class CostEntity {
     private Double cbqsjgdj2zj;
     private Double cbhzdjzj;
     private Double cbyxdjzj;
+    private Double cbzb1djzj;
+    private Double cbzb2djzj;
 
     //    擦窗机外购件成本小计
     private Double cbdcgsszj;
@@ -422,6 +444,8 @@ public class CostEntity {
     private Double cbctzj;
     private Double cbbthzzczj;
     private Double cbhzhzzczj;
+    private Double cbzb1hzzczj;
+    private Double cbzb2hzzczj;
 
     //    擦窗机外协件成本小计
     private Double cblt1zj;
@@ -492,6 +516,12 @@ public class CostEntity {
     private String dhzjgModel;
     private String yxjgModel;
     private String jgqModel;
+
+//    折臂电机回转支承选型
+    private String cbzb1djxhxzModel;
+    private String cbzb2djxhxzModel;
+    private String cbzb1hzzcxhxzModel;
+    private String cbzb2hzzcxhxzModel;
 
     private String cbbtdjppModel;
     private String cbssjgdjppModel;
@@ -684,6 +714,16 @@ public class CostEntity {
         map.put("cbyxdjsl", CommonFunc.convertDoubleToString(cbyxdjsl));
         map.put("cbyxdjdj", CommonFunc.convertDoubleToString(cbyxdjdj));
 
+        //       折臂1电机
+        map.put("cbzb1djxh", CommonFunc.convertDoubleToString(cbzb1djxh));
+        map.put("cbzb1djsl", CommonFunc.convertDoubleToString(cbzb1djsl));
+        map.put("cbzb1djdj", CommonFunc.convertDoubleToString(cbzb1djdj));
+
+        //       折臂2电机
+        map.put("cbzb2djxh", CommonFunc.convertDoubleToString(cbzb2djxh));
+        map.put("cbzb2djsl", CommonFunc.convertDoubleToString(cbzb2djsl));
+        map.put("cbzb2djdj", CommonFunc.convertDoubleToString(cbzb2djdj));
+
         //       吊船钢丝绳
         map.put("cbdcgssmc", CommonFunc.convertDoubleToString(cbdcgssmc));
         map.put("cbdcgsssl", CommonFunc.convertDoubleToString(cbdcgsssl));
@@ -716,6 +756,16 @@ public class CostEntity {
         map.put("cbhzhzzcxh", CommonFunc.convertDoubleToString(cbhzhzzcxh));
         map.put("cbhzhzzcsl", CommonFunc.convertDoubleToString(cbhzhzzcsl));
         map.put("cbhzhzzcdj", CommonFunc.convertDoubleToString(cbhzhzzcdj));
+
+        //      折臂1回转支承
+        map.put("cbzb1hzzcxh", CommonFunc.convertDoubleToString(cbzb1hzzcxh));
+        map.put("cbzb1hzzcsl", CommonFunc.convertDoubleToString(cbzb1hzzcsl));
+        map.put("cbzb1hzzcdj", CommonFunc.convertDoubleToString(cbzb1hzzcdj));
+
+        //      折臂2回转支承
+        map.put("cbzb2hzzcxh", CommonFunc.convertDoubleToString(cbzb2hzzcxh));
+        map.put("cbzb2hzzcsl", CommonFunc.convertDoubleToString(cbzb2hzzcsl));
+        map.put("cbzb2hzzcdj", CommonFunc.convertDoubleToString(cbzb2hzzcdj));
 
         //       伸缩臂链条1246
         map.put("cblt1sl", CommonFunc.convertDoubleToString(cblt1sl));
@@ -950,6 +1000,8 @@ public class CostEntity {
         map.put("cbqsjgdj2zj", CommonFunc.convertDoubleToString(cbqsjgdj2zj));
         map.put("cbhzdjzj", CommonFunc.convertDoubleToString(cbhzdjzj));
         map.put("cbyxdjzj", CommonFunc.convertDoubleToString(cbyxdjzj));
+        map.put("cbzb1djzj", CommonFunc.convertDoubleToString(cbzb1djzj));
+        map.put("cbzb2djzj", CommonFunc.convertDoubleToString(cbzb2djzj));
 
         //       擦窗机外购件成本小计
         map.put("cbdcgsszj", CommonFunc.convertDoubleToString(cbdcgsszj));
@@ -958,6 +1010,8 @@ public class CostEntity {
         map.put("cbctzj", CommonFunc.convertDoubleToString(cbctzj));
         map.put("cbbthzzczj", CommonFunc.convertDoubleToString(cbbthzzczj));
         map.put("cbhzhzzczj", CommonFunc.convertDoubleToString(cbhzhzzczj));
+        map.put("cbzb1hzzczj", CommonFunc.convertDoubleToString(cbzb1hzzczj));
+        map.put("cbzb2hzzczj", CommonFunc.convertDoubleToString(cbzb2hzzczj));
 
         //       擦窗机外协件成本小计
         map.put("cblt1zj", CommonFunc.convertDoubleToString(cblt1zj));
@@ -1022,8 +1076,8 @@ public class CostEntity {
 
         Double cb8mkzj = cbdczj + cbbtzj + cbssjgzj + cbgruzj + cbqsjgzj + cbslqzj + cbhzzj + cbyxzj + cbjgqzj ;
         Double cb3djzj = cbdbzj + cbpzkzj + cbpzfgzj + cbpzktzj + cbpzxtzj + cblzzj + cbdjzj + cbdjbdbzj + cb3jxzj + cb3yqzj + cb3hszj + cb3qzj + cb3jjzj ;
-        Double cbdjzjzj = cbbtdjzj + cbssjgdjzj + cbgrudjzj + cbqsjgdj1zj + cbqsjgdj2zj + cbhzdjzj + cbyxdjzj ;
-        Double cbwgjzj = cbdcgsszj + cbgrugsszj + cbaqszj + cbctzj + cbbthzzczj + cbhzhzzczj ;
+        Double cbdjzjzj = cbbtdjzj + cbssjgdjzj + cbgrudjzj + cbqsjgdj1zj + cbqsjgdj2zj + cbhzdjzj + cbyxdjzj + cbzb1djzj + cbzb2djzj ;
+        Double cbwgjzj = cbdcgsszj + cbgrugsszj + cbaqszj + cbctzj + cbbthzzczj + cbhzhzzczj + cbzb1hzzczj + cbzb2hzzczj ;
         Double cbwxjzj = cblt1zj + cblt2zj + cblt3zj + cblt4zj + cblt5zj + cbssjjzj + cbdbxzzj ;
 //        Double cbdqyyzj = cbdqzj + cbyyzj ;
         Double cbjxzj = cbgrujxzj + cbqsjgjxzj + cbssjgjxzj ;
