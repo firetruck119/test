@@ -322,6 +322,7 @@
                                                 <option value="" style="display: none"></option>
                                                 <option value="GRU285">GRU285</option>
                                                 <option value="GRU295">GRU295</option>
+                                                <option value="GRU295A">GRU295A</option>
                                                 <option value="GRU313">GRU313</option>
                                                 <option value="无">无</option>
                                             </select>
@@ -2411,6 +2412,14 @@
         "GRU295":{
             cbgrut:'GRU295',
             cbgrumc:'295卷扬式物料起升机构',
+            cbgrusl:1,
+            cbgrudj:3310,
+            cbgrugssmc:'10mm钢丝绳',
+            cbgrugssdj:8.6,
+        },
+        "GRU295A":{
+            cbgrut:'GRU295A',
+            cbgrumc:'295A卷扬式物料起升机构',
             cbgrusl:1,
             cbgrudj:3310,
             cbgrugssmc:'10mm钢丝绳',
@@ -4590,6 +4599,12 @@
                     } else if ( cbgrudjppModel == "速博雷尔" ) {
                         return 'SA87DRS90L4/BE5/HR/OS2' ;
                     }
+                } else if ( gruModel == "GRU295A" ) {
+                    if ( cbgrudjppModel == "SEW" ){
+                        return 'SA97DRS100M4/BE05/HR/OS2' ;
+                    } else if ( cbgrudjppModel == "速博雷尔" ) {
+                        return 'SA97DRS100M4/BE05/HR/OS2' ;
+                    }
                 } else if ( gruModel == "GRU313" ) {
                     if ( cbgrudjppModel == "SEW" ){
                         return 'SA97DRS112M4/BE5/HR/OS2' ;
@@ -4604,6 +4619,8 @@
                     return 'SA77DRS90M4/BE05/HR/OS2' ;
                 } else if ( gruModel == "GRU295" ) {
                     return 'SA87DRS90L4/BE5/HR/OS2' ;
+                } else if ( gruModel == "GRU295A" ) {
+                    return 'SA97DRS100M4/BE05/HR/OS2' ;
                 } else if ( gruModel == "GRU313" ) {
                     return 'SA97DRS112M4/BE5/HR/OS2' ;
                 } else if ( gruModel == "无" ) {
@@ -4614,6 +4631,8 @@
                     return 'SA77DRN90L4/BE2/HR/OS2' ;
                 } else if ( gruModel == "GRU295" ) {
                     return 'SA87DRN100LS4/BE5/HR/OS2' ;
+                } else if ( gruModel == "GRU295A" ) {
+                    return 'SA97DRN100L4/BE05/HR/OS2' ;
                 } else if ( gruModel == "GRU313" ) {
                     return 'SA97DRN112M4/BE5/HR/OS2' ;
                 } else if ( gruModel == "无" ) {
@@ -4638,6 +4657,12 @@
                     } else if ( cbgrudjppModel == "速博雷尔" ) {
                         return 7450 ;
                     }
+                } else if ( gruModel == "GRU295A" ) {
+                    if ( cbgrudjppModel == "SEW" ){
+                        return 18670 ;
+                    } else if ( cbgrudjppModel == "速博雷尔" ) {
+                        return 10200 ;
+                    }
                 } else if ( gruModel == "GRU313" ) {
                     if ( cbgrudjppModel == "SEW" ){
                         return 18670 ;
@@ -4652,6 +4677,8 @@
                     return 11030 ;
                 } else if ( gruModel == "GRU295" ) {
                     return 12120 ;
+                } else if ( gruModel == "GRU295A" ) {
+                    return 18670 ;
                 } else if ( gruModel == "GRU313" ) {
                     return 18670 ;
                 } else if ( gruModel == "无" ) {
@@ -4662,6 +4689,8 @@
                     return 11930 ;
                 } else if ( gruModel == "GRU295" ) {
                     return 13000 ;
+                } else if ( gruModel == "GRU295A" ) {
+                    return 20470 ;
                 } else if ( gruModel == "GRU313" ) {
                     return 20470 ;
                 } else if ( gruModel == "无" ) {

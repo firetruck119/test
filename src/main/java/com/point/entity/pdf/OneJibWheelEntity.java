@@ -291,8 +291,8 @@ public class OneJibWheelEntity {
 
         //        齿轮齿条式伸缩机构机构推力
         if (ssjgxsModel.equals("齿轮齿条式伸缩机构")) {
-            Double f1 = 2 * ngl11 * 0.05 / dbjbxglr;
-            Double f2 = 2 * ngl21 * 0.05 / db1bshdlr;
+            Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+            Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
             Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
             Double tn = nssjg * fssjgk;
             Double glbz5 = tjs / tn;
@@ -305,8 +305,8 @@ public class OneJibWheelEntity {
 
         //        液压式伸缩机构机构推力
         if (ssjgxsModel.equals("液压式伸缩机构")) {
-            Double f1 = 2 * ngl11 * 0.05 / dbjbxglr;
-            Double f2 = 2 * ngl21 * 0.05 / db1bshdlr;
+            Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+            Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
             Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
             Double tyys = ssns * tjs / ssnsl;
             Double yyssbz1 = tyys / sslltlk;

@@ -656,8 +656,8 @@ public class FourJibWheelEntity {
         map.put("glbz4", glbz4);
 
         //        链条校核
-        Double f7 = 2 * ngl71 * 0.05 / db3bxglr ;
-        Double f8 = 2 * ngl81 * 0.05 / db4bshdlr ;
+        Double f7 = 2 * ngl71 * 0.03 / db3bxglr ;
+        Double f8 = 2 * ngl81 * 0.03 / db4bshdlr ;
         Double tlts3 = ( tsl + tshl + ( mlz - m6db - m7db - m8db ) * Math.sin( dbyj / 180 * Math.PI ) ) * 10 / 1000 + f7 +f8 ;
         Double tltbz3 = nlt3 * tlt3 ;
         Double glbz20 = nlt3 * tlt3 / tlts3 ;
@@ -667,8 +667,8 @@ public class FourJibWheelEntity {
         map.put("tltbz3", tltbz3);
         map.put("glbz20", glbz20);
 
-        Double f5 = 2 * ngl51 * 0.05 / db2bxglr ;
-        Double f6 = 2 * ngl61 * 0.05 / db3bshdlr ;
+        Double f5 = 2 * ngl51 * 0.03 / db2bxglr ;
+        Double f6 = 2 * ngl61 * 0.03 / db3bshdlr ;
         Double tlts2 = 2 * tlts3 + m8db * 10 * Math.sin( dbyj / 180 * Math.PI ) / 1000 + f5 +f6 ;
         Double tltbz2 = nlt2 * tlt2 ;
         Double glbz15 = nlt2 * tlt2 / tlts2 ;
@@ -678,8 +678,8 @@ public class FourJibWheelEntity {
         map.put("tltbz2", tltbz2);
         map.put("glbz15", glbz15);
 
-        Double f3 = 2 * ngl31 * 0.05 / db1bxglr ;
-        Double f4 = 2 * ngl41 * 0.05 / db2bshdlr ;
+        Double f3 = 2 * ngl31 * 0.03 / db1bxglr ;
+        Double f4 = 2 * ngl41 * 0.03 / db2bshdlr ;
         Double tlts1 = 2 * tlts2 - tlts3 + m7db * 10 * Math.sin( dbyj / 180 * Math.PI ) / 1000 + f3 +f4 ;
         Double tltbz1 = nlt1 * tlt1 ;
         Double glbz10 = nlt1 * tlt1 / tlts1 ;
@@ -691,8 +691,8 @@ public class FourJibWheelEntity {
 
         //        齿轮齿条式伸缩机构机构推力
         if (ssjgxsModel.equals("齿轮齿条式伸缩机构")) {
-            Double f1 = 2 * ngl11 * 0.05 / dbjbxglr;
-            Double f2 = 2 * ngl21 * 0.05 / db1bshdlr;
+            Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+            Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
             Double tjs = 2 * tlts1 - tlts2 + m6db * 10 * Math.sin( dbyj / 180 * Math.PI ) / 1000 + f1 +f2 ;
             Double tn = nssjg * fssjgk ;
             Double glbz5 = tjs / tn;
@@ -705,8 +705,8 @@ public class FourJibWheelEntity {
 
         //        液压式伸缩机构机构推力
         if (ssjgxsModel.equals("液压式伸缩机构")) {
-            Double f1 = 2 * ngl11 * 0.05 / dbjbxglr;
-            Double f2 = 2 * ngl21 * 0.05 / db1bshdlr;
+            Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+            Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
             Double tjs = 2 * tlts1 - tlts2 + m6db * 10 * Math.sin( dbyj / 180 * Math.PI ) / 1000 + f1 +f2 ;
             Double tyys = ssns * tjs / ssnsl;
             Double yyssbz1 = tyys / sslltlk;
