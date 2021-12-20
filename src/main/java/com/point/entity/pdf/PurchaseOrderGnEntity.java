@@ -17,6 +17,8 @@ public class PurchaseOrderGnEntity {
     private String cgsbjgdr;
     private String cgsbn;
     private String cgtjcs;
+    private String cgxmdq;
+    private String cgdjdy;
 
     //    臂头电机
     private String cgbtmc;
@@ -32,6 +34,20 @@ public class PurchaseOrderGnEntity {
     private String cgbtdjsl;
     private String cgbtdjpp;
     private String cgbtdjbz;
+
+    //    臂头电机1
+    private String cgbtdjxh1;
+    private String cgbtdjfl1;
+    private String cgbtdjsb1;
+    private String cgbtdjsd1;
+    private String cgbtdjgl1;
+    private String cgbtdjdl1;
+    private String cgbtdjdy1;
+    private String cgbtdjjydj1;
+    private String cgbtdjaz1;
+    private String cgbtdjsl1;
+    private String cgbtdjpp1;
+    private String cgbtdjbz1;
 
     //    起升机构电机
     private String cgqsjgmc;
@@ -181,6 +197,21 @@ public class PurchaseOrderGnEntity {
     private String cgzb2djpp;
     private String cgzb2djbz;
 
+    // 防风背包电机
+    private String cgffbbmc;
+    private String cgffbbdjxh;
+    private String cgffbbdjfl;
+    private String cgffbbdjsb;
+    private String cgffbbdjsd;
+    private String cgffbbdjgl;
+    private String cgffbbdjdl;
+    private String cgffbbdjdy;
+    private String cgffbbdjjydj;
+    private String cgffbbdjaz;
+    private String cgffbbdjsl;
+    private String cgffbbdjpp;
+    private String cgffbbdjbz;
+
     //    其他电机
     private String cgqt1;
     private String cgqt1mc;
@@ -263,6 +294,8 @@ public class PurchaseOrderGnEntity {
     private String cgdcyyxgj;
     private String cgdcyyxc;
     private String cgdcyyazj;
+    private String cgdcyygl;
+    private String cgdcyydl;
     private String cgdcyydy;
     private String cgdcyysl;
     private String cgdcyypp;
@@ -304,6 +337,13 @@ public class PurchaseOrderGnEntity {
     private String cgdsyypp;
     private String cgdsyybz;
 
+    //    整机液压功率、电流
+    private String cgyygl;
+    private String cgyydl;
+    private String cgyydjxh;
+    private String cgyydjpp;
+    private String cgyydjsl;
+
     //     下拉
     private String btModel;
     private String cgbtdjppModel;
@@ -334,6 +374,8 @@ public class PurchaseOrderGnEntity {
     private String cgzb1Model;
     private String cgzb2Model;
     private String cgzbdjppModel;
+
+    private String cgffbbModel;
 
     private String cgbthzzcppModel;
 
@@ -366,6 +408,8 @@ public class PurchaseOrderGnEntity {
         map.put("cgsbjgdr", CommonFunc.convertDoubleToString(cgsbjgdr));
         map.put("cgsbn", CommonFunc.convertDoubleToString(cgsbn));
         map.put("cgtjcs", CommonFunc.convertDoubleToString(cgtjcs));
+        map.put("cgxmdq", CommonFunc.convertDoubleToString(cgxmdq));
+        map.put("cgdjdy", CommonFunc.convertDoubleToString(cgdjdy));
 
 //        臂头电机
         map.put("cgbtmc", CommonFunc.convertDoubleToString(cgbtmc));
@@ -381,6 +425,20 @@ public class PurchaseOrderGnEntity {
         map.put("cgbtdjsl", CommonFunc.convertDoubleToString(cgbtdjsl));
         map.put("cgbtdjpp", CommonFunc.convertDoubleToString(cgbtdjpp));
         map.put("cgbtdjbz", CommonFunc.convertDoubleToString(cgbtdjbz));
+
+        //        臂头电机1
+        map.put("cgbtdjxh1", CommonFunc.convertDoubleToString(cgbtdjxh1));
+        map.put("cgbtdjfl1", CommonFunc.convertDoubleToString(cgbtdjfl1));
+        map.put("cgbtdjsb1", CommonFunc.convertDoubleToString(cgbtdjsb1));
+        map.put("cgbtdjsd1", CommonFunc.convertDoubleToString(cgbtdjsd1));
+        map.put("cgbtdjgl1", CommonFunc.convertDoubleToString(cgbtdjgl1));
+        map.put("cgbtdjdl1", CommonFunc.convertDoubleToString(cgbtdjdl1));
+        map.put("cgbtdjdy1", CommonFunc.convertDoubleToString(cgbtdjdy1));
+        map.put("cgbtdjjydj1", CommonFunc.convertDoubleToString(cgbtdjjydj1));
+        map.put("cgbtdjaz1", CommonFunc.convertDoubleToString(cgbtdjaz1));
+        map.put("cgbtdjsl1", CommonFunc.convertDoubleToString(cgbtdjsl1));
+        map.put("cgbtdjpp1", CommonFunc.convertDoubleToString(cgbtdjpp1));
+        map.put("cgbtdjbz1", CommonFunc.convertDoubleToString(cgbtdjbz1));
 
 //        起升机构电机
         map.put("cgqsjgmc", CommonFunc.convertDoubleToString(cgqsjgmc));
@@ -530,6 +588,21 @@ public class PurchaseOrderGnEntity {
         map.put("cgzb2djpp", CommonFunc.convertDoubleToString(cgzb2djpp));
         map.put("cgzb2djbz", CommonFunc.convertDoubleToString(cgzb2djbz));
 
+        //防风背包电机
+        map.put("cgffbbmc", CommonFunc.convertDoubleToString(cgffbbmc));
+        map.put("cgffbbdjxh", CommonFunc.convertDoubleToString(cgffbbdjxh));
+        map.put("cgffbbdjfl", CommonFunc.convertDoubleToString(cgffbbdjfl));
+        map.put("cgffbbdjsb", CommonFunc.convertDoubleToString(cgffbbdjsb));
+        map.put("cgffbbdjsd", CommonFunc.convertDoubleToString(cgffbbdjsd));
+        map.put("cgffbbdjgl", CommonFunc.convertDoubleToString(cgffbbdjgl));
+        map.put("cgffbbdjdl", CommonFunc.convertDoubleToString(cgffbbdjdl));
+        map.put("cgffbbdjdy", CommonFunc.convertDoubleToString(cgffbbdjdy));
+        map.put("cgffbbdjjydj", CommonFunc.convertDoubleToString(cgffbbdjjydj));
+        map.put("cgffbbdjaz", CommonFunc.convertDoubleToString(cgffbbdjaz));
+        map.put("cgffbbdjsl", CommonFunc.convertDoubleToString(cgffbbdjsl));
+        map.put("cgffbbdjpp", CommonFunc.convertDoubleToString(cgffbbdjpp));
+        map.put("cgffbbdjbz", CommonFunc.convertDoubleToString(cgffbbdjbz));
+
 //        其他电机
         map.put("cgqt1", CommonFunc.convertDoubleToString(cgqt1));
         map.put("cgqt1mc", CommonFunc.convertDoubleToString(cgqt1mc));
@@ -612,6 +685,8 @@ public class PurchaseOrderGnEntity {
         map.put("cgdcyyxgj", CommonFunc.convertDoubleToString(cgdcyyxgj));
         map.put("cgdcyyxc", CommonFunc.convertDoubleToString(cgdcyyxc));
         map.put("cgdcyyazj", CommonFunc.convertDoubleToString(cgdcyyazj));
+        map.put("cgdcyygl", CommonFunc.convertDoubleToString(cgdcyygl));
+        map.put("cgdcyydl", CommonFunc.convertDoubleToString(cgdcyydl));
         map.put("cgdcyydy", CommonFunc.convertDoubleToString(cgdcyydy));
         map.put("cgdcyysl", CommonFunc.convertDoubleToString(cgdcyysl));
         map.put("cgdcyypp", CommonFunc.convertDoubleToString(cgdcyypp));
@@ -652,6 +727,13 @@ public class PurchaseOrderGnEntity {
         map.put("cgdsyysl", CommonFunc.convertDoubleToString(cgdsyysl));
         map.put("cgdsyypp", CommonFunc.convertDoubleToString(cgdsyypp));
         map.put("cgdsyybz", CommonFunc.convertDoubleToString(cgdsyybz));
+
+//整机液压功率、电流
+        map.put("cgyygl", CommonFunc.convertDoubleToString(cgyygl));
+        map.put("cgyydl", CommonFunc.convertDoubleToString(cgyydl));
+        map.put("cgyydjxh", CommonFunc.convertDoubleToString(cgyydjxh));
+        map.put("cgyydjpp", CommonFunc.convertDoubleToString(cgyydjpp));
+        map.put("cgyydjsl", CommonFunc.convertDoubleToString(cgyydjsl));
 
         map.putAll(takeStringMapForPdf(type));
         return map;

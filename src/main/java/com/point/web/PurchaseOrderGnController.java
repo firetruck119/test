@@ -78,12 +78,31 @@ public class PurchaseOrderGnController {
         urlCacheData.saveCacheValue(sjht, imageMap);
         cacheData.saveCacheValue(sjht, entity);
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/采购单(国内)"));
-//        if (null!=check&&check) {
-//              list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/整机成本估算计算书验证部分"));
-//              return tool.getResponseEntity("整机成本估算计算书验证部分", pdf.MergePDF(list));
-//        }
-        return tool.getResponseEntity("采购单(国内)", list.get(0));
+        String name="";
+        if(pdfType.equals("CgdGn")) {
+            name="采购单(国内)";
+        } else if(pdfType.equals("RbhGn")){
+            name="热继电器检查册(国内)";
+        }
+        if(!name.equals(""))
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/"+name));
+        if (null != check && check) {
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/采购单(国内)"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/热继电器检查册(国内)"));
+//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/加筋板版水平轨道计算书校核验证"));
+//            return tool.getResponseEntity("采购单校核验证", pdf.MergePDF(list));
+        }
+        return tool.getResponseEntity(name, list.get(0));
     }
+
+
+
+//        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/采购单(国内)"));
+////        if (null!=check&&check) {
+////              list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/整机成本估算计算书验证部分"));
+////              return tool.getResponseEntity("整机成本估算计算书验证部分", pdf.MergePDF(list));
+////        }
+//        return tool.getResponseEntity("采购单(国内)", list.get(0));
+//    }
 }
 
