@@ -1118,7 +1118,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="15" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.液压采购单</b></td>
+                                        <td colspan="14" style="background-color: #aaa;padding: 10px 0 10px 0"><b>9.液压采购单</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">序号</td>
@@ -5021,7 +5021,7 @@
                 } else if ( dhzjgModel == "HZX12.5X307" || dhzjgModel == "HZX14.0X307" ){
                     return '307L4 2423 HZ P90 BN90S 6' ;
                 } else if ( dhzjgModel == "HZX16.0X309" ){
-                    return '309L4 2423 HZ P90 BN90L 6' ;
+                    return '309L4 2423 HZ P90 BN90S 6' ;
                 }
             } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
                 if ( fbdhzjgdjModel == "RF77(上回转)" ){
@@ -5081,9 +5081,9 @@
                 } else if ( fbdhzjgdjModel == "307" ){
                     return '307L4 2423 HZ P90 BN90S 6' ;
                 } else if ( fbdhzjgdjModel == "309" ){
-                    return '309L4 2423 HZ P90 BN90L 6' ;
+                    return '309L4 2423 HZ P90 BN90S 6' ;
                 } else if ( fbdhzjgdjModel == "310" ){
-                    return '310L4 2523 HZ BN90L 6' ;
+                    return '310L4 2523 HZ BN90S 6' ;
                 }
             } else if ( cgdhzjgmkModel == '无' ) {
                 return '/';
@@ -5241,7 +5241,7 @@
                     }
                 } else if ( dhzjgModel == "HZS-9.0RF97" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.8' ;
+                        return '0.75' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.8' ;
                     }
@@ -5259,32 +5259,32 @@
                     }
                 } else if ( dhzjgModel == "HZX9.0RF97" || dhzjgModel == "HZX10.0RF97" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.8' ;
+                        return '0.75' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.8' ;
                     }
                 } else if ( dhzjgModel == "HZX11.2RF107" || dhzjgModel == "HZX12.5RF107" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.7' ;
+                        return '0.69' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.7' ;
                     }
                 } else if ( dhzjgModel == "HZX12.5RF137" || dhzjgModel == "HZX14.0RF137" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.4' ;
+                        return '0.41' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.41' ;
                     }
                 } else if ( dhzjgModel == "HZX14.0RF147" || dhzjgModel == "HZX16.0RF147" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.3' ;
+                        return '0.32' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.3' ;
                     }
                 } else if ( dhzjgModel == "HZX12.5X307" || dhzjgModel == "HZX14.0X307" ){
-                    return '0.39' ;
+                    return '0.38' ;
                 } else if ( dhzjgModel == "HZX16.0X309" ){
-                    return '0.39' ;
+                    return '0.38' ;
                 }
             } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
                 if ( fbdhzjgdjModel == "RF77(上回转)" ){
@@ -5301,7 +5301,7 @@
                     }
                 } else if ( fbdhzjgdjModel == "RF97(上回转)" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.8' ;
+                        return '0.75' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.8' ;
                     }
@@ -5319,34 +5319,34 @@
                     }
                 } else if ( fbdhzjgdjModel == "RF97" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.8' ;
+                        return '0.75' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.8' ;
                     }
                 } else if ( fbdhzjgdjModel == "RF107" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.7' ;
+                        return '0.69' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.7' ;
                     }
                 } else if ( fbdhzjgdjModel == "RF137" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.4' ;
+                        return '0.41' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.41' ;
                     }
                 } else if ( fbdhzjgdjModel == "RF147" ){
                     if ( cgdhzjgdjppModel == "SEW" ){
-                        return '0.3' ;
+                        return '0.32' ;
                     } else if ( cgdhzjgdjppModel == "速博雷尔" ) {
                         return '0.3' ;
                     }
                 } else if ( fbdhzjgdjModel == "307" ){
-                    return '0.39' ;
-                } else if ( fbdhzjgdjModel == "309" ){
-                    return '0.39' ;
-                } else if ( fbdhzjgdjModel == "310" ){
                     return '0.38' ;
+                } else if ( fbdhzjgdjModel == "309" ){
+                    return '0.38' ;
+                } else if ( fbdhzjgdjModel == "310" ){
+                    return '0.36' ;
                 }
             } else if ( cgdhzjgmkModel == '无' ) {
                 return '/';
@@ -5409,9 +5409,9 @@
                         return '0.55' ;
                     }
                 } else if ( dhzjgModel == "HZX12.5X307" || dhzjgModel == "HZX14.0X307" ){
-                    return '1.1' ;
+                    return '0.75' ;
                 } else if ( dhzjgModel == "HZX16.0X309" ){
-                    return '1.1' ;
+                    return '0.75' ;
                 }
             } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
                 if ( fbdhzjgdjModel == "RF77(上回转)" ){
@@ -5469,11 +5469,11 @@
                         return '0.55' ;
                     }
                 } else if ( fbdhzjgdjModel == "307" ){
-                    return '1.1' ;
+                    return '0.75' ;
                 } else if ( fbdhzjgdjModel == "309" ){
-                    return '1.1' ;
+                    return '0.75' ;
                 } else if ( fbdhzjgdjModel == "310" ){
-                    return '1.1' ;
+                    return '0.75' ;
                 }
             } else if ( cgdhzjgmkModel == '无' ) {
                 return '/';
@@ -5536,9 +5536,9 @@
                         return '1.63' ;
                     }
                 } else if ( dhzjgModel == "HZX12.5X307" || dhzjgModel == "HZX14.0X307" ){
-                    return '2.93' ;
+                    return '2.27' ;
                 } else if ( dhzjgModel == "HZX16.0X309" ){
-                    return '2.93' ;
+                    return '2.27' ;
                 }
             } else if ( cgdhzjgmkModel == '非标大回转机构' ) {
                 if ( fbdhzjgdjModel == "RF77(上回转)" ){
@@ -5596,11 +5596,11 @@
                         return '1.63' ;
                     }
                 } else if ( fbdhzjgdjModel == "307" ){
-                    return '2.93' ;
+                    return '2.27' ;
                 } else if ( fbdhzjgdjModel == "309" ){
-                    return '2.93' ;
+                    return '2.27' ;
                 } else if ( fbdhzjgdjModel == "310" ){
-                    return '2.93' ;
+                    return '2.27' ;
                 }
             } else if ( cgdhzjgmkModel == '无' ) {
                 return '/';
@@ -7201,10 +7201,18 @@
 
         //整机液压功率、电流
         cgyygl: function () {
-            return ' ' ;
+            if ( cgssyymc == '无' && cgybyymc == '无' && cgdsyymc == '无' ){
+                return '/' ;
+            } else {
+                return ' ' ;
+            }
         },
         cgyydl: function () {
-            return ' ' ;
+            if ( cgssyymc == '无' && cgybyymc == '无' && cgdsyymc == '无' ){
+                return '/' ;
+            } else {
+                return ' ' ;
+            }
         },
 
         cgxmdq: function () {

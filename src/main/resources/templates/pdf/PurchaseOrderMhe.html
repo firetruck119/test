@@ -243,6 +243,18 @@
                                         <td><input type="text" name="cgdqpl"/></td>
                                         <td>HZ</td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="3">下面采购单电机功率及电流参数均为220/380V 50HZ下的数值，如电压频率值有变化请手动修改参数。</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>地区(填写具体国家或地区)</b></td>
+                                        <td colspan="2" ><input type="text" name="cgxmdq" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>电压/频率</b></td>
+                                        <td colspan="2" ><input type="text" name="cgdjdy" /></td>
+                                    </tr>
                                 </table>
                             </div>
 
@@ -374,11 +386,7 @@
                                             </select>
                                         </td>
                                     </tr>
-                                </table>
-                            </div>
 
-                            <div class='subtable'>
-                                <table>
                                     <tr>
                                         <td style="width:6%;">5</td>
                                         <td style="width:34%;">伸缩机构型号选择</td>
@@ -393,7 +401,11 @@
                                             </select>
                                         </td>
                                     </tr>
+                                </table>
+                            </div>
 
+                            <div class='subtable'>
+                                <table>
                                     <tr>
                                         <td style="width:6%;">6</td>
                                         <td style="width:34%;">仰臂类型选择</td>
@@ -471,6 +483,20 @@
                                             </select>
                                         </td>
                                     </tr>
+
+                                    <tr>
+                                        <td style="width:6%;">11</td>
+                                        <td style="width:34%;">防风背包选择</td>
+                                        <td style="width:60%;">
+                                            <select name="cgffbbModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="电动防风背包">电动防风背包</option>
+                                                <option value="手动防风背包">手动防风背包</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
                                 </table>
                             </div>
 
@@ -497,9 +523,9 @@
                                         <td style="width:13%;">备注</td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
-                                        <td>臂头</td>
-                                        <td><input type="text" name="cgbtmc"/></td>
+                                        <td th:rowspan="2">1</td>
+                                        <td th:rowspan="2">臂头</td>
+                                        <td th:rowspan="2"><input type="text" name="cgbtmc"/></td>
                                         <td><input type="text" name="cgbtdjxh"/></td>
                                         <td><input type="text" name="cgbtdjfl"/></td>
                                         <td><input type="text" name="cgbtdjsb"/></td>
@@ -512,6 +538,20 @@
                                         <td><input type="text" name="cgbtdjsl"/></td>
                                         <td><input type="text" name="cgbtdjpp"/></td>
                                         <td><input type="text" name="cgbtdjbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="cgbtdjxh1"/></td>
+                                        <td><input type="text" name="cgbtdjfl1"/></td>
+                                        <td><input type="text" name="cgbtdjsb1"/></td>
+                                        <td><input type="text" name="cgbtdjsd1"/></td>
+                                        <td><input type="text" name="cgbtdjgl1"/></td>
+                                        <td><input type="text" name="cgbtdjdl1"/></td>
+                                        <td><input type="text" name="cgbtdjdy1"/></td>
+                                        <td><input type="text" name="cgbtdjjydj1"/></td>
+                                        <td><input type="text" name="cgbtdjaz1"/></td>
+                                        <td><input type="text" name="cgbtdjsl1"/></td>
+                                        <td><input type="text" name="cgbtdjpp1"/></td>
+                                        <td><input type="text" name="cgbtdjbz1"/></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -682,6 +722,23 @@
                                     </tr>
                                     <tr>
                                         <td>11</td>
+                                        <td>防风背包</td>
+                                        <td><input type="text" name="cgffbbmc"/></td>
+                                        <td><input type="text" name="cgffbbdjxh"/></td>
+                                        <td><input type="text" name="cgffbbdjfl"/></td>
+                                        <td><input type="text" name="cgffbbdjsb"/></td>
+                                        <td><input type="text" name="cgffbbdjsd"/></td>
+                                        <td><input type="text" name="cgffbbdjgl"/></td>
+                                        <td><input type="text" name="cgffbbdjdl"/></td>
+                                        <td><input type="text" name="cgffbbdjdy"/></td>
+                                        <td><input type="text" name="cgffbbdjjydj"/></td>
+                                        <td><input type="text" name="cgffbbdjaz"/></td>
+                                        <td><input type="text" name="cgffbbdjsl"/></td>
+                                        <td><input type="text" name="cgffbbdjpp"/></td>
+                                        <td><input type="text" name="cgffbbdjbz"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
                                         <td><input type="text" name="cgqt1"/></td>
                                         <td><input type="text" name="cgqt1mc"/></td>
                                         <td><input type="text" name="cgqt1djxh"/></td>
@@ -698,7 +755,7 @@
                                         <td><input type="text" name="cgqt1djbz"/></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="15">第11点如果没有其它电机采购，请在类型列写“无”</td>
+                                        <td colspan="15">第12点如果没有其它电机采购，请在类型列写“无”</td>
                                     </tr>
                                 </table>
                             </div>
@@ -1025,17 +1082,19 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="15" style="background-color: #aaa;padding: 10px 0 10px 0"><b>10.液压采购单</b></td>
+                                        <td colspan="14" style="background-color: #aaa;padding: 10px 0 10px 0"><b>10.液压采购单</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:4%;">序号</td>
                                         <td style="width:5%;">类型</td>
                                         <td style="width:12%;">名称</td>
-                                        <td style="width:12%;">缸径mm</td>
-                                        <td style="width:12%;">中间杆径mm</td>
-                                        <td style="width:12%;">杆径mm</td>
+                                        <td style="width:7%;">缸径mm</td>
+                                        <td style="width:7%;">中间杆径mm</td>
+                                        <td style="width:7%;">杆径mm</td>
                                         <td style="width:6%;">行程mm</td>
-                                        <td style="width:5%;">安装距mm</td>
+                                        <td style="width:6%;">安装距mm</td>
+                                        <td style="width:7%;">功率KW</td>
+                                        <td style="width:7%;">电流A</td>
                                         <td style="width:10%;">电压/频率V/HZ</td>
                                         <td style="width:4%;">数量</td>
                                         <td style="width:5%;">品牌</td>
@@ -1050,6 +1109,8 @@
                                         <td><input type="text" name="cgdcyyxgj"/></td>
                                         <td><input type="text" name="cgdcyyxc"/></td>
                                         <td><input type="text" name="cgdcyyazj"/></td>
+                                        <td><input type="text" name="cgdcyygl"/></td>
+                                        <td><input type="text" name="cgdcyydl"/></td>
                                         <td><input type="text" name="cgdcyydy"/></td>
                                         <td><input type="text" name="cgdcyysl"/></td>
                                         <td><input type="text" name="cgdcyypp"/></td>
@@ -1064,6 +1125,8 @@
                                         <td><input type="text" name="cgssyyxgj"/></td>
                                         <td><input type="text" name="cgssyyxc"/></td>
                                         <td><input type="text" name="cgssyyazj"/></td>
+                                        <td th:rowspan="3"><input type="text" name="cgyygl"/></td>
+                                        <td th:rowspan="3"><input type="text" name="cgyydl"/></td>
                                         <td><input type="text" name="cgssyydy"/></td>
                                         <td><input type="text" name="cgssyysl"/></td>
                                         <td><input type="text" name="cgssyypp"/></td>
@@ -1104,7 +1167,9 @@
                             <!--后台-->
                             <div style="display: none">
                                 <input type="text" name="cgdqdypl" />
-
+                                <input type="text" name="cgyydjxh" />
+                                <input type="text" name="cgyydjpp" />
+                                <input type="text" name="cgyydjsl" />
                             </div>
                             <input type="hidden" name="pdfType"/>
                         </form>
@@ -1132,8 +1197,12 @@
                         <!--<input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan()"/>-->
                         <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
                                onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
+                        <!--<input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出采购单pdf" onclick="$('form').attr('action','/PurchaseOrderMhe/getPDF');-->
+                                                                                            <!--isCheck(false);changeType('Calculation')"/>-->
                         <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出采购单pdf" onclick="$('form').attr('action','/PurchaseOrderMhe/getPDF');
-                                                                                            isCheck(false);changeType('Calculation')"/>
+                                                                                                                isCheck(false);changeType('CgdMhe')"/>
+                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出热保护pdf" onclick="$('form').attr('action','/PurchaseOrderMhe/getPDF');
+                                                                                                                isCheck(false);changeType('RbhMhe')"/>
                         <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id]').text('').css('background-color','transparent')"/>
                     </div>
                 </el-row>
@@ -1161,7 +1230,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1175,6 +1244,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT1800Z(1.8米羊角臂头-中臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1183,7 +1264,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1197,6 +1278,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT1800D(1.8米羊角臂头-低臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1205,7 +1298,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1219,6 +1312,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT2300G(2.3米羊角臂头-高臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1227,7 +1332,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1241,6 +1346,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT2300Z(2.3米羊角臂头-中臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1249,7 +1366,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1263,6 +1380,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT2300D(2.3米羊角臂头-低臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1271,7 +1400,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1285,6 +1414,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT2800G(2.8米羊角臂头-高臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1293,7 +1434,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1307,6 +1448,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT2800Z(2.8米羊角臂头-中臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1315,7 +1468,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1329,6 +1482,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "YJBT2800D(2.8米羊角臂头-低臂头)":{
             cgbtmc:'标准羊角臂头',
@@ -1337,7 +1502,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1351,6 +1516,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "HDBT2300(2.3米蝴蝶臂头)":{
             cgbtmc:'蝴蝶臂头',
@@ -1359,7 +1536,7 @@
             cgbtdjsb:'172.17',
             cgbtdjsd:'8',
             cgbtdjgl:'0.37',
-            cgbtdjdl:'1.2',
+            cgbtdjdl:'1.07',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M4(180/2)',
@@ -1373,6 +1550,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'LT40RL2C400',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'0.37',
+            cgbtdjdl1:'1.12',
+            // cgbtdjdy1:'220/380 50',
+            cgbtdjjydj1:'F IP55',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'1',
+            cgbtdjpp1:'艾尔特',
+            cgbtdjbz1:'电动推杆',
         },
         "DJBT1800(1.8米单角臂头)":{
             cgbtmc:'单角臂头',
@@ -1381,7 +1570,7 @@
             cgbtdjsb:'278',
             cgbtdjsd:'5',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.68',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M2(180/X)',
@@ -1395,6 +1584,18 @@
             cgbthzzcaz:'内上螺纹外通孔',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "TBT1800(1.8米T形臂头)":{
             cgbtmc:'T形臂头',
@@ -1403,7 +1604,7 @@
             cgbtdjsb:'179',
             cgbtdjsd:'7.4',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.58',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M4(0/1)',
@@ -1417,6 +1618,18 @@
             cgbthzzcaz:'内外螺纹',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "TBT2300(2.3米T形臂头)":{
             cgbtmc:'T形臂头',
@@ -1425,7 +1638,7 @@
             cgbtdjsb:'179',
             cgbtdjsd:'7.4',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.58',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M4(0/1)',
@@ -1439,6 +1652,18 @@
             cgbthzzcaz:'内外螺纹',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "TBT2800(2.8米T形臂头)":{
             cgbtmc:'T形臂头',
@@ -1447,7 +1672,7 @@
             cgbtdjsb:'179',
             cgbtdjsd:'7.4',
             cgbtdjgl:'0.18',
-            cgbtdjdl:'0.58',
+            cgbtdjdl:'0.6',
             // cgbtdjdy:'220/380 50',
             cgbtdjjydj:'F IP55',
             cgbtdjaz:'M4(0/1)',
@@ -1461,6 +1686,18 @@
             cgbthzzcaz:'内外螺纹',
             cgbthzzcsl:'1',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
         "无":{
             cgbtmc:'无',
@@ -1483,6 +1720,18 @@
             cgbthzzcaz:'/',
             cgbthzzcsl:'/',
             cgbthzzcbz:'/',
+            cgbtdjxh1:'/',
+            cgbtdjfl1:'/',
+            cgbtdjsb1:'/',
+            cgbtdjsd1:'/',
+            cgbtdjgl1:'/',
+            cgbtdjdl1:'/',
+            // cgbtdjdy1:'/',
+            cgbtdjjydj1:'/',
+            cgbtdjaz1:'/',
+            cgbtdjsl1:'/',
+            cgbtdjpp1:'/',
+            cgbtdjbz1:'/',
         },
     };
 
@@ -1495,7 +1744,7 @@
             cgqsjgdjsb:'/',
             cgqsjgdjsd:'/',
             // cgqsjgdjgl:'2.2',
-            cgqsjgdjdl:'/',
+            cgqsjgdjdl:' ',
             // cgqsjgdjdy:'220/380 50',
             cgqsjgdjjydj:'/',
             cgqsjgdjaz:'/',
@@ -1510,7 +1759,7 @@
             cgqsjgdjsb:'/',
             cgqsjgdjsd:'/',
             // cgqsjgdjgl:'2.2',
-            cgqsjgdjdl:'/',
+            cgqsjgdjdl:' ',
             // cgqsjgdjdy:'220/380 50',
             cgqsjgdjjydj:'/',
             cgqsjgdjaz:'/',
@@ -1525,7 +1774,7 @@
             cgqsjgdjsb:'/',
             cgqsjgdjsd:'/',
             // cgqsjgdjgl:'3.0',
-            cgqsjgdjdl:'/',
+            cgqsjgdjdl:' ',
             // cgqsjgdjdy:'220/380 50',
             cgqsjgdjjydj:'/',
             cgqsjgdjaz:'/',
@@ -1540,7 +1789,7 @@
             cgqsjgdjsb:'/',
             cgqsjgdjsd:'/',
             // cgqsjgdjgl:'3.0',
-            cgqsjgdjdl:'/',
+            cgqsjgdjdl:' ',
             // cgqsjgdjdy:'220/380 50',
             cgqsjgdjjydj:'/',
             cgqsjgdjaz:'/',
@@ -1555,7 +1804,7 @@
             cgqsjgdjsb:'/',
             cgqsjgdjsd:'/',
             // cgqsjgdjgl:'3.0',
-            cgqsjgdjdl:'/',
+            cgqsjgdjdl:' ',
             // cgqsjgdjdy:'220/380 50',
             cgqsjgdjjydj:'/',
             cgqsjgdjaz:'/',
@@ -1589,7 +1838,7 @@
             cgyxdjsb:'90.77',
             cgyxdjsd:'14',
             cgyxdjgl:'0.25',
-            cgyxdjdl:'0.73',
+            cgyxdjdl:'0.76',
             // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M3(0/X)(180/X)各1',
@@ -1604,7 +1853,7 @@
             cgyxdjsb:'130.07',
             cgyxdjsd:'11',
             cgyxdjgl:'0.37',
-            cgyxdjdl:'1.2',
+            cgyxdjdl:'1.07',
             // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
@@ -1619,7 +1868,7 @@
             cgyxdjsb:'157.09',
             cgyxdjsd:'8.8',
             cgyxdjgl:'0.55',
-            cgyxdjdl:'1.63',
+            cgyxdjdl:'1.36',
             // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
@@ -1634,7 +1883,7 @@
             cgyxdjsb:'162.31',
             cgyxdjsd:'8.5',
             cgyxdjgl:'0.55',
-            cgyxdjdl:'1.63',
+            cgyxdjdl:'1.36',
             // cgyxdjdy:'220/380 50',
             cgyxdjjydj:'F IP55',
             cgyxdjaz:'M1(0/X)(180/X)各1',
@@ -1741,7 +1990,7 @@
             cgdhzjgdjsb:'560',
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
@@ -1763,7 +2012,7 @@
             cgdhzjgdjsb:'931',
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
@@ -1785,7 +2034,7 @@
             cgdhzjgdjsb:'1733',
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
@@ -1807,7 +2056,7 @@
             cgdhzjgdjsb:'560',
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1829,7 +2078,7 @@
             cgdhzjgdjsb:'560',
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1851,7 +2100,7 @@
             cgdhzjgdjsb:'931',
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1873,7 +2122,7 @@
             cgdhzjgdjsb:'931',
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1895,7 +2144,7 @@
             cgdhzjgdjsb:'1733',
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1917,7 +2166,7 @@
             cgdhzjgdjsb:'1733',
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1939,7 +2188,7 @@
             cgdhzjgdjsb:'1987',
             cgdhzjgdjsd:'0.69',
             cgdhzjgdjgl:'0.37',
-            cgdhzjgdjdl:'1.2',
+            cgdhzjgdjdl:'1.07',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1961,7 +2210,7 @@
             cgdhzjgdjsb:'1987',
             cgdhzjgdjsd:'0.69',
             cgdhzjgdjgl:'0.37',
-            cgdhzjgdjdl:'1.2',
+            cgdhzjgdjdl:'1.07',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -1983,7 +2232,7 @@
             cgdhzjgdjsb:'3338',
             cgdhzjgdjsd:'0.41',
             cgdhzjgdjgl:'0.37',
-            cgdhzjgdjdl:'1.2',
+            cgdhzjgdjdl:'1.07',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2005,7 +2254,7 @@
             cgdhzjgdjsb:'3338',
             cgdhzjgdjsd:'0.41',
             cgdhzjgdjgl:'0.37',
-            cgdhzjgdjdl:'1.2',
+            cgdhzjgdjdl:'1.07',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2027,7 +2276,7 @@
             cgdhzjgdjsb:'4325',
             cgdhzjgdjsd:'0.32',
             cgdhzjgdjgl:'0.55',
-            cgdhzjgdjdl:'1.63',
+            cgdhzjgdjdl:'1.36',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2049,7 +2298,7 @@
             cgdhzjgdjsb:'4325',
             cgdhzjgdjsd:'0.32',
             cgdhzjgdjgl:'0.55',
-            cgdhzjgdjdl:'1.63',
+            cgdhzjgdjdl:'1.36',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2069,9 +2318,9 @@
             cgdhzjgdjxh:'307L4 2423 HZ P90 BN90S 6',
             cgdhzjgdjfl:'Φ295',
             cgdhzjgdjsb:'2423',
-            cgdhzjgdjsd:'0.58',
+            cgdhzjgdjsd:'0.38',
             cgdhzjgdjgl:'0.75',
-            cgdhzjgdjdl:'2.43',
+            cgdhzjgdjdl:'2.27',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
@@ -2091,9 +2340,9 @@
             cgdhzjgdjxh:'307L4 2423 HZ P90 BN90S 6',
             cgdhzjgdjfl:'Φ295',
             cgdhzjgdjsb:'2423',
-            cgdhzjgdjsd:'0.58',
+            cgdhzjgdjsd:'0.38',
             cgdhzjgdjgl:'0.75',
-            cgdhzjgdjdl:'2.43',
+            cgdhzjgdjdl:'2.27',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
@@ -2110,12 +2359,12 @@
         },
         "HZX16.0X309":{
             cgdhzjgmc:'HZX16.0X309',
-            cgdhzjgdjxh:'309L4 2423 HZ P90 BN90L 6',
+            cgdhzjgdjxh:'309L4 2423 HZ P90 BN90S 6',
             cgdhzjgdjfl:'Φ314',
             cgdhzjgdjsb:'2423',
-            cgdhzjgdjsd:'0.58',
-            cgdhzjgdjgl:'1.1',
-            cgdhzjgdjdl:'3.37',
+            cgdhzjgdjsd:'0.38',
+            cgdhzjgdjgl:'0.75',
+            cgdhzjgdjdl:'2.27',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
@@ -2141,7 +2390,7 @@
             cgdhzjgdjsb:'560',
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
@@ -2156,7 +2405,7 @@
             cgdhzjgdjsb:'931',
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
@@ -2171,7 +2420,7 @@
             cgdhzjgdjsb:'1733',
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M2(0/X)',
@@ -2186,7 +2435,7 @@
             cgdhzjgdjsb:'560',
             cgdhzjgdjsd:'2.3',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2201,7 +2450,7 @@
             cgdhzjgdjsb:'931',
             cgdhzjgdjsd:'1.4',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2216,7 +2465,7 @@
             cgdhzjgdjsb:'1733',
             cgdhzjgdjsd:'0.75',
             cgdhzjgdjgl:'0.25',
-            cgdhzjgdjdl:'0.71',
+            cgdhzjgdjdl:'0.76',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2231,7 +2480,7 @@
             cgdhzjgdjsb:'1987',
             cgdhzjgdjsd:'0.69',
             cgdhzjgdjgl:'0.37',
-            cgdhzjgdjdl:'1.2',
+            cgdhzjgdjdl:'1.07',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2246,7 +2495,7 @@
             cgdhzjgdjsb:'3338',
             cgdhzjgdjsd:'0.41',
             cgdhzjgdjgl:'0.37',
-            cgdhzjgdjdl:'1.2',
+            cgdhzjgdjdl:'1.07',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2261,7 +2510,7 @@
             cgdhzjgdjsb:'4325',
             cgdhzjgdjsd:'0.32',
             cgdhzjgdjgl:'0.55',
-            cgdhzjgdjdl:'1.63',
+            cgdhzjgdjdl:'1.36',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'M4(0/X)',
@@ -2274,9 +2523,9 @@
             cgdhzjgdjxh:'307L4 2423 HZ P90 BN90S 6',
             cgdhzjgdjfl:'Φ295',
             cgdhzjgdjsb:'2423',
-            cgdhzjgdjsd:'0.58',
+            cgdhzjgdjsd:'0.38',
             cgdhzjgdjgl:'0.75',
-            cgdhzjgdjdl:'2.43',
+            cgdhzjgdjdl:'2.27',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
@@ -2286,12 +2535,12 @@
         },
         "309":{
             cgdhzjgmc:'309',
-            cgdhzjgdjxh:'309L4 2423 HZ P90 BN90L 6',
+            cgdhzjgdjxh:'309L4 2423 HZ P90 BN90S 6',
             cgdhzjgdjfl:'Φ314',
             cgdhzjgdjsb:'2423',
-            cgdhzjgdjsd:'0.58',
-            cgdhzjgdjgl:'1.1',
-            cgdhzjgdjdl:'3.37',
+            cgdhzjgdjsd:'0.38',
+            cgdhzjgdjgl:'0.75',
+            cgdhzjgdjdl:'2.27',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
@@ -2301,12 +2550,12 @@
         },
         "310":{
             cgdhzjgmc:'310',
-            cgdhzjgdjxh:'310L4 2523 HZ BN90L 6',
+            cgdhzjgdjxh:'310L4 2523 HZ BN90S 6',
             cgdhzjgdjfl:'Φ370',
             cgdhzjgdjsb:'2523',
-            cgdhzjgdjsd:'0.55',
-            cgdhzjgdjgl:'1.1',
-            cgdhzjgdjdl:'3.37',
+            cgdhzjgdjsd:'0.36',
+            cgdhzjgdjgl:'0.75',
+            cgdhzjgdjdl:'2.27',
             // cgdhzjgdjdy:'220/380 50',
             cgdhzjgdjjydj:'F IP55',
             cgdhzjgdjaz:'立式安装',
@@ -2325,7 +2574,7 @@
             cgssjgdjsb:'157.09',
             cgssjgdjsd:'8.8',
             cgssjgdjgl:'0.55',
-            cgssjgdjdl:'1.63',
+            cgssjgdjdl:'1.36',
             // cgssjgdjdy:'220/380 50',
             cgssjgdjjydj:'F IP55',
             cgssjgdjaz:'M5(90/2)',
@@ -2337,7 +2586,7 @@
             cgssjgdjsb1:'157.09',
             cgssjgdjsd1:'8.8',
             cgssjgdjgl1:'0.55',
-            cgssjgdjdl1:'1.63',
+            cgssjgdjdl1:'1.36',
             // cgssjgdjdy1:'220/380 50',
             cgssjgdjjydj1:'F IP55',
             cgssjgdjaz1:'M5(90/2)',
@@ -2540,8 +2789,8 @@
             cggrumc:'GRU313',
             cggrudjxh:'SA97DRS112M4/BE5/HR/OS2/C',
             cggrudjfl:'Φ70',
-            cggrudjsb:'231.67',
-            cggrudjsd:'6.2',
+            cggrudjsb:'196.52',
+            cggrudjsd:'7.3',
             cggrudjgl:'4.4',
             cggrudjdl:'9.4',
             // cggrudjdy:'220/380 50',
@@ -2602,7 +2851,7 @@
             cgdcdjsb:'269',
             cgdcdjsd:'4.8',
             cgdcdjgl:'0.25',
-            cgdcdjdl:'0.72',
+            cgdcdjdl:'0.76',
             // cgdcdjdy:'220/380 50',
             cgdcdjjydj:'F IP55',
             cgdcdjaz:'M1A(0/X)',
@@ -2781,7 +3030,7 @@
             cgzb1djsb:'560',
             cgzb1djsd:'2.3',
             cgzb1djgl:'0.25',
-            cgzb1djdl:'0.71',
+            cgzb1djdl:'0.76',
             // cgzb1djdy:'220/380 50',
             cgzb1djjydj:'F IP55',
             cgzb1djaz:'M4(0/X)',
@@ -2814,7 +3063,7 @@
             cgzb2djsb:'471',
             cgzb2djsd:'2.8',
             cgzb2djgl:'0.18',
-            cgzb2djdl:'0.68',
+            cgzb2djdl:'0.6',
             // cgzb2djdy:'220/380 50',
             cgzb2djjydj:'F IP55',
             cgzb2djaz:'M4(0/X)',
@@ -2836,6 +3085,55 @@
             cgzb2djsl:'/',
             cgzb2djpp:'/',
             cgzb2djbz:'/',
+        }
+    };
+
+    // 防风背包电机
+    cgffbbModelList={
+        "电动防风背包":{
+            cgffbbmc:'电动防风背包',
+            cgffbbdjxh:'VF 44 P1 60 P63 B14 BN 63B 6',
+            cgffbbdjfl:'/',
+            cgffbbdjsb:'/',
+            cgffbbdjsd:'/',
+            cgffbbdjgl:'0.12',
+            cgffbbdjdl:'0.93',
+            // cgffbbdjdy:'220/380 50',
+            cgffbbdjjydj:'F IP55',
+            cgffbbdjaz:'/',
+            cgffbbdjsl:'2',
+            cgffbbdjpp:'邦飞利',
+            cgffbbdjbz:'/',
+        },
+        "手动防风背包":{
+            cgffbbmc:'无',
+            cgffbbdjxh:'/',
+            cgffbbdjfl:'/',
+            cgffbbdjsb:'/',
+            cgffbbdjsd:'/',
+            cgffbbdjgl:'/',
+            cgffbbdjdl:'/',
+            // cgffbbdjdy:'/',
+            cgffbbdjjydj:'/',
+            cgffbbdjaz:'/',
+            cgffbbdjsl:'/',
+            cgffbbdjpp:'/',
+            cgffbbdjbz:'/',
+        },
+        "无":{
+            cgffbbmc:'无',
+            cgffbbdjxh:'/',
+            cgffbbdjfl:'/',
+            cgffbbdjsb:'/',
+            cgffbbdjsd:'/',
+            cgffbbdjgl:'/',
+            cgffbbdjdl:'/',
+            // cgffbbdjdy:'/',
+            cgffbbdjjydj:'/',
+            cgffbbdjaz:'/',
+            cgffbbdjsl:'/',
+            cgffbbdjpp:'/',
+            cgffbbdjbz:'/',
         }
     };
 
@@ -3774,6 +4072,48 @@
             return btModelList[ btModel ]['cgbtdjbz'];
         },
 
+        //臂头电机1
+        cgbtdjxh1: function () {
+            return btModelList[ btModel ]['cgbtdjxh1'];
+        },
+        cgbtdjfl1: function () {
+            return btModelList[ btModel ]['cgbtdjfl1'];
+        },
+        cgbtdjsb1: function () {
+            return btModelList[ btModel ]['cgbtdjsb1'];
+        },
+        cgbtdjsd1: function () {
+            return btModelList[ btModel ]['cgbtdjsd1'];
+        },
+        cgbtdjgl1: function () {
+            return btModelList[ btModel ]['cgbtdjgl1'];
+        },
+        cgbtdjdl1: function () {
+            return btModelList[ btModel ]['cgbtdjdl1'];
+        },
+        cgbtdjdy1: function () {
+            if ( btModel == '无' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
+        },
+        cgbtdjjydj1: function () {
+            return btModelList[ btModel ]['cgbtdjjydj1'];
+        },
+        cgbtdjaz1: function () {
+            return btModelList[ btModel ]['cgbtdjaz1'];
+        },
+        cgbtdjsl1: function () {
+            return btModelList[ btModel ]['cgbtdjsl1'];
+        },
+        cgbtdjpp1: function () {
+            return btModelList[ btModel ]['cgbtdjpp1'];
+        },
+        cgbtdjbz1: function () {
+            return btModelList[ btModel ]['cgbtdjbz1'];
+        },
+
         //起升机构电机
         cgqsjgmc: function () {
             return qsjgModelList[ qsjgModel ]['cgqsjgmc'];
@@ -4336,6 +4676,51 @@
             return cgzb2ModelList[ cgzb2Model ]['cgzb2djbz'];
         },
 
+        //防风背包电机
+        cgffbbmc: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbmc'];
+        },
+        cgffbbdjxh: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjxh'];
+        },
+        cgffbbdjfl: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjfl'];
+        },
+        cgffbbdjsb: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjsb'];
+        },
+        cgffbbdjsd: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjsd'];
+        },
+        cgffbbdjgl: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjgl'];
+        },
+        cgffbbdjdl: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjdl'];
+        },
+        cgffbbdjdy: function () {
+            if ( cgffbbModel == '无' || cgffbbModel == '手动防风背包' ){
+                return '/';
+            } else {
+                return cgdqdypl ;
+            }
+        },
+        cgffbbdjjydj: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjjydj'];
+        },
+        cgffbbdjaz: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjaz'];
+        },
+        cgffbbdjsl: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjsl'];
+        },
+        cgffbbdjpp: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjpp'];
+        },
+        cgffbbdjbz: function () {
+            return cgffbbModelList[ cgffbbModel ]['cgffbbdjbz'];
+        },
+
         //其他电机
         cgqt1mc: function () {
             if ( cgqt1 == '无' ){
@@ -4688,6 +5073,12 @@
         cgdcyyazj: function () {
             return cgdcModelList[ cgdcModel ]['cgdcyyazj'];
         },
+        cgdcyygl: function () {
+            return cgdcModelList[ cgdcModel ]['cgdcyygl'];
+        },
+        cgdcyydl: function () {
+            return cgdcModelList[ cgdcModel ]['cgdcyydl'];
+        },
         cgdcyydy: function () {
             if ( cgdcModel == '2.0米液压伸展吊船(YYPT200G(2.0))' || cgdcModel == '2.0米液压伸展吊船(2.0-2.3)(YYPT200G(2.0-2.3))' || cgdcModel == '2.5米液压伸展吊船(YYPT200G(2.5))' || cgdcModel == '3.0米液压伸展吊船(YYPT200G(3.0))' || cgdcModel == '3.5米液压伸展吊船(YYPT200G(3.5))' ){
                 return cgdqdypl ;
@@ -4986,6 +5377,54 @@
                 return '/';
             }
         },
+
+        //整机液压功率、电流
+        cgyygl: function () {
+            if ( cgssyymc == '无' && cgybyymc == '无' && cgdsyymc == '无' ){
+                return '/' ;
+            } else {
+                return ' ' ;
+            }
+        },
+        cgyydl: function () {
+            if ( cgssyymc == '无' && cgybyymc == '无' && cgdsyymc == '无' ){
+                return '/' ;
+            } else {
+                return ' ' ;
+            }
+        },
+
+        cgxmdq: function () {
+            return 'MHE' ;
+        },
+        cgdjdy: function () {
+            var cgdjdy1 = " ";
+            cgdjdy1 = cgdqdy + 'V ' + cgdqpl + 'HZ' ;
+            return cgdjdy1 ;
+        },
+
+        cgyydjxh: function () {
+            if ( cgssyysl != '/' || cgybyysl != '/' || cgdsyysl != '/' ){
+                return '有液压' ;
+            } else {
+                return '/' ;
+            }
+        },
+        cgyydjpp: function () {
+            if ( cgssyysl != '/' || cgybyysl != '/' || cgdsyysl != '/' ){
+                return '源爵' ;
+            } else {
+                return '/' ;
+            }
+        },
+        cgyydjsl: function () {
+            if ( cgssyysl != '/' || cgybyysl != '/' || cgdsyysl != '/' ){
+                return '1' ;
+            } else {
+                return '/' ;
+            }
+        },
+
 
     };
 
