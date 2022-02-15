@@ -1050,22 +1050,22 @@ public class StabilityEnity_LSFArmEntity {
         }
         Double mbq5;
         if ( lqg5 >= 0 ) {
-            mbq5 = m5 * lqg5 * 10 ;
-        } else {
             mbq5 = 0.0 ;
+        } else {
+            mbq5 = m5 * lqg5 * -10 ;
         }
         Double mbq6 = m6 * lqg6 * 10 ;
         Double mbq7;
         if ( lqg7 >= 0 ) {
-            mbq7 = m7 * lqg7 * 10 ;
-        } else {
             mbq7 = 0.0 ;
+        } else {
+            mbq7 = m7 * lqg7 * -10 ;
         }
         Double mbq8;
         if ( lqg8 >= 0 ) {
-            mbq8 = m8 * lqg8 * 10 ;
-        } else {
             mbq8 = 0.0 ;
+        } else {
+            mbq8 = m8 * lqg8 * -10 ;
         }
         Double mbq20 = m20 * lqg20 * 10 ;
         result.put("mslbq", mslbq);
@@ -1088,21 +1088,21 @@ public class StabilityEnity_LSFArmEntity {
         }
         Double mbk5;
         if ( lqg5 < 0 ) {
-            mbk5 = m5 * lqg5 * -10 ;
-        } else {
             mbk5 = 0.0 ;
+        } else {
+            mbk5 = m5 * lqg5 * 10 ;
         }
         Double mbk7;
         if ( lqg7 < 0 ) {
-            mbk7 = m7 * lqg7 * -10 ;
-        } else {
             mbk7 = 0.0 ;
+        } else {
+            mbk7 = m7 * lqg7 * 10 ;
         }
         Double mbk8;
         if ( lqg8 < 0 ) {
-            mbk8 = m8 * lqg8 * -10 ;
-        } else {
             mbk8 = 0.0 ;
+        } else {
+            mbk8 = m8 * lqg8 * 10 ;
         }
         Double mbk9 = m9 * lqg9 * 10 ;
         Double mbk10 = m10 * lqg10 * 10 ;

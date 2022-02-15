@@ -1024,9 +1024,9 @@ public class ShzFarmStabilityEntity {
         }
         Double mbq5;
         if ( lqg5 >= 0 ) {
-            mbq5 = m5 * lqg5 * 10 ;
-        } else {
             mbq5 = 0.0 ;
+        } else {
+            mbq5 = m5 * lqg5 * -10 ;
         }
         Double mbq6 = m6 * lqg6 * 10 ;
         Double mbq7 = m7 * lqg7 * 10 ;
@@ -1052,9 +1052,9 @@ public class ShzFarmStabilityEntity {
         }
         Double mbk5;
         if ( lqg5 < 0 ) {
-            mbk5 = m5 * lqg5 * -10 ;
-        } else {
             mbk5 = 0.0 ;
+        } else {
+            mbk5 = m5 * lqg5 * 10 ;
         }
         Double mbk9 = m9 * lqg9 * 10 ;
         Double mbk10 = m10 * lqg10 * 10 ;
