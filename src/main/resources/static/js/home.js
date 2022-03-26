@@ -171,8 +171,8 @@ asideDatas = {
                     url: "pdf",
                     children: [
                         {
-                            title: '固定立柱',
-
+                            title: '立柱强度及稳定性',
+                            // url:'ColumnCheck'
                         },
                         {
                             title: '1+1顶升立柱',

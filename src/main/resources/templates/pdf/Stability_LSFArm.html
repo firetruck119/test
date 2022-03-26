@@ -3377,6 +3377,10 @@
                 $('[name=grutstx]').prop('disabled', true)
                 data.datalist['grutstx'].color = 'white';
                 return '物料起升机构极限额定载重量为750kg';
+            } else if ( gruModel == "GRU295A" ) {
+                $('[name=grutstx]').prop('disabled', true)
+                data.datalist['grutstx'].color = 'white';
+                return '物料起升机构极限额定载重量为850kg';
             } else if ( typeOfGRU == "GRU313" ) {
                 $('[name=grutstx]').prop('disabled', true)
                 data.datalist['grutstx'].color = 'white';
