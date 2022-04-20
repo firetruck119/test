@@ -269,6 +269,10 @@ asideDatas = {
                     url:'WireRope'
                 },
                 {
+                    title: '伸缩子吊船钢丝绳(测试)',
+                    url:'SszdcWireRope'
+                },
+                {
                     title: '大回转机构',
                     url:'RotaryStructure'
                 },

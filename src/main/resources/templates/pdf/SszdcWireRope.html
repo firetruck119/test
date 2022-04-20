@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+    <!--     引入样式 -->
+    <link rel="stylesheet" th:href="@{/css/element.css}">
+
+    <!-- 引入组件库 -->
+    <script type="text/javascript" th:src="@{/js/element.js}"></script>
+    <script type="text/javascript" th:src="@{/js/model.js}"></script>
+    <script th:src="@{/js/axios.js}"></script>
+    <script  th:src="@{/js/qs.min.js}"></script>
+
+    <script>
+        function jumpurl(){
+            location='http://www.baidu.com';
+        }
+        function f(){
+            vm.i--;
+        }
+        function getUrlRelativePath(url)
+        {
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+
+            if(relUrl.indexOf("?") != -1){
+                relUrl= relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+        var vm = new Vue({
+            data: {
+                asideData: {},
+                header: {},
+                main: {isreally: false},
+                i:10,
+                username:"",
+
+            },
+            computed:{
+                u(){
+                    if(this.i==0){
+                        jumpurl();
+                    }
+                }
+            },
+            methods: {
+                objIsEmpty: function (objectName) {
+                    if (Object.keys(objectName).length === 0) {
+                        return false // 如果为空,返回false
+                    }
+                    return true;
+                },
+                f(){
+                    console.log(this.i)
+                    this.i--;
+                },
+                getCurrentUserName(){
+                    axios.post("/getCurrentUserName").then(
+                        e=>{
+                            console.log(e.data)
+                            this.username=e.data;
+                        }
+                    )
+                },
+                setInvisibleLinks(){
+                    axios.get("/getCurrentUserLevel").then(
+                        e => {
+                            if (typeof e.data === 'number' && !isNaN(e.data )  ) {
+                                var invisibleLinks = Array.prototype.slice.call(document.getElementsByClassName("myNav"));
+                                if(e.data==1) {
+                                    axios.get("/getPermitsAboveSuperUser").then(
+                                        e1 => {
+                                            console.log(e1.data);
+                                            console.log(invisibleLinks);
+                                            for(i=0;i < invisibleLinks.length;i++){
+                                                for (j = 0; j < e1.data.length; j++) {
+                                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                                        invisibleLinks[i].style.display = "none";
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        });
+                                }
+                                else if(e.data==2){
+                                    axios.get("/getPermitsAboveAdmin").then(
+                                        e1 => {
+                                            for(i=0;i < invisibleLinks.length;i++){
+                                                for (j = 0; j < e1.data.length; j++) {
+                                                    if (getUrlRelativePath(invisibleLinks[i].href) == e1.data[j]) {
+                                                        invisibleLinks[i].style.display = "none";
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        });
+                                }
+                                console.log(e.data);
+                                console.log("e.data");
+                                for(i=0;i<invisibleLinks.length;i++){
+                                    if(getUrlRelativePath(invisibleLinks[i].href)=='/TempPermission'){
+                                        if(e.data!=3) {
+                                            invisibleLinks[i].style.display = "none";
+                                        }
+                                        invisibleLinks[i].target="_blank";
+                                        break;
+                                    }
+                                }
+
+
+                            }
+                        }
+                    )
+                }
+            },
+            mounted() {
+                this.getCurrentUserName();
+                this.setInvisibleLinks();
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+    <title>伸缩子吊船钢丝绳校核计算书</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-1.7.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/pdf.css}">
+
+    <script th:src="@{/js/dataClass.js}"></script>
+</head>
+
+<body>
+<div id="app" hidden>
+    <el-container>
+        <el-header id="headerBox" style="width:100%;position: fixed;z-index: 10">
+            <!--头元素-->
+            <el-row :gutter="20">
+                <slot th:include="newHtml/model::header"></slot>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" height='100%' style="z-index: 5">
+                <el-row class="tac">
+                    <el-col>
+                        <div class="side fixed" id="asideBox">
+                            <!--左侧导航栏-->
+                            <div th:include="newHtml/model::aside"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-aside>
+            <el-main>
+                <el-row>
+                    <div class="main">
+                        <iframe style="display: none" name="stop" src="about:blank"></iframe>
+                        <form class="boxform" name="form1" id="form1" th:id="form1" opType="#" target="stop" method="post" enctype="multipart/form-data">
+                            <div style="display: block;font-size: 30px;text-align: center;line-height: 30px">伸缩子吊船钢丝绳校核计算书</div>
+                            <!- 封面内容 ->
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td style="width:30%;padding:10px 0;;padding:10px 0;;">项目批令号/方案编号</td>
+                                        <td style="width:55%;">
+                                            <input type='text' name="sjht" type="text" list="txtBatchId"/>
+                                            <datalist id="txtBatchId">
+                                            </datalist>
+                                        </td>
+                                        <td style="width:15%;"><input type="button" name="getData" value="读取"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="background-color: #aaa;padding: 10px 0 10px 0"><b>1.封面内容</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;padding:10px 0;;"><b>名称</b></td>
+                                        <td colspan="2">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机计算书编号</b></td>
+                                        <td colspan="2"><input type="text" name="no"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>本机版本</b></td>
+                                        <td colspan="2"><input type="text" name="ver" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>项目名称</b></td>
+                                        <td colspan="2"><input type="text" name="xmmc" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>主机型号</b></td>
+                                        <td colspan="2"><input type="text" name="zjxh" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算人</b></td>
+                                        <td colspan="2"><input type="text" name="jsr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>审核人</b></td>
+                                        <td colspan="2"><input type="text" name="shr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>批准人</b></td>
+                                        <td colspan="2"><input type="text" name="pzr" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>计算日期</b></td>
+                                        <td colspan="2"><input type="text" name="date" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>2.基本参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>作业高度</b></td>
+                                        <td ><p><i>h</i></p></td>
+                                        <td ><input type="text" name="h" /></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船前后吊点距离</b></td>
+                                        <td ><p><i>L<sub>sd</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclsd" /></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船伸缩量</b></td>
+                                        <td ><p><i>L<sub>ss</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclss"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>吊船钢丝绳型号选择</b></td>
+                                        <td colspan="3">
+                                            <select name="sszdcgssModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="Ф13">Ф13</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>是否有防风背包</b></td>
+                                        <td colspan="3">
+                                            <select name="ffbbModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="有">有</option>
+                                                <option value="无">无</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>4.伸缩子吊船钢丝绳相关参数</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船钢丝绳型号</b></td>
+                                        <td ><p> </p></td>
+                                        <td ><input type="text" name="dcgssxh"/></td>
+                                        <td > </td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船钢丝绳直径</b></td>
+                                        <td ><p> </i></p></td>
+                                        <td ><input type="text" name="dcgssd"/></td>
+                                        <td >mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船钢丝绳数量</b></td>
+                                        <td ><p><i>N<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="dcgssn"/></td>
+                                        <td >根</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>单根吊船钢丝绳最小破断拉力</b></td>
+                                        <td ><p><i>F<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="dcgssf"/></td>
+                                        <td >kN</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>单根吊船钢丝绳每米重量</b></td>
+                                        <td ><p><i>ρ<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="dcgssp"/></td>
+                                        <td >kg/m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>单根吊船钢丝绳横截面积</b></td>
+                                        <td ><p><i>A<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="dcgssa"/></td>
+                                        <td >mm<sup>2</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船钢丝绳弹性模量</b></td>
+                                        <td ><p><i>E<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="dcgsse"/></td>
+                                        <td >GPa</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船前吊点钢丝绳数量</b></td>
+                                        <td ><p><i>n<sub>A</sub></i></p></td>
+                                        <td ><input type="text" name="dcgssna"/></td>
+                                        <td >根</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船后吊点钢丝绳数量</b></td>
+                                        <td ><p><i>n<sub>B</sub></i></p></td>
+                                        <td ><input type="text" name="dcgssnb"/></td>
+                                        <td >根</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>5.伸缩子吊船各部件重量</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>单根吊船钢丝绳自重</b></td>
+                                        <td ><p><i>m<sub>wr</sub></i></p></td>
+                                        <td ><input type="text" name="dggssmwr"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>防风背包自重</b></td>
+                                        <td ><p><i>m<sub>ffbb</sub></i></p></td>
+                                        <td ><input type="text" name="mffbb"/></td>
+                                        <td >kg</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船额定载重量</b></td>
+                                        <td ><p><i>R<sub>1</sub></i></p></td>
+                                        <td ><input type="text" name="r1"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>物料起升机构额定载重量</b></td>
+                                        <td ><p><i>H<sub>wll</sub></i></p></td>
+                                        <td ><input type="text" name="hwll"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船吊船自重</b></td>
+                                        <td ><p><i>m<sub>s1</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcms1"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船伸缩臂自重</b></td>
+                                        <td ><p><i>m<sub>s2</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcms2"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船固定臂自重</b></td>
+                                        <td ><p><i>m<sub>s3</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcms3"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船配重自重</b></td>
+                                        <td ><p><i>m<sub>s4</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcms4"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船伸缩机构自重</b></td>
+                                        <td ><p><i>m<sub>s5</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcms5"/></td>
+                                        <td >kg</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.伸缩子吊船伸出工况载荷重心至前吊点距离</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="伸缩子吊船伸出工况(挂物料)载荷重心至前吊点距离示意图" id="sszdctu1" height="400px"  name="sszdctu1">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>伸缩子吊船伸出工况(挂物料)载荷重心至前吊点距离示意图</b></td>
+                                        <td colspan="3">
+                                            <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="sszdctu1" oninput="showImage(this,'sszdctu1')"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>防风背包自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>ffbb</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclffbb"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船额定载荷重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>r1</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclr1"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>物料起升机构额定载重量重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>wll</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclwll"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船吊船自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s1</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls1"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船伸缩臂自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s2</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls2"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船固定臂自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s3</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls3"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船配重自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s4</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls4"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船伸缩机构自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s5</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls5"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="4" style="background-color: #aaa;padding: 10px 0 10px 0"><b>6.伸缩子吊船缩回工况载荷重心至前吊点距离</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img alt="伸缩子吊船缩回工况(挂物料)载荷重心至前吊点距离示意图" id="sszdctu3" height="400px"  name="sszdctu3">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>伸缩子吊船缩回工况(挂物料)载荷重心至前吊点距离示意图</b></td>
+                                        <td colspan="3">
+                                            <input type="file" style="height:40px ;line-height: 40px;" accept="image/*" name="sszdctu3" oninput="showImage(this,'sszdctu3')"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
+                                        <td style="width:17%;">符号</td>
+                                        <td style="width:40%;">数值</td>
+                                        <td style="width:17%;">单位</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>防风背包自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>ffbbf</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclffbbf"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>吊船额定载荷重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>r1f</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclr1f"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>物料起升机构额定载重量重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>wllf</sub></i></p></td>
+                                        <td ><input type="text" name="sszdclwllf"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船吊船自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s1f</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls1f"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船伸缩臂自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s2f</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls2f"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船固定臂自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s3f</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls3f"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船配重自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s4f</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls4f"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>伸缩子吊船伸缩机构自重重心至前吊点距离</b></td>
+                                        <td ><p><i>L<sub>s5f</sub></i></p></td>
+                                        <td ><input type="text" name="sszdcls5f"/></td>
+                                        <td >m</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="display: none">
+                               <!--后台程序-->
+
+                            </div>
+
+                            <div style="width:97%;text-align: center;font-size: 14px;background-color: #aaa;padding: 10px 0 10px 0;"><b>13.其他示意图</b></div>
+
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>伸缩子吊船伸出工况(无物料)载荷重心至前吊点距离示意图</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="/image/Tensile/sszdctu2.png" height="400px" id="sszdctu2" name="sszdctu2" >
+                                                <input type="hidden" value="tu_sszdctu2.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:150px;padding:10px 0"><b>伸缩子吊船伸出工况(无物料)载荷重心至前吊点距离示意图</b></td>
+                                        <td colspan="1"><input class="image" type="file" name="sszdctu2" accept="image/*"
+                                                               oninput="showImage(this,'sszdctu2')"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class='subtable'>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" style="background-color: #aaa;padding: 10px 0 10px 0"><b>伸缩子吊船缩回工况(无物料)载荷重心至前吊点距离示意图</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div style="height:400px;text-align: center;padding: 10px 0 10px 0;overflow: hidden;border:1px solid #aaa;">
+                                                <img src="/image/Tensile/sszdctu4.png" height="400px" id="sszdctu4" name="sszdctu4" >
+                                                <input type="hidden" value="tu_sszdctu4.png"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:150px;padding:10px 0"><b>伸缩子吊船缩回工况(无物料)载荷重心至前吊点距离示意图</b></td>
+                                        <td colspan="1"><input class="image" type="file" name="sszdctu4" accept="image/*"
+                                                               oninput="showImage(this,'sszdctu4')"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <input type="hidden" name="pdfType"/>
+                        </form>
+
+                        <div class="navbox" style="top: 30%;">
+                            <div style="width:1200px;height:520px; font-size: 14px   ;">
+                                <table id="pdf3tb" style="background-color: rgb(220,220,220)">
+                                    <tr>
+                                        <td colspan="11" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);"><b>核算结果</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);width:49.5%;"><b>伸出工况</b></td>
+                                        <td style="width:2%;" rowspan="14"><b> </b></td>
+                                        <td colspan="5" style="padding: 10px 0 10px 0;background-color: rgb(220,220,220);width:49.5%;"><b>缩回工况</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td style="width:10%;"><b>工作状态</b></td>
+                                        <td style="width:10%;"><b>名称</b></td>
+                                        <td style="width:10%;"><b>标准值</b></td>
+                                        <td style="width:10%;"><b>计算值</b></td>
+                                        <td style="width:9%;"><b>是否满足</b></td>
+                                        <td style="width:10%;"><b>工作状态</b></td>
+                                        <td style="width:10%;"><b>名称</b></td>
+                                        <td style="width:10%;"><b>标准值</b></td>
+                                        <td style="width:10%;"><b>计算值</b></td>
+                                        <td style="width:9%;"><b>是否满足</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td rowspan="6"><b>挂物料</b></td>
+                                        <td><b>前吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfa1"></span>N</td>
+                                        <td><b>/</b></td>
+                                        <td rowspan="6"><b>挂物料</b></td>
+                                        <td><b>前吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfa3"></span>N</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>后吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfb1"></span>N</td>
+                                        <td><b>/</b></td>
+                                        <td><b>后吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfb3"></span>N</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>前吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpa1"></span></td>
+                                        <td id="sszdcgssm1"></td>
+                                        <td><b>前吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpa3"></span></td>
+                                        <td id="sszdcgssm5"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>后吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpb1"></span></td>
+                                        <td id="sszdcgssm2"></td>
+                                        <td><b>后吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpb3"></span></td>
+                                        <td id="sszdcgssm6"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>前吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdla1"></span>mm</td>
+                                        <td><b>/</b></td>
+                                        <td><b>前吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdla3"></span>mm</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>后吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdlb1"></span>mm</td>
+                                        <td><b>/</b></td>
+                                        <td><b>后吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdlb3"></span>mm</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td rowspan="6"><b>无物料</b></td>
+                                        <td><b>前吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfa2"></span>N</td>
+                                        <td><b>/</b></td>
+                                        <td rowspan="6"><b>无物料</b></td>
+                                        <td><b>前吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfa4"></span>N</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>后吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfb2"></span>N</td>
+                                        <td><b>/</b></td>
+                                        <td><b>后吊点总受力</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcfb4"></span>N</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>前吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpa2"></span></td>
+                                        <td id="sszdcgssm3"></td>
+                                        <td><b>前吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpa4"></span></td>
+                                        <td id="sszdcgssm7"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>后吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpb2"></span></td>
+                                        <td id="sszdcgssm4"></td>
+                                        <td><b>后吊点钢丝绳安全系数</b></td>
+                                        <td><b>12</b></td>
+                                        <td><span id="sszdczpb4"></span></td>
+                                        <td id="sszdcgssm8"></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>前吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdla2"></span>mm</td>
+                                        <td><b>/</b></td>
+                                        <td><b>前吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdla4"></span>mm</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+                                    <tr style="background-color: rgb(220,220,220)">
+                                        <td><b>后吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdlb2"></span>mm</td>
+                                        <td><b>/</b></td>
+                                        <td><b>后吊点钢丝绳弹性变量</b></td>
+                                        <td><b>/</b></td>
+                                        <td><span id="sszdcdlb4"></span>mm</td>
+                                        <td><b>/</b></td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttonbox">
+                        <input style="cursor: pointer" type="submit"  class="button" type="submit" value="校验" onclick="showjy();return janyan();"/>
+
+                        <input style="cursor: pointer" type="submit" form="form1" class="button" value="保存数据"
+                               onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
+                        <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出pdf" onclick="$('form').attr('action','/SszdcWireRope/getPDF');
+                                                                                            isCheck(false);changeType('Calculation')"/>
+                        <!--<input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/SszdcWireRope/getPDF');-->
+                                                                                            <!--isCheck(true);changeType('Check')"/>-->
+                        <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','transparent')"/>
+                    </div>
+                </el-row>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+<script>
+    (function () {
+        window.htmlData = {};
+    })()
+</script>
+<script th:src="@{/js/home.js}"></script>
+<script>
+    vm.$mount('#app')
+</script>
+<script>
+
+    ffbbModelList={
+        "有":{
+            mffbb:100,
+        },
+        "无":{
+            mffbb:0,
+        },
+    };
+    sszdcgssModelList={
+        "Ф13":{
+            dcgssxh:'Ф13',
+            dcgssd:13,
+            dcgssf:83,
+            dcgssp:0.65,
+            dcgssa:58.5,
+            dcgsse:99.7,
+        },
+
+    };
+
+</script>
+<script type="text/javascript">
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+    $(document).ready(function () {
+        // InitNav(8)
+        $('#SszdcWireRope').addClass('o-sub-cur');
+    })
+
+    function janyan() {
+        $.ajax({
+            url: "/SszdcWireRope/jy",
+            type: "post",
+            data: $("form").serialize(),
+            async: false,
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                Object.keys(data).forEach(function (id) {
+                    $("#" + id).text(data[id]);
+                    if(data[id]=="不满足") $("#" + id).css("background-color","#F55");
+                    if(data[id]=="满足") $("#" + id).css("background-color","transparent");
+                })
+            }
+        })
+        return false;
+    }
+
+    function showImage(form,element) {
+        // 先获取用户上传的文件对象
+        var fileObj = form.files[0];
+        if(fileObj.size>1048576){
+            alert("上传文件大于1M，请重新选择");
+            form.value="";
+            return false;
+        }
+        // 生成一个文件读取的内置对象
+        var fileReader = new FileReader();
+        // 将文件对象传递给内置对象
+        fileReader.readAsDataURL(fileObj); //这是一个异步执行的过程，所以需要onload回调函数执行读取数据后的操作
+        // 将读取出文件对象替换到img标签
+        fileReader.onload = function(){  // 等待文件阅读器读取完毕再渲染图片
+            $('#'+element).attr('src',fileReader.result).attr('display','inline-block')
+        }
+    }
+</script>
+<script>
+    function changeType(l){
+        var e = $('input[name=pdfType]');
+        if (e.length == 0) {
+            $('form').append('<input name="pdfType" type="hidden"/>');
+        }
+        e = $('input[name=pdfType]');
+        e.val(l);
+    }
+    var calculateFunction={
+
+        sszdcgssModel:function () {
+            return 'Ф13' ;
+        },
+
+        //钢丝绳
+        dcgssxh:function(){
+            return sszdcgssModelList[ sszdcgssModel ]['dcgssxh'];
+        },
+        dcgssd:function(){
+            return sszdcgssModelList[ sszdcgssModel ]['dcgssd'];
+        },
+        dcgssf:function(){
+            return sszdcgssModelList[ sszdcgssModel ]['dcgssf'];
+        },
+        dcgssp:function(){
+            return sszdcgssModelList[ sszdcgssModel ]['dcgssp'];
+        },
+        dcgssa:function(){
+            return sszdcgssModelList[ sszdcgssModel ]['dcgssa'];
+        },
+        dcgsse:function(){
+            return sszdcgssModelList[ sszdcgssModel ]['dcgsse'];
+        },
+
+        dcgssna:function(){
+            if ( dcgssn == 6 ){
+                return 4 ;
+            } else if ( dcgssn == 4 ) {
+                return 2 ;
+            } else {
+                return ' ' ;
+            }
+        },
+        dcgssnb:function(){
+            return 2 ;
+        },
+
+        //载荷
+        dggssmwr:function(){
+            return h * dcgssp ;
+        },
+        mffbb:function(){
+            return ffbbModelList[ ffbbModel ]['mffbb'];
+        },
+        r1:function(){
+            return 250 ;
+        },
+
+
+        //伸出工况距离
+        sszdclffbb:function(){
+            if( mffbb == 0 ){
+                return 0 ;
+            } else{
+                return ' ' ;
+            }
+        },
+        sszdclwll:function(){
+            if( hwll == 0 ){
+                return 0 ;
+            } else{
+                return ' ' ;
+            }
+        },
+        sszdcls1:function(){
+            return sszdclr1 ;
+        },
+
+        //缩回工况距离
+        sszdclffbbf:function(){
+            if( mffbb == 0 ){
+                return 0 ;
+            } else{
+                return sszdclffbb - sszdclss / 1000 ;
+            }
+        },
+        sszdclr1f:function(){
+            return sszdclr1 - sszdclss / 1000 ;
+        },
+        sszdclwllf:function(){
+            if( hwll == 0 ){
+                return 0 ;
+            } else{
+                return sszdclwll - sszdclss / 1000 ;
+            }
+        },
+        sszdcls1f:function(){
+            return sszdcls1 - sszdclss / 1000 ;
+        },
+        sszdcls3f:function(){
+            return sszdcls3 ;
+        },
+        sszdcls5f:function(){
+            return sszdcls5 ;
+        },
+
+    };
+
+    getTable("dcgssModel","dcgssxz");
+
+    data.init(calculateFunction);
+    imgDaefultData={
+        sszdctu1:{inputvalue:"sszdctu1.png"},
+        sszdctu2:{inputvalue:"sszdctu2.png"},
+        sszdctu3:{inputvalue:"sszdctu3.png"},
+        sszdctu4:{inputvalue:"sszdctu4.png"},
+    }
+    getData.dataToImage(imgDaefultData);
+
+</script>
+<script>
+    $('input[name="getData"]').click(function () {
+            var url = '/SszdcWireRope/getData';
+            var id = $('input[name="sjht"]').val();
+            getData.geteDataFromDB(url, id)
+        }
+    )
+</script>
+</body>
+</html>
