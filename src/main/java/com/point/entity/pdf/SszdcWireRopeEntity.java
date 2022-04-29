@@ -22,8 +22,8 @@ public class SszdcWireRopeEntity {
     private Double sszdclss;
 
 //    钢丝绳参数
-    private String dcgssxh;
-    private Double dcgssd;
+//    private String dcgssxh;
+    private String sszdcgssd;
     private Double dcgssn;
     private Double dcgssf;
     private Double dcgssp;
@@ -81,8 +81,8 @@ public class SszdcWireRopeEntity {
         map.put("sszdclsd", CommonFunc.convertDoubleToString(sszdclsd));
         map.put("sszdclss", CommonFunc.convertDoubleToString(sszdclss));
 
-        map.put("dcgssxh", CommonFunc.convertDoubleToString(dcgssxh));
-        map.put("dcgssd", CommonFunc.convertDoubleToString(dcgssd));
+//        map.put("dcgssxh", CommonFunc.convertDoubleToString(dcgssxh));
+        map.put("sszdcgssd", CommonFunc.convertDoubleToString(sszdcgssd));
         map.put("dcgssn", CommonFunc.convertDoubleToString(dcgssn));
         map.put("dcgssf", CommonFunc.convertDoubleToString(dcgssf));
         map.put("dcgssp", CommonFunc.convertDoubleToString(dcgssp));

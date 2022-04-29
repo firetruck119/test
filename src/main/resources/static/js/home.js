@@ -269,7 +269,7 @@ asideDatas = {
                     url:'WireRope'
                 },
                 {
-                    title: '伸缩子吊船钢丝绳(测试)',
+                    title: '伸缩子吊船钢丝绳',
                     url:'SszdcWireRope'
                 },
                 {

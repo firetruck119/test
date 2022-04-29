@@ -247,7 +247,8 @@
                                         <td colspan="3">
                                             <select name="sszdcgssModel" style="width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
-                                                <option value="Ф13">Ф13</option>
+                                                <option value="Ф13-1960">Ф13-1960</option>
+                                                <option value="Ф13-2160">Ф13-2160</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -275,16 +276,16 @@
                                         <td style="width:40%;">数值</td>
                                         <td style="width:17%;">单位</td>
                                     </tr>
-                                    <tr>
-                                        <td ><b>吊船钢丝绳型号</b></td>
-                                        <td ><p> </p></td>
-                                        <td ><input type="text" name="dcgssxh"/></td>
-                                        <td > </td>
-                                    </tr>
+                                    <!--<tr>-->
+                                        <!--<td ><b>吊船钢丝绳型号</b></td>-->
+                                        <!--<td ><p> </p></td>-->
+                                        <!--<td ><input type="text" name="dcgssxh"/></td>-->
+                                        <!--<td > </td>-->
+                                    <!--</tr>-->
                                     <tr>
                                         <td ><b>吊船钢丝绳直径</b></td>
                                         <td ><p> </i></p></td>
-                                        <td ><input type="text" name="dcgssd"/></td>
+                                        <td ><input type="text" name="sszdcgssd"/></td>
                                         <td >mm</td>
                                     </tr>
                                     <tr>
@@ -792,15 +793,22 @@
         },
     };
     sszdcgssModelList={
-        "Ф13":{
-            dcgssxh:'Ф13',
-            dcgssd:13,
-            dcgssf:83,
+        "Ф13-1960":{
+            // dcgssxh:'Ф13',
+            sszdcgssd:'Ф13',
+            dcgssf:105,
             dcgssp:0.65,
             dcgssa:58.5,
             dcgsse:99.7,
         },
-
+        "Ф13-2160":{
+            // dcgssxh:'Ф13',
+            sszdcgssd:'Ф13',
+            dcgssf:112,
+            dcgssp:0.65,
+            dcgssa:58.5,
+            dcgsse:99.7,
+        },
     };
 
 </script>
@@ -866,16 +874,16 @@
     }
     var calculateFunction={
 
-        sszdcgssModel:function () {
-            return 'Ф13' ;
-        },
+        // sszdcgssModel:function () {
+        //     return 'Ф13' ;
+        // },
 
         //钢丝绳
-        dcgssxh:function(){
-            return sszdcgssModelList[ sszdcgssModel ]['dcgssxh'];
-        },
-        dcgssd:function(){
-            return sszdcgssModelList[ sszdcgssModel ]['dcgssd'];
+        // dcgssxh:function(){
+        //     return sszdcgssModelList[ sszdcgssModel ]['dcgssxh'];
+        // },
+        sszdcgssd:function(){
+            return sszdcgssModelList[ sszdcgssModel ]['sszdcgssd'];
         },
         dcgssf:function(){
             return sszdcgssModelList[ sszdcgssModel ]['dcgssf'];
