@@ -680,6 +680,16 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="width:40%;">伸缩吊臂管子形式选择</td>
+                                        <td>
+                                            <select name="ssbdbgzxhModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="四边管式吊臂">四边管式吊臂</option>
+                                                <option value="八边管式吊臂">八边管式吊臂</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="width:40%;">立柱类型选择</td>
                                         <td>
                                             <select name="lzxhModel" style="width:100%;height:40px;text-align-last:center">
@@ -687,6 +697,17 @@
                                                 <option value="固定立柱">固定立柱</option>
                                                 <option value="1+1顶升立柱">1+1顶升立柱</option>
                                                 <option value="2+1顶升立柱">2+1顶升立柱</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%;">立柱材料选择</td>
+                                        <td>
+                                            <select name="lzclxhModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="管材式">管材式</option>
+                                                <option value="板拼式">板拼式</option>
+                                                <option value="四边管式">四边管式</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -741,17 +762,30 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>钢材单价提示(2022/3/10)</b></td>
+                                        <td colspan="3"><b>钢材(Q345B)单价提示(2022/5/5)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>钢板(元/吨)</b></td>
                                         <td style="width:33%"><b>方管/矩形管(元/吨)</b></td>
-                                        <td style="width:33%"><b>八边管(元/吨)</b></td>
+                                        <td style="width:33%"><b>八边管/四边管(元/吨)</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:34%"><b>6500</b></td>
+                                        <td style="width:33%"><b>6800</b></td>
+                                        <td style="width:33%"><b>7700</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><b>钢材(Q235B)单价提示</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:34%"><b>配重箱体钢板(元/吨)</b></td>
+                                        <td style="width:33%"><b>配重纯钢板(元/吨)</b></td>
+                                        <td style="width:33%"><b></b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>6200</b></td>
-                                        <td style="width:33%"><b>6700</b></td>
-                                        <td style="width:33%"><b>7300</b></td>
+                                        <td style="width:33%"><b>7000</b></td>
+                                        <td style="width:33%"><b></b></td>
                                     </tr>
                                 </table>
                             </div>
@@ -1719,7 +1753,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>轨道材料单价提示(2022/3/10)</b></td>
+                                        <td colspan="3"><b>轨道材料单价提示(2022/5/5)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>常规I/H-Q235B(元/吨)</b></td>
@@ -1727,8 +1761,8 @@
                                         <td style="width:33%"><b>拼焊-Q355B(元/吨)</b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>5800</b></td>
-                                        <td style="width:33%"><b>6400</b></td>
+                                        <td style="width:34%"><b>6200</b></td>
+                                        <td style="width:33%"><b>6700</b></td>
                                         <td style="width:33%"><b>9800</b></td>
                                     </tr>
                                 </table>
@@ -2107,23 +2141,23 @@
                                         <td>10</td>
                                         <td>包装成本小计</td>
                                         <td id="cbbzcbzj"></td>
-                                        <td colspan="3"><b>钢材单价(2022/3/10)</b></td>
+                                        <td colspan="3"><b>钢材(Q345B)单价(2022/5/5)</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="2">擦窗机材料成本总计</td>
                                         <td id="cbbmuclzj"></td>
                                         <td colspan="2">钢板(元/吨)</td>
-                                        <td>6200</td>
+                                        <td>6500</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3">擦窗机材料成本占报价比例(%)</td>
                                         <td colspan="2">方管/矩形管(元/吨)</td>
-                                        <td>6700</td>
+                                        <td>6800</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3" id="cbclzbl"></td>
-                                        <td colspan="2">八边管(元/吨)</td>
-                                        <td>7300</td>
+                                        <td colspan="2">八边管/四边管(元/吨)</td>
+                                        <td>7700</td>
                                     </tr>
                                 </table>
                             </div>
@@ -3040,18 +3074,18 @@
     djxhModelList={
         "管材式":{
             djlx:"管材式",
-            cbdjdj:6700,
+            cbdjdj:6800,
         },
         "板拼式":{
             djlx:"板拼式",
-            cbdjdj:6200,
+            cbdjdj:6500,
         },
     };
     //大臂类型
     dbxhModelList={
         "单臂横截面":{
-            cbdbmc:'管式吊臂',
-            cbdbdj:6700,
+            // cbdbmc:'管式吊臂',
+            // cbdbdj:6700,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -3062,8 +3096,8 @@
             cbdqdj:12000,
         },
         "单臂变截面":{
-            cbdbmc:'板拼式吊臂',
-            cbdbdj:6200,
+            // cbdbmc:'板拼式吊臂',
+            // cbdbdj:6200,
             cb3yqdj:3000,
             cbssjjmc:'无',
             cbssjjsl:0,
@@ -3074,8 +3108,8 @@
             cbdqdj:12000,
         },
         "1+1伸缩臂":{
-            cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            // cbdbmc:'八边管式吊臂',
+            // cbdbdj:7300,
             cb3yqdj:4000,
             cbssjjmc:'1+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3086,8 +3120,8 @@
             cbdqdj:15000,
         },
         "2+1伸缩臂":{
-            cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            // cbdbmc:'八边管式吊臂',
+            // cbdbdj:7300,
             cb3yqdj:5000,
             cbssjjmc:'2+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3098,8 +3132,8 @@
             cbdqdj:15000,
         },
         "3+1伸缩臂":{
-            cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            // cbdbmc:'八边管式吊臂',
+            // cbdbdj:7300,
             cb3yqdj:6000,
             cbssjjmc:'3+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3110,8 +3144,8 @@
             cbdqdj:18000,
         },
         "4+1伸缩臂":{
-            cbdbmc:'八边管式吊臂',
-            cbdbdj:7300,
+            // cbdbmc:'八边管式吊臂',
+            // cbdbdj:7300,
             cb3yqdj:8000,
             cbssjjmc:'4+1伸缩臂机加件',
             cbssjjsl:1,
@@ -3122,6 +3156,16 @@
             cbdqdj:20000,
         },
     };
+    //伸缩臂吊臂管子形式
+    ssbdbgzxhModelList={
+        "四边管式吊臂":{
+
+        },
+        "八边管式吊臂":{
+
+        },
+    };
+
     //配重块
     pzkModelList={
         "混凝土配重块":{
@@ -3129,14 +3173,14 @@
             cbpzkdj:316,
             cbpzklyl:0.95,
             cbpzfgzl:' ',
-            cbpzfgdj:6200,
+            cbpzfgdj:6500,
             cbpzfglyl:1,
             cbpzktzl:' ',
             cbpzktdj:6200,
         },
         "钢板配重块":{
             cbpzkmc:'钢板',
-            cbpzkdj:6200,
+            cbpzkdj:7000,
             cbpzklyl:0.9,
             cbpzfgzl:0,
             cbpzfgdj:0,
@@ -3149,15 +3193,27 @@
     lzxhModelList={
         "固定立柱":{
             cblzmc:'固定立柱',
-            cblzdj:6200,
+            // cblzdj:6500,
         },
         "1+1顶升立柱":{
             cblzmc:'1+1顶升立柱',
-            cblzdj:6200,
+            // cblzdj:6500,
         },
         "2+1顶升立柱":{
             cblzmc:'2+1顶升立柱',
-            cblzdj:6200,
+            // cblzdj:6500,
+        },
+    };
+    //立柱材料
+    lzclxhModelList={
+        "管材式":{
+
+        },
+        "板拼式":{
+
+        },
+        "四边管式":{
+
         },
     };
     //底架摆动臂类型
@@ -3787,7 +3843,7 @@
         "其它":{
             cbmbxh:" ",
             cbmbmzl:' ',
-            cbmbdj:6200,
+            cbmbdj:6500,
             cbmbdjdw:'元/吨',
             cbmblyl:0.85,
         },
@@ -4046,6 +4102,18 @@
                 }
             }
         },
+        ssbdbgzxhModel: function () {
+            if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' ) {
+                $('[name=ssbdbgzxhModel]').prop('disabled', true);
+                data.datalist['ssbdbgzxhModel'].color = 'rgb(227, 227, 227)';
+                return ssbdbgzxhModel;
+            } else {
+                $('[name=ssbdbgzxhModel]').prop('disabled', false)
+                data.datalist['ssbdbgzxhModel'].color = 'white';
+                return ' ';
+            }
+        },
+
         lt1Model: function () {
             if ( dbxhModel == '单臂横截面' || dbxhModel == '单臂变截面' || dbxhModel == '1+1伸缩臂' ) {
                 $('[name=lt1Model]').prop('disabled', true);
@@ -4313,13 +4381,39 @@
 
         //3大件
         cbdbmc: function () {
-            return dbxhModelList[ dbxhModel ]['cbdbmc'];
+            if ( dbxhModel == "单臂横截面" ) {
+                return "管式吊臂" ;
+            } else if ( dbxhModel == "单臂变截面" ) {
+                return "板拼式吊臂" ;
+            } else if ( dbxhModel == "1+1伸缩臂" || dbxhModel == "2+1伸缩臂" || dbxhModel == "3+1伸缩臂" || dbxhModel == "4+1伸缩臂" ) {
+                if ( ssbdbgzxhModel == "四边管式吊臂" ) {
+                    return "四边管式吊臂" ;
+                } else if ( ssbdbgzxhModel == "八边管式吊臂" ) {
+                    return "八边管式吊臂" ;
+                }
+            }
         },
+        // cbdbmc: function () {
+        //     return dbxhModelList[ dbxhModel ]['cbdbmc'];
+        // },
         cbdbzl: function () {
             return m4 / 1000 ;
         },
+        // cbdbdj: function () {
+        //     return dbxhModelList[ dbxhModel ]['cbdbdj'];
+        // },
         cbdbdj: function () {
-            return dbxhModelList[ dbxhModel ]['cbdbdj'];
+            if ( dbxhModel == "单臂横截面" ) {
+                return 6800 ;
+            } else if ( dbxhModel == "单臂变截面" ) {
+                return 6500 ;
+            } else if ( dbxhModel == "1+1伸缩臂" || dbxhModel == "2+1伸缩臂" || dbxhModel == "3+1伸缩臂" || dbxhModel == "4+1伸缩臂" ) {
+                if ( ssbdbgzxhModel == "四边管式吊臂" ) {
+                    return 7700 ;
+                } else if ( ssbdbgzxhModel == "八边管式吊臂" ) {
+                    return 7700 ;
+                }
+            }
         },
         cbdblyl: function () {
             return 0.85 ;
@@ -4369,9 +4463,36 @@
         cblzzl: function () {
             return m12 / 1000 ;
         },
-        cblzdj: function () {
-            return lzxhModelList[ lzxhModel ]['cblzdj'];
-        },
+    cblzdj: function () {
+        if ( lzxhModel == "固定立柱" ) {
+            if ( lzclxhModel == "管材式" ) {
+                return 6800 ;
+            } else if ( lzclxhModel == "板拼式" ) {
+                return 6500 ;
+            } else if ( lzclxhModel == "四边管式" ) {
+                return 7700 ;
+            }
+        } else if ( lzxhModel == "1+1顶升立柱" ) {
+            if ( lzclxhModel == "管材式" ) {
+                return ' ' ;
+            } else if ( lzclxhModel == "板拼式" ) {
+                return 6500 ;
+            } else if ( lzclxhModel == "四边管式" ) {
+                return 7700 ;
+            }
+        } else if ( lzxhModel == "2+1顶升立柱" ) {
+            if ( lzclxhModel == "管材式" ) {
+                return ' ' ;
+            } else if ( lzclxhModel == "板拼式" ) {
+                return 6500 ;
+            } else if ( lzclxhModel == "四边管式" ) {
+                return 7700 ;
+            }
+        }
+    },
+        // cblzdj: function () {
+        //     return lzxhModelList[ lzxhModel ]['cblzdj'];
+        // },
         cblzlyl: function () {
             return 0.85 ;
         },
@@ -6712,9 +6833,9 @@
             } else{
                 if ( gdModel == "I20b-31" || gdModel == "I22b-36.5" || gdModel == "I25b-42" || gdModel == "I28b-47.8" || gdModel == "I32b-57.7" || gdModel == "H150*150-31.1" || gdModel == "H175*175-40.4" || gdModel == "H200*200-49.9" || gdModel == "H200*204-56.2" || gdModel == "H250*250-71.8" || gdModel == "H250*255-81.6" || gdModel == "H300*300-93" || gdModel == "H300*305-105" || gdModel == "H200*200T-71" || gdModel == "H250*250T-99" ) {
                     if ( gdczModel == "Q235B" ) {
-                        return 5800 ;
+                        return 6200 ;
                     }else if ( gdczModel == "Q355B" ) {
-                        return 6400 ;
+                        return 6700 ;
                     }
                 }else if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
                     return 9800 ;

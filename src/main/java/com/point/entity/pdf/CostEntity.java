@@ -539,8 +539,12 @@ public class CostEntity {
     private String cbyxjgdjppModel;
 
     private String dbxhModel;
+//    伸缩臂大臂管子形式
+    private String ssbdbgzxhModel;
     private String pzkModel;
     private String lzxhModel;
+    //    立柱材料
+    private String lzclxhModel;
     private String djxhModel;
     private String djbdbxhModel;
     private String ccjckjjModel;
