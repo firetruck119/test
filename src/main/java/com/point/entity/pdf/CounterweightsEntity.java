@@ -407,11 +407,13 @@ public class CounterweightsEntity {
         else if (lzType.indexOf("仰臂固定立柱") > -1) lhl4 = lqg4 + lg / 2 / cos(dbyj) + ll / 2;
         else if (lzType.indexOf("1+1顶升立柱") > -1) lhl4 = lqg4 + lg / 2 + ll / 2;
         else if (lzType.indexOf("仰柱机构") > -1) lhl4 = (lqg4 + lg / 2) / cos(dbyj) + ll / 2;
+        else lhl4 = lqg4 + lg / 2 + ll / 2;
 
         if (lzType.indexOf("固定立柱") > -1) lhl5 = lg / 2 - lqg5 + ll / 2;
         else if (lzType.indexOf("仰臂固定立柱") > -1) lhl5 = (lg / 2 - lqg5) / cos(dbyj) + ll / 2;
         else if (lzType.indexOf("1+1顶升立柱") > -1) lhl5 = lg / 2 - lqg5 + ll / 2;
         else if (lzType.indexOf("仰柱机构") > -1) lhl5 = (lg / 2 - lqg5) / cos(dbyj) + ll / 2;
+        else lhl5 = lg / 2 - lqg5 + ll / 2;
 
         lhl6 = lg / 2 - lqg6 + ll / 2;
         lhl7 = lg / 2 - lqg7 + ll / 2;
