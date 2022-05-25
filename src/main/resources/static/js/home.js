@@ -14,7 +14,24 @@ asideDatas = {
                 }
             ]
         },
-
+        {
+            title:'静载试验校核计算书',
+            url:"pdf",
+            children:[
+                {
+                    title:'下回转-固定臂',
+                    url:"JzStability_LSFArm",
+                },
+                {
+                    title:'下回转-伸缩臂',
+                    url:"JzStability_LTTArm",
+                },
+                {
+                    title:'上回转-固定臂',
+                    url:"JzShzFarmStability",
+                }
+            ]
+        },
         {
             title: '整机计算书',
             url: "pdf",
