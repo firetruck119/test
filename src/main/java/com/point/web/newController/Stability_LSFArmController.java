@@ -90,12 +90,26 @@ public class Stability_LSFArmController {
         urlCacheData.saveCacheValue(sjht,imageMap);
         cacheData.saveCacheValue(sjht,entity);
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转固定臂-稳定性校核及轮压计算书"+language));
-        if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForCheckPDF(language), imageMap, "new/稳定性校核及轮压计算书验证部分"));
-            return tool.getResponseEntity("稳定性校核及轮压计算书", pdf.MergePDF(list));
+//        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转固定臂-稳定性校核及轮压计算书"+language));
+//        if (null!=check&&check) {
+//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForCheckPDF(language), imageMap, "new/稳定性校核及轮压计算书验证部分"));
+//            return tool.getResponseEntity("稳定性校核及轮压计算书", pdf.MergePDF(list));
+//        }
+//        return tool.getResponseEntity("稳定性校核及轮压计算书", list.get(0));
+//
+
+        String name = "";
+        if ( entity.getXljzsyModel().equals("常规工况") ) {
+            name = "下回转固定臂-稳定性校核及轮压计算书";
+        } else if ( entity.getXljzsyModel().equals("静载试验") ) {
+            name = "下回转固定臂-稳定性校核及轮压计算书-静载试验";
         }
-        return tool.getResponseEntity("稳定性校核及轮压计算书", list.get(0));
+        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/" + name));
+        if (null != check && check) {
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转固定臂-稳定性校核及轮压计算书"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转固定臂-稳定性校核及轮压计算书-静载试验"));
+        }
+        return tool.getResponseEntity(name, list.get(0));
     }
 
     @RequestMapping("getImg")

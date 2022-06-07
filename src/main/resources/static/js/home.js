@@ -19,8 +19,8 @@ asideDatas = {
             url:"pdf",
             children:[
                 {
-                    title:'下回转-固定臂',
-                    url:"JzStability_LSFArm",
+                    // title:'下回转-固定臂',
+                    // url:"JzStability_LSFArm",
                 },
                 {
                     title:'下回转-伸缩臂',
