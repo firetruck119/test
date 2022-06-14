@@ -276,6 +276,16 @@
                                             </select>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td >擦窗机工况选择</td>
+                                        <td colspan="3">
+                                            <select name="xljzsyModel" style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="常规工况">常规工况</option>
+                                                <option value="静载试验">静载试验</option>
+                                            </select>
+                                        </td>
+                                    </tr>
                                  </table>
                             </div>
                             <div class='subtable'>
@@ -802,6 +812,12 @@
                                         <td><b>总悬挂载荷</b></td>
                                         <td><p><i>T<sub>sl</sub></i></p></td>
                                         <td><input type='text' name="tsl"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>静载试验总悬挂载荷</b></td>
+                                        <td><p><i>W<sub>tsl</sub></i></p></td>
+                                        <td><input type='text' name="jzwts"/></td>
                                         <td>kg</td>
                                     </tr>
                                     <tr>
@@ -1835,8 +1851,8 @@
                                    onclick="isCheck(false);$('form').attr('action','/saveValue')"/>
                             <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出吊臂pdf" onclick="$('form').attr('action','/ThreeJib/getPDF');
                                                                                                                 isCheck(false);changeType('Calculation')"/>
-                            <input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/ThreeJib/getPDF');
-                                                                                                                isCheck(true);changeType('Check')"/>
+                            <!--<input style="cursor: pointer" type="submit" form="form1" class="button"  value="导出检验pdf" onclick="$('form').attr('action','/ThreeJib/getPDF');-->
+                                                                                                                <!--isCheck(true);changeType('Check')"/>-->
                             <input style="cursor: pointer" type="reset" form="form1" value="重置" onclick="$('#pdf3tb td[id],#pdf3tb span[id]').text('').css('background-color','transparent')"/>
                         </div>
                 </el-row>
@@ -1859,6 +1875,14 @@
 
         },
         "方案类计算":{
+
+        },
+    };
+    xljzsyModelList={
+        "常规工况":{
+
+        },
+        "静载试验":{
 
         },
     };
@@ -2128,6 +2152,9 @@
         },
         tsl:function (){
             return swp + r1 + mwr + mffbb ;
+        },
+        jzwts:function (){
+            return swp + mffbb + 2 * ( 1.25 * r1 + mwr ) ;
         },
         hwll:function(){
             if( gruModel =='无')

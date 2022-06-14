@@ -83,11 +83,25 @@ public class Stability_LTTArmController {
         urlCacheData.saveCacheValue(sjht,imageMap);
         cacheData.saveCacheValue(sjht,entity);
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转伸缩臂-稳定性校核及轮压计算书"+language));
-        if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForCheckPDF(language), imageMap, "new/下回转伸缩臂稳定性校核及轮压计算书验证部分"));
-            return tool.getResponseEntity("下回转伸缩臂稳定性校核及轮压计算书+验证部分", pdf.MergePDF(list));
+
+        String name = "";
+        if ( entity.getXljzsyModel().equals("常规工况") ) {
+            name = "下回转伸缩臂-稳定性校核及轮压计算书";
+        } else if ( entity.getXljzsyModel().equals("静载试验") ) {
+            name = "下回转伸缩臂-稳定性校核及轮压计算书-静载试验";
         }
-        return tool.getResponseEntity("下回转伸缩臂稳定性校核及轮压计算书", list.get(0));
+        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/" + name));
+        if (null != check && check) {
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转伸缩臂-稳定性校核及轮压计算书"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转伸缩臂-稳定性校核及轮压计算书-静载试验"));
+        }
+        return tool.getResponseEntity(name, list.get(0));
+
+//        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForPDF(language), imageMap, "new/下回转伸缩臂-稳定性校核及轮压计算书"+language));
+//        if (null!=check&&check) {
+//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.createMapForCheckPDF(language), imageMap, "new/下回转伸缩臂稳定性校核及轮压计算书验证部分"));
+//            return tool.getResponseEntity("下回转伸缩臂稳定性校核及轮压计算书+验证部分", pdf.MergePDF(list));
+//        }
+//        return tool.getResponseEntity("下回转伸缩臂稳定性校核及轮压计算书", list.get(0));
     }
 }

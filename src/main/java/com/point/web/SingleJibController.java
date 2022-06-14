@@ -79,12 +79,25 @@ public class SingleJibController {
         urlCacheData.saveCacheValue(sjht, imageMap);
         cacheData.saveCacheValue(sjht, entity);
         List<byte[]> list = new ArrayList<>();
-        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/单臂机吊臂校核计算书"));
-        if (null!=check&&check) {
-            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/单臂机吊臂校核计算书验证部分"));
-            return tool.getResponseEntity("单臂机吊臂校核计算书验证部分", pdf.MergePDF(list));
+        String name = "";
+        if ( entity.getXljzsyModel().equals("常规工况") ) {
+            name = "单臂机吊臂校核计算书";
+        } else if ( entity.getXljzsyModel().equals("静载试验") ) {
+            name = "单臂机吊臂校核计算书-静载试验";
         }
-        return tool.getResponseEntity("单臂机吊臂校核计算书", list.get(0));
+        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/" + name));
+        if (null != check && check) {
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/单臂机吊臂校核计算书"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/单臂机吊臂校核计算书-静载试验"));
+        }
+        return tool.getResponseEntity(name, list.get(0));
+
+//        list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/单臂机吊臂校核计算书"));
+//        if (null!=check&&check) {
+//            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/单臂机吊臂校核计算书验证部分"));
+//            return tool.getResponseEntity("单臂机吊臂校核计算书验证部分", pdf.MergePDF(list));
+//        }
+//        return tool.getResponseEntity("单臂机吊臂校核计算书", list.get(0));
     }
 }
 

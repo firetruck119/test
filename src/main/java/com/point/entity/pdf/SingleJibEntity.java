@@ -52,6 +52,8 @@ public class SingleJibEntity {
     private Double dblm;
     private Double dbll;
 
+    private Double jzwts;
+
     private Double swp;
     private Double r1;
     private Double mwr;
@@ -106,6 +108,8 @@ public class SingleJibEntity {
 
     private String xmfaxzModel;
 
+    private String xljzsyModel;//静载试验选择
+
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
         map.put("no", CommonFunc.convertDoubleToString(no));
@@ -149,6 +153,8 @@ public class SingleJibEntity {
         map.put("dbix", CommonFunc.convertDoubleToString(dbix));
         map.put("dblm", CommonFunc.convertDoubleToString(dblm));
         map.put("dbll", CommonFunc.convertDoubleToString(dbll));
+
+        map.put("jzwts", CommonFunc.convertDoubleToString(jzwts));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
@@ -201,80 +207,80 @@ public class SingleJibEntity {
     public Map<String, String> takeMapForCheckPDF() {
         Map<String, Double> map = takeDoubleMapForPdf("");
 
-        Double m4jbhzq = mdbb + mbgj / 2 + ( dblm - ldbbz + dbll / 2 ) * mbmj / 1000 ;
-        Double lslhz = lbd;
-        Double lshlhz = lbd - ( ldcgh - lbtzh ) ;
-        Double lhz1 = lshlhz ;
-        Double lhz2;
-        if ( m2 == 0 ) {
-            lhz2 = 0.0 ;
-        } else {
-            lhz2 = lc2 + dbll / 2000 ;
-        }
-        Double lhz3 = lshlhz ;
-        Double lhzjb4 = ( mdbb * ( dblm - ldbb + dbll / 2 ) / 1000 + ( m4jbhzq - mdbb ) * ( dblm - ldbbz + dbll / 2 ) / 2000000 ) / m4jbhzq ;
-        Double lhz5;
-        if ( m5db == 0 ) {
-            lhz5 = 0.0 ;
-        } else {
-            lhz5 = lc5 + dbll / 2000 ;
-        }
-
-        Double mslhz = tsl * lslhz ;
-        Double mshlhz = tshl * lshlhz ;
-        Double mhz1 = m1 * lhz1 ;
-        Double mhz2 = m2 * lhz2 ;
-        Double mhz3 = m3 * lhz3 ;
-        Double mhz4 = m4jbhzq * lhzjb4 ;
-        Double mhz5 = m5db * lhz5 ;
-        Double mjbhz = mslhz + mshlhz + mhz1 + mhz2 + mhz3 + mhz4 + mhz5 ;
-        String dbwjyb;
-        if ( mjbhz < dbmjb ) {
-            dbwjyb = "<" ;
-        } else if ( mjbhz == dbmjb ) {
-            dbwjyb = "=";
-        } else{
-            dbwjyb = ">";
-        }
-        String dbwjym = (mjbhz <= dbmjb) ? "符合" : "不符合";
+//        Double m4jbhzq = mdbb + mbgj / 2 + ( dblm - ldbbz + dbll / 2 ) * mbmj / 1000 ;
+//        Double lslhz = lbd;
+//        Double lshlhz = lbd - ( ldcgh - lbtzh ) ;
+//        Double lhz1 = lshlhz ;
+//        Double lhz2;
+//        if ( m2 == 0 ) {
+//            lhz2 = 0.0 ;
+//        } else {
+//            lhz2 = lc2 + dbll / 2000 ;
+//        }
+//        Double lhz3 = lshlhz ;
+//        Double lhzjb4 = ( mdbb * ( dblm - ldbb + dbll / 2 ) / 1000 + ( m4jbhzq - mdbb ) * ( dblm - ldbbz + dbll / 2 ) / 2000000 ) / m4jbhzq ;
+//        Double lhz5;
+//        if ( m5db == 0 ) {
+//            lhz5 = 0.0 ;
+//        } else {
+//            lhz5 = lc5 + dbll / 2000 ;
+//        }
+//
+//        Double mslhz = tsl * lslhz ;
+//        Double mshlhz = tshl * lshlhz ;
+//        Double mhz1 = m1 * lhz1 ;
+//        Double mhz2 = m2 * lhz2 ;
+//        Double mhz3 = m3 * lhz3 ;
+//        Double mhz4 = m4jbhzq * lhzjb4 ;
+//        Double mhz5 = m5db * lhz5 ;
+//        Double mjbhz = mslhz + mshlhz + mhz1 + mhz2 + mhz3 + mhz4 + mhz5 ;
+//        String dbwjyb;
+//        if ( mjbhz < dbmjb ) {
+//            dbwjyb = "<" ;
+//        } else if ( mjbhz == dbmjb ) {
+//            dbwjyb = "=";
+//        } else{
+//            dbwjyb = ">";
+//        }
+//        String dbwjym = (mjbhz <= dbmjb) ? "符合" : "不符合";
 
         Map<String, String> result = new HashMap<>();
-        result.put("lbd", CommonFunc.convertDoubleToString(lbd));
-        result.put("dblm", CommonFunc.convertDoubleToString(dblm));
-        result.put("dbll", CommonFunc.convertDoubleToString(dbll));
-        result.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
-        result.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
-        result.put("mdbb", CommonFunc.convertDoubleToString(mdbb));
-        result.put("ldbb", CommonFunc.convertDoubleToString(ldbb));
-        result.put("ldbbz", CommonFunc.convertDoubleToString(ldbbz));
-        result.put("mbmj", CommonFunc.convertDoubleToString(mbmj));
-        result.put("tsl", CommonFunc.convertDoubleToString(tsl));
-        result.put("tshl", CommonFunc.convertDoubleToString(tshl));
-        result.put("m1", CommonFunc.convertDoubleToString(m1));
-        result.put("m2", CommonFunc.convertDoubleToString(m2));
-        result.put("m3", CommonFunc.convertDoubleToString(m3));
-        result.put("m5db", CommonFunc.convertDoubleToString(m5db));
-        result.put("lc2", CommonFunc.convertDoubleToString(lc2));
-        result.put("lc5", CommonFunc.convertDoubleToString(lc5));
-        result.put("dbmjb", CommonFunc.convertDoubleToString(dbmjb));
-        result.put("m4jbhzq", CommonFunc.convertDoubleToString(m4jbhzq));
-        result.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
-        result.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));
-        result.put("lhz1", CommonFunc.convertDoubleToString(lhz1));
-        result.put("lhz2", CommonFunc.convertDoubleToString(lhz2));
-        result.put("lhz3", CommonFunc.convertDoubleToString(lhz3));
-        result.put("lhzjb4", CommonFunc.convertDoubleToString(lhzjb4));
-        result.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
-        result.put("mslhz", CommonFunc.convertDoubleToString(mslhz));
-        result.put("mshlhz", CommonFunc.convertDoubleToString(mshlhz));
-        result.put("mhz1", CommonFunc.convertDoubleToString(mhz1));
-        result.put("mhz2", CommonFunc.convertDoubleToString(mhz2));
-        result.put("mhz3", CommonFunc.convertDoubleToString(mhz3));
-        result.put("mhz4", CommonFunc.convertDoubleToString(mhz4));
-        result.put("mhz5", CommonFunc.convertDoubleToString(mhz5));
-        result.put("mjbhz", CommonFunc.convertDoubleToString(mjbhz));
-        result.put("dbwjyb", CommonFunc.convertDoubleToString(dbwjyb));
-        result.put("dbwjym", CommonFunc.convertDoubleToString(dbwjym));
+//        result.put("lbd", CommonFunc.convertDoubleToString(lbd));
+//        result.put("dblm", CommonFunc.convertDoubleToString(dblm));
+//        result.put("dbll", CommonFunc.convertDoubleToString(dbll));
+//        result.put("ldcgh", CommonFunc.convertDoubleToString(ldcgh));
+//        result.put("lbtzh", CommonFunc.convertDoubleToString(lbtzh));
+//        result.put("mdbb", CommonFunc.convertDoubleToString(mdbb));
+//        result.put("ldbb", CommonFunc.convertDoubleToString(ldbb));
+//        result.put("ldbbz", CommonFunc.convertDoubleToString(ldbbz));
+//        result.put("mbmj", CommonFunc.convertDoubleToString(mbmj));
+//        result.put("tsl", CommonFunc.convertDoubleToString(tsl));
+//        result.put("tshl", CommonFunc.convertDoubleToString(tshl));
+//        result.put("m1", CommonFunc.convertDoubleToString(m1));
+//        result.put("m2", CommonFunc.convertDoubleToString(m2));
+//        result.put("m3", CommonFunc.convertDoubleToString(m3));
+//        result.put("m5db", CommonFunc.convertDoubleToString(m5db));
+//        result.put("lc2", CommonFunc.convertDoubleToString(lc2));
+//        result.put("lc5", CommonFunc.convertDoubleToString(lc5));
+//        result.put("dbmjb", CommonFunc.convertDoubleToString(dbmjb));
+//        result.put("m4jbhzq", CommonFunc.convertDoubleToString(m4jbhzq));
+//        result.put("lslhz", CommonFunc.convertDoubleToString(lslhz));
+//        result.put("lshlhz", CommonFunc.convertDoubleToString(lshlhz));
+//        result.put("lhz1", CommonFunc.convertDoubleToString(lhz1));
+//        result.put("lhz2", CommonFunc.convertDoubleToString(lhz2));
+//        result.put("lhz3", CommonFunc.convertDoubleToString(lhz3));
+//        result.put("lhzjb4", CommonFunc.convertDoubleToString(lhzjb4));
+//        result.put("lhz5", CommonFunc.convertDoubleToString(lhz5));
+//        result.put("mslhz", CommonFunc.convertDoubleToString(mslhz));
+//        result.put("mshlhz", CommonFunc.convertDoubleToString(mshlhz));
+//        result.put("mhz1", CommonFunc.convertDoubleToString(mhz1));
+//        result.put("mhz2", CommonFunc.convertDoubleToString(mhz2));
+//        result.put("mhz3", CommonFunc.convertDoubleToString(mhz3));
+//        result.put("mhz4", CommonFunc.convertDoubleToString(mhz4));
+//        result.put("mhz5", CommonFunc.convertDoubleToString(mhz5));
+//        result.put("mjbhz", CommonFunc.convertDoubleToString(mjbhz));
+//        result.put("dbwjyb", CommonFunc.convertDoubleToString(dbwjyb));
+//        result.put("dbwjym", CommonFunc.convertDoubleToString(dbwjym));
 
         return result;
     }
@@ -282,79 +288,153 @@ public class SingleJibEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
-        Double mslza= 1.25 * 10 * tsl * lslc ;
-        Double mshlza= 1.25 * 10 * tshl * lshlc ;
-        Double mza1= 1.25 * 10 * m1 * lc1 ;
-        Double mza2= 1.25 * 10 * m2 * lc2 ;
-        Double mza3= 1.25 * 10 * m3 * lc3 ;
-        Double mza4= 1.25 * 10 * m4jbcq * lc4 ;
-        Double mza5= 1.25 * 10 * m5db * lc5 ;
-        map.put("mslza", mslza);
-        map.put("mshlza", mshlza);
-        map.put("mza1", mza1);
-        map.put("mza2", mza2);
-        map.put("mza3", mza3);
-        map.put("mza4", mza4);
-        map.put("mza5", mza5);
+        if (xljzsyModel.equals("常规工况")) {
+            Double mslza = 1.25 * 10 * tsl * lslc;
+            Double mshlza = 1.25 * 10 * tshl * lshlc;
+            Double mza1 = 1.25 * 10 * m1 * lc1;
+            Double mza2 = 1.25 * 10 * m2 * lc2;
+            Double mza3 = 1.25 * 10 * m3 * lc3;
+            Double mza4 = 1.25 * 10 * m4jbcq * lc4;
+            Double mza5 = 1.25 * 10 * m5db * lc5;
+            map.put("mslza", mslza);
+            map.put("mshlza", mshlza);
+            map.put("mza1", mza1);
+            map.put("mza2", mza2);
+            map.put("mza3", mza3);
+            map.put("mza4", mza4);
+            map.put("mza5", mza5);
 
-        Double mslwa = p * 1.25 * aslcx * lslx ;
-        Double mshlwa = p * 1.25 * ashlcx * lshlx ;
-        Double mwa1 = p * 1.25 * acx1 * lx1 ;
-        Double mwa2 = p * 1.25 * acx2 * lx2 ;
-        Double mwa3 = p * 1.25 * acx3 * lx3 ;
-        Double mwa4 = p * 1.25 * acx4cq * lx4 ;
-        Double mwa5 = p * 1.25 * acx5db * lx5 ;
-        map.put("mslwa", mslwa);
-        map.put("mshlwa", mshlwa);
-        map.put("mwa1", mwa1);
-        map.put("mwa2", mwa2);
-        map.put("mwa3", mwa3);
-        map.put("mwa4", mwa4);
-        map.put("mwa5", mwa5);
+            Double mslwa = p * 1.25 * aslcx * lslx;
+            Double mshlwa = p * 1.25 * ashlcx * lshlx;
+            Double mwa1 = p * 1.25 * acx1 * lx1;
+            Double mwa2 = p * 1.25 * acx2 * lx2;
+            Double mwa3 = p * 1.25 * acx3 * lx3;
+            Double mwa4 = p * 1.25 * acx4cq * lx4;
+            Double mwa5 = p * 1.25 * acx5db * lx5;
+            map.put("mslwa", mslwa);
+            map.put("mshlwa", mshlwa);
+            map.put("mwa1", mwa1);
+            map.put("mwa2", mwa2);
+            map.put("mwa3", mwa3);
+            map.put("mwa4", mwa4);
+            map.put("mwa5", mwa5);
 
-        Double mz = mslza + mshlza + mza1 + mza2 + mza3 + mza4 + mza5 ;
-        Double sz = 1000 * mz / dbwx ;
-        Double mw = mslwa + mshlwa + mwa1 + mwa2 + mwa3 + mwa4 + mwa5 ;
-        Double sw = 1000 * mw / dbwy ;
-        Double smax = sz + sw ;
-        Double ssqd = dbss / 1.5 / 1.1 ;
-        map.put("mz", mz);
-        map.put("sz", sz);
-        map.put("mw", mw);
-        map.put("sw", sw);
-        map.put("smax", smax);
-        map.put("ssqd", ssqd);
+            Double mz = mslza + mshlza + mza1 + mza2 + mza3 + mza4 + mza5;
+            Double sz = 1000 * mz / dbwx;
+            Double mw = mslwa + mshlwa + mwa1 + mwa2 + mwa3 + mwa4 + mwa5;
+            Double sw = 1000 * mw / dbwy;
+            Double smax = sz + sw;
+            Double ssqd = dbss / 1.5 / 1.1;
+            map.put("mz", mz);
+            map.put("sz", sz);
+            map.put("mw", mw);
+            map.put("sw", sw);
+            map.put("smax", smax);
+            map.put("ssqd", ssqd);
 
-        Double mslwq = 1.25 * 10 * tsl * lslwq ;
-        Double mshlwq = 1.25 * 10 * tshl * lshlwq ;
-        Double mwq1 = 1.25 * 10 * m1 * lwq1 ;
-        Double mwq2 = 1.25 * 10 * m2 * lwq2 ;
-        Double mwq3 = 1.25 * 10 * m3 * lwq3 ;
-        map.put("mslwq", mslwq);
-        map.put("mshlwq", mshlwq);
-        map.put("mwq1", mwq1);
-        map.put("mwq2", mwq2);
-        map.put("mwq3", mwq3);
+            Double mslwq = 1.25 * 10 * tsl * lslwq;
+            Double mshlwq = 1.25 * 10 * tshl * lshlwq;
+            Double mwq1 = 1.25 * 10 * m1 * lwq1;
+            Double mwq2 = 1.25 * 10 * m2 * lwq2;
+            Double mwq3 = 1.25 * 10 * m3 * lwq3;
+            map.put("mslwq", mslwq);
+            map.put("mshlwq", mshlwq);
+            map.put("mwq1", mwq1);
+            map.put("mwq2", mwq2);
+            map.put("mwq3", mwq3);
 
-        Double kn = dblm / dbll ;
-        Double mwz = tsl + tshl + m1 + m2 + m3 ;
-        Double f1 = 1.25 * mwz * 10 * dblm * dblm * dbll * ( 1 + kn ) / 3 / 210000 / dbix ;
-        Double mwq = mslwq + mshlwq + mwq1 + mwq2 + mwq3 ;
-        Double f2 = 1000 * mwq * dblm * dbll * ( 1 + 2 * kn ) / 4 / 210000 / dbix ;
-        Double q = ( m4jbcq + m5db ) * 10 / dblm ;
-        Double f3 = 1.25 * q * dblm * dblm * dblm * dbll * ( 4 + 3 * kn ) / 24 / 210000 / dbix ;
-        Double f = f1 + f2 + f3 ;
-        Double nd = dblm * dblm / 1000000 ;
-        map.put("kn", kn);
-        map.put("mwz", mwz);
-        map.put("f1", f1);
-        map.put("mwq", mwq);
-        map.put("f2", f2);
-        map.put("q", q);
-        map.put("f3", f3);
-        map.put("f", f);
-        map.put("nd", nd);
+            Double kn = dblm / dbll;
+            Double mwz = tsl + tshl + m1 + m2 + m3;
+            Double f1 = 1.25 * mwz * 10 * dblm * dblm * dbll * (1 + kn) / 3 / 210000 / dbix;
+            Double mwq = mslwq + mshlwq + mwq1 + mwq2 + mwq3;
+            Double f2 = 1000 * mwq * dblm * dbll * (1 + 2 * kn) / 4 / 210000 / dbix;
+            Double q = (m4jbcq + m5db) * 10 / dblm;
+            Double f3 = 1.25 * q * dblm * dblm * dblm * dbll * (4 + 3 * kn) / 24 / 210000 / dbix;
+            Double f = f1 + f2 + f3;
+            Double nd = dblm * dblm / 1000000;
+            map.put("kn", kn);
+            map.put("mwz", mwz);
+            map.put("f1", f1);
+            map.put("mwq", mwq);
+            map.put("f2", f2);
+            map.put("q", q);
+            map.put("f3", f3);
+            map.put("f", f);
+            map.put("nd", nd);
+        }else  if (xljzsyModel.equals("静载试验")) {
+            Double mslza = 10 * jzwts * lslc;
+            Double mshlza = 1.4 * 10 * tshl * lshlc;
+            Double mza1 = 10 * m1 * lc1;
+            Double mza2 = 10 * m2 * lc2;
+            Double mza3 = 10 * m3 * lc3;
+            Double mza4 = 10 * m4jbcq * lc4;
+            Double mza5 = 10 * m5db * lc5;
+            map.put("mslza", mslza);
+            map.put("mshlza", mshlza);
+            map.put("mza1", mza1);
+            map.put("mza2", mza2);
+            map.put("mza3", mza3);
+            map.put("mza4", mza4);
+            map.put("mza5", mza5);
 
+            Double mslwa = p * aslcx * lslx;
+            Double mshlwa = p * ashlcx * lshlx;
+            Double mwa1 = p * acx1 * lx1;
+            Double mwa2 = p * acx2 * lx2;
+            Double mwa3 = p * acx3 * lx3;
+            Double mwa4 = p * acx4cq * lx4;
+            Double mwa5 = p * acx5db * lx5;
+            map.put("mslwa", mslwa);
+            map.put("mshlwa", mshlwa);
+            map.put("mwa1", mwa1);
+            map.put("mwa2", mwa2);
+            map.put("mwa3", mwa3);
+            map.put("mwa4", mwa4);
+            map.put("mwa5", mwa5);
+
+            Double mz = mslza + mshlza + mza1 + mza2 + mza3 + mza4 + mza5;
+            Double sz = 1000 * mz / dbwx;
+            Double mw = mslwa + mshlwa + mwa1 + mwa2 + mwa3 + mwa4 + mwa5;
+            Double sw = 1000 * mw / dbwy;
+            Double smax = sz + sw;
+            Double ssqd = dbss / 1.5 / 1.1;
+            map.put("mz", mz);
+            map.put("sz", sz);
+            map.put("mw", mw);
+            map.put("sw", sw);
+            map.put("smax", smax);
+            map.put("ssqd", ssqd);
+
+            Double mslwq = 10 * jzwts * lslwq;
+            Double mshlwq = 1.4 * 10 * tshl * lshlwq;
+            Double mwq1 = 10 * m1 * lwq1;
+            Double mwq2 = 10 * m2 * lwq2;
+            Double mwq3 = 10 * m3 * lwq3;
+            map.put("mslwq", mslwq);
+            map.put("mshlwq", mshlwq);
+            map.put("mwq1", mwq1);
+            map.put("mwq2", mwq2);
+            map.put("mwq3", mwq3);
+
+            Double kn = dblm / dbll;
+            Double mwz = jzwts + 1.4 * tshl + m1 + m2 + m3;
+            Double f1 = mwz * 10 * dblm * dblm * dbll * (1 + kn) / 3 / 210000 / dbix;
+            Double mwq = mslwq + mshlwq + mwq1 + mwq2 + mwq3;
+            Double f2 = 1000 * mwq * dblm * dbll * (1 + 2 * kn) / 4 / 210000 / dbix;
+            Double q = (m4jbcq + m5db) * 10 / dblm;
+            Double f3 = q * dblm * dblm * dblm * dbll * (4 + 3 * kn) / 24 / 210000 / dbix;
+            Double f = f1 + f2 + f3;
+            Double nd = dblm * dblm / 1000000;
+            map.put("kn", kn);
+            map.put("mwz", mwz);
+            map.put("f1", f1);
+            map.put("mwq", mwq);
+            map.put("f2", f2);
+            map.put("q", q);
+            map.put("f3", f3);
+            map.put("f", f);
+            map.put("nd", nd);
+        }
         return map;
     }
 
