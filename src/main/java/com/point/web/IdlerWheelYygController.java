@@ -87,16 +87,26 @@ public class IdlerWheelYygController {
 //        }
 
         String name = "";
-        if ( entity.getDsyygwzModel().equals("顶升液压缸在立柱前") ) {
-            name = "1+1顶升立柱滚轮及液压缸校核计算书(Q)";
-        } else if ( entity.getDsyygwzModel().equals("顶升液压缸在立柱后") ) {
-            name = "1+1顶升立柱滚轮及液压缸校核计算书(H)";
+        if ( entity.getXljzsyModel().equals("常规工况") ) {
+            if ( entity.getDsyygwzModel().equals("顶升液压缸在立柱前") ) {
+                name = "1+1顶升立柱滚轮及液压缸校核计算书(Q)";
+            } else if ( entity.getDsyygwzModel().equals("顶升液压缸在立柱后") ) {
+                name = "1+1顶升立柱滚轮及液压缸校核计算书(H)";
+            }
+        } else if ( entity.getXljzsyModel().equals("静载试验") ) {
+            if ( entity.getDsyygwzModel().equals("顶升液压缸在立柱前") ) {
+                name = "1+1顶升立柱滚轮及液压缸校核计算书(Q)-静载试验";
+            } else if ( entity.getDsyygwzModel().equals("顶升液压缸在立柱后") ) {
+                name = "1+1顶升立柱滚轮及液压缸校核计算书(H)-静载试验";
+            }
         }
         if(!name.equals(""))
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/"+name));
         if (null != check && check) {
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1顶升立柱滚轮及液压缸校核计算书(Q)"));
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1顶升立柱滚轮及液压缸校核计算书(H)"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1顶升立柱滚轮及液压缸校核计算书(Q)-静载试验"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/1+1顶升立柱滚轮及液压缸校核计算书(H)-静载试验"));
 //            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForCheckPDF(), imageMap, "new/配重计算书验证部分"));
 //            return tool.getResponseEntity("配重计算书验证部分", pdf.MergePDF(list));
         }

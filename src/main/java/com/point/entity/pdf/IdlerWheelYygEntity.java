@@ -82,6 +82,10 @@ public class IdlerWheelYygEntity {
     //    提示提醒
     private String grutstx;
 
+    private Double jzwts;
+    private Double jzmwlz;
+    private Double jzmwlzi;
+
     private Double swp;
     private Double r1;
     private Double mwr;
@@ -200,6 +204,8 @@ public class IdlerWheelYygEntity {
 
     private String dsyygwzModel;
 
+    private String xljzsyModel;//静载试验选择
+
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
         map.put("no", CommonFunc.convertDoubleToString(no));
@@ -271,6 +277,10 @@ public class IdlerWheelYygEntity {
         map.put("dsk", CommonFunc.convertDoubleToString(dsk));
 
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
+
+        map.put("jzwts", CommonFunc.convertDoubleToString(jzwts));
+        map.put("jzmwlz", CommonFunc.convertDoubleToString(jzmwlz));
+        map.put("jzmwlzi", CommonFunc.convertDoubleToString(jzmwlzi));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
@@ -391,247 +401,492 @@ public class IdlerWheelYygEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
+        if (xljzsyModel.equals("常规工况")) {
 //        工况1
-        Double mslz = tsl * lslhz * 10 ;
-        Double mshlz = tshl * lshlhz * 10 ;
-        Double mz1 = m1 * lhz1 * 10 ;
-        Double mz2 = m2 * lhz2 * 10 ;
-        Double mz3 = m3 * lhz3 * 10 ;
-        Double mz4 = m4 * lhz4 * 10 ;
-        Double mz5 = m5ds * lhz5 * 10 ;
-        Double mz6 = m6 * lhz6 * 10 ;
-        Double mz7 = m7 * lhz7 * 10 ;
-        map.put("mslz", mslz);
-        map.put("mshlz", mshlz);
-        map.put("mz1", mz1);
-        map.put("mz2", mz2);
-        map.put("mz3", mz3);
-        map.put("mz4", mz4);
-        map.put("mz5", mz5);
-        map.put("mz6", mz6);
-        map.put("mz7", mz7);
+            Double mslz = tsl * lslhz * 10;
+            Double mshlz = tshl * lshlhz * 10;
+            Double mz1 = m1 * lhz1 * 10;
+            Double mz2 = m2 * lhz2 * 10;
+            Double mz3 = m3 * lhz3 * 10;
+            Double mz4 = m4 * lhz4 * 10;
+            Double mz5 = m5ds * lhz5 * 10;
+            Double mz6 = m6 * lhz6 * 10;
+            Double mz7 = m7 * lhz7 * 10;
+            map.put("mslz", mslz);
+            map.put("mshlz", mshlz);
+            map.put("mz1", mz1);
+            map.put("mz2", mz2);
+            map.put("mz3", mz3);
+            map.put("mz4", mz4);
+            map.put("mz5", mz5);
+            map.put("mz6", mz6);
+            map.put("mz7", mz7);
 
-        Double mz10 = m10 * lhz10 * 10 ;
-        Double mz11 = m11 * lhz11 * 10 ;
-        Double mz12n = m12n * lhz12n * 10;
-        map.put("mz10", mz10);
-        map.put("mz11", mz11);
-        map.put("mz12n", mz12n);
+            Double mz10 = m10 * lhz10 * 10;
+            Double mz11 = m11 * lhz11 * 10;
+            Double mz12n = m12n * lhz12n * 10;
+            map.put("mz10", mz10);
+            map.put("mz11", mz11);
+            map.put("mz12n", mz12n);
 
-        Double msltxw = asltx * hslb * p ;
-        Double mshltxw = ashltx * hshlb * p ;
-        Double mtxw1 = atx1 * hb1 * p ;
-        Double mtxw2 = atx2 * hb2 * p ;
-        Double mtxw3 = atx3 * hb3 * p ;
-        Double mtxw4 = atx4 * hb4 * p ;
-        Double mtxw5 = atx5ds * hb5 * p ;
-        Double mtxw6 = atx6 * hb6 * p ;
-        Double mtxw7 = atx7 * hb7 * p ;
-        Double mtxw10 = atx10 * hb10 * p ;
-        Double mtxw11 = atx11 * hb11 * p ;
-        Double mtxw12n = atx12n * hb12n * p ;
-        map.put("msltxw", msltxw);
-        map.put("mshltxw", mshltxw);
-        map.put("mtxw1", mtxw1);
-        map.put("mtxw2", mtxw2);
-        map.put("mtxw3", mtxw3);
-        map.put("mtxw4", mtxw4);
-        map.put("mtxw5", mtxw5);
-        map.put("mtxw6", mtxw6);
-        map.put("mtxw7", mtxw7);
-        map.put("mtxw10", mtxw10);
-        map.put("mtxw11", mtxw11);
-        map.put("mtxw12n", mtxw12n);
+            Double msltxw = asltx * hslb * p;
+            Double mshltxw = ashltx * hshlb * p;
+            Double mtxw1 = atx1 * hb1 * p;
+            Double mtxw2 = atx2 * hb2 * p;
+            Double mtxw3 = atx3 * hb3 * p;
+            Double mtxw4 = atx4 * hb4 * p;
+            Double mtxw5 = atx5ds * hb5 * p;
+            Double mtxw6 = atx6 * hb6 * p;
+            Double mtxw7 = atx7 * hb7 * p;
+            Double mtxw10 = atx10 * hb10 * p;
+            Double mtxw11 = atx11 * hb11 * p;
+            Double mtxw12n = atx12n * hb12n * p;
+            map.put("msltxw", msltxw);
+            map.put("mshltxw", mshltxw);
+            map.put("mtxw1", mtxw1);
+            map.put("mtxw2", mtxw2);
+            map.put("mtxw3", mtxw3);
+            map.put("mtxw4", mtxw4);
+            map.put("mtxw5", mtxw5);
+            map.put("mtxw6", mtxw6);
+            map.put("mtxw7", mtxw7);
+            map.put("mtxw10", mtxw10);
+            map.put("mtxw11", mtxw11);
+            map.put("mtxw12n", mtxw12n);
 
-        Double t1 = mwlz * 10 ;
-        Double mgq1 = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5 + mz6 + mz7 ;
-        Double mgk1 = mz10 + mz11 + mz12n ;
-        Double mgw1 = msltxw + mshltxw + mtxw1 + mtxw2 + mtxw3 + mtxw4 + mtxw5 + mtxw6 + mtxw7 + mtxw10 + mtxw11 + mtxw12n ;
-        Double mg1;
-        if ( dsyygwzModel.equals("顶升液压缸在立柱前") ) {
-            mg1 = Math.abs( mgq1 - mgk1 - t1 * llzyyg ) + mgw1 ;
-        } else if ( dsyygwzModel.equals("顶升液压缸在立柱后") ){
-            mg1 = Math.abs( mgq1 - mgk1 + t1 * llzyyg ) + mgw1 ;
-        } else {
-            mg1 = null ;
-        }
-        Double ngl1 = mg1 / lwlzbg ;
-        map.put("t1", t1);
-        map.put("mgq1", mgq1);
-        map.put("mgk1", mgk1);
-        map.put("mgw1", mgw1);
-        map.put("mg1", mg1);
-        map.put("ngl1", ngl1);
+            Double t1 = mwlz * 10;
+            Double mgq1 = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5 + mz6 + mz7;
+            Double mgk1 = mz10 + mz11 + mz12n;
+            Double mgw1 = msltxw + mshltxw + mtxw1 + mtxw2 + mtxw3 + mtxw4 + mtxw5 + mtxw6 + mtxw7 + mtxw10 + mtxw11 + mtxw12n;
+            Double mg1;
+            if (dsyygwzModel.equals("顶升液压缸在立柱前")) {
+                mg1 = Math.abs(mgq1 - mgk1 - t1 * llzyyg) + mgw1;
+            } else if (dsyygwzModel.equals("顶升液压缸在立柱后")) {
+                mg1 = Math.abs(mgq1 - mgk1 + t1 * llzyyg) + mgw1;
+            } else {
+                mg1 = null;
+            }
+            Double ngl1 = mg1 / lwlzbg;
+            map.put("t1", t1);
+            map.put("mgq1", mgq1);
+            map.put("mgk1", mgk1);
+            map.put("mgw1", mgw1);
+            map.put("mg1", mg1);
+            map.put("ngl1", ngl1);
 
 //        工况2
-        Double mslzi = tsl * lslhzi * 10 ;
-        Double mshlzi = tshl * lshlhzi * 10 ;
-        Double mz1i = m1 * lhz1i * 10 ;
-        Double mz2i = m2 * lhz2i * 10 ;
-        Double mz3i = m3 * lhz3i * 10 ;
-        Double mz4i = m4 * lhz4i * 10 ;
-        Double mz5i = m5dsp * lhz5i * 10 ;
-        Double mz6i = m6 * lhz6i * 10 ;
-        Double mz7i = m7 * lhz7i * 10 ;
-        map.put("mslzi", mslzi);
-        map.put("mshlzi", mshlzi);
-        map.put("mz1i", mz1i);
-        map.put("mz2i", mz2i);
-        map.put("mz3i", mz3i);
-        map.put("mz4i", mz4i);
-        map.put("mz5i", mz5i);
-        map.put("mz6i", mz6i);
-        map.put("mz7i", mz7i);
+            Double mslzi = tsl * lslhzi * 10;
+            Double mshlzi = tshl * lshlhzi * 10;
+            Double mz1i = m1 * lhz1i * 10;
+            Double mz2i = m2 * lhz2i * 10;
+            Double mz3i = m3 * lhz3i * 10;
+            Double mz4i = m4 * lhz4i * 10;
+            Double mz5i = m5dsp * lhz5i * 10;
+            Double mz6i = m6 * lhz6i * 10;
+            Double mz7i = m7 * lhz7i * 10;
+            map.put("mslzi", mslzi);
+            map.put("mshlzi", mshlzi);
+            map.put("mz1i", mz1i);
+            map.put("mz2i", mz2i);
+            map.put("mz3i", mz3i);
+            map.put("mz4i", mz4i);
+            map.put("mz5i", mz5i);
+            map.put("mz6i", mz6i);
+            map.put("mz7i", mz7i);
 
-        Double mz10i = m10 * lhz10i * 10 ;
-        Double mz11i = m11 * lhz11i * 10 ;
-        Double mz12ni = m12n * lhz12ni * 10 ;
-        map.put("mz10i", mz10i);
-        map.put("mz11i", mz11i);
-        map.put("mz12ni", mz12ni);
+            Double mz10i = m10 * lhz10i * 10;
+            Double mz11i = m11 * lhz11i * 10;
+            Double mz12ni = m12n * lhz12ni * 10;
+            map.put("mz10i", mz10i);
+            map.put("mz11i", mz11i);
+            map.put("mz12ni", mz12ni);
 
-        Double msltxwi = asltxi * hslbi * p ;
-        Double mshltxwi = ashltxi * hshlbi * p ;
-        Double mtxw1i = atx1i * hb1i * p ;
-        Double mtxw2i = atx2i * hb2i * p ;
-        Double mtxw3i = atx3i * hb3i * p ;
-        Double mtxw4i = atx4i * hb4i * p ;
-        Double mtxw5i = atx5dsi * hb5i * p ;
-        Double mtxw6i = atx6i * hb6i * p ;
-        Double mtxw7i = atx7i * hb7i * p ;
-        Double mtxw10i = atx10i * hb10i * p ;
-        Double mtxw11i = atx11i * hb11i * p ;
-        Double mtxw12ni = atx12ni * hb12ni * p ;
-        map.put("msltxwi", msltxwi);
-        map.put("mshltxwi", mshltxwi);
-        map.put("mtxw1i", mtxw1i);
-        map.put("mtxw2i", mtxw2i);
-        map.put("mtxw3i", mtxw3i);
-        map.put("mtxw4i", mtxw4i);
-        map.put("mtxw5i", mtxw5i);
-        map.put("mtxw6i", mtxw6i);
-        map.put("mtxw7i", mtxw7i);
-        map.put("mtxw10i", mtxw10i);
-        map.put("mtxw11i", mtxw11i);
-        map.put("mtxw12ni", mtxw12ni);
+            Double msltxwi = asltxi * hslbi * p;
+            Double mshltxwi = ashltxi * hshlbi * p;
+            Double mtxw1i = atx1i * hb1i * p;
+            Double mtxw2i = atx2i * hb2i * p;
+            Double mtxw3i = atx3i * hb3i * p;
+            Double mtxw4i = atx4i * hb4i * p;
+            Double mtxw5i = atx5dsi * hb5i * p;
+            Double mtxw6i = atx6i * hb6i * p;
+            Double mtxw7i = atx7i * hb7i * p;
+            Double mtxw10i = atx10i * hb10i * p;
+            Double mtxw11i = atx11i * hb11i * p;
+            Double mtxw12ni = atx12ni * hb12ni * p;
+            map.put("msltxwi", msltxwi);
+            map.put("mshltxwi", mshltxwi);
+            map.put("mtxw1i", mtxw1i);
+            map.put("mtxw2i", mtxw2i);
+            map.put("mtxw3i", mtxw3i);
+            map.put("mtxw4i", mtxw4i);
+            map.put("mtxw5i", mtxw5i);
+            map.put("mtxw6i", mtxw6i);
+            map.put("mtxw7i", mtxw7i);
+            map.put("mtxw10i", mtxw10i);
+            map.put("mtxw11i", mtxw11i);
+            map.put("mtxw12ni", mtxw12ni);
 
-        Double mgq2 = mslzi + mshlzi + mz1i + mz2i + mz3i + mz4i + mz5i + mz6i + mz7i ;
-        Double mgk2 = mz10i + mz11i + mz12ni ;
-        Double mgw2 = msltxwi + mshltxwi + mtxw1i + mtxw2i + mtxw3i + mtxw4i + mtxw5i + mtxw6i + mtxw7i + mtxw10i + mtxw11i + mtxw12ni ;
-        Double fcsa = 1 - ( llzyyg * ( 4 * 0.25 + 2 * 0.02 * dlzcd ) / dldcw / lwlzbg ) *  ( llzyyg * ( 4 * 0.25 + 2 * 0.02 * dlzcd ) / dldcw / lwlzbg );
-        Double fcsb;
-        if ( dsyygwzModel.equals("顶升液压缸在立柱前") ) {
-            fcsb = 2 * llzyyg * ( mgq2 - mgk2 ) * ( 4 * 0.25 + 2 * 0.02 * dlzcd ) / dldcw / lwlzbg - 2 * mgw2 - 2 * mwlzi * 10 * llzyyg * llzyyg * ( 4 * 0.25 + 2 * 0.02 * dlzcd ) / dldcw / lwlzbg ;
-        } else if ( dsyygwzModel.equals("顶升液压缸在立柱后") ){
-            fcsb = -2 * llzyyg * ( mgq2 - mgk2 ) * ( 4 * 0.25 + 2 * 0.02 * dlzcd ) / dldcw / lwlzbg - 2 * mgw2 - 2 * mwlzi * 10 * llzyyg * llzyyg * ( 4 * 0.25 + 2 * 0.02 * dlzcd ) / dldcw / lwlzbg ;
-        } else {
-            fcsb = null ;
-        }
-        Double fcsc;
-        if ( dsyygwzModel.equals("顶升液压缸在立柱前") ) {
-            fcsc = -( mgq2 - mgk2 ) * ( mgq2 - mgk2 ) + 2 * mwlzi * 10 * llzyyg * ( mgq2 - mgk2 ) - ( mwlzi * 10 * llzyyg ) * ( mwlzi * 10 * llzyyg ) + mgw2 * mgw2 ;
-        } else if ( dsyygwzModel.equals("顶升液压缸在立柱后") ){
-            fcsc = -( mgq2 - mgk2 ) * ( mgq2 - mgk2 ) - 2 * mwlzi * 10 * llzyyg * ( mgq2 - mgk2 ) - ( mwlzi * 10 * llzyyg ) * ( mwlzi * 10 * llzyyg ) + mgw2 * mgw2 ;
-        } else {
-            fcsc = null ;
-        }
-        Double fcsz1 = ( -fcsb + Math.sqrt( fcsb * fcsb - 4 * fcsa * fcsc ) ) / 2 / fcsa ;
-        Double fcsz2 = ( -fcsb - Math.sqrt( fcsb * fcsb - 4 * fcsa * fcsc ) ) / 2 / fcsa ;
-        Double mg2;
-        if ( fcsz1 >= 0 && fcsz2 < 0 ) {
-            mg2 = fcsz1 ;
-        } else if ( fcsz2 >= 0 && fcsz1 < 0 ){
-            mg2 = fcsz2 ;
-        } else if ( fcsz2 >= 0 && fcsz1 >= 0 && fcsz2 > fcsz1 ){
-            mg2 = fcsz2 ;
-        } else if ( fcsz2 >= 0 && fcsz1 >= 0 && fcsz1 > fcsz2 ){
-            mg2 = fcsz1 ;
-        } else {
-            mg2 = null ;
-        }
-        Double ngl2 = mg2 / lwlzbg ;
-        Double nglmax = Math.max( ngl1, ngl2 );
-        map.put("mgq2", mgq2);
-        map.put("mgk2", mgk2);
-        map.put("mgw2", mgw2);
-        map.put("fcsa", fcsa);
-        map.put("fcsb", fcsb);
-        map.put("fcsc", fcsc);
-        map.put("fcsz1", fcsz1);
-        map.put("fcsz2", fcsz2);
-        map.put("mg2", mg2);
-        map.put("ngl2", ngl2);
-        map.put("nglmax", nglmax);
+            Double mgq2 = mslzi + mshlzi + mz1i + mz2i + mz3i + mz4i + mz5i + mz6i + mz7i;
+            Double mgk2 = mz10i + mz11i + mz12ni;
+            Double mgw2 = msltxwi + mshltxwi + mtxw1i + mtxw2i + mtxw3i + mtxw4i + mtxw5i + mtxw6i + mtxw7i + mtxw10i + mtxw11i + mtxw12ni;
+            Double fcsa = 1 - (llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg) * (llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg);
+            Double fcsb;
+            if (dsyygwzModel.equals("顶升液压缸在立柱前")) {
+                fcsb = 2 * llzyyg * (mgq2 - mgk2) * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg - 2 * mgw2 - 2 * mwlzi * 10 * llzyyg * llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg;
+            } else if (dsyygwzModel.equals("顶升液压缸在立柱后")) {
+                fcsb = -2 * llzyyg * (mgq2 - mgk2) * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg - 2 * mgw2 - 2 * mwlzi * 10 * llzyyg * llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg;
+            } else {
+                fcsb = null;
+            }
+            Double fcsc;
+            if (dsyygwzModel.equals("顶升液压缸在立柱前")) {
+                fcsc = -(mgq2 - mgk2) * (mgq2 - mgk2) + 2 * mwlzi * 10 * llzyyg * (mgq2 - mgk2) - (mwlzi * 10 * llzyyg) * (mwlzi * 10 * llzyyg) + mgw2 * mgw2;
+            } else if (dsyygwzModel.equals("顶升液压缸在立柱后")) {
+                fcsc = -(mgq2 - mgk2) * (mgq2 - mgk2) - 2 * mwlzi * 10 * llzyyg * (mgq2 - mgk2) - (mwlzi * 10 * llzyyg) * (mwlzi * 10 * llzyyg) + mgw2 * mgw2;
+            } else {
+                fcsc = null;
+            }
+            Double fcsz1 = (-fcsb + Math.sqrt(fcsb * fcsb - 4 * fcsa * fcsc)) / 2 / fcsa;
+            Double fcsz2 = (-fcsb - Math.sqrt(fcsb * fcsb - 4 * fcsa * fcsc)) / 2 / fcsa;
+            Double mg2;
+            if (fcsz1 >= 0 && fcsz2 < 0) {
+                mg2 = fcsz1;
+            } else if (fcsz2 >= 0 && fcsz1 < 0) {
+                mg2 = fcsz2;
+            } else if (fcsz2 >= 0 && fcsz1 >= 0 && fcsz2 > fcsz1) {
+                mg2 = fcsz2;
+            } else if (fcsz2 >= 0 && fcsz1 >= 0 && fcsz1 > fcsz2) {
+                mg2 = fcsz1;
+            } else {
+                mg2 = null;
+            }
+            Double ngl2 = mg2 / lwlzbg;
+            Double nglmax = Math.max(ngl1, ngl2);
+            map.put("mgq2", mgq2);
+            map.put("mgk2", mgk2);
+            map.put("mgw2", mgw2);
+            map.put("fcsa", fcsa);
+            map.put("fcsb", fcsb);
+            map.put("fcsc", fcsc);
+            map.put("fcsz1", fcsz1);
+            map.put("fcsz2", fcsz2);
+            map.put("mg2", mg2);
+            map.put("ngl2", ngl2);
+            map.put("nglmax", nglmax);
 
 //        立柱滚轮轴承受力
-        Double pg2 = nglmax * bfb / 2 / ndlsl ;
-        Double c = fh * 1.5 * 1.5 * pg2 / 1.435 / 1 ;
-        Double ck = c / 1000 ;
-        Double crk = cr / 1000 ;
-        Double c1 = 2.25 * pg2 ;
-        Double c1k = c1 / 1000 ;
-        Double c0rk = c0r / 1000 ;
-        map.put("pg2", pg2);
-        map.put("c", c);
-        map.put("ck", ck);
-        map.put("crk", crk);
-        map.put("c1", c1);
-        map.put("c1k", c1k);
-        map.put("c0rk", c0rk);
+            Double pg2 = nglmax * bfb / 2 / ndlsl;
+            Double c = fh * 1.5 * 1.5 * pg2 / 1.435 / 1;
+            Double ck = c / 1000;
+            Double crk = cr / 1000;
+            Double c1 = 2.25 * pg2;
+            Double c1k = c1 / 1000;
+            Double c0rk = c0r / 1000;
+            map.put("pg2", pg2);
+            map.put("c", c);
+            map.put("ck", ck);
+            map.put("crk", crk);
+            map.put("c1", c1);
+            map.put("c1k", c1k);
+            map.put("c0rk", c0rk);
 
-        //        立柱滚轮接触应力
-        Double pg1 = bfb * nglmax / ndlsl ;
-        Double shz = Math.sqrt( 0.35 * 210000 * pg1 / dldcw / dlbcw );
-        Double bshz = shz / 800 ;
-        map.put("pg1", pg1);
-        map.put("shz", shz);
-        map.put("bshz", bshz);
+            //        立柱滚轮接触应力
+            Double pg1 = bfb * nglmax / ndlsl;
+            Double shz = Math.sqrt(0.35 * 210000 * pg1 / dldcw / dlbcw);
+            Double bshz = shz / 800;
+            map.put("pg1", pg1);
+            map.put("shz", shz);
+            map.put("bshz", bshz);
 
-        //        立柱滚轮支撑板抗压强度
-        Double szcb = bfb * nglmax / 2 / azcb ;
-        Double zcbfkys = zcbfky / 1.5 ;
-        map.put("szcb", szcb);
-        map.put("zcbfkys", zcbfkys);
+            //        立柱滚轮支撑板抗压强度
+            Double szcb = bfb * nglmax / 2 / azcb;
+            Double zcbfkys = zcbfky / 1.5;
+            map.put("szcb", szcb);
+            map.put("zcbfkys", zcbfkys);
 
-        //        工况1液压缸推力
-        Double t1n = dsn * t1 / dsn1 ;
-        Double t1nk = t1n / 1000 ;
-        Double dslltlk = dslltl / 1000 ;
-        map.put("t1n", t1n);
-        map.put("t1nk", t1nk);
-        map.put("dslltlk", dslltlk);
+            //        工况1液压缸推力
+            Double t1n = dsn * t1 / dsn1;
+            Double t1nk = t1n / 1000;
+            Double dslltlk = dslltl / 1000;
+            map.put("t1n", t1n);
+            map.put("t1nk", t1nk);
+            map.put("dslltlk", dslltlk);
 
-        //        工况1液压缸稳定性
-        Double fk = 3.14 * 3.14 * 180000 * dsi / dsk / dsk / dslb / dslb ;
-        Double fkn = fk / dsnk ;
-        Double fknk = fkn / 1000 ;
-        Double f1n = t1 / dsn1 ;
-        Double f1nk = f1n / 1000 ;
-        map.put("fk", fk);
-        map.put("fkn", fkn);
-        map.put("fknk", fknk);
-        map.put("f1n", f1n);
-        map.put("f1nk", f1nk);
+            //        工况1液压缸稳定性
+            Double fk = 3.14 * 3.14 * 180000 * dsi / dsk / dsk / dslb / dslb;
+            Double fkn = fk / dsnk;
+            Double fknk = fkn / 1000;
+            Double f1n = t1 / dsn1;
+            Double f1nk = f1n / 1000;
+            map.put("fk", fk);
+            map.put("fkn", fkn);
+            map.put("fknk", fknk);
+            map.put("f1n", f1n);
+            map.put("f1nk", f1nk);
 
-        //        工况2液压缸推力
-        Double fmci = 2 * ngl2 * ( 2 * 0.25 + 0.02 * dlzcd ) / dldcw ;
-        Double t2 = mwlzi * 10 + fmci ;
-        Double t2n = dsn * t2 / dsn1 ;
-        Double t2nk = t2n / 1000 ;
-        Double dslltlk1 = dslltlk ;
-        map.put("fmci", fmci);
-        map.put("t2", t2);
-        map.put("t2n", t2n);
-        map.put("t2nk", t2nk);
-        map.put("dslltlk1", dslltlk1);
+            //        工况2液压缸推力
+            Double fmci = 2 * ngl2 * (2 * 0.25 + 0.02 * dlzcd) / dldcw;
+            Double t2 = mwlzi * 10 + fmci;
+            Double t2n = dsn * t2 / dsn1;
+            Double t2nk = t2n / 1000;
+            Double dslltlk1 = dslltlk;
+            map.put("fmci", fmci);
+            map.put("t2", t2);
+            map.put("t2n", t2n);
+            map.put("t2nk", t2nk);
+            map.put("dslltlk1", dslltlk1);
 
-        //        工况2液压缸稳定性
-        Double f2n = t2 / dsn1 ;
-        Double f2nk = f2n / 1000 ;
-        Double fknk1 = fknk ;
-        map.put("f2n", f2n);
-        map.put("f2nk", f2nk);
-        map.put("fknk1", fknk1);
+            //        工况2液压缸稳定性
+            Double f2n = t2 / dsn1;
+            Double f2nk = f2n / 1000;
+            Double fknk1 = fknk;
+            map.put("f2n", f2n);
+            map.put("f2nk", f2nk);
+            map.put("fknk1", fknk1);
+        }else  if (xljzsyModel.equals("静载试验")) {
+
+            //        工况1
+            Double mslz = jzwts * lslhz * 10;
+            Double mshlz = tshl * lshlhz * 10 * 1.4 ;
+            Double mz1 = m1 * lhz1 * 10;
+            Double mz2 = m2 * lhz2 * 10;
+            Double mz3 = m3 * lhz3 * 10;
+            Double mz4 = m4 * lhz4 * 10;
+            Double mz5 = m5ds * lhz5 * 10;
+            Double mz6 = m6 * lhz6 * 10;
+            Double mz7 = m7 * lhz7 * 10;
+            map.put("mslz", mslz);
+            map.put("mshlz", mshlz);
+            map.put("mz1", mz1);
+            map.put("mz2", mz2);
+            map.put("mz3", mz3);
+            map.put("mz4", mz4);
+            map.put("mz5", mz5);
+            map.put("mz6", mz6);
+            map.put("mz7", mz7);
+
+            Double mz10 = m10 * lhz10 * 10;
+            Double mz11 = m11 * lhz11 * 10;
+            Double mz12n = m12n * lhz12n * 10;
+            map.put("mz10", mz10);
+            map.put("mz11", mz11);
+            map.put("mz12n", mz12n);
+
+            Double msltxw = asltx * hslb * p;
+            Double mshltxw = ashltx * hshlb * p;
+            Double mtxw1 = atx1 * hb1 * p;
+            Double mtxw2 = atx2 * hb2 * p;
+            Double mtxw3 = atx3 * hb3 * p;
+            Double mtxw4 = atx4 * hb4 * p;
+            Double mtxw5 = atx5ds * hb5 * p;
+            Double mtxw6 = atx6 * hb6 * p;
+            Double mtxw7 = atx7 * hb7 * p;
+            Double mtxw10 = atx10 * hb10 * p;
+            Double mtxw11 = atx11 * hb11 * p;
+            Double mtxw12n = atx12n * hb12n * p;
+            map.put("msltxw", msltxw);
+            map.put("mshltxw", mshltxw);
+            map.put("mtxw1", mtxw1);
+            map.put("mtxw2", mtxw2);
+            map.put("mtxw3", mtxw3);
+            map.put("mtxw4", mtxw4);
+            map.put("mtxw5", mtxw5);
+            map.put("mtxw6", mtxw6);
+            map.put("mtxw7", mtxw7);
+            map.put("mtxw10", mtxw10);
+            map.put("mtxw11", mtxw11);
+            map.put("mtxw12n", mtxw12n);
+
+            Double t1 = jzmwlz * 10;
+            Double mgq1 = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5 + mz6 + mz7;
+            Double mgk1 = mz10 + mz11 + mz12n;
+            Double mgw1 = msltxw + mshltxw + mtxw1 + mtxw2 + mtxw3 + mtxw4 + mtxw5 + mtxw6 + mtxw7 + mtxw10 + mtxw11 + mtxw12n;
+            Double mg1;
+            if (dsyygwzModel.equals("顶升液压缸在立柱前")) {
+                mg1 = Math.abs(mgq1 - mgk1 - t1 * llzyyg) + mgw1;
+            } else if (dsyygwzModel.equals("顶升液压缸在立柱后")) {
+                mg1 = Math.abs(mgq1 - mgk1 + t1 * llzyyg) + mgw1;
+            } else {
+                mg1 = null;
+            }
+            Double ngl1 = mg1 / lwlzbg;
+            map.put("t1", t1);
+            map.put("mgq1", mgq1);
+            map.put("mgk1", mgk1);
+            map.put("mgw1", mgw1);
+            map.put("mg1", mg1);
+            map.put("ngl1", ngl1);
+
+//        工况2
+            Double mslzi = jzwts * lslhzi * 10;
+            Double mshlzi = tshl * lshlhzi * 10 * 1.4 ;
+            Double mz1i = m1 * lhz1i * 10;
+            Double mz2i = m2 * lhz2i * 10;
+            Double mz3i = m3 * lhz3i * 10;
+            Double mz4i = m4 * lhz4i * 10;
+            Double mz5i = m5dsp * lhz5i * 10;
+            Double mz6i = m6 * lhz6i * 10;
+            Double mz7i = m7 * lhz7i * 10;
+            map.put("mslzi", mslzi);
+            map.put("mshlzi", mshlzi);
+            map.put("mz1i", mz1i);
+            map.put("mz2i", mz2i);
+            map.put("mz3i", mz3i);
+            map.put("mz4i", mz4i);
+            map.put("mz5i", mz5i);
+            map.put("mz6i", mz6i);
+            map.put("mz7i", mz7i);
+
+            Double mz10i = m10 * lhz10i * 10;
+            Double mz11i = m11 * lhz11i * 10;
+            Double mz12ni = m12n * lhz12ni * 10;
+            map.put("mz10i", mz10i);
+            map.put("mz11i", mz11i);
+            map.put("mz12ni", mz12ni);
+
+            Double msltxwi = asltxi * hslbi * p;
+            Double mshltxwi = ashltxi * hshlbi * p;
+            Double mtxw1i = atx1i * hb1i * p;
+            Double mtxw2i = atx2i * hb2i * p;
+            Double mtxw3i = atx3i * hb3i * p;
+            Double mtxw4i = atx4i * hb4i * p;
+            Double mtxw5i = atx5dsi * hb5i * p;
+            Double mtxw6i = atx6i * hb6i * p;
+            Double mtxw7i = atx7i * hb7i * p;
+            Double mtxw10i = atx10i * hb10i * p;
+            Double mtxw11i = atx11i * hb11i * p;
+            Double mtxw12ni = atx12ni * hb12ni * p;
+            map.put("msltxwi", msltxwi);
+            map.put("mshltxwi", mshltxwi);
+            map.put("mtxw1i", mtxw1i);
+            map.put("mtxw2i", mtxw2i);
+            map.put("mtxw3i", mtxw3i);
+            map.put("mtxw4i", mtxw4i);
+            map.put("mtxw5i", mtxw5i);
+            map.put("mtxw6i", mtxw6i);
+            map.put("mtxw7i", mtxw7i);
+            map.put("mtxw10i", mtxw10i);
+            map.put("mtxw11i", mtxw11i);
+            map.put("mtxw12ni", mtxw12ni);
+
+            Double mgq2 = mslzi + mshlzi + mz1i + mz2i + mz3i + mz4i + mz5i + mz6i + mz7i;
+            Double mgk2 = mz10i + mz11i + mz12ni;
+            Double mgw2 = msltxwi + mshltxwi + mtxw1i + mtxw2i + mtxw3i + mtxw4i + mtxw5i + mtxw6i + mtxw7i + mtxw10i + mtxw11i + mtxw12ni;
+            Double fcsa = 1 - (llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg) * (llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg);
+            Double fcsb;
+            if (dsyygwzModel.equals("顶升液压缸在立柱前")) {
+                fcsb = 2 * llzyyg * (mgq2 - mgk2) * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg - 2 * mgw2 - 2 * jzmwlzi * 10 * llzyyg * llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg;
+            } else if (dsyygwzModel.equals("顶升液压缸在立柱后")) {
+                fcsb = -2 * llzyyg * (mgq2 - mgk2) * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg - 2 * mgw2 - 2 * jzmwlzi * 10 * llzyyg * llzyyg * (4 * 0.25 + 2 * 0.02 * dlzcd) / dldcw / lwlzbg;
+            } else {
+                fcsb = null;
+            }
+            Double fcsc;
+            if (dsyygwzModel.equals("顶升液压缸在立柱前")) {
+                fcsc = -(mgq2 - mgk2) * (mgq2 - mgk2) + 2 * jzmwlzi * 10 * llzyyg * (mgq2 - mgk2) - (jzmwlzi * 10 * llzyyg) * (jzmwlzi * 10 * llzyyg) + mgw2 * mgw2;
+            } else if (dsyygwzModel.equals("顶升液压缸在立柱后")) {
+                fcsc = -(mgq2 - mgk2) * (mgq2 - mgk2) - 2 * jzmwlzi * 10 * llzyyg * (mgq2 - mgk2) - (jzmwlzi * 10 * llzyyg) * (jzmwlzi * 10 * llzyyg) + mgw2 * mgw2;
+            } else {
+                fcsc = null;
+            }
+            Double fcsz1 = (-fcsb + Math.sqrt(fcsb * fcsb - 4 * fcsa * fcsc)) / 2 / fcsa;
+            Double fcsz2 = (-fcsb - Math.sqrt(fcsb * fcsb - 4 * fcsa * fcsc)) / 2 / fcsa;
+            Double mg2;
+            if (fcsz1 >= 0 && fcsz2 < 0) {
+                mg2 = fcsz1;
+            } else if (fcsz2 >= 0 && fcsz1 < 0) {
+                mg2 = fcsz2;
+            } else if (fcsz2 >= 0 && fcsz1 >= 0 && fcsz2 > fcsz1) {
+                mg2 = fcsz2;
+            } else if (fcsz2 >= 0 && fcsz1 >= 0 && fcsz1 > fcsz2) {
+                mg2 = fcsz1;
+            } else {
+                mg2 = null;
+            }
+            Double ngl2 = mg2 / lwlzbg;
+            Double nglmax = Math.max(ngl1, ngl2);
+            map.put("mgq2", mgq2);
+            map.put("mgk2", mgk2);
+            map.put("mgw2", mgw2);
+            map.put("fcsa", fcsa);
+            map.put("fcsb", fcsb);
+            map.put("fcsc", fcsc);
+            map.put("fcsz1", fcsz1);
+            map.put("fcsz2", fcsz2);
+            map.put("mg2", mg2);
+            map.put("ngl2", ngl2);
+            map.put("nglmax", nglmax);
+
+//        立柱滚轮轴承受力
+            Double pg2 = nglmax * bfb / 2 / ndlsl;
+            Double c = fh * 1.5 * 1.5 * pg2 / 1.435 / 1;
+            Double ck = c / 1000;
+            Double crk = cr / 1000;
+            Double c1 = 2.25 * pg2;
+            Double c1k = c1 / 1000;
+            Double c0rk = c0r / 1000;
+            map.put("pg2", pg2);
+            map.put("c", c);
+            map.put("ck", ck);
+            map.put("crk", crk);
+            map.put("c1", c1);
+            map.put("c1k", c1k);
+            map.put("c0rk", c0rk);
+
+            //        立柱滚轮接触应力
+            Double pg1 = bfb * nglmax / ndlsl;
+            Double shz = Math.sqrt(0.35 * 210000 * pg1 / dldcw / dlbcw);
+            Double bshz = shz / 800;
+            map.put("pg1", pg1);
+            map.put("shz", shz);
+            map.put("bshz", bshz);
+
+            //        立柱滚轮支撑板抗压强度
+            Double szcb = bfb * nglmax / 2 / azcb;
+            Double zcbfkys = zcbfky / 1.5;
+            map.put("szcb", szcb);
+            map.put("zcbfkys", zcbfkys);
+
+            //        工况1液压缸推力
+            Double t1n = dsn * t1 / dsn1;
+            Double t1nk = t1n / 1000;
+            Double dslltlk = dslltl / 1000;
+            map.put("t1n", t1n);
+            map.put("t1nk", t1nk);
+            map.put("dslltlk", dslltlk);
+
+            //        工况1液压缸稳定性
+            Double fk = 3.14 * 3.14 * 180000 * dsi / dsk / dsk / dslb / dslb;
+            Double fkn = fk / dsnk;
+            Double fknk = fkn / 1000;
+            Double f1n = t1 / dsn1;
+            Double f1nk = f1n / 1000;
+            map.put("fk", fk);
+            map.put("fkn", fkn);
+            map.put("fknk", fknk);
+            map.put("f1n", f1n);
+            map.put("f1nk", f1nk);
+
+            //        工况2液压缸推力
+            Double fmci = 2 * ngl2 * (2 * 0.25 + 0.02 * dlzcd) / dldcw;
+            Double t2 = jzmwlzi * 10 + fmci;
+            Double t2n = dsn * t2 / dsn1;
+            Double t2nk = t2n / 1000;
+            Double dslltlk1 = dslltlk;
+            map.put("fmci", fmci);
+            map.put("t2", t2);
+            map.put("t2n", t2n);
+            map.put("t2nk", t2nk);
+            map.put("dslltlk1", dslltlk1);
+
+            //        工况2液压缸稳定性
+            Double f2n = t2 / dsn1;
+            Double f2nk = f2n / 1000;
+            Double fknk1 = fknk;
+            map.put("f2n", f2n);
+            map.put("f2nk", f2nk);
+            map.put("fknk1", fknk1);
+        }
 
         return map;
     }

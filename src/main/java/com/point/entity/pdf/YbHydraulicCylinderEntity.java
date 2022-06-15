@@ -53,6 +53,8 @@ public class YbHydraulicCylinderEntity {
 
     private Double yblltlf;
 
+    private Double jzwts;
+
     private Double swp;
     private Double r1;
     private Double mwr;
@@ -91,6 +93,8 @@ public class YbHydraulicCylinderEntity {
     private String gruModel;
     private String gruybModel;
     private String ybfztModel;
+
+    private String xljzsyModel;//静载试验选择
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -137,6 +141,8 @@ public class YbHydraulicCylinderEntity {
 
         map.put("yblltlf", CommonFunc.convertDoubleToString(yblltlf));
 
+        map.put("jzwts", CommonFunc.convertDoubleToString(jzwts));
+
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
         map.put("mwr", CommonFunc.convertDoubleToString(mwr));
@@ -182,79 +188,156 @@ public class YbHydraulicCylinderEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
-        Double mslz= 10 * tsl * lsljz ;
-        Double mshlz= 10 * tshl * lshljz ;
-        Double mz1= 10 * m1 * ljz1 ;
-        Double mz2= 10 * m2 * ljz2 ;
-        Double mz3= 10 * m3 * ljz3 ;
-        Double mz4= 10 * m4 * ljz4 ;
-        Double mz5= 10 * m5yb * ljz5 ;
-        map.put("mslz", mslz);
-        map.put("mshlz", mshlz);
-        map.put("mz1", mz1);
-        map.put("mz2", mz2);
-        map.put("mz3", mz3);
-        map.put("mz4", mz4);
-        map.put("mz5", mz5);
+        if (xljzsyModel.equals("常规工况")) {
+            Double mslz = 10 * tsl * lsljz;
+            Double mshlz = 10 * tshl * lshljz;
+            Double mz1 = 10 * m1 * ljz1;
+            Double mz2 = 10 * m2 * ljz2;
+            Double mz3 = 10 * m3 * ljz3;
+            Double mz4 = 10 * m4 * ljz4;
+            Double mz5 = 10 * m5yb * ljz5;
+            map.put("mslz", mslz);
+            map.put("mshlz", mshlz);
+            map.put("mz1", mz1);
+            map.put("mz2", mz2);
+            map.put("mz3", mz3);
+            map.put("mz4", mz4);
+            map.put("mz5", mz5);
 
-        Double mz = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5 ;
-        Double fs = mz / ybljz ;
-        Double fsn = ybn * fs / ybn1 ;
-        Double fsnk = fsn / 1000 ;
-        map.put("mz", mz);
-        map.put("fs", fs);
-        map.put("fsn", fsn);
-        map.put("fsnk", fsnk);
+            Double mz = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5;
+            Double fs = mz / ybljz;
+            Double fsn = ybn * fs / ybn1;
+            Double fsnk = fsn / 1000;
+            map.put("mz", mz);
+            map.put("fs", fs);
+            map.put("fsn", fsn);
+            map.put("fsnk", fsnk);
 
-        Double fk = 3.14 * 3.14 * 180000 * ybi / 4 / yblb / yblb ;
-        Double fkn = fk / ybnk ;
-        Double f1 = fs ;
-        Double f1n = f1 / ybn1 ;
-        Double fknk = fkn / 1000 ;
-        Double f1nk = f1n / 1000 ;
-        map.put("fk", fk);
-        map.put("fkn", fkn);
-        map.put("f1", f1);
-        map.put("f1n", f1n);
-        map.put("fknk", fknk);
-        map.put("f1nk", f1nk);
+            Double fk = 3.14 * 3.14 * 180000 * ybi / 4 / yblb / yblb;
+            Double fkn = fk / ybnk;
+            Double f1 = fs;
+            Double f1n = f1 / ybn1;
+            Double fknk = fkn / 1000;
+            Double f1nk = f1n / 1000;
+            map.put("fk", fk);
+            map.put("fkn", fkn);
+            map.put("f1", f1);
+            map.put("f1n", f1n);
+            map.put("fknk", fknk);
+            map.put("f1nk", f1nk);
 
-        Double mslzf= 10 * tslp * lsljzf ;
-        Double mshlzf= 10 * tshlp * lshljzf ;
-        Double mzf1= 10 * m1 * ljzf1 ;
-        Double mzf2= 10 * m2 * ljzf2 ;
-        Double mzf3= 10 * m3 * ljzf3 ;
-        Double mzf4= 10 * m4 * ljzf4 ;
-        Double mzf5= 10 * m5ybp * ljzf5 ;
-        map.put("mslzf", mslzf);
-        map.put("mshlzf", mshlzf);
-        map.put("mzf1", mzf1);
-        map.put("mzf2", mzf2);
-        map.put("mzf3", mzf3);
-        map.put("mzf4", mzf4);
-        map.put("mzf5", mzf5);
+            Double mslzf = 10 * tslp * lsljzf;
+            Double mshlzf = 10 * tshlp * lshljzf;
+            Double mzf1 = 10 * m1 * ljzf1;
+            Double mzf2 = 10 * m2 * ljzf2;
+            Double mzf3 = 10 * m3 * ljzf3;
+            Double mzf4 = 10 * m4 * ljzf4;
+            Double mzf5 = 10 * m5ybp * ljzf5;
+            map.put("mslzf", mslzf);
+            map.put("mshlzf", mshlzf);
+            map.put("mzf1", mzf1);
+            map.put("mzf2", mzf2);
+            map.put("mzf3", mzf3);
+            map.put("mzf4", mzf4);
+            map.put("mzf5", mzf5);
 
-        Double mzf = mslzf + mshlzf + mzf1 + mzf2 + mzf3 + mzf4 + mzf5 ;
-        Double fsf = mzf / ybljzf ;
-        Double fsnf = ybn * fsf / ybn1 ;
-        Double fsnfk = fsnf / 1000 ;
-        map.put("mzf", mzf);
-        map.put("fsf", fsf);
-        map.put("fsnf", fsnf);
-        map.put("fsnfk", fsnfk);
+            Double mzf = mslzf + mshlzf + mzf1 + mzf2 + mzf3 + mzf4 + mzf5;
+            Double fsf = mzf / ybljzf;
+            Double fsnf = ybn * fsf / ybn1;
+            Double fsnfk = fsnf / 1000;
+            map.put("mzf", mzf);
+            map.put("fsf", fsf);
+            map.put("fsnf", fsnf);
+            map.put("fsnfk", fsnfk);
 
-        Double fkf = 3.14 * 3.14 * 180000 * ybi / 4 / yblbf / yblbf ;
-        Double fknf = fkf / ybnk ;
-        Double f2 = fsf ;
-        Double f2n = f2 / ybn1 ;
-        Double fknfk = fknf / 1000 ;
-        Double f2nk = f2n / 1000 ;
-        map.put("fkf", fkf);
-        map.put("fknf", fknf);
-        map.put("f2", f2);
-        map.put("f2n", f2n);
-        map.put("fknfk", fknfk);
-        map.put("f2nk", f2nk);
+            Double fkf = 3.14 * 3.14 * 180000 * ybi / 4 / yblbf / yblbf;
+            Double fknf = fkf / ybnk;
+            Double f2 = fsf;
+            Double f2n = f2 / ybn1;
+            Double fknfk = fknf / 1000;
+            Double f2nk = f2n / 1000;
+            map.put("fkf", fkf);
+            map.put("fknf", fknf);
+            map.put("f2", f2);
+            map.put("f2n", f2n);
+            map.put("fknfk", fknfk);
+            map.put("f2nk", f2nk);
+        }else  if (xljzsyModel.equals("静载试验")) {
+
+            Double mslz = 10 * jzwts * lsljz;
+            Double mshlz = 10 * tshl * lshljz * 1.4 ;
+            Double mz1 = 10 * m1 * ljz1;
+            Double mz2 = 10 * m2 * ljz2;
+            Double mz3 = 10 * m3 * ljz3;
+            Double mz4 = 10 * m4 * ljz4;
+            Double mz5 = 10 * m5yb * ljz5;
+            map.put("mslz", mslz);
+            map.put("mshlz", mshlz);
+            map.put("mz1", mz1);
+            map.put("mz2", mz2);
+            map.put("mz3", mz3);
+            map.put("mz4", mz4);
+            map.put("mz5", mz5);
+
+            Double mz = mslz + mshlz + mz1 + mz2 + mz3 + mz4 + mz5;
+            Double fs = mz / ybljz;
+            Double fsn = ybn * fs / ybn1;
+            Double fsnk = fsn / 1000;
+            map.put("mz", mz);
+            map.put("fs", fs);
+            map.put("fsn", fsn);
+            map.put("fsnk", fsnk);
+
+            Double fk = 3.14 * 3.14 * 180000 * ybi / 4 / yblb / yblb;
+            Double fkn = fk / ybnk;
+            Double f1 = fs;
+            Double f1n = f1 / ybn1;
+            Double fknk = fkn / 1000;
+            Double f1nk = f1n / 1000;
+            map.put("fk", fk);
+            map.put("fkn", fkn);
+            map.put("f1", f1);
+            map.put("f1n", f1n);
+            map.put("fknk", fknk);
+            map.put("f1nk", f1nk);
+
+            Double mslzf = 10 * jzwts * lsljzf;
+            Double mshlzf = 10 * tshlp * lshljzf * 1.4 ;
+            Double mzf1 = 10 * m1 * ljzf1;
+            Double mzf2 = 10 * m2 * ljzf2;
+            Double mzf3 = 10 * m3 * ljzf3;
+            Double mzf4 = 10 * m4 * ljzf4;
+            Double mzf5 = 10 * m5ybp * ljzf5;
+            map.put("mslzf", mslzf);
+            map.put("mshlzf", mshlzf);
+            map.put("mzf1", mzf1);
+            map.put("mzf2", mzf2);
+            map.put("mzf3", mzf3);
+            map.put("mzf4", mzf4);
+            map.put("mzf5", mzf5);
+
+            Double mzf = mslzf + mshlzf + mzf1 + mzf2 + mzf3 + mzf4 + mzf5;
+            Double fsf = mzf / ybljzf;
+            Double fsnf = ybn * fsf / ybn1;
+            Double fsnfk = fsnf / 1000;
+            map.put("mzf", mzf);
+            map.put("fsf", fsf);
+            map.put("fsnf", fsnf);
+            map.put("fsnfk", fsnfk);
+
+            Double fkf = 3.14 * 3.14 * 180000 * ybi / 4 / yblbf / yblbf;
+            Double fknf = fkf / ybnk;
+            Double f2 = fsf;
+            Double f2n = f2 / ybn1;
+            Double fknfk = fknf / 1000;
+            Double f2nk = f2n / 1000;
+            map.put("fkf", fkf);
+            map.put("fknf", fknf);
+            map.put("f2", f2);
+            map.put("f2n", f2n);
+            map.put("fknfk", fknfk);
+            map.put("f2nk", f2nk);
+        }
 
         return map;
     }

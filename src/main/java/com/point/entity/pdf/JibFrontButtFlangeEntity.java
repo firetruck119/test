@@ -110,6 +110,9 @@ public class JibFrontButtFlangeEntity {
     private String dbflhfhtxh;
     private Double dbflhfffw;
 
+    private Double jzwts;
+    private Double jzmflz;
+
 //    工作载荷
     private Double swp;
     private Double r1;
@@ -167,6 +170,8 @@ public class JibFrontButtFlangeEntity {
     private String dbflgruwzModel;
 //    private String dbfllsljgkModel;
     private String dbfllsxndjModel;
+
+    private String xljzsyModel;//静载试验选择
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -261,6 +266,9 @@ public class JibFrontButtFlangeEntity {
         map.put("dbflhfhtxh", CommonFunc.convertDoubleToString(dbflhfhtxh));
         map.put("dbflhfffw", CommonFunc.convertDoubleToString(dbflhfffw));
 
+        map.put("jzwts", CommonFunc.convertDoubleToString(jzwts));
+        map.put("jzmflz", CommonFunc.convertDoubleToString(jzmflz));
+
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
         map.put("mwr", CommonFunc.convertDoubleToString(mwr));
@@ -321,98 +329,192 @@ public class JibFrontButtFlangeEntity {
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
 
+        if (xljzsyModel.equals("常规工况")) {
 //        前对接法兰螺栓拉力校核
-        //        载荷倾覆力矩
-        Double mslfl = 10 * tsl * lslfl ;
-        Double mshlfl = 10 * tshl * lshlfl ;
-        Double mfl1 = 10 * m1 * lfl1 ;
-        Double mfl2 = 10 * m2 * lfl2 ;
-        Double mfl3 = 10 * m3 * lfl3 ;
-        Double mfl4 = 10 * m4dbfl * lfl4 ;
-        Double mfl5 = 10 * m5dbfl * lfl5 ;
-        Double mfl6 = 10 * m6 * lfl6 ;
-        map.put("mslfl", mslfl);
-        map.put("mshlfl", mshlfl);
-        map.put("mfl1", mfl1);
-        map.put("mfl2", mfl2);
-        map.put("mfl3", mfl3);
-        map.put("mfl4", mfl4);
-        map.put("mfl5", mfl5);
-        map.put("mfl6", mfl6);
+            //        载荷倾覆力矩
+            Double mslfl = 10 * tsl * lslfl;
+            Double mshlfl = 10 * tshl * lshlfl;
+            Double mfl1 = 10 * m1 * lfl1;
+            Double mfl2 = 10 * m2 * lfl2;
+            Double mfl3 = 10 * m3 * lfl3;
+            Double mfl4 = 10 * m4dbfl * lfl4;
+            Double mfl5 = 10 * m5dbfl * lfl5;
+            Double mfl6 = 10 * m6 * lfl6;
+            map.put("mslfl", mslfl);
+            map.put("mshlfl", mshlfl);
+            map.put("mfl1", mfl1);
+            map.put("mfl2", mfl2);
+            map.put("mfl3", mfl3);
+            map.put("mfl4", mfl4);
+            map.put("mfl5", mfl5);
+            map.put("mfl6", mfl6);
 
-        Double mslflw = p * aslcx * lslflm ;
-        Double mshlflw = p * ashlcx * lshlflm ;
-        Double mflw1 = p * acx1 * lflm1 ;
-        Double mflw2 = p * acx2 * lflm2 ;
-        Double mflw3 = p * acx3 * lflm3 ;
-        Double mflw4 = p * acx4dbfl * lflm4 ;
-        Double mflw5 = p * acx5dbfl * lflm5 ;
-        Double mflw6 = p * acx6 * lflm6 ;
-        map.put("mslflw", mslflw);
-        map.put("mshlflw", mshlflw);
-        map.put("mflw1", mflw1);
-        map.put("mflw2", mflw2);
-        map.put("mflw3", mflw3);
-        map.put("mflw4", mflw4);
-        map.put("mflw5", mflw5);
-        map.put("mflw6", mflw6);
+            Double mslflw = p * aslcx * lslflm;
+            Double mshlflw = p * ashlcx * lshlflm;
+            Double mflw1 = p * acx1 * lflm1;
+            Double mflw2 = p * acx2 * lflm2;
+            Double mflw3 = p * acx3 * lflm3;
+            Double mflw4 = p * acx4dbfl * lflm4;
+            Double mflw5 = p * acx5dbfl * lflm5;
+            Double mflw6 = p * acx6 * lflm6;
+            map.put("mslflw", mslflw);
+            map.put("mshlflw", mshlflw);
+            map.put("mflw1", mflw1);
+            map.put("mflw2", mflw2);
+            map.put("mflw3", mflw3);
+            map.put("mflw4", mflw4);
+            map.put("mflw5", mflw5);
+            map.put("mflw6", mflw6);
 
-        Double mflq = mslfl + mshlfl + mfl1 + mfl2 + mfl3 + mfl4 + mfl5 + mfl6 ;
-        Double mflw = mslflw + mshlflw + mflw1 + mflw2 + mflw3 + mflw4 + mflw5 + mflw6 ;
-        Double flslh = mflq * dbfllsrh1 / ( dbfllsnh1 * dbfllsrh1 * dbfllsrh1 + dbfllsnh2 * dbfllsrh2 * dbfllsrh2 + dbfllsnh3 * dbfllsrh3 * dbfllsrh3 + dbfllsnh4 * dbfllsrh4 * dbfllsrh4 + dbfllsnh5 * dbfllsrh5 * dbfllsrh5 + dbfllsnh6 * dbfllsrh6 * dbfllsrh6 + dbfllsnh7 * dbfllsrh7 * dbfllsrh7 + dbfllsnh8 * dbfllsrh8 * dbfllsrh8 + dbfllsnh9 * dbfllsrh9 * dbfllsrh9 + dbfllsnh10 * dbfllsrh10 * dbfllsrh10 + dbfllsnh11 * dbfllsrh11 * dbfllsrh11 + dbfllsnh12 * dbfllsrh12 * dbfllsrh12 ) ;
-        Double flsll = mflw * dbfllsrl1 / ( dbfllsnl1 * dbfllsrl1 * dbfllsrl1 + dbfllsnl2 * dbfllsrl2 * dbfllsrl2 + dbfllsnl3 * dbfllsrl3 * dbfllsrl3 + dbfllsnl4 * dbfllsrl4 * dbfllsrl4 + dbfllsnl5 * dbfllsrl5 * dbfllsrl5 + dbfllsnl6 * dbfllsrl6 * dbfllsrl6 + dbfllsnl7 * dbfllsrl7 * dbfllsrl7 + dbfllsnl8 * dbfllsrl8 * dbfllsrl8 + dbfllsnl9 * dbfllsrl9 * dbfllsrl9 ) ;
-        Double flsl = flslh + flsll ;
-        map.put("mflq", mflq);
-        map.put("mflw", mflw);
-        map.put("flslh", flslh);
-        map.put("flsll", flsll);
-        map.put("flsl", flsl);
+            Double mflq = mslfl + mshlfl + mfl1 + mfl2 + mfl3 + mfl4 + mfl5 + mfl6;
+            Double mflw = mslflw + mshlflw + mflw1 + mflw2 + mflw3 + mflw4 + mflw5 + mflw6;
+            Double flslh = mflq * dbfllsrh1 / (dbfllsnh1 * dbfllsrh1 * dbfllsrh1 + dbfllsnh2 * dbfllsrh2 * dbfllsrh2 + dbfllsnh3 * dbfllsrh3 * dbfllsrh3 + dbfllsnh4 * dbfllsrh4 * dbfllsrh4 + dbfllsnh5 * dbfllsrh5 * dbfllsrh5 + dbfllsnh6 * dbfllsrh6 * dbfllsrh6 + dbfllsnh7 * dbfllsrh7 * dbfllsrh7 + dbfllsnh8 * dbfllsrh8 * dbfllsrh8 + dbfllsnh9 * dbfllsrh9 * dbfllsrh9 + dbfllsnh10 * dbfllsrh10 * dbfllsrh10 + dbfllsnh11 * dbfllsrh11 * dbfllsrh11 + dbfllsnh12 * dbfllsrh12 * dbfllsrh12);
+            Double flsll = mflw * dbfllsrl1 / (dbfllsnl1 * dbfllsrl1 * dbfllsrl1 + dbfllsnl2 * dbfllsrl2 * dbfllsrl2 + dbfllsnl3 * dbfllsrl3 * dbfllsrl3 + dbfllsnl4 * dbfllsrl4 * dbfllsrl4 + dbfllsnl5 * dbfllsrl5 * dbfllsrl5 + dbfllsnl6 * dbfllsrl6 * dbfllsrl6 + dbfllsnl7 * dbfllsrl7 * dbfllsrl7 + dbfllsnl8 * dbfllsrl8 * dbfllsrl8 + dbfllsnl9 * dbfllsrl9 * dbfllsrl9);
+            Double flsl = flslh + flsll;
+            map.put("mflq", mflq);
+            map.put("mflw", mflw);
+            map.put("flslh", flslh);
+            map.put("flsll", flsll);
+            map.put("flsl", flsl);
 //        map.put("btxs", btxs);
 //        map.put("nt", nt);
 //        map.put("flslk", flslk);
 //        map.put("ntk", ntk);
 
-        //        前对接法兰螺栓预紧力校核
-        //        风载荷
-        Double fslfl = p * aslcx ;
-        Double fshlfl = p * ashlcx ;
-        Double ffl1 = p * acx1 ;
-        Double ffl2 = p * acx2 ;
-        Double ffl3 = p * acx3 ;
-        Double ffl4 = p * acx4dbfl ;
-        Double ffl5 = p * acx5dbfl ;
-        Double ffl6 = p * acx6 ;
-        map.put("fslfl", fslfl);
-        map.put("fshlfl", fshlfl);
-        map.put("ffl1", ffl1);
-        map.put("ffl2", ffl2);
-        map.put("ffl3", ffl3);
-        map.put("ffl4", ffl4);
-        map.put("ffl5", ffl5);
-        map.put("ffl6", ffl6);
+            //        前对接法兰螺栓预紧力校核
+            //        风载荷
+            Double fslfl = p * aslcx;
+            Double fshlfl = p * ashlcx;
+            Double ffl1 = p * acx1;
+            Double ffl2 = p * acx2;
+            Double ffl3 = p * acx3;
+            Double ffl4 = p * acx4dbfl;
+            Double ffl5 = p * acx5dbfl;
+            Double ffl6 = p * acx6;
+            map.put("fslfl", fslfl);
+            map.put("fshlfl", fshlfl);
+            map.put("ffl1", ffl1);
+            map.put("ffl2", ffl2);
+            map.put("ffl3", ffl3);
+            map.put("ffl4", ffl4);
+            map.put("ffl5", ffl5);
+            map.put("ffl6", ffl6);
 
-        Double fflw = fslfl + fshlfl + ffl1 + ffl2 + ffl3 + ffl4 + ffl5 + ffl6 ;
-        Double flsyj = Math.sqrt( 100 * mflz * mflz + fflw * fflw ) / 0.1 / dbfllsn ;
-        Double flss = dbflnlsyjlxs * Math.max( flsl,flsyj );
-        Double flssk = flss / 1000 ;
-        map.put("fflw", fflw);
-        map.put("flsyj", flsyj);
-        map.put("flss", flss);
-        map.put("flssk", flssk);
+            Double fflw = fslfl + fshlfl + ffl1 + ffl2 + ffl3 + ffl4 + ffl5 + ffl6;
+            Double flsyj = Math.sqrt(100 * mflz * mflz + fflw * fflw) / 0.1 / dbfllsn;
+            Double flss = dbflnlsyjlxs * Math.max(flsl, flsyj);
+            Double flssk = flss / 1000;
+            map.put("fflw", fflw);
+            map.put("flsyj", flsyj);
+            map.put("flss", flss);
+            map.put("flssk", flssk);
 
 
-        //螺栓拧紧力矩计算
-        Double tlss = 0.22 * flss * dbfllsgcd / 1000 ;
-        map.put("tlss", tlss);
+            //螺栓拧紧力矩计算
+            Double tlss = 0.22 * flss * dbfllsgcd / 1000;
+            map.put("tlss", tlss);
 
-        //法兰焊缝计算
-        Double dbflhfsq = 1000 * mflq / dbflhfwx2 ;
-        Double dbflhfsw = 1000 * mflw / dbflhfwy2 ;
-        Double dbflhfs1 = dbflhfsq + dbflhfsw ;
-        map.put("dbflhfsq", dbflhfsq);
-        map.put("dbflhfsw", dbflhfsw);
-        map.put("dbflhfs1", dbflhfs1);
+            //法兰焊缝计算
+            Double dbflhfsq = 1000 * mflq / dbflhfwx2;
+            Double dbflhfsw = 1000 * mflw / dbflhfwy2;
+            Double dbflhfs1 = dbflhfsq + dbflhfsw;
+            map.put("dbflhfsq", dbflhfsq);
+            map.put("dbflhfsw", dbflhfsw);
+            map.put("dbflhfs1", dbflhfs1);
+        }else  if (xljzsyModel.equals("静载试验")) {
 
+            //        前对接法兰螺栓拉力校核
+            //        载荷倾覆力矩
+            Double mslfl = 10 * jzwts * lslfl;
+            Double mshlfl = 10 * tshl * lshlfl * 1.4 ;
+            Double mfl1 = 10 * m1 * lfl1;
+            Double mfl2 = 10 * m2 * lfl2;
+            Double mfl3 = 10 * m3 * lfl3;
+            Double mfl4 = 10 * m4dbfl * lfl4;
+            Double mfl5 = 10 * m5dbfl * lfl5;
+            Double mfl6 = 10 * m6 * lfl6;
+            map.put("mslfl", mslfl);
+            map.put("mshlfl", mshlfl);
+            map.put("mfl1", mfl1);
+            map.put("mfl2", mfl2);
+            map.put("mfl3", mfl3);
+            map.put("mfl4", mfl4);
+            map.put("mfl5", mfl5);
+            map.put("mfl6", mfl6);
+
+            Double mslflw = p * aslcx * lslflm;
+            Double mshlflw = p * ashlcx * lshlflm;
+            Double mflw1 = p * acx1 * lflm1;
+            Double mflw2 = p * acx2 * lflm2;
+            Double mflw3 = p * acx3 * lflm3;
+            Double mflw4 = p * acx4dbfl * lflm4;
+            Double mflw5 = p * acx5dbfl * lflm5;
+            Double mflw6 = p * acx6 * lflm6;
+            map.put("mslflw", mslflw);
+            map.put("mshlflw", mshlflw);
+            map.put("mflw1", mflw1);
+            map.put("mflw2", mflw2);
+            map.put("mflw3", mflw3);
+            map.put("mflw4", mflw4);
+            map.put("mflw5", mflw5);
+            map.put("mflw6", mflw6);
+
+            Double mflq = mslfl + mshlfl + mfl1 + mfl2 + mfl3 + mfl4 + mfl5 + mfl6;
+            Double mflw = mslflw + mshlflw + mflw1 + mflw2 + mflw3 + mflw4 + mflw5 + mflw6;
+            Double flslh = mflq * dbfllsrh1 / (dbfllsnh1 * dbfllsrh1 * dbfllsrh1 + dbfllsnh2 * dbfllsrh2 * dbfllsrh2 + dbfllsnh3 * dbfllsrh3 * dbfllsrh3 + dbfllsnh4 * dbfllsrh4 * dbfllsrh4 + dbfllsnh5 * dbfllsrh5 * dbfllsrh5 + dbfllsnh6 * dbfllsrh6 * dbfllsrh6 + dbfllsnh7 * dbfllsrh7 * dbfllsrh7 + dbfllsnh8 * dbfllsrh8 * dbfllsrh8 + dbfllsnh9 * dbfllsrh9 * dbfllsrh9 + dbfllsnh10 * dbfllsrh10 * dbfllsrh10 + dbfllsnh11 * dbfllsrh11 * dbfllsrh11 + dbfllsnh12 * dbfllsrh12 * dbfllsrh12);
+            Double flsll = mflw * dbfllsrl1 / (dbfllsnl1 * dbfllsrl1 * dbfllsrl1 + dbfllsnl2 * dbfllsrl2 * dbfllsrl2 + dbfllsnl3 * dbfllsrl3 * dbfllsrl3 + dbfllsnl4 * dbfllsrl4 * dbfllsrl4 + dbfllsnl5 * dbfllsrl5 * dbfllsrl5 + dbfllsnl6 * dbfllsrl6 * dbfllsrl6 + dbfllsnl7 * dbfllsrl7 * dbfllsrl7 + dbfllsnl8 * dbfllsrl8 * dbfllsrl8 + dbfllsnl9 * dbfllsrl9 * dbfllsrl9);
+            Double flsl = flslh + flsll;
+            map.put("mflq", mflq);
+            map.put("mflw", mflw);
+            map.put("flslh", flslh);
+            map.put("flsll", flsll);
+            map.put("flsl", flsl);
+//        map.put("btxs", btxs);
+//        map.put("nt", nt);
+//        map.put("flslk", flslk);
+//        map.put("ntk", ntk);
+
+            //        前对接法兰螺栓预紧力校核
+            //        风载荷
+            Double fslfl = p * aslcx;
+            Double fshlfl = p * ashlcx;
+            Double ffl1 = p * acx1;
+            Double ffl2 = p * acx2;
+            Double ffl3 = p * acx3;
+            Double ffl4 = p * acx4dbfl;
+            Double ffl5 = p * acx5dbfl;
+            Double ffl6 = p * acx6;
+            map.put("fslfl", fslfl);
+            map.put("fshlfl", fshlfl);
+            map.put("ffl1", ffl1);
+            map.put("ffl2", ffl2);
+            map.put("ffl3", ffl3);
+            map.put("ffl4", ffl4);
+            map.put("ffl5", ffl5);
+            map.put("ffl6", ffl6);
+
+            Double fflw = fslfl + fshlfl + ffl1 + ffl2 + ffl3 + ffl4 + ffl5 + ffl6;
+            Double flsyj = Math.sqrt(100 * jzmflz * jzmflz + fflw * fflw) / 0.1 / dbfllsn;
+            Double flss = dbflnlsyjlxs * Math.max(flsl, flsyj);
+            Double flssk = flss / 1000;
+            map.put("fflw", fflw);
+            map.put("flsyj", flsyj);
+            map.put("flss", flss);
+            map.put("flssk", flssk);
+
+
+            //螺栓拧紧力矩计算
+            Double tlss = 0.22 * flss * dbfllsgcd / 1000;
+            map.put("tlss", tlss);
+
+            //法兰焊缝计算
+            Double dbflhfsq = 1000 * mflq / dbflhfwx2;
+            Double dbflhfsw = 1000 * mflw / dbflhfwy2;
+            Double dbflhfs1 = dbflhfsq + dbflhfsw;
+            map.put("dbflhfsq", dbflhfsq);
+            map.put("dbflhfsw", dbflhfsw);
+            map.put("dbflhfs1", dbflhfs1);
+        }
         return map;
     }
 
