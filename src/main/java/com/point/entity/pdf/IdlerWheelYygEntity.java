@@ -83,6 +83,8 @@ public class IdlerWheelYygEntity {
     private String grutstx;
 
     private Double jzwts;
+    private Double jzwtsdsp;
+
     private Double jzmwlz;
     private Double jzmwlzi;
 
@@ -279,6 +281,8 @@ public class IdlerWheelYygEntity {
         map.put("grutstx", CommonFunc.convertDoubleToString(grutstx));
 
         map.put("jzwts", CommonFunc.convertDoubleToString(jzwts));
+        map.put("jzwtsdsp", CommonFunc.convertDoubleToString(jzwtsdsp));
+
         map.put("jzmwlz", CommonFunc.convertDoubleToString(jzmwlz));
         map.put("jzmwlzi", CommonFunc.convertDoubleToString(jzmwlzi));
 
@@ -475,8 +479,8 @@ public class IdlerWheelYygEntity {
             map.put("ngl1", ngl1);
 
 //        工况2
-            Double mslzi = tsl * lslhzi * 10;
-            Double mshlzi = tshl * lshlhzi * 10;
+            Double mslzi = tsldsp * lslhzi * 10;
+            Double mshlzi = tshldsp * lshlhzi * 10;
             Double mz1i = m1 * lhz1i * 10;
             Double mz2i = m2 * lhz2i * 10;
             Double mz3i = m3 * lhz3i * 10;
@@ -718,8 +722,8 @@ public class IdlerWheelYygEntity {
             map.put("ngl1", ngl1);
 
 //        工况2
-            Double mslzi = jzwts * lslhzi * 10;
-            Double mshlzi = tshl * lshlhzi * 10 * 1.4 ;
+            Double mslzi = jzwtsdsp * lslhzi * 10;
+            Double mshlzi = tshldsp * lshlhzi * 10 * 1.4 ;
             Double mz1i = m1 * lhz1i * 10;
             Double mz2i = m2 * lhz2i * 10;
             Double mz3i = m3 * lhz3i * 10;

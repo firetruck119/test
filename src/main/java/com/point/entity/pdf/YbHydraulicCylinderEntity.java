@@ -54,6 +54,7 @@ public class YbHydraulicCylinderEntity {
     private Double yblltlf;
 
     private Double jzwts;
+    private Double jzwtsp;
 
     private Double swp;
     private Double r1;
@@ -142,6 +143,7 @@ public class YbHydraulicCylinderEntity {
         map.put("yblltlf", CommonFunc.convertDoubleToString(yblltlf));
 
         map.put("jzwts", CommonFunc.convertDoubleToString(jzwts));
+        map.put("jzwtsp", CommonFunc.convertDoubleToString(jzwtsp));
 
         map.put("swp", CommonFunc.convertDoubleToString(swp));
         map.put("r1", CommonFunc.convertDoubleToString(r1));
@@ -301,7 +303,7 @@ public class YbHydraulicCylinderEntity {
             map.put("fknk", fknk);
             map.put("f1nk", f1nk);
 
-            Double mslzf = 10 * jzwts * lsljzf;
+            Double mslzf = 10 * jzwtsp * lsljzf;
             Double mshlzf = 10 * tshlp * lshljzf * 1.4 ;
             Double mzf1 = 10 * m1 * ljzf1;
             Double mzf2 = 10 * m2 * ljzf2;

@@ -737,6 +737,8 @@
                                 <input type="text" name="m5ybp" />
                                 <input type="text" name="yblltlk" />
                                 <input type="text" name="yblltlfk" />
+
+                                <input type="text" name="jzwtsp" />
                             </div>
 
                             <input type="hidden" name="pdfType"/>
@@ -1000,6 +1002,13 @@
         jzwts:function (){
             return swp + mffbb + 2 * ( 1.25 * r1 + mwr ) ;
         },
+        jzwtsp:function(){
+            if( ybfztModel =='是')
+                return jzwts ;
+            else if ( ybfztModel =='否')
+                return jzwts - 2 * mwr ;
+        },
+
         hwll:function(){
             if( gruModel =='无')
             return 0 ;

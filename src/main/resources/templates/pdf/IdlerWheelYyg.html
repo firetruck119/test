@@ -985,6 +985,12 @@
                                         <td>m</td>
                                     </tr>
                                     <tr>
+                                        <td><b>静载试验总悬挂载荷</b></td>
+                                        <td><p><i>W'<sub>tsl</sub></i></p></td>
+                                        <td><input type="text" name="jzwtsdsp"/></td>
+                                        <td>kg</td>
+                                    </tr>
+                                    <tr>
                                         <td><b>物料起升机构总悬挂载荷</b></td>
                                         <td><p><i>T'<sub>shl</sub></i></p></td>
                                         <td><input type="text" name="tshldsp"/></td>
@@ -1689,6 +1695,10 @@
         tsldsp:function(){
             return tsl - mwr ;
         },
+        jzwtsdsp:function(){
+            return jzwts - 2 * mwr ;
+        },
+
         tshldsp:function(){
             return 0 ;
         },
@@ -1702,7 +1712,7 @@
             return tsldsp + tshldsp + m1 + m2 + m3 + m4 + m5dsp + m6 + m7 + m10 + m11 + m12n ;
         },
         jzmwlzi:function(){
-            return jzwts + 1.4 * tshldsp + m1 + m2 + m3 + m4 + m5dsp + m6 + m7 + m10 + m11 + m12n ;
+            return jzwtsdsp + 1.4 * tshldsp + m1 + m2 + m3 + m4 + m5dsp + m6 + m7 + m10 + m11 + m12n ;
         },
 
         lslhz:function(){
