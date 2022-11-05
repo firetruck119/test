@@ -762,7 +762,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>钢材(Q345B)单价提示(2022/8/5)</b></td>
+                                        <td colspan="3"><b>钢材(Q345B)单价提示(2022/11/3)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>钢板(元/吨)</b></td>
@@ -770,8 +770,8 @@
                                         <td style="width:33%"><b>八边管/四边管(元/吨)</b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>5300</b></td>
-                                        <td style="width:33%"><b>6200</b></td>
+                                        <td style="width:34%"><b>4800</b></td>
+                                        <td style="width:33%"><b>5800</b></td>
                                         <td style="width:33%"><b>6700</b></td>
                                     </tr>
                                     <tr>
@@ -783,7 +783,7 @@
                                         <td style="width:33%"><b></b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>5100</b></td>
+                                        <td style="width:34%"><b>4500</b></td>
                                         <td style="width:33%"><b>6000</b></td>
                                         <td style="width:33%"><b></b></td>
                                     </tr>
@@ -1753,7 +1753,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>轨道材料单价提示(2022/8/5)</b></td>
+                                        <td colspan="3"><b>轨道材料单价提示(2022/11/3)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>常规I/H-Q235B(元/吨)</b></td>
@@ -1761,8 +1761,8 @@
                                         <td style="width:33%"><b>拼焊-Q355B(元/吨)</b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>5300</b></td>
-                                        <td style="width:33%"><b>5800</b></td>
+                                        <td style="width:34%"><b>5000</b></td>
+                                        <td style="width:33%"><b>5300</b></td>
                                         <td style="width:33%"><b>9300</b></td>
                                     </tr>
                                 </table>
@@ -2141,18 +2141,18 @@
                                         <td>10</td>
                                         <td>包装成本小计</td>
                                         <td id="cbbzcbzj"></td>
-                                        <td colspan="3"><b>钢材(Q345B)单价(2022/8/5)</b></td>
+                                        <td colspan="3"><b>钢材(Q345B)单价(2022/11/3)</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="2">擦窗机材料成本总计</td>
                                         <td id="cbbmuclzj"></td>
                                         <td colspan="2">钢板(元/吨)</td>
-                                        <td>5300</td>
+                                        <td>4800</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3">擦窗机材料成本占报价比例(%)</td>
                                         <td colspan="2">方管/矩形管(元/吨)</td>
-                                        <td>6200</td>
+                                        <td>5800</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3" id="cbclzbl"></td>
@@ -2279,11 +2279,11 @@
         },
         "布鲁格Φ7":{
             cbdcgssmc:'布鲁格7mm钢丝绳',
-            cbdcgssdj:50,
+            cbdcgssdj:60,
         },
         "布鲁格Φ8":{
             cbdcgssmc:'布鲁格8mm钢丝绳',
-            cbdcgssdj:50,
+            cbdcgssdj:60,
         },
         "其它":{
             cbdcgssmc:" ",
@@ -3074,11 +3074,11 @@
     djxhModelList={
         "管材式":{
             djlx:"管材式",
-            cbdjdj:6200,
+            cbdjdj:5800,
         },
         "板拼式":{
             djlx:"板拼式",
-            cbdjdj:5300,
+            cbdjdj:4800,
         },
     };
     //大臂类型
@@ -3173,10 +3173,10 @@
             cbpzkdj:316,
             cbpzklyl:0.95,
             cbpzfgzl:' ',
-            cbpzfgdj:5300,
+            cbpzfgdj:4800,
             cbpzfglyl:1,
             cbpzktzl:' ',
-            cbpzktdj:5100,
+            cbpzktdj:4500,
         },
         "钢板配重块":{
             cbpzkmc:'钢板',
@@ -3843,7 +3843,7 @@
         "其它":{
             cbmbxh:" ",
             cbmbmzl:' ',
-            cbmbdj:5300,
+            cbmbdj:4800,
             cbmbdjdw:'元/吨',
             cbmblyl:0.85,
         },
@@ -4404,9 +4404,9 @@
         // },
         cbdbdj: function () {
             if ( dbxhModel == "单臂横截面" ) {
-                return 6200 ;
+                return 5800 ;
             } else if ( dbxhModel == "单臂变截面" ) {
-                return 5300 ;
+                return 4800 ;
             } else if ( dbxhModel == "1+1伸缩臂" || dbxhModel == "2+1伸缩臂" || dbxhModel == "3+1伸缩臂" || dbxhModel == "4+1伸缩臂" ) {
                 if ( ssbdbgzxhModel == "四边管式吊臂" ) {
                     return 6700 ;
@@ -4449,7 +4449,7 @@
                 return 0.85 ;
         },
         cbpzxtdj: function () {
-            return 5100 ;
+            return 4500 ;
         },
         cbpzxtlyl: function () {
             if ( cbpzxtzl == 0 )
@@ -4466,9 +4466,9 @@
     cblzdj: function () {
         if ( lzxhModel == "固定立柱" ) {
             if ( lzclxhModel == "管材式" ) {
-                return 6200 ;
+                return 5800 ;
             } else if ( lzclxhModel == "板拼式" ) {
-                return 5300 ;
+                return 4800 ;
             } else if ( lzclxhModel == "四边管式" ) {
                 return 6700 ;
             }
@@ -4476,7 +4476,7 @@
             if ( lzclxhModel == "管材式" ) {
                 return ' ' ;
             } else if ( lzclxhModel == "板拼式" ) {
-                return 5300 ;
+                return 4800 ;
             } else if ( lzclxhModel == "四边管式" ) {
                 return 6700 ;
             }
@@ -4484,7 +4484,7 @@
             if ( lzclxhModel == "管材式" ) {
                 return ' ' ;
             } else if ( lzclxhModel == "板拼式" ) {
-                return 5300 ;
+                return 4800 ;
             } else if ( lzclxhModel == "四边管式" ) {
                 return 6700 ;
             }
@@ -6833,9 +6833,9 @@
             } else{
                 if ( gdModel == "I20b-31" || gdModel == "I22b-36.5" || gdModel == "I25b-42" || gdModel == "I28b-47.8" || gdModel == "I32b-57.7" || gdModel == "H150*150-31.1" || gdModel == "H175*175-40.4" || gdModel == "H200*200-49.9" || gdModel == "H200*204-56.2" || gdModel == "H250*250-71.8" || gdModel == "H250*255-81.6" || gdModel == "H300*300-93" || gdModel == "H300*305-105" || gdModel == "H200*200T-71" || gdModel == "H250*250T-99" ) {
                     if ( gdczModel == "Q235B" ) {
-                        return 5300 ;
+                        return 5000 ;
                     }else if ( gdczModel == "Q355B" ) {
-                        return 5800 ;
+                        return 5300 ;
                     }
                 }else if ( gdModel == "PH216*200-84.7" || gdModel == "PH266*250-128.1" || gdModel == "PH200*200-90.7" || gdModel == "PH220*170-82.6" || gdModel == "PH250*200-117.4" || gdModel == "PH250*250-104.2" || gdModel == "PH250*250-113.3" || gdModel == "PH250*250-138.8" || gdModel == "PH300*250-146.6" || gdModel == "PH300*300-168.1" ) {
                     return 9300 ;
@@ -6867,7 +6867,7 @@
                 return cbgdsl ;
         },
         cbgdjxdj: function () {
-            return 1450 ;
+            return 1550 ;
         },
         cbmbxh: function () {
             return mbModelList[ mbModel ]['cbmbxh'];
