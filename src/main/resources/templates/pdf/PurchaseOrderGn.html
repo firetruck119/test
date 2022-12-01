@@ -393,6 +393,9 @@
                                                 <option value="6模数2.78伸缩机构(SSJG6(2.78))">6模数2.78伸缩机构(SSJG6(2.78))</option>
                                                 <option value="6模数1.7伸缩机构(SSJG6(1.7))">6模数1.7伸缩机构(SSJG6(1.7))</option>
                                                 <option value="8模数1.7伸缩机构(SSJG8(1.7))">8模数1.7伸缩机构(SSJG8(1.7))</option>
+                                                <option value="四边管6模伸缩机构(SSJG6(1.7-4).0)">四边管6模伸缩机构(SSJG6(1.7-4).0)</option>
+                                                <option value="四边管8模伸缩机构(SSJG8(1.7-4).0)">四边管8模伸缩机构(SSJG8(1.7-4).0)</option>
+                                                <option value="四边管8模伸缩机构(SSJG.0)">四边管8模伸缩机构(SSJG.0)</option>
                                                 <option value="液压">液压</option>
                                                 <option value="无">无</option>
                                             </select>
@@ -2823,6 +2826,30 @@
             cgssjgdjsl:' ',
             // cgssjgdjbz:'快制动',
         },
+        "四边管6模伸缩机构(SSJG6(1.7-4).0)":{
+            cgssjgmc:'SSJG6(1.7-4)',
+            cgssjgdjfl:'/',
+            cgssjgdjdy:'220/380 50',
+            cgssjgdjjydj:'F IP55',
+            cgssjgdjaz:'M5(90/2)',
+            cgssjgdjsl:' ',
+        },
+        "四边管8模伸缩机构(SSJG8(1.7-4).0)":{
+            cgssjgmc:'SSJG8(1.7-4)',
+            cgssjgdjfl:'/',
+            cgssjgdjdy:'220/380 50',
+            cgssjgdjjydj:'F IP55',
+            cgssjgdjaz:'M5(90/2)',
+            cgssjgdjsl:' ',
+        },
+        "四边管8模伸缩机构(SSJG.0)":{
+            cgssjgmc:'SSJG.0',
+            cgssjgdjfl:'/',
+            cgssjgdjdy:'220/380 50',
+            cgssjgdjjydj:'F IP55',
+            cgssjgdjaz:'M5(90/2)',
+            cgssjgdjsl:' ',
+        },
         "液压":{
             cgssjgmc:'无',
             // cgssjgdjxh:'/',
@@ -4260,7 +4287,7 @@
                 $('[name=cgssyylxModel]').prop('disabled', false)
                 data.datalist['cgssyylxModel'].color = 'white';
                 return ' ';
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 $('[name=cgssyylxModel]').prop('disabled', true);
                 data.datalist['cgssyylxModel'].color = 'rgb(227, 227, 227)';
                 return cgssyylxModel;
@@ -4277,7 +4304,7 @@
                     data.datalist['cgssyyxhModel'].color = 'rgb(227, 227, 227)';
                     return cgssyyxhModel;
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 $('[name=cgssyyxhModel]').prop('disabled', true);
                 data.datalist['cgssyyxhModel'].color = 'rgb(227, 227, 227)';
                 return cgssyyxhModel;
@@ -5810,10 +5837,29 @@
                 } else if ( cgssjgdjppModel == "速博雷尔" ) {
                     return 'FA87-270.68-YEJ1.1KW4P-IP-M5' ;
                 }
+            } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return 'FA77DRS80S4/BE1/OS2' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return 'FA77-225.79-YEJ0.75KW4P-IP-M5' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return 'FA87DRS90M4/BE2/OS2' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return 'FA87-270.68-YEJ1.5KW4P-IP-M5' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return 'FA87DRS90M4/BE2/OS2' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return 'FA87-270.68-YEJ1.5KW4P-IP-M5' ;
+                }
             } else if ( ssjgModel == "液压" || ssjgModel == "无" ) {
                 return '/' ;
             }
         },
+
         cgssjgdjfl: function () {
             return ssjgModelList[ ssjgModel ]['cgssjgdjfl'];
         },
@@ -5831,6 +5877,24 @@
                     return '198.3' ;
                 }
             } else if ( ssjgModel == "8模数1.7伸缩机构(SSJG8(1.7))" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '270.68' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '270.68' ;
+                }
+            } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '225.79' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '225.79' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '270.68' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '270.68' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
                 if ( cgssjgdjppModel == "SEW" ){
                     return '270.68' ;
                 } else if ( cgssjgdjppModel == "速博雷尔" ) {
@@ -5859,6 +5923,24 @@
                 } else if ( cgssjgdjppModel == "速博雷尔" ) {
                     return '5.1' ;
                 }
+            } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '6.2' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '6.2' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '5.2' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '5.2' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '5.2' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '5.2' ;
+                }
             } else if ( ssjgModel == "液压" || ssjgModel == "无" ) {
                 return '/' ;
             }
@@ -5882,6 +5964,24 @@
                 } else if ( cgssjgdjppModel == "速博雷尔" ) {
                     return '1.1' ;
                 }
+            } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '0.75' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '0.75' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '1.5' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '1.5' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '1.5' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '1.5' ;
+                }
             } else if ( ssjgModel == "液压" || ssjgModel == "无" ) {
                 return '/' ;
             }
@@ -5904,6 +6004,24 @@
                     return '2.75' ;
                 } else if ( cgssjgdjppModel == "速博雷尔" ) {
                     return '2.75' ;
+                }
+            } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '1.89' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '1.89' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '3.45' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '3.45' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '3.45' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '3.45' ;
                 }
             } else if ( ssjgModel == "液压" || ssjgModel == "无" ) {
                 return '/' ;
@@ -5942,6 +6060,24 @@
                     return '快制动' ;
                 }
             } else if ( ssjgModel == "8模数1.7伸缩机构(SSJG8(1.7))" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '快制动' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '快制动' ;
+                }
+            } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '快制动' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '快制动' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                if ( cgssjgdjppModel == "SEW" ){
+                    return '快制动' ;
+                } else if ( cgssjgdjppModel == "速博雷尔" ) {
+                    return '快制动' ;
+                }
+            } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
                 if ( cgssjgdjppModel == "SEW" ){
                     return '快制动' ;
                 } else if ( cgssjgdjppModel == "速博雷尔" ) {
@@ -6921,7 +7057,7 @@
         cgssyymc: function () {
             if ( ssjgModel == '液压' ) {
                 return cgssyylxModelList[ cgssyylxModel ]['cgssyymc'];
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '无';
             }
         },
@@ -6932,7 +7068,7 @@
                 } else if ( cgssyylxModel == '二节液压缸' ){
                     return ' ';
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
@@ -6943,7 +7079,7 @@
                 } else if ( cgssyylxModel == '二节液压缸' ){
                     return ' ';
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
@@ -6954,21 +7090,21 @@
                 } else if ( cgssyylxModel == '二节液压缸' ){
                     return ' ';
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
         cgssyyxc: function () {
             if ( ssjgModel == '液压' ) {
                     return ' ';
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
         cgssyyazj: function () {
             if ( ssjgModel == '液压' ) {
                 return ' ';
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
@@ -6979,7 +7115,7 @@
                 } else if ( cgssyylxModel == '二节液压缸' ){
                     return '220/380 50';
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
@@ -6990,7 +7126,7 @@
                 } else if ( cgssyylxModel == '二节液压缸' ){
                     return '1';
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
@@ -7001,7 +7137,7 @@
                 } else if ( cgssyylxModel == '二节液压缸' ){
                     return '源爵';
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if (  ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
@@ -7012,7 +7148,7 @@
                 } else if ( cgssyylxModel == '二节液压缸' ){
                     return '图纸另附';
                 }
-            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '无' ) {
+            } else if ( ssjgModel == '6模数2.78伸缩机构(SSJG6(2.78))' || ssjgModel == '6模数1.7伸缩机构(SSJG6(1.7))' || ssjgModel == '8模数1.7伸缩机构(SSJG8(1.7))' || ssjgModel == '四边管6模伸缩机构(SSJG6(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG8(1.7-4).0)' || ssjgModel == '四边管8模伸缩机构(SSJG.0)' || ssjgModel == '无' ) {
                 return '/';
             }
         },
