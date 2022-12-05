@@ -316,6 +316,9 @@
                                                 <option value="6模数2.78伸缩机构(SSJG6(2.78))">6模数2.78伸缩机构(SSJG6(2.78))</option>
                                                 <option value="6模数1.7伸缩机构(SSJG6(1.7))">6模数1.7伸缩机构(SSJG6(1.7))</option>
                                                 <option value="8模数1.7伸缩机构(SSJG8(1.7))">8模数1.7伸缩机构(SSJG8(1.7))</option>
+                                                <option value="四边管6模伸缩机构(SSJG6(1.7-4).0)">四边管6模伸缩机构(SSJG6(1.7-4).0)</option>
+                                                <option value="四边管8模伸缩机构(SSJG8(1.7-4).0)">四边管8模伸缩机构(SSJG8(1.7-4).0)</option>
+                                                <option value="四边管8模伸缩机构(SSJG.0)">四边管8模伸缩机构(SSJG.0)</option>
                                                 <option value="无">无</option>
                                             </select>
                                         </td>
@@ -2463,6 +2466,24 @@
             cbssjgmc:'8模数1.7伸缩机构',
             cbssjgsl:" ",
             cbssjgdj:2529,
+        },
+        "四边管6模伸缩机构(SSJG6(1.7-4).0":{
+            cbssjgt:'SSJG6(1.7-4).0',
+            cbssjgmc:'四边管6模数伸缩机构',
+            cbssjgsl:" ",
+            cbssjgdj:1105,
+        },
+        "四边管8模伸缩机构(SSJG8(1.7-4).0)":{
+            cbssjgt:'SSJG8(1.7-4).0',
+            cbssjgmc:'四边管8模数伸缩机构',
+            cbssjgsl:" ",
+            cbssjgdj:1810,
+        },
+        "四边管8模伸缩机构(SSJG.0)":{
+            cbssjgt:'SSJG.0',
+            cbssjgmc:'四边管8模数大伸缩机构',
+            cbssjgsl:" ",
+            cbssjgdj:3353,
         },
         "无":{
             cbssjgt:'无',
@@ -4661,19 +4682,37 @@
                     if ( cbssjgdjppModel == "SEW" ){
                         return 'FA57DRN80MK4/BE1/OS2' ;
                     } else if ( cbssjgdjppModel == "速博雷尔" ) {
-                        return 'FA57DRS71M4/BE1/OS2' ;
+                        return 'FA57-157.09-YEJ0.55KW4P-IP-M5' ;
                     }
                 } else if ( ssjgModel == "6模数1.7伸缩机构(SSJG6(1.7))" ) {
                     if ( cbssjgdjppModel == "SEW" ){
                         return 'FA77DRS80S4/BE1/OS2' ;
                     } else if ( cbssjgdjppModel == "速博雷尔" ) {
-                        return 'FA77DRS80S4/BE1/OS2' ;
+                        return 'FA77-198.3-YEJ0.75KW4P-IP-M5' ;
                     }
                 } else if ( ssjgModel == "8模数1.7伸缩机构(SSJG8(1.7))" ) {
                     if ( cbssjgdjppModel == "SEW" ){
                         return 'FA87DRS80M4/BE2/OS2' ;
                     } else if ( cbssjgdjppModel == "速博雷尔" ) {
-                        return 'FA87DRS80M4/BE2/OS2' ;
+                        return 'FA87-270.68-YEJ1.1KW4P-IP-M5' ;
+                    }
+                } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                    if ( cbssjgdjppModel == "SEW" ){
+                        return 'FA77DRS80S4/BE1/OS2' ;
+                    } else if ( cbssjgdjppModel == "速博雷尔" ) {
+                        return 'FA77-225.79-YEJ0.75KW4P-IP-M5' ;
+                    }
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                    if ( cbssjgdjppModel == "SEW" ){
+                        return 'FA87DRS90M4/BE2/OS2' ;
+                    } else if ( cbssjgdjppModel == "速博雷尔" ) {
+                        return 'FA87-270.68-YEJ1.5KW4P-IP-M5' ;
+                    }
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                    if ( cbssjgdjppModel == "SEW" ){
+                        return 'FA87DRS90M4/BE2/OS2' ;
+                    } else if ( cbssjgdjppModel == "速博雷尔" ) {
+                        return 'FA87-270.68-YEJ1.5KW4P-IP-M5' ;
                     }
                 } else if ( ssjgModel == "无" ) {
                     return '无' ;
@@ -4685,6 +4724,12 @@
                     return 'FA77DRS80S4/BE1/OS2' ;
                 } else if ( ssjgModel == "8模数1.7伸缩机构(SSJG8(1.7))" ) {
                     return 'FA87DRS80M4/BE2/OS2' ;
+                } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                    return 'FA77DRS80S4/BE1/OS2' ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                    return 'FA87DRS90M4/BE2/OS2' ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                    return 'FA87DRS90M4/BE2/OS2' ;
                 } else if ( ssjgModel == "无" ) {
                     return '无' ;
                 }
@@ -4695,6 +4740,12 @@
                     return 'FA77DRN80M4/BE1/OS2' ;
                 } else if ( ssjgModel == "8模数1.7伸缩机构(SSJG8(1.7))" ) {
                     return 'FA87DRN90S4/BE2/OS2' ;
+                } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                    return 'FA77DRN80M4/BE1/OS2' ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                    return 'FA87DRN90L4/BE2/OS2' ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                    return 'FA87DRN90L4/BE2/OS2' ;
                 } else if ( ssjgModel == "无" ) {
                     return '无' ;
                 }
@@ -4723,6 +4774,24 @@
                     } else if ( cbssjgdjppModel == "速博雷尔" ) {
                         return 6318 ;
                     }
+                } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                    if ( cbssjgdjppModel == "SEW" ){
+                        return 7010 ;
+                    } else if ( cbssjgdjppModel == "速博雷尔" ) {
+                        return 4357 ;
+                    }
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                    if ( cbssjgdjppModel == "SEW" ){
+                        return  ' ' ;
+                    } else if ( cbssjgdjppModel == "速博雷尔" ) {
+                        return ' ' ;
+                    }
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                    if ( cbssjgdjppModel == "SEW" ){
+                        return ' ' ;
+                    } else if ( cbssjgdjppModel == "速博雷尔" ) {
+                        return ' ' ;
+                    }
                 } else if ( ssjgModel == "无" ) {
                     return 0 ;
                 }
@@ -4733,6 +4802,12 @@
                     return 7010 ;
                 } else if ( ssjgModel == "8模数1.7伸缩机构(SSJG8(1.7))" ) {
                     return 9780 ;
+                } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                    return 7010 ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                    return ' ' ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                    return ' ' ;
                 } else if ( ssjgModel == "无" ) {
                     return 0 ;
                 }
@@ -4743,6 +4818,12 @@
                     return 7690 ;
                 } else if ( ssjgModel == "8模数1.7伸缩机构(SSJG8(1.7))" ) {
                     return 10680 ;
+                } else if ( ssjgModel == "四边管6模伸缩机构(SSJG6(1.7-4).0)" ) {
+                    return 7690 ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG8(1.7-4).0)" ) {
+                    return ' ' ;
+                } else if ( ssjgModel == "四边管8模伸缩机构(SSJG.0)" ) {
+                    return ' ' ;
                 } else if ( ssjgModel == "无" ) {
                     return 0 ;
                 }
@@ -4903,7 +4984,7 @@
                 if ( qsjgModel == "105起升机构" || qsjgModel == "145起升机构" ){
                     return ' ' ;
                 } else if ( qsjgModel == "175起升机构" ){
-                    return 'DGV 50 DD B3-40-3-40 ZBA 100 AL4 B050 HBL-N' ;
+                    return 'DGV 50 DD B3-40-3-40 ZBA 90 B4 B020 HBL-N' ;
                 } else if ( qsjgModel == "275起升机构" ){
                     return 'DGV 50 DD B3-40-3-40 ZBA 100 AL4 B050 HBL-N' ;
                 } else if ( qsjgModel == "185起升机构" || qsjgModel == "285起升机构" || qsjgModel == "385起升机构" ){

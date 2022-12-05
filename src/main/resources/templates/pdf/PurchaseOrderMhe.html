@@ -4203,7 +4203,13 @@
             return qsjgModelList[ qsjgModel ]['cgqsjgmc'];
         },
         cgqsjgdjxh: function () {
-            if ( qsjgModel == '175起升机构' || qsjgModel == '275起升机构' ) {
+            if ( qsjgModel == '175起升机构' ) {
+                if ( cgdqpl == '50' ){
+                    return 'DGV 50 DD B3-40-3-40 ZBA 90 B4 B020 HBL-N' ;
+                } else if ( cgdqpl == '60' ) {
+                    return 'DGV 50 DD B3-40-3-50.8 ZBA 90 B4 B020 HBL-N' ;
+                }
+            } else if ( qsjgModel == '275起升机构' ) {
                 if ( cgdqpl == '50' ){
                     return 'DGV 50 DD B3-40-3-40 ZBA 100 AL4 B050 HBL-N' ;
                 } else if ( cgdqpl == '60' ) {
@@ -4229,7 +4235,13 @@
             return qsjgModelList[ qsjgModel ]['cgqsjgdjsd'];
         },
         cgqsjgdjgl: function () {
-            if ( qsjgModel == '175起升机构' || qsjgModel == '275起升机构' ) {
+            if ( qsjgModel == '175起升机构' ) {
+                if ( cgdqpl == '50' ){
+                    return '1.5' ;
+                } else if ( cgdqpl == '60' ) {
+                    return '1.8' ;
+                }
+            } else if ( qsjgModel == '275起升机构' ) {
                 if ( cgdqpl == '50' ){
                     return '2.2' ;
                 } else if ( cgdqpl == '60' ) {
