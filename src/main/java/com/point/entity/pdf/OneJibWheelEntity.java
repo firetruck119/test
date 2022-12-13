@@ -132,7 +132,11 @@ public class OneJibWheelEntity {
     private String ssyygModel;
     private String ssyygezModel;
 
-    private String xmfaxzModel;
+    private String xmfaxzModel;//项目方案选择
+
+    //四边管部分
+    private String sbgdbjbglModel;
+    private String sbgdb1bshglModel;
 
     public Map<String, String> takeMapForPDF(String type) {
         Map map = new HashMap();
@@ -251,81 +255,160 @@ public class OneJibWheelEntity {
 
     public Map<String, Double> takeDoubleMapForPdf(String type) {
         Map<String, Double> map = new HashMap();
+        if (db1Model.equals("1+1伸缩臂（3x5）") || db1Model.equals("1+1伸缩臂（3x6.5）") ) {
+            //第一段搭接处滚轮
+            Double msll= fslf * lslp ;
+            Double mshll= fshlf * lshlp ;
+            Double ml1= ff1 * lp1 ;
+            Double ml2= ff2 * lp2 ;
+            Double ml3= ff3 * lp3 ;
+            Double ml6= ff6gl * lp6gl ;
+            map.put("msll", msll);
+            map.put("mshll", mshll);
+            map.put("ml1", ml1);
+            map.put("ml2", ml2);
+            map.put("ml3", ml3);
+            map.put("ml6", ml6);
+
+            Double ml = msll + mshll + ml1 + ml2 + ml3 + ml6 ;
+            Double ngl2 = ml / dbdjl1 / 1000 ;
+            Double ngl1 = flz / 1000 + ngl2 ;
+            Double ngl21 = ngl2 * Math.cos( Math.PI / 4 ) ;
+            Double ngl11 = ngl1 * Math.cos( Math.PI / 4 ) ;
+            Double glbz1 = ngl11 / dbjbxglfk ;
+            Double glbz2 = ngl21 / db1bshdlfk ;
+            map.put("ml", ml);
+            map.put("ngl2", ngl2);
+            map.put("ngl1", ngl1);
+            map.put("ngl21", ngl21);
+            map.put("ngl11", ngl11);
+            map.put("glbz1", glbz1);
+            map.put("glbz2", glbz2);
+
+            Double shz1 = sqrt( 0.35 * 210000 * 1000 * ngl11 / dbjbxgld / dbjbxglb / dbjbxgln ) ;
+            Double shz2 = sqrt( 0.35 * 210000 * 1000 * ngl21 / db1bshdld / db1bshdlb / db1bshdln ) ;
+            Double glbz3 = shz1 / dbgcshzr ;
+            Double glbz4 = shz2 / dbgcshzr ;
+            map.put("shz1", shz1);
+            map.put("shz2", shz2);
+            map.put("glbz3", glbz3);
+            map.put("glbz4", glbz4);
+
+            //        齿轮齿条式伸缩机构机构推力
+            if (ssjgxsModel.equals("齿轮齿条式伸缩机构")) {
+                Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+                Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
+                Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
+                Double tn = nssjg * fssjgk;
+                Double glbz5 = tjs / tn;
+                map.put("f1", f1);
+                map.put("f2", f2);
+                map.put("tjs", tjs);
+                map.put("tn", tn);
+                map.put("glbz5", glbz5);
+            }
+
+            //        液压式伸缩机构机构推力
+            if (ssjgxsModel.equals("液压式伸缩机构")) {
+                Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+                Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
+                Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
+                Double tyys = ssns * tjs / ssnsl;
+                Double yyssbz1 = tyys / sslltlk;
+                map.put("f1", f1);
+                map.put("f2", f2);
+                map.put("tjs", tjs);
+                map.put("tyys", tyys);
+                map.put("yyssbz1", yyssbz1);
+
+                //        液压式伸缩机构机构稳定性
+                Double fk = 3.14 * 3.14 * 180000 * ssi / ssk / ssk / sslb / sslb;
+                Double fknk = fk / ssnk / 1000;
+                Double tjsyy = tjs;
+                Double yyssbz2 = tjs / fknk;
+                map.put("fk", fk);
+                map.put("fknk", fknk);
+                map.put("tjsyy", tjsyy);
+                map.put("yyssbz2", yyssbz2);
+            }
+        } else if (db1Model.equals("1+1四边管伸缩臂")){
 //第一段搭接处滚轮
-        Double msll= fslf * lslp ;
-        Double mshll= fshlf * lshlp ;
-        Double ml1= ff1 * lp1 ;
-        Double ml2= ff2 * lp2 ;
-        Double ml3= ff3 * lp3 ;
-        Double ml6= ff6gl * lp6gl ;
-        map.put("msll", msll);
-        map.put("mshll", mshll);
-        map.put("ml1", ml1);
-        map.put("ml2", ml2);
-        map.put("ml3", ml3);
-        map.put("ml6", ml6);
+            Double msll= fslf * lslp ;
+            Double mshll= fshlf * lshlp ;
+            Double ml1= ff1 * lp1 ;
+            Double ml2= ff2 * lp2 ;
+            Double ml3= ff3 * lp3 ;
+            Double ml6= ff6gl * lp6gl ;
+            map.put("msll", msll);
+            map.put("mshll", mshll);
+            map.put("ml1", ml1);
+            map.put("ml2", ml2);
+            map.put("ml3", ml3);
+            map.put("ml6", ml6);
 
-        Double ml = msll + mshll + ml1 + ml2 + ml3 + ml6 ;
-        Double ngl2 = ml / dbdjl1 / 1000 ;
-        Double ngl1 = flz / 1000 + ngl2 ;
-        Double ngl21 = ngl2 * Math.cos( Math.PI / 4 ) ;
-        Double ngl11 = ngl1 * Math.cos( Math.PI / 4 ) ;
-        Double glbz1 = ngl11 / dbjbxglfk ;
-        Double glbz2 = ngl21 / db1bshdlfk ;
-        map.put("ml", ml);
-        map.put("ngl2", ngl2);
-        map.put("ngl1", ngl1);
-        map.put("ngl21", ngl21);
-        map.put("ngl11", ngl11);
-        map.put("glbz1", glbz1);
-        map.put("glbz2", glbz2);
+            Double ml = msll + mshll + ml1 + ml2 + ml3 + ml6 ;
+            Double ngl2 = ml / dbdjl1 / 1000 ;
+            Double ngl1 = flz / 1000 + ngl2 ;
+            Double ngl21 = ngl2 / 2 ;
+            Double ngl11 = ngl1 / 2 ;
+            Double glbz1 = ngl11 / dbjbxglfk ;
+            Double glbz2 = ngl21 / db1bshdlfk ;
+            map.put("ml", ml);
+            map.put("ngl2", ngl2);
+            map.put("ngl1", ngl1);
+            map.put("ngl21", ngl21);
+            map.put("ngl11", ngl11);
+            map.put("glbz1", glbz1);
+            map.put("glbz2", glbz2);
 
-        Double shz1 = sqrt( 0.35 * 210000 * 1000 * ngl11 / dbjbxgld / dbjbxglb / dbjbxgln ) ;
-        Double shz2 = sqrt( 0.35 * 210000 * 1000 * ngl21 / db1bshdld / db1bshdlb / db1bshdln ) ;
-        Double glbz3 = shz1 / dbgcshzr ;
-        Double glbz4 = shz2 / dbgcshzr ;
-        map.put("shz1", shz1);
-        map.put("shz2", shz2);
-        map.put("glbz3", glbz3);
-        map.put("glbz4", glbz4);
+            Double shz1 = sqrt( 0.35 * 210000 * 1000 * ngl11 / dbjbxgld / dbjbxglb / dbjbxgln ) ;
+            Double shz2 = sqrt( 0.35 * 210000 * 1000 * ngl21 / db1bshdld / db1bshdlb / db1bshdln ) ;
+            Double glbz3 = shz1 / dbgcshzr ;
+            Double glbz4 = shz2 / dbgcshzr ;
+            map.put("shz1", shz1);
+            map.put("shz2", shz2);
+            map.put("glbz3", glbz3);
+            map.put("glbz4", glbz4);
 
-        //        齿轮齿条式伸缩机构机构推力
-        if (ssjgxsModel.equals("齿轮齿条式伸缩机构")) {
-            Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
-            Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
-            Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
-            Double tn = nssjg * fssjgk;
-            Double glbz5 = tjs / tn;
-            map.put("f1", f1);
-            map.put("f2", f2);
-            map.put("tjs", tjs);
-            map.put("tn", tn);
-            map.put("glbz5", glbz5);
+            //        齿轮齿条式伸缩机构机构推力
+            if (ssjgxsModel.equals("齿轮齿条式伸缩机构")) {
+                Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+                Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
+                Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
+                Double tn = nssjg * fssjgk;
+                Double glbz5 = tjs / tn;
+                map.put("f1", f1);
+                map.put("f2", f2);
+                map.put("tjs", tjs);
+                map.put("tn", tn);
+                map.put("glbz5", glbz5);
+            }
+
+            //        液压式伸缩机构机构推力
+            if (ssjgxsModel.equals("液压式伸缩机构")) {
+                Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
+                Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
+                Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
+                Double tyys = ssns * tjs / ssnsl;
+                Double yyssbz1 = tyys / sslltlk;
+                map.put("f1", f1);
+                map.put("f2", f2);
+                map.put("tjs", tjs);
+                map.put("tyys", tyys);
+                map.put("yyssbz1", yyssbz1);
+
+                //        液压式伸缩机构机构稳定性
+                Double fk = 3.14 * 3.14 * 180000 * ssi / ssk / ssk / sslb / sslb;
+                Double fknk = fk / ssnk / 1000;
+                Double tjsyy = tjs;
+                Double yyssbz2 = tjs / fknk;
+                map.put("fk", fk);
+                map.put("fknk", fknk);
+                map.put("tjsyy", tjsyy);
+                map.put("yyssbz2", yyssbz2);
+            }
         }
 
-        //        液压式伸缩机构机构推力
-        if (ssjgxsModel.equals("液压式伸缩机构")) {
-            Double f1 = 2 * ngl11 * 0.03 / dbjbxglr;
-            Double f2 = 2 * ngl21 * 0.03 / db1bshdlr;
-            Double tjs = (tsl + tshl + mlz * Math.sin(dbyj / 180 * Math.PI)) / 100 + f1 + f2;
-            Double tyys = ssns * tjs / ssnsl;
-            Double yyssbz1 = tyys / sslltlk;
-            map.put("f1", f1);
-            map.put("f2", f2);
-            map.put("tjs", tjs);
-            map.put("tyys", tyys);
-            map.put("yyssbz1", yyssbz1);
-
-            //        液压式伸缩机构机构稳定性
-            Double fk = 3.14 * 3.14 * 180000 * ssi / ssk / ssk / sslb / sslb;
-            Double fknk = fk / ssnk / 1000;
-            Double tjsyy = tjs;
-            Double yyssbz2 = tjs / fknk;
-            map.put("fk", fk);
-            map.put("fknk", fknk);
-            map.put("tjsyy", tjsyy);
-            map.put("yyssbz2", yyssbz2);
-        }
         return map;
     }
 

@@ -81,15 +81,26 @@ public class ThreeJibWheelController {
         List<byte[]> list = new ArrayList<>();
 
         String name = "";
-        if ( entity.getSsjgxsModel().equals("齿轮齿条式伸缩机构") ) {
-            name = "3+1吊臂滚轮、链条及齿轮齿条式伸缩机构校核计算书";
-        } else if ( entity.getSsjgxsModel().equals("液压式伸缩机构") ) {
-            name = "3+1吊臂滚轮、链条及液压式伸缩机构校核计算书";
+        if ( entity.getDb3Model().equals("3+1伸缩臂（3x5）") || entity.getDb3Model().equals("3+1伸缩臂（3x6.5）") ) {
+            if ( entity.getSsjgxsModel().equals("齿轮齿条式伸缩机构") ) {
+                name = "3+1吊臂滚轮、链条及齿轮齿条式伸缩机构校核计算书";
+            } else if ( entity.getSsjgxsModel().equals("液压式伸缩机构") ) {
+                name = "3+1吊臂滚轮、链条及液压式伸缩机构校核计算书";
+            }
+        } else if ( entity.getDb3Model().equals("3+1四边管伸缩臂") ){
+            if ( entity.getSsjgxsModel().equals("齿轮齿条式伸缩机构") ) {
+                name = "3+1四边管吊臂滚轮、链条及齿轮齿条式伸缩机构校核计算书";
+            } else if ( entity.getSsjgxsModel().equals("液压式伸缩机构") ) {
+                name = "3+1四边管吊臂滚轮、链条及液压式伸缩机构校核计算书";
+            }
         }
+
         list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/" + name));
         if (null != check && check) {
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/3+1吊臂滚轮、链条及齿轮齿条式伸缩机构校核计算书"));
             list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/3+1吊臂滚轮、链条及液压式伸缩机构校核计算书"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/3+1四边管吊臂滚轮、链条及齿轮齿条式伸缩机构校核计算书"));
+            list.add(pdf.fromPDFTempletToPdfWithValue_New(entity.takeMapForPDF(pdfType), imageMap, "new/3+1四边管吊臂滚轮、链条及液压式伸缩机构校核计算书"));
         }
         return tool.getResponseEntity(name, list.get(0));
     }

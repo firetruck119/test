@@ -341,8 +341,9 @@
                                             </select>
                                         </td>
                                     </tr>
+
                                     <tr>
-                                        <td><b>基臂斜滚轮型号选择</b></td>
+                                        <td th:rowspan="2"><b>基臂斜滚轮型号选择</b></td>
                                         <td>
                                             <select name="dbjbxglModel" style="color: black;width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
@@ -354,7 +355,19 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>第一节伸缩臂上后顶轮型号选择</b></td>
+                                        <td>
+                                            <select name="sbgdbjbglModel" style="color: black;width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="GL80">GL80</option>
+                                                <option value="GL95">GL95</option>
+                                                <option value="GL115">GL115</option>
+                                                <option value="GL115(4)">GL115(4)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td th:rowspan="2"><b>第一节伸缩臂上后顶轮型号选择</b></td>
                                         <td>
                                             <select name="db1bshdlModel" style="color: black;width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
@@ -366,7 +379,19 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>第一节伸缩臂斜滚轮型号选择</b></td>
+                                        <td>
+                                            <select name="sbgdb1bshglModel" style="color: black;width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="GL80">GL80</option>
+                                                <option value="GL95">GL95</option>
+                                                <option value="GL115">GL115</option>
+                                                <option value="GL115(4)">GL115(4)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td th:rowspan="2"><b>第一节伸缩臂斜滚轮型号选择</b></td>
                                         <td>
                                             <select name="db1bxglModel" style="color: black;width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
@@ -378,7 +403,19 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>第二节伸缩臂上后顶轮型号选择</b></td>
+                                        <td>
+                                            <select name="sbgdb1bglModel" style="color: black;width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="GL80">GL80</option>
+                                                <option value="GL95">GL95</option>
+                                                <option value="GL115">GL115</option>
+                                                <option value="GL115(4)">GL115(4)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td th:rowspan="2"><b>第二节伸缩臂上后顶轮型号选择</b></td>
                                         <td>
                                             <select name="db2bshdlModel" style="color: black;width:100%;height:40px;text-align-last:center">
                                                 <option value="" style="display: none"></option>
@@ -389,6 +426,18 @@
                                             </select>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <select name="sbgdb2bshglModel" style="color: black;width:100%;height:40px;text-align-last:center">
+                                                <option value="" style="display: none"></option>
+                                                <option value="GL80">GL80</option>
+                                                <option value="GL95">GL95</option>
+                                                <option value="GL115">GL115</option>
+                                                <option value="GL115(4)">GL115(4)</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
                                     <tr>
                                         <td><b>第二节伸缩臂链条选择</b></td>
                                         <td>
@@ -1453,6 +1502,133 @@
             db2bshdlb:70,
         },
     };
+
+    //四边管滚轮
+    //基臂滚轮
+    sbgdbjbglModelList={
+        "GL80":{
+            dbjbxglxh:'GL80',
+            dbjbxglfk:53.4,
+            dbjbxgln:2,
+            dbjbxgld:80,
+            dbjbxglb:50,
+        },
+        "GL95":{
+            dbjbxglxh:'GL95',
+            dbjbxglfk:93.4,
+            dbjbxgln:2,
+            dbjbxgld:95,
+            dbjbxglb:60,
+        },
+        "GL115":{
+            dbjbxglxh:'GL115',
+            dbjbxglfk:146.2,
+            dbjbxgln:2,
+            dbjbxgld:115,
+            dbjbxglb:75,
+        },
+        "GL115(4)":{
+            dbjbxglxh:'GL115(4)',
+            dbjbxglfk:292.4,
+            dbjbxgln:4,
+            dbjbxgld:115,
+            dbjbxglb:75,
+        },
+    };
+    //一臂上后滚轮
+    sbgdb1bshglModelList={
+        "GL80":{
+            db1bshdlxh:'GL80',
+            db1bshdlfk:53.4,
+            db1bshdln:2,
+            db1bshdld:80,
+            db1bshdlb:50,
+        },
+        "GL95":{
+            db1bshdlxh:'GL95',
+            db1bshdlfk:93.4,
+            db1bshdln:2,
+            db1bshdld:95,
+            db1bshdlb:60,
+        },
+        "GL115":{
+            db1bshdlxh:'GL115',
+            db1bshdlfk:146.2,
+            db1bshdln:2,
+            db1bshdld:115,
+            db1bshdlb:75,
+        },
+        "GL115(4)":{
+            db1bshdlxh:'GL115(4)',
+            db1bshdlfk:292.4,
+            db1bshdln:4,
+            db1bshdld:115,
+            db1bshdlb:75,
+        },
+    };
+    //一臂滚轮
+    sbgdb1bglModelList={
+        "GL80":{
+            db1bxglxh:'GL80',
+            db1bxglfk:53.4,
+            db1bxgln:2,
+            db1bxgld:80,
+            db1bxglb:50,
+        },
+        "GL95":{
+            db1bxglxh:'GL95',
+            db1bxglfk:93.4,
+            db1bxgln:2,
+            db1bxgld:95,
+            db1bxglb:60,
+        },
+        "GL115":{
+            db1bxglxh:'GL115',
+            db1bxglfk:146.2,
+            db1bxgln:2,
+            db1bxgld:115,
+            db1bxglb:75,
+        },
+        "GL115(4)":{
+            db1bxglxh:'GL115(4)',
+            db1bxglfk:292.4,
+            db1bxgln:4,
+            db1bxgld:115,
+            db1bxglb:75,
+        },
+    };
+    //二臂上后滚轮
+    sbgdb2bshglModelList={
+        "GL80":{
+            db2bshdlxh:'GL80',
+            db2bshdlfk:53.4,
+            db2bshdln:2,
+            db2bshdld:80,
+            db2bshdlb:50,
+        },
+        "GL95":{
+            db2bshdlxh:'GL95',
+            db2bshdlfk:93.4,
+            db2bshdln:2,
+            db2bshdld:95,
+            db2bshdlb:60,
+        },
+        "GL115":{
+            db2bshdlxh:'GL115',
+            db2bshdlfk:146.2,
+            db2bshdln:2,
+            db2bshdld:115,
+            db2bshdlb:75,
+        },
+        "GL115(4)":{
+            db2bshdlxh:'GL115(4)',
+            db2bshdlfk:292.4,
+            db2bshdln:4,
+            db2bshdld:115,
+            db2bshdlb:75,
+        },
+    };
+
     //二臂链条
     db2bltModelList={
         "LH1246":{
@@ -1472,6 +1648,7 @@
             tlt1:453.7,
         },
     };
+
     ssjgxsModelList= {
         "齿轮齿条式伸缩机构":{
 
@@ -1563,6 +1740,14 @@
                 $('[name=dbjbxglModel]').prop('disabled', false)
                 data.datalist['dbjbxglModel'].color = 'white';
                 return 'SSBXGL140';
+            } else if ( db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=dbjbxglModel]').prop('disabled', false)
+                data.datalist['dbjbxglModel'].color = 'white';
+                return 'SSBXGL140';
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=dbjbxglModel]').prop('disabled', true)
+                data.datalist['dbjbxglModel'].color = 'white';
+                return dbjbxglModel;
             }
         },
         db1bshdlModel: function () {
@@ -1574,6 +1759,14 @@
                 $('[name=db1bshdlModel]').prop('disabled', false)
                 data.datalist['db1bshdlModel'].color = 'white';
                 return 'SSBSHDL140';
+            } else if ( db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=db1bshdlModel]').prop('disabled', false)
+                data.datalist['db1bshdlModel'].color = 'white';
+                return 'SSBSHDL140';
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=db1bshdlModel]').prop('disabled', true)
+                data.datalist['db1bshdlModel'].color = 'white';
+                return db1bshdlModel;
             }
         },
         db1bxglModel: function () {
@@ -1585,6 +1778,14 @@
                 $('[name=db1bxglModel]').prop('disabled', false)
                 data.datalist['db1bxglModel'].color = 'white';
                 return 'SSBXGL125';
+            } else if ( db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=db1bxglModel]').prop('disabled', false)
+                data.datalist['db1bxglModel'].color = 'white';
+                return 'SSBXGL125';
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=db1bxglModel]').prop('disabled', true)
+                data.datalist['db1bxglModel'].color = 'white';
+                return db1bxglModel;
             }
         },
         db2bshdlModel: function () {
@@ -1596,14 +1797,76 @@
                 $('[name=db2bshdlModel]').prop('disabled', false)
                 data.datalist['db2bshdlModel'].color = 'white';
                 return 'SSBSHDL104';
+            } else if ( db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=db2bshdlModel]').prop('disabled', false)
+                data.datalist['db2bshdlModel'].color = 'white';
+                return 'SSBSHDL104';
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=db2bshdlModel]').prop('disabled', true)
+                data.datalist['db2bshdlModel'].color = 'white';
+                return db2bshdlModel;
             }
         },
+
+        sbgdbjbglModel: function () {
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=sbgdbjbglModel]').prop('disabled', true)
+                data.datalist['sbgdbjbglModel'].color = 'white';
+                return sbgdbjbglModel;
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=sbgdbjbglModel]').prop('disabled', false)
+                data.datalist['sbgdbjbglModel'].color = 'white';
+                return 'GL95';
+            }
+        },
+        sbgdb1bshglModel: function () {
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=sbgdb1bshglModel]').prop('disabled', true)
+                data.datalist['sbgdb1bshglModel'].color = 'white';
+                return sbgdb1bshglModel;
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=sbgdb1bshglModel]').prop('disabled', false)
+                data.datalist['sbgdb1bshglModel'].color = 'white';
+                return 'GL95';
+            }
+        },
+        sbgdb1bglModel: function () {
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=sbgdb1bglModel]').prop('disabled', true)
+                data.datalist['sbgdb1bglModel'].color = 'white';
+                return sbgdb1bglModel;
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=sbgdb1bglModel]').prop('disabled', false)
+                data.datalist['sbgdb1bglModel'].color = 'white';
+                return 'GL80';
+            }
+        },
+        sbgdb2bshglModel: function () {
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=sbgdb2bshglModel]').prop('disabled', true)
+                data.datalist['sbgdb2bshglModel'].color = 'white';
+                return sbgdb2bshglModel;
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                $('[name=sbgdb2bshglModel]').prop('disabled', false)
+                data.datalist['sbgdb2bshglModel'].color = 'white';
+                return 'GL80';
+            }
+        },
+
         db2bltModel: function () {
             if ( db2Model == "2+1伸缩臂（3x5）" ) {
                 $('[name=db2bltModel]').prop('disabled', false)
                 data.datalist['db2bltModel'].color = 'white';
                 return 'LH1246';
             } else if ( db2Model == "2+1伸缩臂（3x6.5）" ) {
+                $('[name=db2bltModel]').prop('disabled', false)
+                data.datalist['db2bltModel'].color = 'white';
+                return 'LH1246';
+            } else if ( db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                $('[name=db2bltModel]').prop('disabled', false)
+                data.datalist['db2bltModel'].color = 'white';
+                return 'LH1246';
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
                 $('[name=db2bltModel]').prop('disabled', false)
                 data.datalist['db2bltModel'].color = 'white';
                 return 'LH1246';
@@ -1756,35 +2019,75 @@
 
         //第一段搭接处滚轮
         dbjbxglxh:function(){
-            return dbjbxglModelList[ dbjbxglModel ]['dbjbxglxh'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return dbjbxglModelList[ dbjbxglModel ]['dbjbxglxh'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdbjbglModelList[ sbgdbjbglModel ]['dbjbxglxh'];
+            }
         },
         dbjbxglfk:function(){
-            return dbjbxglModelList[ dbjbxglModel ]['dbjbxglfk'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return dbjbxglModelList[ dbjbxglModel ]['dbjbxglfk'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdbjbglModelList[ sbgdbjbglModel ]['dbjbxglfk'];
+            }
         },
         dbjbxgln:function(){
-            return dbjbxglModelList[ dbjbxglModel ]['dbjbxgln'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return dbjbxglModelList[ dbjbxglModel ]['dbjbxgln'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdbjbglModelList[ sbgdbjbglModel ]['dbjbxgln'];
+            }
         },
         dbjbxgld:function(){
-            return dbjbxglModelList[ dbjbxglModel ]['dbjbxgld'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return dbjbxglModelList[ dbjbxglModel ]['dbjbxgld'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdbjbglModelList[ sbgdbjbglModel ]['dbjbxgld'];
+            }
         },
         dbjbxglb:function(){
-            return dbjbxglModelList[ dbjbxglModel ]['dbjbxglb'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return dbjbxglModelList[ dbjbxglModel ]['dbjbxglb'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdbjbglModelList[ sbgdbjbglModel ]['dbjbxglb'];
+            }
         },
 
         db1bshdlxh:function(){
-            return db1bshdlModelList[ db1bshdlModel ]['db1bshdlxh'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bshdlModelList[ db1bshdlModel ]['db1bshdlxh'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bshglModelList[ sbgdb1bshglModel ]['db1bshdlxh'];
+            }
         },
         db1bshdlfk:function(){
-            return db1bshdlModelList[ db1bshdlModel ]['db1bshdlfk'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bshdlModelList[ db1bshdlModel ]['db1bshdlfk'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bshglModelList[ sbgdb1bshglModel ]['db1bshdlfk'];
+            }
         },
         db1bshdln:function(){
-            return db1bshdlModelList[ db1bshdlModel ]['db1bshdln'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bshdlModelList[ db1bshdlModel ]['db1bshdln'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bshglModelList[ sbgdb1bshglModel ]['db1bshdln'];
+            }
         },
         db1bshdld:function(){
-            return db1bshdlModelList[ db1bshdlModel ]['db1bshdld'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bshdlModelList[ db1bshdlModel ]['db1bshdld'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bshglModelList[ sbgdb1bshglModel ]['db1bshdld'];
+            }
         },
         db1bshdlb:function(){
-            return db1bshdlModelList[ db1bshdlModel ]['db1bshdlb'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bshdlModelList[ db1bshdlModel ]['db1bshdlb'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bshglModelList[ sbgdb1bshglModel ]['db1bshdlb'];
+            }
         },
         dbdjl1:function(){
             return dblx2 / 1000 ;
@@ -1792,35 +2095,75 @@
 
         //第二段搭接处滚轮
         db1bxglxh:function(){
-            return db1bxglModelList[ db1bxglModel ]['db1bxglxh'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bxglModelList[ db1bxglModel ]['db1bxglxh'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bglModelList[ sbgdb1bglModel ]['db1bxglxh'];
+            }
         },
         db1bxglfk:function(){
-            return db1bxglModelList[ db1bxglModel ]['db1bxglfk'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bxglModelList[ db1bxglModel ]['db1bxglfk'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bglModelList[ sbgdb1bglModel ]['db1bxglfk'];
+            }
         },
         db1bxgln:function(){
-            return db1bxglModelList[ db1bxglModel ]['db1bxgln'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bxglModelList[ db1bxglModel ]['db1bxgln'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bglModelList[ sbgdb1bglModel ]['db1bxgln'];
+            }
         },
         db1bxgld:function(){
-            return db1bxglModelList[ db1bxglModel ]['db1bxgld'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bxglModelList[ db1bxglModel ]['db1bxgld'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bglModelList[ sbgdb1bglModel ]['db1bxgld'];
+            }
         },
         db1bxglb:function(){
-            return db1bxglModelList[ db1bxglModel ]['db1bxglb'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db1bxglModelList[ db1bxglModel ]['db1bxglb'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb1bglModelList[ sbgdb1bglModel ]['db1bxglb'];
+            }
         },
 
         db2bshdlxh:function(){
-            return db2bshdlModelList[ db2bshdlModel ]['db2bshdlxh'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db2bshdlModelList[ db2bshdlModel ]['db2bshdlxh'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb2bshglModelList[ sbgdb2bshglModel ]['db2bshdlxh'];
+            }
         },
         db2bshdlfk:function(){
-            return db2bshdlModelList[ db2bshdlModel ]['db2bshdlfk'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db2bshdlModelList[ db2bshdlModel ]['db2bshdlfk'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb2bshglModelList[ sbgdb2bshglModel ]['db2bshdlfk'];
+            }
         },
         db2bshdln:function(){
-            return db2bshdlModelList[ db2bshdlModel ]['db2bshdln'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db2bshdlModelList[ db2bshdlModel ]['db2bshdln'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb2bshglModelList[ sbgdb2bshglModel ]['db2bshdln'];
+            }
         },
         db2bshdld:function(){
-            return db2bshdlModelList[ db2bshdlModel ]['db2bshdld'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db2bshdlModelList[ db2bshdlModel ]['db2bshdld'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb2bshglModelList[ sbgdb2bshglModel ]['db2bshdld'];
+            }
         },
         db2bshdlb:function(){
-            return db2bshdlModelList[ db2bshdlModel ]['db2bshdlb'];
+            if ( db2Model == "2+1伸缩臂（3x5）" || db2Model == "2+1伸缩臂（3x6.5）" || db2Model == "2+1伸缩臂（3x6.5）-8" ) {
+                return db2bshdlModelList[ db2bshdlModel ]['db2bshdlb'];
+            } else if ( db2Model == "2+1四边管伸缩臂" ) {
+                return sbgdb2bshglModelList[ sbgdb2bshglModel ]['db2bshdlb'];
+            }
         },
         dbdjl2:function(){
             return dblx3 / 1000 ;
