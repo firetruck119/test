@@ -253,8 +253,8 @@ public class TensileEnity {
 
         Double klmjla = doubleMap.get("klmjla");
         String klmjp16 = takeSign(mjl, klmjla);
-        String klmjp17 = takeSign(mjl, 200);
-        String klmjm10 = takeString(mjl >= 200 && mjl >= klmjla);
+        String klmjp17 = takeSign(mjl, 120);
+        String klmjm10 = takeString(mjl >= 120 && mjl >= klmjla);
 
 
         Map<String, String> result = new HashMap<>();
@@ -339,7 +339,7 @@ public class TensileEnity {
         result.put("jyas", "As" + " ≥" + klmjas1 +
                 "<br/><br/>" + "As" + " ≥" + klmjas2);
         result.put("jyl", "l" + " ≥" + klmjla +
-                "<br/><br/>" + "l" + " ≥" + "200");
+                "<br/><br/>" + "l" + " ≥" + "120");
         result.put("jyn", "N" + " ≤ 0.5f<sub>c</sub>A" +
                 "<br/><br/>" + " =" + _05fca);
 

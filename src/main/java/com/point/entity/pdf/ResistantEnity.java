@@ -53,6 +53,12 @@ public class ResistantEnity {
     private Double mjz;
     @Getter
     @Setter
+    private String mjmjph;
+    @Getter
+    @Setter
+    private Double mjmjfy;
+    @Getter
+    @Setter
     private Double mjd;
     @Getter
     @Setter
@@ -108,6 +114,9 @@ public class ResistantEnity {
     @Getter
     @Setter
     private String ConcreteStrength;
+    @Getter
+    @Setter
+    private String mjphxzModel;
 
     private Double mjy;
     private Double mjv;
@@ -192,7 +201,7 @@ public class ResistantEnity {
         kymjm6 = takeString(mjc1 >= kymj3d && mjc1 >= 45);
         kymjm7 = takeString((mjc1 >= kymj3d && mjc1 >= 45) && (mjc >= kymj3d && mjc >= 45));
 
-        Double temp = (4 - 0.08 * mjd) * sqrt(mjfc / 270);
+        Double temp = (4 - 0.08 * mjd) * sqrt(mjfc / mjmjfy);
         kymjav = temp > 0.7 ? temp : 0.7;
         kymjab = 0.6 + 0.25 * mjt / mjd;
         _04nz = 0.4 * mjy * mjz;
@@ -202,8 +211,8 @@ public class ResistantEnity {
         kymjp14 = takeSign(abs(mjy), _05fca);
         kymjm8 = takeString(abs(mjy) <= _05fca);
         temp = mjm - _04nz;
-        kymjas1 = temp > 0 ? ((mjv - 0.3 * mjy) / (mjar * kymjav * 270)) + ((kymjmq - _04nz) / (1.3 * mjar * kymjab * 270 * mjz)) : 0;
-        kymjas2 = temp > 0 ? ((mjm - _04nz) / (0.4 * mjar * kymjab * 270 * mjz)) : 0;
+        kymjas1 = temp > 0 ? ((mjv - 0.3 * mjy) / (mjar * kymjav * mjmjfy)) + ((kymjmq - _04nz) / (1.3 * mjar * kymjab * mjmjfy * mjz)) : 0;
+        kymjas2 = temp > 0 ? ((mjm - _04nz) / (0.4 * mjar * kymjab * mjmjfy * mjz)) : 0;
         kymjp15 = takeSign(mjas, kymjas1);
         kymjp16 = takeSign(mjas, kymjas2);
         kymjm9 = takeString(mjas >= kymjas1 && mjas >= kymjas2);
@@ -242,6 +251,8 @@ public class ResistantEnity {
         result.put("mjjl", CommonFunc.convertDoubleToString(mjjl));
         result.put("mjkm", CommonFunc.convertDoubleToString(mjkm));
         result.put("mjm", CommonFunc.convertDoubleToString(mjm));
+        result.put("mjmjph", CommonFunc.convertDoubleToString(mjmjph));
+        result.put("mjmjfy", CommonFunc.convertDoubleToString(mjmjfy));
         result.put("mjz", CommonFunc.convertDoubleToString(mjz));
         result.put("mjd", CommonFunc.convertDoubleToString(mjd));
         result.put("mjt", CommonFunc.convertDoubleToString(mjt));
