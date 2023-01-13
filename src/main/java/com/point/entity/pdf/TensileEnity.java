@@ -53,6 +53,12 @@ public class TensileEnity {
     private Double mjz;
     @Getter
     @Setter
+    private String mjmjph;
+    @Getter
+    @Setter
+    private Double mjmjfy;
+    @Getter
+    @Setter
     private Double mjd;
     @Getter
     @Setter
@@ -117,6 +123,11 @@ public class TensileEnity {
     @Getter
     @Setter
     private String TypeOfAnchorBars;
+    @Getter
+    @Setter
+    private String mjphxzModel;
+
+
 
     private Double mjn;
     private Double mjv;
@@ -145,6 +156,8 @@ public class TensileEnity {
         result.put("mjjl", CommonFunc.convertDoubleToString(mjjl));
         result.put("mjkm", CommonFunc.convertDoubleToString(mjkm));
         result.put("mjm", CommonFunc.convertDoubleToString(mjm));
+        result.put("mjmjph", CommonFunc.convertDoubleToString(mjmjph));
+        result.put("mjmjfy", CommonFunc.convertDoubleToString(mjmjfy));
         result.put("mjz", CommonFunc.convertDoubleToString(mjz));
         result.put("mjd", CommonFunc.convertDoubleToString(mjd));
         result.put("mjt", CommonFunc.convertDoubleToString(mjt));
@@ -177,11 +190,11 @@ public class TensileEnity {
         Double klmj3d = 3 * mjd;
         Double klmj6d = 6 * mjd;
         Double _05fca = 0.5 * mjfc * mjmj;
-        Double klmjav = (4 - 0.08 * mjd) * sqrt(mjfc / 270);
+        Double klmjav = (4 - 0.08 * mjd) * sqrt(mjfc / mjmjfy);
         Double klmjab = 0.6 + 0.25 * mjt / mjd;
-        Double klmjas1 = (mjv / (mjar * klmjav * 270)) + (mjn / (0.8 * klmjab * 270)) + (mjm / (1.3 * mjar * klmjab * 270 * mjz));
-        Double klmjas2 = (mjn / (0.8 * klmjab * 270)) + (mjm / (0.4 * mjar * klmjab * 270 * mjz));
-        Double klmjlab = mjaw * 270 / mjft * mjd;
+        Double klmjas1 = (mjv / (mjar * klmjav * mjmjfy)) + (mjn / (0.8 * klmjab * mjmjfy)) + (mjm / (1.3 * mjar * klmjab * mjmjfy * mjz));
+        Double klmjas2 = (mjn / (0.8 * klmjab * mjmjfy)) + (mjm / (0.4 * mjar * klmjab * mjmjfy * mjz));
+        Double klmjlab = mjaw * mjmjfy / mjft * mjd;
         Double klmjla = 0.6 * klmjlab;
         Map<String, Double> result = new HashMap<>();
         result.put("klmj2d", klmj2d);

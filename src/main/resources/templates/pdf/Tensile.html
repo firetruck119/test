@@ -293,6 +293,18 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>锚筋牌号</td>
+                                        <td colspan="3">
+                                            <select name="mjphxzModel" id="select3" style="width:100%;height:40px;text-align-last:center">
+                                                <option style="display: none"></option>
+                                                <option value="HPB300">HPB300</option>
+                                                <option value="S31608">S31608</option>
+                                                <option value="Q235B">Q235B</option>
+                                                <option value="Q355B">Q355B</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td style="width:26%;padding:10px 0;;"><b>名称</b></td>
                                         <td style="width:17%;">符号</td>
                                         <td style="width:40%;">数值</td>
@@ -328,6 +340,20 @@
                                         <td><input name="mjz" type="text"/></td>
                                         <td>mm</td>
                                     </tr>
+
+                                    <tr>
+                                        <td><b>锚筋牌号</b></td>
+                                        <td><p><i></i></p></td>
+                                        <td><input name="mjmjph" type="text"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>锚板抗拉强度设计值</b></td>
+                                        <td><p><i>f<sub>y</sub></i></p></td>
+                                        <td><input name="mjmjfy" type="text"/></td>
+                                        <td>MPa</td>
+                                    </tr>
+
                                     <tr>
                                         <td><b>锚筋直径</b></td>
                                         <td><p><i>d</i></p></td>
@@ -650,6 +676,24 @@
             mjaw:0.17,
         },
     }
+    mjphxzModelList = {
+        "HPB300": {
+            mjmjph: "HPB300",
+            mjmjfy: 270,
+        },
+        "S31608": {
+            mjmjph: "S31608",
+            mjmjfy: 175,
+        },
+        "Q235B": {
+            mjmjph: "Q235B",
+            mjmjfy: 205,
+        },
+        "Q355B": {
+            mjmjph: "Q355B",
+            mjmjfy: 295,
+        },
+    }
     calculateFunction={
         mjhdj:function(){
           return ConcreteStrengthList[ concreteStrength ]['mjhdj'];
@@ -660,6 +704,14 @@
         mjft:function(){
           return ConcreteStrengthList[ concreteStrength ]['mjft'];
         },
+
+        mjmjph:function(){
+            return mjphxzModelList[ mjphxzModel ]['mjmjph'];
+        },
+        mjmjfy:function(){
+            return mjphxzModelList[ mjphxzModel ]['mjmjfy'];
+        },
+
         mjkm:function(){
             return mjkv * mjkjl ;
         },
