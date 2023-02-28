@@ -765,7 +765,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>钢材(Q345B)单价提示(2022/11/3)</b></td>
+                                        <td colspan="3"><b>钢材(Q355B)单价提示(2023/2/28)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>钢板(元/吨)</b></td>
@@ -773,9 +773,9 @@
                                         <td style="width:33%"><b>八边管/四边管(元/吨)</b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>4800</b></td>
+                                        <td style="width:34%"><b>5200</b></td>
                                         <td style="width:33%"><b>5800</b></td>
-                                        <td style="width:33%"><b>6700</b></td>
+                                        <td style="width:33%"><b>6850</b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3"><b>钢材(Q235B)单价提示</b></td>
@@ -786,7 +786,7 @@
                                         <td style="width:33%"><b></b></td>
                                     </tr>
                                     <tr>
-                                        <td style="width:34%"><b>4500</b></td>
+                                        <td style="width:34%"><b>4800</b></td>
                                         <td style="width:33%"><b>6000</b></td>
                                         <td style="width:33%"><b></b></td>
                                     </tr>
@@ -1756,7 +1756,7 @@
                             <div style="width:97%;" class='subtable'>
                                 <table>
                                     <tr>
-                                        <td colspan="3"><b>轨道材料单价提示(2022/11/3)</b></td>
+                                        <td colspan="3"><b>轨道材料单价提示(2023/2/28)</b></td>
                                     </tr>
                                     <tr>
                                         <td style="width:34%"><b>常规I/H-Q235B(元/吨)</b></td>
@@ -2144,13 +2144,13 @@
                                         <td>10</td>
                                         <td>包装成本小计</td>
                                         <td id="cbbzcbzj"></td>
-                                        <td colspan="3"><b>钢材(Q345B)单价(2022/11/3)</b></td>
+                                        <td colspan="3"><b>钢材(Q355B)单价(2023/2/28)</b></td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="2">擦窗机材料成本总计</td>
                                         <td id="cbbmuclzj"></td>
                                         <td colspan="2">钢板(元/吨)</td>
-                                        <td>4800</td>
+                                        <td>5200</td>
                                     </tr>
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3">擦窗机材料成本占报价比例(%)</td>
@@ -2160,7 +2160,7 @@
                                     <tr style="background-color: rgb(220,220,220)">
                                         <td colspan="3" id="cbclzbl"></td>
                                         <td colspan="2">八边管/四边管(元/吨)</td>
-                                        <td>6700</td>
+                                        <td>6850</td>
                                     </tr>
                                 </table>
                             </div>
@@ -3099,7 +3099,7 @@
         },
         "板拼式":{
             djlx:"板拼式",
-            cbdjdj:4800,
+            cbdjdj:5200,
         },
     };
     //大臂类型
@@ -3194,10 +3194,10 @@
             cbpzkdj:316,
             cbpzklyl:0.95,
             cbpzfgzl:' ',
-            cbpzfgdj:4800,
+            cbpzfgdj:5200,
             cbpzfglyl:1,
             cbpzktzl:' ',
-            cbpzktdj:4500,
+            cbpzktdj:4800,
         },
         "钢板配重块":{
             cbpzkmc:'钢板',
@@ -4427,12 +4427,12 @@
             if ( dbxhModel == "单臂横截面" ) {
                 return 5800 ;
             } else if ( dbxhModel == "单臂变截面" ) {
-                return 4800 ;
+                return 5200 ;
             } else if ( dbxhModel == "1+1伸缩臂" || dbxhModel == "2+1伸缩臂" || dbxhModel == "3+1伸缩臂" || dbxhModel == "4+1伸缩臂" ) {
                 if ( ssbdbgzxhModel == "四边管式吊臂" ) {
-                    return 6700 ;
+                    return 6850 ;
                 } else if ( ssbdbgzxhModel == "八边管式吊臂" ) {
-                    return 6700 ;
+                    return 6850 ;
                 }
             }
         },
@@ -4470,7 +4470,7 @@
                 return 0.85 ;
         },
         cbpzxtdj: function () {
-            return 4500 ;
+            return 4800 ;
         },
         cbpzxtlyl: function () {
             if ( cbpzxtzl == 0 )
@@ -4489,25 +4489,25 @@
             if ( lzclxhModel == "管材式" ) {
                 return 5800 ;
             } else if ( lzclxhModel == "板拼式" ) {
-                return 4800 ;
+                return 5200 ;
             } else if ( lzclxhModel == "四边管式" ) {
-                return 6700 ;
+                return 6850 ;
             }
         } else if ( lzxhModel == "1+1顶升立柱" ) {
             if ( lzclxhModel == "管材式" ) {
                 return ' ' ;
             } else if ( lzclxhModel == "板拼式" ) {
-                return 4800 ;
+                return 5200 ;
             } else if ( lzclxhModel == "四边管式" ) {
-                return 6700 ;
+                return 6850 ;
             }
         } else if ( lzxhModel == "2+1顶升立柱" ) {
             if ( lzclxhModel == "管材式" ) {
                 return ' ' ;
             } else if ( lzclxhModel == "板拼式" ) {
-                return 4800 ;
+                return 5200 ;
             } else if ( lzclxhModel == "四边管式" ) {
-                return 6700 ;
+                return 6850 ;
             }
         }
     },
