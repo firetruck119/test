@@ -375,6 +375,7 @@ public class CounterweightsEntity {
         map.put("pzyzy1", CommonFunc.convertDoubleToString(pzyzy1));
         map.put("pzyzy2", CommonFunc.convertDoubleToString(pzyzy2));
         map.put("pzyzm", CommonFunc.convertDoubleToString(pzyzm));
+        map.put("mz", CommonFunc.convertDoubleToString(mz));
         return map;
 
     }
